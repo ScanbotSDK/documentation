@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['camerasession',['cameraSession',['../interface_s_b_s_d_k_scanner_view_controller.html#a2d4b8ce1c1d56a92f47a9585efc85422',1,'SBSDKScannerViewController']]],
+  ['capturejpegstillimagewithcompletionhandler_3a',['captureJPEGStillImageWithCompletionHandler:',['../interface_s_b_s_d_k_camera_session.html#afc2485728396e27d909206d935a5173f',1,'SBSDKCameraSession']]],
+  ['capturesession',['captureSession',['../interface_s_b_s_d_k_camera_session.html#a7e8652444e0882029bcfabbbeffeb8ba',1,'SBSDKCameraSession']]],
+  ['capturestillimage',['captureStillImage',['../interface_s_b_s_d_k_scanner_view_controller.html#a0434e94c12bb9f79db3ee6c683cc24e4',1,'SBSDKScannerViewController']]],
+  ['capturestillimagewithcompletionhandler_3a',['captureStillImageWithCompletionHandler:',['../interface_s_b_s_d_k_camera_session.html#a0cbed03e0c4470e8759f18ef498100b4',1,'SBSDKCameraSession']]],
+  ['center',['center',['../interface_s_b_s_d_k_polygon_edge.html#a4789378a128b3f63ee1c3c5ffed8e5af',1,'SBSDKPolygonEdge::center()'],['../interface_s_b_s_d_k_polygon.html#a91313bf561c61b5e20c5fa5dcc673d13',1,'SBSDKPolygon::center()']]],
+  ['common_2eh',['Common.h',['../_common_8h.html',1,'']]],
+  ['concurrentnetworkqueue',['concurrentNetworkQueue',['../interface_s_b_s_d_k_processing_queue_factory.html#abaa7abf8dc430615535c75c1d2e66fa3',1,'SBSDKProcessingQueueFactory']]],
+  ['confidencevalue',['confidenceValue',['../interface_s_b_s_d_k_o_c_r_result_block.html#aad20df7ff06334734106989c5e74e9a8',1,'SBSDKOCRResultBlock']]],
+  ['contour',['Contour',['../structdoo_1_1_contour.html',1,'doo']]],
+  ['contour',['Contour',['../structdoo_1_1_contour.html#a4cf26aa0187a89a635ec3d22fd6e667b',1,'doo::Contour::Contour()'],['../structdoo_1_1_contour.html#af302fef95d6f8ddba7f9734453faae9b',1,'doo::Contour::Contour(std::vector&lt; cv::Point &gt; initialPoints)']]],
+  ['contourlist',['ContourList',['../namespacedoo.html#a2f4716b6ef90807111ca502d2ff6ce50',1,'doo']]],
+  ['convertpolygon_3atopreviewlayerspace_3a',['convertPolygon:toPreviewLayerSpace:',['../interface_s_b_s_d_k_pay_form_result.html#a29349d7a50b6a702a0d3ddbc32305802',1,'SBSDKPayFormResult']]],
+  ['convertpolygontounitspace_3a',['convertPolygonToUnitSpace:',['../interface_s_b_s_d_k_pay_form_result.html#a36a52e5481113993bf410c238e819915',1,'SBSDKPayFormResult']]],
+  ['cropfactor',['cropFactor',['../interface_s_b_s_d_k_lens_camera_properties.html#ae0d56a37400a55909c07525c4fb74274',1,'SBSDKLensCameraProperties']]],
+  ['currentanglescore',['currentAngleScore',['../interface_s_b_s_d_k_document_detector.html#a222cdf489e392d2e08dbd369b6ee0fb1',1,'SBSDKDocumentDetector']]],
+  ['currentheightscore',['currentHeightScore',['../interface_s_b_s_d_k_document_detector.html#ab053a977d8618b9d141fd42551114c76',1,'SBSDKDocumentDetector']]],
+  ['currentsizescore',['currentSizeScore',['../interface_s_b_s_d_k_document_detector.html#a71b33f7bac2effe1065bf660997bf7d1',1,'SBSDKDocumentDetector']]],
+  ['currenttotalscore',['currentTotalScore',['../interface_s_b_s_d_k_document_detector.html#a0da9dc08f8b944e397f443996071d93c',1,'SBSDKDocumentDetector']]],
+  ['currentwidthscore',['currentWidthScore',['../interface_s_b_s_d_k_document_detector.html#aa73fdf3c11cf4ba36694b1467b1cae11',1,'SBSDKDocumentDetector']]],
+  ['customfilterimage_3aprocessingblock_3acompletion_3a',['customFilterImage:processingBlock:completion:',['../interface_s_b_s_d_k_image_processor.html#a217d6e97f0d464cfc4fccb1caa7b3a8f',1,'SBSDKImageProcessor']]],
+  ['customfilterimage_3aprocessingblock_3aoutputimageurl_3acompletion_3a',['customFilterImage:processingBlock:outputImageURL:completion:',['../category_s_b_s_d_k_image_processor_07_n_s_u_r_l_08.html#ad563b788aaf5b5725e1ef4a8d7125660',1,'SBSDKImageProcessor(NSURL)::customFilterImage:processingBlock:outputImageURL:completion:()'],['../interface_s_b_s_d_k_image_processor.html#ad563b788aaf5b5725e1ef4a8d7125660',1,'SBSDKImageProcessor::customFilterImage:processingBlock:outputImageURL:completion:()']]]
+];
