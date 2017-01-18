@@ -60,12 +60,12 @@
     <h2 id="scanbot-sdk-for-xamarinandroid-and-xamarinios">Scanbot SDK for Xamarin.Android and Xamarin.iOS</h2>
 
 <h3 id="introduction">Introduction</h3>
-<p>Scanbot SDK brings scanning and document creation capabilities to your mobile apps.
+<p>The Scanbot SDK brings scanning and document creation capabilities to your mobile apps.
 It contains modules which are individually licensable as license packages.
 For more details visit our website <a href="https://scanbot.io/sdk.html">https://scanbot.io/sdk.html</a></p>
 
 <h3 id="requirements">Requirements</h3>
-<p>Scanbot SDK supports followong mobile platforms</p>
+<p>The Scanbot SDK supports the following mobile platforms</p>
 <ul>
   <li>iOS 8 and higher</li>
   <li>Android 4.1 (API Level 16) and higher</li>
@@ -74,7 +74,7 @@ For more details visit our website <a href="https://scanbot.io/sdk.html">https:/
 <h3 id="getting-started">Getting started</h3>
 
 <h4 id="download--installation">Download &amp; Installation</h4>
-<p>Scanbot SDK is provided as NuGet packages for Xamarin Platform</p>
+<p>The Scanbot SDK is provided as NuGet packages for Xamarin Platform</p>
 
 <ul>
   <li><a href="http://TODO_release_packages">ScanbotSDK.Xamarin.Android - TODO</a></li>
@@ -100,15 +100,15 @@ The native SDKs and the wrappers are stored in different namespaces which are ex
   <li>Namespace for iOS: <code class="highlighter-rouge">ScanbotSDK.Xamarin.iOS.Wrapper</code></li>
 </ul>
 
-<p>The idea of Scanbot SDK Xamarin Wrapper is to provide an unified and convenient API for iOS and Android.
+<p>The idea of the Scanbot SDK Xamarin Wrapper is to provide an unified and convenient API for iOS and Android.
 However, since not all native SDK classes and functions are available in the Wrapper namespace yet, you can use and call them as needed directly from the native namespaces.</p>
 
-<p>Currently the following <strong><a href="https://scanbot.io/sdk.html#packages">Package I</a></strong> modules are available for Xamarin Wrapper</p>
+<p>Currently the following <strong><a href="https://scanbot.io/sdk.html#packages">Package I</a></strong> modules are available for the Xamarin Wrapper</p>
 <ul>
-  <li>Document detection in digital images</li>
-  <li>User interface for guided, automatic document scanning using the document detection module</li>
-  <li>Image processing for rotating, cropping, filtering and perspective correction, optimized for the needs of document scanning</li>
-  <li>PDF creation, merge a collection of processed or unprocessed document images and write them into a PDF document with one page per image</li>
+  <li>Document detection of digital images;</li>
+  <li>User interface for guided, automatic document scanning using the document detection module;</li>
+  <li>Image processing for rotating, cropping, filtering and perspective correction, optimized for the needs of document scanning;</li>
+  <li>PDF creation, merge a collection of processed or unprocessed document images and write them into a PDF document with one page per image.</li>
 </ul>
 
 <h4 id="native-sdks">Native SDKs</h4>
@@ -140,7 +140,7 @@ However, since not all native SDK classes and functions are available in the Wra
 
 <p><code class="highlighter-rouge">&lt;uses-feature android:name="android.hardware.camera" /&gt;</code></p>
 
-<p>Following permissions are required for PDF creation (to handle temporary files):</p>
+<p>The following permissions are required for PDF creation (to handle temporary files):</p>
 
 <p><code class="highlighter-rouge">&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;</code></p>
 
@@ -148,17 +148,17 @@ However, since not all native SDK classes and functions are available in the Wra
 
 <p><strong>Required permissions for iOS</strong></p>
 
-<p>Add following properties in your <code class="highlighter-rouge">Info.plist</code> file:</p>
+<p>Add the following properties to your <code class="highlighter-rouge">Info.plist</code> file:</p>
 
 <p><em>“Privacy - Camera Usage Description” (NSCameraUsageDescription)</em><br />
 As value describe why your app wants to access the device’s camera.</p>
 
 <h4 id="initialize-sdk">Initialize SDK</h4>
-<p>Scanbot SDK must be initialized before usage. Make sure to run the initialization only once per app lifetime.
-In following examples we use the convenient wrapper class <code class="highlighter-rouge">SBSDK</code>.</p>
+<p>The Scanbot SDK must be initialized before usage. Make sure to run the initialization only once per app lifetime.
+In the following examples we will use the convenient wrapper class <code class="highlighter-rouge">SBSDK</code>.</p>
 
 <h5 id="android"><strong>Android</strong></h5>
-<p>Add following code to your <code class="highlighter-rouge">Application</code> class:</p>
+<p>Add the following code to your <code class="highlighter-rouge">Application</code> class:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>using ScanbotSDK.Xamarin.Android.Wrapper;
 
@@ -181,7 +181,7 @@ public class MainApplication : Application
 <p>Furthermore, it is recommended to add the <code class="highlighter-rouge">LargeHeap = true</code> flag in your <code class="highlighter-rouge">Application</code> class since your application works with images.</p>
 
 <h5 id="ios"><strong>iOS</strong></h5>
-<p>Add following code to your <code class="highlighter-rouge">AppDelegate</code> class:</p>
+<p>Add the following code to your <code class="highlighter-rouge">AppDelegate</code> class:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>using ScanbotSDK.Xamarin.iOS.Wrapper;
 
@@ -202,12 +202,12 @@ public class AppDelegate : UIApplicationDelegate
 
 <h4 id="license">License</h4>
 <p>You can test all Scanbot SDK features and develop your app without a license.
-If you do not specify the license key when initializing the SDK, it will work in <strong>trial mode (trial period of 1 minute)</strong>.
-If this is not enough for you, contact us at <a href="mailto:sdk@scanbot.io">sdk@scanbot.io</a> and we’ll give you a free trial license for longer period. In order to run Scanbot SDK functionality within your production app you have to purchase and use a valid Scanbot SDK license.</p>
+However, if you do not specify the license key when initializing the SDK, it will work in <strong>trial mode (trial period of 1 minute)</strong>.
+If this is not enough for you, contact us at <a href="mailto:sdk@scanbot.io">sdk@scanbot.io</a> and we’ll give you a free no strings attached trial license for a longer period. In order to run the Scanbot SDK functionality within your production app you have to purchase and use a valid Scanbot SDK license.</p>
 
 <p>Each license key is valid only to your apps bundle identifier. The license also defines which modules you are allowed to use. The usage of unlicensed modules will log an error to the console and terminate the app. If your license has expired any calls of the Scanbot SDK API will terminate your app.</p>
 
-<p>You can check and purchase Scanbot SDK licenses here: <a href="https://scanbot.io/sdk.html">https://scanbot.io/sdk.html</a>.</p>
+<p>You can check and purchase the Scanbot SDK licenses here: <a href="https://scanbot.io/sdk.html">https://scanbot.io/sdk.html</a>.</p>
 
 <p>Example code for defining and using the license key string:</p>
 
@@ -236,15 +236,15 @@ SBSDK.Initialize(application, licenseKey, true);
 
 <p>On Android logs are printed into <em>LogCat</em> as well as saved on the device. You can find them in <code class="highlighter-rouge">Environment.getExternalStorageDirectory()/debug_logs/[package_name]</code>. Usually it is <code class="highlighter-rouge">/sdcard/debug_logs/[package_name]</code>.</p>
 
-<p>On iOS all logs are printed into console. There will be no log files created by the Scanbot SDK.</p>
+<p>On iOS all logs are printed to the console. There will be no log files created by the Scanbot SDK.</p>
 
-<p>While it may be useful for development, consider switching logging off for production builds for security and performance reasons!</p>
+<p>While it may be useful for development, consider switching logging off in production builds for security and performance reasons!</p>
 
 <h4 id="scanbot-sdk-modules-functions">Scanbot SDK modules functions</h4>
-<p>All methods in Scanbot SDK are synchronous, they perform on the current thread. Please handle the SDK calls according to the requirements of your app to avoid blocking the main UI thread (e.g. see <em>Task Parallel Library (TPL)</em>).</p>
+<p>All methods in the Scanbot SDK are synchronous, they perform on the current thread. Please handle the SDK calls according to the requirements of your app to avoid blocking the main UI thread (e.g. see <em>Task Parallel Library (TPL)</em>).</p>
 
 <h4 id="document-detection">Document Detection</h4>
-<p>Scanbot SDK uses digital image processing algorithms to find rectangular, document like, polygons in a digital image.
+<p>The Scanbot SDK uses digital image processing algorithms to find rectangular, document like, polygons in a digital image.
 As input an <code class="highlighter-rouge">UIImage</code> on iOS or <code class="highlighter-rouge">Bitmap</code> on Android are accepted.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>Bitmap image = ...; // on Android
@@ -263,7 +263,7 @@ if (detectionResult.Status == DocumentDetectionStatus.Ok)
 
 <p>The result is an object of type <code class="highlighter-rouge">DocumentDetectionResult</code> which contains the detection status and on success the warped and cropped document image as well as the detected polygon.
 If there was no document detected the status enum provides the reason (noisy background, too dark, etc).
-The polygon is a list with 4 float points (one for each corner). Each point has coordinates in range [0..1], representing position relative to image size. For instance, if point has coordinates (0.5, 0.5), it means that it is located exactly in the center of the image.</p>
+The polygon is a list with 4 float points (one for each corner). Each point has coordinates in range [0..1], representing position relative to image size. For instance, if a point has the coordinates (0.5, 0.5), it means that it is located exactly in the center of the image.</p>
 
 <p>Alternatively, you can pass an <code class="highlighter-rouge">Uri</code> on Android or <code class="highlighter-rouge">NSUrl</code> on iOS of the source image.</p>
 
@@ -297,7 +297,7 @@ var resultImage = SBSDK.ApplyImageFilter(image, ImageFilter.Binarized);
 </ul>
 
 <h4 id="pdf-creation">PDF Creation</h4>
-<p>Scanbot SDK renders images into a PDF document and stores it as given target file. For each image a page is generated.</p>
+<p>The Scanbot SDK renders images into a PDF document and stores it as given target file. For each image a separate page is generated.</p>
 
 <p>Example code for Android:</p>
 
@@ -316,15 +316,15 @@ SBSDK.CreatePDF(images, pdfOutputFileUrl);
 </div>
 
 <h4 id="camera-ui-for-document-scanning">Camera UI for document scanning</h4>
-<p>Scanbot SDK provides UI components for guided, automatic document scanning.
+<p>The Scanbot SDK provides UI components for guided, automatic document scanning.
 These component classes handle all the camera and detection implementation details for you and can be used in your app.
 It is possible to customize the appearance and behavior of the guidance UI.</p>
 
-<p>In following examples we use the classes from <strong>native SDK</strong> namespaces.
-Please make sure you have defined the required permissions in your app.</p>
+<p>In the following examples we use the classes from the <strong>native SDK</strong> namespaces.
+Please make sure that you have defined the required permissions in your app.</p>
 
 <h5 id="ios-1"><strong>iOS</strong></h5>
-<p>For your convenience Scanbot SDK for iOS comes with the <code class="highlighter-rouge">SBSDKScannerViewController</code> class that handles all the document scanner implementations. You can customize the appearance and behavior of the guidance UI via controllers delegate.</p>
+<p>For your convenience the Scanbot SDK for iOS comes with the <code class="highlighter-rouge">SBSDKScannerViewController</code> class that handles all the document scanner implementations. You can customize the appearance and behavior of the guidance UI via controllers delegate.</p>
 
 <p>Example code:</p>
 
@@ -454,11 +454,11 @@ public class MyCameraViewController : UIViewController
 </div>
 
 <h5 id="android-1"><strong>Android</strong></h5>
-<p>Android camera API might be very tricky and far from being developer-friendly. To help you skip same issues as we encountered while developing Scanbot we created <code class="highlighter-rouge">ScanbotCameraView</code>. You can use it in your apps <code class="highlighter-rouge">Activity</code> or <code class="highlighter-rouge">Fragment</code>.
+<p>The Android camera API might seem to be very tricky and far from being developer-friendly. To help you skip the same issues which we encountered while developing Scanbot we created <code class="highlighter-rouge">ScanbotCameraView</code>. You can use it in your apps <code class="highlighter-rouge">Activity</code> or <code class="highlighter-rouge">Fragment</code>.
 <code class="highlighter-rouge">ScanbotCameraView</code> has a method <code class="highlighter-rouge">getPreviewBuffer()</code> which allows you to register for preview frames from the camera.
 While you can implement your own smart features Scanbot SDK comes with built-in <code class="highlighter-rouge">ContourDetectorFrameHandler</code> which performs contour detection (document detection) and outputs results to listeners.
-To draw detected contours Scanbot SDK provides the class <code class="highlighter-rouge">PolygonView</code>.
-To further improve user experience you might want to automatically take a photo when document is detected and conditions are good - we call this Autosnapping. For this purpose we have the <code class="highlighter-rouge">AutoSnappingController</code> class.</p>
+To draw detected contours the Scanbot SDK provides the class <code class="highlighter-rouge">PolygonView</code>.
+To further improve the user experience you might want to automatically take a photo when a document is detected and conditions are good - we call this Autosnapping. For this purpose we have the <code class="highlighter-rouge">AutoSnappingController</code> class.</p>
 
 <p>The following example shows the use of all modules.</p>
 
@@ -644,13 +644,13 @@ public class MyCameraActivity : AppCompatActivity, IPictureCallback, ContourDete
 
 <p>Meaning of the DocumentDetectionStatus enum:</p>
 <ul>
-  <li><code class="highlighter-rouge">Ok</code> - Document detection was successful. Detected contour looks like a valid document.</li>
-  <li><code class="highlighter-rouge">OkButTooSmall</code> - Document was detected, but it takes too small area in camera viewport. Quality can be improved by moving camera closer to the document.</li>
-  <li><code class="highlighter-rouge">OkButBadAngles</code> - Document was detected, but perspective is wrong (camera is tilted relatively to the document). Quality can be improved by holding camera directly over the document.</li>
-  <li><code class="highlighter-rouge">OkButBadAspectRatio</code> - Document was detected, but it has wrong rotation relatively to the camera sensor. Quality can be improved by rotating camera by 90 degrees.</li>
+  <li><code class="highlighter-rouge">Ok</code> - Document detection was successful. The detected contour looks like a valid document.</li>
+  <li><code class="highlighter-rouge">OkButTooSmall</code> - Document was detected, but it doesn’t fill the whole area in the camera viewport. The quality can be improved by moving camera closer to the document.</li>
+  <li><code class="highlighter-rouge">OkButBadAngles</code> - Document was detected, but the perspective is wrong (camera is tilted relatively to the document). Quality can be improved by holding the camera directly over the document.</li>
+  <li><code class="highlighter-rouge">OkButBadAspectRatio</code> - Document was detected, but it has a wrong rotation relatively to the camera sensor. Quality can be improved by rotating camera by 90 degrees.</li>
   <li><code class="highlighter-rouge">ErrorTooDark</code> - Document was not found, most likely because of bad lightning conditions.</li>
   <li><code class="highlighter-rouge">ErrorTooNoisy</code> - Document was not found, most likely because there is too much background noise (maybe too many other objects on the table, or background texture is not monotonic).</li>
-  <li><code class="highlighter-rouge">ErrorNothingDetected</code> - Document was not found. Probably it is not in viewport. Usually it does not makes sense to show any information to the user at this point.</li>
+  <li><code class="highlighter-rouge">ErrorNothingDetected</code> - Document was not found. Probably it is not in the viewport. Usually it does not make sense to show any information to the user at this point.</li>
 </ul>
 
   </div>
