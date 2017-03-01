@@ -1,31 +1,4 @@
 var searchData=
 [
-  ['imageatindex_3a',['imageAtIndex:',['../interface_s_b_s_d_k_image_storage.html#a055e05f2fd48728ed990f381c9c98ec1',1,'SBSDKImageStorage']]],
-  ['imagedatabyinjectingmetadata_3aintoimagedata_3a',['imageDataByInjectingMetadata:intoImageData:',['../interface_s_b_s_d_k_image_metadata_processor.html#aea95650ec666c39137ae7629eb056e03',1,'SBSDKImageMetadataProcessor']]],
-  ['imageurlatindex_3a',['imageURLAtIndex:',['../interface_s_b_s_d_k_image_storage.html#aff3da007eabee6fe9c90f1a3fd0e675f',1,'SBSDKImageStorage']]],
-  ['initforfeature_3a',['initForFeature:',['../interface_s_b_s_d_k_camera_session.html#abdbbc67fb155ec89169d741b362ba735',1,'SBSDKCameraSession']]],
-  ['initwithabsolutepointa_3apointb_3apointc_3apointd_3aforsize_3a',['initWithAbsolutePointA:pointB:pointC:pointD:forSize:',['../interface_s_b_s_d_k_polygon.html#a4d31da94e8f076f7b7a7d9338878ca3a',1,'SBSDKPolygon']]],
-  ['initwithfields_3a',['initWithFields:',['../interface_s_b_s_d_k_invoice_recognizer_result.html#ada579d0935093903eb68578ef58852e2',1,'SBSDKInvoiceRecognizerResult']]],
-  ['initwithfocallength_3asensorsize_3a',['initWithFocalLength:sensorSize:',['../interface_s_b_s_d_k_lens_camera_properties.html#ab0a21eb38d0b616081b5654735c74641',1,'SBSDKLensCameraProperties']]],
-  ['initwithfolderurl_3a',['initWithFolderURL:',['../interface_s_b_s_d_k_image_storage.html#a4f8ec1abe6ca29893aff614cd9c3f9c9',1,'SBSDKImageStorage']]],
-  ['initwithlinecolor_3a',['initWithLineColor:',['../interface_s_b_s_d_k_polygon_layer.html#a4035eafe5456bfa988fb20397387302c',1,'SBSDKPolygonLayer']]],
-  ['initwithmetadatadictionary_3a',['initWithMetadataDictionary:',['../interface_s_b_s_d_k_image_metadata.html#a63395caaaec7be54a4d7cf913a70f73d',1,'SBSDKImageMetadata']]],
-  ['initwithnormalizeddoublevalues_3a',['initWithNormalizedDoubleValues:',['../interface_s_b_s_d_k_polygon.html#ab8525b0f9836c7509b9bcbcd3ce98725',1,'SBSDKPolygon']]],
-  ['initwithnormalizedpointa_3apointb_3apointc_3apointd_3a',['initWithNormalizedPointA:pointB:pointC:pointD:',['../interface_s_b_s_d_k_polygon.html#aa987bf845babbd5ef03238fe5e6595b3',1,'SBSDKPolygon']]],
-  ['initwithnormalizedrect_3a',['initWithNormalizedRect:',['../interface_s_b_s_d_k_polygon.html#a4dde790cc3da21664c98a866c99a24a0',1,'SBSDKPolygon']]],
-  ['initwithorientation_3awritingdirection_3atextlineorder_3adeskewangle_3a',['initWithOrientation:writingDirection:textlineOrder:deskewAngle:',['../interface_s_b_s_d_k_page_analyzer_result.html#ab4d3356d171bda6a0a6ff18e9c675de6',1,'SBSDKPageAnalyzerResult']]],
-  ['initwithparentviewcontroller_3aimagestorage_3a',['initWithParentViewController:imageStorage:',['../interface_s_b_s_d_k_scanner_view_controller.html#a6c5eb28e71adfb3bace599815e71b171',1,'SBSDKScannerViewController']]],
-  ['initwithpoint_3aandpoint_3a',['initWithPoint:andPoint:',['../interface_s_b_s_d_k_polygon_edge.html#a0b20848a9d84bfaabde639618850ac71',1,'SBSDKPolygonEdge']]],
-  ['initwithpoints_3acount_3a',['initWithPoints:count:',['../interface_s_b_s_d_k_pay_form_polygon.html#a332ef234fc223e78b302b6935feb2017',1,'SBSDKPayFormPolygon']]],
-  ['initwithpointvalues_3a',['initWithPointValues:',['../interface_s_b_s_d_k_pay_form_polygon.html#a0380848773a9f389d6db3e4ae2e7aef4',1,'SBSDKPayFormPolygon']]],
-  ['initwithpolygons_3astatus_3adetectorimagesize_3a',['initWithPolygons:status:detectorImageSize:',['../interface_s_b_s_d_k_documents_detector_result.html#a196e2f76a4ecc992a10dbf707690ee1b',1,'SBSDKDocumentsDetectorResult']]],
-  ['initwithtext_3aboundingbox_3aconfidencevalue_3ablocktype_3a',['initWithText:boundingBox:confidenceValue:blockType:',['../interface_s_b_s_d_k_o_c_r_result_block.html#a46bcc2dc9632896449917c6874a76b4f',1,'SBSDKOCRResultBlock']]],
-  ['initwithtype_3avalue_3abounds_3a',['initWithType:value:bounds:',['../interface_s_b_s_d_k_invoice_recognizer_result_field.html#a4c1b63d9f08c11120524649d18650e57',1,'SBSDKInvoiceRecognizerResultField']]],
-  ['installedlanguages',['installedLanguages',['../interface_s_b_s_d_k_optical_text_recognizer.html#a92f1397ca1e20170bea7e39f4b396607',1,'SBSDKOpticalTextRecognizer']]],
-  ['iscameraadjusting',['isCameraAdjusting',['../interface_s_b_s_d_k_camera_session.html#a9af7a9560b78f5e7da3f270f0c480fea',1,'SBSDKCameraSession']]],
-  ['isdetectionstatusok',['isDetectionStatusOK',['../_s_b_s_d_k_document_detection_status_8h.html#a677b513d8b29135a2ca9820d1e6cf4ab',1,'SBSDKDocumentDetectionStatus.h']]],
-  ['isequaltopolygon_3a',['isEqualToPolygon:',['../interface_s_b_s_d_k_polygon.html#a1ee16a172ecfd324434532b0ad89adbf',1,'SBSDKPolygon']]],
-  ['islicensevalid',['isLicenseValid',['../interface_scanbot_s_d_k.html#ad42818cc2674a04e7b7be2fc8a494ba9',1,'ScanbotSDK']]],
-  ['issessionrunning',['isSessionRunning',['../interface_s_b_s_d_k_camera_session.html#a7f219a964217f9b0596e1282c280a118',1,'SBSDKCameraSession']]],
-  ['issimilartopolygon_3a',['isSimilarToPolygon:',['../interface_s_b_s_d_k_polygon.html#a01c58492ee576530d22db01c080bc923',1,'SBSDKPolygon']]]
+  ['hassuffix',['hasSuffix',['../namespacedoo.html#a952a7c693cd2f9ef8e1335a455c7fec2',1,'doo']]]
 ];

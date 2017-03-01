@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['normalize',['normalize',['../interface_s_b_s_d_k_polygon.html#a5b6f510dc47bbb974955703999c72ae2',1,'SBSDKPolygon']]],
-  ['normalizeddoublevalues',['normalizedDoubleValues',['../interface_s_b_s_d_k_polygon.html#a563935b8628397476cd2ee3951314096',1,'SBSDKPolygon']]],
-  ['normalizededgewithindex_3a',['normalizedEdgeWithIndex:',['../interface_s_b_s_d_k_polygon.html#a829aa959d14ad2d13031b06647d8967b',1,'SBSDKPolygon']]],
-  ['normalizedpointfromabsolutepoint_3awithsize_3a',['normalizedPointFromAbsolutePoint:withSize:',['../interface_s_b_s_d_k_polygon.html#ad51f5f33cf41fed9d7412eb1df43f1cf',1,'SBSDKPolygon']]],
-  ['normalizedpointwithindex_3a',['normalizedPointWithIndex:',['../interface_s_b_s_d_k_polygon.html#a4557e5e8446c6b65fa11dfccb293b8a2',1,'SBSDKPolygon']]],
-  ['number',['number',['../interface_s_b_s_d_k_credit_card_recognizer_result.html#a143415e5df757ef7761ef0248f635d53',1,'SBSDKCreditCardRecognizerResult']]]
+  ['magneticedgecolor',['magneticEdgeColor',['../interface_s_b_s_d_k_crop_view.html#ad3741e2bacc4a4aa6252d37955b58bdb',1,'SBSDKCropView::magneticEdgeColor()'],['../interface_s_b_s_d_k_crop_view_controller.html#a7ea40c1055ac6797df5348e3b51d9582',1,'SBSDKCropViewController::magneticEdgeColor()']]],
+  ['magnifiedimage',['magnifiedImage',['../interface_s_b_s_d_k_crop_magnifier_view.html#a1ae4e658280a84805099ef2b56b673f0',1,'SBSDKCropMagnifierView']]],
+  ['magnifierview',['magnifierView',['../interface_s_b_s_d_k_crop_view.html#a7fc2a928f03ef134937ed9a2a6b97ef2',1,'SBSDKCropView']]],
+  ['magnifyatpoint_3a',['magnifyAtPoint:',['../interface_s_b_s_d_k_crop_magnifier_view.html#a7c66e8f01c630da4f995fd701aeba034',1,'SBSDKCropMagnifierView']]],
+  ['makewordimagecrisp',['makeWordImageCrisp',['../classdoo_1_1_image_processor.html#a738a059719d4d60344070365bb073996',1,'doo::ImageProcessor']]],
+  ['map',['map',['../classdoo_1_1_vector_streamer.html#a62ef0fae59dd884322ac86c214d6f7ca',1,'doo::VectorStreamer']]],
+  ['metadatadictionary',['metadataDictionary',['../interface_s_b_s_d_k_image_metadata.html#ac2795a8ac8a576991e0f0f2d5de35da4',1,'SBSDKImageMetadata']]]
 ];

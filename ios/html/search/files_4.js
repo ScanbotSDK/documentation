@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['uiimagesbsdk_2eh',['UIImageSBSDK.h',['../_u_i_image_s_b_s_d_k_8h.html',1,'']]]
+  ['rectangles_2eh',['rectangles.h',['../rectangles_8h.html',1,'']]],
+  ['rectutils_2eh',['RectUtils.h',['../_rect_utils_8h.html',1,'']]]
 ];

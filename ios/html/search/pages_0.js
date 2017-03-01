@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['installing_20scanbot_20sdk_20as_20an_20embedded_20framework',['Installing Scanbot SDK as an embedded framework',['../install_framework.html',1,'']]]
+  ['cpputils',['CppUtils',['../md___users_sebastianhusche__development__scanbot_s_d_k-_internal__common__edge_detection_s_d_k__fccc12f20f626c9aedf13e9e79287e8f.html',1,'']]]
 ];

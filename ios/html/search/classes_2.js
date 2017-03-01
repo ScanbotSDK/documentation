@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['uiimage_28sbsdk_29',['UIImage(SBSDK)',['../category_u_i_image_07_s_b_s_d_k_08.html',1,'']]]
+  ['imageprocessor',['ImageProcessor',['../classdoo_1_1_image_processor.html',1,'doo']]]
 ];
