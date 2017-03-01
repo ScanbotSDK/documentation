@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Scanbot SDK Cordova Plugin</title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="/documentation/cordova/assets/main.css">
+  <link rel="canonical" href="https://scanbotsdk.github.io/documentation/cordova/">
+  <link rel="alternate" type="application/rss+xml" title="Scanbot SDK Cordova Plugin" href="/documentation/cordova/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/documentation/cordova/">Scanbot SDK Cordova Plugin</a>
+
+    <nav class="site-nav">
+      <span class="menu-icon">
+        <svg viewBox="0 0 18 15" width="18px" height="15px">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </span>
+
+      <div class="trigger">
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="scanbot-sdk-cordova-plugin">Scanbot SDK Cordova Plugin</h2>
+
+<h3 id="introduction">Introduction</h3>
+<p>The Scanbot SDK brings scanning and document creation capabilities to your mobile apps.
+It contains modules which are individually licensable as license packages.
+For more details visit our website <a href="https://scanbot.io/sdk.html">https://scanbot.io/sdk.html</a></p>
+
+<p>This Cordova plugin provides implementations of Scanbbot SDK for iOS and Android.</p>
+
+<p>Currently the following <strong><a href="https://scanbot.io/sdk.html#packages">Package I</a></strong> functionality is covered by this plugin:</p>
+
+<ul>
+  <li>Camera UI with user guidance for document scanning</li>
+  <li>Cropping UI</li>
+  <li>Document Detection</li>
+  <li>Image Filters</li>
+  <li>PDF Creation</li>
+</ul>
+
+<h3 id="requirements">Requirements</h3>
+
+<p>The Scanbot SDK plugin requires Cordova 5.0+</p>
+
+<h3 id="supported-platforms">Supported Platforms</h3>
+
+<ul>
+  <li>Android 4.1 (API Level 16) and higher</li>
+  <li>iOS 8 and higher</li>
+</ul>
+
+<h3 id="installation">Installation</h3>
+
+<p>The Scanbot SDK plugin is available as <a href="https://www.npmjs.com/package/cordova-plugin-scanbot-sdk">npm package</a>.</p>
+
+<p>You can simply install and add it to your app by following command:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cordova plugin add cordova-plugin-scanbot-sdk
+</code></pre>
+</div>
+
+<h3 id="xcode-project-settings-for-ios">Xcode project settings for iOS</h3>
+<p>When adding a plugin to your app Cordova automatically generates the project files for Xcode. 
+Unfortunately Cordova doesn’t support to define “Embedded Binaries” in the generated Xcode project file which is required by the Scanbot SDK plugin.
+So we have to fix it manually by following workaround:</p>
+
+<ul>
+  <li>
+    <p>Open the generated Xcode project file with Xcode IDE:</p>
+
+    <p><code class="highlighter-rouge">&lt;YOUR_APP_PROJECT_PATH&gt;/platforms/ios/&lt;YOUR_APP_NAME&gt;.xcodeproj</code></p>
+  </li>
+  <li>
+    <p>Go to “TARGETS” settings and find the section “Embedded Binaries”. Then add the <code class="highlighter-rouge">ScanbotSDK.framework</code> to “Embedded Binaries”.
+The <code class="highlighter-rouge">ScanbotSDK.framework</code> is provided with the Scanbot SDK plugin.</p>
+  </li>
+</ul>
+
+<p><img src="./assets/images/cordova_xcode_scanbot-sdk-framework.png" alt="alt text" title="Xcode project settings" /></p>
+
+<p>Please note: By default Cordova puts the <code class="highlighter-rouge">ScanbotSDK.framework</code> into “Linked Frameworks and Libraries” which will <strong>not</strong> work for the Scabot SDK plugin. 
+The project will compile but the app will crash right after the start!</p>
+
+<h3 id="permissions">Permissions</h3>
+
+<p>During the installation the plugin automatically adds all required permissions to your App. Here is a listing of 
+those permissions just for your information:</p>
+
+<p><strong>Android</strong> (will be added in your <code class="highlighter-rouge">AndroidManifest.xml</code> file)</p>
+
+<ul>
+  <li><code class="highlighter-rouge">&lt;uses-permission android:name="android.permission.CAMERA" /&gt;</code> - This permission is used for the camera views.</li>
+  <li><code class="highlighter-rouge">&lt;uses-feature android:name="android.hardware.camera" /&gt;</code> - Camera hardware features.</li>
+  <li><code class="highlighter-rouge">&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;</code> - Required to handle temporary files (e.g. PDF creation).</li>
+  <li><code class="highlighter-rouge">&lt;uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /&gt;</code> - Required to handle temporary files (e.g. PDF creation).</li>
+</ul>
+
+<p><strong>iOS</strong> (will be added in your <code class="highlighter-rouge">Info.plist</code> file)</p>
+
+<ul>
+  <li><code class="highlighter-rouge">NSCameraUsageDescription</code> - <em>“Privacy - Camera Usage Description”</em>. As value describe why your app wants to access the device’s camera.</li>
+</ul>
+
+<h3 id="modules">Modules</h3>
+
+<ul>
+  <li>
+    <p><strong><code class="highlighter-rouge">ScanbotSdk</code></strong> - This module provides the Scanbot SDK functionality for image operations (e.g. filter, PDF creation, etc.)</p>
+  </li>
+  <li>
+    <p><strong><code class="highlighter-rouge">ScanbotSdkUi</code></strong> - Provides the UI functionality like Camera UI and Cropping UI.</p>
+  </li>
+</ul>
+
+<h3 id="api-reference-">API Reference <a name="api_reference"></a></h3>
+
+<ul>
+  <li><strong><code class="highlighter-rouge">ScanbotSdk</code></strong>
+    <ul>
+      <li><a href="#module_ScanbotSdk.initializeSdk">.initializeSdk(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.documentDetection">.documentDetection(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.applyImageFilter">.applyImageFilter(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.createPdf">.createPdf(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.cleanup">.cleanup(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#detectionResult">.DetectionResult</a> - <code class="highlighter-rouge">enum</code></li>
+      <li><a href="#imageFilter">.ImageFilter</a> - <code class="highlighter-rouge">enum</code></li>
+    </ul>
+  </li>
+  <li><strong><code class="highlighter-rouge">ScanbotSdkUi</code></strong>
+    <ul>
+      <li><a href="#module_ScanbotSdkUi.startCamera">.startCamera(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdkUi.startCropping">.startCropping(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="getting-started">Getting started</h3>
+
+<p><a name="module_ScanbotSdk.initializeSdk"></a></p>
+<h3 id="initialize-sdk">Initialize SDK</h3>
+<h4 id="scanbotsdkinitializesdksuccesscallback-errorcallback-options">ScanbotSdk.initializeSdk(successCallback, errorCallback, options)</h4>
+
+<p>The Scanbot SDK must be initialized before usage. Make sure to run the initialization only once per app lifetime.
+Call the initialization after the ‘deviceready’ event has been fired.</p>
+
+<h5 id="callbacks">Callbacks:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">result</code> - Contains a simple success message as string.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
+</ul>
+
+<p>Example code for initialization:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'deviceready'</span><span class="p">,</span> <span class="nx">onDeviceReady</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">onDeviceReady</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="nx">initScanbotSdk</span><span class="p">();</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">initScanbotSdk</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">loggingEnabled</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">licenseKey</span><span class="p">:</span> <span class="s1">''</span> <span class="c1">// optional license key (empty for trial mode)</span>
+  <span class="p">};</span>
+  <span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">initializeSdk</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Scanbot SDK successfully initialized</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+  <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Error initializing the Scanbot SDK</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Unable to initialize the Scanbot SDK: '</span> <span class="o">+</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">},</span> <span class="nx">options</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="license-key">License Key</h4>
+<p>You can test all Scanbot SDK plugin features and develop your apps without a license.
+However, if you do not specify the license key when initializing the SDK, it will work in <strong>trial mode (trial period of 1 minute)</strong>.
+If this is not enough for you, contact us at <a href="mailto:sdk@scanbot.io">sdk@scanbot.io</a> and we’ll give you a free no strings attached 
+trial license for a longer period. In order to run the Scanbot SDK plugin functionality within your production app you have 
+to purchase and use a valid Scanbot SDK license.</p>
+
+<p>Each license key is valid only to your apps bundle identifier. The license also defines which modules you are allowed to use. 
+The usage of unlicensed modules will log an error to the console and terminate the app. If your license has expired any calls 
+of the Scanbot SDK plugin will terminate your app.</p>
+
+<p>Example code for defining and using the license key:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myLicenseKey</span> <span class="o">=</span>
+  <span class="s2">"fXbN2PmyqEAZ+btdkSIS36TuX2j/EE5qxVNcZMXYErbLQ"</span> <span class="o">+</span>
+  <span class="s2">"3OBnE10aOQxYI8L4UKwHiZ63jthvoFwUevttctBk0wVJ7Z"</span> <span class="o">+</span>
+  <span class="s2">"+Psz3/Ry8w7pXvfpB1o+JrnzGGcfwBnRi/5raQ2THDeokR"</span> <span class="o">+</span>
+  <span class="s2">"RB1keky2VBOFYbCfYt3Hqms5txF2z70PE/SBTMTIVuxL7q"</span> <span class="o">+</span>
+  <span class="s2">"1xcHDHclbEBriDtrHw8Pmhh9FqTg/r/4kRN/oEX37QGp+Y"</span> <span class="o">+</span>
+  <span class="s2">"3ogwIBbSmV+Cv+VuwtI31uXY3/GkyN/pSJZspIl+exwQDv"</span> <span class="o">+</span>
+  <span class="s2">"O0O1/R/oAURpfM4ydaWReRJtjW8+b1r9rUgPERguaXfcse"</span> <span class="o">+</span>
+  <span class="s2">"HlnclItgDfBHzUUFJJU/g==\nU2NhbmJvdFNESwppby5zY"</span> <span class="o">+</span>
+  <span class="s2">"2FuYm90LmRlbW8ueGFtYXJpbgoxNDg0NjExMTk5CjcxNjc"</span> <span class="o">+</span>
+  <span class="s2">"KMw==\n"</span><span class="p">;</span>
+  
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">licenseKey</span><span class="p">:</span> <span class="nx">myLicenseKey</span><span class="p">,</span>
+  <span class="c1">// ...</span>
+<span class="p">};</span>
+
+<span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">initializeSdk</span><span class="p">(</span><span class="nx">successCallback</span><span class="p">,</span> <span class="nx">errorCallback</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h4 id="purchase-a-license">Purchase a License</h4>
+<p>You can check and purchase the Scanbot SDK licenses here: <a href="https://scanbot.io/sdk.html">https://scanbot.io/sdk.html</a>.</p>
+
+<p>To request a trial license for a longer period or purchase a production license you have to provide us the bundle identifier of your app.
+Please find this identifier in the <code class="highlighter-rouge">config.xml</code> file of your app project:
+<code class="highlighter-rouge">&lt;widget id="my.awesome.app.id" ...&gt;</code></p>
+
+<h4 id="logging">Logging</h4>
+<p>When initializing the Scanbot SDK you can enable logging of the SDK. By default logging is disabled.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">loggingEnabled</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="c1">// ...</span>
+<span class="p">};</span>
+
+<span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">initializeSdk</span><span class="p">(</span><span class="nx">successCallback</span><span class="p">,</span> <span class="nx">errorCallback</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>On Android logs are printed into <em>LogCat</em> as well as saved on the device. You can find them in <code class="highlighter-rouge">Environment.getExternalStorageDirectory()/debug_logs/[package_name]</code>. Usually it is <code class="highlighter-rouge">/sdcard/debug_logs/[package_name]</code>.
+The easiest way to check the log outputs on Android is to use the <a href="https://developer.android.com/studio/command-line/adb.html">Android Debug Bridge (adb)</a>. 
+(e.g. <code class="highlighter-rouge">$ adb -s &lt;DEVICE_ID&gt; shell "logcat"</code>)</p>
+
+<p>On iOS all logs are printed to the console. Please use Xcode to check the log outputs. 
+There will be no log files created by the Scanbot SDK plugin.</p>
+
+<p><strong>Please note:</strong> While it may be useful for development, <strong>consider switching logging OFF in production builds</strong> for security and performance reasons!</p>
+
+<p><a name="module_ScanbotSdkUi.startCamera"></a></p>
+<h3 id="camera-ui-for-document-scanning">Camera UI for document scanning</h3>
+<h4 id="scanbotsdkuistartcamerasuccesscallback-errorcallback-options">ScanbotSdkUi.startCamera(successCallback, errorCallback, options)</h4>
+
+<p>The Scanbot SDK plugin provides a ready-to-use Camera UI component for guided, automatic document scanning.</p>
+
+<h5 id="callbacks-1">Callbacks:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">result.imageFileUri</code> - Contains a <a href="#fileHandling">File URI</a> of the detected document image as JPEG (<code class="highlighter-rouge">'file:///...'</code>). 
+The document image is cropped and warped (perspective corrected) by detected polygon.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">result.originalImageFileUri</code> - <a href="#fileHandling">File URI</a> of the original full image from the camera as JPEG. 
+Can be used for manual cropping correction via <a href="#module_ScanbotSdkUi.startCropping">Cropping UI</a> if the detected document image was not satisfactory.</p>
+  </li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
+</ul>
+
+<h5 id="options">Options:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">textResBundle</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">autosnapping_hint_do_not_move</span><span class="p">:</span> <span class="s2">"Don't move"</span><span class="p">,</span>
+    <span class="na">autosnapping_hint_move_closer</span><span class="p">:</span> <span class="s2">"Move closer"</span><span class="p">,</span>
+    <span class="na">autosnapping_hint_bad_angles</span><span class="p">:</span> <span class="s2">"Perspective"</span><span class="p">,</span>
+    <span class="na">autosnapping_hint_nothing_detected</span><span class="p">:</span> <span class="s2">"No document"</span><span class="p">,</span>
+    <span class="na">autosnapping_hint_too_noisy</span><span class="p">:</span> <span class="s2">"Background too noisy"</span><span class="p">,</span>
+    <span class="na">autosnapping_hint_too_dark</span><span class="p">:</span> <span class="s2">"Poor light"</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">options.textResBundle</code> - Optional text resources map to localize or override user guidance hints. 
+If no <code class="highlighter-rouge">textResBundle</code> map is provided english textes will be used as default. 
+The example code above shows all supported text resources keys.</li>
+</ul>
+
+<p><a name="module_ScanbotSdkUi.startCropping"></a></p>
+<h3 id="cropping-ui">Cropping UI</h3>
+<h4 id="scanbotsdkuistartcroppingsuccesscallback-errorcallback-options">ScanbotSdkUi.startCropping(successCallback, errorCallback, options)</h4>
+
+<p>The Cropping UI provides functionality for manual cropping of an image. It uses the edge detection algorithm of the Scanbot SDK and containts
+some smart UI elements like magnetic lines or magnifier.
+As input a file URI of an image must be passed. The output is a cropped and perspective corrected image as a new file. The input image file will not be modified.</p>
+
+<h5 id="callbacks-2">Callbacks:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">result.imageFileUri</code> - <a href="#fileHandling">File URI</a> of the cropped image as JPEG (<code class="highlighter-rouge">'file:///...'</code>).</li>
+  <li><code class="highlighter-rouge">result.polygon</code> - Contains the selected <a href="#polygon">polygon</a> as array.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
+</ul>
+
+<h5 id="options-1">Options:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">imageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">options.imageFileUri</code> - Input image file URI.</li>
+</ul>
+
+<p><a name="module_ScanbotSdk.documentDetection"></a></p>
+<h3 id="document-detection">Document Detection</h3>
+<h4 id="scanbotsdkdocumentdetectionsuccesscallback-errorcallback-options">ScanbotSdk.documentDetection(successCallback, errorCallback, options)</h4>
+
+<p>The Scanbot SDK uses digital image processing algorithms to find rectangular, document like, polygons in a digital image.
+This function applies edge dectection and processes all image operations in a background thread. There will be no UI started.
+As input a file URI of an image must be passed. The output contains the <a href="#detectionResult">Detection Result</a> as enum and 
+on success the cropped and perspective corrected image as a new file as well as the detected <a href="#polygon">polygon</a>.
+If there was no document detected the result enum provides the exact reason (noisy background, too dark, etc).
+The input image file will not be modified.</p>
+
+<h5 id="callbacks-3">Callbacks:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">result.imageFileUri</code> - <a href="#fileHandling">File URI</a> of the detected and cropped/warped document image as JPEG (<code class="highlighter-rouge">'file:///...'</code>).
+Maybe <code class="highlighter-rouge">null</code> if detection was not successfull.</li>
+  <li><code class="highlighter-rouge">result.polygon</code> - Contains the detected <a href="#polygon">polygon</a> as array. Maybe empty if detection was not successfull.</li>
+  <li><code class="highlighter-rouge">result.detectionResult</code> - The <a href="#detectionResult">Detection Result</a>.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
+</ul>
+
+<h5 id="options-2">Options:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">imageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">options.imageFileUri</code> - Input image file URI.</li>
+</ul>
+
+<p><a name="module_ScanbotSdk.applyImageFilter"></a></p>
+<h3 id="apply-image-filter">Apply Image Filter</h3>
+<h4 id="scanbotsdkapplyimagefiltersuccesscallback-errorcallback-options">ScanbotSdk.applyImageFilter(successCallback, errorCallback, options)</h4>
+
+<p>Applies filter on an image. As input a file URI of the image must be passed. 
+The output image will be a new file. The input image file will not be modified.</p>
+
+<h5 id="callbacks-4">Callbacks:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">result.imageFileUri</code> - <a href="#fileHandling">File URI</a> of the result image as JPEG (<code class="highlighter-rouge">'file:///...'</code>).</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
+</ul>
+
+<h5 id="options-3">Options:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">imageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
+  <span class="na">imageFilter</span><span class="p">:</span> <span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">ImageFilter</span><span class="p">.</span><span class="nx">BINARIZED</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">options.imageFileUri</code> - Input image file URI.</li>
+  <li><code class="highlighter-rouge">options.imageFilter</code> - <a href="#imageFilter">ImageFilter</a> enum value.</li>
+</ul>
+
+<p><a name="module_ScanbotSdk.createPdf"></a></p>
+<h3 id="pdf-creation">PDF Creation</h3>
+<h4 id="scanbotsdkcreatepdfsuccesscallback-errorcallback-options">ScanbotSdk.createPdf(successCallback, errorCallback, options)</h4>
+
+<p>The Scanbot SDK renders given images into a PDF document and stores it as a file. For each image a separate page is generated.</p>
+
+<h5 id="callbacks-5">Callbacks:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">result.pdfFileUri</code> - <a href="#fileHandling">File URI</a> of the result file as PDF (<code class="highlighter-rouge">'file:///...'</code>).</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
+</ul>
+
+<h5 id="options-4">Options:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">]</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">options.images</code> - Input images as an array of file URIs in proper order (image element 1 =&gt; page 1, etc).</li>
+</ul>
+
+<p><a name="module_ScanbotSdk.cleanup"></a></p>
+<h3 id="cleanup">Cleanup</h3>
+<h4 id="scanbotsdkcleanupsuccesscallback-errorcallback-options">ScanbotSdk.cleanup(successCallback, errorCallback, options)</h4>
+
+<p>By calling ths function all temporary output files generated by the Scanbot SDK plugin will be deleted.</p>
+
+<h5 id="callbacks-6">Callbacks:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">result</code> - Contains a simple success message as string.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
+</ul>
+
+<h5 id="options-5">Options:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{};</span>
+</code></pre>
+</div>
+
+<p>No options are required for this operation.</p>
+
+<p><a name="fileHandling"></a></p>
+<h3 id="file-handling--storage-concept">File Handling &amp; Storage Concept</h3>
+
+<p>The Scanbot SDK plugin works with file URIs. That means all input and output files (images, PDFs, etc) are identified by a file URI. 
+Please note that a file <strong>URI</strong> is not just a file <strong>path</strong> : <code class="highlighter-rouge">"file:///some/file/path/.."</code> vs. <code class="highlighter-rouge">"/some/file/path/.."</code></p>
+
+<p>Examples of valid file URIs:</p>
+
+<ul>
+  <li>
+    <p>On Android: <code class="highlighter-rouge">file:///storage/emulated/0/Android/data/my.awesome.app/cache/sbsdk-temp/ce8de3c4-3c96-4ce1-b285-483d01e1dc9a.jpg</code></p>
+  </li>
+  <li>
+    <p>On iOS: <code class="highlighter-rouge">file:///var/mobile/Containers/Data/Application/D2BF9FB2-1024-4418-99B2-3709AB2C171E/Documents/sbsdk-temp/05719BF8-63DB-4C8A-9A57-25B233AED33C.jpg</code></p>
+  </li>
+</ul>
+
+<p>All output files generated by the Scanbot SDK plugin are a kind of temporary files.
+We recommend to copy, move or delete the files you get from callbacks to a appropriate storage place.</p>
+
+<p>There is <strong>no automatic</strong> file clean mechanism in the plugin, because only your App can decide when is the perfect time to remove a file.</p>
+
+<p>To avoid storage space issues caused by temporary files please implement a suitable hook for the 
+<a href="#module_ScanbotSdk.cleanup">cleanup</a> function in your App.</p>
+
+<p><a name="detectionResult"></a></p>
+<h3 id="detection-result-values">Detection Result values</h3>
+<h4 id="scanbotsdkdetectionresult">ScanbotSdk.DetectionResult</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">DetectionResult.OK</code> - Document detection was successful. The detected contour looks like a valid document.</li>
+  <li><code class="highlighter-rouge">DetectionResult.OK_BUT_BAD_ANGLES</code> - Document was detected, but the perspective is not perfect.</li>
+  <li><code class="highlighter-rouge">DetectionResult.OK_BUT_BAD_ASPECT_RATIO</code> - Document was detected, but it has a wrong rotation relatively to the camera sensor.</li>
+  <li><code class="highlighter-rouge">DetectionResult.OK_BUT_TOO_SMALL</code> - Document was detected, but it doesn’t fill the most best area in the image rect.</li>
+  <li><code class="highlighter-rouge">DetectionResult.ERROR_TOO_DARK</code> - Document was not found, most likely because of bad lightning conditions.</li>
+  <li><code class="highlighter-rouge">DetectionResult.ERROR_TOO_NOISY</code> - Document was not found, most likely because there is too much background noise (maybe too many other objects on the table, or background texture is not monotonic).</li>
+  <li><code class="highlighter-rouge">DetectionResult.ERROR_NOTHING_DETECTED</code> - No document was found.</li>
+</ul>
+
+<p><a name="imageFilter"></a></p>
+<h3 id="image-filter-values">Image Filter values</h3>
+<h4 id="scanbotsdkimagefilter">ScanbotSdk.ImageFilter</h4>
+
+<p>Supported image filters:</p>
+<ul>
+  <li><code class="highlighter-rouge">ImageFilter.COLOR_ENHANCED</code> - Color-enhancement filter</li>
+  <li><code class="highlighter-rouge">ImageFilter.GRAYSCALE</code> - Grayscale filter</li>
+  <li><code class="highlighter-rouge">ImageFilter.BINARIZED</code> - Black &amp; White filter</li>
+</ul>
+
+<p><a name="polygon"></a></p>
+<h3 id="polygon">Polygon</h3>
+
+<p>The Scanbot SDK polygon is a list with 4 float points (one for each corner). 
+Each point has coordinates in range [0..1], representing position relative to image size.
+For instance, if a point has the coordinates (0.5, 0.5), it means that it is located exactly in the center of the image.</p>
+
+<p>Example code of a detected polygon as JSON result:</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="s2">"polygon"</span><span class="err">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">"y"</span><span class="p">:</span><span class="mf">0.046</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">:</span><span class="mf">0.13066667</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"y"</span><span class="p">:</span><span class="mf">0.035</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">:</span><span class="mf">0.91066664</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"y"</span><span class="p">:</span><span class="mf">0.92</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">:</span><span class="mf">0.9346667</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"y"</span><span class="p">:</span><span class="mf">0.916</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">:</span><span class="mf">0.10666667</span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre>
+</div>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Scanbot SDK Cordova Plugin</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              Scanbot SDK Cordova Plugin
+            
+            </li>
+            
+            <li><a href="mailto:sdk@scanbot.io">sdk@scanbot.io</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
