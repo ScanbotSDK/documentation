@@ -327,15 +327,21 @@ Can be used for manual cropping correction via <a href="#module_ScanbotSdkUi.sta
     <span class="na">autosnapping_hint_nothing_detected</span><span class="p">:</span> <span class="s2">"No document"</span><span class="p">,</span>
     <span class="na">autosnapping_hint_too_noisy</span><span class="p">:</span> <span class="s2">"Background too noisy"</span><span class="p">,</span>
     <span class="na">autosnapping_hint_too_dark</span><span class="p">:</span> <span class="s2">"Poor light"</span>
-  <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">edgeColor</span><span class="p">:</span> <span class="s1">'#0000ff'</span>
 <span class="p">};</span>
 </code></pre>
 </div>
 
 <ul>
-  <li><code class="highlighter-rouge">options.textResBundle</code> - Optional text resources map to localize or override user guidance hints. 
+  <li>
+    <p><code class="highlighter-rouge">options.textResBundle</code> - Optional text resources map to localize or override user guidance hints. 
 If no <code class="highlighter-rouge">textResBundle</code> map is provided english textes will be used as default. 
-The example code above shows all supported text resources keys.</li>
+The example code above shows all supported text resources keys.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">options.edgeColor</code> - Optional color for rendered polygon edges. Hexadecimal format <code class="highlighter-rouge">#RRGGBB</code> or <code class="highlighter-rouge">#AARRGGBB</code>.</p>
+  </li>
 </ul>
 
 <p><a name="module_ScanbotSdkUi.startCropping"></a></p>
@@ -366,13 +372,15 @@ As input a file URI of an image must be passed. The output is a cropped and pers
 
 <h5 id="options-1">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">imageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span>
+  <span class="na">imageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
+  <span class="na">edgeColor</span><span class="p">:</span> <span class="s1">'#0000ff'</span>
 <span class="p">};</span>
 </code></pre>
 </div>
 
 <ul>
   <li><code class="highlighter-rouge">options.imageFileUri</code> - Input image file URI.</li>
+  <li><code class="highlighter-rouge">options.edgeColor</code> - Optional color for rendered polygon edges. Hexadecimal format <code class="highlighter-rouge">#RRGGBB</code> or <code class="highlighter-rouge">#AARRGGBB</code>.</li>
 </ul>
 
 <p><a name="module_ScanbotSdk.documentDetection"></a></p>
@@ -584,6 +592,23 @@ For instance, if a point has the coordinates (0.5, 0.5), it means that it is loc
 <span class="p">]</span>
 </code></pre>
 </div>
+
+<p><a name="customization"></a></p>
+<h3 id="ui-customization">UI Customization</h3>
+
+<h4 id="colors">Colors</h4>
+
+<p>The most customizable colors can be passed as an optional JSON argument in the corresponding JS function call.
+Please see the description of the UI functions <a href="#module_ScanbotSdkUi.startCamera">startCamera</a> and <a href="#module_ScanbotSdkUi.startCropping">startCropping</a>.</p>
+
+<h4 id="image-resources">Image Resources</h4>
+
+<p>All image resources (icons, buttons, etc) can be replaced in the platforms directory of your app:</p>
+<ul>
+  <li>iOS: *./platforms/ios/<YOUR_APP_NAME>/Resources/*</YOUR_APP_NAME></li>
+  <li>Android: <em>./platforms/android/res/</em></li>
+</ul>
+
 
   </div>
 
