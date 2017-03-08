@@ -10,7 +10,7 @@
   <meta name="description" content="">
 
   <link rel="stylesheet" href="/documentation/xamarin/assets/main.css">
-  <link rel="canonical" href="https://scanbotsdk.github.io/documentation/xamarin/">
+  <link rel="canonical" href="http://localhost:4000/documentation/xamarin/">
   <link rel="alternate" type="application/rss+xml" title="Scanbot SDK for Xamarin" href="/documentation/xamarin/feed.xml">
   
   
@@ -160,21 +160,21 @@ In the following examples we will use the convenient wrapper class <code class="
 <h5 id="android"><strong>Android</strong></h5>
 <p>Add the following code to your <code class="highlighter-rouge">Application</code> class:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>using ScanbotSDK.Xamarin.Android.Wrapper;
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">ScanbotSDK.Xamarin.Android.Wrapper</span><span class="p">;</span>
 
-[Application(LargeHeap = true)]
-public class MainApplication : Application
-{
-    ...
-    public override void OnCreate()
-    {
-        ...
-        // You can pass null as licenseKey for trial mode. See the "License" section for more details.
-        SBSDK.Initialize(this, licenseKey, true);
-        ....
-    }
-    ...
-}
+<span class="na">[Application(LargeHeap = true)]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MainApplication</span> <span class="p">:</span> <span class="n">Application</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnCreate</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="p">...</span>
+        <span class="c1">// You can pass null as licenseKey for trial mode. See the "License" section for more details.
+</span>        <span class="n">SBSDK</span><span class="p">.</span><span class="nf">Initialize</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">licenseKey</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+        <span class="p">....</span>
+    <span class="p">}</span>
+    <span class="p">...</span>
+<span class="p">}</span>
 </code></pre>
 </div>
 
@@ -183,20 +183,20 @@ public class MainApplication : Application
 <h5 id="ios"><strong>iOS</strong></h5>
 <p>Add the following code to your <code class="highlighter-rouge">AppDelegate</code> class:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>using ScanbotSDK.Xamarin.iOS.Wrapper;
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">ScanbotSDK.Xamarin.iOS.Wrapper</span><span class="p">;</span>
 
-[Register("AppDelegate")]
-public class AppDelegate : UIApplicationDelegate
-{
-    ...
-    public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
-    {
-        // You can pass null as licenseKey for trial mode. See the "License" section for more details.
-        SBSDK.Initialize(application, licenseKey, true);
-        ....
-    }
-    ...
-}
+<span class="na">[Register("AppDelegate")]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">AppDelegate</span> <span class="p">:</span> <span class="n">UIApplicationDelegate</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="kt">bool</span> <span class="nf">FinishedLaunching</span><span class="p">(</span><span class="n">UIApplication</span> <span class="n">application</span><span class="p">,</span> <span class="n">NSDictionary</span> <span class="n">launchOptions</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// You can pass null as licenseKey for trial mode. See the "License" section for more details.
+</span>        <span class="n">SBSDK</span><span class="p">.</span><span class="nf">Initialize</span><span class="p">(</span><span class="n">application</span><span class="p">,</span> <span class="n">licenseKey</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+        <span class="p">....</span>
+    <span class="p">}</span>
+    <span class="p">...</span>
+<span class="p">}</span>
 </code></pre>
 </div>
 
@@ -211,26 +211,26 @@ If this is not enough for you, contact us at <a href="mailto:sdk@scanbot.io">sdk
 
 <p>Example code for defining and using the license key string:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>private const string licenseKey =
-  "fXbN2PmyqEAZ+btdkSIS36TuX2j/EE5qxVNcZMXYErbLQ" +
-  "3OBnE10aOQxYI8L4UKwHiZ63jthvoFwUevttctBk0wVJ7Z" +
-  "+Psz3/Ry8w7pXvfpB1o+JrnzGGcfwBnRi/5raQ2THDeokR" +
-  "RB1keky2VBOFYbCfYt3Hqms5txF2z70PE/SBTMTIVuxL7q" +
-  "1xcHDHclbEBriDtrHw8Pmhh9FqTg/r/4kRN/oEX37QGp+Y" +
-  "3ogwIBbSmV+Cv+VuwtI31uXY3/GkyN/pSJZspIl+exwQDv" +
-  "O0O1/R/oAURpfM4ydaWReRJtjW8+b1r9rUgPERguaXfcse" +
-  "HlnclItgDfBHzUUFJJU/g==\nU2NhbmJvdFNESwppby5zY" +
-  "2FuYm90LmRlbW8ueGFtYXJpbgoxNDg0NjExMTk5CjcxNjc" +
-  "KMw==\n";
-...
-SBSDK.Initialize(application, licenseKey, true);
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">licenseKey</span> <span class="p">=</span>
+  <span class="s">"fXbN2PmyqEAZ+btdkSIS36TuX2j/EE5qxVNcZMXYErbLQ"</span> <span class="p">+</span>
+  <span class="s">"3OBnE10aOQxYI8L4UKwHiZ63jthvoFwUevttctBk0wVJ7Z"</span> <span class="p">+</span>
+  <span class="s">"+Psz3/Ry8w7pXvfpB1o+JrnzGGcfwBnRi/5raQ2THDeokR"</span> <span class="p">+</span>
+  <span class="s">"RB1keky2VBOFYbCfYt3Hqms5txF2z70PE/SBTMTIVuxL7q"</span> <span class="p">+</span>
+  <span class="s">"1xcHDHclbEBriDtrHw8Pmhh9FqTg/r/4kRN/oEX37QGp+Y"</span> <span class="p">+</span>
+  <span class="s">"3ogwIBbSmV+Cv+VuwtI31uXY3/GkyN/pSJZspIl+exwQDv"</span> <span class="p">+</span>
+  <span class="s">"O0O1/R/oAURpfM4ydaWReRJtjW8+b1r9rUgPERguaXfcse"</span> <span class="p">+</span>
+  <span class="s">"HlnclItgDfBHzUUFJJU/g==\nU2NhbmJvdFNESwppby5zY"</span> <span class="p">+</span>
+  <span class="s">"2FuYm90LmRlbW8ueGFtYXJpbgoxNDg0NjExMTk5CjcxNjc"</span> <span class="p">+</span>
+  <span class="s">"KMw==\n"</span><span class="p">;</span>
+
+<span class="n">SBSDK</span><span class="p">.</span><span class="nf">Initialize</span><span class="p">(</span><span class="n">application</span><span class="p">,</span> <span class="n">licenseKey</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 </code></pre>
 </div>
 
 <h4 id="logging">Logging</h4>
 <p>When initializing the Scanbot SDK you can enable or disable logging of the SDK.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>SBSDK.Initialize(application, licenseKey, loggingFlag);
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">SBSDK</span><span class="p">.</span><span class="nf">Initialize</span><span class="p">(</span><span class="n">application</span><span class="p">,</span> <span class="n">licenseKey</span><span class="p">,</span> <span class="n">loggingFlag</span><span class="p">);</span>
 </code></pre>
 </div>
 
@@ -247,17 +247,17 @@ SBSDK.Initialize(application, licenseKey, true);
 <p>The Scanbot SDK uses digital image processing algorithms to find rectangular, document like, polygons in a digital image.
 As input an <code class="highlighter-rouge">UIImage</code> on iOS or <code class="highlighter-rouge">Bitmap</code> on Android are accepted.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Bitmap image = ...; // on Android
-UIImage image = ...; // on iOS
-
-var detectionResult = SBSDK.DocumentDetection(image);
-if (detectionResult.Status == DocumentDetectionStatus.Ok)
-{
-  var resultImage = detectionResult.Image as Bitmap; // on Android
-  var resultImage = detectionResult.Image as UIImage; // on iOS
-  var polygon = detectionResult.Polygon;
-  ...
-}
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">Bitmap</span> <span class="n">image</span> <span class="p">=</span> <span class="p">...;</span> <span class="c1">// on Android
+</span><span class="n">UIImage</span> <span class="n">image</span> <span class="p">=</span> <span class="p">...;</span> <span class="c1">// on iOS
+</span>
+<span class="kt">var</span> <span class="n">detectionResult</span> <span class="p">=</span> <span class="n">SBSDK</span><span class="p">.</span><span class="nf">DocumentDetection</span><span class="p">(</span><span class="n">image</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">detectionResult</span><span class="p">.</span><span class="n">Status</span> <span class="p">==</span> <span class="n">DocumentDetectionStatus</span><span class="p">.</span><span class="n">Ok</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">var</span> <span class="n">resultImage</span> <span class="p">=</span> <span class="n">detectionResult</span><span class="p">.</span><span class="n">Image</span> <span class="k">as</span> <span class="n">Bitmap</span><span class="p">;</span> <span class="c1">// on Android
+</span>  <span class="kt">var</span> <span class="n">resultImage</span> <span class="p">=</span> <span class="n">detectionResult</span><span class="p">.</span><span class="n">Image</span> <span class="k">as</span> <span class="n">UIImage</span><span class="p">;</span> <span class="c1">// on iOS
+</span>  <span class="kt">var</span> <span class="n">polygon</span> <span class="p">=</span> <span class="n">detectionResult</span><span class="p">.</span><span class="n">Polygon</span><span class="p">;</span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </code></pre>
 </div>
 
@@ -269,13 +269,13 @@ The polygon is a list with 4 float points (one for each corner). Each point has 
 
 <p>On Android:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>public static DocumentDetectionResult DocumentDetection(Android.Net.Uri imageUri, Android.Content.Context context)
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="n">DocumentDetectionResult</span> <span class="nf">DocumentDetection</span><span class="p">(</span><span class="n">Android</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">Uri</span> <span class="n">imageUri</span><span class="p">,</span> <span class="n">Android</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">Context</span> <span class="n">context</span><span class="p">)</span>
 </code></pre>
 </div>
 
 <p>On iOS:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>public static DocumentDetectionResult DocumentDetection(Foundation.NSUrl imageUrl)
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="n">DocumentDetectionResult</span> <span class="nf">DocumentDetection</span><span class="p">(</span><span class="n">Foundation</span><span class="p">.</span><span class="n">NSUrl</span> <span class="n">imageUrl</span><span class="p">)</span>
 </code></pre>
 </div>
 
@@ -283,9 +283,9 @@ The polygon is a list with 4 float points (one for each corner). Each point has 
 
 <h4 id="image-filtering">Image filtering</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Bitmap image = ...; // on Android
-UIImage image = ...; // on iOS
-var resultImage = SBSDK.ApplyImageFilter(image, ImageFilter.Binarized);
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">Bitmap</span> <span class="n">image</span> <span class="p">=</span> <span class="p">...;</span> <span class="c1">// on Android
+</span><span class="n">UIImage</span> <span class="n">image</span> <span class="p">=</span> <span class="p">...;</span> <span class="c1">// on iOS
+</span><span class="kt">var</span> <span class="n">resultImage</span> <span class="p">=</span> <span class="n">SBSDK</span><span class="p">.</span><span class="nf">ApplyImageFilter</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">ImageFilter</span><span class="p">.</span><span class="n">Binarized</span><span class="p">);</span>
 </code></pre>
 </div>
 
@@ -301,17 +301,17 @@ var resultImage = SBSDK.ApplyImageFilter(image, ImageFilter.Binarized);
 
 <p>Example code for Android:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Android.Net.Uri[] images = ...;
-Android.Net.Uri[] pdfOutputFileUri = ...;
-SBSDK.CreatePDF(images, pdfOutputUri, this); // as last parameter current Activity must be passed
-</code></pre>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">Android</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">Uri</span><span class="p">[]</span> <span class="n">images</span> <span class="p">=</span> <span class="p">...;</span>
+<span class="n">Android</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">Uri</span><span class="p">[]</span> <span class="n">pdfOutputFileUri</span> <span class="p">=</span> <span class="p">...;</span>
+<span class="n">SBSDK</span><span class="p">.</span><span class="nf">CreatePDF</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">pdfOutputUri</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span> <span class="c1">// as last parameter current Activity must be passed
+</span></code></pre>
 </div>
 
 <p>Example code for iOS:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>NSUrl[] images = ...;
-NSUrl pdfOutputFileUrl = ...;
-SBSDK.CreatePDF(images, pdfOutputFileUrl);
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">NSUrl</span><span class="p">[]</span> <span class="n">images</span> <span class="p">=</span> <span class="p">...;</span>
+<span class="n">NSUrl</span> <span class="n">pdfOutputFileUrl</span> <span class="p">=</span> <span class="p">...;</span>
+<span class="n">SBSDK</span><span class="p">.</span><span class="nf">CreatePDF</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">pdfOutputFileUrl</span><span class="p">);</span>
 </code></pre>
 </div>
 
@@ -328,128 +328,128 @@ Please make sure that you have defined the required permissions in your app.</p>
 
 <p>Example code:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>using UIKit;
-using Foundation;
-using ScanbotSDK.iOS; // native SDK namespace
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">UIKit</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Foundation</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">ScanbotSDK.iOS</span><span class="p">;</span> <span class="c1">// native SDK namespace
+</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MyCameraViewController</span> <span class="p">:</span> <span class="n">UIViewController</span>
+<span class="p">{</span>
+  <span class="k">protected</span> <span class="n">SBSDKScannerViewController</span> <span class="n">scannerViewController</span><span class="p">;</span>
+  <span class="k">protected</span> <span class="kt">bool</span> <span class="n">viewAppeared</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
 
-public class MyCameraViewController : UIViewController
-{
-  protected SBSDKScannerViewController scannerViewController;
-  protected bool viewAppeared = false;
+  <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">ViewDidLoad</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="k">base</span><span class="p">.</span><span class="nf">ViewDidLoad</span><span class="p">();</span>
 
-  public override void ViewDidLoad()
-  {
-    base.ViewDidLoad();
+    <span class="c1">// Create the SBSDKScannerViewController.
+</span>    <span class="c1">// We want it to be embedded into self.
+</span>    <span class="c1">// As we do not want automatic image storage we pass null here for the image storage.
+</span>    <span class="k">this</span><span class="p">.</span><span class="n">scannerViewController</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SBSDKScannerViewController</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
 
-    // Create the SBSDKScannerViewController.
-    // We want it to be embedded into self.
-    // As we do not want automatic image storage we pass null here for the image storage.
-    this.scannerViewController = new SBSDKScannerViewController(this, null);
+    <span class="c1">// Set the delegate to self.
+</span>    <span class="k">this</span><span class="p">.</span><span class="n">scannerViewController</span><span class="p">.</span><span class="n">WeakDelegate</span> <span class="p">=</span> <span class="k">this</span><span class="p">;</span>
 
-    // Set the delegate to self.
-    this.scannerViewController.WeakDelegate = this;
+    <span class="c1">// We want unscaled images in full size:
+</span>    <span class="k">this</span><span class="p">.</span><span class="n">scannerViewController</span><span class="p">.</span><span class="n">ImageScale</span> <span class="p">=</span> <span class="m">1.0f</span><span class="p">;</span>
+  <span class="p">}</span>
 
-    // We want unscaled images in full size:
-    this.scannerViewController.ImageScale = 1.0f;
-  }
+  <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">ViewWillDisappear</span><span class="p">(</span><span class="kt">bool</span> <span class="n">animated</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">base</span><span class="p">.</span><span class="nf">ViewWillDisappear</span><span class="p">(</span><span class="n">animated</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="n">viewAppeared</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  public override void ViewWillDisappear(bool animated)
-  {
-    base.ViewWillDisappear(animated);
-    this.viewAppeared = false;
-  }
+  <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">ViewDidAppear</span><span class="p">(</span><span class="kt">bool</span> <span class="n">animated</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">base</span><span class="p">.</span><span class="nf">ViewDidAppear</span><span class="p">(</span><span class="n">animated</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="n">viewAppeared</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  public override void ViewDidAppear(bool animated)
-  {
-    base.ViewDidAppear(animated);
-    this.viewAppeared = true;
-  }
+  <span class="k">public</span> <span class="k">override</span> <span class="kt">bool</span> <span class="nf">ShouldAutorotate</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="c1">// No autorotations
+</span>    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  public override bool ShouldAutorotate()
-  {
-    // No autorotations
-    return false;
-  }
+  <span class="k">public</span> <span class="k">override</span> <span class="n">UIInterfaceOrientationMask</span> <span class="nf">GetSupportedInterfaceOrientations</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="c1">// Only portrait
+</span>    <span class="k">return</span> <span class="n">UIInterfaceOrientationMask</span><span class="p">.</span><span class="n">Portrait</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations()
-  {
-    // Only portrait
-    return UIInterfaceOrientationMask.Portrait;
-  }
-
-  public override UIStatusBarStyle PreferredStatusBarStyle()
-  {
-    // White statusbar
-    return UIStatusBarStyle.LightContent;
-  }
+  <span class="k">public</span> <span class="k">override</span> <span class="n">UIStatusBarStyle</span> <span class="nf">PreferredStatusBarStyle</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="c1">// White statusbar
+</span>    <span class="k">return</span> <span class="n">UIStatusBarStyle</span><span class="p">.</span><span class="n">LightContent</span><span class="p">;</span>
+  <span class="p">}</span>
 
 
-  // Exports delegate
-  #region SBSDKScannerViewControllerDelegate
+  <span class="c1">// Exports delegate
+</span>  <span class="err">#</span><span class="n">region</span> <span class="n">SBSDKScannerViewControllerDelegate</span>
 
-  [Export("scannerControllerShouldAnalyseVideoFrame:")]
-  public bool ScannerControllerShouldAnalyseVideoFrame(SBSDKScannerViewController controller)
-  {
-    // We want to only process video frames when self is visible on screen and front most view controller
-    return this.viewAppeared &amp;&amp; this.PresentedViewController == null;
-  }
+  <span class="p">[</span><span class="nf">Export</span><span class="p">(</span><span class="s">"scannerControllerShouldAnalyseVideoFrame:"</span><span class="p">)]</span>
+  <span class="k">public</span> <span class="kt">bool</span> <span class="nf">ScannerControllerShouldAnalyseVideoFrame</span><span class="p">(</span><span class="n">SBSDKScannerViewController</span> <span class="n">controller</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// We want to only process video frames when self is visible on screen and front most view controller
+</span>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">viewAppeared</span> <span class="p">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="n">PresentedViewController</span> <span class="p">==</span> <span class="k">null</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  [Export("scannerController:didCaptureDocumentImage:")]
-  public void ScannerControllerDidCaptureDocumentImage(SBSDKScannerViewController controller, UIImage documentImage)
-  {
-    // Here we get the perspective corrected and cropped document image after the shutter was (auto)released.
-    // Do whatever you want with the documentImage...
-  }
+  <span class="p">[</span><span class="nf">Export</span><span class="p">(</span><span class="s">"scannerController:didCaptureDocumentImage:"</span><span class="p">)]</span>
+  <span class="k">public</span> <span class="k">void</span> <span class="nf">ScannerControllerDidCaptureDocumentImage</span><span class="p">(</span><span class="n">SBSDKScannerViewController</span> <span class="n">controller</span><span class="p">,</span> <span class="n">UIImage</span> <span class="n">documentImage</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Here we get the perspective corrected and cropped document image after the shutter was (auto)released.
+</span>    <span class="c1">// Do whatever you want with the documentImage...
+</span>  <span class="p">}</span>
 
-  [Export("scannerController:didCaptureImage:")]
-  public void ScannerControllerDidCaptureImage(SBSDKScannerViewController controller, UIImage image)
-  {
-    // Here we get the full image from the camera. We could run another manual detection here or use the latest
-    // detected polygon from the video stream to process the image with.
-  }
+  <span class="p">[</span><span class="nf">Export</span><span class="p">(</span><span class="s">"scannerController:didCaptureImage:"</span><span class="p">)]</span>
+  <span class="k">public</span> <span class="k">void</span> <span class="nf">ScannerControllerDidCaptureImage</span><span class="p">(</span><span class="n">SBSDKScannerViewController</span> <span class="n">controller</span><span class="p">,</span> <span class="n">UIImage</span> <span class="n">image</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Here we get the full image from the camera. We could run another manual detection here or use the latest
+</span>    <span class="c1">// detected polygon from the video stream to process the image with.
+</span>  <span class="p">}</span>
 
-  [Export("scannerController:didDetectPolygon:withStatus:")]
-  public void ScannerControllerDidDetectPolygonWithStatus(SBSDKScannerViewController controller, SBSDKPolygon polygon, SBSDKDocumentDetectionStatus status)
-  {
-    // Everytime the document detector finishes detection it calls this delegate method.
-  }
+  <span class="p">[</span><span class="nf">Export</span><span class="p">(</span><span class="s">"scannerController:didDetectPolygon:withStatus:"</span><span class="p">)]</span>
+  <span class="k">public</span> <span class="k">void</span> <span class="nf">ScannerControllerDidDetectPolygonWithStatus</span><span class="p">(</span><span class="n">SBSDKScannerViewController</span> <span class="n">controller</span><span class="p">,</span> <span class="n">SBSDKPolygon</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">SBSDKDocumentDetectionStatus</span> <span class="n">status</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Everytime the document detector finishes detection it calls this delegate method.
+</span>  <span class="p">}</span>
 
-  [Export("scannerController:viewForDetectionStatus:")]
-  public UIView ScannerControllerViewForDetectionStatus(SBSDKScannerViewController controller, SBSDKDocumentDetectionStatus status)
-  {
-    // Here we can return a custom view that we want to use to visualize the latest detection status.
-    // We return null for now to use the standard label.
-    return null;
-  }
+  <span class="p">[</span><span class="nf">Export</span><span class="p">(</span><span class="s">"scannerController:viewForDetectionStatus:"</span><span class="p">)]</span>
+  <span class="k">public</span> <span class="n">UIView</span> <span class="nf">ScannerControllerViewForDetectionStatus</span><span class="p">(</span><span class="n">SBSDKScannerViewController</span> <span class="n">controller</span><span class="p">,</span> <span class="n">SBSDKDocumentDetectionStatus</span> <span class="n">status</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Here we can return a custom view that we want to use to visualize the latest detection status.
+</span>    <span class="c1">// We return null for now to use the standard label.
+</span>    <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  [Export("scannerController:polygonColorForDetectionStatus:")]
-  public UIColor ScannerControllerPolygonColorForDetectionStatus(SBSDKScannerViewController controller, SBSDKDocumentDetectionStatus status)
-  {
-    // If the detector has found an acceptable polygon we show it with green color
-    if (status == SBSDKDocumentDetectionStatus.Ok) {
-      return UIColor.Green;
-    }
-    // Otherwise red colored
-    return UIColor.Red;
-  }
+  <span class="p">[</span><span class="nf">Export</span><span class="p">(</span><span class="s">"scannerController:polygonColorForDetectionStatus:"</span><span class="p">)]</span>
+  <span class="k">public</span> <span class="n">UIColor</span> <span class="nf">ScannerControllerPolygonColorForDetectionStatus</span><span class="p">(</span><span class="n">SBSDKScannerViewController</span> <span class="n">controller</span><span class="p">,</span> <span class="n">SBSDKDocumentDetectionStatus</span> <span class="n">status</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// If the detector has found an acceptable polygon we show it with green color
+</span>    <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="p">==</span> <span class="n">SBSDKDocumentDetectionStatus</span><span class="p">.</span><span class="n">Ok</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">UIColor</span><span class="p">.</span><span class="n">Green</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// Otherwise red colored
+</span>    <span class="k">return</span> <span class="n">UIColor</span><span class="p">.</span><span class="n">Red</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  [Export("scannerController:localizedTextForDetectionStatus:")]
-  public string ScannerControllerLocalizedTextForDetectionStatus(SBSDKScannerViewController controller, SBSDKDocumentDetectionStatus status)
-  {
-    // Here you can return a localized text depending on the detection status.
-    // If not implemented english standard strings are applied.
-    switch (status) {
-      case SBSDKDocumentDetectionStatus.Ok:
-        return "OK, don't move";
-      case SBSDKDocumentDetectionStatus.OK_BadAngles:
-        return "Bad angles...";
-      default:
-        return null;
-    }
-  }
+  <span class="p">[</span><span class="nf">Export</span><span class="p">(</span><span class="s">"scannerController:localizedTextForDetectionStatus:"</span><span class="p">)]</span>
+  <span class="k">public</span> <span class="kt">string</span> <span class="nf">ScannerControllerLocalizedTextForDetectionStatus</span><span class="p">(</span><span class="n">SBSDKScannerViewController</span> <span class="n">controller</span><span class="p">,</span> <span class="n">SBSDKDocumentDetectionStatus</span> <span class="n">status</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Here you can return a localized text depending on the detection status.
+</span>    <span class="c1">// If not implemented english standard strings are applied.
+</span>    <span class="k">switch</span> <span class="p">(</span><span class="n">status</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="n">SBSDKDocumentDetectionStatus</span><span class="p">.</span><span class="n">Ok</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">"OK, don't move"</span><span class="p">;</span>
+      <span class="k">case</span> <span class="n">SBSDKDocumentDetectionStatus</span><span class="p">.</span><span class="n">OK_BadAngles</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">"Bad angles..."</span><span class="p">;</span>
+      <span class="k">default</span><span class="p">:</span>
+        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
 
-  #endregion
-}
+  <span class="err">#</span><span class="n">endregion</span>
+<span class="p">}</span>
 </code></pre>
 </div>
 
@@ -464,7 +464,7 @@ To further improve the user experience you might want to automatically take a ph
 
 <p>Example layout for a Scanner Camera Activity <code class="highlighter-rouge">MyCameraView.axml</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
 <span class="nt">&lt;FrameLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
     <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
     <span class="na">xmlns:app=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span>
@@ -512,133 +512,361 @@ To further improve the user experience you might want to automatically take a ph
 
 <p>And the Scanner Camera Activity class:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>using Android.App;
-using Android.Graphics;
-using Android.OS;
-using Android.Support.V4.View;
-using Android.Support.V7.App;
-using Android.Widget;
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Android.App</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Android.Graphics</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Android.OS</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Android.Support.V4.View</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Android.Support.V7.App</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Android.Widget</span><span class="p">;</span>
 
-// native SDK namespace
-using Net.Doo.Snap.Camera;
-using Net.Doo.Snap.Lib.Detector;
-using Net.Doo.Snap.UI;
+<span class="c1">// native SDK namespace
+</span><span class="k">using</span> <span class="nn">Net.Doo.Snap.Camera</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Net.Doo.Snap.Lib.Detector</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Net.Doo.Snap.UI</span><span class="p">;</span>
 
-// Wrapper namespace
-using ScanbotSDK.Xamarin;
-using ScanbotSDK.Xamarin.Android.Wrapper;
-using ScanbotSDK.Xamarin.EventBus;
+<span class="c1">// Wrapper namespace
+</span><span class="k">using</span> <span class="nn">ScanbotSDK.Xamarin</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">ScanbotSDK.Xamarin.Android.Wrapper</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">ScanbotSDK.Xamarin.EventBus</span><span class="p">;</span>
 
-[Activity(Theme = "@style/Theme.AppCompat")]
-public class MyCameraActivity : AppCompatActivity, IPictureCallback, ContourDetectorFrameHandler.IResultHandler
-{
-  protected ScanbotCameraView cameraView;
-  protected AutoSnappingController autoSnappingController;
-  protected bool flashEnabled = false;
-  protected ImageView resultImageView;
-  protected TextView userGuidanceTextView;
+<span class="na">[Activity(Theme = "@style/Theme.AppCompat")]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MyCameraActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">,</span> <span class="n">IPictureCallback</span><span class="p">,</span> <span class="n">ContourDetectorFrameHandler</span><span class="p">.</span><span class="n">IResultHandler</span>
+<span class="p">{</span>
+  <span class="k">protected</span> <span class="n">ScanbotCameraView</span> <span class="n">cameraView</span><span class="p">;</span>
+  <span class="k">protected</span> <span class="n">AutoSnappingController</span> <span class="n">autoSnappingController</span><span class="p">;</span>
+  <span class="k">protected</span> <span class="kt">bool</span> <span class="n">flashEnabled</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+  <span class="k">protected</span> <span class="n">ImageView</span> <span class="n">resultImageView</span><span class="p">;</span>
+  <span class="k">protected</span> <span class="n">TextView</span> <span class="n">userGuidanceTextView</span><span class="p">;</span>
 
 
-  protected override void OnCreate(Bundle savedInstanceState)
-  {
-    SupportRequestWindowFeature(WindowCompat.FeatureActionBarOverlay);
-    base.OnCreate(savedInstanceState);
+  <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nf">SupportRequestWindowFeature</span><span class="p">(</span><span class="n">WindowCompat</span><span class="p">.</span><span class="n">FeatureActionBarOverlay</span><span class="p">);</span>
+    <span class="k">base</span><span class="p">.</span><span class="nf">OnCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
 
-    // Use our example view (MyCameraView.axml)
-    SetContentView(Resource.Layout.MyCameraView);
+    <span class="c1">// Use our example view (MyCameraView.axml)
+</span>    <span class="nf">SetContentView</span><span class="p">(</span><span class="n">Resource</span><span class="p">.</span><span class="n">Layout</span><span class="p">.</span><span class="n">MyCameraView</span><span class="p">);</span>
 
-    SupportActionBar.Hide();
+    <span class="n">SupportActionBar</span><span class="p">.</span><span class="nf">Hide</span><span class="p">();</span>
 
-    cameraView = FindViewById&lt;ScanbotCameraView&gt;(Resource.Id.scanbotCameraView);
-    resultImageView = FindViewById&lt;ImageView&gt;(Resource.Id.scanbotResultImageView);
+    <span class="n">cameraView</span> <span class="p">=</span> <span class="n">FindViewById</span><span class="p">&lt;</span><span class="n">ScanbotCameraView</span><span class="p">&gt;(</span><span class="n">Resource</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">scanbotCameraView</span><span class="p">);</span>
+    <span class="n">resultImageView</span> <span class="p">=</span> <span class="n">FindViewById</span><span class="p">&lt;</span><span class="n">ImageView</span><span class="p">&gt;(</span><span class="n">Resource</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">scanbotResultImageView</span><span class="p">);</span>
 
-    userGuidanceTextView = FindViewById&lt;TextView&gt;(Resource.Id.userGuidanceTextView);
+    <span class="n">userGuidanceTextView</span> <span class="p">=</span> <span class="n">FindViewById</span><span class="p">&lt;</span><span class="n">TextView</span><span class="p">&gt;(</span><span class="n">Resource</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">userGuidanceTextView</span><span class="p">);</span>
 
-    ContourDetectorFrameHandler contourDetectorFrameHandler = ContourDetectorFrameHandler.Attach(cameraView);
-    PolygonView polygonView = FindViewById&lt;PolygonView&gt;(Resource.Id.scanbotPolygonView);
-    contourDetectorFrameHandler.AddResultHandler(polygonView);
-    contourDetectorFrameHandler.AddResultHandler(this);
-    autoSnappingController = AutoSnappingController.Attach(cameraView, contourDetectorFrameHandler);
-    // Set the sensitivity of AutoSnappingController
-    // Range is from 0 to 1, where 1 is the most sensitive. The more sensitive it is the faster it shoots.
-    autoSnappingController.SetSensitivity(0.9f);
-    cameraView.AddPictureCallback(this);
+    <span class="n">ContourDetectorFrameHandler</span> <span class="n">contourDetectorFrameHandler</span> <span class="p">=</span> <span class="n">ContourDetectorFrameHandler</span><span class="p">.</span><span class="nf">Attach</span><span class="p">(</span><span class="n">cameraView</span><span class="p">);</span>
+    <span class="n">PolygonView</span> <span class="n">polygonView</span> <span class="p">=</span> <span class="n">FindViewById</span><span class="p">&lt;</span><span class="n">PolygonView</span><span class="p">&gt;(</span><span class="n">Resource</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">scanbotPolygonView</span><span class="p">);</span>
+    <span class="n">contourDetectorFrameHandler</span><span class="p">.</span><span class="nf">AddResultHandler</span><span class="p">(</span><span class="n">polygonView</span><span class="p">);</span>
+    <span class="n">contourDetectorFrameHandler</span><span class="p">.</span><span class="nf">AddResultHandler</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="n">autoSnappingController</span> <span class="p">=</span> <span class="n">AutoSnappingController</span><span class="p">.</span><span class="nf">Attach</span><span class="p">(</span><span class="n">cameraView</span><span class="p">,</span> <span class="n">contourDetectorFrameHandler</span><span class="p">);</span>
+    <span class="c1">// Set the sensitivity of AutoSnappingController
+</span>    <span class="c1">// Range is from 0 to 1, where 1 is the most sensitive. The more sensitive it is the faster it shoots.
+</span>    <span class="n">autoSnappingController</span><span class="p">.</span><span class="nf">SetSensitivity</span><span class="p">(</span><span class="m">0.9f</span><span class="p">);</span>
+    <span class="n">cameraView</span><span class="p">.</span><span class="nf">AddPictureCallback</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 
-    FindViewById(Resource.Id.scanbotSnapButton).Click += delegate {
-      cameraView.TakePicture(false);
-    };
+    <span class="nf">FindViewById</span><span class="p">(</span><span class="n">Resource</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">scanbotSnapButton</span><span class="p">).</span><span class="n">Click</span> <span class="p">+=</span> <span class="k">delegate</span> <span class="p">{</span>
+      <span class="n">cameraView</span><span class="p">.</span><span class="nf">TakePicture</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+    <span class="p">};</span>
 
-    FindViewById(Resource.Id.scanbotFlashButton).Click += delegate {
-      cameraView.UseFlash(!flashEnabled);
-      flashEnabled = !flashEnabled;
-    };
-  }
+    <span class="nf">FindViewById</span><span class="p">(</span><span class="n">Resource</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">scanbotFlashButton</span><span class="p">).</span><span class="n">Click</span> <span class="p">+=</span> <span class="k">delegate</span> <span class="p">{</span>
+      <span class="n">cameraView</span><span class="p">.</span><span class="nf">UseFlash</span><span class="p">(!</span><span class="n">flashEnabled</span><span class="p">);</span>
+      <span class="n">flashEnabled</span> <span class="p">=</span> <span class="p">!</span><span class="n">flashEnabled</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
 
-  protected override void OnResume()
-  {
-    base.OnResume();
-    cameraView.OnResume();
-  }
+  <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnResume</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="k">base</span><span class="p">.</span><span class="nf">OnResume</span><span class="p">();</span>
+    <span class="n">cameraView</span><span class="p">.</span><span class="nf">OnResume</span><span class="p">();</span>
+  <span class="p">}</span>
 
-  protected override void OnPause()
-  {
-    base.OnPause();
-    cameraView.OnPause();
-  }
+  <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnPause</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="k">base</span><span class="p">.</span><span class="nf">OnPause</span><span class="p">();</span>
+    <span class="n">cameraView</span><span class="p">.</span><span class="nf">OnPause</span><span class="p">();</span>
+  <span class="p">}</span>
 
-  public bool HandleResult(ContourDetectorFrameHandler.DetectedFrame result)
-  {
-    // Here you are continiously notified about contour detection results.
-    // For example, you can set a localized text for user guidance depending on the detection status.
+  <span class="k">public</span> <span class="kt">bool</span> <span class="nf">HandleResult</span><span class="p">(</span><span class="n">ContourDetectorFrameHandler</span><span class="p">.</span><span class="n">DetectedFrame</span> <span class="n">result</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Here you are continiously notified about contour detection results.
+</span>    <span class="c1">// For example, you can set a localized text for user guidance depending on the detection status.
+</span>
+    <span class="kt">var</span> <span class="n">color</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">Red</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">guideText</span> <span class="p">=</span> <span class="s">"Get closer..."</span><span class="p">;</span>
 
-    var color = Color.Red;
-    var guideText = "Get closer...";
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">Polygon</span> <span class="p">==</span> <span class="k">null</span> <span class="p">||</span> <span class="n">result</span><span class="p">.</span><span class="n">Polygon</span><span class="p">.</span><span class="n">Count</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">guideText</span> <span class="p">=</span> <span class="s">"Searching for document..."</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    if (result.Polygon == null || result.Polygon.Count == 0) {
-      guideText = "Searching for document...";
-    }
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">DetectionResult</span> <span class="p">==</span> <span class="n">DetectionResult</span><span class="p">.</span><span class="n">Ok</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">guideText</span> <span class="p">=</span> <span class="s">"OK, don't move."</span><span class="p">;</span>
+      <span class="n">color</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">Green</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// else ...
+</span>
+    <span class="c1">// Warning: The HandleResult callback is coming from a worker thread. Use main UI thread to update the UI elements.
+</span>    <span class="n">userGuidanceTextView</span><span class="p">.</span><span class="nf">Post</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="n">userGuidanceTextView</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">guideText</span><span class="p">;</span>
+      <span class="n">userGuidanceTextView</span><span class="p">.</span><span class="nf">SetTextColor</span><span class="p">(</span><span class="n">color</span><span class="p">);</span>
+    <span class="p">});</span>
 
-    if (result.DetectionResult == DetectionResult.Ok) {
-      guideText = "OK, don't move.";
-      color = Color.Green;
-    }
-    // else ...
+    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+  <span class="p">}</span>
 
-    // Warning: The HandleResult callback is coming from a worker thread. Use main UI thread to update the UI elements.
-    userGuidanceTextView.Post(() =&gt; {
-      userGuidanceTextView.Text = guideText;
-      userGuidanceTextView.SetTextColor(color);
-    });
+  <span class="k">public</span> <span class="k">void</span> <span class="nf">OnPictureTaken</span><span class="p">(</span><span class="kt">byte</span><span class="p">[]</span> <span class="n">image</span><span class="p">,</span> <span class="kt">int</span> <span class="n">imageOrientation</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Here we get the full image from the camera.
+</span>
+    <span class="c1">// decode bytes as Bitmap
+</span>    <span class="n">BitmapFactory</span><span class="p">.</span><span class="n">Options</span> <span class="n">options</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BitmapFactory</span><span class="p">.</span><span class="nf">Options</span><span class="p">();</span>
+    <span class="c1">//options.InSampleSize = 1; // use 1 for original size (if you want no downscale)
+</span>    <span class="c1">// to save memory for the preview image here we use smaller image (inSampleSize = 8 returns an image that is 1/8 the width/height of the original)!
+</span>    <span class="n">options</span><span class="p">.</span><span class="n">InSampleSize</span> <span class="p">=</span> <span class="m">8</span><span class="p">;</span>
+    <span class="n">Bitmap</span> <span class="n">bitmap</span> <span class="p">=</span> <span class="n">BitmapFactory</span><span class="p">.</span><span class="nf">DecodeByteArray</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">Length</span><span class="p">,</span> <span class="n">options</span><span class="p">);</span>
 
-    return false;
-  }
+    <span class="c1">// Run document detection on image:
+</span>    <span class="kt">var</span> <span class="n">detectionResult</span> <span class="p">=</span> <span class="n">SBSDK</span><span class="p">.</span><span class="nf">DocumentDetection</span><span class="p">(</span><span class="n">bitmap</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">detectionResult</span><span class="p">.</span><span class="n">Status</span><span class="p">.</span><span class="nf">IsOk</span><span class="p">())</span>
+    <span class="p">{</span>
+      <span class="kt">var</span> <span class="n">documentImage</span> <span class="p">=</span> <span class="n">detectionResult</span><span class="p">.</span><span class="n">Image</span> <span class="k">as</span> <span class="n">Bitmap</span><span class="p">;</span>
+      <span class="c1">// Do whatever you want with the documentImage...
+</span>      <span class="n">resultImageView</span><span class="p">.</span><span class="nf">Post</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="n">resultImageView</span><span class="p">.</span><span class="nf">SetImageBitmap</span><span class="p">(</span><span class="n">documentImage</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
 
-  public void OnPictureTaken(byte[] image, int imageOrientation)
-  {
-    // Here we get the full image from the camera.
+    <span class="c1">// continue camera preview
+</span>    <span class="n">cameraView</span><span class="p">.</span><span class="nf">StartPreview</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
 
-    // decode bytes as Bitmap
-    BitmapFactory.Options options = new BitmapFactory.Options();
-    //options.InSampleSize = 1; // use 1 for original size (if you want no downscale)
-    // to save memory for the preview image here we use smaller image (inSampleSize = 8 returns an image that is 1/8 the width/height of the original)!
-    options.InSampleSize = 8;
-    Bitmap bitmap = BitmapFactory.DecodeByteArray(image, 0, image.Length, options);
+<h4 id="cropping-ui">Cropping UI</h4>
+<p>The Scanbot SDK provides some smart elements like magnetic lines or magnifier to build an UI for manual cropping of images.</p>
 
-    // Run document detection on image:
-    var detectionResult = SBSDK.DocumentDetection(bitmap);
-    if (detectionResult.Status.IsOk())
-    {
-      var documentImage = detectionResult.Image as Bitmap;
-      // Do whatever you want with the documentImage...
-      resultImageView.Post(() =&gt; {
-        resultImageView.SetImageBitmap(documentImage);
-      });
-    }
+<p>In the following examples we use the classes from the <strong>native SDK</strong> namespaces.</p>
 
-    // continue camera preview
-    cameraView.StartPreview();
-  }
-}
+<h5 id="ios-2"><strong>iOS</strong></h5>
+
+<p>Example code for a NavigationController:</p>
+
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Foundation</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">ScanbotSDK.iOS</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UIKit</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MyCropNavigationController</span> <span class="p">:</span> <span class="n">UINavigationController</span>
+<span class="p">{</span>
+  <span class="n">UIImage</span> <span class="n">image</span><span class="p">;</span>
+  <span class="n">SBSDKCropViewController</span> <span class="n">sdkCropViewController</span><span class="p">;</span>
+
+  <span class="k">public</span> <span class="nf">MyCropNavigationController</span><span class="p">(</span><span class="n">UIImage</span> <span class="n">image</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="n">image</span> <span class="p">=</span> <span class="n">image</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">ViewDidLoad</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="k">base</span><span class="p">.</span><span class="nf">ViewDidLoad</span><span class="p">();</span>
+
+    <span class="n">sdkCropViewController</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SBSDKCropViewController</span><span class="p">();</span>
+    <span class="c1">// when we set the image here, edge detection will be processed automatically by SBSDKCropViewController
+</span>    <span class="n">sdkCropViewController</span><span class="p">.</span><span class="n">Image</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">image</span><span class="p">;</span>
+    <span class="n">sdkCropViewController</span><span class="p">.</span><span class="n">WeakDelegate</span> <span class="p">=</span> <span class="k">this</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">sdkCropViewController</span><span class="p">.</span><span class="n">Polygon</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// if no polygon was detected, we set a default polygon
+</span>      <span class="n">sdkCropViewController</span><span class="p">.</span><span class="n">Polygon</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SBSDKPolygon</span><span class="p">();</span> <span class="c1">// {0,0}, {1,0}, {1,1}, {0,1}
+</span>    <span class="p">}</span>
+
+    <span class="nf">PushViewController</span><span class="p">(</span><span class="n">sdkCropViewController</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="err">#</span><span class="n">region</span> <span class="n">SBSDKCropViewControllerDelegate</span>
+
+  <span class="p">[</span><span class="nf">Export</span><span class="p">(</span><span class="s">"cropViewController:didApplyChangesWithPolygon:croppedImage:"</span><span class="p">)]</span>
+  <span class="k">public</span> <span class="k">void</span> <span class="nf">CropViewControllerDidApplyChangesWithPolygon</span><span class="p">(</span><span class="n">SBSDKCropViewController</span> <span class="n">cropViewController</span><span class="p">,</span> <span class="n">SBSDKPolygon</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">UIImage</span> <span class="n">croppedImage</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// handle the cropped document image (croppedImage) here ...
+</span>  <span class="p">}</span>
+
+  <span class="p">[</span><span class="nf">Export</span><span class="p">(</span><span class="s">"cropViewControllerDidCancelChanges:"</span><span class="p">)]</span>
+  <span class="k">public</span> <span class="k">void</span> <span class="nf">CropViewControllerDidCancelChanges</span><span class="p">(</span><span class="n">SBSDKCropViewController</span> <span class="n">cropViewController</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nf">DismissViewController</span><span class="p">(</span><span class="k">true</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="p">[</span><span class="nf">Export</span><span class="p">(</span><span class="s">"cancelButtonImageForCropViewController:"</span><span class="p">)]</span>
+  <span class="k">public</span> <span class="n">UIImage</span> <span class="nf">CancelButtonImageForCropViewController</span><span class="p">(</span><span class="n">SBSDKCropViewController</span> <span class="n">cropViewController</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// here you can return custom image icon for the "cancel" button in the NavigationBar
+</span>    <span class="k">return</span> <span class="n">UIImage</span><span class="p">.</span><span class="nf">FromBundle</span><span class="p">(</span><span class="s">"my_close_icon"</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="p">[</span><span class="nf">Export</span><span class="p">(</span><span class="s">"applyButtonImageForCropViewController:"</span><span class="p">)]</span>
+  <span class="k">public</span> <span class="n">UIImage</span> <span class="nf">ApplyButtonImageForCropViewController</span><span class="p">(</span><span class="n">SBSDKCropViewController</span> <span class="n">cropViewController</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// here you can return custom image icon for the "save/apply" button in the NavigationBar
+</span>    <span class="k">return</span> <span class="n">UIImage</span><span class="p">.</span><span class="nf">FromBundle</span><span class="p">(</span><span class="s">"my_apply_icon"</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="err">#</span><span class="n">endregion</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h5 id="android-2"><strong>Android</strong></h5>
+
+<p>Example code for an Activity:</p>
+
+<p>Activity layout <code class="highlighter-rouge">MyCroppingView.axml</code>:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;FrameLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+    <span class="na">xmlns:app=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">tools:context=</span><span class="s">".MyCroppingActivity"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;net.doo.snap.ui.EditPolygonImageView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/scanbotEditImageView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="na">app:cornerImageSrc=</span><span class="s">"@drawable/ui_crop_corner_handle"</span>
+        <span class="na">app:edgeImageSrc=</span><span class="s">"@drawable/ui_crop_side_handle"</span>
+        <span class="na">app:edgeColor=</span><span class="s">"#0000ff"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;net.doo.snap.ui.MagnifierView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/scanbotMagnifierView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="na">app:magnifierImageSrc=</span><span class="s">"@drawable/ui_crop_magnifier"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/FrameLayout&gt;</span>
+</code></pre>
+</div>
+
+<p>And the Activity class:</p>
+
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Android.App</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Android.Graphics</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Android.OS</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Android.Support.V7.App</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Android.Views</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Android.Widget</span><span class="p">;</span>
+
+<span class="c1">// native SDK namespace
+</span><span class="k">using</span> <span class="nn">Net.Doo.Snap.Lib.Detector</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Net.Doo.Snap.UI</span><span class="p">;</span>
+
+<span class="na">[Activity(Theme = "@style/Theme.AppCompat")]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MyCroppingActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span>
+<span class="p">{</span>
+  <span class="k">static</span> <span class="n">IList</span><span class="p">&lt;</span><span class="n">Android</span><span class="p">.</span><span class="n">Graphics</span><span class="p">.</span><span class="n">PointF</span><span class="p">&gt;</span> <span class="n">DEFAULT_POLYGON</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Android</span><span class="p">.</span><span class="n">Graphics</span><span class="p">.</span><span class="n">PointF</span><span class="p">&gt;();</span>
+  <span class="k">static</span> <span class="nf">MyCroppingActivity</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="n">DEFAULT_POLYGON</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Android</span><span class="p">.</span><span class="n">Graphics</span><span class="p">.</span><span class="nf">PointF</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+    <span class="n">DEFAULT_POLYGON</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Android</span><span class="p">.</span><span class="n">Graphics</span><span class="p">.</span><span class="nf">PointF</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">));</span>
+    <span class="n">DEFAULT_POLYGON</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Android</span><span class="p">.</span><span class="n">Graphics</span><span class="p">.</span><span class="nf">PointF</span><span class="p">(</span><span class="m">1f</span><span class="p">,</span> <span class="m">1f</span><span class="p">));</span>
+    <span class="n">DEFAULT_POLYGON</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Android</span><span class="p">.</span><span class="n">Graphics</span><span class="p">.</span><span class="nf">PointF</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">private</span> <span class="n">Bitmap</span> <span class="n">image</span><span class="p">;</span> <span class="c1">// original source image
+</span>  <span class="k">private</span> <span class="n">EditPolygonImageView</span> <span class="n">editPolygonImageView</span><span class="p">;</span>
+  <span class="k">private</span> <span class="n">MagnifierView</span> <span class="n">scanbotMagnifierView</span><span class="p">;</span>
+  <span class="k">private</span> <span class="n">View</span> <span class="n">cancelBtn</span><span class="p">,</span> <span class="n">saveBtn</span><span class="p">;</span>
+
+
+  <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">base</span><span class="p">.</span><span class="nf">OnCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+
+    <span class="nf">SetContentView</span><span class="p">(</span><span class="n">Resource</span><span class="p">.</span><span class="n">Layout</span><span class="p">.</span><span class="n">MyCroppingView</span><span class="p">);</span>
+
+    <span class="n">SupportActionBar</span><span class="p">.</span><span class="nf">SetDisplayShowHomeEnabled</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+    <span class="n">SupportActionBar</span><span class="p">.</span><span class="nf">SetDisplayShowTitleEnabled</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+    <span class="n">SupportActionBar</span><span class="p">.</span><span class="nf">SetDisplayShowCustomEnabled</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+    <span class="n">SupportActionBar</span><span class="p">.</span><span class="nf">SetDisplayHomeAsUpEnabled</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+    <span class="n">SupportActionBar</span><span class="p">.</span><span class="nf">SetCustomView</span><span class="p">(</span><span class="n">Resource</span><span class="p">.</span><span class="n">Layout</span><span class="p">.</span><span class="n">ActionBarMyCroppingView</span><span class="p">);</span>
+
+    <span class="n">editPolygonImageView</span> <span class="p">=</span> <span class="n">FindViewById</span><span class="p">&lt;</span><span class="n">EditPolygonImageView</span><span class="p">&gt;(</span><span class="n">Resource</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">scanbotEditImageView</span><span class="p">);</span>
+    <span class="n">scanbotMagnifierView</span> <span class="p">=</span> <span class="n">FindViewById</span><span class="p">&lt;</span><span class="n">MagnifierView</span><span class="p">&gt;(</span><span class="n">Resource</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">scanbotMagnifierView</span><span class="p">);</span>
+
+    <span class="n">cancelBtn</span> <span class="p">=</span> <span class="n">FindViewById</span><span class="p">&lt;</span><span class="n">View</span><span class="p">&gt;(</span><span class="n">Resource</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">cancelButton</span><span class="p">);</span>
+    <span class="n">cancelBtn</span><span class="p">.</span><span class="n">Click</span> <span class="p">+=</span> <span class="k">delegate</span> <span class="p">{</span>
+      <span class="nf">Finish</span><span class="p">();</span>
+    <span class="p">};</span>
+
+    <span class="n">saveBtn</span> <span class="p">=</span> <span class="n">FindViewById</span><span class="p">&lt;</span><span class="n">View</span><span class="p">&gt;(</span><span class="n">Resource</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">doneButton</span><span class="p">);</span>
+    <span class="n">saveBtn</span><span class="p">.</span><span class="n">Click</span> <span class="p">+=</span> <span class="k">delegate</span> <span class="p">{</span>
+      <span class="nf">cropAndSaveImage</span><span class="p">();</span>
+    <span class="p">};</span>
+
+    <span class="nf">initImageView</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="k">void</span> <span class="nf">initImageView</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="n">Task</span><span class="p">.</span><span class="nf">Run</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="k">try</span> <span class="p">{</span>
+        <span class="n">image</span> <span class="p">=</span> <span class="p">...;</span> <span class="c1">// get/load your original source image
+</span>
+        <span class="c1">// it's recommended to use a resized (thumbnail) image for the ImageView and ContourDetector:
+</span>        <span class="n">Bitmap</span> <span class="n">thumbBitmap</span> <span class="p">=</span> <span class="p">...;</span> <span class="c1">// scale down your image to a suitable size
+</span>
+        <span class="nf">RunOnUiThread</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+          <span class="c1">// important: first set the image and then the detected polygon and lines!
+</span>          <span class="n">editPolygonImageView</span><span class="p">.</span><span class="nf">SetImageBitmap</span><span class="p">(</span><span class="n">thumbBitmap</span><span class="p">);</span>
+          <span class="c1">// set up the MagnifierView every time when editPolygonImageView is set with a new image.
+</span>          <span class="n">scanbotMagnifierView</span><span class="p">.</span><span class="nf">SetupMagnifier</span><span class="p">(</span><span class="n">editPolygonImageView</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="c1">// perform edge and lines detection:
+</span>        <span class="n">ContourDetector</span> <span class="n">detector</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ContourDetector</span><span class="p">();</span>
+        <span class="n">DetectionResult</span> <span class="n">detectionResult</span> <span class="p">=</span> <span class="n">detector</span><span class="p">.</span><span class="nf">Detect</span><span class="p">(</span><span class="n">thumbBitmap</span><span class="p">);</span>
+
+        <span class="kt">var</span> <span class="n">polygon</span> <span class="p">=</span> <span class="n">DEFAULT_POLYGON</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">detectionResult</span> <span class="p">==</span> <span class="n">DetectionResult</span><span class="p">.</span><span class="n">Ok</span> <span class="p">||</span> <span class="n">detectionResult</span> <span class="p">==</span> <span class="n">DetectionResult</span><span class="p">.</span><span class="n">OkButBadAngles</span> <span class="p">||</span>
+          <span class="n">detectionResult</span> <span class="p">==</span> <span class="n">DetectionResult</span><span class="p">.</span><span class="n">OkButTooSmall</span> <span class="p">||</span> <span class="n">detectionResult</span> <span class="p">==</span> <span class="n">DetectionResult</span><span class="p">.</span><span class="n">OkButBadAspectRatio</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="c1">// get detected polygon
+</span>          <span class="n">polygon</span> <span class="p">=</span> <span class="n">detector</span><span class="p">.</span><span class="n">PolygonF</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nf">RunOnUiThread</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+          <span class="c1">// set the detected polygon and lines:
+</span>          <span class="n">editPolygonImageView</span><span class="p">.</span><span class="n">Polygon</span> <span class="p">=</span> <span class="n">polygon</span><span class="p">;</span>
+          <span class="n">editPolygonImageView</span><span class="p">.</span><span class="nf">SetLines</span><span class="p">(</span><span class="n">detector</span><span class="p">.</span><span class="n">HorizontalLines</span><span class="p">,</span> <span class="n">detector</span><span class="p">.</span><span class="n">VerticalLines</span><span class="p">);</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+      <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// error handling
+</span>      <span class="p">}</span>
+
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="k">void</span> <span class="nf">cropAndSaveImage</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="n">Task</span><span class="p">.</span><span class="nf">Run</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="k">try</span> <span class="p">{</span>
+        <span class="c1">// crop and warp the image by detected/changed polygon:
+</span>        <span class="n">ContourDetector</span> <span class="n">detector</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ContourDetector</span><span class="p">();</span>
+        <span class="n">Bitmap</span> <span class="n">documentImage</span> <span class="p">=</span> <span class="n">detector</span><span class="p">.</span><span class="nf">ProcessImageF</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">editPolygonImageView</span><span class="p">.</span><span class="n">Polygon</span><span class="p">,</span> <span class="n">ContourDetector</span><span class="p">.</span><span class="n">ImageFilterNone</span><span class="p">);</span>
+        <span class="c1">// save the documentImage...
+</span>      <span class="p">}</span>
+      <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// error handling
+</span>      <span class="p">}</span>
+
+      <span class="nf">RunOnUiThread</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nf">Finish</span><span class="p">();</span>
+      <span class="p">});</span>
+
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
 </div>
 
