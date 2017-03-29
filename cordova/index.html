@@ -96,6 +96,7 @@ For more details visit our website <a href="https://scanbot.io/sdk.html">https:/
 <ul>
   <li>Plain Cordova App: <a href="https://github.com/doo/scanbot-sdk-example-cordova">https://github.com/doo/scanbot-sdk-example-cordova</a></li>
   <li>Ionic 1 App: <a href="https://github.com/doo/scanbot-sdk-example-ionic1">https://github.com/doo/scanbot-sdk-example-ionic1</a></li>
+  <li>Ionic 2 App: <a href="https://github.com/doo/scanbot-sdk-example-ionic2">https://github.com/doo/scanbot-sdk-example-ionic2</a></li>
 </ul>
 
 <h3 id="installation">Installation</h3>
@@ -250,7 +251,8 @@ of the Scanbot SDK plugin will terminate your app.</p>
 
 <p>Example code for defining and using the license key:</p>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myLicenseKey</span> <span class="o">=</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// Please note: this is just an example license key string (it's not a valid license)</span>
+<span class="kd">var</span> <span class="nx">myLicenseKey</span> <span class="o">=</span>
   <span class="s2">"fXbN2PmyqEAZ+btdkSIS36TuX2j/EE5qxVNcZMXYErbLQ"</span> <span class="o">+</span>
   <span class="s2">"3OBnE10aOQxYI8L4UKwHiZ63jthvoFwUevttctBk0wVJ7Z"</span> <span class="o">+</span>
   <span class="s2">"+Psz3/Ry8w7pXvfpB1o+JrnzGGcfwBnRi/5raQ2THDeokR"</span> <span class="o">+</span>
@@ -339,20 +341,18 @@ Can be used for manual cropping correction via <a href="#module_ScanbotSdkUi.sta
     <span class="na">autosnapping_hint_too_noisy</span><span class="p">:</span> <span class="s2">"Background too noisy"</span><span class="p">,</span>
     <span class="na">autosnapping_hint_too_dark</span><span class="p">:</span> <span class="s2">"Poor light"</span>
   <span class="p">},</span>
-  <span class="na">edgeColor</span><span class="p">:</span> <span class="s1">'#0000ff'</span>
+  <span class="na">edgeColor</span><span class="p">:</span> <span class="s1">'#0000ff'</span><span class="p">,</span>
+  <span class="na">quality</span><span class="p">:</span> <span class="mi">80</span>
 <span class="p">};</span>
 </code></pre>
 </div>
 
 <ul>
-  <li>
-    <p><code class="highlighter-rouge">options.textResBundle</code> - Optional text resources map to localize or override user guidance hints. 
+  <li><code class="highlighter-rouge">options.textResBundle</code> - Optional text resources map to localize or override user guidance hints. 
 If no <code class="highlighter-rouge">textResBundle</code> map is provided english textes will be used as default. 
-The example code above shows all supported text resources keys.</p>
-  </li>
-  <li>
-    <p><code class="highlighter-rouge">options.edgeColor</code> - Optional color for rendered polygon edges. Hexadecimal format <code class="highlighter-rouge">#RRGGBB</code> or <code class="highlighter-rouge">#AARRGGBB</code>.</p>
-  </li>
+The example code above shows all supported text resources keys.</li>
+  <li><code class="highlighter-rouge">options.edgeColor</code> - Optional color for rendered polygon edges. Hexadecimal format <code class="highlighter-rouge">#RRGGBB</code> or <code class="highlighter-rouge">#AARRGGBB</code>.</li>
+  <li><code class="highlighter-rouge">options.quality</code> - Optional <a href="#imageQuality">quality</a> of the output image.</li>
 </ul>
 
 <p><a name="module_ScanbotSdkUi.startCropping"></a></p>
@@ -384,7 +384,8 @@ As input a file URI of an image must be passed. The output is a cropped and pers
 <h5 id="options-1">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">imageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
-  <span class="na">edgeColor</span><span class="p">:</span> <span class="s1">'#0000ff'</span>
+  <span class="na">edgeColor</span><span class="p">:</span> <span class="s1">'#0000ff'</span><span class="p">,</span>
+  <span class="na">quality</span><span class="p">:</span> <span class="mi">80</span>
 <span class="p">};</span>
 </code></pre>
 </div>
@@ -392,6 +393,7 @@ As input a file URI of an image must be passed. The output is a cropped and pers
 <ul>
   <li><code class="highlighter-rouge">options.imageFileUri</code> - Input image file URI.</li>
   <li><code class="highlighter-rouge">options.edgeColor</code> - Optional color for rendered polygon edges. Hexadecimal format <code class="highlighter-rouge">#RRGGBB</code> or <code class="highlighter-rouge">#AARRGGBB</code>.</li>
+  <li><code class="highlighter-rouge">options.quality</code> - Optional <a href="#imageQuality">quality</a> of the output image.</li>
 </ul>
 
 <p><a name="module_ScanbotSdk.documentDetection"></a></p>
@@ -427,13 +429,15 @@ Maybe <code class="highlighter-rouge">null</code> if detection was not successfu
 
 <h5 id="options-2">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">imageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span>
+  <span class="na">imageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
+  <span class="na">quality</span><span class="p">:</span> <span class="mi">80</span>
 <span class="p">};</span>
 </code></pre>
 </div>
 
 <ul>
   <li><code class="highlighter-rouge">options.imageFileUri</code> - Input image file URI.</li>
+  <li><code class="highlighter-rouge">options.quality</code> - Optional <a href="#imageQuality">quality</a> of the output image.</li>
 </ul>
 
 <p><a name="module_ScanbotSdk.applyImageFilter"></a></p>
@@ -463,7 +467,8 @@ The output image will be a new file. The input image file will not be modified.<
 <h5 id="options-3">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">imageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
-  <span class="na">imageFilter</span><span class="p">:</span> <span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">ImageFilter</span><span class="p">.</span><span class="nx">BINARIZED</span>
+  <span class="na">imageFilter</span><span class="p">:</span> <span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">ImageFilter</span><span class="p">.</span><span class="nx">BINARIZED</span><span class="p">,</span>
+  <span class="na">quality</span><span class="p">:</span> <span class="mi">80</span>
 <span class="p">};</span>
 </code></pre>
 </div>
@@ -471,6 +476,7 @@ The output image will be a new file. The input image file will not be modified.<
 <ul>
   <li><code class="highlighter-rouge">options.imageFileUri</code> - Input image file URI.</li>
   <li><code class="highlighter-rouge">options.imageFilter</code> - <a href="#imageFilter">ImageFilter</a> enum value.</li>
+  <li><code class="highlighter-rouge">options.quality</code> - Optional <a href="#imageQuality">quality</a> of the output image.</li>
 </ul>
 
 <p><a name="module_ScanbotSdk.createPdf"></a></p>
@@ -604,6 +610,13 @@ For instance, if a point has the coordinates (0.5, 0.5), it means that it is loc
 </code></pre>
 </div>
 
+<p><a name="imageQuality"></a></p>
+<h3 id="image-quality--compression">Image Quality / Compression</h3>
+<p>The <code class="highlighter-rouge">quality</code> parameter defines the quality factor of the JPEG output image. The value must be in a range of 1-100, 
+where 100 means the least quality loss.</p>
+
+<p>This parameter is optional. The default value used by the Scanbot SDK Plugin is 95.</p>
+
 <p><a name="customization"></a></p>
 <h3 id="ui-customization">UI Customization</h3>
 
@@ -622,6 +635,30 @@ Please see the description of the UI functions <a href="#module_ScanbotSdkUi.sta
 
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release history</h3>
+
+<h5 id="110">1.1.0</h5>
+<ul>
+  <li>Android:
+    <ul>
+      <li>Feature: <code class="highlighter-rouge">quality</code> parameter in Scanbot SDK functions: Camera UI, Cropping UI, documentDetection, applyImageFilter</li>
+    </ul>
+  </li>
+  <li>iOS:
+    <ul>
+      <li>Feature: <code class="highlighter-rouge">quality</code> parameter in Scanbot SDK functions: Camera UI, Cropping UI, documentDetection, applyImageFilter</li>
+      <li>Bugfix: <code class="highlighter-rouge">originalImageFileUri</code> in Camera UI callback had no file</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="101">1.0.1</h5>
+<ul>
+  <li>Android:
+    <ul>
+      <li>Bugfix: OutOfMemoryError in Camera UI (Camera Activity)</li>
+    </ul>
+  </li>
+</ul>
 
 <h5 id="100">1.0.0</h5>
 <ul>
