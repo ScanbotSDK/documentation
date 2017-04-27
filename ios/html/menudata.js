@@ -13,7 +13,6 @@ var menudata={children:[
 {text:'d',url:'functions_d.html#index_d'},
 {text:'e',url:'functions_e.html#index_e'},
 {text:'f',url:'functions_f.html#index_f'},
-{text:'g',url:'functions_g.html#index_g'},
 {text:'h',url:'functions_h.html#index_h'},
 {text:'i',url:'functions_i.html#index_i'},
 {text:'l',url:'functions_l.html#index_l'},
@@ -36,7 +35,6 @@ var menudata={children:[
 {text:'f',url:'functions_func.html#index_f'},
 {text:'i',url:'functions_func.html#index_i'},
 {text:'l',url:'functions_func.html#index_l'},
-{text:'m',url:'functions_func.html#index_m'},
 {text:'n',url:'functions_func.html#index_n'},
 {text:'o',url:'functions_func.html#index_o'},
 {text:'p',url:'functions_func.html#index_p'},
@@ -46,7 +44,6 @@ var menudata={children:[
 {text:'u',url:'functions_func.html#index_u'},
 {text:'v',url:'functions_func.html#index_v'},
 {text:'w',url:'functions_func.html#index_w'}]},
-{text:'Variables',url:'functions_vars.html'},
 {text:'Properties',url:'functions_prop.html',children:[
 {text:'a',url:'functions_prop.html#index_a'},
 {text:'b',url:'functions_prop.html#index_b'},
@@ -54,7 +51,6 @@ var menudata={children:[
 {text:'d',url:'functions_prop.html#index_d'},
 {text:'e',url:'functions_prop.html#index_e'},
 {text:'f',url:'functions_prop.html#index_f'},
-{text:'g',url:'functions_prop.html#index_g'},
 {text:'h',url:'functions_prop.html#index_h'},
 {text:'i',url:'functions_prop.html#index_i'},
 {text:'l',url:'functions_prop.html#index_l'},
@@ -67,16 +63,4 @@ var menudata={children:[
 {text:'t',url:'functions_prop.html#index_t'},
 {text:'u',url:'functions_prop.html#index_u'},
 {text:'v',url:'functions_prop.html#index_v'},
-{text:'w',url:'functions_prop.html#index_w'}]}]}]},
-{text:'Files',url:'files.html',children:[
-{text:'File List',url:'files.html'},
-{text:'File Members',url:'globals.html',children:[
-{text:'All',url:'globals.html',children:[
-{text:'i',url:'globals.html#index_i'},
-{text:'s',url:'globals.html#index_s'}]},
-{text:'Functions',url:'globals_func.html'},
-{text:'Variables',url:'globals_vars.html'},
-{text:'Typedefs',url:'globals_type.html'},
-{text:'Enumerations',url:'globals_enum.html'},
-{text:'Enumerator',url:'globals_eval.html',children:[
-{text:'s',url:'globals_eval.html#index_s'}]}]}]}]}
+{text:'w',url:'functions_prop.html#index_w'}]}]}]}]}

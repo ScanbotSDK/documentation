@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['extremalboundingvectors',['ExtremalBoundingVectors',['../structdoo_1_1_extremal_bounding_vectors.html',1,'doo']]],
-  ['extremalvertices',['ExtremalVertices',['../structdoo_1_1_extremal_vertices.html',1,'doo']]]
+  ['uiimage_28sbsdk_29',['UIImage(SBSDK)',['../category_u_i_image_07_s_b_s_d_k_08.html',1,'']]]
 ];

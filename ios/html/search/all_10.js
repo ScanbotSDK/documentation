@@ -1,20 +1,7 @@
 var searchData=
 [
-  ['take',['take',['../classdoo_1_1_vector_streamer.html#a3821764ef547d009538ec029b74a4a15',1,'doo::VectorStreamer']]],
-  ['takingphoto',['takingPhoto',['../interface_s_b_s_d_k_shutter_button.html#a2dafb9f00ae7da121276873fca8019ce',1,'SBSDKShutterButton']]],
-  ['temporarystoragewithimages_3a',['temporaryStorageWithImages:',['../interface_s_b_s_d_k_image_storage.html#a962e013853e590f893437ad0d886a3da',1,'SBSDKImageStorage']]],
-  ['testing_2eh',['testing.h',['../testing_8h.html',1,'']]],
-  ['text',['text',['../interface_s_b_s_d_k_o_c_r_result_block.html#a60a49700aa0cc39b2ce1b0a42922b747',1,'SBSDKOCRResultBlock']]],
-  ['textlineorder',['textlineOrder',['../interface_s_b_s_d_k_page_analyzer_result.html#a4e20b799b5dae3583247d2e1e0f9da0d',1,'SBSDKPageAnalyzerResult']]],
-  ['thumbnailforimageatindex_3aofsize_3a',['thumbnailForImageAtIndex:ofSize:',['../interface_s_b_s_d_k_image_storage.html#a9ec234ab1d1debb05f566a57fc89c8a2',1,'SBSDKImageStorage']]],
-  ['token',['token',['../interface_s_b_s_d_k_pay_form_recognized_field.html#a67b87a8061b2b69dcda9fb158ef24e9a',1,'SBSDKPayFormRecognizedField']]],
-  ['tolower',['toLower',['../namespacedoo.html#a6947da2a5ad8ce6d0298113418d408fb',1,'doo']]],
-  ['topvector',['topVector',['../structdoo_1_1_extremal_bounding_vectors.html#a80135bd567b43ac93c61de4e9b9199b1',1,'doo::ExtremalBoundingVectors']]],
-  ['topvertice',['topVertice',['../structdoo_1_1_extremal_vertices.html#a5b56ed1e9de241b8934dcd6721b5ff79',1,'doo::ExtremalVertices']]],
-  ['torchlightavailable',['torchLightAvailable',['../interface_s_b_s_d_k_camera_session.html#a7138ba5ca3fef201a50d78772a6a338c',1,'SBSDKCameraSession']]],
-  ['torchlightenabled',['torchLightEnabled',['../interface_s_b_s_d_k_camera_session.html#a11b992f212a8c0a42b393dcee3dd288a',1,'SBSDKCameraSession']]],
-  ['tovector',['toVector',['../classdoo_1_1_vector_streamer.html#ad9f5fe50994b598b4e4ab12553cb2b15',1,'doo::VectorStreamer']]],
-  ['traveldoctype',['travelDocType',['../interface_s_b_s_d_k_machine_readable_zone_recognizer_result.html#a7c5c0a400adeeb4941da5d2ba1aacdaf',1,'SBSDKMachineReadableZoneRecognizerResult']]],
-  ['type',['type',['../interface_s_b_s_d_k_invoice_recognizer_result_field.html#a81003d171cd5347b33442ac1ace7f523',1,'SBSDKInvoiceRecognizerResultField::type()'],['../interface_s_b_s_d_k_pay_form_token.html#a6355a43a5a2b39e88f20c039bfb65972',1,'SBSDKPayFormToken::type()'],['../interface_s_b_s_d_k_pay_form_detected_box.html#ac365ef12e0491f3fb16fe93c7d51de41',1,'SBSDKPayFormDetectedBox::type()']]],
-  ['typestring',['typeString',['../interface_s_b_s_d_k_invoice_recognizer_result_field.html#ae7e92fdb1b9bfa06ad790652497fddbd',1,'SBSDKInvoiceRecognizerResultField']]]
+  ['uiimage_28sbsdk_29',['UIImage(SBSDK)',['../category_u_i_image_07_s_b_s_d_k_08.html',1,'']]],
+  ['updatehandler',['updateHandler',['../interface_s_b_s_d_k_progress.html#af0e1f865390dd725016de966a0011116',1,'SBSDKProgress']]],
+  ['updatetorchlightblock',['updateTorchlightBlock',['../interface_s_b_s_d_k_camera_session.html#a6eb5602f6e12a4592447a68bcff6e628',1,'SBSDKCameraSession']]],
+  ['userpreferredlanguages',['userPreferredLanguages',['../interface_s_b_s_d_k_optical_text_recognizer.html#afac30874ce6e6e1860ef3b1e792f8711',1,'SBSDKOpticalTextRecognizer']]]
 ];

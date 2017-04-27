@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['gender',['gender',['../interface_s_b_s_d_k_machine_readable_zone_recognizer_result.html#ad250d7ceaec97e8991d3693d5281da64',1,'SBSDKMachineReadableZoneRecognizerResult']]]
+  ['holder',['holder',['../interface_s_b_s_d_k_credit_card_recognizer_result.html#a9f3d2e32a076c76674ab6848d9273354',1,'SBSDKCreditCardRecognizerResult']]],
+  ['hudview',['HUDView',['../interface_s_b_s_d_k_scanner_view_controller.html#a9bda06ad1c78a64fb1b64255af544529',1,'SBSDKScannerViewController']]]
 ];

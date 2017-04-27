@@ -9,6 +9,5 @@ var searchData=
   ['applicationdocumentsfolderurl',['applicationDocumentsFolderURL',['../interface_s_b_s_d_k_image_storage.html#a57eaa271e13bf0db3513ac2d4c573d87',1,'SBSDKImageStorage']]],
   ['applicationsupportfolderurl',['applicationSupportFolderURL',['../interface_s_b_s_d_k_image_storage.html#a036ac6438d4a18c0263c18a62d3a9e0e',1,'SBSDKImageStorage']]],
   ['applybuttonimageforcropviewcontroller_3a',['applyButtonImageForCropViewController:',['../protocol_s_b_s_d_k_crop_view_controller_delegate_01-p.html#ae9823d0332d0091b13037aa15d164490',1,'SBSDKCropViewControllerDelegate -p']]],
-  ['applyfilterfordocumentimage',['applyFilterForDocumentImage',['../classdoo_1_1_smart_trinarization_filter.html#af5bed44f0ff1123678a8cd1bf9afc076',1,'doo::SmartTrinarizationFilter']]],
   ['availablelanguages',['availableLanguages',['../interface_s_b_s_d_k_optical_text_recognizer.html#ae68448940bb36abb1b5be3aa5f470b93',1,'SBSDKOpticalTextRecognizer']]]
 ];

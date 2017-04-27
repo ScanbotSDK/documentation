@@ -67,21 +67,15 @@ $(function() {
 <div class="title">SBSDKPDFRenderer Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for SBSDKPDFRenderer:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
- <div class="center">
-  <img src="interface_s_b_s_d_k_p_d_f_renderer.png" usemap="#SBSDKPDFRenderer_map" alt=""/>
-  <map id="SBSDKPDFRenderer_map" name="SBSDKPDFRenderer_map">
-</map>
- </div></div>
+
+<p>Inherits &lt;NSObject&gt;.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Class Methods</h2></td></tr>
 <tr class="memitem:ac33ae129c93f1768f9f5710982b8d468"><td class="memItemLeft" align="right" valign="top">(nullable <a class="el" href="interface_s_b_s_d_k_progress.html">SBSDKProgress</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_s_b_s_d_k_p_d_f_renderer.html#ac33ae129c93f1768f9f5710982b8d468">renderImageStorage:copyImageStorage:indexSet:withPageSize:output:completionHandler:</a></td></tr>
 <tr class="separator:ac33ae129c93f1768f9f5710982b8d468"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7ece393cd8917f61ef545cff6d413f8"><td class="memItemLeft" align="right" valign="top">(nullable NSURL *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_s_b_s_d_k_p_d_f_renderer.html#ab7ece393cd8917f61ef545cff6d413f8">renderImageStorage:indexSet:withPageSize:output:error:</a></td></tr>
+<tr class="separator:ab7ece393cd8917f61ef545cff6d413f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A static class that renders an ordered collection of images into a basic, none-searchable PDF. Very fast. It does not perform OCR. </p>
@@ -113,7 +107,7 @@ Class Methods</h2></td></tr>
         <tr>
           <td class="paramkey">withPageSize:</td>
           <td></td>
-          <td class="paramtype">(<a class="el" href="_s_b_s_d_k_p_d_f_renderer_8h.html#ab530aea8dfe1aae8f80f5b2f69f4463d">SBSDKPDFRendererPageSize</a>)&#160;</td>
+          <td class="paramtype">(SBSDKPDFRendererPageSize)&#160;</td>
           <td class="paramname"><em>pageSize</em></td>
         </tr>
         <tr>
@@ -125,7 +119,7 @@ Class Methods</h2></td></tr>
         <tr>
           <td class="paramkey">completionHandler:</td>
           <td></td>
-          <td class="paramtype">(nullable <a class="el" href="_s_b_s_d_k_scanbot_s_d_k_constants_8h.html#a2d4d5687bc993de88f113d190c0f15b4">SBSDKCompletionHandler</a>)&#160;</td>
+          <td class="paramtype">(nullable SBSDKCompletionHandler)&#160;</td>
           <td class="paramname"><em>completionHandler</em>&#160;</td>
         </tr>
         <tr>
@@ -135,9 +129,9 @@ Class Methods</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Renders the images at the specified indices from the image storage into a none-searchable PDF with the given page size, saves the PDF to the specified URL and calls the completion handler upon completion. Each page is made up of one image. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Asynchronously renders the images at the specified indices from the image storage into a none-searchable PDF with the given page size, saves the PDF to the specified URL and calls the completion handler upon completion. Each page is made up of one image. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">imageStorage</td><td>The image store to take the images from. The image storage is copied, it is safe to modify it after enqueuing the operation. </td></tr>
+    <tr><td class="paramname">imageStorage</td><td>The image store to take the images from. </td></tr>
     <tr><td class="paramname">copyStorage</td><td>Whether the receiver should make a physical copy of the image storage for the operation or not. If set to NO, you must make sure that the image storage is not mutated while the operation is running. Setting YES makes a physical copy of the files in the storage, using up disk memory, but protecting it against mutation. </td></tr>
     <tr><td class="paramname">indices</td><td>The indices of images in the image store you want to render into the PDF. Pass nil if all images must be rendered. </td></tr>
     <tr><td class="paramname">pageSize</td><td>The page size used to render an image into a page. See SBSDKPDFRendererPageSize. </td></tr>
@@ -150,7 +144,64 @@ Class Methods</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>An <a class="el" href="interface_s_b_s_d_k_progress.html">SBSDKProgress</a> object that can be used to observe the operations progress and to cancel the operation. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="interface_s_b_s_d_k_progress.html">SBSDKProgress</a> object that can be used to observe the operations progress and to cancel the operation. </dd></dl>
+
+</div>
+</div>
+<a id="ab7ece393cd8917f61ef545cff6d413f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7ece393cd8917f61ef545cff6d413f8">&sect;&nbsp;</a></span>renderImageStorage:indexSet:withPageSize:output:error:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (nullable NSURL *) renderImageStorage: </td>
+          <td></td>
+          <td class="paramtype">(nonnull <a class="el" href="interface_s_b_s_d_k_image_storage.html">SBSDKImageStorage</a> *)&#160;</td>
+          <td class="paramname"><em>imageStorage</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">indexSet:</td>
+          <td></td>
+          <td class="paramtype">(nullable NSIndexSet *)&#160;</td>
+          <td class="paramname"><em>indices</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">withPageSize:</td>
+          <td></td>
+          <td class="paramtype">(SBSDKPDFRendererPageSize)&#160;</td>
+          <td class="paramname"><em>pageSize</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">output:</td>
+          <td></td>
+          <td class="paramtype">(nonnull NSURL *)&#160;</td>
+          <td class="paramname"><em>pdfOutputURL</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">error:</td>
+          <td></td>
+          <td class="paramtype">(NSError *_Nullable *_Nullable)&#160;</td>
+          <td class="paramname"><em>outError</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Synchronously renders the images at the specified indices from the image storage into a none-searchable PDF with the given page size and saves the PDF to the specified URL. Each page is made up of one image. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">imageStorage</td><td>The image store to take the images from. </td></tr>
+    <tr><td class="paramname">indices</td><td>The indices of images in the image store you want to render into the PDF. Pass nil if all images must be rendered. </td></tr>
+    <tr><td class="paramname">pageSize</td><td>The page size used to render an image into a page. See SBSDKPDFRendererPageSize. </td></tr>
+    <tr><td class="paramname">pdfOutputURL</td><td></td></tr>
+    <tr><td class="paramname">outError</td><td>The pointer to an NSError when the rendering fails. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The URL to the rendered PDF file. </dd></dl>
 
 </div>
 </div>
@@ -164,5 +215,5 @@ Class Methods</h2></td></tr>
 </div>-->
 <link href="ScanbotSDK.css" rel="stylesheet" type="text/css" />
 <div class="footer">
-        Scanbot SDK Documentation - Copyright 2015 by doo GmbH generated on Tue Feb 28 2017 12:43:10 <a href="https://scanbot.io"></a>
+        Scanbot SDK Documentation - Copyright 2015 by doo GmbH generated on Wed Apr 19 2017 14:12:16 <a href="https://scanbot.io"></a>
  </div>

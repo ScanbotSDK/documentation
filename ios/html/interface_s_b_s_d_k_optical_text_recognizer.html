@@ -67,16 +67,8 @@ $(function() {
 <div class="title">SBSDKOpticalTextRecognizer Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for SBSDKOpticalTextRecognizer:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
- <div class="center">
-  <img src="interface_s_b_s_d_k_optical_text_recognizer.png" usemap="#SBSDKOpticalTextRecognizer_map" alt=""/>
-  <map id="SBSDKOpticalTextRecognizer_map" name="SBSDKOpticalTextRecognizer_map">
-</map>
- </div></div>
+
+<p>Inherits &lt;NSObject&gt;.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Class Methods</h2></td></tr>
@@ -92,6 +84,8 @@ Class Methods</h2></td></tr>
 <tr class="separator:a92f1397ca1e20170bea7e39f4b396607"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8c0db5ea44220fe19ac8065edbbd529"><td class="memItemLeft" align="right" valign="top">(nullable <a class="el" href="interface_s_b_s_d_k_progress.html">SBSDKProgress</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_s_b_s_d_k_optical_text_recognizer.html#aa8c0db5ea44220fe19ac8065edbbd529">recognizeText:copyImageStorage:indexSet:languageString:pdfOutputURL:completion:</a></td></tr>
 <tr class="separator:aa8c0db5ea44220fe19ac8065edbbd529"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc1f328016336893bdf127c909be0600"><td class="memItemLeft" align="right" valign="top">(nullable <a class="el" href="interface_s_b_s_d_k_o_c_r_result.html">SBSDKOCRResult</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_s_b_s_d_k_optical_text_recognizer.html#afc1f328016336893bdf127c909be0600">recognizeText:indexSet:languageString:pdfOutputURL:error:</a></td></tr>
+<tr class="separator:afc1f328016336893bdf127c909be0600"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c9de8a9869b2b5ba7eb878c2a9582b7"><td class="memItemLeft" align="right" valign="top">(nullable <a class="el" href="interface_s_b_s_d_k_progress.html">SBSDKProgress</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_s_b_s_d_k_optical_text_recognizer.html#a7c9de8a9869b2b5ba7eb878c2a9582b7">recognizeText:rectangle:languageString:completion:</a></td></tr>
 <tr class="separator:a7c9de8a9869b2b5ba7eb878c2a9582b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a312083d9140c46ceb2d122accb0b5aef"><td class="memItemLeft" align="right" valign="top">(nullable <a class="el" href="interface_s_b_s_d_k_progress.html">SBSDKProgress</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_s_b_s_d_k_optical_text_recognizer.html#a312083d9140c46ceb2d122accb0b5aef">analyseImagePageLayout:completion:</a></td></tr>
@@ -118,7 +112,7 @@ Class Methods</h2></td></tr>
         <tr>
           <td class="paramkey">completion:</td>
           <td></td>
-          <td class="paramtype">(nullable <a class="el" href="_s_b_s_d_k_scanbot_s_d_k_constants_8h.html#a2d4d5687bc993de88f113d190c0f15b4">SBSDKCompletionHandler</a>)&#160;</td>
+          <td class="paramtype">(nullable SBSDKCompletionHandler)&#160;</td>
           <td class="paramname"><em>completionHandler</em>&#160;</td>
         </tr>
         <tr>
@@ -237,7 +231,7 @@ Class Methods</h2></td></tr>
         <tr>
           <td class="paramkey">completion:</td>
           <td></td>
-          <td class="paramtype">(nullable <a class="el" href="_s_b_s_d_k_scanbot_s_d_k_constants_8h.html#a2d4d5687bc993de88f113d190c0f15b4">SBSDKCompletionHandler</a>)&#160;</td>
+          <td class="paramtype">(nullable SBSDKCompletionHandler)&#160;</td>
           <td class="paramname"><em>completionHandler</em>&#160;</td>
         </tr>
         <tr>
@@ -247,7 +241,7 @@ Class Methods</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Recognizes text on a set of images with the specified languages and calls the completion handler upon completion. If pdfOutputURL is a valid file URL a searchable PDF is created and written to the specified URL. A searchable PDF contains selectable and searchable text. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Asynchronously recognizes text on a set of images with the specified languages and calls the completion handler upon completion. If pdfOutputURL is a valid file URL a searchable PDF is created and written to the specified URL. A searchable PDF contains selectable and searchable text. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">storage</td><td>The image storage containing the images to be recognized. Must not be nil, &amp; contains at least 1 image </td></tr>
     <tr><td class="paramname">copyStorage</td><td>Whether the receiver should make a physical copy of the image storage for the operation or not. If set to NO, you must make sure that the image storage is not mutated while the operation is running. Setting YES makes a physical copy of the files in the storage, using up disk memory, but protecting it against mutation. </td></tr>
@@ -264,6 +258,63 @@ Class Methods</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An <a class="el" href="interface_s_b_s_d_k_progress.html">SBSDKProgress</a> object that can be used to observe the operations progress and to cancel the operation. </dd></dl>
+
+</div>
+</div>
+<a id="afc1f328016336893bdf127c909be0600"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc1f328016336893bdf127c909be0600">&sect;&nbsp;</a></span>recognizeText:indexSet:languageString:pdfOutputURL:error:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (nullable <a class="el" href="interface_s_b_s_d_k_o_c_r_result.html">SBSDKOCRResult</a> *) recognizeText: </td>
+          <td></td>
+          <td class="paramtype">(nonnull <a class="el" href="interface_s_b_s_d_k_image_storage.html">SBSDKImageStorage</a> *)&#160;</td>
+          <td class="paramname"><em>storage</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">indexSet:</td>
+          <td></td>
+          <td class="paramtype">(nullable NSIndexSet *)&#160;</td>
+          <td class="paramname"><em>indices</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">languageString:</td>
+          <td></td>
+          <td class="paramtype">(nullable NSString *)&#160;</td>
+          <td class="paramname"><em>languageString</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">pdfOutputURL:</td>
+          <td></td>
+          <td class="paramtype">(nullable NSURL *)&#160;</td>
+          <td class="paramname"><em>pdfOutputURL</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">error:</td>
+          <td></td>
+          <td class="paramtype">(NSError *_Nullable *_Nullable)&#160;</td>
+          <td class="paramname"><em>outError</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Synchronously recognizes text on a set of images with the specified languages and calls the completion handler upon completion. If pdfOutputURL is a valid file URL a searchable PDF is created and written to the specified URL. A searchable PDF contains selectable and searchable text. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">storage</td><td>The image storage containing the images to be recognized. Must not be nil, &amp; contains at least 1 image </td></tr>
+    <tr><td class="paramname">indices</td><td>An NSIndexSet specifying the indices of the images in the image storage that you want to recognize. Pass nil if you want to select all images. Invalid indices are ignored. </td></tr>
+    <tr><td class="paramname">languageString</td><td>A string of two-letter ISO 639-1 language codes, separated by '+', the OCR engine should use for recognition. E.g. "de+en" (german and english) "ar+he+ja" (arabic, hebrew and japanese). If the string is invalid or nil the user preferred languages are used. Ignores white spaces, invalid languages and invalid characters. </td></tr>
+    <tr><td class="paramname">pdfOutputURL</td><td>If not nil and a valid file URL a searchable PDF is rendered and saved to this URL. </td></tr>
+    <tr><td class="paramname">outError</td><td>A pointer to an NSError object.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An <a class="el" href="interface_s_b_s_d_k_o_c_r_result.html">SBSDKOCRResult</a> containing the result of the text recognition. Nil if an error occured. </dd></dl>
 
 </div>
 </div>
@@ -294,7 +345,7 @@ Class Methods</h2></td></tr>
         <tr>
           <td class="paramkey">completion:</td>
           <td></td>
-          <td class="paramtype">(nullable <a class="el" href="_s_b_s_d_k_scanbot_s_d_k_constants_8h.html#a2d4d5687bc993de88f113d190c0f15b4">SBSDKCompletionHandler</a>)&#160;</td>
+          <td class="paramtype">(nullable SBSDKCompletionHandler)&#160;</td>
           <td class="paramname"><em>completionHandler</em>&#160;</td>
         </tr>
         <tr>
@@ -367,5 +418,5 @@ Class Methods</h2></td></tr>
 </div>-->
 <link href="ScanbotSDK.css" rel="stylesheet" type="text/css" />
 <div class="footer">
-        Scanbot SDK Documentation - Copyright 2015 by doo GmbH generated on Tue Feb 28 2017 12:43:10 <a href="https://scanbot.io"></a>
+        Scanbot SDK Documentation - Copyright 2015 by doo GmbH generated on Wed Apr 19 2017 14:12:16 <a href="https://scanbot.io"></a>
  </div>

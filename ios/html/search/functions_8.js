@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['languagedatapath',['languageDataPath',['../interface_s_b_s_d_k_optical_text_recognizer.html#a5c585eba7b446f55945d8613f42bd956',1,'SBSDKOpticalTextRecognizer']]],
-  ['length',['length',['../interface_s_b_s_d_k_polygon_edge.html#a3c38c8f1e93dda13ff25f65f3cc36d31',1,'SBSDKPolygonEdge']]],
-  ['levenshteindistance',['levenshteinDistance',['../namespacedoo.html#a9a990af174b01a8d9373c1d62031f191',1,'doo']]]
+  ['normalize',['normalize',['../interface_s_b_s_d_k_polygon.html#a5b6f510dc47bbb974955703999c72ae2',1,'SBSDKPolygon']]],
+  ['normalizeddoublevalues',['normalizedDoubleValues',['../interface_s_b_s_d_k_polygon.html#a563935b8628397476cd2ee3951314096',1,'SBSDKPolygon']]],
+  ['normalizededgewithindex_3a',['normalizedEdgeWithIndex:',['../interface_s_b_s_d_k_polygon.html#a829aa959d14ad2d13031b06647d8967b',1,'SBSDKPolygon']]],
+  ['normalizedpointfromabsolutepoint_3awithsize_3a',['normalizedPointFromAbsolutePoint:withSize:',['../interface_s_b_s_d_k_polygon.html#a7b49dd93aae9404125da71db9fe8e991',1,'SBSDKPolygon']]],
+  ['normalizedpointwithindex_3a',['normalizedPointWithIndex:',['../interface_s_b_s_d_k_polygon.html#a4557e5e8446c6b65fa11dfccb293b8a2',1,'SBSDKPolygon']]]
 ];
