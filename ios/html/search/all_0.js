@@ -14,6 +14,7 @@ var searchData=
   ['applicationdocumentsfolderurl',['applicationDocumentsFolderURL',['../interface_s_b_s_d_k_image_storage.html#a57eaa271e13bf0db3513ac2d4c573d87',1,'SBSDKImageStorage']]],
   ['applicationsupportfolderurl',['applicationSupportFolderURL',['../interface_s_b_s_d_k_image_storage.html#a036ac6438d4a18c0263c18a62d3a9e0e',1,'SBSDKImageStorage']]],
   ['applybuttonimageforcropviewcontroller_3a',['applyButtonImageForCropViewController:',['../protocol_s_b_s_d_k_crop_view_controller_delegate_01-p.html#ae9823d0332d0091b13037aa15d164490',1,'SBSDKCropViewControllerDelegate -p']]],
+  ['autocapturesensitivity',['autoCaptureSensitivity',['../interface_s_b_s_d_k_scanner_view_controller.html#a86328b4e364372fa380c2501179ef5a0',1,'SBSDKScannerViewController']]],
   ['automaticthumbnailsize',['automaticThumbnailSize',['../interface_s_b_s_d_k_image_storage.html#a85e2d06350d76fcf9fde1b6b049ce004',1,'SBSDKImageStorage']]],
   ['autoshutterenabled',['autoShutterEnabled',['../interface_s_b_s_d_k_scanner_view_controller.html#a15a7313a10374cdfa0007022cab70ade',1,'SBSDKScannerViewController']]],
   ['availablelanguages',['availableLanguages',['../interface_s_b_s_d_k_optical_text_recognizer.html#ae68448940bb36abb1b5be3aa5f470b93',1,'SBSDKOpticalTextRecognizer']]]

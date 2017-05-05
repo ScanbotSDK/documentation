@@ -5,6 +5,7 @@ var searchData=
   ['accountnumber',['accountNumber',['../interface_s_b_s_d_k_cheque_recognizer_result.html#a4e8eacef30d0214f2bd77f36997f0cf5',1,'SBSDKChequeRecognizerResult']]],
   ['altitude',['altitude',['../interface_s_b_s_d_k_image_metadata.html#ae720495171526903f36e8a1e43d482a7',1,'SBSDKImageMetadata']]],
   ['aperture',['aperture',['../interface_s_b_s_d_k_image_metadata.html#a6d3f9ace94441da6d06a41cd62ae1d9b',1,'SBSDKImageMetadata']]],
+  ['autocapturesensitivity',['autoCaptureSensitivity',['../interface_s_b_s_d_k_scanner_view_controller.html#a86328b4e364372fa380c2501179ef5a0',1,'SBSDKScannerViewController']]],
   ['automaticthumbnailsize',['automaticThumbnailSize',['../interface_s_b_s_d_k_image_storage.html#a85e2d06350d76fcf9fde1b6b049ce004',1,'SBSDKImageStorage']]],
   ['autoshutterenabled',['autoShutterEnabled',['../interface_s_b_s_d_k_scanner_view_controller.html#a15a7313a10374cdfa0007022cab70ade',1,'SBSDKScannerViewController']]]
 ];
