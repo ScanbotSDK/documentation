@@ -68,8 +68,9 @@ For more details visit our website <a href="https://scanbot.io/sdk.html">https:/
 
 <p>This Cordova plugin provides implementations of Scanbbot SDK for iOS and Android.</p>
 
-<p>Currently the following <strong><a href="https://scanbot.io/sdk.html#packages">Package I</a></strong> functionality is covered by this plugin:</p>
+<p>Following <strong><a href="https://scanbot.io/sdk.html#packages">Package I + II</a></strong> functionality is covered by this plugin:</p>
 
+<p><strong>Package I</strong></p>
 <ul>
   <li>Camera UI with user guidance for document scanning</li>
   <li>Cropping UI</li>
@@ -78,9 +79,14 @@ For more details visit our website <a href="https://scanbot.io/sdk.html">https:/
   <li>PDF Creation</li>
 </ul>
 
+<p><strong>Package II</strong></p>
+<ul>
+  <li>OCR</li>
+</ul>
+
 <h3 id="requirements">Requirements</h3>
 
-<p>The Scanbot SDK plugin requires Cordova 5.0+</p>
+<p>The Scanbot SDK plugin requires Cordova 6.0+</p>
 
 <h3 id="supported-platforms">Supported Platforms</h3>
 
@@ -110,8 +116,8 @@ For more details visit our website <a href="https://scanbot.io/sdk.html">https:/
 </div>
 
 <h3 id="xcode-project-settings-for-ios">Xcode project settings for iOS</h3>
-<p>When adding a plugin to your app Cordova automatically generates the project files for Xcode. 
-Unfortunately Cordova doesn’t support to define “Embedded Binaries” in the generated Xcode project file which is required by the Scanbot SDK plugin.
+<p>When adding a plugin to your app Cordova automatically adds corresponding settings in the Xcode project. 
+Unfortunately the Cordova plugin system doesn’t support to define “Embedded Binaries” in the Xcode project file which is required by the Scanbot SDK plugin.
 So we have to fix it manually by following workaround:</p>
 
 <ul>
@@ -171,14 +177,18 @@ those permissions just for your information:</p>
       <li><a href="#module_ScanbotSdk.documentDetection">.documentDetection(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.applyImageFilter">.applyImageFilter(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.createPdf">.createPdf(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.getOcrConfigs">.getOcrConfigs(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.performOcr">.performOcr(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.cleanup">.cleanup(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#detectionResult">.DetectionResult</a> - <code class="highlighter-rouge">enum</code></li>
       <li><a href="#imageFilter">.ImageFilter</a> - <code class="highlighter-rouge">enum</code></li>
+      <li><a href="#ocrOutputFormat">.OcrOutputFormat</a> - <code class="highlighter-rouge">enum</code></li>
     </ul>
   </li>
   <li><strong><code class="highlighter-rouge">ScanbotSdkUi</code></strong>
     <ul>
       <li><a href="#module_ScanbotSdkUi.startCamera">.startCamera(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdkUi.dismissCamera">.dismissCamera()</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdkUi.startCropping">.startCropping(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
     </ul>
   </li>
@@ -307,6 +317,18 @@ There will be no log files created by the Scanbot SDK plugin.</p>
 
 <p>The Scanbot SDK plugin provides a ready-to-use Camera UI component for guided, automatic document scanning.</p>
 
+<p>The Camera UI contains:</p>
+<ul>
+  <li>A live preview of the camera with detected polygon</li>
+  <li>User guidance (hints)</li>
+  <li>An animated shutter button, which can be used to take a picture manually</li>
+  <li>Toggle button for flash</li>
+  <li>Toggle button for auto-snapping</li>
+  <li>Cancel button</li>
+</ul>
+
+<p>Use this function to start the Camera UI.</p>
+
 <h5 id="callbacks-1">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre>
@@ -342,7 +364,10 @@ Can be used for manual cropping correction via <a href="#module_ScanbotSdkUi.sta
     <span class="na">autosnapping_hint_too_dark</span><span class="p">:</span> <span class="s2">"Poor light"</span>
   <span class="p">},</span>
   <span class="na">edgeColor</span><span class="p">:</span> <span class="s1">'#0000ff'</span><span class="p">,</span>
-  <span class="na">quality</span><span class="p">:</span> <span class="mi">80</span>
+  <span class="na">quality</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+  <span class="na">autoSnappingEnabled</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">autoSnappingSensitivity</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">,</span>
+  <span class="na">sampleSize</span><span class="p">:</span> <span class="mi">1</span>
 <span class="p">};</span>
 </code></pre>
 </div>
@@ -352,8 +377,22 @@ Can be used for manual cropping correction via <a href="#module_ScanbotSdkUi.sta
 If no <code class="highlighter-rouge">textResBundle</code> map is provided english textes will be used as default. 
 The example code above shows all supported text resources keys.</li>
   <li><code class="highlighter-rouge">options.edgeColor</code> - Optional color for rendered polygon edges. Hexadecimal format <code class="highlighter-rouge">#RRGGBB</code> or <code class="highlighter-rouge">#AARRGGBB</code>.</li>
-  <li><code class="highlighter-rouge">options.quality</code> - Optional <a href="#imageQuality">quality</a> of the output image.</li>
+  <li><code class="highlighter-rouge">options.quality</code> - Optional <a href="#imageQuality">quality value</a> of the output image.</li>
+  <li><code class="highlighter-rouge">options.autoSnappingEnabled</code> - Optional boolean flag to set the initial value of the auto-snapping functionality. 
+Default value is <code class="highlighter-rouge">true</code> which activates the auto-snapping. Auto-snapping can be enabled or disabled by the user via toggle button in the UI.</li>
+  <li><code class="highlighter-rouge">options.autoSnappingSensitivity</code> - Optional float value to change the sensitivity factor of auto-snapping.
+Must be in the range 0.0…1.0. A value of 1.0 triggers automatic capturing immediately, a value of 0.0 delays the automatic by 3 seconds.
+The default value is 0.66 (1 sec).</li>
+  <li><code class="highlighter-rouge">options.sampleSize</code> - Optional integer value to force the image decoder to subsample output images (create smaller images to save memory). 
+For example <code class="highlighter-rouge">sampleSize: 2</code> will return images that are 1/2 the width/height of the original.
+Default value is 1, which keeps the original image size. Any value &lt; 1 is treated the same as 1.</li>
 </ul>
+
+<p><a name="module_ScanbotSdkUi.dismissCamera"></a></p>
+<h3 id="close-camera-ui">Close Camera UI</h3>
+<h4 id="scanbotsdkuidismisscamera">ScanbotSdkUi.dismissCamera()</h4>
+
+<p>Closes the Camera UI screen if it is running. No parameters are required. The function provides no callbacks.</p>
 
 <p><a name="module_ScanbotSdkUi.startCropping"></a></p>
 <h3 id="cropping-ui">Cropping UI</h3>
@@ -513,13 +552,144 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">options.images</code> - Input images as an array of file URIs in proper order (image element 1 =&gt; page 1, etc).</li>
 </ul>
 
+<h3 id="ocr---optical-character-recognition">OCR - Optical Character Recognition</h3>
+
+<p>The OCR feature is a part of the Scanbot SDK <strong><a href="https://scanbot.io/sdk.html#packages">Package II</a></strong>. 
+It is based on the Tesseract OCR Engine with some modifications and enhancements.</p>
+
+<p><a name="module_ScanbotSdk.getOcrConfigs"></a></p>
+<h4 id="scanbotsdkgetocrconfigssuccesscallback-errorcallback-options">ScanbotSdk.getOcrConfigs(successCallback, errorCallback, options)</h4>
+
+<p>Use this function to get Scanbot SDK OCR properties of the current App installation.</p>
+
+<h5 id="callbacks-6">Callbacks:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">result.languageDataPath</code> - Contains absolute file URI of the directory where to place the <a href="#ocrLanguages">OCR training data files</a>. 
+You have to copy the corresponding <code class="highlighter-rouge">*.traineddata</code> files into this directory. The directory is a part of your App. If you uninstall the app, 
+this directory will also be removed.</li>
+  <li><code class="highlighter-rouge">result.installedLanguages</code> - Returns an array of current installed OCR languages (e.g. <code class="highlighter-rouge">["en", "fr"]</code>). 
+The Scanbot SDK uses the <code class="highlighter-rouge">languageDataPath</code> directory to determine installed OCR languages.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
+</ul>
+
+<h5 id="options-5">Options:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{};</span>
+</code></pre>
+</div>
+
+<p>No options are required for this operation.</p>
+
+<p><a name="module_ScanbotSdk.performOcr"></a></p>
+<h4 id="scanbotsdkperformocrsuccesscallback-errorcallback-options">ScanbotSdk.performOcr(successCallback, errorCallback, options)</h4>
+
+<p>This function takes an array of images and performs Optical Character Recognition on each of the images.
+As result the recognized text can be returned as plain text or a composed PDF file containing selectable and searchable text.</p>
+
+<h5 id="callbacks-7">Callbacks:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">result.plainText</code> - Contains the recognized plain text.</li>
+  <li><code class="highlighter-rouge">result.pdfFileUri</code> - <a href="#fileHandling">File URI</a> of the composed PDF file (<code class="highlighter-rouge">'file:///...'</code>).</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
+</ul>
+
+<h5 id="options-6">Options:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">],</span>
+  <span class="na">languages</span><span class="p">:</span> <span class="p">[</span><span class="s1">'en'</span><span class="p">,</span> <span class="s1">'de'</span><span class="p">],</span>
+  <span class="na">outputFormat</span><span class="p">:</span> <span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">OcrOutputFormat</span><span class="p">.</span><span class="nx">PDF_FILE</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">options.images</code> - Input images as an array of file URIs in proper order (image element 1 =&gt; page 1, etc).</li>
+  <li><code class="highlighter-rouge">options.languages</code> - An array with OCR languages of the text to be recognized (e.g. <code class="highlighter-rouge">["en", "de"]</code>). 
+The number of languages has an impact on the performance - the more languages, the slower the recognition process.
+The OCR operation will fail with an error if some of the specified languages are missing.
+Please use the <a href="#module_ScanbotSdk.getOcrConfigs">getOcrConfigs</a> function to make sure that desired languages are installed.</li>
+  <li><code class="highlighter-rouge">options.outputFormat</code> - <a href="#ocrOutputFormat">OcrOutputFormat</a> enum value to specify the result.</li>
+</ul>
+
+<p><a name="ocrLanguages"></a></p>
+<h3 id="ocr-languages-and-data-files">OCR Languages and Data Files</h3>
+
+<p>For each desired OCR language a corresponding training data file (aka. tessdata) must be installed in the <code class="highlighter-rouge">languageDataPath</code> directory of the Scanbot SDK.</p>
+
+<p>Furthermore the special data file <code class="highlighter-rouge">osd.traineddata</code> is required and must be installed. It is used for orientation and script detection.</p>
+
+<p>The Scanbot SDK plugin ships with no training data files by default to keep the plugin package small in size.</p>
+
+<h4 id="download-ocr-files">Download OCR files</h4>
+
+<p>Please find a list of all supported languages in the <a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files#data-files-for-version-304305">Tesseract wiki</a>.</p>
+
+<p>Note: Scanbot SDK supports training data files of Tesseract <strong>version 3.0x</strong> only.</p>
+
+<h4 id="language-codes">Language Codes</h4>
+<p>The Tesseract language data files are identified by a <strong>3-letter</strong> language code. For example:</p>
+<ul>
+  <li><code class="highlighter-rouge">eng</code> - English</li>
+  <li><code class="highlighter-rouge">deu</code> - German</li>
+  <li>etc.</li>
+</ul>
+
+<p>The Scanbot SDK API uses a <strong>2-letter</strong> ISO code:</p>
+<ul>
+  <li><code class="highlighter-rouge">en</code> - English</li>
+  <li><code class="highlighter-rouge">de</code> - German</li>
+  <li>etc.</li>
+</ul>
+
+<h5 id="example">Example:</h5>
+<p>If you want to perform OCR with languages English and German, you have to download and install the following data files:</p>
+<ul>
+  <li><code class="highlighter-rouge">eng.traineddata</code> - language file for English</li>
+  <li><code class="highlighter-rouge">deu.traineddata</code> - language file for German</li>
+  <li><code class="highlighter-rouge">osd.traineddata</code> - special data file for orientation and script detection</li>
+</ul>
+
+<p>In the Scanbot SDK plugin then use <code class="highlighter-rouge">languages: ["en", "de"]</code>.</p>
+
+<p><a name="ocrOutputFormat"></a></p>
+<h3 id="ocr-output-format-values">OCR Output Format values</h3>
+<h4 id="scanbotsdkocroutputformat">ScanbotSdk.OcrOutputFormat</h4>
+
+<p>Following output formats can be specified for OCR result:</p>
+<ul>
+  <li><code class="highlighter-rouge">OcrOutputFormat.PLAIN_TEXT</code> - Returns the recognized text as plain text only.</li>
+  <li><code class="highlighter-rouge">OcrOutputFormat.PDF_FILE</code> - Creates a composed PDF file containing selectable and searchable text.</li>
+  <li><code class="highlighter-rouge">OcrOutputFormat.FULL_OCR_RESULT</code> - Full result: composed PDF file and recognized plain text.</li>
+</ul>
+
 <p><a name="module_ScanbotSdk.cleanup"></a></p>
 <h3 id="cleanup">Cleanup</h3>
 <h4 id="scanbotsdkcleanupsuccesscallback-errorcallback-options">ScanbotSdk.cleanup(successCallback, errorCallback, options)</h4>
 
 <p>By calling ths function all temporary output files generated by the Scanbot SDK plugin will be deleted.</p>
 
-<h5 id="callbacks-6">Callbacks:</h5>
+<h5 id="callbacks-8">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -536,7 +706,7 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-5">Options:</h5>
+<h5 id="options-7">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{};</span>
 </code></pre>
 </div>
@@ -636,6 +806,28 @@ Please see the description of the UI functions <a href="#module_ScanbotSdkUi.sta
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release history</h3>
 
+<h5 id="120">1.2.0</h5>
+<ul>
+  <li>Android &amp; iOS
+    <ul>
+      <li>Feature: OCR functionality</li>
+      <li>Feature: Auto-snapping toggle button in Camera UI</li>
+      <li>Feature: New parameters for Camera UI: <code class="highlighter-rouge">autoSnappingEnabled</code>, <code class="highlighter-rouge">autoSnappingSensitivity</code>, <code class="highlighter-rouge">sampleSize</code></li>
+    </ul>
+  </li>
+  <li>Android
+    <ul>
+      <li>Improvement: Continuous focus mode in Camera UI (improves scan performance &amp; quality)</li>
+      <li>Under the hood: Upgraded the native Scanbot Android SDK to v1.22.3</li>
+    </ul>
+  </li>
+  <li>iOS
+    <ul>
+      <li>Under the hood: Upgraded the native Scanbot iOS SDK to v1.4.2</li>
+    </ul>
+  </li>
+</ul>
+
 <h5 id="111">1.1.1</h5>
 <ul>
   <li>Android:
@@ -732,8 +924,8 @@ http://www.apache.org/licenses/LICENSE-2.0
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 
-RoboGuice
----------
+Dagger 2
+--------
 Licensed under the Apache License, Version 2.0 (the License); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
 http://www.apache.org/licenses/LICENSE-2.0
@@ -792,13 +984,33 @@ http://www.apache.org/licenses/LICENSE-2.0
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 
-Google Guice Extensions AssistedInject
---------------------------------------
+Guava: Google Core Libraries For Java
+-------------------------------------
 Licensed under the Apache License, Version 2.0 (the License); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
 http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+
+Dagger Compiler
+---------------
+Licensed under the Apache License, Version 2.0 (the License); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+
+
+Tesseract-ocr
+-------------
+Licensed under the Apache License, Version 2.0 (the License); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
 
 
 </code></pre>
