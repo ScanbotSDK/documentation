@@ -532,7 +532,7 @@ To further improve the user experience you might want to automatically take a ph
 <span class="k">using</span> <span class="nn">ScanbotSDK.Xamarin.EventBus</span><span class="p">;</span>
 
 <span class="na">[Activity(Theme = "@style/Theme.AppCompat")]</span>
-<span class="k">public</span> <span class="k">class</span> <span class="nc">MyCameraActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">,</span> <span class="n">IPictureCallback</span><span class="p">,</span> <span class="n">ContourDetectorFrameHandler</span><span class="p">.</span><span class="n">IResultHandler</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MyCameraActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">,</span> <span class="n">IPictureCallback</span><span class="p">,</span> <span class="n">ContourDetectorFrameHandler</span><span class="p">.</span><span class="n">IResultHandler</span><span class="p">,</span> <span class="n">ICameraOpenCallback</span>
 <span class="p">{</span>
   <span class="k">protected</span> <span class="n">ScanbotCameraView</span> <span class="n">cameraView</span><span class="p">;</span>
   <span class="k">protected</span> <span class="n">AutoSnappingController</span> <span class="n">autoSnappingController</span><span class="p">;</span>
@@ -563,8 +563,10 @@ To further improve the user experience you might want to automatically take a ph
     <span class="n">autoSnappingController</span> <span class="p">=</span> <span class="n">AutoSnappingController</span><span class="p">.</span><span class="nf">Attach</span><span class="p">(</span><span class="n">cameraView</span><span class="p">,</span> <span class="n">contourDetectorFrameHandler</span><span class="p">);</span>
     <span class="c1">// Set the sensitivity of AutoSnappingController
 </span>    <span class="c1">// Range is from 0 to 1, where 1 is the most sensitive. The more sensitive it is the faster it shoots.
-</span>    <span class="n">autoSnappingController</span><span class="p">.</span><span class="nf">SetSensitivity</span><span class="p">(</span><span class="m">0.9f</span><span class="p">);</span>
+</span>    <span class="n">autoSnappingController</span><span class="p">.</span><span class="nf">SetSensitivity</span><span class="p">(</span><span class="m">1.0f</span><span class="p">);</span>
+    
     <span class="n">cameraView</span><span class="p">.</span><span class="nf">AddPictureCallback</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="n">cameraView</span><span class="p">.</span><span class="nf">SetCameraOpenCallback</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 
     <span class="nf">FindViewById</span><span class="p">(</span><span class="n">Resource</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">scanbotSnapButton</span><span class="p">).</span><span class="n">Click</span> <span class="p">+=</span> <span class="k">delegate</span> <span class="p">{</span>
       <span class="n">cameraView</span><span class="p">.</span><span class="nf">TakePicture</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
@@ -586,6 +588,14 @@ To further improve the user experience you might want to automatically take a ph
   <span class="p">{</span>
     <span class="k">base</span><span class="p">.</span><span class="nf">OnPause</span><span class="p">();</span>
     <span class="n">cameraView</span><span class="p">.</span><span class="nf">OnPause</span><span class="p">();</span>
+  <span class="p">}</span>
+  
+  <span class="k">public</span> <span class="k">void</span> <span class="nf">OnCameraOpened</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="n">cameraView</span><span class="p">.</span><span class="nf">PostDelayed</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// Enable continuous focus mode
+</span>      <span class="n">cameraView</span><span class="p">.</span><span class="nf">ContinuousFocus</span><span class="p">();</span>
+    <span class="p">},</span> <span class="m">300</span><span class="p">);</span>
   <span class="p">}</span>
 
   <span class="k">public</span> <span class="kt">bool</span> <span class="nf">HandleResult</span><span class="p">(</span><span class="n">ContourDetectorFrameHandler</span><span class="p">.</span><span class="n">DetectedFrame</span> <span class="n">result</span><span class="p">)</span>
@@ -634,11 +644,11 @@ To further improve the user experience you might want to automatically take a ph
       <span class="c1">// Do whatever you want with the documentImage...
 </span>      <span class="n">resultImageView</span><span class="p">.</span><span class="nf">Post</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
         <span class="n">resultImageView</span><span class="p">.</span><span class="nf">SetImageBitmap</span><span class="p">(</span><span class="n">documentImage</span><span class="p">);</span>
+        <span class="c1">// continue camera preview with continuous focus mode
+</span>        <span class="n">cameraView</span><span class="p">.</span><span class="nf">ContinuousFocus</span><span class="p">();</span>
+        <span class="n">cameraView</span><span class="p">.</span><span class="nf">StartPreview</span><span class="p">();</span>
       <span class="p">});</span>
     <span class="p">}</span>
-
-    <span class="c1">// continue camera preview
-</span>    <span class="n">cameraView</span><span class="p">.</span><span class="nf">StartPreview</span><span class="p">();</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
@@ -885,6 +895,11 @@ To further improve the user experience you might want to automatically take a ph
 
 <h3 id="release-history">Release history</h3>
 
+<h5 id="scanbotsdkxamarinandroid-112">ScanbotSDK.Xamarin.Android 1.1.2</h5>
+<ul>
+  <li>Upgraded the Native Scanbot Android SDK to v1.22.3, which provides continuous focus mode in ScanbotCameraView</li>
+</ul>
+
 <h5 id="scanbotsdkxamarinandroid-111">ScanbotSDK.Xamarin.Android 1.1.1</h5>
 <ul>
   <li>Upgraded the Native Scanbot Android SDK to v1.22.0</li>
@@ -957,8 +972,8 @@ http://www.apache.org/licenses/LICENSE-2.0
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 
-RoboGuice
----------
+Dagger 2
+--------
 Licensed under the Apache License, Version 2.0 (the License); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
 http://www.apache.org/licenses/LICENSE-2.0
@@ -1017,8 +1032,26 @@ http://www.apache.org/licenses/LICENSE-2.0
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 
-Google Guice Extensions AssistedInject
---------------------------------------
+Guava: Google Core Libraries For Java
+-------------------------------------
+Licensed under the Apache License, Version 2.0 (the License); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+
+Dagger Compiler
+---------------
+Licensed under the Apache License, Version 2.0 (the License); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+
+Tesseract-ocr
+-------------
 Licensed under the Apache License, Version 2.0 (the License); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
 http://www.apache.org/licenses/LICENSE-2.0
