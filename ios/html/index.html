@@ -54,7 +54,7 @@ $(function() {
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
+<iframe src="javascript:void(0)" frameborder="0"
         name="MSearchResults" id="MSearchResults">
 </iframe>
 </div>
@@ -103,7 +103,9 @@ $(function() {
 <a class="el" href="install_framework.html">For detailed instructions click here</a></p>
 <p><br />
 <br />
- </p><h3>3. License</h3>
+</p>
+
+<h3>3. License</h3>
 <p>In order to run Scanbot SDK functionality within your app you must purchase and install a Scanbot SDK license.</p>
 <p>Not installing a license will let you test all Scanbot SDK features for a trial period of 1 minute. After the trial period is over your app will be terminated immediately. Installing an invalid license will also terminate your application immediately. Installing an expired but valid license will not terminate your app immediately but when using Scanbot SDK API. If the license expires during the apps life cycle Scanbot SDK will continue to work normally until the next start of the application.</p>
 <p>If an expiration date is given for the license the license will expire at that day at 11:59:59 PM o'clock. The timezone of the license is UTC. Any logging of the SDK converts the UTC expiration date to your local timezone.</p>
@@ -111,10 +113,36 @@ $(function() {
 <p>Each license is valid only to your apps bundle identifier. So no other app can highjack your license and reuse it. Any modification of the license will render it invalid. Make sure that you store your license in a safe location.</p>
 <p>You can purchase Scanbot SDK licenses here: <a href="https://scanbot.io/sdk.html">https://scanbot.io/sdk.html</a>.</p>
 <p>In order to activate the license in code use the method <code>-setLicense:</code> method in the <a class="el" href="interface_scanbot_s_d_k.html">ScanbotSDK</a> class. Execute this code as early as possible during your apps runtime, but at least before using any Scanbot SDK functionality, e.g. in your application delegates <code>-application:didFinishLaunchingWithOptions:</code> method.</p>
-<p>If your license has expired any invocation of the Scanbot SDK API will terminate your app. To prevent this you should check for license expiration during runtime by calling [<a class="el" href="interface_scanbot_s_d_k.html">ScanbotSDK</a> isLicenseValid]. If this method returns NO, you should disable Scanbot-SDK-using features or UI.</p>
-<p>Example code for using the license string </p><div class="fragment"><div class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {</div><div class="line">  <span class="comment">// Override point for customization after application launch.</span></div><div class="line">  [<a class="code" href="interface_scanbot_s_d_k.html">ScanbotSDK</a> <a class="code" href="interface_scanbot_s_d_k.html#a67c702de287af6d0a56ab03b476ede7c">setLicense</a>:</div><div class="line">  @&quot;P73ZaxJ3VG08E+0sUqcbf+BPmKoCDVmWZthAS/FmYsh2I&quot;</div><div class="line">  &quot;DT9AJbIKbBRfaDSzjZed4+py7suMYDq++TuzkqVc9CYwGb&quot;</div><div class="line">  &quot;3VL68OhsOEpUAJ/GOdVfZnSTFvDo1JQvq54nY2+EChviwM&quot;</div><div class="line">  &quot;CkBXCDO7YSMB/Rp42dlu7x3a/EFbor+PmlBpZhfdwveyWX&quot;</div><div class="line">  &quot;5MasHiMzgNicdb33hVgyWgcv74NpxL1XyZkcvn7wQrzgzq&quot;</div><div class="line">  &quot;JtJ63YUI6SPmTZtJB2M+0IMYeQXj1HltWX5mcohEIFPme7&quot;</div><div class="line">  &quot;hU0BZB3S476QMceeL4bPCZjgu1vjL7kxKurIqmJGT6juGu&quot;</div><div class="line">  &quot;kFQFJWPoccmgtJnHxI0Cg==\nU2NhbmJvdFNESwpuZXQuZ&quot;</div><div class="line">  &quot;G9vLlBheUZvcm1TY2FubmVyRGVtbwowCjEyOA==\n&quot;];</div><div class="line">  </div><div class="line">  <span class="keywordflow">return</span> YES;</div><div class="line">}</div></div><!-- fragment --><p>Example code for checking the license status </p><div class="fragment"><div class="line"><span class="keywordflow">if</span> ([<a class="code" href="interface_scanbot_s_d_k.html">ScanbotSDK</a> isLicenseValid]) {</div><div class="line">    <span class="comment">//Making your call into ScanbotSDK API is safe now.</span></div><div class="line">    ...</div><div class="line">}</div></div><!-- fragment --><p><br />
-<br />
- </p><h3>4. Logging</h3>
+
+<p>Example code for using the license string: </p>
+<div class="fragment"><div class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {</div><div class="line">  <span class="comment">// Override point for customization after application launch.</span></div><div class="line">  [<a class="code" href="interface_scanbot_s_d_k.html">ScanbotSDK</a> <a class="code" href="interface_scanbot_s_d_k.html#a67c702de287af6d0a56ab03b476ede7c">setLicense</a>:</div><div class="line">  @&quot;P73ZaxJ3VG08E+0sUqcbf+BPmKoCDVmWZthAS/FmYsh2I&quot;</div><div class="line">  &quot;DT9AJbIKbBRfaDSzjZed4+py7suMYDq++TuzkqVc9CYwGb&quot;</div><div class="line">  &quot;3VL68OhsOEpUAJ/GOdVfZnSTFvDo1JQvq54nY2+EChviwM&quot;</div><div class="line">  &quot;CkBXCDO7YSMB/Rp42dlu7x3a/EFbor+PmlBpZhfdwveyWX&quot;</div><div class="line">  &quot;5MasHiMzgNicdb33hVgyWgcv74NpxL1XyZkcvn7wQrzgzq&quot;</div><div class="line">  &quot;JtJ63YUI6SPmTZtJB2M+0IMYeQXj1HltWX5mcohEIFPme7&quot;</div><div class="line">  &quot;hU0BZB3S476QMceeL4bPCZjgu1vjL7kxKurIqmJGT6juGu&quot;</div><div class="line">  &quot;kFQFJWPoccmgtJnHxI0Cg==\nU2NhbmJvdFNESwpuZXQuZ&quot;</div><div class="line">  &quot;G9vLlBheUZvcm1TY2FubmVyRGVtbwowCjEyOA==\n&quot;];</div><div class="line">  </div><div class="line">  <span class="keywordflow">return</span> YES;</div><div class="line">}</div>
+</div><!-- fragment -->
+
+<p><br /></p>
+
+<h3>License checks in production apps</h3>
+<h4>Please note:</h4>
+<p>
+If your Scanbot SDK license has expired, any call of the Scanbot SDK API will terminate your app.
+To prevent this you should always check for license expiration during the runtime by calling the method [<a class="el" href="interface_scanbot_s_d_k.html">ScanbotSDK</a> isLicenseValid].
+If this method returns NO, you should disable any usage of the Scanbot SDK functions or UI components.
+</p>
+<p>
+We highly recommend to implement a suitable handling of this case in your app!
+</p>
+<p>Example code for checking the license status </p><div class="fragment"><div class="line"><span class="keywordflow">if</span> ([<a class="code" href="interface_scanbot_s_d_k.html">ScanbotSDK</a> isLicenseValid]) {</div><div class="line">    <span class="comment">//Making your call into ScanbotSDK API is safe now.</span></div><div class="line">    ...</div><div class="line">}</div></div><!-- fragment --><p><br />
+</p>
+
+<h3>Updating the license in production apps</h3>
+<h4>Please also note:</h4>
+<p>
+To renew an expired license or extend a valid license with new Scanbot SDK features, you will have to update your app in the App Store.
+The expiration date and the feature list of a license are an encrypted data part of the license key string. Which means a renewal or extension of a license will cause a new license key string to be generated.
+</p>
+
+<p><br /></p>
+
+<h3>4. Logging</h3>
 <p>Scanbot SDK comes with its own console logging. By default the logging is turned on. You can turn off logging of Scanbot SDK: </p><div class="fragment"><div class="line">[<a class="code" href="interface_scanbot_s_d_k.html">ScanbotSDK</a> <a class="code" href="interface_scanbot_s_d_k.html#ab87a41d64e7eb39566e60284cc810a1c">setLoggingEnabled</a>:NO];</div></div><!-- fragment --><p>This will also silence information about the Scanbot SDK license.</p>
 <p><br />
 <br />
