@@ -65,17 +65,21 @@ It contains modules which are individually licensable as license packages.
 For more details visit our website <a href="https://scanbot.io/sdk.html">https://scanbot.io/sdk.html</a></p>
 
 <h3 id="requirements">Requirements</h3>
-<p>The Scanbot SDK for Xamarin supports the following mobile platforms</p>
+<p><a href="https://www.visualstudio.com">Microsoft Visual Studio</a> with <a href="https://www.xamarin.com">Xamarin Platform</a></p>
+
+<h3 id="supported-mobile-platforms">Supported mobile platforms</h3>
 <ul>
   <li>iOS 8 and higher</li>
   <li>Android 4.1 (API Level 16) and higher</li>
 </ul>
 
-<h3 id="example-app">Example App</h3>
+<h3 id="example-apps">Example Apps</h3>
+<p>Check out our example apps for Android and iOS on GitHub:</p>
 
-<p>Check out our example app for Android and iOS on GitHub:</p>
-
-<p><a href="https://github.com/doo/scanbot-sdk-example-xamarin">https://github.com/doo/scanbot-sdk-example-xamarin</a></p>
+<ul>
+  <li><a href="https://github.com/doo/scanbot-sdk-example-xamarin">Example App for Xamarin.iOS &amp; Xamarin.Android</a></li>
+  <li><a href="https://github.com/doo/scanbot-sdk-example-xamarin-forms">Example App with Xamarin.Forms (iOS &amp; Android)</a></li>
+</ul>
 
 <h3 id="getting-started">Getting started</h3>
 
@@ -159,6 +163,18 @@ However, since not all native SDK classes and functions are available in the Wra
 <p><em>“Privacy - Camera Usage Description” (NSCameraUsageDescription)</em><br />
 As value describe why your app wants to access the device’s camera.</p>
 
+<p><a name="androidAbiSettings"></a></p>
+<h4 id="android-abi-settings">Android ABI settings</h4>
+<p>The Scanbot SDK uses native libraries under the hood and supports following <a href="https://developer.android.com/ndk/guides/arch.html">ABIs</a>: 
+<code class="highlighter-rouge">armeabi</code>, <code class="highlighter-rouge">armeabi-v7a</code> and <code class="highlighter-rouge">x86</code>. 
+Currently we don’t provide native libs for the <code class="highlighter-rouge">arm64-v8a</code> architecture. 
+But the Scanbot SDK Xamarin package includes <code class="highlighter-rouge">armeabi-v7a</code> libs which are fully compatible with <code class="highlighter-rouge">arm64-v8a</code>.</p>
+
+<p>So to be able to run on arm64-devices please adjust the settings of your Android project and disable <code class="highlighter-rouge">arm64-v8a</code> and <code class="highlighter-rouge">x86_64</code> from supported ABIs:</p>
+
+<p><em>Project Options =&gt; Build =&gt; Android Build =&gt; Advanced Tab: disable <code class="highlighter-rouge">arm64-v8a</code> and <code class="highlighter-rouge">x86_64</code></em></p>
+
+<p><a name="initializeSdk"></a></p>
 <h4 id="initialize-sdk">Initialize SDK</h4>
 <p>The Scanbot SDK must be initialized before usage. Make sure to run the initialization only once per app lifetime.
 In the following examples we will use the convenient wrapper class <code class="highlighter-rouge">SBSDK</code>.</p>
@@ -898,6 +914,54 @@ To further improve the user experience you might want to automatically take a ph
   <li><code class="highlighter-rouge">ErrorTooNoisy</code> - Document was not found, most likely because there is too much background noise (maybe too many other objects on the table, or background texture is not monotonic).</li>
   <li><code class="highlighter-rouge">ErrorNothingDetected</code> - Document was not found. Probably it is not in the viewport. Usually it does not make sense to show any information to the user at this point.</li>
 </ul>
+
+<h3 id="pitfalls-and-issues">Pitfalls and issues</h3>
+<blockquote>
+  <p>I’m getting the error <code class="highlighter-rouge">Java.Lang.UnsatisfiedLinkError: No implementation found for long net.doo.snap.lib.detector.ContourDetector.ctor() (tried Java_net_doo_snap_lib_detector_ContourDetector_ctor and Java_net_doo_snap_lib_detector_ContourDetector_ctor__) occurred</code></p>
+</blockquote>
+
+<p>Solution: Please adjust the <a href="#androidAbiSettings">Android ABI settings</a> of your project. 
+Then clean &amp; rebuild the project, remove the debug app from the device and reinstall it.</p>
+
+<blockquote>
+  <p>I’m getting the error: <code class="highlighter-rouge">android.view.InflateException: Binary XML file line #8: Binary XML file line #8: Error inflating class net.doo.snap.camera.ScanbotCameraView</code></p>
+</blockquote>
+
+<p>Solution: You have to <a href="#initializeSdk">initialize the Scanbot SDK</a> before you can use any UI components like <code class="highlighter-rouge">ScanbotCameraView</code> or other SDK functions.</p>
+
+<blockquote>
+  <p>I got a (trial) license key and integrated it in my app. But now the app crashes.</p>
+</blockquote>
+
+<blockquote>
+  <p>I’m getting the error: <code class="highlighter-rouge">A/libc: Fatal signal 6 (SIGABRT), code -6 in tid 6627 ...</code></p>
+</blockquote>
+
+<p>Solution: Please make sure the package ID (on Android) or bundle ID (on iOS) of your app matches the one of the license key we generated for you.
+If you are testing our example apps with your license key, please adjust the package/bundle ID accordingly.</p>
+
+<p>Please also make sure you have inserted the license key string exact as it is provided in the license file. 
+The line breaks <code class="highlighter-rouge">\n</code> in the license key string are important and may not be removed!</p>
+
+<blockquote>
+  <p>My app stopped working.</p>
+</blockquote>
+
+<p>Solution: Either your trial license period is expired or you set the license key incorrectly.</p>
+
+<blockquote>
+  <p>Your example app crashes after some time / after x images.</p>
+</blockquote>
+
+<p>Solution: Our example apps doesn’t contain a Scanbot SDK license key and run in a <strong>trial mode (trial period of 1 minute)</strong>. 
+After the trial period is over the Scanbot SDK functions will stop working. 
+The UI components (like Scanning UI) will stop working or may be terminated. You have to restart the app to get another trial period.</p>
+
+<h3 id="updating-the-license-in-production-apps">Updating the license in production apps</h3>
+<p><strong>Please note:</strong> 
+To renew an expired license or extend a valid license with new Scanbot SDK features, you will have to update your app in the App Store/ Play Store. 
+The expiration date and the feature list of a license are an encrypted data part of the license key string. 
+Which means a renewal or extension of a license will cause a new license key string to be generated.</p>
 
 <h3 id="release-history">Release history</h3>
 
