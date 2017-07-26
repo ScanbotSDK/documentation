@@ -7,6 +7,7 @@ var searchData=
   ['acceptedsizescore',['acceptedSizeScore',['../interface_s_b_s_d_k_scanner_view_controller.html#a1ded5b6c51a791768e8e1db2e7c68683',1,'SBSDKScannerViewController::acceptedSizeScore()'],['../interface_s_b_s_d_k_document_detector.html#a7552739419ff0a0f869d388e0347519a',1,'SBSDKDocumentDetector::acceptedSizeScore()']]],
   ['accountnumber',['accountNumber',['../interface_s_b_s_d_k_cheque_recognizer_result.html#a4e8eacef30d0214f2bd77f36997f0cf5',1,'SBSDKChequeRecognizerResult']]],
   ['addimage_3a',['addImage:',['../interface_s_b_s_d_k_image_storage.html#a4641cedc6368188d836233107d5506a3',1,'SBSDKImageStorage']]],
+  ['addimagefromurl_3a',['addImageFromURL:',['../interface_s_b_s_d_k_image_storage.html#a1990e4512dfd4d7991c9dcae05c8bf37',1,'SBSDKImageStorage']]],
   ['altitude',['altitude',['../interface_s_b_s_d_k_image_metadata.html#ae720495171526903f36e8a1e43d482a7',1,'SBSDKImageMetadata']]],
   ['analyseimagepagelayout_3acompletion_3a',['analyseImagePageLayout:completion:',['../interface_s_b_s_d_k_optical_text_recognizer.html#a312083d9140c46ceb2d122accb0b5aef',1,'SBSDKOpticalTextRecognizer']]],
   ['aperture',['aperture',['../interface_s_b_s_d_k_image_metadata.html#a6d3f9ace94441da6d06a41cd62ae1d9b',1,'SBSDKImageMetadata']]],

@@ -3,6 +3,7 @@ var searchData=
   ['camerasession',['cameraSession',['../interface_s_b_s_d_k_scanner_view_controller.html#a2d4b8ce1c1d56a92f47a9585efc85422',1,'SBSDKScannerViewController']]],
   ['center',['center',['../interface_s_b_s_d_k_polygon_edge.html#a4789378a128b3f63ee1c3c5ffed8e5af',1,'SBSDKPolygonEdge']]],
   ['confidencevalue',['confidenceValue',['../interface_s_b_s_d_k_o_c_r_result_block.html#aad20df7ff06334734106989c5e74e9a8',1,'SBSDKOCRResultBlock']]],
+  ['contentinsets',['contentInsets',['../interface_s_b_s_d_k_crop_view_controller.html#af6e74cb7e1affb17fb3d2a9505efe880',1,'SBSDKCropViewController']]],
   ['cropfactor',['cropFactor',['../interface_s_b_s_d_k_lens_camera_properties.html#ae0d56a37400a55909c07525c4fb74274',1,'SBSDKLensCameraProperties']]],
   ['croppedimage',['croppedImage',['../interface_s_b_s_d_k_crop_view_controller.html#ab650537a8fee192c3aea8e2e96438127',1,'SBSDKCropViewController']]],
   ['currentanglescore',['currentAngleScore',['../interface_s_b_s_d_k_document_detector.html#a222cdf489e392d2e08dbd369b6ee0fb1',1,'SBSDKDocumentDetector']]],
