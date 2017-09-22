@@ -86,39 +86,65 @@ For more details visit our website <a href="https://scanbot.io/sdk.html">https:/
 
 <h3 id="requirements">Requirements</h3>
 
-<p>The Scanbot SDK plugin requires Cordova 6.0+</p>
+<h4 id="tools">Tools</h4>
+<ul>
+  <li>Node.js, npm</li>
+  <li>Cordova 6.x+ (7.x+ is highly recommended)</li>
+  <li>Android SDK (API Level 16+), Platforms and Developer Tools</li>
+  <li>Xcode + Xcode Command Line Tools (for iOS Apps)</li>
+</ul>
 
-<h3 id="supported-platforms">Supported Platforms</h3>
+<h4 id="supported-mobile-platforms">Supported Mobile Platforms</h4>
 
 <ul>
   <li>Android 4.1 (API Level 16) and higher</li>
   <li>iOS 8 and higher</li>
 </ul>
 
+<p>Please note:</p>
+<ul>
+  <li>The Scanbot SDK Plugin is available only for Android and iOS</li>
+  <li>The plugin <strong>does not work</strong> on other platforms like Windows Phone, Desktop or WebApps</li>
+  <li>We <strong>don’t support</strong> rooted Android devices (custom ROMs)</li>
+</ul>
+
+<h4 id="hardware">Hardware</h4>
+
+<ul>
+  <li>Smartphones and Tablets with a <strong>rear-facing camera with autofocus</strong></li>
+</ul>
+
+<h4 id="simulators--emulators">Simulators / Emulators</h4>
+<p>While it is possible to test your App with the Scanbot SDK Plugin on simulators/emulators, we strongly recommend to use real Android/iOS devices. 
+Depending on the emulated Camera you may not be able to test/evaluate the full functionality of the Scanbot SDK Plugin.</p>
+
 <h3 id="example-apps">Example Apps</h3>
 
-<p>Check out our example apps on GitHub:</p>
+<p>Check out our Example Apps on GitHub:</p>
 
 <ul>
   <li>Plain Cordova App: <a href="https://github.com/doo/scanbot-sdk-example-cordova">https://github.com/doo/scanbot-sdk-example-cordova</a></li>
   <li>Ionic 1 App: <a href="https://github.com/doo/scanbot-sdk-example-ionic1">https://github.com/doo/scanbot-sdk-example-ionic1</a></li>
-  <li>Ionic 2 App: <a href="https://github.com/doo/scanbot-sdk-example-ionic2">https://github.com/doo/scanbot-sdk-example-ionic2</a></li>
+  <li>Ionic 2+ App: <a href="https://github.com/doo/scanbot-sdk-example-ionic2">https://github.com/doo/scanbot-sdk-example-ionic2</a></li>
 </ul>
 
 <h3 id="installation">Installation</h3>
 
 <p>The Scanbot SDK plugin is available as <a href="https://www.npmjs.com/package/cordova-plugin-scanbot-sdk">npm package</a>.</p>
 
-<p>You can simply install and add it to your app by following command:</p>
+<p>You can simply install and add it to your App by following command:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>cordova plugin add cordova-plugin-scanbot-sdk
 </code></pre>
 </div>
 
 <h3 id="xcode-project-settings-for-ios">Xcode project settings for iOS</h3>
-<p>When adding a plugin to your app Cordova automatically adds corresponding settings in the Xcode project. 
-Unfortunately the Cordova plugin system doesn’t support to define “Embedded Binaries” in the Xcode project file which is required by the Scanbot SDK plugin.
-So we have to fix it manually by following workaround:</p>
+<p>When adding a plugin to your App Cordova automatically applies corresponding settings in the Xcode project. 
+Unfortunately the old versions of Cordova (&lt;= 6.x) do not support auto configuration for “Embedded Binaries” in the Xcode project file which is required by the Scanbot SDK plugin.</p>
+
+<p>If you are using Cordova 7.x+ everything should be fine after the plugin installation.</p>
+
+<p>If you are using Cordova 6.x you have to apply following manual settings after the plugin installation:</p>
 
 <ul>
   <li>
@@ -134,8 +160,8 @@ The <code class="highlighter-rouge">ScanbotSDK.framework</code> is provided with
 
 <p><img src="./assets/images/cordova_xcode_scanbot-sdk-framework.png" alt="alt text" title="Xcode project settings" /></p>
 
-<p>Please note: By default Cordova puts the <code class="highlighter-rouge">ScanbotSDK.framework</code> into “Linked Frameworks and Libraries” which will <strong>not</strong> work for the Scabot SDK plugin. 
-The project will compile but the app will crash right after the start!</p>
+<p>Please note: By default Cordova &lt;=6.x puts the <code class="highlighter-rouge">ScanbotSDK.framework</code> into “Linked Frameworks and Libraries” which <strong>will not work</strong> for the Scabot SDK plugin. 
+The project will compile but your App will crash right after the start!</p>
 
 <h3 id="permissions">Permissions</h3>
 
@@ -174,7 +200,9 @@ those permissions just for your information:</p>
   <li><strong><code class="highlighter-rouge">ScanbotSdk</code></strong>
     <ul>
       <li><a href="#module_ScanbotSdk.initializeSdk">.initializeSdk(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.isLicenseValid">.isLicenseValid(successCallback, errorCallback)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.documentDetection">.documentDetection(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.rotateImage">.rotateImage(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.applyImageFilter">.applyImageFilter(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.createPdf">.createPdf(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.getOcrConfigs">.getOcrConfigs(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
@@ -290,6 +318,11 @@ of the Scanbot SDK plugin will terminate your app.</p>
 Please find this identifier in the <code class="highlighter-rouge">config.xml</code> file of your app project:
 <code class="highlighter-rouge">&lt;widget id="my.awesome.app.id" ...&gt;</code></p>
 
+<h4 id="trial-licenses">Trial Licenses</h4>
+<p>You can get a free no strings attached trial license. 
+Please kindly note that this license can only be used in a <strong>development and staging environment</strong>. 
+You are <strong>not allowed to publish</strong> your app to the App Store, Play Store or any 3rd party Android App Store with a <strong>trial license</strong>.</p>
+
 <h4 id="logging">Logging</h4>
 <p>When initializing the Scanbot SDK you can enable logging of the SDK. By default logging is disabled.</p>
 
@@ -311,6 +344,56 @@ There will be no log files created by the Scanbot SDK plugin.</p>
 
 <p><strong>Please note:</strong> While it may be useful for development, <strong>consider switching logging OFF in production builds</strong> for security and performance reasons!</p>
 
+<h3 id="updating-the-license-in-production-apps">Updating the license in production apps</h3>
+<p>To renew an expired license or extend a valid license with new Scanbot SDK features, you will have to update your app in the App Store or Play Store. 
+The expiration date and the feature list of a license are an encrypted data part of the license key string. 
+Which means a renewal or extension of a license will cause a new license key string to be generated.</p>
+
+<p><a name="module_ScanbotSdk.isLicenseValid"></a></p>
+<h3 id="license-check-in-production-apps">License check in production apps</h3>
+<p>If your Scanbot SDK license has expired, any call of the Scanbot SDK API will terminate your app or result in an error. 
+To prevent this you should always check for license expiration during the runtime by calling the method <code class="highlighter-rouge">ScanbotSdk.isLicenseValid(successCallback, errorCallback)</code>.
+If the result of the <code class="highlighter-rouge">successCallback</code> returns <code class="highlighter-rouge">false</code>, you should disable any usage of the Scanbot SDK functions or UI components in your app.</p>
+
+<p>We highly recommend to implement a suitable handling of this case in your app!</p>
+
+<h4 id="scanbotsdkislicensevalidsuccesscallback-errorcallback">ScanbotSdk.isLicenseValid(successCallback, errorCallback)</h4>
+<p>Use this function to check the current state of the license. The SDK must be initialized.</p>
+
+<h5 id="callbacks-1">Callbacks:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">result.isLicenseValid</code> - Contains a boolean status value of the license.
+<code class="highlighter-rouge">true</code> means the Scanbot SDK license is valid and all features can be used normally. 
+<code class="highlighter-rouge">false</code> means the license is <strong>not valid</strong> and any call of the Scanbot SDK API will terminate your app or result in an error.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
+</ul>
+
+<h5 id="example-code-for-checking-the-license-status">Example code for checking the license status:</h5>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">isLicenseValid</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">isLicenseValid</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Making your calls of the Scanbot SDK Plugin API is safe now.</span>
+      <span class="nx">ScanbotSdkUi</span><span class="p">.</span><span class="nx">startCamera</span><span class="p">(...);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="c1">// Implement a suitable handling (e.g. disable Scanbot functionality in your App)</span>
+      <span class="nx">alert</span><span class="p">(</span><span class="s2">"Scanbot SDK license has expired!"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">},</span> <span class="nx">handleErrorCallback</span><span class="p">);</span>
+</code></pre>
+</div>
+
 <p><a name="module_ScanbotSdkUi.startCamera"></a></p>
 <h3 id="camera-ui-for-document-scanning">Camera UI for document scanning</h3>
 <h4 id="scanbotsdkuistartcamerasuccesscallback-errorcallback-options">ScanbotSdkUi.startCamera(successCallback, errorCallback, options)</h4>
@@ -329,7 +412,7 @@ There will be no log files created by the Scanbot SDK plugin.</p>
 
 <p>Use this function to start the Camera UI.</p>
 
-<h5 id="callbacks-1">Callbacks:</h5>
+<h5 id="callbacks-2">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -398,11 +481,12 @@ Default value is 1, which keeps the original image size. Any value &lt; 1 is tre
 <h3 id="cropping-ui">Cropping UI</h3>
 <h4 id="scanbotsdkuistartcroppingsuccesscallback-errorcallback-options">ScanbotSdkUi.startCropping(successCallback, errorCallback, options)</h4>
 
-<p>The Cropping UI provides functionality for manual cropping of an image. It uses the edge detection algorithm of the Scanbot SDK and containts
-some smart UI elements like magnetic lines or magnifier.
-As input a file URI of an image must be passed. The output is a cropped and perspective corrected image as a new file. The input image file will not be modified.</p>
+<p>The Cropping UI provides functionality for manual cropping and rotation of an image. 
+It uses the edge detection algorithm of the Scanbot SDK and containts some smart UI elements like magnetic lines and magnifier.
+As input a file URI of an image must be passed. The output is a cropped and perspective corrected image as a new file. 
+The input image file will not be modified.</p>
 
-<h5 id="callbacks-2">Callbacks:</h5>
+<h5 id="callbacks-3">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -446,7 +530,7 @@ on success the cropped and perspective corrected image as a new file as well as 
 If there was no document detected the result enum provides the exact reason (noisy background, too dark, etc).
 The input image file will not be modified.</p>
 
-<h5 id="callbacks-3">Callbacks:</h5>
+<h5 id="callbacks-4">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -479,6 +563,45 @@ Maybe <code class="highlighter-rouge">null</code> if detection was not successfu
   <li><code class="highlighter-rouge">options.quality</code> - Optional <a href="#imageQuality">quality</a> of the output image.</li>
 </ul>
 
+<h3 id="rotate-image">Rotate Image</h3>
+<p><a name="module_ScanbotSdk.rotateImage"></a></p>
+<h4 id="scanbotsdkrotateimagesuccesscallback-errorcallback-options">ScanbotSdk.rotateImage(successCallback, errorCallback, options)</h4>
+
+<p>Rotates an image by given degrees value. As input a file URI of the image must be passed. 
+The output image will be a new file. The input image file will not be modified.</p>
+
+<h5 id="callbacks-5">Callbacks:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">result.imageFileUri</code> - <a href="#fileHandling">File URI</a> of the rotated result image as JPEG (<code class="highlighter-rouge">'file:///...'</code>).</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
+</ul>
+
+<h5 id="options-3">Options:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">imageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
+  <span class="na">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span>
+  <span class="na">quality</span><span class="p">:</span> <span class="mi">80</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">options.imageFileUri</code> - Input image file URI.</li>
+  <li><code class="highlighter-rouge">options.degrees</code> - Degrees as integer value. The direction of rotation is counterclockwise if <code class="highlighter-rouge">degrees</code> value is positive (e.g. 90°), and clockwise if <code class="highlighter-rouge">degrees</code> value is negative (e.g. −90°).</li>
+  <li><code class="highlighter-rouge">options.quality</code> - Optional <a href="#imageQuality">quality</a> of the output image.</li>
+</ul>
+
 <p><a name="module_ScanbotSdk.applyImageFilter"></a></p>
 <h3 id="apply-image-filter">Apply Image Filter</h3>
 <h4 id="scanbotsdkapplyimagefiltersuccesscallback-errorcallback-options">ScanbotSdk.applyImageFilter(successCallback, errorCallback, options)</h4>
@@ -486,7 +609,7 @@ Maybe <code class="highlighter-rouge">null</code> if detection was not successfu
 <p>Applies filter on an image. As input a file URI of the image must be passed. 
 The output image will be a new file. The input image file will not be modified.</p>
 
-<h5 id="callbacks-4">Callbacks:</h5>
+<h5 id="callbacks-6">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -503,7 +626,7 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-3">Options:</h5>
+<h5 id="options-4">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">imageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
   <span class="na">imageFilter</span><span class="p">:</span> <span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">ImageFilter</span><span class="p">.</span><span class="nx">BINARIZED</span><span class="p">,</span>
@@ -524,7 +647,7 @@ The output image will be a new file. The input image file will not be modified.<
 
 <p>The Scanbot SDK renders given images into a PDF document and stores it as a file. For each image a separate page is generated.</p>
 
-<h5 id="callbacks-5">Callbacks:</h5>
+<h5 id="callbacks-7">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -541,7 +664,7 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-4">Options:</h5>
+<h5 id="options-5">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">]</span>
 <span class="p">};</span>
@@ -562,7 +685,7 @@ It is based on the Tesseract OCR Engine with some modifications and enhancements
 
 <p>Use this function to get Scanbot SDK OCR properties of the current App installation.</p>
 
-<h5 id="callbacks-6">Callbacks:</h5>
+<h5 id="callbacks-8">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -583,7 +706,7 @@ The Scanbot SDK uses the <code class="highlighter-rouge">languageDataPath</code>
   <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-5">Options:</h5>
+<h5 id="options-6">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{};</span>
 </code></pre>
 </div>
@@ -596,7 +719,7 @@ The Scanbot SDK uses the <code class="highlighter-rouge">languageDataPath</code>
 <p>This function takes an array of images and performs Optical Character Recognition on each of the images.
 As result the recognized text can be returned as plain text or a composed PDF file containing selectable and searchable text.</p>
 
-<h5 id="callbacks-7">Callbacks:</h5>
+<h5 id="callbacks-9">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -614,7 +737,7 @@ As result the recognized text can be returned as plain text or a composed PDF fi
   <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-6">Options:</h5>
+<h5 id="options-7">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">],</span>
   <span class="na">languages</span><span class="p">:</span> <span class="p">[</span><span class="s1">'en'</span><span class="p">,</span> <span class="s1">'de'</span><span class="p">],</span>
@@ -689,7 +812,7 @@ Please use the <a href="#module_ScanbotSdk.getOcrConfigs">getOcrConfigs</a> func
 
 <p>By calling ths function all temporary output files generated by the Scanbot SDK plugin will be deleted.</p>
 
-<h5 id="callbacks-8">Callbacks:</h5>
+<h5 id="callbacks-10">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -706,7 +829,7 @@ Please use the <a href="#module_ScanbotSdk.getOcrConfigs">getOcrConfigs</a> func
   <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-7">Options:</h5>
+<h5 id="options-8">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{};</span>
 </code></pre>
 </div>
@@ -761,6 +884,7 @@ We recommend to copy, move or delete the files you get from callbacks to a appro
   <li><code class="highlighter-rouge">ImageFilter.COLOR_ENHANCED</code> - Color-enhancement filter</li>
   <li><code class="highlighter-rouge">ImageFilter.GRAYSCALE</code> - Grayscale filter</li>
   <li><code class="highlighter-rouge">ImageFilter.BINARIZED</code> - Black &amp; White filter</li>
+  <li><code class="highlighter-rouge">ImageFilter.COLOR_DOCUMENT</code> - MagicColor filter</li>
 </ul>
 
 <p><a name="polygon"></a></p>
@@ -805,6 +929,29 @@ Please see the description of the UI functions <a href="#module_ScanbotSdkUi.sta
 
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release history</h3>
+
+<h5 id="130">1.3.0</h5>
+<ul>
+  <li>Android &amp; iOS
+    <ul>
+      <li>Feature: Image rotation functionality in Cropping UI</li>
+      <li>Feature: New API function <code class="highlighter-rouge">rotateImage()</code></li>
+      <li>Feature: New API function <code class="highlighter-rouge">isLicenseValid()</code></li>
+      <li>Feature: New image filter <code class="highlighter-rouge">ImageFilter.COLOR_DOCUMENT</code></li>
+    </ul>
+  </li>
+  <li>Android:
+    <ul>
+      <li>Under the hood: Upgraded the native Scanbot Android SDK to v1.25.1</li>
+    </ul>
+  </li>
+  <li>iOS:
+    <ul>
+      <li>Under the hood: Upgraded the native Scanbot iOS SDK to v1.4.7</li>
+      <li>Bugfix: Fixed initial screen orientation in Camera UI</li>
+    </ul>
+  </li>
+</ul>
 
 <h5 id="125">1.2.5</h5>
 <ul>
