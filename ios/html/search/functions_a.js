@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['pausedetection',['pauseDetection',['../interface_s_b_s_d_k_camera_session.html#ac01013347156e318fdf338685c19ea87',1,'SBSDKCameraSession']]],
-  ['pointatindex_3a',['pointAtIndex:',['../interface_s_b_s_d_k_pay_form_polygon.html#af15dcd108aafd07b4ea13794d1f51a08',1,'SBSDKPayFormPolygon']]],
-  ['progresswithtotalunitcount_3a',['progressWithTotalUnitCount:',['../interface_s_b_s_d_k_progress.html#adfdf7323ade182c0b354a35a0166eace',1,'SBSDKProgress']]],
-  ['propertiesfrommetadata_3a',['propertiesFromMetadata:',['../interface_s_b_s_d_k_lens_camera_properties.html#a50ceb2b11495796e3a7be739a848ea9b',1,'SBSDKLensCameraProperties']]]
+  ['openexternally',['openExternally',['../interface_s_b_s_d_k_machine_readable_code.html#ae379e890cd21200080d1356a7a5865eb',1,'SBSDKMachineReadableCode']]],
+  ['orientation',['orientation',['../interface_s_b_s_d_k_polygon_edge.html#a3de519b28c9807126e4ae5d859c1a9aa',1,'SBSDKPolygonEdge']]]
 ];

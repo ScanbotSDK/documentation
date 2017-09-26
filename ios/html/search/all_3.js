@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['delegate',['delegate',['../interface_s_b_s_d_k_scanner_view_controller.html#a3d6326fa3a4428ce2ce8562c126ff91c',1,'SBSDKScannerViewController::delegate()'],['../interface_s_b_s_d_k_crop_view_controller.html#acb79e80630ad5def4322fd00857245ae',1,'SBSDKCropViewController::delegate()']]],
+  ['defaultmanager',['defaultManager',['../interface_s_b_s_d_k_machine_readable_code_manager.html#a11fc07f5ef6b412678cb09d58ca4f6cb',1,'SBSDKMachineReadableCodeManager']]],
+  ['delegate',['delegate',['../interface_s_b_s_d_k_scanner_view_controller.html#a3d6326fa3a4428ce2ce8562c126ff91c',1,'SBSDKScannerViewController::delegate()'],['../interface_s_b_s_d_k_crop_view_controller.html#acb79e80630ad5def4322fd00857245ae',1,'SBSDKCropViewController::delegate()'],['../interface_s_b_s_d_k_image_editing_view_controller.html#a23dc830e0ea62bac0ad3c05f7ae12519',1,'SBSDKImageEditingViewController::delegate()']]],
+  ['deprecated_20list',['Deprecated List',['../deprecated.html',1,'']]],
   ['deskewangle',['deskewAngle',['../interface_s_b_s_d_k_page_analyzer_result.html#a5521988297943927b8c5f9d975afd48f',1,'SBSDKPageAnalyzerResult']]],
   ['detectdocumentpolygononimage_3avisibleimagerect_3asmoothingenabled_3auselivedetectionparameters_3a',['detectDocumentPolygonOnImage:visibleImageRect:smoothingEnabled:useLiveDetectionParameters:',['../interface_s_b_s_d_k_document_detector.html#a86780288f9e503410b21cbcbfc03abcd',1,'SBSDKDocumentDetector']]],
   ['detectdocumentpolygononsamplebuffer_3avisibleimagerect_3asmoothingenabled_3auselivedetectionparameters_3a',['detectDocumentPolygonOnSampleBuffer:visibleImageRect:smoothingEnabled:useLiveDetectionParameters:',['../interface_s_b_s_d_k_document_detector.html#a6aaaf54593684441a837e24222b06359',1,'SBSDKDocumentDetector']]],
@@ -19,5 +21,8 @@ var searchData=
   ['deviceuseslowperformancedetection',['deviceUsesLowPerformanceDetection',['../interface_s_b_s_d_k_device_information.html#a1949812061540f35a98b642080b928ab',1,'SBSDKDeviceInformation']]],
   ['deviceusesmediumscanquality',['deviceUsesMediumScanQuality',['../interface_s_b_s_d_k_device_information.html#acd931594ec2eca0e215351a50ee57080',1,'SBSDKDeviceInformation']]],
   ['deviceusesvideoprocessing',['deviceUsesVideoProcessing',['../interface_s_b_s_d_k_device_information.html#aa9ccac946665a8549af9b8100787b44d',1,'SBSDKDeviceInformation']]],
-  ['digitalizationdate',['digitalizationDate',['../interface_s_b_s_d_k_image_metadata.html#a79f50936d357d21c157025eab85fe51c',1,'SBSDKImageMetadata']]]
+  ['digitalizationdate',['digitalizationDate',['../interface_s_b_s_d_k_image_metadata.html#a79f50936d357d21c157025eab85fe51c',1,'SBSDKImageMetadata']]],
+  ['dismisschanges',['dismissChanges',['../interface_s_b_s_d_k_crop_view_controller.html#a525751b34c7bc4d6743a2559d8ad8f30',1,'SBSDKCropViewController::dismissChanges()'],['../interface_s_b_s_d_k_image_editing_view_controller.html#ae94ced04604c213f766f62d7c5b5f285',1,'SBSDKImageEditingViewController::dismissChanges()']]],
+  ['displayname',['displayName',['../interface_s_b_s_d_k_contact_q_r_code.html#adb331e40b0e67987040d239d512b4244',1,'SBSDKContactQRCode']]],
+  ['distancefromcenter',['distanceFromCenter',['../interface_s_b_s_d_k_machine_readable_code_metadata.html#a5e477502e13c4cf4c0be7add713e845f',1,'SBSDKMachineReadableCodeMetadata']]]
 ];

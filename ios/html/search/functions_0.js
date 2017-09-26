@@ -10,5 +10,6 @@ var searchData=
   ['applicationdocumentsfolderurl',['applicationDocumentsFolderURL',['../interface_s_b_s_d_k_image_storage.html#a57eaa271e13bf0db3513ac2d4c573d87',1,'SBSDKImageStorage']]],
   ['applicationsupportfolderurl',['applicationSupportFolderURL',['../interface_s_b_s_d_k_image_storage.html#a036ac6438d4a18c0263c18a62d3a9e0e',1,'SBSDKImageStorage']]],
   ['applybuttonimageforcropviewcontroller_3a',['applyButtonImageForCropViewController:',['../protocol_s_b_s_d_k_crop_view_controller_delegate_01-p.html#ae9823d0332d0091b13037aa15d164490',1,'SBSDKCropViewControllerDelegate -p']]],
+  ['applychanges',['applyChanges',['../interface_s_b_s_d_k_crop_view_controller.html#acdaede1d6ab6193aa9106047a6b1dc3e',1,'SBSDKCropViewController::applyChanges()'],['../interface_s_b_s_d_k_image_editing_view_controller.html#ab753491e408bf8ebac76ec3749c627c0',1,'SBSDKImageEditingViewController::applyChanges()']]],
   ['availablelanguages',['availableLanguages',['../interface_s_b_s_d_k_optical_text_recognizer.html#ae68448940bb36abb1b5be3aa5f470b93',1,'SBSDKOpticalTextRecognizer']]]
 ];

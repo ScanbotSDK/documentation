@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['defaultmanager',['defaultManager',['../interface_s_b_s_d_k_machine_readable_code_manager.html#a11fc07f5ef6b412678cb09d58ca4f6cb',1,'SBSDKMachineReadableCodeManager']]],
   ['detectdocumentpolygononimage_3avisibleimagerect_3asmoothingenabled_3auselivedetectionparameters_3a',['detectDocumentPolygonOnImage:visibleImageRect:smoothingEnabled:useLiveDetectionParameters:',['../interface_s_b_s_d_k_document_detector.html#a86780288f9e503410b21cbcbfc03abcd',1,'SBSDKDocumentDetector']]],
   ['detectdocumentpolygononsamplebuffer_3avisibleimagerect_3asmoothingenabled_3auselivedetectionparameters_3a',['detectDocumentPolygonOnSampleBuffer:visibleImageRect:smoothingEnabled:useLiveDetectionParameters:',['../interface_s_b_s_d_k_document_detector.html#a6aaaf54593684441a837e24222b06359',1,'SBSDKDocumentDetector']]],
   ['detectdocumentpolygonsonimage_3a',['detectDocumentPolygonsOnImage:',['../interface_s_b_s_d_k_multiple_documents_detector.html#af27991c86380a948456ac3ec52557aff',1,'SBSDKMultipleDocumentsDetector']]],
@@ -11,5 +12,7 @@ var searchData=
   ['devicename',['deviceName',['../interface_s_b_s_d_k_device_information.html#aebef6a8df854b67cb2e71960e06451ce',1,'SBSDKDeviceInformation']]],
   ['deviceuseslowperformancedetection',['deviceUsesLowPerformanceDetection',['../interface_s_b_s_d_k_device_information.html#a1949812061540f35a98b642080b928ab',1,'SBSDKDeviceInformation']]],
   ['deviceusesmediumscanquality',['deviceUsesMediumScanQuality',['../interface_s_b_s_d_k_device_information.html#acd931594ec2eca0e215351a50ee57080',1,'SBSDKDeviceInformation']]],
-  ['deviceusesvideoprocessing',['deviceUsesVideoProcessing',['../interface_s_b_s_d_k_device_information.html#aa9ccac946665a8549af9b8100787b44d',1,'SBSDKDeviceInformation']]]
+  ['deviceusesvideoprocessing',['deviceUsesVideoProcessing',['../interface_s_b_s_d_k_device_information.html#aa9ccac946665a8549af9b8100787b44d',1,'SBSDKDeviceInformation']]],
+  ['dismisschanges',['dismissChanges',['../interface_s_b_s_d_k_crop_view_controller.html#a525751b34c7bc4d6743a2559d8ad8f30',1,'SBSDKCropViewController::dismissChanges()'],['../interface_s_b_s_d_k_image_editing_view_controller.html#ae94ced04604c213f766f62d7c5b5f285',1,'SBSDKImageEditingViewController::dismissChanges()']]],
+  ['distancefromcenter',['distanceFromCenter',['../interface_s_b_s_d_k_machine_readable_code_metadata.html#a5e477502e13c4cf4c0be7add713e845f',1,'SBSDKMachineReadableCodeMetadata']]]
 ];
