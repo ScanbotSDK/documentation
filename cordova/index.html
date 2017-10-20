@@ -163,6 +163,23 @@ The <code class="highlighter-rouge">ScanbotSDK.framework</code> is provided with
 <p>Please note: By default Cordova &lt;=6.x puts the <code class="highlighter-rouge">ScanbotSDK.framework</code> into “Linked Frameworks and Libraries” which <strong>will not work</strong> for the Scabot SDK plugin. 
 The project will compile but your App will crash right after the start!</p>
 
+<h3 id="tuning-the-android-manifest">Tuning the Android Manifest</h3>
+
+<p>Since your application works with images it is highly recommended to add the attribute <code class="highlighter-rouge">android:largeHeap="true"</code> 
+in the <code class="highlighter-rouge">&lt;application&gt;</code> element of your <code class="highlighter-rouge">platforms/android/AndroidManifest.xml</code> file. 
+Processing images is a memory intensive task and this property will ensure your app has enough heap allocated to avoid <code class="highlighter-rouge">OutOfMemoryError</code> exceptions.</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;application</span>
+  <span class="na">android:largeHeap=</span><span class="s">"true"</span>
+  <span class="err">...</span>
+<span class="err">&lt;/application</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<p>Please note: Due to a potential Cordova issue (<a href="https://issues.apache.org/jira/browse/CB-13474">CB-13474</a>) 
+with the <code class="highlighter-rouge">&lt;edit-config&gt;</code> tag we had to remove the automatic adding of the <code class="highlighter-rouge">android:largeHeap="true"</code> attribute from 
+the Scanbot SDK Cordova Plugin. So please add it manually.</p>
+
 <h3 id="permissions">Permissions</h3>
 
 <p>During the installation the plugin automatically adds all required permissions to your App. Here is a listing of 
@@ -930,9 +947,20 @@ Please see the description of the UI functions <a href="#module_ScanbotSdkUi.sta
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release history</h3>
 
+<h5 id="131">1.3.1</h5>
+<ul>
+  <li>Android
+    <ul>
+      <li>Improvement: Better compatibility with other 3rd-party plugins.</li>
+      <li>Workaround: Temporary removed the <code class="highlighter-rouge">android:largeHeap="true"</code> attribute due to a potential Cordova issue (<a href="https://issues.apache.org/jira/browse/CB-13474">CB-13474</a>) with the <code class="highlighter-rouge">&lt;edit-config&gt;</code> tag.
+Please add the attribute <code class="highlighter-rouge">android:largeHeap="true"</code> manually in the <code class="highlighter-rouge">&lt;application&gt;</code> element of <code class="highlighter-rouge">AndroidManifest.xml</code> file.</li>
+    </ul>
+  </li>
+</ul>
+
 <h5 id="130">1.3.0</h5>
 <ul>
-  <li>Android &amp; iOS
+  <li>Android &amp; iOS:
     <ul>
       <li>Feature: Image rotation functionality in Cropping UI</li>
       <li>Feature: New API function <code class="highlighter-rouge">rotateImage()</code></li>
@@ -984,7 +1012,7 @@ Please see the description of the UI functions <a href="#module_ScanbotSdkUi.sta
 <ul>
   <li>Android:
     <ul>
-      <li>Improvement: Added android:largeHeap=”true” application attribute in AndroidManifest.xml by default</li>
+      <li>Improvement: Added <code class="highlighter-rouge">android:largeHeap="true"</code> application attribute in <code class="highlighter-rouge">AndroidManifest.xml</code> by default</li>
       <li>Under the hood: Upgraded the native Scanbot Android SDK to v1.23.3</li>
     </ul>
   </li>
