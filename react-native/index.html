@@ -494,9 +494,8 @@ If the result of the <code class="highlighter-rouge">successCallback</code> retu
   <li><code class="highlighter-rouge">autoSnappingEnabled</code> - Boolean value. Indicates whether autosnapping is enabled by default.</li>
   <li><code class="highlighter-rouge">imageCompressionQuality</code> - Optional <a href="#imageQuality">quality</a> of the output image.</li>
   <li><code class="highlighter-rouge">autoSnappingSensitivity</code> - Optional float value to change the sensitivity factor of auto-snapping. Must be in the range 0.0…1.0. A value of 1.0 triggers automatic capturing immediately, a value of 0.0 delays the automatic by 3 seconds. The default value is 0.66 (1 sec).</li>
-  <li>
-    <p><code class="highlighter-rouge">sampleSize</code> - Integer value from 0 to 100. Defines result image downscaling.</p>
-  </li>
+  <li><code class="highlighter-rouge">sampleSize</code> - Integer value from 0 to 100. Defines result image downscaling.</li>
+  <li><code class="highlighter-rouge">textResBundle</code> - Optional text resources map to localize or override user guidance hints. If no <code class="highlighter-rouge">textResBundle</code> map is provided english strings will be used as default. The example code below shows all supported text resources keys.</li>
   <li><code class="highlighter-rouge">onImageCaptured</code> - Callback. Called upon capturing an image.</li>
   <li><code class="highlighter-rouge">onImageCaptureFailed</code> - Callback. Called upon capturing failure.</li>
   <li><code class="highlighter-rouge">onDocumentImageCaptured</code> - Callback. Called when image is captured with detected document.</li>
@@ -549,34 +548,49 @@ The document image is cropped and warped (perspective corrected) by detected pol
 
 <span class="kr">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="nx">ScanbotCameraDemo</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
 
-	<span class="nx">imageCaptured</span><span class="p">(</span><span class="nx">event</span><span class="err">:</span> <span class="nx">Event</span><span class="p">)</span> <span class="p">{</span>
-		<span class="c1">// image was captured</span>
-		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">nativeEvent</span><span class="p">);</span>
-	<span class="p">}</span>
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kr">super</span><span class="p">();</span>
 
-	<span class="nx">documentCaptured</span><span class="p">(</span><span class="nx">event</span><span class="err">:</span> <span class="nx">Event</span><span class="p">)</span> <span class="p">{</span>
-		<span class="c1">// document image was captured</span>
-		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">nativeEvent</span><span class="p">);</span>
-	<span class="p">}</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">textResBundle</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">autosnapping_hint_do_not_move</span><span class="p">:</span> <span class="s2">"Don't move"</span><span class="p">,</span>
+      <span class="na">autosnapping_hint_move_closer</span><span class="p">:</span> <span class="s2">"Move closer"</span><span class="p">,</span>
+      <span class="na">autosnapping_hint_bad_angles</span><span class="p">:</span> <span class="s2">"Perspective"</span><span class="p">,</span>
+      <span class="na">autosnapping_hint_nothing_detected</span><span class="p">:</span> <span class="s2">"No document"</span><span class="p">,</span>
+      <span class="na">autosnapping_hint_too_noisy</span><span class="p">:</span> <span class="s2">"Background too noisy"</span><span class="p">,</span>
+      <span class="na">autosnapping_hint_too_dark</span><span class="p">:</span> <span class="s2">"Poor light"</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
 
-	<span class="nx">startCapturingImage</span><span class="p">()</span> <span class="p">{</span>
-		<span class="c1">// snap button was pressed</span>
-	<span class="p">}</span>
+  <span class="nx">imageCaptured</span><span class="p">(</span><span class="nx">event</span><span class="err">:</span> <span class="nx">Event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// image was captured</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">nativeEvent</span><span class="p">);</span>
+  <span class="p">}</span>
+    
+  <span class="nx">documentCaptured</span><span class="p">(</span><span class="nx">event</span><span class="err">:</span> <span class="nx">Event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// document image was captured</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">nativeEvent</span><span class="p">);</span>
+  <span class="p">}</span>
+    
+  <span class="nx">startCapturingImage</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// snap button was pressed</span>
+  <span class="p">}</span>
 
-	<span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="p">(</span>
-			<span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
-				<span class="o">&lt;</span><span class="nx">ScanbotCameraView</span>
-					<span class="nx">autoSnappingEnabled</span><span class="o">=</span><span class="s1">'true'</span>
-					<span class="nx">onStartCapturingImage</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">startCapturingImage</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
-					<span class="nx">onImageCaptured</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">imageCaptured</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
-					<span class="nx">onDocumentImageCaptured</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">documentCaptured</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span><span class="sr">/</span><span class="err">&gt;
-</span>			<span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
-</span>		<span class="p">);</span>
-	<span class="p">}</span>
-
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">ScanbotCameraView</span>
+            <span class="nx">autoSnappingEnabled</span><span class="o">=</span><span class="s1">'true'</span>
+            <span class="nx">autoSnappingSensitivity</span><span class="o">=</span><span class="p">{</span><span class="mf">0.5</span><span class="p">}</span>
+            <span class="nx">imageCompressionQuality</span><span class="o">=</span><span class="p">{</span><span class="mi">70</span><span class="p">}</span>
+            <span class="nx">edgeColor</span><span class="o">=</span><span class="p">{</span><span class="s1">'#0000ff'</span><span class="p">}</span>
+            <span class="nx">onStartCapturingImage</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">startCapturingImage</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
+            <span class="nx">onImageCaptured</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">imageCaptured</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
+            <span class="nx">onDocumentImageCaptured</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">documentCaptured</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span> 
+            <span class="nx">textResBundle</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">textResBundle</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">}</span>
-
 </code></pre>
 </div>
 
@@ -1059,6 +1073,11 @@ where 100 means the least quality loss.</p>
 
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release history</h3>
+
+<h5 id="102">1.0.2</h5>
+<ul>
+  <li>Feature: Add <code class="highlighter-rouge">textResBundle</code> property in <code class="highlighter-rouge">ScanbotCameraView</code> to be able to customize text resources.</li>
+</ul>
 
 <h5 id="101">1.0.1</h5>
 <ul>
