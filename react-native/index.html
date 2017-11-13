@@ -134,49 +134,45 @@ Depending on the emulated Camera you may not be able to test/evaluate the full f
 </code></pre>
 </div>
 
-<h3 id="android-settings">Android Settings</h3>
+<p>After the installation of the npm package you have to link the native dependencies of the Scanbot SDK module into the native build files of your project:</p>
 
-<h4 id="dependencies">Dependencies</h4>
-
-<p>After you have successfully installed the module, add two lines to your application’s <code class="highlighter-rouge">settings.gradle</code> file:</p>
-
-<div class="language-groovy highlighter-rouge"><pre class="highlight"><code><span class="n">include</span> <span class="s1">':react-native-scanbot-sdk'</span>
-<span class="n">project</span><span class="o">(</span><span class="s1">':react-native-scanbot-sdk'</span><span class="o">).</span><span class="na">projectDir</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">rootProject</span><span class="o">.</span><span class="na">projectDir</span><span class="o">,</span> <span class="s1">'../node_modules/react-native-scanbot-sdk/android/app/'</span><span class="o">)</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>react-native link react-native-scanbot-sdk
 </code></pre>
 </div>
 
-<p>React Native Android modules depends on ScanbotSDK for Android (supported architectures are <code class="highlighter-rouge">armeabi-v7a</code> and <code class="highlighter-rouge">x86</code>). To allow Gradle resolve these dependencies, add them to your application’s <code class="highlighter-rouge">build.gradle</code> file, that is inside <code class="highlighter-rouge">app</code> folder, so it’s <code class="highlighter-rouge">dependencies</code> section will look like this:</p>
+<h4 id="android-settings">Android Settings</h4>
 
-<div class="language-groovy highlighter-rouge"><pre class="highlight"><code><span class="n">dependencies</span> <span class="o">{</span>
-	<span class="n">compile</span> <span class="nf">fileTree</span><span class="o">(</span><span class="nl">dir:</span> <span class="s2">"libs"</span><span class="o">,</span> <span class="nl">include:</span> <span class="o">[</span><span class="s2">"*.jar"</span><span class="o">])</span>
-	<span class="n">compile</span> <span class="s2">"com.android.support:appcompat-v7:25.3.1"</span>
+<h5 id="scanbot-sdk-maven-repositories">Scanbot SDK Maven repositories</h5>
 
-	<span class="n">compile</span> <span class="s2">"com.facebook.react:react-native:+"</span>
+<p>This React Native module depends on Scanbot SDK for Android (supported architectures are <code class="highlighter-rouge">armeabi-v7a</code> and <code class="highlighter-rouge">x86</code>).
+The Scanbot SDK for Android is distributed through our private Maven repositories.
+Please add these repositories in your <code class="highlighter-rouge">android/build.gradle</code> file in the section <code class="highlighter-rouge">allprojects &gt; repositories</code>:</p>
 
-	<span class="n">compile</span> <span class="nf">project</span><span class="o">(</span><span class="s1">':react-native-scanbot-sdk'</span><span class="o">)</span> <span class="c1">// point Gradle to ScanbotSDK dependencies</span>
+<div class="language-groovy highlighter-rouge"><pre class="highlight"><code><span class="n">allprojects</span> <span class="o">{</span>
+    <span class="n">repositories</span> <span class="o">{</span>
+        <span class="n">mavenLocal</span><span class="o">()</span>
+        <span class="n">jcenter</span><span class="o">()</span>
+        <span class="n">maven</span> <span class="o">{</span>
+            <span class="c1">// All of React Native (JS, Obj-C sources, Android binaries) is installed from npm</span>
+            <span class="n">url</span> <span class="s2">"$rootDir/../node_modules/react-native/android"</span>
+        <span class="o">}</span>
+
+        <span class="c1">// Scanbot SDK Maven repositories:</span>
+        <span class="n">maven</span> <span class="o">{</span>
+            <span class="n">url</span> <span class="s1">'https://nexus.scanbot.io/nexus/content/repositories/releases/'</span>
+        <span class="o">}</span>
+        <span class="n">maven</span> <span class="o">{</span>
+            <span class="n">url</span> <span class="s1">'https://nexus.scanbot.io/nexus/content/repositories/snapshots/'</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
 </div>
 
-<p>Then in <code class="highlighter-rouge">MainApplication.java</code> add:</p>
+<h5 id="tuning-the-android-manifest">Tuning the Android Manifest</h5>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">io.scanbot.sdk.reactnative.ScanbotSDKPackage</span><span class="o">;</span>
-</code></pre>
-</div>
-
-<p>And in the same file in the <code class="highlighter-rouge">getPackages()</code> method add <code class="highlighter-rouge">new ScanbotSDKPackage()</code>. So the <code class="highlighter-rouge">getPackages()</code> method could looks like this:</p>
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">protected</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">ReactPackage</span><span class="o">&gt;</span> <span class="nf">getPackages</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="n">Arrays</span><span class="o">.&lt;</span><span class="n">ReactPackage</span><span class="o">&gt;</span><span class="n">asList</span><span class="o">(</span>
-       <span class="o">...</span>
-       <span class="k">new</span> <span class="nf">ScanbotSDKPackage</span><span class="o">()</span>
-    <span class="o">);</span>
-<span class="o">}</span>
-</code></pre>
-</div>
-
-<h4 id="tuning-the-android-manifest">Tuning the Android Manifest</h4>
 <p>Since your application works with images it is highly recommended to add the property <code class="highlighter-rouge">android:largeHeap="true"</code> 
-in the <code class="highlighter-rouge">&lt;application&gt;</code> element of your <code class="highlighter-rouge">AndroidManifest.xml</code> file. 
+in the <code class="highlighter-rouge">&lt;application&gt;</code> element of your <code class="highlighter-rouge">android/app/src/main/AndroidManifest.xml</code> file. 
 Processing images is a memory intensive task and this property will ensure your app has enough heap allocated to avoid OutOfMemoryError exceptions.</p>
 
 <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;application</span>
@@ -186,11 +182,15 @@ Processing images is a memory intensive task and this property will ensure your 
 </code></pre>
 </div>
 
-<h3 id="ios-settings-in-xcode">iOS Settings in Xcode</h3>
+<h4 id="ios-settings-in-xcode">iOS Settings in Xcode</h4>
 
-<p>After installing the module, your Xcode project must be configured to utilize ScanbotSDK. If necessary, add <code class="highlighter-rouge">RNScanbotSDK.xcodeproj</code> from node_modules/react-native-scanbot-sdk/ios as a subproject in Libraries folder of your project. Also, you need to add libRNScanbotSDK.a to “Linked Frameworks and Libraries” section of your application main target.</p>
+<p>After installing and linking the module, your Xcode project must be configured to utilize the Scanbot SDK Framework for iOS.</p>
 
-<p>In order to operate successfully you also need to add <code class="highlighter-rouge">ScanbotSDK.framework</code> to your application project’s <code class="highlighter-rouge">Embedded Binaries</code> section.</p>
+<p>Please make sure <code class="highlighter-rouge">RNScanbotSDK.xcodeproj</code> was added correctly by <code class="highlighter-rouge">react-native link</code> command as a sub-project in Libraries folder of your project.</p>
+
+<p>Also, <code class="highlighter-rouge">libRNScanbotSDK.a</code> should be available in the <code class="highlighter-rouge">Linked Frameworks and Libraries</code> section of your application main target.</p>
+
+<p>And last but not least, you need to add <code class="highlighter-rouge">ScanbotSDK.framework</code> to your application project’s <code class="highlighter-rouge">Embedded Binaries</code> section.</p>
 
 <ul>
   <li>
@@ -199,7 +199,8 @@ Processing images is a memory intensive task and this property will ensure your 
     <p><code class="highlighter-rouge">&lt;YOUR_APP_PROJECT_PATH&gt;/ios/&lt;YOUR_APP_NAME&gt;.xcodeproj</code></p>
   </li>
   <li>
-    <p>Go to “TARGETS” settings and find the section “Embedded Binaries”. Then add the <code class="highlighter-rouge">ScanbotSDK.framework</code> (situated in <code class="highlighter-rouge">node_modules/react-native-scanbot-sdk/ios</code>) to “Embedded Binaries”.
+    <p>Go to <code class="highlighter-rouge">TARGETS</code> settings and find the section <code class="highlighter-rouge">Embedded Binaries</code>. 
+Then add the <code class="highlighter-rouge">ScanbotSDK.framework</code> (situated in <code class="highlighter-rouge">node_modules/react-native-scanbot-sdk/ios</code>) to <code class="highlighter-rouge">Embedded Binaries</code>.
 The <code class="highlighter-rouge">ScanbotSDK.framework</code> is provided with the Scanbot SDK React Native Module.</p>
   </li>
 </ul>
@@ -214,13 +215,13 @@ The <code class="highlighter-rouge">ScanbotSDK.framework</code> is provided with
 
 <p><img src="./assets/images/xcode-framework-search-path.png" alt="alt text" title="Xcode Framework search path" /></p>
 
-<p>Also, if you are planning to use ScanbotSDK module for OCR, please add <code class="highlighter-rouge">SBSDKLanguageData</code> folder to “Copy Bundle Resources” build phase in project settings.</p>
+<p>Also, if you are planning to use the OCR functionality of Scanbot SDK, please add <code class="highlighter-rouge">SBSDKLanguageData</code> folder to “Copy Bundle Resources” build phase in project settings.</p>
 
 <p><img src="./assets/images/xcode-add-lang-data.png" alt="alt text" title="Xcode add language data" /></p>
 
 <p><strong>Please note:</strong> If  <code class="highlighter-rouge">ScanbotSDK.framework</code> is put into “Linked Frameworks and Libraries” and not into “Embedded Binaries”, then the module <strong>will not work</strong>. The project will compile but your App will crash right after the start!</p>
 
-<h4 id="images">Images</h4>
+<h5 id="images">Images</h5>
 <p>Also in order to use image assets coming with the Scanbot SDK React Native Module you need to add these images manually to your <code class="highlighter-rouge">Images.xcassets</code> from module’s <strong>Images</strong> directory <code class="highlighter-rouge">node_modules/react-native-scanbot-sdk/ios/Images/</code>.
 Create following Image Set names in your project and add corresponding images:</p>
 <ul>
@@ -230,15 +231,15 @@ Create following Image Set names in your project and add corresponding images:</
   <li><code class="highlighter-rouge">ui_flash_on</code> (flash toggle button ON state)</li>
 </ul>
 
-<p>These images are used in the ScanbotCameraView as toggle buttons for flash light and auto-snapping.</p>
+<p>These images are used in the <code class="highlighter-rouge">ScanbotCameraView</code> as toggle buttons for flash light and auto-snapping.</p>
 
 <p><img src="./assets/images/xcode-add-images.png" alt="alt text" title="Xcode add images" /></p>
 
-<h3 id="permissions">Permissions</h3>
+<h4 id="permissions">Permissions</h4>
 
 <p>In order to operate correctly an application that utilizes ScanbotSDK module must have all required permissions to your App. Here is a listing of those permissions:</p>
 
-<p><strong>Android</strong> (must be added in your <code class="highlighter-rouge">AndroidManifest.xml</code> file)</p>
+<p><strong>Android</strong> (must be added in your <code class="highlighter-rouge">android/app/src/main/AndroidManifest.xml</code> file)</p>
 
 <ul>
   <li><code class="highlighter-rouge">&lt;uses-permission android:name="android.permission.CAMERA" /&gt;</code> - This permission is used for the camera views.</li>
@@ -273,7 +274,7 @@ Create following Image Set names in your project and add corresponding images:</
   <li><strong><code class="highlighter-rouge">ScanbotSdk</code></strong>
     <ul>
       <li><a href="#module_ScanbotSDK.initializeSDK">.initializeSDK</a> - <code class="highlighter-rouge">function</code></li>
-      <li><a href="#module_ScanbotSDK.isLicenseValid">.isLicenseVali</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSDK.isLicenseValid">.isLicenseValid</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.detectDocument">.detectDocument</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.rotateImage">.rotateImage</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.applyImageFilter">.applyImageFilter</a> - <code class="highlighter-rouge">function</code></li>
