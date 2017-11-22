@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['recipients',['recipients',['../interface_s_b_s_d_k_mail_message_q_r_code.html#ab70c1133b0d55c81e0abcb1916affd8d',1,'SBSDKMailMessageQRCode::recipients()'],['../interface_s_b_s_d_k_short_message_q_r_code.html#a7abaa8b138c88604afb094d9042c177b',1,'SBSDKShortMessageQRCode::recipients()']]],
+  ['recipients',['recipients',['../interface_s_b_s_d_k_mail_message_q_r_code.html#ab70c1133b0d55c81e0abcb1916affd8d',1,'SBSDKMailMessageQRCode::recipients()'],['../interface_s_b_s_d_k_short_message_q_r_code.html#ad96562630c517bdc019c82afb2a6805b',1,'SBSDKShortMessageQRCode::recipients()']]],
   ['recognizechequeonbuffer_3aorientation_3a',['recognizeChequeOnBuffer:orientation:',['../interface_s_b_s_d_k_cheque_recognizer.html#a17728dee0a0d52c66cd4259e54c97825',1,'SBSDKChequeRecognizer']]],
   ['recognizecreditcardinfoonbuffer_3aorientation_3a',['recognizeCreditCardInfoOnBuffer:orientation:',['../interface_s_b_s_d_k_credit_card_recognizer.html#ac2023cabdf95d630b8839c563351202b',1,'SBSDKCreditCardRecognizer']]],
   ['recognizecreditcardinfoonimage_3a',['recognizeCreditCardInfoOnImage:',['../interface_s_b_s_d_k_credit_card_recognizer.html#aeb88b261e1e011983d16547f46cb1571',1,'SBSDKCreditCardRecognizer']]],

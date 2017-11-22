@@ -86,6 +86,8 @@ Instance Methods</h2></td></tr>
 <tr class="separator:abad51f9a299539e1fb932dfed358ab74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3fe7fbadb6fcb94410844df8433d08f"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_s_b_s_d_k_scanner_view_controller_delegate_01-p.html#aa3fe7fbadb6fcb94410844df8433d08f">scannerController:didCaptureImage:withDetectedPolygon:lensCameraProperties:</a></td></tr>
 <tr class="separator:aa3fe7fbadb6fcb94410844df8433d08f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affc766ba1bdb630f25a4d4d04fe9df08"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_s_b_s_d_k_scanner_view_controller_delegate_01-p.html#affc766ba1bdb630f25a4d4d04fe9df08">scannerController:didCaptureImage:withDetectedPolygon:imageMetadata:</a></td></tr>
+<tr class="separator:affc766ba1bdb630f25a4d4d04fe9df08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40e8002fb1a61346b657d1638b56f2f8"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_s_b_s_d_k_scanner_view_controller_delegate_01-p.html#a40e8002fb1a61346b657d1638b56f2f8">scannerController:didFailCapturingImage:</a></td></tr>
 <tr class="separator:a40e8002fb1a61346b657d1638b56f2f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd0f52ba79f72dd639e8c9d1ac38f003"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_s_b_s_d_k_scanner_view_controller_delegate_01-p.html#abd0f52ba79f72dd639e8c9d1ac38f003">scannerController:didDetectPolygon:withStatus:</a></td></tr>
@@ -200,6 +202,63 @@ Instance Methods</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">controller</td><td>The calling <a class="el" href="interface_s_b_s_d_k_scanner_view_controller.html">SBSDKScannerViewController</a>. </td></tr>
     <tr><td class="paramname">image</td><td>The captured original image, rotated depending on the device orientation. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="affc766ba1bdb630f25a4d4d04fe9df08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affc766ba1bdb630f25a4d4d04fe9df08">&sect;&nbsp;</a></span>scannerController:didCaptureImage:withDetectedPolygon:imageMetadata:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void SBSDKScannerViewControllerDelegate) scannerController: </td>
+          <td></td>
+          <td class="paramtype">(nonnull <a class="el" href="interface_s_b_s_d_k_scanner_view_controller.html">SBSDKScannerViewController</a> *)&#160;</td>
+          <td class="paramname"><em>controller</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">didCaptureImage:</td>
+          <td></td>
+          <td class="paramtype">(nullable UIImage *)&#160;</td>
+          <td class="paramname"><em>image</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">withDetectedPolygon:</td>
+          <td></td>
+          <td class="paramtype">(nullable <a class="el" href="interface_s_b_s_d_k_polygon.html">SBSDKPolygon</a> *)&#160;</td>
+          <td class="paramname"><em>polygon</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">imageMetadata:</td>
+          <td></td>
+          <td class="paramtype">(nullable <a class="el" href="interface_s_b_s_d_k_image_metadata.html">SBSDKImageMetadata</a> *)&#160;</td>
+          <td class="paramname"><em>metadata</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Tells the delegate that a still image has been captured and its orientation has been corrected. Optional. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>The calling <a class="el" href="interface_s_b_s_d_k_scanner_view_controller.html">SBSDKScannerViewController</a>. </td></tr>
+    <tr><td class="paramname">image</td><td>The captured original image, rotated depending on the device orientation. </td></tr>
+    <tr><td class="paramname">polygon</td><td>The polygon that was detected on the image. </td></tr>
+    <tr><td class="paramname">metadata</td><td>The images metadata object (EXIF, JFIF, TIFF etc). </td></tr>
   </table>
   </dd>
 </dl>
@@ -1065,5 +1124,5 @@ Instance Methods</h2></td></tr>
 </div>-->
 <link href="ScanbotSDK.css" rel="stylesheet" type="text/css" />
 <div class="footer">
-        Scanbot SDK Documentation - Copyright 2015 by doo GmbH generated on Tue Sep 26 2017 16:06:47 <a href="https://scanbot.io"></a>
+        Scanbot SDK Documentation - Copyright 2015 by doo GmbH generated on Wed Nov 22 2017 13:31:41 <a href="https://scanbot.io"></a>
  </div>

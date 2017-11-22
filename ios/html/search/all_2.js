@@ -2,7 +2,6 @@ var searchData=
 [
   ['camerasession',['cameraSession',['../interface_s_b_s_d_k_scanner_view_controller.html#a2d4b8ce1c1d56a92f47a9585efc85422',1,'SBSDKScannerViewController']]],
   ['cancelbuttonimageforcropviewcontroller_3a',['cancelButtonImageForCropViewController:',['../protocol_s_b_s_d_k_crop_view_controller_delegate_01-p.html#a2033f3d95529d41bc7c6083779c7242d',1,'SBSDKCropViewControllerDelegate -p']]],
-  ['canopenexternally',['canOpenExternally',['../interface_s_b_s_d_k_machine_readable_code.html#aa9e0c74ece4ad925c71b9c11a585d0e0',1,'SBSDKMachineReadableCode']]],
   ['capturejpegstillimagewithcompletionhandler_3a',['captureJPEGStillImageWithCompletionHandler:',['../interface_s_b_s_d_k_camera_session.html#a843032df314513125cabec45ee68cc75',1,'SBSDKCameraSession']]],
   ['capturestillimage',['captureStillImage',['../interface_s_b_s_d_k_scanner_view_controller.html#a0434e94c12bb9f79db3ee6c683cc24e4',1,'SBSDKScannerViewController']]],
   ['capturestillimagewithcompletionhandler_3a',['captureStillImageWithCompletionHandler:',['../interface_s_b_s_d_k_camera_session.html#a37d84663052cdc759587bf817b5d4a4a',1,'SBSDKCameraSession']]],
@@ -15,7 +14,7 @@ var searchData=
   ['contentinsets',['contentInsets',['../interface_s_b_s_d_k_crop_view_controller.html#af6e74cb7e1affb17fb3d2a9505efe880',1,'SBSDKCropViewController::contentInsets()'],['../interface_s_b_s_d_k_image_editing_view_controller.html#a639f598546a5cb1938510585410ccc83',1,'SBSDKImageEditingViewController::contentInsets()']]],
   ['convertpolygon_3atopreviewlayerspace_3a',['convertPolygon:toPreviewLayerSpace:',['../interface_s_b_s_d_k_pay_form_result.html#a890d85bffbe81f1cae750b20db5a2eb2',1,'SBSDKPayFormResult']]],
   ['convertpolygontounitspace_3a',['convertPolygonToUnitSpace:',['../interface_s_b_s_d_k_pay_form_result.html#a36a52e5481113993bf410c238e819915',1,'SBSDKPayFormResult']]],
-  ['corners',['corners',['../interface_s_b_s_d_k_machine_readable_code_metadata.html#ab67531135a4e6f8d184f794a129d7254',1,'SBSDKMachineReadableCodeMetadata']]],
+  ['corners',['corners',['../interface_s_b_s_d_k_machine_readable_code_metadata.html#aae0e95d34997d781e86a0e7a43761735',1,'SBSDKMachineReadableCodeMetadata']]],
   ['cropfactor',['cropFactor',['../interface_s_b_s_d_k_lens_camera_properties.html#ae0d56a37400a55909c07525c4fb74274',1,'SBSDKLensCameraProperties']]],
   ['croppedimage',['croppedImage',['../interface_s_b_s_d_k_crop_view_controller.html#ab650537a8fee192c3aea8e2e96438127',1,'SBSDKCropViewController::croppedImage()'],['../interface_s_b_s_d_k_image_editing_view_controller.html#ad80ae4fa660e46d7e2103ba4eee60998',1,'SBSDKImageEditingViewController::croppedImage()']]],
   ['cropviewcontroller_3adidapplychangeswithpolygon_3acroppedimage_3a',['cropViewController:didApplyChangesWithPolygon:croppedImage:',['../protocol_s_b_s_d_k_crop_view_controller_delegate_01-p.html#adbed387eefc0fe0becf0472d9fd701b9',1,'SBSDKCropViewControllerDelegate -p']]],
