@@ -6,6 +6,8 @@ var searchData=
   ['textlineorder',['textlineOrder',['../interface_s_b_s_d_k_page_analyzer_result.html#a4e20b799b5dae3583247d2e1e0f9da0d',1,'SBSDKPageAnalyzerResult']]],
   ['thumbnailforimageatindex_3aofsize_3a',['thumbnailForImageAtIndex:ofSize:',['../interface_s_b_s_d_k_image_storage.html#a9ec234ab1d1debb05f566a57fc89c8a2',1,'SBSDKImageStorage']]],
   ['thumbnailofimageforkey_3aofsize_3a',['thumbnailOfImageForKey:ofSize:',['../interface_s_b_s_d_k_image_storage.html#afd83550853c3bcb0373cbebe1e5f6a48',1,'SBSDKImageStorage']]],
+  ['timesincelastdetectedpolygon',['timeSinceLastDetectedPolygon',['../interface_s_b_s_d_k_scanner_view_controller.html#a7dea8733dffa876e9b6de111a42d5752',1,'SBSDKScannerViewController']]],
+  ['timesincelastmotion',['timeSinceLastMotion',['../interface_s_b_s_d_k_scanner_view_controller.html#a2b9b174a8ec12a57a516ce1207501012',1,'SBSDKScannerViewController']]],
   ['timezone',['timezone',['../interface_s_b_s_d_k_event_q_r_code.html#a9417b3b5cee6aad252c1361659e879fa',1,'SBSDKEventQRCode']]],
   ['title',['title',['../interface_s_b_s_d_k_image_metadata.html#af8b335a68236ba9ff228f73dc95c7903',1,'SBSDKImageMetadata']]],
   ['token',['token',['../interface_s_b_s_d_k_pay_form_recognized_field.html#a67b87a8061b2b69dcda9fb158ef24e9a',1,'SBSDKPayFormRecognizedField']]],
