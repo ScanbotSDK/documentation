@@ -435,14 +435,12 @@ If the result of the <code class="highlighter-rouge">successCallback</code> retu
 </div>
 
 <ul>
-  <li>
-    <p><code class="highlighter-rouge">result.imageFileUri</code> - Contains a <a href="#fileHandling">File URI</a> of the detected document image as JPEG (<code class="highlighter-rouge">'file:///...'</code>). 
-The document image is cropped and warped (perspective corrected) by detected polygon.</p>
-  </li>
-  <li>
-    <p><code class="highlighter-rouge">result.originalImageFileUri</code> - <a href="#fileHandling">File URI</a> of the original full image from the camera as JPEG. 
-Can be used for manual cropping correction via <a href="#module_ScanbotSdkUi.startCropping">Cropping UI</a> if the detected document image was not satisfactory.</p>
-  </li>
+  <li><code class="highlighter-rouge">result.imageFileUri</code> - Contains a <a href="#fileHandling">File URI</a> of the detected document image as JPEG (<code class="highlighter-rouge">'file:///...'</code>). 
+The document image is cropped and warped (perspective corrected) by detected polygon.</li>
+  <li><code class="highlighter-rouge">result.originalImageFileUri</code> - <a href="#fileHandling">File URI</a> of the original full image from the camera as JPEG. 
+Can be used for manual cropping correction via <a href="#module_ScanbotSdkUi.startCropping">Cropping UI</a> if the detected document image was not satisfactory.</li>
+  <li><code class="highlighter-rouge">result.polygon</code> - Contains the detected <a href="#polygon">polygon</a> as array. Maybe empty if detection was not successful.</li>
+  <li><code class="highlighter-rouge">result.detectionResult</code> - The <a href="#detectionResult">Detection Result</a>.</li>
 </ul>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
@@ -459,6 +457,7 @@ Can be used for manual cropping correction via <a href="#module_ScanbotSdkUi.sta
     <span class="na">autosnapping_hint_do_not_move</span><span class="p">:</span> <span class="s2">"Don't move"</span><span class="p">,</span>
     <span class="na">autosnapping_hint_move_closer</span><span class="p">:</span> <span class="s2">"Move closer"</span><span class="p">,</span>
     <span class="na">autosnapping_hint_bad_angles</span><span class="p">:</span> <span class="s2">"Perspective"</span><span class="p">,</span>
+    <span class="na">autosnapping_hint_bad_aspect_ratio</span><span class="p">:</span> <span class="s2">"Wrong aspect ratio.\n Rotate your device"</span><span class="p">,</span>
     <span class="na">autosnapping_hint_nothing_detected</span><span class="p">:</span> <span class="s2">"No document"</span><span class="p">,</span>
     <span class="na">autosnapping_hint_too_noisy</span><span class="p">:</span> <span class="s2">"Background too noisy"</span><span class="p">,</span>
     <span class="na">autosnapping_hint_too_dark</span><span class="p">:</span> <span class="s2">"Poor light"</span>
@@ -555,7 +554,7 @@ The input image file will not be modified.</p>
 <ul>
   <li><code class="highlighter-rouge">result.imageFileUri</code> - <a href="#fileHandling">File URI</a> of the detected and cropped/warped document image as JPEG (<code class="highlighter-rouge">'file:///...'</code>).
 Maybe <code class="highlighter-rouge">null</code> if detection was not successfull.</li>
-  <li><code class="highlighter-rouge">result.polygon</code> - Contains the detected <a href="#polygon">polygon</a> as array. Maybe empty if detection was not successfull.</li>
+  <li><code class="highlighter-rouge">result.polygon</code> - Contains the detected <a href="#polygon">polygon</a> as array. Maybe empty if detection was not successful.</li>
   <li><code class="highlighter-rouge">result.detectionResult</code> - The <a href="#detectionResult">Detection Result</a>.</li>
 </ul>
 
@@ -947,6 +946,26 @@ Please see the description of the UI functions <a href="#module_ScanbotSdkUi.sta
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release history</h3>
 
+<h5 id="140">1.4.0</h5>
+<ul>
+  <li>Android:
+    <ul>
+      <li>Under the hood: Upgraded the native Scanbot Android SDK to v1.26.5</li>
+      <li>Feature: Detection result details in Camera UI callback (<code class="highlighter-rouge">detectionResult</code> and <code class="highlighter-rouge">polygon</code>)</li>
+      <li>Improvement: Optimized auto snapping sensitivity / timings</li>
+      <li>Improvement: Optimized Scanbot SDK license check and error handling (added Java exceptions with human readable messages)</li>
+      <li>Bugfix: Various fixes in Cropping UI</li>
+    </ul>
+  </li>
+  <li>iOS:
+    <ul>
+      <li>Feature: Detection result details in Camera UI callback (<code class="highlighter-rouge">detectionResult</code> and <code class="highlighter-rouge">polygon</code>)</li>
+      <li>Bugfix: Fixed the names of returned <code class="highlighter-rouge">DetectionResult</code> constants according to documentation</li>
+      <li>Bugfix: Added support for the user guidance hint <code class="highlighter-rouge">"autosnapping_hint_bad_aspect_ratio"</code> in Camera UI</li>
+    </ul>
+  </li>
+</ul>
+
 <h5 id="131">1.3.1</h5>
 <ul>
   <li>Android
@@ -1240,6 +1259,190 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
+
+
+ZXing
+-----
+Licensed under the Apache License, Version 2.0 (the License); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+
+
+BoringSSL
+---------
+
+OpenSSL License
+---------------
+
+====================================================================
+Copyright (c) 1998-2011 The OpenSSL Project.  All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+
+3. All advertising materials mentioning features or use of this
+   software must display the following acknowledgment:
+   "This product includes software developed by the OpenSSL Project
+   for use in the OpenSSL Toolkit. (http://www.openssl.org/)"
+
+4. The names "OpenSSL Toolkit" and "OpenSSL Project" must not be used to
+   endorse or promote products derived from this software without
+   prior written permission. For written permission, please contact
+   openssl-core@openssl.org.
+
+5. Products derived from this software may not be called "OpenSSL"
+   nor may "OpenSSL" appear in their names without prior written
+   permission of the OpenSSL Project.
+
+6. Redistributions of any form whatsoever must retain the following
+   acknowledgment:
+   "This product includes software developed by the OpenSSL Project
+   for use in the OpenSSL Toolkit (http://www.openssl.org/)"
+
+THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT ``AS IS'' AND ANY
+EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE OpenSSL PROJECT OR
+ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+OF THE POSSIBILITY OF SUCH DAMAGE.
+====================================================================
+
+This product includes cryptographic software written by Eric Young
+(eay@cryptsoft.com).  This product includes software written by Tim
+Hudson (tjh@cryptsoft.com).
+
+
+
+Original SSLeay License
+-----------------------
+
+Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com)
+All rights reserved.
+
+This package is an SSL implementation written
+by Eric Young (eay@cryptsoft.com).
+The implementation was written so as to conform with Netscapes SSL.
+
+This library is free for commercial and non-commercial use as long as
+the following conditions are aheared to.  The following conditions
+apply to all code found in this distribution, be it the RC4, RSA,
+lhash, DES, etc., code; not just the SSL code.  The SSL documentation
+included with this distribution is covered by the same copyright terms
+except that the holder is Tim Hudson (tjh@cryptsoft.com).
+
+Copyright remains Eric Young's, and as such any Copyright notices in
+the code are not to be removed.
+If this package is used in a product, Eric Young should be given attribution
+as the author of the parts of the library used.
+This can be in the form of a textual message at program startup or
+in documentation (online or textual) provided with the package.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+3. All advertising materials mentioning features or use of this software
+   must display the following acknowledgement:
+   "This product includes cryptographic software written by
+    Eric Young (eay@cryptsoft.com)"
+   The word 'cryptographic' can be left out if the rouines from the library
+   being used are not cryptographic related :-).
+4. If you include any Windows specific code (or a derivative thereof) from
+   the apps directory (application code) you must include an acknowledgement:
+   "This product includes software written by Tim Hudson (tjh@cryptsoft.com)"
+
+THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.
+
+The licence and distribution terms for any publically available version or
+derivative of this code cannot be changed.  i.e. this code cannot simply be
+copied and put under another distribution licence
+[including the GNU Public Licence.]
+
+
+
+ISC license used for completely new code in BoringSSL:
+
+Copyright (c) 2015, Google Inc.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION
+OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
+CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE. */
+
+
+Some files from Intel carry the following license:
+
+Copyright (c) 2012, Intel Corporation
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+*  Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+
+*  Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the
+   distribution.
+
+*  Neither the name of the Intel Corporation nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION ""AS IS"" AND ANY
+EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 </code></pre>
