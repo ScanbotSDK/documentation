@@ -495,12 +495,13 @@ If the result of the <code class="highlighter-rouge">successCallback</code> retu
   <li><code class="highlighter-rouge">autoSnappingEnabled</code> - Boolean value. Indicates whether autosnapping is enabled by default.</li>
   <li><code class="highlighter-rouge">imageCompressionQuality</code> - Optional <a href="#imageQuality">quality</a> of the output image.</li>
   <li><code class="highlighter-rouge">autoSnappingSensitivity</code> - Optional float value to change the sensitivity factor of auto-snapping. Must be in the range 0.0…1.0. A value of 1.0 triggers automatic capturing immediately, a value of 0.0 delays the automatic by 3 seconds. The default value is 0.66 (1 sec).</li>
-  <li><code class="highlighter-rouge">sampleSize</code> - Integer value from 0 to 100. Defines result image downscaling.</li>
+  <li><code class="highlighter-rouge">sampleSize</code> - Optional integer value to force the image decoder to subsample output images (create smaller images to save memory). For example <code class="highlighter-rouge">sampleSize: 2</code> will return images that are 1/2 the width/height of the original. Default value is <code class="highlighter-rouge">1</code>, which keeps the original image size.</li>
   <li><code class="highlighter-rouge">textResBundle</code> - Optional text resources map to localize or override user guidance hints. If no <code class="highlighter-rouge">textResBundle</code> map is provided english strings will be used as default. The example code below shows all supported text resources keys.</li>
-  <li><code class="highlighter-rouge">onImageCaptured</code> - Callback. Called upon capturing an image.</li>
+  <li><code class="highlighter-rouge">onStartCapturingImage</code> - Callback. Called when image capturing and processing is started.</li>
+  <li><code class="highlighter-rouge">onImageCaptured</code> - Callback. Called when the original image was captured.</li>
   <li><code class="highlighter-rouge">onImageCaptureFailed</code> - Callback. Called upon capturing failure.</li>
-  <li><code class="highlighter-rouge">onDocumentImageCaptured</code> - Callback. Called when image is captured with detected document.</li>
-  <li><code class="highlighter-rouge">onPolygonDetected</code> - Callback. Called when Camera has detected a suitable polygon.</li>
+  <li><code class="highlighter-rouge">onDocumentImageCaptured</code> - Callback. Called when the document image was captured with detected polygon.</li>
+  <li><code class="highlighter-rouge">onPolygonDetected</code> - Callback. Called when camera has detected a suitable polygon.</li>
   <li><code class="highlighter-rouge">onSnapButtonPressed</code> - Callback. Called immediately when the user has tapped the snap button.</li>
 </ul>
 
@@ -511,7 +512,7 @@ If the result of the <code class="highlighter-rouge">successCallback</code> retu
 </div>
 
 <ul>
-  <li><code class="highlighter-rouge">imageFileUri</code> - Contains an original (full) <a href="#fileHandling">File URI</a> of the detected document image as JPEG (<code class="highlighter-rouge">'file:///...'</code>).</li>
+  <li><code class="highlighter-rouge">imageFileUri</code> - Contains the <a href="#fileHandling">File URI</a> of the original full image from the camera as JPEG (<code class="highlighter-rouge">'file:///...'</code>).</li>
 </ul>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">onImageCaptureFailed</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="err">:</span> <span class="nx">Event</span><span class="p">)</span>
@@ -527,10 +528,9 @@ If the result of the <code class="highlighter-rouge">successCallback</code> retu
 </div>
 
 <ul>
-  <li><code class="highlighter-rouge">event.nativeEvent.originalImageFileUri</code> - Contains an original (full) <a href="#fileHandling">File URI</a> of the detected document image as JPEG (<code class="highlighter-rouge">'file:///...'</code>).</li>
-  <li><code class="highlighter-rouge">event.nativeEvent.imageFileUri</code> - Contains a <a href="#fileHandling">File URI</a> of the detected document image as JPEG (<code class="highlighter-rouge">'file:///...'</code>).
-The document image is cropped and warped (perspective corrected) by detected polygon.</li>
-  <li><code class="highlighter-rouge">event.nativeEvent.polygon</code> - Contains the detected <a href="#polygon">polygon</a> as array. Maybe empty if detection was not successfull.</li>
+  <li><code class="highlighter-rouge">event.nativeEvent.imageFileUri</code> - Contains the <a href="#fileHandling">File URI</a> of the detected document image as JPEG (<code class="highlighter-rouge">'file:///...'</code>). The document image is cropped and warped (perspective corrected) by detected polygon.</li>
+  <li><code class="highlighter-rouge">event.nativeEvent.originalImageFileUri</code> - Contains the <a href="#fileHandling">File URI</a> of the original full image from the camera as JPEG (<code class="highlighter-rouge">'file:///...'</code>). Can be used for manual cropping correction via <code class="highlighter-rouge">ScanbotCroppingView</code> if the detected document image was not satisfactory.</li>
+  <li><code class="highlighter-rouge">event.nativeEvent.polygon</code> - Contains the detected <a href="#polygon">polygon</a> as array. Maybe empty if detection was not successful.</li>
   <li><code class="highlighter-rouge">event.nativeEvent.detectionResult</code> - The <a href="#detectionResult">Detection Result</a>.</li>
 </ul>
 
@@ -573,7 +573,7 @@ The document image is cropped and warped (perspective corrected) by detected pol
   <span class="p">}</span>
     
   <span class="nx">startCapturingImage</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// snap button was pressed</span>
+    <span class="c1">// e.g. show progress spinner</span>
   <span class="p">}</span>
 
   <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
@@ -1074,6 +1074,20 @@ where 100 means the least quality loss.</p>
 
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release history</h3>
+
+<h5 id="104">1.0.4</h5>
+<ul>
+  <li>Android:
+    <ul>
+      <li>Under the hood: Upgraded the native Scanbot Android SDK to v1.26.5 (contains minor bug fixes).</li>
+    </ul>
+  </li>
+  <li>Android &amp; iOS:
+    <ul>
+      <li>Various bug fixes.</li>
+    </ul>
+  </li>
+</ul>
 
 <h5 id="103">1.0.3</h5>
 <ul>
