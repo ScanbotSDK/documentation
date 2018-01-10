@@ -52,6 +52,7 @@ var searchData=
   ['sbsdkmachinereadablecodeparsing_2dp',['SBSDKMachineReadableCodeParsing-p',['../protocol_s_b_s_d_k_machine_readable_code_parsing-p.html',1,'']]],
   ['sbsdkmachinereadablezonerecognizer',['SBSDKMachineReadableZoneRecognizer',['../interface_s_b_s_d_k_machine_readable_zone_recognizer.html',1,'']]],
   ['sbsdkmachinereadablezonerecognizerresult',['SBSDKMachineReadableZoneRecognizerResult',['../interface_s_b_s_d_k_machine_readable_zone_recognizer_result.html',1,'']]],
+  ['sbsdkmachinereadablezonerecognizertextline',['SBSDKMachineReadableZoneRecognizerTextLine',['../interface_s_b_s_d_k_machine_readable_zone_recognizer_text_line.html',1,'']]],
   ['sbsdkmailmessageqrcode',['SBSDKMailMessageQRCode',['../interface_s_b_s_d_k_mail_message_q_r_code.html',1,'']]],
   ['sbsdkmultipledocumentsdetector',['SBSDKMultipleDocumentsDetector',['../interface_s_b_s_d_k_multiple_documents_detector.html',1,'']]],
   ['sbsdkocrresult',['SBSDKOCRResult',['../interface_s_b_s_d_k_o_c_r_result.html',1,'']]],
