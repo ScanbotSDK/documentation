@@ -77,6 +77,7 @@ For more details visit our website <a href="https://scanbot.io/sdk.html">https:/
   <li>Document Detection</li>
   <li>Image Filters</li>
   <li>PDF Creation</li>
+  <li>Barcode and QR Code Scanning</li>
 </ul>
 
 <p><strong>Package II</strong></p>
@@ -207,7 +208,7 @@ those permissions just for your information:</p>
     <p><strong><code class="highlighter-rouge">ScanbotSdk</code></strong> - This module provides the Scanbot SDK functionality for image operations (e.g. filter, PDF creation, etc.)</p>
   </li>
   <li>
-    <p><strong><code class="highlighter-rouge">ScanbotSdkUi</code></strong> - Provides the UI functionality like Camera UI and Cropping UI.</p>
+    <p><strong><code class="highlighter-rouge">ScanbotSdkUi</code></strong> - Provides the UI functionality like Camera UI, Cropping UI and Barcode Scanning UI.</p>
   </li>
 </ul>
 
@@ -235,6 +236,8 @@ those permissions just for your information:</p>
       <li><a href="#module_ScanbotSdkUi.startCamera">.startCamera(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdkUi.dismissCamera">.dismissCamera()</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdkUi.startCropping">.startCropping(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdkUi.startBarcodeScanner">.startBarcodeScanner(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdkUi.dismissBarcodeScanner">.dismissBarcodeScanner()</a> - <code class="highlighter-rouge">function</code></li>
     </ul>
   </li>
 </ul>
@@ -535,6 +538,54 @@ The input image file will not be modified.</p>
   <li><code class="highlighter-rouge">options.quality</code> - Optional <a href="#imageQuality">quality</a> of the output image.</li>
 </ul>
 
+<p><a name="module_ScanbotSdkUi.startBarcodeScanner"></a></p>
+<h3 id="barcode-and-qr-code-scanning-ui">Barcode and QR Code Scanning UI</h3>
+<h4 id="scanbotsdkuistartbarcodescannersuccesscallback-errorcallback-options">ScanbotSdkUi.startBarcodeScanner(successCallback, errorCallback, options)</h4>
+
+<p>Opens a Scanning UI for barcodes and QR codes.</p>
+
+<h5 id="callbacks-4">Callbacks:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">result.barcodeFormat</code> - <a href="#barcodeFormat">Format</a> of detected barcode/QR code (e.g. “CODE_128”, “EAN_13”, “QR_CODE”, etc).</li>
+  <li><code class="highlighter-rouge">result.textValue</code> - Text value of detected barcode/QR code.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
+</ul>
+
+<h5 id="options-2">Options:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">flashEnabled</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">playTone</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">vibrate</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">barcodeFormats</span><span class="p">:</span> <span class="p">[</span><span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">BarcodeFormat</span><span class="p">.</span><span class="nx">EAN_8</span><span class="p">,</span> <span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">BarcodeFormat</span><span class="p">.</span><span class="nx">EAN_13</span><span class="p">,</span> <span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">BarcodeFormat</span><span class="p">.</span><span class="nx">CODE_128</span><span class="p">]</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">options.flashEnabled</code> - Optional flag to set the initial value of flash (torch light). By default the flash light is disabled.</li>
+  <li><code class="highlighter-rouge">options.playTone</code> - Optional flag to enable or disable the beep tone on detection. By default the beep tone is enabled.</li>
+  <li><code class="highlighter-rouge">options.vibrate</code> - Optional flag to enable or disable a short vibration on detection. By default the vibration is enabled.
+Please note that on some devices the vibration behavior can be forced by system settings.</li>
+  <li><code class="highlighter-rouge">options.barcodeFormats</code> - Optional array of <a href="#barcodeFormat">barcode formats</a> to define as detection filter. By default all supported formats will be detected.</li>
+</ul>
+
+<p><a name="module_ScanbotSdkUi.dismissBarcodeScanner"></a></p>
+<h3 id="close-barcode-scanning-ui">Close Barcode Scanning UI</h3>
+<h4 id="scanbotsdkuidismissbarcodescanner">ScanbotSdkUi.dismissBarcodeScanner()</h4>
+
+<p>Closes the Barcode Scanning UI screen if it is running. No parameters are required. The function provides no callbacks.</p>
+
 <p><a name="module_ScanbotSdk.documentDetection"></a></p>
 <h3 id="document-detection">Document Detection</h3>
 <h4 id="scanbotsdkdocumentdetectionsuccesscallback-errorcallback-options">ScanbotSdk.documentDetection(successCallback, errorCallback, options)</h4>
@@ -546,7 +597,7 @@ on success the cropped and perspective corrected image as a new file as well as 
 If there was no document detected the result enum provides the exact reason (noisy background, too dark, etc).
 The input image file will not be modified.</p>
 
-<h5 id="callbacks-4">Callbacks:</h5>
+<h5 id="callbacks-5">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -566,7 +617,7 @@ Maybe <code class="highlighter-rouge">null</code> if detection was not successfu
   <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-2">Options:</h5>
+<h5 id="options-3">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">imageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
   <span class="na">quality</span><span class="p">:</span> <span class="mi">80</span>
@@ -586,7 +637,7 @@ Maybe <code class="highlighter-rouge">null</code> if detection was not successfu
 <p>Rotates an image by given degrees value. As input a file URI of the image must be passed. 
 The output image will be a new file. The input image file will not be modified.</p>
 
-<h5 id="callbacks-5">Callbacks:</h5>
+<h5 id="callbacks-6">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -603,7 +654,7 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-3">Options:</h5>
+<h5 id="options-4">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">imageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
   <span class="na">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span>
@@ -625,7 +676,7 @@ The output image will be a new file. The input image file will not be modified.<
 <p>Applies filter on an image. As input a file URI of the image must be passed. 
 The output image will be a new file. The input image file will not be modified.</p>
 
-<h5 id="callbacks-6">Callbacks:</h5>
+<h5 id="callbacks-7">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -642,7 +693,7 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-4">Options:</h5>
+<h5 id="options-5">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">imageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
   <span class="na">imageFilter</span><span class="p">:</span> <span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">ImageFilter</span><span class="p">.</span><span class="nx">BINARIZED</span><span class="p">,</span>
@@ -663,7 +714,7 @@ The output image will be a new file. The input image file will not be modified.<
 
 <p>The Scanbot SDK renders given images into a PDF document and stores it as a file. For each image a separate page is generated.</p>
 
-<h5 id="callbacks-7">Callbacks:</h5>
+<h5 id="callbacks-8">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -680,7 +731,7 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-5">Options:</h5>
+<h5 id="options-6">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">]</span>
 <span class="p">};</span>
@@ -701,7 +752,7 @@ It is based on the Tesseract OCR Engine with some modifications and enhancements
 
 <p>Use this function to get Scanbot SDK OCR properties of the current App installation.</p>
 
-<h5 id="callbacks-8">Callbacks:</h5>
+<h5 id="callbacks-9">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -722,7 +773,7 @@ The Scanbot SDK uses the <code class="highlighter-rouge">languageDataPath</code>
   <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-6">Options:</h5>
+<h5 id="options-7">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{};</span>
 </code></pre>
 </div>
@@ -735,7 +786,7 @@ The Scanbot SDK uses the <code class="highlighter-rouge">languageDataPath</code>
 <p>This function takes an array of images and performs Optical Character Recognition on each of the images.
 As result the recognized text can be returned as plain text or a composed PDF file containing selectable and searchable text.</p>
 
-<h5 id="callbacks-9">Callbacks:</h5>
+<h5 id="callbacks-10">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -753,7 +804,7 @@ As result the recognized text can be returned as plain text or a composed PDF fi
   <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-7">Options:</h5>
+<h5 id="options-8">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">],</span>
   <span class="na">languages</span><span class="p">:</span> <span class="p">[</span><span class="s1">'en'</span><span class="p">,</span> <span class="s1">'de'</span><span class="p">],</span>
@@ -828,7 +879,7 @@ Please use the <a href="#module_ScanbotSdk.getOcrConfigs">getOcrConfigs</a> func
 
 <p>By calling ths function all temporary output files generated by the Scanbot SDK plugin will be deleted.</p>
 
-<h5 id="callbacks-10">Callbacks:</h5>
+<h5 id="callbacks-11">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -845,7 +896,7 @@ Please use the <a href="#module_ScanbotSdk.getOcrConfigs">getOcrConfigs</a> func
   <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-8">Options:</h5>
+<h5 id="options-9">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{};</span>
 </code></pre>
 </div>
@@ -927,6 +978,54 @@ where 100 means the least quality loss.</p>
 
 <p>This parameter is optional. The default value used by the Scanbot SDK Plugin is 95.</p>
 
+<p><a name="barcodeFormat"></a></p>
+<h3 id="barcode-format">Barcode Format</h3>
+<p>The following barcode formats are currently supported.</p>
+
+<h4 id="android">Android</h4>
+<h5 id="1d-barcodes">1D barcodes</h5>
+<ul>
+  <li>EAN_13</li>
+  <li>EAN_8</li>
+  <li>UPC_A</li>
+  <li>UPC_E</li>
+  <li>CODE_39</li>
+  <li>CODE_93</li>
+  <li>CODE_128</li>
+  <li>ITF (Interleaved 2 of 5)</li>
+  <li>CODABAR</li>
+</ul>
+
+<h5 id="2d-barcodes">2D barcodes</h5>
+<ul>
+  <li>QR_CODE</li>
+  <li>DATA_MATRIX</li>
+  <li>AZTEC</li>
+  <li>PDF_417</li>
+</ul>
+
+<h4 id="ios">iOS</h4>
+<h5 id="1d-barcodes-1">1D barcodes</h5>
+<ul>
+  <li>EAN_13</li>
+  <li>EAN_8</li>
+  <li>UPC_E</li>
+  <li>CODE_39</li>
+  <li>CODE_93</li>
+  <li>CODE_128</li>
+  <li>ITF (Interleaved 2 of 5)</li>
+</ul>
+
+<h5 id="2d-barcodes-1">2D barcodes</h5>
+<ul>
+  <li>QR_CODE</li>
+  <li>DATA_MATRIX</li>
+  <li>AZTEC</li>
+  <li>PDF_417</li>
+</ul>
+
+<p>All values are provided as string constants in <code class="highlighter-rouge">ScanbotSdk.BarcodeFormat.*</code>.</p>
+
 <p><a name="customization"></a></p>
 <h3 id="ui-customization">UI Customization</h3>
 
@@ -946,7 +1045,35 @@ Please see the description of the UI functions <a href="#module_ScanbotSdkUi.sta
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release history</h3>
 
+<h5 id="150">1.5.0</h5>
+<ul>
+  <li>Android &amp; iOS:
+    <ul>
+      <li>Feature: Barcode and QR code Scanner</li>
+    </ul>
+  </li>
+  <li>Android:
+    <ul>
+      <li>Under the hood: Upgraded the native Scanbot Android SDK to v1.26.7</li>
+    </ul>
+  </li>
+  <li>iOS:
+    <ul>
+      <li>Under the hood: Upgraded the native Scanbot iOS SDK to v1.5.6</li>
+    </ul>
+  </li>
+</ul>
+
 <h5 id="141">1.4.1</h5>
+<ul>
+  <li>Android &amp; iOS:
+    <ul>
+      <li>Bugfix: Error handling in Cropping UI.</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="141-1">1.4.1</h5>
 <ul>
   <li>Android &amp; iOS:
     <ul>
