@@ -43,6 +43,7 @@ var searchData=
   ['installedlanguages',['installedLanguages',['../interface_s_b_s_d_k_optical_text_recognizer.html#a92f1397ca1e20170bea7e39f4b396607',1,'SBSDKOpticalTextRecognizer']]],
   ['iscameraadjusting',['isCameraAdjusting',['../interface_s_b_s_d_k_camera_session.html#a9af7a9560b78f5e7da3f270f0c480fea',1,'SBSDKCameraSession']]],
   ['iscapturingstillimage',['isCapturingStillImage',['../interface_s_b_s_d_k_camera_session.html#adde4269e69e2fcb3d33ffb5e087b8413',1,'SBSDKCameraSession']]],
+  ['ischecked',['isChecked',['../interface_s_b_s_d_k_disability_certificates_recognizer_checkbox_result.html#aad1ca5f8bf8a7c707af8ec8e956c6f88',1,'SBSDKDisabilityCertificatesRecognizerCheckboxResult']]],
   ['isdetectionpaused',['isDetectionPaused',['../interface_s_b_s_d_k_camera_session.html#a871b136edb4098ad644a88322e59a512',1,'SBSDKCameraSession']]],
   ['isequaltopolygon_3a',['isEqualToPolygon:',['../interface_s_b_s_d_k_polygon.html#a1ee16a172ecfd324434532b0ad89adbf',1,'SBSDKPolygon']]],
   ['islicensevalid',['isLicenseValid',['../interface_scanbot_s_d_k.html#ad42818cc2674a04e7b7be2fc8a494ba9',1,'ScanbotSDK']]],

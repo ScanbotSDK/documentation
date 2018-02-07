@@ -1,5 +1,8 @@
 var searchData=
 [
+  ['daterecordtype',['dateRecordType',['../interface_s_b_s_d_k_disability_certificates_recognizer_date_result.html#a2a67219805d0a768e6e8c7674b466d4b',1,'SBSDKDisabilityCertificatesRecognizerDateResult']]],
+  ['dates',['dates',['../interface_s_b_s_d_k_disability_certificates_recognizer_result.html#a4852171c20cfdfbed83ffc1000e7954e',1,'SBSDKDisabilityCertificatesRecognizerResult']]],
+  ['datestring',['dateString',['../interface_s_b_s_d_k_disability_certificates_recognizer_date_result.html#acabb9937a2a11159285f6f9ebd4cd4e4',1,'SBSDKDisabilityCertificatesRecognizerDateResult']]],
   ['delegate',['delegate',['../interface_s_b_s_d_k_scanner_view_controller.html#a3d6326fa3a4428ce2ce8562c126ff91c',1,'SBSDKScannerViewController::delegate()'],['../interface_s_b_s_d_k_crop_view_controller.html#acb79e80630ad5def4322fd00857245ae',1,'SBSDKCropViewController::delegate()'],['../interface_s_b_s_d_k_image_editing_view_controller.html#a23dc830e0ea62bac0ad3c05f7ae12519',1,'SBSDKImageEditingViewController::delegate()']]],
   ['deskewangle',['deskewAngle',['../interface_s_b_s_d_k_page_analyzer_result.html#a5521988297943927b8c5f9d975afd48f',1,'SBSDKPageAnalyzerResult']]],
   ['detectedboxes',['detectedBoxes',['../interface_s_b_s_d_k_pay_form_detection_result.html#a943fee19fb220c9ef272e1e9522c32fb',1,'SBSDKPayFormDetectionResult']]],

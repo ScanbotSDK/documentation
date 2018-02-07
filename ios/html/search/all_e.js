@@ -1,6 +1,8 @@
 var searchData=
 [
   ['recipients',['recipients',['../interface_s_b_s_d_k_mail_message_q_r_code.html#ab70c1133b0d55c81e0abcb1916affd8d',1,'SBSDKMailMessageQRCode::recipients()'],['../interface_s_b_s_d_k_short_message_q_r_code.html#ad96562630c517bdc019c82afb2a6805b',1,'SBSDKShortMessageQRCode::recipients()']]],
+  ['recognitionconfidence',['recognitionConfidence',['../interface_s_b_s_d_k_disability_certificates_recognizer_date_result.html#ac637510b20b4ab20f268fac7ae18d71e',1,'SBSDKDisabilityCertificatesRecognizerDateResult']]],
+  ['recognitionsuccessful',['recognitionSuccessful',['../interface_s_b_s_d_k_disability_certificates_recognizer_result.html#a1141acf703d41160dd2bf48722a249f0',1,'SBSDKDisabilityCertificatesRecognizerResult']]],
   ['recognizechequeonbuffer_3aorientation_3a',['recognizeChequeOnBuffer:orientation:',['../interface_s_b_s_d_k_cheque_recognizer.html#a17728dee0a0d52c66cd4259e54c97825',1,'SBSDKChequeRecognizer']]],
   ['recognizecreditcardinfoonbuffer_3aorientation_3a',['recognizeCreditCardInfoOnBuffer:orientation:',['../interface_s_b_s_d_k_credit_card_recognizer.html#ac2023cabdf95d630b8839c563351202b',1,'SBSDKCreditCardRecognizer']]],
   ['recognizecreditcardinfoonimage_3a',['recognizeCreditCardInfoOnImage:',['../interface_s_b_s_d_k_credit_card_recognizer.html#aeb88b261e1e011983d16547f46cb1571',1,'SBSDKCreditCardRecognizer']]],
@@ -8,6 +10,8 @@ var searchData=
   ['recognizedtext',['recognizedText',['../interface_s_b_s_d_k_o_c_r_result.html#a17e22f1f1f25a6be1ccd7ce9e4bca84a',1,'SBSDKOCRResult']]],
   ['recognizefieldsinsamplebuffer_3aorientation_3a',['recognizeFieldsInSampleBuffer:orientation:',['../interface_s_b_s_d_k_pay_form_scanner.html#a18d47b2fba17f41815d2a4c6503b3f74',1,'SBSDKPayFormScanner']]],
   ['recognizefieldsonimage_3a',['recognizeFieldsOnImage:',['../interface_s_b_s_d_k_pay_form_scanner.html#a7ffba5913e21d38463cca04f1c7f762f',1,'SBSDKPayFormScanner']]],
+  ['recognizefromimage_3a',['recognizeFromImage:',['../interface_s_b_s_d_k_disability_certificates_recognizer.html#a1e30fe75e8a2477854c58ca9bce44690',1,'SBSDKDisabilityCertificatesRecognizer']]],
+  ['recognizefromsamplebuffer_3aorientation_3a',['recognizeFromSampleBuffer:orientation:',['../interface_s_b_s_d_k_disability_certificates_recognizer.html#a80baad165595ab5bd6f7537c37353c9d',1,'SBSDKDisabilityCertificatesRecognizer']]],
   ['recognizepersonalidentityfromimage_3a',['recognizePersonalIdentityFromImage:',['../interface_s_b_s_d_k_machine_readable_zone_recognizer.html#a6f5e05f3dbf950be259be73d0a569043',1,'SBSDKMachineReadableZoneRecognizer']]],
   ['recognizepersonalidentityfromsamplebuffer_3aorientation_3a',['recognizePersonalIdentityFromSampleBuffer:orientation:',['../interface_s_b_s_d_k_machine_readable_zone_recognizer.html#aec677f985caee561e342d0fbcd4cac68',1,'SBSDKMachineReadableZoneRecognizer']]],
   ['recognizetext_3acopyimagestorage_3aindexset_3alanguagestring_3apdfoutputurl_3acompletion_3a',['recognizeText:copyImageStorage:indexSet:languageString:pdfOutputURL:completion:',['../interface_s_b_s_d_k_optical_text_recognizer.html#aa8c0db5ea44220fe19ac8065edbbd529',1,'SBSDKOpticalTextRecognizer']]],

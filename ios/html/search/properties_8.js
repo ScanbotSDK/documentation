@@ -11,6 +11,7 @@ var searchData=
   ['imageurls',['imageURLs',['../interface_s_b_s_d_k_image_storage.html#a5f6b973442ffc8ec2c61d35f788fc5cf',1,'SBSDKImageStorage']]],
   ['imagewidth',['imageWidth',['../interface_s_b_s_d_k_image_metadata.html#a9d1137d8498921710beeaa00fe19d6bd',1,'SBSDKImageMetadata']]],
   ['iscapturingstillimage',['isCapturingStillImage',['../interface_s_b_s_d_k_camera_session.html#adde4269e69e2fcb3d33ffb5e087b8413',1,'SBSDKCameraSession']]],
+  ['ischecked',['isChecked',['../interface_s_b_s_d_k_disability_certificates_recognizer_checkbox_result.html#aad1ca5f8bf8a7c707af8ec8e956c6f88',1,'SBSDKDisabilityCertificatesRecognizerCheckboxResult']]],
   ['isovalue',['ISOValue',['../interface_s_b_s_d_k_image_metadata.html#a756bd83f04ed1b06125c43b61cafd851',1,'SBSDKImageMetadata']]],
   ['isvalidpayform',['isValidPayForm',['../interface_s_b_s_d_k_pay_form_detection_result.html#a66413217399cd82b2f79b361a0ad464f',1,'SBSDKPayFormDetectionResult']]]
 ];

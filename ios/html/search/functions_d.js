@@ -49,9 +49,10 @@ var searchData=
   ['setnormalizedpoint_3aforindex_3a',['setNormalizedPoint:forIndex:',['../interface_s_b_s_d_k_polygon.html#a2d29707fef3de7993a1821a2d529ce55',1,'SBSDKPolygon']]],
   ['setpageanalyzerresult_3a',['setPageAnalyzerResult:',['../interface_s_b_s_d_k_o_c_r_result.html#a0544ab27036be3191b820642174f6374',1,'SBSDKOCRResult']]],
   ['sharedeventstore',['sharedEventStore',['../interface_s_b_s_d_k_event_q_r_code.html#ab7627296661e4d0fbff4501362588aa6',1,'SBSDKEventQRCode']]],
+  ['simulatecapturewithimage_3a',['simulateCaptureWithImage:',['../interface_s_b_s_d_k_scanner_view_controller.html#a692ca417f307c90c2e9bc4f72128f924',1,'SBSDKScannerViewController']]],
   ['sortclockwise',['sortClockwise',['../interface_s_b_s_d_k_polygon.html#a3db88554b67f61c9f2ae25bc37f07861',1,'SBSDKPolygon']]],
   ['standarddeviationtopolygon_3a',['standardDeviationToPolygon:',['../interface_s_b_s_d_k_polygon.html#afe286e1fc52f842aa90a4c67b49b6260',1,'SBSDKPolygon']]],
   ['startsession',['startSession',['../interface_s_b_s_d_k_camera_session.html#a3cbc6fe27a0eb2b258050ec589368e9a',1,'SBSDKCameraSession']]],
   ['stopsession',['stopSession',['../interface_s_b_s_d_k_camera_session.html#a68c3b52e8d9825b4ba7a87345d90d9c1',1,'SBSDKCameraSession']]],
-  ['stringrepresentation',['stringRepresentation',['../interface_s_b_s_d_k_invoice_recognizer_result.html#abf91c9a68b36e38931a674fa0c514350',1,'SBSDKInvoiceRecognizerResult::stringRepresentation()'],['../interface_s_b_s_d_k_machine_readable_zone_recognizer_result.html#a640258ee13ed0258faa024f7986b40c5',1,'SBSDKMachineReadableZoneRecognizerResult::stringRepresentation()']]]
+  ['stringrepresentation',['stringRepresentation',['../interface_s_b_s_d_k_disability_certificates_recognizer_result.html#aaf6165d6f5435ffade7ade85bd49bc42',1,'SBSDKDisabilityCertificatesRecognizerResult::stringRepresentation()'],['../interface_s_b_s_d_k_invoice_recognizer_result.html#abf91c9a68b36e38931a674fa0c514350',1,'SBSDKInvoiceRecognizerResult::stringRepresentation()'],['../interface_s_b_s_d_k_machine_readable_zone_recognizer_result.html#a640258ee13ed0258faa024f7986b40c5',1,'SBSDKMachineReadableZoneRecognizerResult::stringRepresentation()']]]
 ];
