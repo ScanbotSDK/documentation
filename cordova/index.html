@@ -66,7 +66,7 @@
 It contains modules which are individually licensable as license packages.
 For more details visit our website <a href="https://scanbot.io/sdk.html">https://scanbot.io/sdk.html</a></p>
 
-<p>This Cordova plugin provides implementations of Scanbbot SDK for iOS and Android.</p>
+<p>This Cordova plugin provides implementations of Scanbot SDK for iOS and Android.</p>
 
 <p>Following <strong><a href="https://scanbot.io/sdk.html#packages">Package I + II</a></strong> functionality is covered by this plugin:</p>
 
@@ -89,10 +89,24 @@ For more details visit our website <a href="https://scanbot.io/sdk.html">https:/
 
 <h4 id="tools">Tools</h4>
 <ul>
-  <li>Node.js, npm</li>
-  <li>Cordova 6.x+ (7.x+ is highly recommended)</li>
-  <li>Android SDK (API Level 16+), Platforms and Developer Tools</li>
-  <li>Xcode + Xcode Command Line Tools (for iOS Apps)</li>
+  <li>
+    <p>Node.js, npm</p>
+  </li>
+  <li>
+    <p>Cordova CLI 6.x+ (recommended 7.x+)</p>
+
+    <p>Cordova Platforms:</p>
+    <ul>
+      <li><a href="https://www.npmjs.com/package/cordova-android">cordova-android</a> <strong>6.x+</strong> (recommended 7.x)</li>
+      <li><a href="https://www.npmjs.com/package/cordova-ios">cordova-ios</a> <strong>4.4.0+</strong> (recommended 4.5.x)</li>
+    </ul>
+  </li>
+  <li>
+    <p>Android SDK (API Level 16+), Platforms and Developer Tools (for Android Apps)</p>
+  </li>
+  <li>
+    <p>Xcode + Xcode Command Line Tools (for iOS Apps)</p>
+  </li>
 </ul>
 
 <h4 id="supported-mobile-platforms">Supported Mobile Platforms</h4>
@@ -140,12 +154,13 @@ Depending on the emulated Camera you may not be able to test/evaluate the full f
 </div>
 
 <h3 id="xcode-project-settings-for-ios">Xcode project settings for iOS</h3>
-<p>When adding a plugin to your App Cordova automatically applies corresponding settings in the Xcode project. 
-Unfortunately the old versions of Cordova (&lt;= 6.x) do not support auto configuration for “Embedded Binaries” in the Xcode project file which is required by the Scanbot SDK plugin.</p>
+<p>When adding a plugin to your App, Cordova automatically applies corresponding settings in the Xcode project. 
+Unfortunately the old versions of Cordova iOS Platform <a href="https://www.npmjs.com/package/cordova-ios">cordova-ios</a> &lt; 4.4.0 
+do not support auto configuration for “Embedded Binaries” in the Xcode project file which is required by the Scanbot SDK plugin.</p>
 
-<p>If you are using Cordova 7.x+ everything should be fine after the plugin installation.</p>
+<p>👍 If you are using <code class="highlighter-rouge">cordova-ios@4.4.0</code> or higher in your project, everything should be fine after the plugin installation.</p>
 
-<p>If you are using Cordova 6.x you have to apply following manual settings after the plugin installation:</p>
+<p>‼️ If you are using an older version of <code class="highlighter-rouge">cordova-ios</code>, you have to <strong>apply following manual settings</strong> after the plugin installation:</p>
 
 <ul>
   <li>
@@ -155,13 +170,14 @@ Unfortunately the old versions of Cordova (&lt;= 6.x) do not support auto config
   </li>
   <li>
     <p>Go to “TARGETS” settings and find the section “Embedded Binaries”. Then add the <code class="highlighter-rouge">ScanbotSDK.framework</code> to “Embedded Binaries”.
-The <code class="highlighter-rouge">ScanbotSDK.framework</code> is provided with the Scanbot SDK plugin.</p>
+The <code class="highlighter-rouge">ScanbotSDK.framework</code> is provided with the Scanbot SDK plugin. The following picture shows correct settings of <code class="highlighter-rouge">ScanbotSDK.framework</code>:</p>
   </li>
 </ul>
 
 <p><img src="./assets/images/cordova_xcode_scanbot-sdk-framework.png" alt="alt text" title="Xcode project settings" /></p>
 
-<p>Please note: By default Cordova &lt;=6.x puts the <code class="highlighter-rouge">ScanbotSDK.framework</code> into “Linked Frameworks and Libraries” which <strong>will not work</strong> for the Scabot SDK plugin. 
+<p><strong>Please note and double-check:</strong> Older versions of <code class="highlighter-rouge">cordova-ios</code> will put the <code class="highlighter-rouge">ScanbotSDK.framework</code> into “Linked Frameworks and Libraries” 
+which is <strong>wrong and will not work</strong> for the Scabot SDK plugin! 
 The project will compile but your App will crash right after the start!</p>
 
 <h3 id="tuning-the-android-manifest">Tuning the Android Manifest</h3>
@@ -177,7 +193,7 @@ Processing images is a memory intensive task and this property will ensure your 
 </code></pre>
 </div>
 
-<p>Please note: Due to a potential Cordova issue (<a href="https://issues.apache.org/jira/browse/CB-13474">CB-13474</a>) 
+<p><strong>Please note:</strong> Due to a potential Cordova issue (<a href="https://issues.apache.org/jira/browse/CB-13474">CB-13474</a>) 
 with the <code class="highlighter-rouge">&lt;edit-config&gt;</code> tag we had to remove the automatic adding of the <code class="highlighter-rouge">android:largeHeap="true"</code> attribute from 
 the Scanbot SDK Cordova Plugin. So please add it manually.</p>
 
@@ -1045,6 +1061,15 @@ Please see the description of the UI functions <a href="#module_ScanbotSdkUi.sta
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release history</h3>
 
+<h5 id="160">1.6.0</h5>
+<ul>
+  <li>Android:
+    <ul>
+      <li>Improvement: Added support for latest version of Cordova Android platform <code class="highlighter-rouge">cordova-android@7.0.0</code></li>
+    </ul>
+  </li>
+</ul>
+
 <h5 id="150">1.5.0</h5>
 <ul>
   <li>Android &amp; iOS:
@@ -1065,15 +1090,6 @@ Please see the description of the UI functions <a href="#module_ScanbotSdkUi.sta
 </ul>
 
 <h5 id="141">1.4.1</h5>
-<ul>
-  <li>Android &amp; iOS:
-    <ul>
-      <li>Bugfix: Error handling in Cropping UI.</li>
-    </ul>
-  </li>
-</ul>
-
-<h5 id="141-1">1.4.1</h5>
 <ul>
   <li>Android &amp; iOS:
     <ul>
