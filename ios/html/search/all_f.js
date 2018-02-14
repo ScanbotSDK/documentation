@@ -85,6 +85,7 @@ var searchData=
   ['sbsdkshutterbutton',['SBSDKShutterButton',['../interface_s_b_s_d_k_shutter_button.html',1,'']]],
   ['sbsdkstillimagecapturer',['SBSDKStillImageCapturer',['../interface_s_b_s_d_k_still_image_capturer.html',1,'']]],
   ['sbsdkstillimagecapturer_5fios10',['SBSDKStillImageCapturer_iOS10',['../interface_s_b_s_d_k_still_image_capturer__i_o_s10.html',1,'']]],
+  ['sbsdktiffimagewriter',['SBSDKTIFFImageWriter',['../interface_s_b_s_d_k_t_i_f_f_image_writer.html',1,'']]],
   ['sbsdkweburlqrcode',['SBSDKWebURLQRCode',['../interface_s_b_s_d_k_web_u_r_l_q_r_code.html',1,'']]],
   ['sbsdkwifihotspotqrcode',['SBSDKWiFiHotspotQRCode',['../interface_s_b_s_d_k_wi_fi_hotspot_q_r_code.html',1,'']]],
   ['scanbotsdk',['ScanbotSDK',['../interface_scanbot_s_d_k.html',1,'']]],

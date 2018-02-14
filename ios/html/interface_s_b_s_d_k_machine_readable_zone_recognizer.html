@@ -74,11 +74,11 @@ $(function() {
 Instance Methods</h2></td></tr>
 <tr class="memitem:a6f5e05f3dbf950be259be73d0a569043"><td class="memItemLeft" align="right" valign="top">(nonnull <a class="el" href="interface_s_b_s_d_k_machine_readable_zone_recognizer_result.html">SBSDKMachineReadableZoneRecognizerResult</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_b_s_d_k_machine_readable_zone_recognizer.html#a6f5e05f3dbf950be259be73d0a569043">recognizePersonalIdentityFromImage:</a></td></tr>
 <tr class="separator:a6f5e05f3dbf950be259be73d0a569043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec677f985caee561e342d0fbcd4cac68"><td class="memItemLeft" align="right" valign="top">(nonnull <a class="el" href="interface_s_b_s_d_k_machine_readable_zone_recognizer_result.html">SBSDKMachineReadableZoneRecognizerResult</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_b_s_d_k_machine_readable_zone_recognizer.html#aec677f985caee561e342d0fbcd4cac68">recognizePersonalIdentityFromSampleBuffer:orientation:</a></td></tr>
-<tr class="separator:aec677f985caee561e342d0fbcd4cac68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2104154736ba0395acdb4a201cd2e368"><td class="memItemLeft" align="right" valign="top">(nonnull <a class="el" href="interface_s_b_s_d_k_machine_readable_zone_recognizer_result.html">SBSDKMachineReadableZoneRecognizerResult</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_b_s_d_k_machine_readable_zone_recognizer.html#a2104154736ba0395acdb4a201cd2e368">recognizePersonalIdentityFromSampleBuffer:orientation:searchMachineReadableZone:machineReadableZoneRect:</a></td></tr>
+<tr class="separator:a2104154736ba0395acdb4a201cd2e368"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Wrapper class for machine readable zones recognition. Recognition is performed on still UIImage or SampleBufferRef, result is incapsulated in SBSDKMRZRecognizerResult instance. NOTE: In order to operate, this class requires tesseract languages and trained data to be present in application bundle </p>
+<div class="textblock"><p>Wrapper class for machine-readable zones recognition. Recognition is performed on still UIImage or SampleBufferRef, result is incapsulated in SBSDKMRZRecognizerResult instance. NOTE: In order to operate, this class requires tesseract languages and trained data to be present in application bundle </p>
 </div><h2 class="groupheader">Method Documentation</h2>
 <a id="a6f5e05f3dbf950be259be73d0a569043"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6f5e05f3dbf950be259be73d0a569043">&sect;&nbsp;</a></span>recognizePersonalIdentityFromImage:()</h2>
@@ -95,9 +95,9 @@ Instance Methods</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Acquire all available MRZ information from UIImage instance </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Acquire all available information from UIImage instance containing machine-readable zone. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">image</td><td>The image where MRZ is to be detected. </td></tr>
+    <tr><td class="paramname">image</td><td>The image where machine-readable zone is to be detected. </td></tr>
   </table>
   </dd>
 </dl>
@@ -105,8 +105,8 @@ Instance Methods</h2></td></tr>
 
 </div>
 </div>
-<a id="aec677f985caee561e342d0fbcd4cac68"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec677f985caee561e342d0fbcd4cac68">&sect;&nbsp;</a></span>recognizePersonalIdentityFromSampleBuffer:orientation:()</h2>
+<a id="a2104154736ba0395acdb4a201cd2e368"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2104154736ba0395acdb4a201cd2e368">&sect;&nbsp;</a></span>recognizePersonalIdentityFromSampleBuffer:orientation:searchMachineReadableZone:machineReadableZoneRect:()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -121,7 +121,19 @@ Instance Methods</h2></td></tr>
           <td class="paramkey">orientation:</td>
           <td></td>
           <td class="paramtype">(AVCaptureVideoOrientation)&#160;</td>
-          <td class="paramname"><em>videoOrientation</em>&#160;</td>
+          <td class="paramname"><em>videoOrientation</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">searchMachineReadableZone:</td>
+          <td></td>
+          <td class="paramtype">(BOOL)&#160;</td>
+          <td class="paramname"><em>searchMachineReadableZone</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">machineReadableZoneRect:</td>
+          <td></td>
+          <td class="paramtype">(CGRect)&#160;</td>
+          <td class="paramname"><em>machineReadableZoneRect</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -130,9 +142,12 @@ Instance Methods</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Acquire all available MRZ information from sample buffer reference </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Acquire all available information from sample buffer reference containing machine-readable zone. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sampleBufferRef</td><td>The sample buffer reference containing MRZ. </td></tr>
+    <tr><td class="paramname">sampleBufferRef</td><td>The sample buffer reference containing machine-readable zone. </td></tr>
+    <tr><td class="paramname">orientation</td><td>Video frame orientation. </td></tr>
+    <tr><td class="paramname">searchMachineReadableZone</td><td>Set to YES to automatically search machine-readable zone in provided sample buffer reference. Set to NO to manually provide the rectangle where machine-readable zone is present. </td></tr>
+    <tr><td class="paramname">machineReadableZoneRect</td><td>Rectangle in frame containing machine-readable zone. Used only when searchMachineReadableZone is set to NO. </td></tr>
   </table>
   </dd>
 </dl>
@@ -150,5 +165,5 @@ Instance Methods</h2></td></tr>
 </div>-->
 <link href="ScanbotSDK.css" rel="stylesheet" type="text/css" />
 <div class="footer">
-        Scanbot SDK Documentation - Copyright 2015 by doo GmbH generated on Tue Jan 23 2018 16:10:06 <a href="https://scanbot.io"></a>
+        Scanbot SDK Documentation - Copyright 2015 by doo GmbH generated on Tue Feb 13 2018 19:28:04 <a href="https://scanbot.io"></a>
  </div>
