@@ -54,7 +54,7 @@ $(function() {
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
+<iframe src="javascript:void(0)" frameborder="0"
         name="MSearchResults" id="MSearchResults">
 </iframe>
 </div>
@@ -190,7 +190,45 @@ $(function() {
 <p>For performance reasons the scanner is divided into two parts: detection and recognition. The detection only tests whether the scanned image contains a payform or not. The recognizer performs the text extraction and fills the fields.</p>
 <p>The common usage is to configure the iPhones camera for full HD video capturing and run the detection part on each incoming frame synchronously in the video capture queue. When the detector returns a positive result the recognizing part runs on the same full HD frame in the same video capture queue and returns the recognizers result.</p>
 <p>Example code on how to detect and recognize payforms in the video delegate </p><div class="fragment"><div class="line">- (void)captureOutput:(AVCaptureOutput *)captureOutput</div><div class="line">didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer</div><div class="line">       fromConnection:(AVCaptureConnection *)connection {</div><div class="line"></div><div class="line">    <span class="comment">// Create an SBSDKPayFormScanner.</span></div><div class="line">    <span class="comment">// Note: Usually you store it in a property, for demo purposes we create a new one for each frame.</span></div><div class="line">    <a class="code" href="interface_s_b_s_d_k_pay_form_scanner.html">SBSDKPayFormScanner</a> *scanner = [[<a class="code" href="interface_s_b_s_d_k_pay_form_scanner.html">SBSDKPayFormScanner</a> alloc] init];</div><div class="line"></div><div class="line">    <span class="comment">// Get the video orientation from the camera session (of the SBSDKScannerViewController).</span></div><div class="line">    AVCaptureVideoOrientation videoOrientation = <span class="keyword">self</span>.scannerViewController.cameraSession.videoOrientation;</div><div class="line"></div><div class="line">    <span class="comment">// Detect bank transfer form in the sample buffer.</span></div><div class="line">    <a class="code" href="interface_s_b_s_d_k_pay_form_detection_result.html">SBSDKPayFormDetectionResult</a> *detectionResult = [scanner <a class="code" href="interface_s_b_s_d_k_pay_form_scanner.html#a5644f490c50a3aa56b5e2dfe4d7e558f">detectInSampleBuffer</a>:sampleBuffer </div><div class="line">                                                                     <a class="code" href="interface_s_b_s_d_k_pay_form_scanner.html#a5644f490c50a3aa56b5e2dfe4d7e558f">orientation</a>:videoOrientation];</div><div class="line"></div><div class="line">    <span class="comment">// If we have detected a valid payform</span></div><div class="line">    <span class="keywordflow">if</span> (detectionResult.<a class="code" href="interface_s_b_s_d_k_pay_form_detection_result.html#a66413217399cd82b2f79b361a0ad464f">isValidPayForm</a>) {</div><div class="line"></div><div class="line">        <span class="comment">// We perform the recognition step.</span></div><div class="line">        <a class="code" href="interface_s_b_s_d_k_pay_form_recognition_result.html">SBSDKPayFormRecognitionResult</a> *recognitionResult = [scanner <a class="code" href="interface_s_b_s_d_k_pay_form_scanner.html#a18d47b2fba17f41815d2a4c6503b3f74">recognizeFieldsInSampleBuffer</a>:sampleBuffer</div><div class="line">                                                                                      <a class="code" href="interface_s_b_s_d_k_pay_form_scanner.html#a18d47b2fba17f41815d2a4c6503b3f74">orientation</a>:videoOrientation];</div><div class="line"></div><div class="line">        dispatch_async(dispatch_get_main_queue(), ^{</div><div class="line">            <span class="comment">// Present the recognition results alert on main thread.</span></div><div class="line">        });</div><div class="line">    }</div><div class="line">}</div></div><!-- fragment --><p> <br />
- </p><h2>6. Used third-party libraries and their licenses</h2>
+ </p>
+
+<h3>5.7 Using Barcode Scanner</h3>
+<p>
+  The Scanbot SDK provides ability to scan and extract content from barcodes and QR codes.
+</p>
+<p>
+  The following barcode formats are currently supported:
+</p>
+<p>
+  <strong>1D barcodes</strong>
+  <ul>
+    <li>EAN_13</li>
+    <li>EAN_8</li>
+    <li>UPC_E</li>
+    <li>CODE_39</li>
+    <li>CODE_93</li>
+    <li>CODE_128</li>
+    <li>ITF (Interleaved 2 of 5)</li>
+  </ul>
+
+  <strong>2D barcodes</strong>
+  <ul>
+    <li>QR_CODE</li>
+    <li>DATA_MATRIX</li>
+    <li>AZTEC</li>
+    <li>PDF_417</li>
+  </ul>
+</p>
+
+<p>
+  <strong>Integration:</strong>
+  <br>
+  See our <a href="https://github.com/doo/scanbot-sdk-example-ios/blob/master/ScanbotSDKDemo/QRDemoViewController.m">Example App</a> how to integrate the barcode scanner.
+</p>
+
+<p><br></p>
+
+<h2>6. Used third-party libraries and their licenses</h2>
 <p><a class="el" href="interface_scanbot_s_d_k.html">ScanbotSDK</a> uses the following third-party libraries:</p>
 <h3>OpenCV 3.1</h3>
 <p>Copyright © 2014, Itseez. All rights reserved. This library is distributed under the terms of the following license: <a href="http://opencv.org/license.html">http://opencv.org/license.html</a>. <br />
