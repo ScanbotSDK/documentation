@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ScanbotSDK for iOS  Reference</title>
+    <title>Protocols  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset="utf-8">
@@ -14,8 +14,9 @@
   </head>
   <body>
 
+    <a name="//apple_ref/objc/Section/Protocols" class="dashAnchor"></a>
 
-    <a title="ScanbotSDK for iOS  Reference"></a>
+    <a title="Protocols  Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -37,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="index.html">ScanbotSDK for iOS Reference</a>
       <img class="carat" src="img/carat.png" />
-      ScanbotSDK for iOS  Reference
+      Protocols  Reference
     </p>
 
     <div class="content-wrapper">
@@ -404,41 +405,244 @@
 
         <section class="section">
           <div class="section-content">
-            
-            <h1 id='introduction' class='heading'>Introduction</h1>
-
-<p>Scanbot SDK for iOS is a simple to use high level API, providing a collection of classes and functions 
-for scanning and processing documents from your mobile device&rsquo;s camera or other image sources like your photo library.</p>
-
-<p>Boost your iOS app with the powerful and convenient document scanning and processing features that also drive the #1
-scanning app in the iOS app store: Scanbot Pro.</p>
-
-<p>Scanbot SDK consists of a bunch of modules, each individually licensable or avalaible in license packages.</p>
-
-<p>Currently the following modules are available</p>
-
-<ul>
-<li>Document detection in digital images</li>
-<li>User interface for guided, automatic document scanning using the document detection module</li>
-<li>Image processing for rotating, cropping, filtering and perspective correction, optimized for the needs of document 
-scanning</li>
-<li>PDF creation, merge a collection of processed or unprocessed document images and write them into a PDF document with 
-one page per image</li>
-<li>Optical character recognition, recognize text in document images and create searchable PDF documents with 
-selectable text</li>
-<li>Payform recognition, detect and recognize SEPA payforms on images and extract the important data fields via OCR</li>
-<li>Beta software for invoice, cheque and credit card recognition</li>
-</ul>
-
-<p>Scanbot SDK supports iOS 8 and higher.</p>
-
-<p><strong>ScanbotSDK supports Objective-C and Swift projects.</strong></p>
-
-<p>If you need further information or are interested in licensing Scanbot SDK please contact us: <a href="mailto:sdk@scanbot.io">sdk@scanbot.io</a></p>
+            <h1>Protocols</h1>
+            <p>The following protocols are available globally.</p>
 
           </div>
         </section>
 
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SBSDKCameraSessionDelegate"></a>
+                    <a name="//apple_ref/objc/Protocol/SBSDKCameraSessionDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SBSDKCameraSessionDelegate">SBSDKCameraSessionDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A delegate protocol that gathers AVCaptureVideoDataOutputSampleBufferDelegate
+and AVCaptureMetadataOutputObjectsDelegate protocols.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span>
+    <span class="nc">SBSDKCameraSessionDelegate</span> <span class="o">&lt;</span><span class="n">AVCaptureVideoDataOutputSampleBufferDelegate</span><span class="p">,</span>
+                                <span class="n">AVCaptureMetadataOutputObjectsDelegate</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SBSDKCameraSessionDelegate</span> <span class="p">:</span> <span class="kt">AVCaptureMetadataOutputObjectsDelegate</span><span class="p">,</span> <span class="kt">AVCaptureVideoDataOutputSampleBufferDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SBSDKCropViewControllerDelegate"></a>
+                    <a name="//apple_ref/objc/Protocol/SBSDKCropViewControllerDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SBSDKCropViewControllerDelegate">SBSDKCropViewControllerDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A delegate protocol to inform an object about changes in <code><a href="Classes/SBSDKCropViewController.html">SBSDKCropViewController</a></code>.</p>
+
+<p>Deprecated! Use <code><a href="Classes/SBSDKImageEditingViewController.html">SBSDKImageEditingViewController</a></code>and <code><a href="Protocols/SBSDKImageEditingViewControllerDelegate.html">SBSDKImageEditingViewControllerDelegate</a></code>instead!</p>
+
+                        <a href="Protocols/SBSDKCropViewControllerDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SBSDKCropViewControllerDelegate</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SBSDKCropViewControllerDelegate</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SBSDKImageEditingViewControllerDelegate"></a>
+                    <a name="//apple_ref/objc/Protocol/SBSDKImageEditingViewControllerDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SBSDKImageEditingViewControllerDelegate">SBSDKImageEditingViewControllerDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A delegate protocol to inform an object about changes in <code><a href="Classes/SBSDKImageEditingViewController.html">SBSDKImageEditingViewController</a></code>.</p>
+
+                        <a href="Protocols/SBSDKImageEditingViewControllerDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SBSDKImageEditingViewControllerDelegate</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SBSDKImageEditingViewControllerDelegate</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SBSDKMachineReadableCodeParsing"></a>
+                    <a name="//apple_ref/objc/Protocol/SBSDKMachineReadableCodeParsing" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SBSDKMachineReadableCodeParsing">SBSDKMachineReadableCodeParsing</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>@protocol SBSDKMachineReadableCodeParsing
+The protocol any machine readable code parser must conform to.
+Each parser converts a SBSDKMachineReadableCodeMetadata into a subclass of SBSDKMachineReadableCode or nil.</p>
+
+                        <a href="Protocols/SBSDKMachineReadableCodeParsing.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SBSDKMachineReadableCodeParsing</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SBSDKMachineReadableCodeParsing</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SBSDKOpticalTextRecognizerDelegate"></a>
+                    <a name="//apple_ref/objc/Protocol/SBSDKOpticalTextRecognizerDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SBSDKOpticalTextRecognizerDelegate">SBSDKOpticalTextRecognizerDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delegate protocol for <code><a href="Classes/SBSDKOpticalTextRecognizer.html">SBSDKOpticalTextRecognizer</a></code>.</p>
+
+                        <a href="Protocols/SBSDKOpticalTextRecognizerDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SBSDKOpticalTextRecognizerDelegate</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SBSDKOpticalTextRecognizerDelegate</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SBSDKScannerViewControllerDelegate"></a>
+                    <a name="//apple_ref/objc/Protocol/SBSDKScannerViewControllerDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SBSDKScannerViewControllerDelegate">SBSDKScannerViewControllerDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A delegate protocol to customize the behaviour, look and feel of the SBSDKScannerViewController.</p>
+
+                        <a href="Protocols/SBSDKScannerViewControllerDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SBSDKScannerViewControllerDelegate</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SBSDKScannerViewControllerDelegate</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
       </article>
     </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ScanbotSDK for iOS  Reference</title>
+    <title>Release History  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset="utf-8">
@@ -15,7 +15,7 @@
   <body>
 
 
-    <a title="ScanbotSDK for iOS  Reference"></a>
+    <a title="Release History  Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -37,7 +37,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="index.html">ScanbotSDK for iOS Reference</a>
       <img class="carat" src="img/carat.png" />
-      ScanbotSDK for iOS  Reference
+      Release History  Reference
     </p>
 
     <div class="content-wrapper">
@@ -405,36 +405,238 @@
         <section class="section">
           <div class="section-content">
             
-            <h1 id='introduction' class='heading'>Introduction</h1>
+            <h1 id='release-history' class='heading'>Release History</h1>
+<h5 id='changelog-version-1-0-6' class='heading'>Changelog version 1.0.6:</h5>
 
-<p>Scanbot SDK for iOS is a simple to use high level API, providing a collection of classes and functions 
-for scanning and processing documents from your mobile device&rsquo;s camera or other image sources like your photo library.</p>
-
-<p>Boost your iOS app with the powerful and convenient document scanning and processing features that also drive the #1
-scanning app in the iOS app store: Scanbot Pro.</p>
-
-<p>Scanbot SDK consists of a bunch of modules, each individually licensable or avalaible in license packages.</p>
-
-<p>Currently the following modules are available</p>
+<p><code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code></p>
 
 <ul>
-<li>Document detection in digital images</li>
-<li>User interface for guided, automatic document scanning using the document detection module</li>
-<li>Image processing for rotating, cropping, filtering and perspective correction, optimized for the needs of document 
-scanning</li>
-<li>PDF creation, merge a collection of processed or unprocessed document images and write them into a PDF document with 
-one page per image</li>
-<li>Optical character recognition, recognize text in document images and create searchable PDF documents with 
-selectable text</li>
-<li>Payform recognition, detect and recognize SEPA payforms on images and extract the important data fields via OCR</li>
-<li>Beta software for invoice, cheque and credit card recognition</li>
+<li>Fixed a bug that prevented displaying the detection statuses for poor light and noise</li>
+<li>Added properties acceptedSizeScore and acceptedAngleScore, allowing you to alter the acceptance parameters for automatic shutter release (e.g. more perspective distortion or smaller document size)</li>
 </ul>
+<h5 id='changelog-version-1-0-7' class='heading'>Changelog version 1.0.7:</h5>
 
-<p>Scanbot SDK supports iOS 8 and higher.</p>
+<p><code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code></p>
 
-<p><strong>ScanbotSDK supports Objective-C and Swift projects.</strong></p>
+<ul>
+<li>Fixed wrong orientation of original image when capturing a document image</li>
+</ul>
+<h5 id='changelog-version-1-0-8' class='heading'>Changelog version 1.0.8:</h5>
 
-<p>If you need further information or are interested in licensing Scanbot SDK please contact us: <a href="mailto:sdk@scanbot.io">sdk@scanbot.io</a></p>
+<p><code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code></p>
+
+<ul>
+<li>Added new method -(BOOL)captureStillImage to allow manual capturing using the delegate interface</li>
+</ul>
+<h5 id='changelog-version-1-0-9' class='heading'>Changelog version 1.0.9:</h5>
+
+<p><code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code></p>
+
+<ul>
+<li>Added new delegate method (void)scannerControllerDidChangeDeviceOrientation:to:transform:</li>
+</ul>
+<h5 id='changelog-version-1-0-10' class='heading'>Changelog version 1.0.10:</h5>
+
+<p><code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code></p>
+
+<ul>
+<li>Significantly improved peak memory usage when capturing images (~ 50%)</li>
+<li>Added new delegate method - (BOOL)scannerController:shouldRotateInterfaceForDeviceOrientation:transform:(CGAffineTransform)transform</li>
+</ul>
+<h5 id='changelog-version-1-0-11' class='heading'>Changelog version 1.0.11:</h5>
+
+<p><code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code></p>
+
+<ul>
+<li>Fixed an orientation issue on iPad</li>
+</ul>
+<h5 id='changelog-version-1-0-12' class='heading'>Changelog version 1.0.12:</h5>
+
+<ul>
+<li>Rebuilt with Xcode 7 final</li>
+<li>Updated some documentation</li>
+</ul>
+<h5 id='changelog-version-1-0-13' class='heading'>Changelog version 1.0.13:</h5>
+
+<ul>
+<li>Improved accuracy of automatic document detection</li>
+<li>Introduced new colored document image filter</li>
+</ul>
+<h5 id='changelog-version-1-0-14' class='heading'>Changelog version 1.0.14:</h5>
+
+<ul>
+<li>New color filter now working correctly</li>
+<li>Fixed a bug in the binarization filter</li>
+</ul>
+<h5 id='changelog-version-1-0-15' class='heading'>Changelog version 1.0.15:</h5>
+
+<ul>
+<li>Added new delegate method  -(NSString *)scannerController:(SBSDKScannerViewController *)controller localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status to help you localizing the detection status strings</li>
+</ul>
+<h5 id='changelog-version-1-1-1' class='heading'>Changelog version 1.1.1:</h5>
+
+<ul>
+<li>Beta: Added brand new credit card recognizer: SBSDKCreditCardRecognizer</li>
+<li>Refactored Demo app: now contains Document Detection, Payform Detection and Credit Card detection</li>
+<li>Fixed some bugs in <code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code>, e.g. automatic crop after manual snap</li>
+<li>Added imageMode flag to <code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code>, can be set to grayscale mode to capture all images in grayscale mode for better memory footprint</li>
+<li>Added API to SBSDImageProcessor to pass UIImage objects directly instead of NSURLs</li>
+</ul>
+<h5 id='changelog-version-1-1-2' class='heading'>Changelog version 1.1.2:</h5>
+
+<ul>
+<li>Improved credit card recognizer <code><a href="Classes/SBSDKCreditCardRecognizer.html">SBSDKCreditCardRecognizer</a></code></li>
+</ul>
+<h5 id='changelog-version-1-1-4' class='heading'>Changelog version 1.1.4:</h5>
+
+<ul>
+<li>Added cheque recognizer <code><a href="Classes/SBSDKChequeRecognizer.html">SBSDKChequeRecognizer</a></code></li>
+</ul>
+<h5 id='changelog-version-1-2-0' class='heading'>Changelog version 1.2.0:</h5>
+
+<ul>
+<li>Improved all detectors accuracy</li>
+<li>Added <code><a href="Classes/SBSDKImageMetadata.html">SBSDKImageMetadata</a></code> and <code><a href="Classes/SBSDKImageMetadataProcessor.html">SBSDKImageMetadataProcessor</a></code> to extract EXIF data etc. from image</li>
+<li>Added <code><a href="Classes/SBSDKLensCameraProperties.html">SBSDKLensCameraProperties</a></code> which can be passed to polygon based warping functions to improve the aspect ratio
+of the cropped image and let it be very close to the original documents aspect ratio</li>
+<li><code><a href="Classes/SBSDKLensCameraProperties.html">SBSDKLensCameraProperties</a></code> can be extracted from <code><a href="Classes/SBSDKImageMetadata.html">SBSDKImageMetadata</a></code></li>
+<li>Added 3 new filters: SBSDKImageFilterTypePhoto, SBSDKImageFilterTypePhotoBW1, SBSDKImageFilterTypePhotoBW2</li>
+<li>The photo filter is useful to correct strong color tints, the 2 other new filters create different color-to-gray mappings</li>
+<li>Added SBSDKMultipleDocumentsDetector (Beta) to detect multiple photos or documents on an image</li>
+<li>Minor fixes and optimizations</li>
+</ul>
+<h5 id='changelog-version-1-2-1' class='heading'>Changelog version 1.2.1:</h5>
+
+<ul>
+<li>Fixed crash in sample app by adding <code>NSCameraUsageDescription</code> and <code>NSPhotoLibraryUsageDescription</code>.</li>
+</ul>
+<h5 id='changelog-version-1-3-0' class='heading'>Changelog version 1.3.0:</h5>
+
+<ul>
+<li>Removed static libraries</li>
+<li>Changed distribution model to single embeddable framework containing all architectures and bitcode</li>
+</ul>
+<h5 id='changelog-version-1-4-0' class='heading'>Changelog version 1.4.0:</h5>
+
+<ul>
+<li>Added <code><a href="Classes/SBSDKCropViewController.html">SBSDKCropViewController</a></code>, a Scanbot-like UI for manual cropping of images, including magnetic snapping of
+edges to found contours</li>
+</ul>
+<h5 id='changelog-version-1-4-1' class='heading'>Changelog version 1.4.1:</h5>
+
+<ul>
+<li>Minor bugfixes in documentation</li>
+<li>Additional synchronous API for <code><a href="Classes/SBSDKOpticalTextRecognizer.html">SBSDKOpticalTextRecognizer</a></code> and <code><a href="Classes/SBSDKPDFRenderer.html">SBSDKPDFRenderer</a></code></li>
+</ul>
+<h5 id='changelog-version-1-4-2' class='heading'>Changelog version 1.4.2:</h5>
+
+<ul>
+<li>Minor bugfixes</li>
+<li>New autocaptureSensitivity property in <code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code></li>
+</ul>
+<h5 id='changelog-version-1-4-3' class='heading'>Changelog version 1.4.3:</h5>
+
+<ul>
+<li>Fixed a bug in <code><a href="Classes/SBSDKCropViewController.html">SBSDKCropViewController</a></code> where sometimes the polygon handles were not visible</li>
+</ul>
+<h5 id='changelog-version-1-4-4' class='heading'>Changelog version 1.4.4:</h5>
+
+<ul>
+<li>New functions in <code><a href="Protocols/SBSDKScannerViewControllerDelegate.html">SBSDKScannerViewControllerDelegate</a></code> for scanning documents, customizing UI and QR code scanning</li>
+<li>Fixed a bug in <code><a href="Classes/SBSDKCropViewController.html">SBSDKCropViewController</a></code> where sometimes the polygon handles were not touchable</li>
+</ul>
+<h5 id='changelog-version-1-4-5' class='heading'>Changelog version 1.4.5:</h5>
+
+<ul>
+<li>Improved performance when capturing images using <code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code> by around 50%</li>
+</ul>
+<h5 id='changelog-version-1-4-6' class='heading'>Changelog version 1.4.6:</h5>
+
+<ul>
+<li>Fixed a bug where capturing an image would block the main thread unnecessarily long</li>
+</ul>
+<h5 id='changelog-version-1-4-7' class='heading'>Changelog version 1.4.7:</h5>
+
+<ul>
+<li>new <code><a href="Classes/SBSDKImageEditingViewController.html">SBSDKImageEditingViewController</a></code> as a flexible and more powerful replacement of <code><a href="Classes/SBSDKCropViewController.html">SBSDKCropViewController</a></code></li>
+<li><code><a href="Classes/SBSDKCropViewController.html">SBSDKCropViewController</a></code> has been deprecated and will not longer receive software engineering love</li>
+</ul>
+<h5 id='changelog-version-1-4-8' class='heading'>Changelog version 1.4.8:</h5>
+
+<ul>
+<li>added support for machine readable codes (QR codes, barcodes) scanning in <code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code></li>
+<li>added support and protocol for parsing machine readable codes</li>
+<li>added basic QR and barcode parsers</li>
+<li>added support for registering custom machine readable code parsers</li>
+<li>moved demo app from SDK into a separate github repository, now it is located here: <a href="https://github.com/doo/scanbot-sdk-example-ios">https://github.com/doo/scanbot-sdk-example-ios</a></li>
+</ul>
+<h5 id='changelog-version-1-5-0' class='heading'>Changelog version 1.5.0:</h5>
+
+<ul>
+<li>fixed a bug with unrecognized barcodes</li>
+<li>added a new <code><a href="Protocols/SBSDKScannerViewControllerDelegate.html">SBSDKScannerViewControllerDelegate</a></code> function that delivers the captured original image and image metadata</li>
+</ul>
+<h5 id='changelog-version-1-5-1' class='heading'>Changelog version 1.5.1:</h5>
+
+<ul>
+<li>added two new functions to <code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code> to help with energy saving</li>
+</ul>
+<h5 id='changelog-version-1-5-2' class='heading'>Changelog version 1.5.2:</h5>
+
+<ul>
+<li>fixed a bug with 16 bit per component images and Display P3 colorspace</li>
+</ul>
+<h5 id='changelog-version-1-5-3' class='heading'>Changelog version 1.5.3:</h5>
+
+<ul>
+<li>fixed a crash when importing images from the photo library</li>
+</ul>
+<h5 id='changelog-version-1-5-4' class='heading'>Changelog version 1.5.4:</h5>
+
+<ul>
+<li>fixed a bug with duplicated URLs in <code><a href="Classes/SBSDKImageStorage.html">SBSDKImageStorage</a></code></li>
+</ul>
+<h5 id='changelog-version-1-5-5' class='heading'>Changelog version 1.5.5:</h5>
+
+<ul>
+<li>added Disability Certificate Recognizer</li>
+</ul>
+<h5 id='changelog-version-1-5-6' class='heading'>Changelog version 1.5.6:</h5>
+
+<ul>
+<li>added capture simulation to <code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code></li>
+</ul>
+<h5 id='changelog-version-1-5-7' class='heading'>Changelog version 1.5.7:</h5>
+
+<ul>
+<li>updated OCR engine</li>
+<li>added <code><a href="Classes/SBSDKMachineReadableZoneRecognizer.html">SBSDKMachineReadableZoneRecognizer</a></code></li>
+</ul>
+<h5 id='changelog-version-1-5-8' class='heading'>Changelog version 1.5.8:</h5>
+
+<ul>
+<li>added <code><a href="Classes/SBSDKTIFFImageWriter.html">SBSDKTIFFImageWriter</a></code></li>
+</ul>
+<h5 id='changelog-version-1-5-9' class='heading'>Changelog version 1.5.9:</h5>
+
+<ul>
+<li>fixed a line rendering problem in <code><a href="Classes/SBSDKImageEditingViewController.html">SBSDKImageEditingViewController</a></code></li>
+</ul>
+<h5 id='changelog-version-1-6-0' class='heading'>Changelog version 1.6.0:</h5>
+
+<ul>
+<li>minor bugfixes and improvements</li>
+<li>built with Xcode 9.3 toolchain</li>
+</ul>
+<h5 id='changelog-version-1-6-1' class='heading'>Changelog version 1.6.1:</h5>
+
+<ul>
+<li>added support for CocoaPods</li>
+<li>new documentation</li>
+<li>new filters and cleaned up filter enum</li>
+<li>moved OCR lanugage data into a separate bundle</li>
+<li>added image orientation lock property to <code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code></li>
+</ul>
 
           </div>
         </section>

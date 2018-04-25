@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ScanbotSDK for iOS  Reference</title>
+    <title>License  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset="utf-8">
@@ -15,7 +15,7 @@
   <body>
 
 
-    <a title="ScanbotSDK for iOS  Reference"></a>
+    <a title="License  Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -37,7 +37,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="index.html">ScanbotSDK for iOS Reference</a>
       <img class="carat" src="img/carat.png" />
-      ScanbotSDK for iOS  Reference
+      License  Reference
     </p>
 
     <div class="content-wrapper">
@@ -405,36 +405,79 @@
         <section class="section">
           <div class="section-content">
             
-            <h1 id='introduction' class='heading'>Introduction</h1>
+            <h1 id='license' class='heading'>License</h1>
 
-<p>Scanbot SDK for iOS is a simple to use high level API, providing a collection of classes and functions 
-for scanning and processing documents from your mobile device&rsquo;s camera or other image sources like your photo library.</p>
+<p>In order to run Scanbot SDK functionality within your app you must purchase and install a Scanbot SDK license.</p>
 
-<p>Boost your iOS app with the powerful and convenient document scanning and processing features that also drive the #1
-scanning app in the iOS app store: Scanbot Pro.</p>
+<p>Not installing a license will let you test all Scanbot SDK features for a trial period of 1 minute. After the trial
+period is over your app will be terminated immediately.
+Installing an invalid license will also terminate your application immediately. 
+Installing an expired but valid license will not terminate your app immediately but when using Scanbot SDK API.
+If the license expires during the apps life cycle Scanbot SDK will continue to work normally until the next start
+of the application.</p>
 
-<p>Scanbot SDK consists of a bunch of modules, each individually licensable or avalaible in license packages.</p>
+<p>If an expiration date is given for the license the license will expire at that day at 11:59:59 PM o&#39;clock.
+The timezone of the license is UTC. Any logging of the SDK converts the UTC expiration date to your local timezone.</p>
 
-<p>Currently the following modules are available</p>
+<p>The license also defines which modules you are allowed to use. 
+The usage of unlicensed modules will log an error to the console and terminate the app.</p>
 
-<ul>
-<li>Document detection in digital images</li>
-<li>User interface for guided, automatic document scanning using the document detection module</li>
-<li>Image processing for rotating, cropping, filtering and perspective correction, optimized for the needs of document 
-scanning</li>
-<li>PDF creation, merge a collection of processed or unprocessed document images and write them into a PDF document with 
-one page per image</li>
-<li>Optical character recognition, recognize text in document images and create searchable PDF documents with 
-selectable text</li>
-<li>Payform recognition, detect and recognize SEPA payforms on images and extract the important data fields via OCR</li>
-<li>Beta software for invoice, cheque and credit card recognition</li>
-</ul>
+<p>Each license is valid only to your apps bundle identifier. So no other app can highjack your license and reuse it.
+Any modification of the license will render it invalid. Make sure that you store your license in a safe 
+location.</p>
 
-<p>Scanbot SDK supports iOS 8 and higher.</p>
+<p>You can purchase Scanbot SDK licenses here: <a href="https://scanbot.io/sdk.html">https://scanbot.io/sdk.html</a>. </p>
 
-<p><strong>ScanbotSDK supports Objective-C and Swift projects.</strong></p>
+<p>In order to activate the license in code use the method <code><a href="Classes/ScanbotSDK.html#/c:objc(cs)ScanbotSDK(cm)setLicense:">+[ScanbotSDK setLicense:]</a></code> method in the ScanbotSDK class. 
+Execute this code as early as possible during your apps runtime, but at least before using any Scanbot SDK 
+functionality, e.g. in your application delegates <code>-application:didFinishLaunchingWithOptions:</code> method.</p>
 
-<p>If you need further information or are interested in licensing Scanbot SDK please contact us: <a href="mailto:sdk@scanbot.io">sdk@scanbot.io</a></p>
+<p>If your license has expired any invocation of the Scanbot SDK API will terminate your app. To prevent this you should 
+check for license expiration during runtime by calling [ScanbotSDK isLicenseValid]. 
+If this method returns NO, you should disable Scanbot-SDK-using features or UI.</p>
+
+<p>Example code for using the license string</p>
+<pre class="highlight plaintext"><code>- (BOOL)application:(UIApplication *)application 
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+[ScanbotSDK setLicense:
+@"P73ZaxJ3VG08E+0sUqcbf+BPmKoCDVmWZthAS/FmYsh2I"
+"DT9AJbIKbBRfaDSzjZed4+py7suMYDq++TuzkqVc9CYwGb"
+"3VL68OhsOEpUAJ/GOdVfZnSTFvDo1JQvq54nY2+EChviwM"
+"CkBXCDO7YSMB/Rp42dlu7x3a/EFbor+PmlBpZhfdwveyWX"
+"5MasHiMzgNicdb33hVgyWgcv74NpxL1XyZkcvn7wQrzgzq"
+"JtJ63YUI6SPmTZtJB2M+0IMYeQXj1HltWX5mcohEIFPme7"
+"hU0BZB3S476QMceeL4bPCZjgu1vjL7kxKurIqmJGT6juGu"
+"kFQFJWPoccmgtJnHxI0Cg==U2NhbmJvdFNESwpuZXQuZ"
+"G9vLlBheUZvcm1TY2FubmVyRGVtbwowCjEyOA=="];
+
+return YES;
+}
+</code></pre>
+<h2 id='license-checks-in-production-apps' class='heading'>License checks in production apps</h2>
+
+<p>If your Scanbot SDK license has expired, any call of the Scanbot SDK API will terminate your app. To prevent this you 
+should always check for license expiration during the runtime by calling the method <code><a href="Classes/ScanbotSDK.html#/c:objc(cs)ScanbotSDK(cm)isLicenseValid">+[ScanbotSDK isLicenseValid]</a></code>. 
+If this method returns NO, you should disable any usage of the Scanbot SDK functions or UI components.</p>
+
+<p>We highly recommend to implement a suitable handling of this case in your app!</p>
+
+<p>Example code for checking the license status</p>
+<pre class="highlight plaintext"><code>if ([ScanbotSDK isLicenseValid]) {
+//Making your call into ScanbotSDK API is safe now.
+...
+}
+</code></pre>
+<h2 id='updating-the-license-in-production-apps' class='heading'>Updating the license in production apps</h2>
+
+<p>To renew an expired license or extend a valid license with new Scanbot SDK features, you will have to update your 
+app in the App Store. The expiration date and the feature list of a license are an encrypted data part of the license 
+key string. Which means a renewal or extension of a license will cause a new license key string to be generated.</p>
+<h2 id='trial-licenses' class='heading'>Trial licenses</h2>
+
+<p>You can get a free no strings attached trial license.
+Please kindly note that this license can only be used in a development and staging environment.
+You are not allowed to publish your app to the App Store with a trial license.</p>
 
           </div>
         </section>
