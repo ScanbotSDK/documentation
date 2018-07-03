@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Scanbot SDK for Xamarin</title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="/documentation/xamarin/assets/main.css">
+  <link rel="canonical" href="https://scanbotsdk.github.io/documentation/xamarin/xamarin-forms.html">
+  <link rel="alternate" type="application/rss+xml" title="Scanbot SDK for Xamarin" href="/documentation/xamarin/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/documentation/xamarin/">Scanbot SDK for Xamarin</a>
+
+    <nav class="site-nav">
+      <span class="menu-icon">
+        <svg viewBox="0 0 18 15" width="18px" height="15px">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </span>
+
+      <div class="trigger">
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="integration-with-xamarinforms">Integration with Xamarin.Forms</h2>
+
+<h3 id="sdk-initialization">SDK Initialization</h3>
+
+<p><a name="initializeSdk"></a></p>
+<h4 id="initialize-sdk">Initialize SDK</h4>
+<p>The Scanbot SDK must be initialized before usage. Make sure to run the initialization only once per app lifetime. The initialization code is placed in each of the platform-specific projects of your Xamarin.Forms app.</p>
+
+<h5 id="android"><strong>Android</strong></h5>
+<p>Add the following code to your <code class="highlighter-rouge">Application</code> class:</p>
+
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">ScanbotSDK.Xamarin.Forms</span><span class="p">;</span>
+
+<span class="na">[Application(LargeHeap = true)]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MainApplication</span> <span class="p">:</span> <span class="n">Application</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="kt">string</span> <span class="n">licenseKey</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">...</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnCreate</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="p">...</span>
+        <span class="c1">// You can pass null as licenseKey for trial mode. See the "License" section for more details.
+</span>        <span class="n">SBSDKInitializer</span><span class="p">.</span><span class="nf">Initialize</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">licenseKey</span><span class="p">,</span> <span class="k">new</span> <span class="n">SBSDKConfiguration</span> <span class="p">{</span> <span class="n">EnableLogging</span> <span class="p">=</span> <span class="k">true</span> <span class="p">});</span>
+        <span class="p">....</span>
+    <span class="p">}</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Furthermore, it is recommended to add the <code class="highlighter-rouge">(LargeHeap = true)</code> flag to the <code class="highlighter-rouge">Application</code> attribute on the <code class="highlighter-rouge">MainApplication</code> since image processing is very memory-intensive.</p>
+
+<h5 id="ios"><strong>iOS</strong></h5>
+<p>Add the following code to your <code class="highlighter-rouge">AppDelegate</code> class:</p>
+
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">ScanbotSDK.Xamarin.Forms</span><span class="p">;</span>
+
+<span class="na">[Register("AppDelegate")]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">AppDelegate</span> <span class="p">:</span> <span class="n">UIApplicationDelegate</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="kt">string</span> <span class="n">licenseKey</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">...</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="kt">bool</span> <span class="nf">FinishedLaunching</span><span class="p">(</span><span class="n">UIApplication</span> <span class="n">application</span><span class="p">,</span> <span class="n">NSDictionary</span> <span class="n">launchOptions</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// You can pass null as licenseKey for trial mode. See the "License" section for more details.
+</span>        <span class="n">SBSDKInitializer</span><span class="p">.</span><span class="nf">Initialize</span><span class="p">(</span><span class="n">application</span><span class="p">,</span> <span class="n">licenseKey</span><span class="p">,</span> <span class="k">new</span> <span class="n">SBSDKConfiguration</span> <span class="p">{</span> <span class="n">EnableLogging</span> <span class="p">=</span> <span class="k">true</span> <span class="p">});</span>
+        <span class="p">....</span>
+    <span class="p">}</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h2 id="api-reference">API Reference</h2>
+<p>The main entry point of the Xamarin.Forms wrapper is the <code class="highlighter-rouge">ScanbotSDK.Xamarin.Forms.SBSDK</code> class:</p>
+
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">SBSDK</span>
+<span class="p">{</span>
+    <span class="c1">/// Singleton implementation of SDK functions.
+</span>    <span class="k">public</span> <span class="k">static</span> <span class="n">IScanbotOperations</span> <span class="n">Operations</span> <span class="p">=&gt;</span> <span class="n">DependencyService</span><span class="p">.</span><span class="n">Get</span><span class="p">&lt;</span><span class="n">IScanbotOperations</span><span class="p">&gt;();</span>
+
+    <span class="c1">/// Singleton implementation of ready-to-use UI launcher and page management.
+</span>    <span class="k">public</span> <span class="k">static</span> <span class="n">IReadyToUseUi</span> <span class="n">UI</span> <span class="p">=&gt;</span> <span class="n">DependencyService</span><span class="p">.</span><span class="n">Get</span><span class="p">&lt;</span><span class="n">IReadyToUseUi</span><span class="p">&gt;();</span>
+
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">SBSDK.Operations</code> - functions for raw image processing as well as page processing.</li>
+  <li><code class="highlighter-rouge">SBSDK.UI</code> - functions that launch the Scanbot SDK ready-to-use UI screens for document scanning, cropping, MRZ scanning, barcode scanning, etc.</li>
+</ul>
+
+<p><a name="page_object"></a></p>
+<h3 id="pages">Pages</h3>
+
+<p>The Scanbot SDK provides a ready-to-use UI for document scanning and cropping. Both components use the notion of a ‘page’ as a data model for the scanning and cropping activities. A page is represented by <code class="highlighter-rouge">ScanbotSDK.Xamarin.Forms.IScannedPage</code>:</p>
+
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">interface</span> <span class="n">IScannedPage</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
+<span class="p">{</span>
+    <span class="c1">/// Gets the document image. May be null if document detection has not yet run on the original image.
+</span>    <span class="n">ImageSource</span> <span class="n">Document</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">/// Gets the original image, as taken by the camera.
+</span>    <span class="n">ImageSource</span> <span class="n">Original</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">/// Gets the document image in a size useful for showing on screen. May be null if document detection has not yet run on the original image.
+</span>    <span class="n">ImageSource</span> <span class="n">DocumentPreview</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">/// Gets the document image in a size useful for showing on screen.
+</span>    <span class="n">ImageSource</span> <span class="n">OriginalPreview</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">/// Gets the document preview if available, otherwise the original preview. Useful when data-binding.
+</span>    <span class="n">ImageSource</span> <span class="n">AvailablePreview</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">/// Gets the four points of the polygon that bounds the detected document. May be empty if document detection has not yet run on the original image.
+</span>    <span class="n">Point</span><span class="p">[]</span> <span class="n">Polygon</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">/// Gets the filter.
+</span>    <span class="n">ImageFilter</span> <span class="n">Filter</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">/// Gets the detection status. May be &lt;see cref="DocumentDetectionStatus.Unknown"/&gt; if document detection has not yet run on the original image.
+</span>    <span class="n">DocumentDetectionStatus</span> <span class="n">DetectionStatus</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">/// Sets the document image of this page.
+</span>    <span class="n">Task</span><span class="p">&lt;</span><span class="n">ImageSource</span><span class="p">&gt;</span> <span class="nf">SetDocumentAsync</span><span class="p">(</span><span class="n">ImageSource</span> <span class="n">document</span><span class="p">);</span>
+
+    <span class="c1">/// Sets the filter to apply on the unfiltered document image. The page will raise change notifications for the &lt;see cref="Document"/&gt; and related properties when done.
+</span>    <span class="n">Task</span><span class="p">&lt;</span><span class="n">ImageSource</span><span class="p">&gt;</span> <span class="nf">SetFilterAsync</span><span class="p">(</span><span class="n">ImageFilter</span> <span class="n">filter</span><span class="p">);</span>
+
+    <span class="c1">/// Returns a preview of the given filter as applied to the document image.
+</span>    <span class="n">Task</span><span class="p">&lt;</span><span class="n">ImageSource</span><span class="p">&gt;</span> <span class="nf">GetFilteredDocumentPreviewAsync</span><span class="p">(</span><span class="n">ImageFilter</span> <span class="n">filter</span><span class="p">);</span>
+
+    <span class="c1">/// Rotates the images of this page counter-clockwise in 90 degree increments. The page will raise change notifications to all image properties when done.
+</span>    <span class="n">Task</span> <span class="nf">RotateAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">rotations</span><span class="p">);</span>
+
+    <span class="c1">/// Remove all image files associated with this page. After the task completes,
+</span>    <span class="c1">/// the images in this object will no longer be valid.
+</span>    <span class="n">Task</span> <span class="nf">RemoveAsync</span><span class="p">();</span>
+
+    <span class="c1">/// Detects and crops the document in the original image. After completion the &lt;see cref="DetectionStatus"/&gt; property
+</span>    <span class="c1">/// will contain the status of the detection and, if successful, the &lt;see cref="Document"/&gt; property will
+</span>    <span class="c1">/// contain the image of the cropped document.
+</span>    <span class="n">Task</span><span class="p">&lt;</span><span class="n">DocumentDetectionStatus</span><span class="p">&gt;</span> <span class="nf">DetectDocumentAsync</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Pages are stored in an internal page file storage, where the <code class="highlighter-rouge"><span class="p">{</span><span class="err">ageId</span></code> serves as a name prefix for the stored image files. Operations that modify pages work in-place. That is, for example, <code class="highlighter-rouge">RotatePage()</code> overwrites the page’s image files with their rotated versions. This behavior differs from the behavior of raw image functions like <code class="highlighter-rouge">RotateImage()</code> which always create a new file.</p>
+
+<p><code class="highlighter-rouge">IScannedPage</code> implements <code class="highlighter-rouge">INotifyPropertyChanged</code> and can be directly used as a <code class="highlighter-rouge">BindingContext</code>.</p>
+
+<h3 id="image-and-page-processing">Image and Page Processing</h3>
+
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">interface</span> <span class="n">IScanbotOperations</span>
+<span class="p">{</span>
+    <span class="c1">/// Returns information about the installed OCR languages.
+</span>    <span class="n">OcrConfigs</span> <span class="n">OcrConfigs</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">/// Returns whether the installed license is valid. If the SDK was initialized without a license,
+</span>    <span class="c1">/// trial mode will be enabled and the license will remain valid for about a minute.
+</span>    <span class="kt">bool</span> <span class="n">IsLicenseValid</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">/// Applies an image filter to an ImageSource asynchronously.
+</span>    <span class="n">Task</span><span class="p">&lt;</span><span class="n">ImageSource</span><span class="p">&gt;</span> <span class="nf">ApplyImageFilterAsync</span><span class="p">(</span><span class="n">ImageSource</span> <span class="n">image</span><span class="p">,</span> <span class="n">ImageFilter</span> <span class="n">filter</span><span class="p">,</span> <span class="n">ResultOptions</span> <span class="n">resultOptions</span> <span class="p">=</span> <span class="k">null</span><span class="p">);</span>
+
+    <span class="c1">/// Rotates an image asynchronously.
+</span>    <span class="n">Task</span><span class="p">&lt;</span><span class="n">ImageSource</span><span class="p">&gt;</span> <span class="nf">RotateImageAsync</span><span class="p">(</span><span class="n">ImageSource</span> <span class="n">image</span><span class="p">,</span> <span class="kt">double</span> <span class="n">degrees</span><span class="p">,</span> <span class="n">ResultOptions</span> <span class="n">resultOptions</span> <span class="p">=</span> <span class="k">null</span><span class="p">);</span>
+
+    <span class="c1">/// Creates a PDF file out of one or more ImageSource objects. All images must be instances of FileImageSource.
+</span>    <span class="c1">/// Those are images created with ImageSource.FromFile and images stored as files by the SDK
+</span>    <span class="c1">/// (which is the default behavior, corresponds to ResultStorage.File).
+</span>    <span class="c1">/// 
+</span>    <span class="c1">/// The generated file will be deleted when calling CleanUp. If you want to keep the file, move it to a folder that you have control over.
+</span>    <span class="n">Task</span><span class="p">&lt;</span><span class="n">Uri</span><span class="p">&gt;</span> <span class="nf">CreatePdfAsync</span><span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">ImageSource</span><span class="p">&gt;</span> <span class="n">images</span><span class="p">);</span>
+
+    <span class="c1">/// Writes the given images into a TIFF file. If more than one image is given, the function creates a multi-page TIFF.
+</span>    <span class="c1">/// The function can optionally create a 1-bit encoded TIFF.
+</span>    <span class="c1">/// 
+</span>    <span class="c1">/// The generated file will be deleted when calling CleanUp. If you want to keep the file, move it to a folder that you have control over.
+</span>    <span class="n">Task</span><span class="p">&lt;</span><span class="n">Uri</span><span class="p">&gt;</span> <span class="nf">WriteTiffAsync</span><span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">ImageSource</span><span class="p">&gt;</span> <span class="n">images</span><span class="p">,</span> <span class="n">TiffOptions</span> <span class="n">options</span> <span class="p">=</span> <span class="k">null</span><span class="p">);</span>
+
+    <span class="c1">/// Detects a document in an image.
+</span>    <span class="n">Task</span><span class="p">&lt;</span><span class="n">DocumentDetectionResult</span><span class="p">&gt;</span> <span class="nf">DetectDocumentAsync</span><span class="p">(</span><span class="n">ImageSource</span> <span class="n">image</span><span class="p">,</span> <span class="n">ResultOptions</span> <span class="n">resultOptions</span> <span class="p">=</span> <span class="k">null</span><span class="p">);</span>
+
+    <span class="c1">/// Recognizes a Payform in an image.
+</span>    <span class="n">Task</span><span class="p">&lt;</span><span class="n">PayFormRecognitionResult</span><span class="p">&gt;</span> <span class="nf">RecognizePayformAsync</span><span class="p">(</span><span class="n">ImageSource</span> <span class="n">image</span><span class="p">);</span>
+
+    <span class="c1">/// Performs OCR on an image.
+</span>    <span class="n">Task</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nf">PerformOcrAsync</span><span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">ImageSource</span><span class="p">&gt;</span> <span class="n">images</span><span class="p">,</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">languages</span><span class="p">,</span> <span class="kt">string</span> <span class="n">pdfOutputPath</span> <span class="p">=</span> <span class="k">null</span><span class="p">);</span>
+
+    <span class="c1">/// Creates a ScannedPage object from an ImageSource. Used when you need to pass an ImageSource to CroppingPage
+</span>    <span class="n">Task</span><span class="p">&lt;</span><span class="n">IScannedPage</span><span class="p">&gt;</span> <span class="nf">CreateScannedPageAsync</span><span class="p">(</span><span class="n">ImageSource</span> <span class="n">source</span><span class="p">);</span>
+
+    <span class="c1">/// Returns all scanned pages currently in persistent storage.
+</span>    <span class="n">Task</span><span class="p">&lt;</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">IScannedPage</span><span class="p">&gt;&gt;</span> <span class="nf">GetAllPagesAsync</span><span class="p">();</span>
+
+    <span class="c1">/// Removes all internally generated files from methods of this interface, as well as all page image files.
+</span>    <span class="n">Task</span> <span class="nf">CleanUp</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><a name="LaunchDocumentScanner"></a></p>
+<h3 id="document-scanner">Document Scanner</h3>
+
+<p>Launches the Document Scanner. The scanned pages will be returned asynchronously.</p>
+
+<p><a href="https://github.com/doo/scanbot-sdk-example-xamarin-forms/blob/sd/default-ui-demo/scanbot-sdk-example-xamarin-forms/MainPageViewModel.cs#L60">Show in example app</a></p>
+
+<p><img src="./assets/images/document_scanner.jpg" alt="alt" title="Document Scanner Screenshot" /></p>
+
+<h4 id="usage">Usage</h4>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">config</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">DocumentScannerConfiguration</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">await</span> <span class="n">SBSDK</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="nf">LaunchDocumentScannerAsync</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">Status</span> <span class="p">==</span> <span class="n">OperationResult</span><span class="p">.</span><span class="n">Ok</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// result.Pages contains the scanned pages
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<p><a name="LaunchCroppingScreen"></a></p>
+<h3 id="cropping-ui">Cropping UI</h3>
+
+<p>Launches the Cropping UI on the given page. A page object can be initially created using the Document Scanner ot <code class="highlighter-rouge">SBSDK.Operations.CreateScannedPageAsync()</code>.</p>
+
+<p><a href="https://github.com/doo/scanbot-sdk-example-xamarin-forms/blob/sd/default-ui-demo/scanbot-sdk-example-xamarin-forms/MainPageViewModel.cs#L73">Show in example app</a></p>
+
+<p><img src="./assets/images/cropping.jpg" alt="alt" title="Cropping Screen Screenshot" /></p>
+
+<h4 id="usage-1">Usage</h4>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">page</span> <span class="p">=</span> <span class="p">...</span>
+<span class="kt">var</span> <span class="n">config</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">CroppingScreenConfiguration</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">await</span> <span class="n">SBSDK</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="nf">LaunchCroppingScreenAsync</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">config</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">Status</span> <span class="p">==</span> <span class="n">OperationResult</span><span class="p">.</span><span class="n">Ok</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// `page` has been updated
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<p><a name="LaunchMrzScanner"></a></p>
+<h3 id="machine-readable-zone-scanner">Machine-readable Zone Scanner</h3>
+
+<p>Launches the MRZ scanner. The scanned data will be returned asynchronously.</p>
+
+<p><a href="https://github.com/doo/scanbot-sdk-example-xamarin-forms/blob/sd/default-ui-demo/scanbot-sdk-example-xamarin-forms/MainPageViewModel.cs#L115">Show in example app</a></p>
+
+<p><img src="./assets/images/mrz.jpg" alt="alt" title="MRZ Screenshot" /></p>
+
+<h4 id="usage-2">Usage</h4>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">config</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MrzScannerConfiguration</span><span class="p">();</span>
+<span class="n">config</span><span class="p">.</span><span class="n">FinderWidthRelativeToDeviceWidth</span> <span class="p">=</span> <span class="m">0.9</span><span class="p">;</span>
+<span class="n">config</span><span class="p">.</span><span class="n">FinderHeightRelativeToDeviceWidth</span> <span class="p">=</span> <span class="m">0.18</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">await</span> <span class="n">SBSDK</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="nf">LaunchMrzScannerAsync</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">Status</span> <span class="p">==</span> <span class="n">OperationResult</span><span class="p">.</span><span class="n">Ok</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// result.Fields contain the recognized MRZ fields
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<p><a name="LaunchBarcodeScanner"></a></p>
+<h3 id="barcodeqr-code-scanner">Barcode/QR-code Scanner</h3>
+
+<p>Launches the barcode/QR-code scanner. The scanned code will be returned asynchronously.</p>
+
+<p><a href="https://github.com/doo/scanbot-sdk-example-xamarin-forms/blob/sd/default-ui-demo/scanbot-sdk-example-xamarin-forms/MainPageViewModel.cs#L104">Show in example app</a></p>
+
+<p><img src="./assets/images/barcode.jpg" alt="alt" title="Barcode Scanner Screenshot" /></p>
+
+<h4 id="usage-3">Usage</h4>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">config</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">BarcodeScannerConfiguration</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">await</span> <span class="n">SBSDK</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="nf">LaunchBarcodeScannerAsync</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">Status</span> <span class="p">==</span> <span class="n">OperationResult</span><span class="p">.</span><span class="n">Ok</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// result.Text contains the decoded value of the scanned machine code
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="release-history">Release history</h3>
+
+<h4 id="scanbotsdkxamarinforms-100">ScanbotSDK.Xamarin.Forms 1.0.0</h4>
+<p>🎉 First release of the <code class="highlighter-rouge">ScanbotSDK.Xamarin.Forms</code> Nuget package for Xamarin.Forms.</p>
+
+<ul>
+  <li>Provides <strong>Ready-To-Use UI Components</strong> - a set of easy to integrate and customize high-level <strong>Xamarin.Forms</strong> UI components for the most common tasks in Scanbot SDK:
+    <ul>
+      <li>Document Scanner</li>
+      <li>Cropping UI</li>
+      <li>Barcode &amp; QR code Scanner</li>
+      <li>MRZ Scanner</li>
+    </ul>
+  </li>
+  <li>New unified Scanbot SDK API:
+    <ul>
+      <li>Idiomatic asynchronous design</li>
+      <li>Xamarin.Forms-based unified API for Android &amp; iOS</li>
+    </ul>
+  </li>
+  <li>Example App demonstrating the new functionality: <a href="https://github.com/doo/scanbot-sdk-example-xamarin-forms">scanbot-sdk-example-xamarin-forms</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Scanbot SDK for Xamarin</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              Scanbot SDK for Xamarin
+            
+            </li>
+            
+            <li><a href="mailto:sdk@scanbot.io">sdk@scanbot.io</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
