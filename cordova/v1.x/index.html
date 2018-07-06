@@ -96,8 +96,8 @@ For more details visit our website <a href="https://scanbot.io/sdk.html">https:/
   <li>Cordova CLI or PhoneGap CLI, both 6.x+ (recommended 7.x+)</li>
   <li>Cordova Platforms:
     <ul>
-      <li><a href="https://www.npmjs.com/package/cordova-android">cordova-android</a> <strong>6.x+</strong> (recommended 7.x)</li>
-      <li><a href="https://www.npmjs.com/package/cordova-ios">cordova-ios</a> <strong>4.4.0+</strong> (recommended 4.5.x)</li>
+      <li><a href="https://www.npmjs.com/package/cordova-android">cordova-android</a> <strong>6.4.0+</strong> (recommended 7+)</li>
+      <li><a href="https://www.npmjs.com/package/cordova-ios">cordova-ios</a> <strong>4.4.0+</strong> (recommended 4.5+)</li>
     </ul>
   </li>
   <li>Android SDK (API Level 16+), Platforms and Developer Tools (for Android Apps)</li>
@@ -226,6 +226,21 @@ those permissions just for your information:</p>
 <ul>
   <li><code class="highlighter-rouge">NSCameraUsageDescription</code> - <em>“Privacy - Camera Usage Description”</em>. As value describe why your app wants to access the device’s camera.</li>
 </ul>
+
+<p><a name="buildingiOSProductionApp"></a></p>
+<h3 id="building-ios-production-apps--submitting-to-the-app-storetestflight">Building iOS Production Apps / Submitting to the App Store/TestFlight</h3>
+
+<p>The Scanbot iOS Framework (which is included in this Cordova Plugin) contains the most used architectures (arm64, armv7, armv7s, x86_64, i386). So you can test it with all most used Devices and Simulators.
+But you have to remove the architectures <strong>x86_64</strong> and <strong>i386</strong> from the Scanbot SDK Framework before submitting your App to the App Store or TestFlight. Those architectures are for emulators and are not allowed to submit.</p>
+
+<p>We provide a script for that: <code class="highlighter-rouge">strip-SBSDK-Framework.sh</code>. It can be found inside the ScanbotSDK.framework:</p>
+
+<p><code class="highlighter-rouge">plugins/cordova-plugin-scanbot-sdk/src/ios/Frameworks/ScanbotSDK.framework/strip-SBSDK-Framework.sh</code>).</p>
+
+<p>This script removes the unnecessary architectures from the frameworks binary, code signs the framework and adds the crash symbols (dSYM) file to your apps archive.
+(And by the way: the final app size will then be significantly smaller than a debug version used during the development phase)</p>
+
+<p>You will need to open the generated Xcode project and apply a few changes there. Please see the section <a href="https://scanbotsdk.github.io/documentation/ios/installation.html">“2.1. Step-by-step guide” in our iOS docs</a> on how to setup this script, namely steps 7 and 8. The Xcode project is found under <code class="highlighter-rouge">platforms/ios/</code> - look for the <code class="highlighter-rouge">.xcodeproj</code> extension. In step 8 you need to provide the path to the dSYM file. The proper path to it for Cordova projects is <code class="highlighter-rouge">$(SRCROOT)/../../plugins/cordova-plugin-scanbot-sdk/src/ios/Frameworks/ScanbotSDK.framework.dSYM</code></p>
 
 <h3 id="modules">Modules</h3>
 
@@ -1071,11 +1086,30 @@ Please see the description of the UI functions <a href="#module_ScanbotSdkUi.sta
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history-for-version-1x">Release history for version 1.x</h3>
 
+<h5 id="170">1.7.0</h5>
+<ul>
+  <li>Android:
+    <ul>
+      <li>Under the hood: Upgraded the native Scanbot Android SDK to v1.33.0</li>
+      <li>Added native libs for <code class="highlighter-rouge">arm64-v8a</code>. ⚠️ <em>Please note:</em> In August 2019, Google Play Store will require that new apps and app updates with native libraries provide 64-bit versions in addition to their 32-bit versions <a href="https://android-developers.googleblog.com/2017/12/improving-app-security-and-performance.html">https://android-developers.googleblog.com/2017/12/improving-app-security-and-performance.html</a>. We strongly recommend to upgrade the Scanbot SDK Plugin to the latest version to benefit from the full support of arm64-v8a libs.</li>
+      <li>Upgraded Google Support Libs to v27 (e.g. <code class="highlighter-rouge">com.android.support:appcompat-v7:27.1.1</code>, etc)</li>
+      <li>Improvement in Camera UI: Replaced the user guidance <code class="highlighter-rouge">Toast</code> messages with a <code class="highlighter-rouge">TextView</code> (provides smoother updates of the hints).</li>
+      <li>Bugfix: Minor fixes and improvements in Camera UI and Cropping UI</li>
+    </ul>
+  </li>
+  <li>iOS:
+    <ul>
+      <li>Under the hood: Upgraded the native Scanbot iOS SDK to v1.6.0</li>
+      <li>Added dSYM files (<code class="highlighter-rouge">ScanbotSDK.framework.dSYM</code>) of the Scanbot iOS SDK into the npm package. dSYM files contain the debug symbols and can be used for services like Crashlytics. (also see the section <a href="#buildingiOSProductionApp">Buildingi OS Production Apps…</a>)</li>
+    </ul>
+  </li>
+</ul>
+
 <h5 id="160">1.6.0</h5>
 <ul>
   <li>Android:
     <ul>
-      <li>Improvement: Added support for latest version of Cordova Android platform <code class="highlighter-rouge">cordova-android@7.0.0</code></li>
+      <li>Improvement: Added support for latest version of Cordova Android platform <code class="highlighter-rouge">cordova-android@7.x+</code></li>
     </ul>
   </li>
 </ul>
