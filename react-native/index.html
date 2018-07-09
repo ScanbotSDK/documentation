@@ -59,6 +59,9 @@
   <div class="post-content">
     <h2 id="scanbot-sdk-react-native-module">Scanbot SDK React Native Module</h2>
 
+<p>⚠️ This documentation is for the latest released version <strong>2.x</strong> of the Scanbot SDK React Native Module (<code class="highlighter-rouge">react-native-scanbot-sdk@2.x</code>)!
+<a href="https://scanbotsdk.github.io/documentation/react-native/v1.x/">Click here for the version 1.x</a></p>
+
 <h3 id="introduction">Introduction</h3>
 <p>The Scanbot SDK brings scanning and document creation capabilities to your mobile apps.
 It contains modules which are individually licensable as license packages.
@@ -70,16 +73,18 @@ For more details visit our website <a href="https://scanbot.io/sdk.html">https:/
 
 <p><strong>Package I</strong></p>
 <ul>
-  <li>Camera UI with user guidance for document scanning</li>
+  <li>Document Scanning with User Guidance</li>
   <li>Cropping UI</li>
   <li>Document Detection</li>
   <li>Image Filters</li>
   <li>PDF Creation</li>
+  <li>Barcode and QR Code Scanning</li>
 </ul>
 
 <p><strong>Package II</strong></p>
 <ul>
   <li>OCR</li>
+  <li>MRZ Scanning</li>
 </ul>
 
 <h3 id="requirements">Requirements</h3>
@@ -87,7 +92,7 @@ For more details visit our website <a href="https://scanbot.io/sdk.html">https:/
 <h4 id="tools">Tools</h4>
 <ul>
   <li>Node.js, npm</li>
-  <li>React Native 0.47+ (lasest available version is highly recommended)</li>
+  <li>React Native 0.47+ (latest available version is highly recommended)</li>
   <li>Android SDK (API Level 16+), Platforms and Developer Tools</li>
   <li>Xcode + Xcode Command Line Tools (for iOS Apps)</li>
 </ul>
@@ -96,7 +101,7 @@ For more details visit our website <a href="https://scanbot.io/sdk.html">https:/
 
 <ul>
   <li>Android 4.1 (API Level 16) and higher</li>
-  <li>iOS 8 and higher</li>
+  <li>iOS 9 and higher</li>
 </ul>
 
 <p>Please note:</p>
@@ -221,20 +226,6 @@ The <code class="highlighter-rouge">ScanbotSDK.framework</code> is provided with
 
 <p><strong>Please note:</strong> If  <code class="highlighter-rouge">ScanbotSDK.framework</code> is put into “Linked Frameworks and Libraries” and not into “Embedded Binaries”, then the module <strong>will not work</strong>. The project will compile but your App will crash right after the start!</p>
 
-<h5 id="images">Images</h5>
-<p>Also in order to use image assets coming with the Scanbot SDK React Native Module you need to add these images manually to your <code class="highlighter-rouge">Images.xcassets</code> from module’s <strong>Images</strong> directory <code class="highlighter-rouge">node_modules/react-native-scanbot-sdk/ios/Images/</code>.
-Create following Image Set names in your project and add corresponding images:</p>
-<ul>
-  <li><code class="highlighter-rouge">ui_autosnap_off</code> (auto-snapping toggle button OFF state)</li>
-  <li><code class="highlighter-rouge">ui_autosnap_on</code> (auto-snapping toggle button ON state)</li>
-  <li><code class="highlighter-rouge">ui_flash_off</code> (flash toggle button OFF state)</li>
-  <li><code class="highlighter-rouge">ui_flash_on</code> (flash toggle button ON state)</li>
-</ul>
-
-<p>These images are used in the <code class="highlighter-rouge">ScanbotCameraView</code> as toggle buttons for flash light and auto-snapping.</p>
-
-<p><img src="./assets/images/xcode-add-images.png" alt="alt text" title="Xcode add images" /></p>
-
 <h4 id="permissions">Permissions</h4>
 
 <p>In order to operate correctly an application that utilizes ScanbotSDK module must have all required permissions to your App. Here is a listing of those permissions:</p>
@@ -278,13 +269,34 @@ Create following Image Set names in your project and add corresponding images:</
       <li><a href="#module_ScanbotSDK.detectDocument">.detectDocument</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.rotateImage">.rotateImage</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.applyImageFilter">.applyImageFilter</a> - <code class="highlighter-rouge">function</code></li>
-      <li><a href="#module_ScanbotSDK.createPDF">.createPDF</a> - <code class="highlighter-rouge">function</code></li>
-      <li><a href="#module_ScanbotSDK.getOCRConfigs">.getOCRConfigs</a> - <code class="highlighter-rouge">function</code></li>
-      <li><a href="#module_ScanbotSDK.performOCR">.performOCR</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSDK.createPDF">.createPdf</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.writeTiff">.writeTiff</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSDK.getOCRConfigs">.getOcrConfigs</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSDK.performOCR">.performOcr</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.createPage">.createPage</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.setDocumentImage">.setDocumentImage</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.detectDocumentOnPage">.detectDocumentOnPage</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.applyImageFilterOnPage">.applyImageFilterOnPage</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.getFilteredDocumentPreviewUri">.getFilteredDocumentPreviewUri</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.rotatePage">.rotatePage</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.getStoredPages">.getStoredPages</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.removePage">.removePage</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.cleanup">.cleanup</a> - <code class="highlighter-rouge">function</code></li>
-      <li><a href="#detectionResult">.DetectionResult</a> - <code class="highlighter-rouge">string</code></li>
-      <li><a href="#imageFilter">.ImageFilter</a> - <code class="highlighter-rouge">string</code></li>
-      <li><a href="#OCROutputFormat">.OCROutputFormat</a> - <code class="highlighter-rouge">string</code></li>
+    </ul>
+  </li>
+  <li><strong><code class="highlighter-rouge">ScanbotSdk.UI</code></strong>
+    <ul>
+      <li><a href="#module_ScanbotSdk.UI.startDocumentScanner">.startDocumentScanner</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.UI.startCroppingScreen">.startCroppingScreen</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.UI.startMrzScanner">.startMrzScanner</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.UI.startBarcodeScanner">.startBarcodeScanner</a> - <code class="highlighter-rouge">function</code></li>
+    </ul>
+  </li>
+  <li><strong>Constants</strong>
+    <ul>
+      <li><a href="#detectionResult">DetectionResult</a> - <code class="highlighter-rouge">string</code></li>
+      <li><a href="#imageFilter">ImageFilter</a> - <code class="highlighter-rouge">string</code></li>
+      <li><a href="#OCROutputFormat">OCROutputFormat</a> - <code class="highlighter-rouge">string</code></li>
     </ul>
   </li>
 </ul>
@@ -305,41 +317,25 @@ Create following Image Set names in your project and add corresponding images:</
 </div>
 
 <h3 id="initialize-sdk">Initialize SDK</h3>
-<h4 id="scanbotsdkinitializesdkoptions-successcallback-failurecallback">ScanbotSDK.initializeSDK(options, successCallback, failureCallback)</h4>
+<h4 id="scanbotsdkinitializesdkoptions-promise">ScanbotSDK.initializeSDK(options): Promise</h4>
 
 <p>The Scanbot SDK must be initialized before usage. Make sure to run the initialization only once per app lifetime.</p>
 
-<h5 id="callbacks">Callbacks:</h5>
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
-</code></pre>
-</div>
+<h5 id="example-code-for-initialization">Example code for initialization:</h5>
 
-<ul>
-  <li><code class="highlighter-rouge">result</code> - Contains a simple success message as string.</li>
-</ul>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">ScanbotSDK</span> <span class="nx">from</span> <span class="s1">'react-native-scanbot-sdk'</span><span class="p">;</span>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">failureCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<p><code class="highlighter-rouge">error</code> - Contains the error message as string.</p>
-
-<p>Example code for initialization:</p>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">ScanbotSDK</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-native-scanbot-sdk'</span><span class="p">;</span>
-
-<span class="nx">initializeSDK</span><span class="p">()</span> <span class="p">{</span>
-	<span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-		<span class="na">licenseKey</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="c1">// optional license key (empty for trial mode)</span>
-		<span class="na">loggingEnabled</span><span class="p">:</span> <span class="kc">true</span>
-	<span class="p">}</span>
-	<span class="nx">ScanbotSDK</span><span class="p">.</span><span class="nx">initializeSDK</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-		<span class="c1">// Scanbot SDK successfully initialized</span>
-		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-	<span class="p">},</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-		<span class="c1">// Scanbot SDK initialization failed</span>
-		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-	<span class="p">});</span>
+<span class="nx">async</span> <span class="kd">function</span> <span class="nx">initializeSDK</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">licenseKey</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="c1">// optional license key (empty for trial mode)</span>
+    <span class="na">loggingEnabled</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="nx">await</span> <span class="nx">ScanbotSDK</span><span class="p">.</span><span class="nx">initializeSDK</span><span class="p">(</span><span class="nx">options</span><span class="p">),</span> <span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+    <span class="c1">// initialization succeeded</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// initialization failed</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
 </div>
@@ -377,10 +373,11 @@ of the Scanbot SDK module will terminate your app.</p>
   <span class="na">loggingEnabled</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
 
-<span class="nx">ScanbotSDK</span><span class="p">.</span><span class="nx">initializeSDK</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-<span class="p">},</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="nx">ScanbotSDK</span><span class="p">.</span><span class="nx">initializeSDK</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// success</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">//error</span>
 <span class="p">});</span>
 </code></pre>
 </div>
@@ -400,15 +397,11 @@ You are <strong>not allowed to publish</strong> your app to the App Store, Play 
 <p>When initializing the Scanbot SDK you can enable logging of the SDK. By default logging is disabled.</p>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-	<span class="na">licenseKey</span><span class="p">:</span> <span class="nx">myLicenseKey</span>
-	<span class="na">loggingEnabled</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="na">licenseKey</span><span class="p">:</span> <span class="nx">myLicenseKey</span>
+  <span class="na">loggingEnabled</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
 
-<span class="nx">ScanbotSDK</span><span class="p">.</span><span class="nx">initializeSDK</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-<span class="p">},</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="p">});</span>
+<span class="kr">const</span> <span class="nx">promise</span> <span class="o">=</span> <span class="nx">ScanbotSDK</span><span class="p">.</span><span class="nx">initializeSDK</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
 </code></pre>
 </div>
 
@@ -424,6 +417,24 @@ The easiest way to check the log outputs on Android is to use the <a href="https
 
 <p><strong>Please note:</strong> While it may be useful for development, <strong>consider switching logging OFF in production builds</strong> for security and performance reasons!</p>
 
+<h4 id="image-quality--compression">Image Quality / Compression</h4>
+<p><code class="highlighter-rouge">initializeSDK</code> can take two more optional parameters that specify the image storage format and compression for temporary images. Temporary images are all images created by the document scanner, cropping UI, as well as all image manipulation functions like <code class="highlighter-rouge">applyImageFilter</code>.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">storageImageFormat</span><span class="p">:</span> <span class="s1">'JPG'</span><span class="p">,</span>
+  <span class="na">storageImageQuality</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="nx">ScanbotSDK</span><span class="p">.</span><span class="nx">initializeSDK</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">storageImageQuality</code> - defines the quality factor of JPEG images. The value must be between 1 and 100, 
+where 100 means maximum quality and largest file size. The default value is 80 which is a good compromise between image file size and document legibility.</li>
+  <li><code class="highlighter-rouge">storageImageFormat</code> - either <code class="highlighter-rouge">'JPG'</code> or <code class="highlighter-rouge">'PNG'</code>. The default value is <code class="highlighter-rouge">'JPG'</code>.</li>
+</ul>
+
 <h3 id="updating-the-license-in-production-apps">Updating the license in production apps</h3>
 <p>To renew an expired license or extend a valid license with new Scanbot SDK features, you will have to update your app in the App Store or Play Store. 
 The expiration date and the feature list of a license are an encrypted data part of the license key string. 
@@ -437,279 +448,636 @@ If the result of the <code class="highlighter-rouge">successCallback</code> retu
 
 <p>We highly recommend to implement a suitable handling of this case in your app!</p>
 
-<h4 id="scanbotsdkislicensevalidsuccesscallback-failurecallback">ScanbotSDK.isLicenseValid(successCallback, failureCallback)</h4>
+<h4 id="scanbotsdkislicensevalid-promiseboolean"><code class="highlighter-rouge">ScanbotSDK.isLicenseValid(): Promise&lt;boolean&gt;</code></h4>
 <p>Use this function to check the current state of the license. The SDK must be initialized.</p>
 
-<h5 id="callbacks-1">Callbacks:</h5>
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">callback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
-</code></pre>
-</div>
-
 <ul>
-  <li><code class="highlighter-rouge">result.isLicenseValid</code> - Contains a boolean status value of the license.
-<code class="highlighter-rouge">true</code> means the Scanbot SDK license is valid and all features can be used normally. 
-<code class="highlighter-rouge">false</code> means the license is <strong>not valid</strong> and any call of the Scanbot SDK API will terminate your app or result in an error.</li>
+  <li><code class="highlighter-rouge">true</code> means the Scanbot SDK license is valid and all features can be used normally.</li>
+  <li><code class="highlighter-rouge">false</code> means the license is <strong>not valid</strong> and any call of the Scanbot SDK API will terminate your app or result in an error.</li>
 </ul>
 
 <h5 id="example-code-for-checking-the-license-status">Example code for checking the license status:</h5>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-	<span class="na">licenseKey</span><span class="p">:</span> <span class="nx">myLicenseKey</span>
-	<span class="na">loggingEnabled</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="na">licenseKey</span><span class="p">:</span> <span class="nx">myLicenseKey</span>
+  <span class="na">loggingEnabled</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
 
-<span class="nx">ScanbotSDK</span><span class="p">.</span><span class="nx">initializeSDK</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-	<span class="nx">ScanbotSDK</span><span class="p">.</span><span class="nx">isLicenseValid</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">isLicenseValid</span> <span class="o">!=</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">licenseStatus</span> <span class="o">=</span> <span class="s2">"Invalid"</span>
-		<span class="p">}</span>
-	<span class="p">},</span>  <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-	<span class="p">})</span>
-<span class="p">},</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre>
-</div>
-
-<p><a name="module_ScanbotCameraView"></a></p>
-<h3 id="camera-ui-for-document-scanning">Camera UI for document scanning</h3>
-
-<p>The Scanbot SDK module provides a ready-to-use Camera UI component, <code class="highlighter-rouge">ScanbotCameraView</code>, for guided, automatic document scanning.</p>
-
-<p>The Camera UI contains:</p>
-<ul>
-  <li>A live preview of the camera with detected polygon</li>
-  <li>User guidance (hints)</li>
-  <li>An animated shutter button, which can be used to take a picture manually</li>
-  <li>Toggle button for flash</li>
-  <li>Toggle button for auto-snapping</li>
-</ul>
-
-<p>Add <code class="highlighter-rouge">ScanbotCameraView</code> to your screen and provide callback handlers to properly handle image and document capture results.</p>
-
-<h5 id="properties">Properties:</h5>
-
-<ul>
-  <li><code class="highlighter-rouge">edgeColor</code> - String value representing detected polygon color.</li>
-  <li><code class="highlighter-rouge">autoSnappingEnabled</code> - Boolean value. Indicates whether autosnapping is enabled by default.</li>
-  <li><code class="highlighter-rouge">imageCompressionQuality</code> - Optional <a href="#imageQuality">quality</a> of the output image.</li>
-  <li><code class="highlighter-rouge">autoSnappingSensitivity</code> - Optional float value to change the sensitivity factor of auto-snapping. Must be in the range 0.0…1.0. A value of 1.0 triggers automatic capturing immediately, a value of 0.0 delays the automatic by 3 seconds. The default value is 0.66 (1 sec).</li>
-  <li><code class="highlighter-rouge">sampleSize</code> - Optional integer value to force the image decoder to subsample output images (create smaller images to save memory). For example <code class="highlighter-rouge">sampleSize: 2</code> will return images that are 1/2 the width/height of the original. Default value is <code class="highlighter-rouge">1</code>, which keeps the original image size.</li>
-  <li><code class="highlighter-rouge">textResBundle</code> - Optional text resources map to localize or override user guidance hints. If no <code class="highlighter-rouge">textResBundle</code> map is provided english strings will be used as default. The example code below shows all supported text resources keys.</li>
-  <li><code class="highlighter-rouge">onStartCapturingImage</code> - Callback. Called when image capturing and processing is started.</li>
-  <li><code class="highlighter-rouge">onImageCaptured</code> - Callback. Called when the original image was captured.</li>
-  <li><code class="highlighter-rouge">onImageCaptureFailed</code> - Callback. Called upon capturing failure.</li>
-  <li><code class="highlighter-rouge">onDocumentImageCaptured</code> - Callback. Called when the document image was captured with detected polygon.</li>
-  <li><code class="highlighter-rouge">onPolygonDetected</code> - Callback. Called when camera has detected a suitable polygon.</li>
-</ul>
-
-<h5 id="callbacks-2">Callbacks:</h5>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">onImageCaptured</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="err">:</span> <span class="nx">Event</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="highlighter-rouge">imageFileUri</code> - Contains the <a href="#fileHandling">File URI</a> of the original full image from the camera as JPEG (<code class="highlighter-rouge">'file:///...'</code>).</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">onImageCaptureFailed</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="err">:</span> <span class="nx">Event</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="highlighter-rouge">event.nativeEvent.error</code> - Contains the error message as string.</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">onDocumentImageCaptured</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="err">:</span> <span class="nx">Event</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="highlighter-rouge">event.nativeEvent.imageFileUri</code> - Contains the <a href="#fileHandling">File URI</a> of the detected document image as JPEG (<code class="highlighter-rouge">'file:///...'</code>). The document image is cropped and warped (perspective corrected) by detected polygon.</li>
-  <li><code class="highlighter-rouge">event.nativeEvent.originalImageFileUri</code> - Contains the <a href="#fileHandling">File URI</a> of the original full image from the camera as JPEG (<code class="highlighter-rouge">'file:///...'</code>). Can be used for manual cropping correction via <code class="highlighter-rouge">ScanbotCroppingView</code> if the detected document image was not satisfactory.</li>
-  <li><code class="highlighter-rouge">event.nativeEvent.polygon</code> - Contains the detected <a href="#polygon">polygon</a> as array. Maybe empty if detection was not successful.</li>
-  <li><code class="highlighter-rouge">event.nativeEvent.detectionResult</code> - The <a href="#detectionResult">Detection Result</a>.</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">onPolygonDetected</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="err">:</span> <span class="nx">Event</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="highlighter-rouge">event.nativeEvent.polygon</code> - Contains the detected <a href="#polygon">polygon</a> as array. Maybe empty if detection was not successfull.</li>
-  <li><code class="highlighter-rouge">event.nativeEvent.detectionResult</code> - The <a href="#detectionResult">Detection Result</a>.</li>
-</ul>
-
-<h4 id="usage-example">Usage example</h4>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">ScanbotCameraView</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-native-scanbot-sdk'</span><span class="p">;</span>
-
-<span class="kr">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="nx">ScanbotCameraDemo</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
-
-  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kr">super</span><span class="p">();</span>
-
-    <span class="k">this</span><span class="p">.</span><span class="nx">textResBundle</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="na">autosnapping_hint_do_not_move</span><span class="p">:</span> <span class="s2">"Don't move"</span><span class="p">,</span>
-      <span class="na">autosnapping_hint_move_closer</span><span class="p">:</span> <span class="s2">"Move closer"</span><span class="p">,</span>
-      <span class="na">autosnapping_hint_bad_angles</span><span class="p">:</span> <span class="s2">"Perspective"</span><span class="p">,</span>
-      <span class="na">autosnapping_hint_nothing_detected</span><span class="p">:</span> <span class="s2">"No document"</span><span class="p">,</span>
-      <span class="na">autosnapping_hint_too_noisy</span><span class="p">:</span> <span class="s2">"Background too noisy"</span><span class="p">,</span>
-      <span class="na">autosnapping_hint_too_dark</span><span class="p">:</span> <span class="s2">"Poor light"</span>
-    <span class="p">};</span>
-  <span class="p">}</span>
-
-  <span class="nx">imageCaptured</span><span class="p">(</span><span class="nx">event</span><span class="err">:</span> <span class="nx">Event</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// image was captured</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">nativeEvent</span><span class="p">);</span>
-  <span class="p">}</span>
-    
-  <span class="nx">documentCaptured</span><span class="p">(</span><span class="nx">event</span><span class="err">:</span> <span class="nx">Event</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// document image was captured</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">nativeEvent</span><span class="p">);</span>
-  <span class="p">}</span>
-    
-  <span class="nx">startCapturingImage</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// e.g. show progress spinner</span>
-  <span class="p">}</span>
-
-  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span>
-      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">ScanbotCameraView</span>
-            <span class="nx">autoSnappingEnabled</span><span class="o">=</span><span class="s1">'true'</span>
-            <span class="nx">autoSnappingSensitivity</span><span class="o">=</span><span class="p">{</span><span class="mf">0.5</span><span class="p">}</span>
-            <span class="nx">imageCompressionQuality</span><span class="o">=</span><span class="p">{</span><span class="mi">70</span><span class="p">}</span>
-            <span class="nx">edgeColor</span><span class="o">=</span><span class="p">{</span><span class="s1">'#0000ff'</span><span class="p">}</span>
-            <span class="nx">onStartCapturingImage</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">startCapturingImage</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
-            <span class="nx">onImageCaptured</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">imageCaptured</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
-            <span class="nx">onDocumentImageCaptured</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">documentCaptured</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span> 
-            <span class="nx">textResBundle</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">textResBundle</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
-</span>      <span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
-</span>    <span class="p">);</span>
+<span class="nx">async</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">await</span> <span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">initializeSDK</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">await</span> <span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">isLicenseValid</span><span class="p">())</span> <span class="p">{</span>
+    <span class="c1">// my license is invalid</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
 </div>
 
-<p><a name="module_ScanbotCroppingView"></a></p>
-<h3 id="cropping-image-ui">Cropping image UI</h3>
+<h2 id="ready-to-use-ui">Ready-to-use UI</h2>
 
-<p>ScanbotSDK module provides <code class="highlighter-rouge">ScanbotCroppingView</code> UI component for image polygon detection and manual editing.</p>
+<h3 id="configuration">Configuration</h3>
+<p>Settings controlling color are expected to be passed as strings in the <code class="highlighter-rouge">'#RRGGBB'</code> format.</p>
 
-<p>The <code class="highlighter-rouge">ScanbotCroppingView</code> UI component provides functionality for manual cropping and rotation of an image.
-It uses the edge detection algorithm of the Scanbot SDK and containts some smart UI elements like magnetic lines and magnifier.
-As input a file URI of an image must be passed. The output is a cropped and perspective corrected image as a new file. 
-The input image file will not be modified.</p>
+<p><a name="page_object"></a></p>
+<h3 id="pages">Pages</h3>
 
-<p>Add <code class="highlighter-rouge">ScanbotCroppingView</code> to your screen and provide callback handlers to properly handle cropping and warping results.</p>
+<p>The Scanbot SDK provides a ready-to-use UI for document scanning and cropping. Both components use the notion of a ‘page’ as a data model for the scanning and cropping activities. An page object has the following fields:</p>
 
-<h5 id="properties-1">Properties:</h5>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Page</span> <span class="p">{</span>
+    <span class="nl">pageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">polygon</span><span class="p">:</span> <span class="nx">Point</span><span class="p">[];</span>
+    <span class="nl">detectionResult</span><span class="p">:</span> <span class="nx">DetectionStatus</span><span class="p">;</span>
 
-<ul>
-  <li><code class="highlighter-rouge">edgeColor</code> - Color of the cropping frame. String value.</li>
-  <li><code class="highlighter-rouge">imageFileUri</code> - Provides input image URI for cropping operations.</li>
-  <li><code class="highlighter-rouge">imageCompressionQuality</code> - Optional <a href="#imageQuality">quality</a> of the output image.</li>
-  <li><code class="highlighter-rouge">onChangesAppliedWithPolygon</code> - Callback. Called when the user applies cropping changes.</li>
-  <li><code class="highlighter-rouge">onChangesCanceled</code> - Callback. Called when the user cancels changes presented in the cropping view.</li>
-</ul>
-
-<h5 id="callbacks-3">Callbacks:</h5>
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">onChangesAppliedWithPolygon</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="err">:</span> <span class="nx">Event</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<p>In case of successfull operation:</p>
-
-<ul>
-  <li><code class="highlighter-rouge">event.nativeEvent.imageFileUri</code> - <a href="#fileHandling">File URI</a> of the cropped image as JPEG (<code class="highlighter-rouge">'file:///...'</code>).</li>
-  <li><code class="highlighter-rouge">event.nativeEvent.polygon</code> - Contains the selected <a href="#polygon">polygon</a> as array.</li>
-</ul>
-
-<p>In case of error:</p>
-
-<ul>
-  <li><code class="highlighter-rouge">event.nativeEvent.error</code> - Contains the error message as string.</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">onChangesCanceled</span> <span class="err">:</span> <span class="kd">function</span><span class="p">()</span>
-</code></pre>
-</div>
-
-<p>This callback does not return any values.</p>
-
-<h5 id="exported-methods">Exported methods:</h5>
-
-<ul>
-  <li><code class="highlighter-rouge">applyCroppingChanges</code> - asks the view to apply changes.</li>
-  <li><code class="highlighter-rouge">dismissCroppingChanges</code> - asks the view to dismiss changes.</li>
-  <li><code class="highlighter-rouge">rotateImageClockwise</code> - asks the view to rotate input image clockwise.</li>
-</ul>
-
-<p><strong>Please note</strong>: to invoke view’s exported methods, you must first gain it’s reference. In React Native it can be achieved by setting the render property <code class="highlighter-rouge">ref</code> with local variable. Example:</p>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">ScanbotCroppingView</span>
-	<span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">view</span> <span class="o">=&gt;</span> <span class="nx">croppingView</span> <span class="o">=</span> <span class="nx">view</span><span class="p">}</span>
-	<span class="nx">imageFileUri</span><span class="o">=</span><span class="p">{...}</span><span class="sr">/</span><span class="err">&gt;
-</span></code></pre>
-</div>
-
-<h4 id="usage-example-1">Usage example</h4>
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">ScanbotCroppingView</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-native-scanbot-sdk'</span><span class="p">;</span>
-
-<span class="kr">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="nx">CroppingUIDemo</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
-
-	<span class="nx">applyChangesButtonTapped</span><span class="p">()</span> <span class="p">{</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">croppingView</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">croppingView</span><span class="p">.</span><span class="nx">applyCroppingChanges</span><span class="p">();</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-
-	<span class="nx">dismissChangesButtonTapped</span><span class="p">()</span> <span class="p">{</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">croppingView</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">croppingView</span><span class="p">.</span><span class="nx">dismissCroppingChanges</span><span class="p">();</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-
-	<span class="nx">rotateClockwiseButtonTapped</span><span class="p">()</span> <span class="p">{</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">croppingView</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">croppingView</span><span class="p">.</span><span class="nx">rotateImageClockwise</span><span class="p">();</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-
-	<span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="p">(</span>
-			<span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
-				<span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">onPress</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">applyChangesButtonTapped</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span> <span class="nx">title</span><span class="o">=</span><span class="s2">"Apply"</span> <span class="o">/&gt;</span>
-				<span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">onPress</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">dismissChangesButtonTapped</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span> <span class="nx">title</span><span class="o">=</span><span class="s2">"Dismiss"</span> <span class="o">/&gt;</span>
-				<span class="o">&lt;</span><span class="nx">ScanbotCroppingView</span>
-					<span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">view</span> <span class="o">=&gt;</span> <span class="nx">croppingView</span> <span class="o">=</span> <span class="nx">view</span><span class="p">}</span>
-					<span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span>
-					<span class="nx">imageFileUri</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">imageFileUri</span><span class="p">}</span>
-					<span class="nx">onChangesAppliedWithPolygon</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onChangesAppliedWithPolygon</span><span class="p">}</span>
-					<span class="nx">onChangesCanceled</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onChangesCanceled</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
-</span>				<span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">onPress</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">rotateClockwiseButtonTapped</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span> <span class="nx">title</span><span class="o">=</span><span class="s2">"Rotate clockwise"</span> <span class="o">/&gt;</span>
-			<span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
-</span>		<span class="p">);</span>
-	<span class="p">}</span>
-
+    <span class="nl">originalImageFileUri</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nx">documentImageFileUri</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">originalPreviewImageFileUri</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nx">documentPreviewImageFileUri</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
 <span class="p">}</span>
-
 </code></pre>
 </div>
+
+<p>The fields are:</p>
+<ul>
+  <li><code class="highlighter-rouge">pageId</code> - a string identifying the page in the internal page file storage</li>
+  <li><code class="highlighter-rouge">polygon</code> - the page’s cropping <a href="#polygon">polygon</a> as calculated by a document detection operation or as set by the cropping UI. Modifying the polygon will change the polygon as shown in the cropping UI but will not automatically re-crop the original image.</li>
+  <li><code class="highlighter-rouge">detectionResult</code> - the <a href="#detectionResult">detection result</a> of the document detection operation that produced the page (either the document scanner or <code class="highlighter-rouge">detectDocument()</code>).</li>
+  <li><code class="highlighter-rouge">originalImageFileUri</code> - file URI of the original image</li>
+  <li><code class="highlighter-rouge">documentImageFileUri</code> - file URI of the cropped document image (if document detection was successful)</li>
+  <li><code class="highlighter-rouge">originalPreviewImageFileUri</code> - file URI of a screen-sized preview of the original image</li>
+  <li><code class="highlighter-rouge">documentPreviewImageFileUri</code> - file URI of a screen-sized preview of the document image</li>
+</ul>
+
+<p>Pages are stored in an internal page file storage, where the <code class="highlighter-rouge">pageId</code> serves as a name prefix for the stored image files. Operations that modify pages work in-place. That is, for example, <code class="highlighter-rouge">rotatePage()</code> overwrites the page’s image files with their rotated versions. This behavior differs from the behavior of raw image functions like <code class="highlighter-rouge">rotateImage()</code> which always create a new file. All URI properties of a page have a <code class="highlighter-rouge">?minihash=</code> query parameter appended to them with the hash of a portion of the image file. Different images will almost always have a different hash and therefore a different URI, which will force the WebView to reload the page’s images when changed.</p>
+
+<p><a name="module_ScanbotSdk.UI.startDocumentScanner"></a></p>
+<h3 id="document-scanner">Document Scanner</h3>
+<h4 id="scanbotsdkuistartdocumentscannerconfiguration-documentscannerconfiguration-promise"><code class="highlighter-rouge">ScanbotSdk.UI.startDocumentScanner(configuration: DocumentScannerConfiguration): Promise</code></h4>
+
+<p>Starts the ready-to-use Document Scanner for guided, automatic document scanning.</p>
+
+<p><img src="./assets/images/document_scanner.jpg" alt="alt text" title="Document Scanner Screenshot" /></p>
+
+<h5 id="result">Result</h5>
+<p>The promise resolves to an object with the following properties:</p>
+<ul>
+  <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> if some pages were snapped, <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation.</li>
+  <li><code class="highlighter-rouge">pages</code> - an array of <a href="#page_object">pages</a>. If multi-page mode is enabled, this array may contain more than one page. If multi-page mode is not enabled and <code class="highlighter-rouge">status</code> is <code class="highlighter-rouge">'OK'</code>, this array contains one object.</li>
+</ul>
+
 <h5 id="options">Options:</h5>
+<p>All UI configuration options are optional.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">DocumentScannerConfiguration</span> <span class="p">{</span>
+    <span class="cm">/**
+    * The minimum score in percent (0 - 100) of the perspective distortion to accept a detected document.
+    * Default is 75.0.
+    */</span>
+    <span class="nl">acceptedAngleScore</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="cm">/**
+    * The minimum document width or height in percent (0 - 100) of the screen size to accept a detected document.
+    * Default is 80.0.
+    */</span>
+    <span class="nx">acceptedSizeScore</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="cm">/**
+    * Controls whether the auto-snapping toggle button is hidden or not.
+    */</span>
+    <span class="nx">autoSnappingButtonHidden</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span>
+    <span class="cm">/**
+    * Title of the auto-snapping toggle button.
+    */</span>
+    <span class="nx">autoSnappingButtonTitle</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * When auto-snapping is enabled the document scanner will take a photo automatically
+    * when a document is detected, conditions are good and the auto-snapping time-out elapses. In this
+    * mode the user can still tap the shutter button to snap a document.
+    */</span>
+    <span class="nx">autoSnappingEnabled</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span>
+    <span class="cm">/**
+    * Controls the auto-snapping speed. Sensitivity must be within the 0..1 range.
+    * A value of 1.0 triggers automatic capturing immediately, a value of 0.0 delays the automatic by 3 seconds.
+    * The default value is 0.66 (2 seconds)
+    */</span>
+    <span class="nx">autoSnappingSensitivity</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="cm">/**
+    * The background color of the bottom shutter-bar.
+    */</span>
+    <span class="nx">bottomBarBackgroundColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * The color of the title of all buttons in the bottom shutter-bar (Cancel button, etc.),
+    * as well as the camera permission prompt button.
+    */</span>
+    <span class="nx">bottomBarButtonsColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * The color of the camera background (relevant only when the camera preview mode is CameraPreviewMode.FIT_IN).
+    */</span>
+    <span class="nx">cameraBackgroundColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Preview mode of the camera: Fit-In or Fill-In.
+    * Optional, default is Fit-In.
+    */</span>
+    <span class="nx">cameraPreviewMode</span><span class="err">:</span> <span class="nx">CameraPreviewMode</span><span class="p">,</span>
+    <span class="cm">/**
+    * Title of the cancel button.
+    */</span>
+    <span class="nx">cancelButtonTitle</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Title of the button that opens the screen where the user can allow
+    * the usage of the camera by the app.
+    */</span>
+    <span class="nx">enableCameraButtonTitle</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Text that will be displayed when the app
+    * is not allowed to use the camera, prompting the user
+    * to enable the usage of the camera.
+    */</span>
+    <span class="nx">enableCameraExplanationText</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Controls whether the flash toggle button is hidden or not.
+    */</span>
+    <span class="nx">flashButtonHidden</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span>
+    <span class="cm">/**
+    * Title of the flash toggle button.
+    */</span>
+    <span class="nx">flashButtonTitle</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Controls whether the flash should be initially enabled.
+    * The default value is FALSE.
+    */</span>
+    <span class="nx">flashEnabled</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span>
+    <span class="nx">flashImageButtonHidden</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span>
+    <span class="cm">/**
+    * Sets whether to ignore the OK_BUT_BAD_ASPECT_RATIO detection status.
+    * By default BadAspectRatio is not ignored.
+    */</span>
+    <span class="nx">ignoreBadAspectRatio</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span>
+    <span class="cm">/**
+    * The image scaling factor. The factor must be within the 0..1 range.
+    * A factor of 1 means that the resulting images retain their original size.
+    * When the factor is less than 1, resulting images will be made smaller by that factor.
+    * By default the scale is 1.
+    */</span>
+    <span class="nx">imageScale</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="cm">/**
+    * Controls whether the multi-page toggle button is hidden or not.
+    */</span>
+    <span class="nx">multiPageButtonHidden</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span>
+    <span class="cm">/**
+    * Title of the multi-page mode toggle button.
+    */</span>
+    <span class="nx">multiPageButtonTitle</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Controls multi-page mode. When enabled, the user can take multiple document photos before
+    * closing the screen by tapping the page counter button. When disabled, the screen will be
+    * closed immediately after the first document photo is made.
+    * The default value is FALSE.
+    */</span>
+    <span class="nx">multiPageEnabled</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span>
+    <span class="cm">/**
+    * Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.
+    * By default the camera orientation is not locked.
+    */</span>
+    <span class="nx">orientationLockMode</span><span class="err">:</span> <span class="nx">CameraOrientationMode</span><span class="p">,</span>
+    <span class="cm">/**
+    * Title suffix of the button that finishes the document scanning when multi-page scanning is enabled.
+    * The button's title has the format "# Pages", where # shows the number of images captured up to now and the
+    * suffix "Pages" is set using this method.
+    */</span>
+    <span class="nx">pageCounterButtonTitle</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * The background color of the detected document outline when the document's angle, size or aspect ratio
+    * is not yet sufficiently good.
+    * (All net.doo.snap.lib.detector.DetectionResult with OK_BUT_XXX).
+    */</span>
+    <span class="nx">polygonBackgroundColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * The background color of the detected document outline when we are ready to snap OK.
+    */</span>
+    <span class="nx">polygonBackgroundColorOK</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * The color of the detected document outline when the document's angle, size or aspect ratio
+    * is not yet sufficiently good.
+    * (All detection statuses in net.doo.snap.lib.detector.DetectionResult that have the OK_BUT_XXX prefix).
+    */</span>
+    <span class="nx">polygonColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * The color of the detected document outline when we are ready to snap OK.
+    */</span>
+    <span class="nx">polygonColorOK</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Width of the detected document outline.
+    */</span>
+    <span class="nx">polygonLineWidth</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="cm">/**
+    * The foreground color of the shutter button in auto-snapping mode.
+    */</span>
+    <span class="nx">shutterButtonAutoInnerColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * The background color of the shutter button in auto-snapping mode.
+    */</span>
+    <span class="nx">shutterButtonAutoOuterColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nx">shutterButtonIndicatorColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * The foreground color of the shutter button in manual mode.
+    */</span>
+    <span class="nx">shutterButtonManualInnerColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * The background color of the shutter button in manual mode.
+    */</span>
+    <span class="nx">shutterButtonManualOuterColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Text hint that will be shown when the current detection status is OK_BUT_BAD_ANGLES
+    */</span>
+    <span class="nx">textHintBadAngles</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Text hint that will be shown when the current detection status is OK_BUT_BAD_ASPECT_RATIO
+    */</span>
+    <span class="nx">textHintBadAspectRatio</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Text hint that will be shown when the current detection status is ERROR_NOTHING_DETECTED
+    */</span>
+    <span class="nx">textHintNothingDetected</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Text hint that will be shown when the current detection status is OK
+    */</span>
+    <span class="nx">textHintOK</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Text hint that will be shown when the current detection status is ERROR_TOO_DARK
+    */</span>
+    <span class="nx">textHintTooDark</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Text hint that will be shown when the current detection status is ERROR_TOO_NOISY
+    */</span>
+    <span class="nx">textHintTooNoisy</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Text hint that will be shown when the current detection status is OK_BUT_TOO_SMALL
+    */</span>
+    <span class="nx">textHintTooSmall</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * The background color of the top toolbar.
+    */</span>
+    <span class="nx">topBarBackgroundColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * The color of all active toggle buttons in the toolbar.
+    */</span>
+    <span class="nx">topBarButtonsActiveColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * The color of all inactive toggle buttons in the toolbar.
+    */</span>
+    <span class="nx">topBarButtonsInactiveColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * The background color of the user guidance hints.
+    */</span>
+    <span class="nx">userGuidanceBackgroundColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * The text color of the user guidance hints.
+    */</span>
+    <span class="nx">userGuidanceTextColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p><a name="module_ScanbotSdkUi.startCroppingScreen"></a></p>
+<h3 id="cropping-ui">Cropping UI</h3>
+<h4 id="scanbotsdkuistartcroppingscreenpage-page-options-croppingscreenconfiguration"><code class="highlighter-rouge">ScanbotSdk.UI.startCroppingScreen(page: Page, options: CroppingScreenConfiguration)</code></h4>
+
+<p>The Cropping UI provides functionality for manual cropping and rotation of an image. 
+It uses the edge detection algorithm of the Scanbot SDK and containts some smart UI elements like magnetic lines and a magnifier.</p>
+
+<p><img src="./assets/images/cropping.jpg" alt="alt" title="Cropping screen screenshot" /></p>
+
+<h5 id="returns">Returns</h5>
+<p>The promise resolves to an object with the following properties:</p>
+<ul>
+  <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> if the user modified the page, <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation.</li>
+  <li><code class="highlighter-rouge">page</code> - the cropped <a href="#page_object">page</a>.</li>
+</ul>
+
+<h5 id="options-1">Options:</h5>
+<p>The cropping UI requires a page object. A page object can be initially created using the <a href="#module_ScanbotSdk.UI.startDocumentScanner">Document Scanner</a> or <a href="#module_ScanbotSdk.createPage">createPage()</a>.</p>
+
+<p>All UI configuration settings are optional.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="cm">/**
+    * Background color of the main screen.
+    */</span>
+    <span class="na">backgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Background color of the bottom toolbar.
+    */</span>
+    <span class="na">bottomBarBackgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Color of the titles of all buttons in the bottom toolbar (Rotate button).
+    */</span>
+    <span class="na">bottomBarButtonsColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Title of the cancel button.
+    */</span>
+    <span class="na">cancelButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Title of the Done button.
+    */</span>
+    <span class="na">doneButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Default color of the cropping outline.
+    */</span>
+    <span class="na">polygonColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Outline color of magnetically snapped edges.
+    */</span>
+    <span class="na">polygonColorMagnetic</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Width of the cropping outline.
+    */</span>
+    <span class="na">polygonLineWidth</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="cm">/**
+    * Title of the Rotate button.
+    */</span>
+    <span class="na">rotateButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="na">titleColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Background color of the top toolbar.
+    */</span>
+    <span class="na">topBarBackgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Color of the titles of all buttons in the top toolbar (Cancel and Done buttons).
+    */</span>
+    <span class="na">topBarButtonsColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="na">topBarTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><a name="module_ScanbotSdkUi.startBarcodeScanner"></a></p>
+<h3 id="barcode-and-qr-code-scanning-ui">Barcode and QR Code Scanning UI</h3>
+<h4 id="scanbotsdkuistartbarcodescannerconfiguration-barcodescannerconfiguration-promise"><code class="highlighter-rouge">ScanbotSdk.UI.startBarcodeScanner(configuration: BarcodeScannerConfiguration): Promise</code></h4>
+
+<p>Opens a Scanning UI for barcodes and QR codes.</p>
+
+<p><img src="./assets/images/barcode.jpg" alt="alt" title="Barcode scanner screenshot" /></p>
+
+<h5 id="returns-1">Returns</h5>
+<p>The promise resolves to an object with the following properties:</p>
+<ul>
+  <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> if the user modified the , <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation.</li>
+  <li><code class="highlighter-rouge">format</code> - <a href="#barcodeFormat">Format</a> of detected barcode/QR code (e.g. “CODE_128”, “EAN_13”, “QR_CODE”, etc).</li>
+  <li><code class="highlighter-rouge">value</code> - Text value of detected barcode/QR code.</li>
+</ul>
+
+<h5 id="options-2">Options:</h5>
+<p>All settings are optional.</p>
+
+<p><code class="highlighter-rouge">configuration.barcodeFormats</code> is an optional array of <a href="#barcodeFormat">barcode formats</a> that act as a detection filter. By default all supported formats will be detected.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">barcodeFormats</span><span class="p">:</span> <span class="p">[</span><span class="s1">'QR_CODE'</span><span class="p">,</span> <span class="s1">'UPC_EAN'</span><span class="p">,</span> <span class="cm">/* etc... */</span><span class="p">],</span>
+
+    <span class="na">bottomButtonsActiveColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="na">bottomButtonsInactiveColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Background color outside of the finder window.
+    */</span>
+    <span class="na">cameraOverlayColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Title of the cancel button.
+    */</span>
+    <span class="na">cancelButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Title of the button that opens the screen where the user can allow
+    * the usage of the camera by the app.
+    */</span>
+    <span class="na">enableCameraButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Text that will be displayed when the app
+    * is not allowed to use the camera, prompting the user
+    * to enable the usage of the camera.
+    */</span>
+    <span class="na">enableCameraExplanationText</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Height of the finder window in pixels.
+    */</span>
+    <span class="na">finderHeight</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="cm">/**
+    * Color of the finder window's outline.
+    */</span>
+    <span class="na">finderLineColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Thickness of the finder window's outline.
+    */</span>
+    <span class="na">finderLineWidth</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="cm">/**
+    * Text hint shown under the finder window.
+    */</span>
+    <span class="na">finderTextHint</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Color of the text hint under the finder window.
+    */</span>
+    <span class="na">finderTextHintColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Width of the finder window in pixels.
+    */</span>
+    <span class="na">finderWidth</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="na">flashButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Controls whether the flash should be initially enabled.
+    * The default value is FALSE.
+    */</span>
+    <span class="na">flashEnabled</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">,</span>
+    <span class="cm">/**
+    * Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.
+    * By default the camera orientation is not locked.
+    */</span>
+    <span class="na">orientationLockMode</span><span class="p">:</span> <span class="nx">CameraOrientationMode</span><span class="p">,</span>
+    <span class="cm">/**
+    * Controls whether to play a beep sound after a successful detection.
+    * Default value is TRUE.
+    */</span>
+    <span class="na">successBeepEnabled</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">,</span>
+    <span class="cm">/**
+    * Background color of the top toolbar.
+    */</span>
+    <span class="na">topBarBackgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Color of the titles of all buttons in the top toolbar.
+    */</span>
+    <span class="na">topBarButtonsColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><a name="module_ScanbotSdkUi.startMrzScanner"></a></p>
+<h3 id="machine-readable-zone-scanner">Machine-readable Zone Scanner</h3>
+<h4 id="scanbotsdkuistartmrzscannerconfiguration-mrzscannerconfiguration"><code class="highlighter-rouge">ScanbotSdk.UI.startMrzScanner(configuration: MrzScannerConfiguration)</code></h4>
+
+<p>Opens a Scanner for machine-readable zones.</p>
+
+<p><img src="./assets/images/mrz.jpg" alt="alt" title="MRZ scanner screenshot" /></p>
+
+<h5 id="returns-2">Returns</h5>
+<p>The promise resolves to an object with the following properties:</p>
+<ul>
+  <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> if the user modified the , <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation.</li>
+  <li><code class="highlighter-rouge">fields</code> - an array of MRZ fields. Each field is an object with the following properties:
+    <ul>
+      <li><code class="highlighter-rouge">field.name</code> - the field type</li>
+      <li><code class="highlighter-rouge">field.value</code> - the value of the field.</li>
+      <li><code class="highlighter-rouge">field.confidence</code> - confidence in the accuracy of <code class="highlighter-rouge">value</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="options-3">Options:</h5>
+<p>The finder window must have a width-to-height of 5, otherwise the detection process will fail. All other settings are optional.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">MrzScannerConfiguration</span> <span class="p">{</span>
+    <span class="nl">bottomButtonsActiveColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nx">bottomButtonsInactiveColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Background color outside of the finder window.
+    */</span>
+    <span class="nx">cameraOverlayColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Title of the cancel button.
+    */</span>
+    <span class="nx">cancelButtonTitle</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Title of the button that opens the screen where the user can allow
+    * the usage of the camera by the app.
+    */</span>
+    <span class="nx">enableCameraButtonTitle</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Text that will be displayed when the app
+    * is not allowed to use the camera, prompting the user
+    * to enable the usage of the camera.
+    */</span>
+    <span class="nx">enableCameraExplanationText</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Height of the finder window in pixels.
+    */</span>
+    <span class="nx">finderHeight</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="cm">/**
+    * Color of the finder window's outline.
+    */</span>
+    <span class="nx">finderLineColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Thickness of the finder window's outline.
+    */</span>
+    <span class="nx">finderLineWidth</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="cm">/**
+    * Text hint shown under the finder window.
+    */</span>
+    <span class="nx">finderTextHint</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Color of the text hint under the finder window.
+    */</span>
+    <span class="nx">finderTextHintColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Width of the finder window in pixels.
+    */</span>
+    <span class="nx">finderWidth</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="nx">flashButtonTitle</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Controls whether the flash should be initially enabled.
+    * The default value is FALSE.
+    */</span>
+    <span class="nx">flashEnabled</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span>
+    <span class="cm">/**
+    * Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.
+    * By default the camera orientation is not locked.
+    */</span>
+    <span class="nx">orientationLockMode</span><span class="err">:</span> <span class="nx">CameraOrientationMode</span><span class="p">,</span>
+    <span class="cm">/**
+    * Controls whether to play a beep sound after a successful detection.
+    * Default value is TRUE.
+    */</span>
+    <span class="nx">successBeepEnabled</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span>
+    <span class="cm">/**
+    * Background color of the top toolbar.
+    */</span>
+    <span class="nx">topBarBackgroundColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+    * Color of the titles of all buttons in the top toolbar.
+    */</span>
+    <span class="nx">topBarButtonsColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="page-operations">Page operations</h3>
+
+<p><a name="module_ScanbotSdk.createPage"></a></p>
+<h4 id="scanbotsdkcreatepageimageuri-string-promisepage"><code class="highlighter-rouge">ScanbotSdk.createPage(imageUri: string): Promise&lt;Page&gt;</code></h4>
+
+<p>Creates a <a href="#page_object">page</a> from an image (presumably the image of an uncropped document).</p>
+
+<h5 id="returns-3">Returns</h5>
+<p>The promise resolves to a page object. As the page hasn’t been cropped yet, the <code class="highlighter-rouge">documentImageFileUri</code> and <code class="highlighter-rouge">documentPreviewImageFileUri</code> properties will be empty.</p>
+
+<p><a name="module_ScanbotSdk.setDocumentImage"></a></p>
+<h4 id="scanbotsdksetdocumentimagepage-page-imageuri-string-promisepage"><code class="highlighter-rouge">ScanbotSdk.setDocumentImage(page: Page, imageUri: string): Promise&lt;Page&gt;</code></h4>
+
+<p>Replaces the document image of a page. The passed image file will be copied into the internal page file storage.</p>
 
 <ul>
-  <li><code class="highlighter-rouge">imageFileUri</code> - Input image file URI.</li>
-  <li><code class="highlighter-rouge">edgeColor</code> - Optional color for rendered polygon edges. Hexadecimal format <code class="highlighter-rouge">#RRGGBB</code> or <code class="highlighter-rouge">#AARRGGBB</code>.</li>
-  <li><code class="highlighter-rouge">imageCompressionQuality</code> - Optional <a href="#imageQuality">quality</a> of the output image.</li>
+  <li><code class="highlighter-rouge">page</code> - the page to modify.</li>
+  <li><code class="highlighter-rouge">imageUri</code> - the URI of an image file with which to overwrite the page’s document image.</li>
 </ul>
+
+<h5 id="returns-4">Returns</h5>
+<p>The promise resolves to a page object with the replaced document image.</p>
+
+<p><a name="module_ScanbotSdk.detectDocumentOnPage"></a></p>
+<h4 id="scanbotsdkdetectdocumentonpagepage-page-promisepage"><code class="highlighter-rouge">ScanbotSdk.detectDocumentOnPage(page: Page): Promise&lt;Page&gt;</code></h4>
+
+<p>Runs document detection on the original image of the given page. The detection status, polygon and cropped document image are returned as a new page object in the returned promise.</p>
+
+<p><a name="module_ScanbotSdk.applyImageFilterOnPage"></a></p>
+<h4 id="scanbotsdkapplyimagefilteronpagepage-page-filter-imagefilter-promisepage"><code class="highlighter-rouge">ScanbotSdk.applyImageFilterOnPage(page: Page, filter: ImageFilter): Promise&lt;Page&gt;</code></h4>
+
+<p>Applies a filter on the <em>unfiltered</em> document image of a page.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">page</code> - the page to filter.</li>
+  <li><code class="highlighter-rouge">imageFilter</code> - the <a href="#imageFilter">image filter</a> to apply. The special value <code class="highlighter-rouge">'NONE'</code> will remove any previously applied filter from the document image.</li>
+</ul>
+
+<p><a name="module_ScanbotSdk.getFilteredDocumentPreviewUri"></a></p>
+<h4 id="scanbotsdkgetfiltereddocumentpreviewuripage-page-imagefilter-imagefilter-promisestring"><code class="highlighter-rouge">ScanbotSdk.getFilteredDocumentPreviewUri(page: Page, imageFilter: ImageFilter): Promise&lt;string&gt;</code></h4>
+
+<p>Creates a preview image of a filter applied onto the document of a page. Does not modify the document image of the passed page.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">page</code> - the page for which to create a filtered document preview.</li>
+  <li><code class="highlighter-rouge">imageFilter</code> - the <a href="#imageFilter">image filter</a> to apply. The special value <code class="highlighter-rouge">'NONE'</code> will remove any previously applied filter from the document image.</li>
+</ul>
+
+<h5 id="returns-5">Returns</h5>
+<p>A file URI with the preview image of the filtered document page.</p>
+
+<p><a name="module_ScanbotSdk.rotatePage"></a></p>
+<h4 id="scanbotsdkrotatepagepage-page-times-number"><code class="highlighter-rouge">ScanbotSdk.rotatePage(page: Page, times: number)</code></h4>
+
+<p>Rotates a page counter-clockwise in increments of 90 degrees.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">page</code> - the page to rotate.</li>
+  <li><code class="highlighter-rouge">times</code> - the number of counter-clockwise 90 degrees rotations to apply.</li>
+</ul>
+
+<p><a name="module_ScanbotSdk.getStoredPages"></a></p>
+<h4 id="scanbotsdkgetstoredpages-promisepage"><code class="highlighter-rouge">ScanbotSdk.getStoredPages(): Promise&lt;Page[]&gt;</code></h4>
+
+<p>Returns a promise that resolves to an array of all pages stored in the internal page file storage. The pages will contain only a <code class="highlighter-rouge">pageId</code> and image file URIs - no <code class="highlighter-rouge">detectionResult</code> or <code class="highlighter-rouge">polygon</code>. Calling this method after <code class="highlighter-rouge">cleanup()</code> will return an empty array.</p>
+
+<p><a name="module_ScanbotSdk.removePage"></a></p>
+<h4 id="scanbotsdkremovepagepage-page-promise"><code class="highlighter-rouge">ScanbotSdk.removePage(page: Page): Promise</code></h4>
+
+<p>Removes a page from the internal file storage.</p>
+
+<h2 id="raw-image-operations">Raw image operations</h2>
 
 <p><a name="module_ScanbotSDK.detectDocument"></a></p>
 <h3 id="document-detection">Document Detection</h3>
-<h4 id="scanbotsdkdetectdocumentoptions-successcallback-failurecallback">ScanbotSDK.detectDocument(options, successCallback, failureCallback)</h4>
+<h4 id="scanbotsdkdetectdocumentimagefileuri-string-promise"><code class="highlighter-rouge">ScanbotSDK.detectDocument(imageFileUri: string): Promise</code></h4>
 
 <p>The Scanbot SDK uses digital image processing algorithms to find rectangular, document like, polygons in a digital image.
 This function applies edge dectection and processes all image operations in a background thread. There will be no UI started.
@@ -718,145 +1086,56 @@ on success the cropped and perspective corrected image as a new file as well as 
 If there was no document detected the result enum provides the exact reason (noisy background, too dark, etc).
 The input image file will not be modified.</p>
 
-<h5 id="callbacks-4">Callbacks:</h5>
+<h5 id="returns-6">Returns</h5>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
-</code></pre>
-</div>
-
+<p>Returns object with the following fields</p>
 <ul>
-  <li><code class="highlighter-rouge">imageFileUri</code> - <a href="#fileHandling">File URI</a> of the detected and cropped/warped document image as JPEG (<code class="highlighter-rouge">'file:///...'</code>).
+  <li><code class="highlighter-rouge">documentImageFileUri</code> - <a href="#fileHandling">File URI</a> of the detected and cropped/warped document image as JPEG (<code class="highlighter-rouge">'file:///...'</code>).
 Maybe <code class="highlighter-rouge">null</code> if detection was not successfull.</li>
   <li><code class="highlighter-rouge">polygon</code> - Contains the detected <a href="#polygon">polygon</a> as array. Maybe empty if detection was not successfull.</li>
   <li><code class="highlighter-rouge">detectionResult</code> - The <a href="#detectionResult">Detection Result</a>.</li>
 </ul>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">failureCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
-</ul>
-
-<h5 id="options-1">Options:</h5>
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">imageFileUri</span><span class="err">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
-<span class="nx">imageCompressionQuality</span><span class="err">:</span> <span class="mi">80</span>
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="highlighter-rouge">imageFileUri</code> - Input image file URI.</li>
-  <li><code class="highlighter-rouge">imageCompressionQuality</code> - Optional <a href="#imageQuality">quality</a> of the output image.</li>
-</ul>
-
 <h3 id="rotate-image">Rotate Image</h3>
 <p><a name="module_ScanbotSDK.rotateImage"></a></p>
-<h4 id="scanbotsdkrotateimageoptions-successcallback-failurecallback">ScanbotSDK.rotateImage(options, successCallback, failureCallback)</h4>
+<h4 id="scanbotsdkrotateimageimagefileuri-string-degrees-number-promisestring"><code class="highlighter-rouge">ScanbotSDK.rotateImage(imageFileUri: string, degrees: number): Promise&lt;string&gt;</code></h4>
 
 <p>Rotates an image by given degrees value. As input a file URI of the image must be passed. 
 The output image will be a new file. The input image file will not be modified.</p>
 
-<h5 id="callback">Callback:</h5>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="highlighter-rouge">imageFileUri</code> - <a href="#fileHandling">File URI</a> of the rotated result image as JPEG (<code class="highlighter-rouge">'file:///...'</code>).</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">failureCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
-</ul>
-
-<h5 id="options-2">Options:</h5>
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">imageFileUri</span><span class="err">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
-<span class="nx">degrees</span><span class="err">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span>
-<span class="nx">imageCompressionQuality</span><span class="err">:</span> <span class="mi">80</span>
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="highlighter-rouge">imageFileUri</code> - Input image file URI.</li>
-  <li><code class="highlighter-rouge">degrees</code> - Degrees as integer value. The direction of rotation is counterclockwise if <code class="highlighter-rouge">degrees</code> value is positive (e.g. 90°), and clockwise if <code class="highlighter-rouge">degrees</code> value is negative (e.g. −90°).</li>
-  <li><code class="highlighter-rouge">imageCompressionQuality</code> - Optional <a href="#imageQuality">quality</a> of the output image.</li>
-</ul>
+<h5 id="returns-7">Returns</h5>
+<p>Promise returning the <a href="#fileHandling">file URI</a> of the rotated result image.</p>
 
 <p><a name="module_ScanbotSDK.applyImageFilter"></a></p>
 <h3 id="apply-image-filter">Apply Image Filter</h3>
-<h4 id="scanbotsdkapplyimagefilteroptions-successcallback-failurecallback">ScanbotSDK.applyImageFilter(options, successCallback, failureCallback)</h4>
+<h4 id="scanbotsdkapplyimagefilterimagefileuri-string-filter-imagefilter-promisestring"><code class="highlighter-rouge">ScanbotSDK.applyImageFilter(imageFileUri: string, filter: ImageFilter): Promise&lt;string&gt;</code></h4>
 
 <p>Applies filter on an image. As input a file URI of the image must be passed. 
 The output image will be a new file. The input image file will not be modified.</p>
 
-<h5 id="callbacks-5">Callbacks:</h5>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
-</code></pre>
-</div>
-
 <ul>
-  <li><code class="highlighter-rouge">imageFileUri</code> - <a href="#fileHandling">File URI</a> of the result image as JPEG (<code class="highlighter-rouge">'file:///...'</code>).</li>
+  <li><code class="highlighter-rouge">imageFileUri</code> - file URI of the image to rotate</li>
+  <li><code class="highlighter-rouge">filter</code> - <a href="#imageFilter">ImageFilter</a> string value.</li>
 </ul>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">failureCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
-</ul>
-
-<h5 id="options-3">Options:</h5>
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">imageFileUri</span><span class="err">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
-<span class="nx">filterType</span><span class="err">:</span> <span class="s1">'BINARIZED'</span><span class="p">,</span>
-<span class="nx">imageCompressionQuality</span><span class="err">:</span> <span class="mi">80</span>
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="highlighter-rouge">imageFileUri</code> - Input image file URI.</li>
-  <li><code class="highlighter-rouge">filterType</code> - <a href="#imageFilter">ImageFilter</a> string value.</li>
-  <li><code class="highlighter-rouge">imageCompressionQuality</code> - Optional <a href="#imageQuality">quality</a> of the output image.</li>
-</ul>
+<h5 id="returns-8">Returns</h5>
+<p>File URI to the rotated image file.</p>
 
 <p><a name="module_ScanbotSDK.createPDF"></a></p>
 <h3 id="pdf-creation">PDF Creation</h3>
-<h4 id="scanbotsdkcreatepdfoptions-successcallback-failurecallback">ScanbotSDK.createPDF(options, successCallback, failureCallback)</h4>
+<h4 id="scanbotsdkcreatepdfimagefileuris-string-promise"><code class="highlighter-rouge">ScanbotSDK.createPDF(imageFileUris: string[]): Promise</code></h4>
 
 <p>The Scanbot SDK renders given images into a PDF document and stores it as a file. For each image a separate page is generated.</p>
 
-<h5 id="callbacks-6">Callbacks:</h5>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="highlighter-rouge">pdfFileUri</code> - <a href="#fileHandling">File URI</a> of the result file as PDF (<code class="highlighter-rouge">'file:///...'</code>).</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">failureCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
-</ul>
-
-<h5 id="options-4">Options:</h5>
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">imageFileUris</span><span class="err">:</span> <span class="p">[</span><span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">]</span>
-</code></pre>
-</div>
-
 <ul>
   <li><code class="highlighter-rouge">imageFileUris</code> - Input images as an array of file URIs in proper order (image element 1 =&gt; page 1, etc).</li>
+</ul>
+
+<h5 id="returns-9">Returns</h5>
+<p>Returns an object with the following properties:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">pdfFileUri</code> - file URI with the path to the created PDF file</li>
 </ul>
 
 <h3 id="ocr---optical-character-recognition">OCR - Optical Character Recognition</h3>
@@ -865,11 +1144,12 @@ The output image will be a new file. The input image file will not be modified.<
 It is based on the Tesseract OCR Engine with some modifications and enhancements.</p>
 
 <p><a name="module_ScanbotSDK.getOCRConfigs"></a></p>
-<h4 id="scanbotsdkgetocrconfigssuccesscallback-failurecallback">ScanbotSDK.getOCRConfigs(successCallback, failureCallback)</h4>
+<h4 id="scanbotsdkgetocrconfigs-promise"><code class="highlighter-rouge">ScanbotSDK.getOCRConfigs(): Promise</code></h4>
 
 <p>Use this function to get Scanbot SDK OCR properties of the current App installation.</p>
 
-<h5 id="callback-1">Callback:</h5>
+<h5 id="returns-10">Returns</h5>
+<p>Returns an object with the following properties:</p>
 
 <ul>
   <li><code class="highlighter-rouge">languageDataPath</code> - Contains absolute file URI of the directory where to place the <a href="#ocrLanguages">OCR training data files</a>.
@@ -879,39 +1159,11 @@ this directory will also be removed.</li>
 The Scanbot SDK uses the <code class="highlighter-rouge">languageDataPath</code> directory to determine installed OCR languages.</li>
 </ul>
 
-<p>No options are required for this operation.</p>
-
 <p><a name="module_ScanbotSDK.performOCR"></a></p>
-<h4 id="scanbotsdkperformocroptions-successcallback-failurecallback">ScanbotSDK.performOCR(options, successCallback, failureCallback)</h4>
+<h4 id="scanbotsdkperformocrimagefileuris-string-languages-string-options-promise"><code class="highlighter-rouge">ScanbotSDK.performOCR(imageFileUris: string[], languages: string[], options): Promise</code></h4>
 
 <p>This function takes an array of images and performs Optical Character Recognition on each of the images.
 As result the recognized text can be returned as plain text or a composed PDF file containing selectable and searchable text.</p>
-
-<h5 id="callbacks-7">Callbacks:</h5>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="highlighter-rouge">plainText</code> - Contains the recognized plain text.</li>
-  <li><code class="highlighter-rouge">pdfFileUri</code> - <a href="#fileHandling">File URI</a> of the composed PDF file (<code class="highlighter-rouge">'file:///...'</code>).</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">failureCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
-</ul>
-
-<h5 id="options-5">Options:</h5>
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">imageFileUris</span><span class="err">:</span> <span class="p">[</span><span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">],</span>
-<span class="nx">languages</span><span class="err">:</span> <span class="p">[</span><span class="s1">'en'</span><span class="p">,</span> <span class="s1">'de'</span><span class="p">],</span>
-<span class="nx">outputFormat</span><span class="err">:</span> <span class="s1">'PLAIN_TEXT'</span>
-</code></pre>
-</div>
 
 <ul>
   <li><code class="highlighter-rouge">imageFileUris</code> - Input images as an array of file URIs in proper order (image element 1 =&gt; page 1, etc).</li>
@@ -919,7 +1171,19 @@ As result the recognized text can be returned as plain text or a composed PDF fi
 The number of languages has an impact on the performance - the more languages, the slower the recognition process.
 The OCR operation will fail with an error if some of the specified languages are missing.
 Please use the <a href="#module_ScanbotSdk.getOcrConfigs">getOcrConfigs</a> function to make sure that desired languages are installed.</li>
-  <li><code class="highlighter-rouge">outputFormat</code> - <a href="#ocrOutputFormat">OcrOutputFormat</a> enum value to specify the result.</li>
+  <li><code class="highlighter-rouge">options</code> - an object containing some of the following properties:
+    <ul>
+      <li><code class="highlighter-rouge">outputFormat</code> - <a href="#ocrOutputFormat">OcrOutputFormat</a> enum value to specify the result.</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="returns-11">Returns</h5>
+<p>The promise resolves to an object with the following properties:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">plainText</code> - Contains the recognized plain text if chosen.</li>
+  <li><code class="highlighter-rouge">pdfFileUri</code> - <a href="#fileHandling">File URI</a> of the composed PDF file (<code class="highlighter-rouge">'file:///...'</code>) if chosen.</li>
 </ul>
 
 <p><a name="OCRLanguages"></a></p>
@@ -974,29 +1238,9 @@ Please use the <a href="#module_ScanbotSdk.getOcrConfigs">getOcrConfigs</a> func
 
 <p><a name="module_ScanbotSDK.cleanup"></a></p>
 <h3 id="cleanup">Cleanup</h3>
-<h4 id="scanbotsdkcleanupsuccesscallback-failurecallback">ScanbotSDK.cleanup(successCallback, failureCallback)</h4>
+<h4 id="scanbotsdkcleanup-promise">ScanbotSDK.cleanup(): Promise</h4>
 
 <p>By calling ths function all temporary output files generated by the Scanbot SDK module will be deleted.</p>
-
-<h5 id="callback-2">Callback:</h5>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="highlighter-rouge">result</code> - Contains a simple success message as string.</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">failureCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="highlighter-rouge">error</code> - Contains the error message as string.</li>
-</ul>
-
-<p>No options are required for this operation.</p>
 
 <p><a name="fileHandling"></a></p>
 <h3 id="file-handling--storage-concept">File Handling &amp; Storage Concept</h3>
@@ -1039,12 +1283,16 @@ We recommend to copy, move or delete the files you get from callbacks to a appro
 <p><a name="imageFilter"></a></p>
 <h3 id="image-filter-values">Image Filter values</h3>
 
-<p>Supported image filters:</p>
+<p>Supported image filters:
+Supported image filters:</p>
 <ul>
-  <li><code class="highlighter-rouge">COLOR_ENHANCED</code> - Color-enhancement filter</li>
+  <li><code class="highlighter-rouge">COLOR_ENHANCED</code> - Optimizes colors, contrast and brightness.</li>
   <li><code class="highlighter-rouge">GRAYSCALE</code> - Grayscale filter</li>
-  <li><code class="highlighter-rouge">BINARIZED</code> - Black &amp; White filter</li>
-  <li><code class="highlighter-rouge">COLOR_DOCUMENT</code> - MagicColor filter</li>
+  <li><code class="highlighter-rouge">BINARIZED</code> - Standard binarization filter with contrast optimization. Creates a grayscaled 8-bit image with mostly black or white pixels.</li>
+  <li><code class="highlighter-rouge">COLOR_DOCUMENT</code> - MagicColor filter. Fixes white-balance and cleans up the background.</li>
+  <li><code class="highlighter-rouge">PURE_BINARIZED</code> - A filter for binarizing an image. Creates an image with pixel values set to either pure black or pure white.</li>
+  <li><code class="highlighter-rouge">BACKGROUND_CLEAN</code> - Cleans up the background and tries to preserve photos within the image.</li>
+  <li><code class="highlighter-rouge">BLACK_AND_WHITE</code> - Black and white filter with background cleaning. Creates a grayscaled 8-bit image with mostly black or white pixels.</li>
 </ul>
 
 <p><a name="polygon"></a></p>
@@ -1065,7 +1313,7 @@ For instance, if a point has the coordinates (0.5, 0.5), it means that it is loc
 </div>
 
 <p><a name="imageQuality"></a></p>
-<h3 id="image-quality--compression">Image Quality / Compression</h3>
+<h3 id="image-quality--compression-1">Image Quality / Compression</h3>
 <p>The <code class="highlighter-rouge">imageCompressionQuality</code> parameter defines the quality factor of the JPEG output image. The value must be in a range of 1-100,
 where 100 means the least quality loss.</p>
 
@@ -1074,87 +1322,39 @@ where 100 means the least quality loss.</p>
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release history</h3>
 
-<h5 id="108">1.0.8</h5>
+<h4 id="release-history-for-version-2x">Release history for version 2.x</h4>
+
+<h5 id="200">2.0.0</h5>
 <ul>
-  <li>Android &amp; iOS:
+  <li>New Document Scanner UI and Cropping UI - based on the native <strong>Ready-To-Use UI Components</strong> of the Scanbot SDK for Android and iOS.</li>
+  <li>Multi-page scanning in Document Scanner UI</li>
+  <li>Barcode Scanner UI</li>
+  <li>MRZ Scanner UI</li>
+  <li>TIFF support: provides creation of 1-bit TIFF images with multi-page support</li>
+  <li>New image filter types:
     <ul>
-      <li>Fixed npm <code class="highlighter-rouge">peerDependencies</code>.</li>
+      <li><code class="highlighter-rouge">PURE_BINARIZED</code> - Creates an image with pixel values set to either pure black or pure white.</li>
+      <li><code class="highlighter-rouge">BACKGROUND_CLEAN</code> - Cleans up the background and tries to preserve photos within the image.</li>
+      <li><code class="highlighter-rouge">BLACK_AND_WHITE</code> - Black and white filter with background cleaning. Creates a grayscaled 8-bit image with mostly black or white pixels.</li>
     </ul>
   </li>
+  <li>New Scanbot SDK JS API:
+    <ul>
+      <li>Promise-based design (compatible with async/await)</li>
+      <li>Typings provide contextual help in JS IDEs</li>
+    </ul>
+  </li>
+  <li>Under the hood: Upgraded the native Scanbot Android SDK to v1.33.0</li>
+  <li>Under the hood: Upgraded the native Scanbot iOS SDK to v1.7.2:
+    <ul>
+      <li>Dropped support for iOS 8</li>
+    </ul>
+  </li>
+  <li>Minor bug fixes and improvements</li>
 </ul>
 
-<h5 id="107">1.0.7</h5>
-<ul>
-  <li>iOS:
-    <ul>
-      <li>Bugfix: Fixed a crash in the <code class="highlighter-rouge">onPolygonDetected</code> callback of <code class="highlighter-rouge">ScanbotCameraView</code>.</li>
-    </ul>
-  </li>
-  <li>Android:
-    <ul>
-      <li>Bugfix: Fixed the field name <code class="highlighter-rouge">detectionResult</code> in the <code class="highlighter-rouge">onPolygonDetected</code> callback result of <code class="highlighter-rouge">ScanbotCameraView</code> according to the API.</li>
-    </ul>
-  </li>
-</ul>
-
-<h5 id="106">1.0.6</h5>
-<ul>
-  <li>Android:
-    <ul>
-      <li>Bugfix: Fix orientation lock issues in <code class="highlighter-rouge">ScanbotCameraView</code> and <code class="highlighter-rouge">ScanbotCroppingView</code>.</li>
-    </ul>
-  </li>
-</ul>
-
-<h5 id="105">1.0.5</h5>
-<ul>
-  <li>Android &amp; iOS:
-    <ul>
-      <li>Improvement: Add default style to <code class="highlighter-rouge">ScanbotCameraView</code> and <code class="highlighter-rouge">ScanbotCroppingView</code>.</li>
-    </ul>
-  </li>
-</ul>
-
-<h5 id="104">1.0.4</h5>
-<ul>
-  <li>Android:
-    <ul>
-      <li>Under the hood: Upgraded the native Scanbot Android SDK to v1.26.5 (contains minor bug fixes).</li>
-    </ul>
-  </li>
-  <li>Android &amp; iOS:
-    <ul>
-      <li>Various bug fixes.</li>
-    </ul>
-  </li>
-</ul>
-
-<h5 id="103">1.0.3</h5>
-<ul>
-  <li>Android:
-    <ul>
-      <li>Under the hood: Upgraded the native Scanbot Android SDK to v1.26.2.</li>
-      <li>Improvement: Optimized Scanbot SDK license check and error handling. Added Java exceptions with human readable messages.</li>
-      <li>Improvement: Optimized auto snapping sensitivity / timings.</li>
-      <li>Bugfix: Handling the <code class="highlighter-rouge">autoSnappingEnabled</code> property in <code class="highlighter-rouge">ScanbotCameraView</code> as real boolean type.</li>
-      <li>Cleanup gradle files.</li>
-    </ul>
-  </li>
-</ul>
-
-<h5 id="102">1.0.2</h5>
-<ul>
-  <li>Android &amp; iOS:
-    <ul>
-      <li>Feature: Add <code class="highlighter-rouge">textResBundle</code> property in <code class="highlighter-rouge">ScanbotCameraView</code> to be able to customize text resources.</li>
-    </ul>
-  </li>
-</ul>
-
-<h5 id="101">1.0.1</h5>
-<ul>
-  <li>First release 🎉</li>
-</ul>
+<h4 id="release-history-for-version-1x">Release history for version 1.x</h4>
+<p>See the <a href="https://scanbotsdk.github.io/documentation/react-native/v1.x/#releaseHistory">v1.x documentation</a></p>
 
 <p><a name="librariesLicenses"></a></p>
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
