@@ -833,7 +833,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
 </div>
 
 <ul>
-  <li><code class="highlighter-rouge">result.status</code> - <code class="highlighter-rouge">'OK'</code> if the user modified the , <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation.</li>
+  <li><code class="highlighter-rouge">result.status</code> - <code class="highlighter-rouge">'OK'</code> if the user applied changes on image (tapped on the “done” button), <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation (tapped on the “cancel” button).</li>
   <li><code class="highlighter-rouge">result.page</code> - the cropped <a href="#page_object">page</a>.</li>
 </ul>
 
@@ -921,7 +921,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
 </div>
 
 <ul>
-  <li><code class="highlighter-rouge">result.status</code> - <code class="highlighter-rouge">'OK'</code> if the user modified the , <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation.</li>
+  <li><code class="highlighter-rouge">result.status</code> - <code class="highlighter-rouge">'OK'</code> if a barcode was detected, <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation (tapped on the “cancel” button).</li>
   <li><code class="highlighter-rouge">result.barcodeResult.barcodeFormat</code> - <a href="#barcodeFormat">Format</a> of detected barcode/QR code (e.g. “CODE_128”, “EAN_13”, “QR_CODE”, etc).</li>
   <li><code class="highlighter-rouge">result.barcodeResult.textValue</code> - Text value of detected barcode/QR code.</li>
 </ul>
@@ -1035,7 +1035,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
 </div>
 
 <ul>
-  <li><code class="highlighter-rouge">result.status</code> - <code class="highlighter-rouge">'OK'</code> if the user modified the , <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation.</li>
+  <li><code class="highlighter-rouge">result.status</code> - <code class="highlighter-rouge">'OK'</code> if some MRZ data was detected, <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation (tapped on the “cancel” button).</li>
   <li><code class="highlighter-rouge">result.fields</code> - an array of MRZ fields. Each field is an object with the following properties:
     <ul>
       <li><code class="highlighter-rouge">field.name</code> - the field type</li>
@@ -1798,32 +1798,59 @@ For instance, if a point has the coordinates (0.5, 0.5), it means that it is loc
 <h3 id="barcode-format">Barcode Format</h3>
 <p>The following barcode formats are currently supported.</p>
 
+<h4 id="android">Android</h4>
+<h5 id="1d-barcodes">1D barcodes</h5>
 <ul>
-  <li><code class="highlighter-rouge">"AZTEC"</code></li>
-  <li><code class="highlighter-rouge">"CODABAR"</code></li>
-  <li><code class="highlighter-rouge">"CODE128"</code></li>
-  <li><code class="highlighter-rouge">"CODE39"</code></li>
-  <li><code class="highlighter-rouge">"CODE93"</code></li>
-  <li><code class="highlighter-rouge">"DATA_MATRIX"</code></li>
-  <li><code class="highlighter-rouge">"EAN13"</code></li>
-  <li><code class="highlighter-rouge">"EAN8"</code></li>
-  <li><code class="highlighter-rouge">"ITF"</code></li>
-  <li><code class="highlighter-rouge">"MAXICODE"</code></li>
-  <li><code class="highlighter-rouge">"PDF417"</code></li>
-  <li><code class="highlighter-rouge">"QR_CODE"</code></li>
-  <li><code class="highlighter-rouge">"RSS14"</code></li>
-  <li><code class="highlighter-rouge">"RSS_EXPANDED"</code></li>
-  <li><code class="highlighter-rouge">"UPC_A"</code></li>
-  <li><code class="highlighter-rouge">"UPC_E"</code></li>
-  <li><code class="highlighter-rouge">"UPC_EAN_EXTENSION"</code></li>
+  <li>EAN_13</li>
+  <li>EAN_8</li>
+  <li>UPC_A</li>
+  <li>UPC_E</li>
+  <li>CODE_39</li>
+  <li>CODE_93</li>
+  <li>CODE_128</li>
+  <li>ITF (Interleaved 2 of 5)</li>
+  <li>CODABAR</li>
 </ul>
 
-<p>Not all variants are supported on iOS.</p>
+<h5 id="2d-barcodes">2D barcodes</h5>
+<ul>
+  <li>QR_CODE</li>
+  <li>DATA_MATRIX</li>
+  <li>AZTEC</li>
+  <li>PDF_417</li>
+</ul>
+
+<h4 id="ios">iOS</h4>
+<h5 id="1d-barcodes-1">1D barcodes</h5>
+<ul>
+  <li>EAN_13</li>
+  <li>EAN_8</li>
+  <li>UPC_E</li>
+  <li>CODE_39</li>
+  <li>CODE_93</li>
+  <li>CODE_128</li>
+  <li>ITF (Interleaved 2 of 5)</li>
+</ul>
+
+<h5 id="2d-barcodes-1">2D barcodes</h5>
+<ul>
+  <li>QR_CODE</li>
+  <li>DATA_MATRIX</li>
+  <li>AZTEC</li>
+  <li>PDF_417</li>
+</ul>
 
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release history</h2>
 
 <h4 id="release-history-for-version-2x">Release history for version 2.x</h4>
+
+<h5 id="202">2.0.2</h5>
+<ul>
+  <li>iOS: Fix property mapping of text key <code class="highlighter-rouge">textHintOK</code></li>
+  <li>Android: Improved error handling of <code class="highlighter-rouge">images</code> array</li>
+  <li>Fixed Typings (<code class="highlighter-rouge">index.d.ts</code>)</li>
+</ul>
 
 <h5 id="201">2.0.1</h5>
 <ul>
