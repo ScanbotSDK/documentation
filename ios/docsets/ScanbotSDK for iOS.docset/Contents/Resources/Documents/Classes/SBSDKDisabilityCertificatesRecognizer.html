@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SBSDKCreditCardRecognizerResult Class Reference</title>
+    <title>SBSDKDisabilityCertificatesRecognizer Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/objc/Class/SBSDKCreditCardRecognizerResult" class="dashAnchor"></a>
+    <a name="//apple_ref/objc/Class/SBSDKDisabilityCertificatesRecognizer" class="dashAnchor"></a>
 
-    <a title="SBSDKCreditCardRecognizerResult Class Reference"></a>
+    <a title="SBSDKDisabilityCertificatesRecognizer Class Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">ScanbotSDK for iOS Reference</a>
       <img class="carat" src="../img/carat.png" />
-      SBSDKCreditCardRecognizerResult Class Reference
+      SBSDKDisabilityCertificatesRecognizer Class Reference
     </p>
 
     <div class="content-wrapper">
@@ -95,12 +95,6 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SBSDKContactQRCode.html">SBSDKContactQRCode</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/SBSDKCreditCardRecognizer.html">SBSDKCreditCardRecognizer</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/SBSDKCreditCardRecognizerResult.html">SBSDKCreditCardRecognizerResult</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SBSDKCropViewController.html">SBSDKCropViewController</a>
@@ -513,14 +507,15 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>SBSDKCreditCardRecognizerResult</h1>
+            <h1>SBSDKDisabilityCertificatesRecognizer</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">SBSDKCreditCardRecognizerResult</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">SBSDKDisabilityCertificatesRecognizer</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
 
                 </div>
               </div>
-            <p>Contains the result of a credit card recognition.</p>
+            <p>Wrapper class for disability certificates recognition. Recognition is performed on still UIImage or SampleBufferRef,
+result is incapsulated in SBSDKDisabilityCertificatesRecognizerResult instance.</p>
 
           </div>
         </section>
@@ -532,9 +527,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKCreditCardRecognizerResult(py)number"></a>
-                    <a name="//apple_ref/objc/Property/number" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKCreditCardRecognizerResult(py)number">number</a>
+                    <a name="/c:objc(cs)SBSDKDisabilityCertificatesRecognizer(im)recognizeFromImage:"></a>
+                    <a name="//apple_ref/objc/Method/-recognizeFromImage:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKDisabilityCertificatesRecognizer(im)recognizeFromImage:">-recognizeFromImage:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -542,21 +537,45 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The credit cards number.</p>
+                        <p>Acquire all available information from UIImage instance</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">number</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/SBSDKDisabilityCertificatesRecognizerResult.html">SBSDKDisabilityCertificatesRecognizerResult</a></span> <span class="o">*</span><span class="p">)</span><span class="nf">recognizeFromImage</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">nonnull</span> <span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nv">image</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">number</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">recognize</span><span class="p">(</span><span class="n">from</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKDisabilityCertificatesRecognizerResult.html">SBSDKDisabilityCertificatesRecognizerResult</a></span><span class="p">?</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>image</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The image with detected paper.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Recognizer result.</p>
                       </div>
                     </section>
                   </div>
@@ -564,9 +583,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKCreditCardRecognizerResult(py)holder"></a>
-                    <a name="//apple_ref/objc/Property/holder" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKCreditCardRecognizerResult(py)holder">holder</a>
+                    <a name="/c:objc(cs)SBSDKDisabilityCertificatesRecognizer(im)recognizeFromSampleBuffer:orientation:"></a>
+                    <a name="//apple_ref/objc/Method/-recognizeFromSampleBuffer:orientation:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKDisabilityCertificatesRecognizer(im)recognizeFromSampleBuffer:orientation:">-recognizeFromSampleBuffer:orientation:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -574,85 +593,46 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The holder of the credit card.</p>
+                        <p>Acquire all available information from sample buffer reference</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">holder</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/SBSDKDisabilityCertificatesRecognizerResult.html">SBSDKDisabilityCertificatesRecognizerResult</a></span> <span class="o">*</span><span class="p">)</span>
+<span class="nf">recognizeFromSampleBuffer</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">CMSampleBufferRef</span><span class="p">)</span><span class="nv">sampleBufferRef</span>
+              <span class="nf">orientation</span><span class="p">:(</span><span class="n">AVCaptureVideoOrientation</span><span class="p">)</span><span class="nv">videoOrientation</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">holder</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">recognize</span><span class="p">(</span><span class="n">from</span> <span class="nv">sampleBufferRef</span><span class="p">:</span> <span class="kt">CMSampleBuffer</span><span class="p">,</span> <span class="n">orientation</span> <span class="nv">videoOrientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKDisabilityCertificatesRecognizerResult.html">SBSDKDisabilityCertificatesRecognizerResult</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKCreditCardRecognizerResult(py)expirationDate"></a>
-                    <a name="//apple_ref/objc/Property/expirationDate" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKCreditCardRecognizerResult(py)expirationDate">expirationDate</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The expiration date of the credit card.</p>
-
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sampleBufferRef</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The sample buffer reference containing detected paper.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">expirationDate</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">expirationDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKCreditCardRecognizerResult(py)polygon"></a>
-                    <a name="//apple_ref/objc/Property/polygon" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKCreditCardRecognizerResult(py)polygon">polygon</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The polygon of the credit card withinin the image.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n"><a href="../Classes/SBSDKPolygon.html">SBSDKPolygon</a></span> <span class="o">*</span><span class="n">polygon</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@NSCopying</span> <span class="k">var</span> <span class="nv">polygon</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKPolygon.html">SBSDKPolygon</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Recognizer result.</p>
                       </div>
                     </section>
                   </div>
@@ -665,8 +645,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2018-07-19)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2018 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2018-08-23)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
