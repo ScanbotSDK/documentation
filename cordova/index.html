@@ -889,7 +889,6 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
     * Title of the Rotate button.
     */</span>
     <span class="na">rotateButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
-    <span class="na">titleColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
     <span class="cm">/**
     * Background color of the top toolbar.
     */</span>
@@ -898,7 +897,35 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
     * Color of the titles of all buttons in the top toolbar (Cancel and Done buttons).
     */</span>
     <span class="na">topBarButtonsColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="cm">/**
+     * Title in the top bar (iOS only).
+     */</span>
     <span class="na">topBarTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="cm">/**
+     * Color of the title in the top bar (iOS only).
+     */</span>
+    <span class="na">titleColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="cm">/**
+     * Title of the Detect button.
+     */</span>
+    <span class="na">detectButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="cm">/**
+     * Title of the Reset button.
+     */</span>
+    <span class="na">resetButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="cm">/**
+     * Controls whether the Rotate button is hidden or not.
+     */</span>
+    <span class="na">rotateButtonHidden</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">,</span>
+    <span class="cm">/**
+     * Controls whether the Detect/Reset button is hidden or not.
+     */</span>
+    <span class="na">detectResetButtonHidden</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">,</span>
+    <span class="cm">/**
+     * UI orientation lock mode: PORTRAIT, LANDSCAPE, etc.
+     * By default the UI is not locked.
+     */</span>
+    <span class="na">orientationLockMode</span><span class="p">:</span> <span class="nx">UIOrientationMode</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">};</span>
 </code></pre>
@@ -1844,6 +1871,36 @@ For instance, if a point has the coordinates (0.5, 0.5), it means that it is loc
 
 <h4 id="release-history-for-version-2x">Release history for version 2.x</h4>
 
+<h5 id="210">2.1.0</h5>
+<ul>
+  <li>🎉 NEW:
+    <ul>
+      <li>Reset/Detect functionality in Cropping UI</li>
+      <li>Added support for <code class="highlighter-rouge">orientationLockMode</code> in Cropping UI</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li>Android: Added file format extension (<code class="highlighter-rouge">.jpg</code> or <code class="highlighter-rouge">.png</code>) for all <code class="highlighter-rouge">Page</code> images. Affects the new image files created by all modules like Document Scanner, Cropping UI, etc.
+Please note that only the <strong>new created</strong> image files will contain extensions. The <strong>currently available</strong> image files in the temporary storage of the Scanbot Plugin 
+<strong>will not get</strong> file extensions and may become inaccessible. So please make sure to implement a suitable migration mechanism.</li>
+      <li>The config parameter <code class="highlighter-rouge">pageCounterButtonTitle</code> in Document Scanner now requires a placeholder “%d” for the number of pages (e.g. <code class="highlighter-rouge">pageCounterButtonTitle: "%d Page(s)"</code>)</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Android: Fixed an issue with camera on “Xiaomi Redmi 5 Plus” devices with MIUI Chinese ROM (<a href="https://github.com/doo/Scanbot-SDK-Examples/issues/72">#72</a>)</li>
+      <li>iOS: Fixed issues with <code class="highlighter-rouge">orientationLockMode</code> in Document Scanner</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded the native Scanbot iOS SDK to v1.8.0 (see the <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">changelog</a>)</li>
+      <li>Upgraded the native Scanbot Android SDK to v1.37.0 (see the <a href="https://github.com/doo/Scanbot-SDK-Examples#changelog-of-the-scanbot-sdk-for-android">changelog</a>)</li>
+    </ul>
+  </li>
+</ul>
+
 <h5 id="207">2.0.7</h5>
 <ul>
   <li>Under the hood: Upgraded the native Scanbot iOS SDK to v1.7.7
@@ -1936,7 +1993,7 @@ For instance, if a point has the coordinates (0.5, 0.5), it means that it is loc
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
 
 <div class="language-text highlighter-rouge"><pre class="highlight"><code>
-Open Source libraries used in the Scanbot SDK for Android version 1.34.0:
+Open Source libraries used in the Scanbot SDK for Android version 1.37.0:
 
 Android PDF Writer version 1.0.8
 Copyright (c) 2010 - 2013, Javier Santo Domingo (j-a-s-d@coderesearchlabs.com).
@@ -2269,7 +2326,7 @@ Tesseract, maintained by Google (http://code.google.com/p/tesseract-ocr/),
 
 
 
-Open Source libraries used in the Scanbot SDK for iOS version 1.7.7:
+Open Source libraries used in the Scanbot SDK for iOS version 1.8.0:
 
 BOOST C++ Libraries version 1.68
 This library is distributed under the terms of the following license: https://www.boost.org/LICENSE_1_0.txt
@@ -2338,7 +2395,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-OpenCV 3.4.2
+OpenCV 3.4.3
 Copyright © 2014, Itseez. All rights reserved.
 This library is distributed under the terms of a 3-clause BSD license: http://opencv.org/license.html.
 
