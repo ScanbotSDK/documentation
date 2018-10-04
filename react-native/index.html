@@ -245,6 +245,33 @@ The <code class="highlighter-rouge">ScanbotSDK.framework</code> is provided with
   <li><code class="highlighter-rouge">NSCameraUsageDescription</code> - <em>“Privacy - Camera Usage Description”</em>. As value describe why your app wants to access the device’s camera.</li>
 </ul>
 
+<h4 id="building-ios-production-apps--submitting-to-the-app-storetestflight">Building iOS Production Apps / Submitting to the App Store/TestFlight</h4>
+
+<p>The Scanbot iOS Framework (which is included in this React Native npm package) contains the most used architectures (arm64, armv7, x86_64, i386). So you can test it with all most used Devices and Simulators.
+But you have to remove the architectures <strong>x86_64</strong> and <strong>i386</strong> from the Scanbot SDK Framework before submitting your App to the App Store or TestFlight. Those architectures are for emulators and are not allowed to submit.</p>
+
+<p>We provide a script for that: <code class="highlighter-rouge">strip-SBSDK-Framework.sh</code>. It can be found inside the ScanbotSDK.framework:</p>
+
+<p><code class="highlighter-rouge">node_modules/react-native-scanbot-sdk/ios/ScanbotSDK.framework/strip-SBSDK-Framework.sh</code></p>
+
+<p>This script removes the unnecessary architectures from the frameworks binary, code signs the framework and adds the crash symbols (dSYM) file to your apps archive.
+(And by the way: the final app size will then be significantly smaller than a debug version used during the development phase)</p>
+
+<p>You will need to open the Xcode project <code class="highlighter-rouge">.xcodeproj</code> (or <code class="highlighter-rouge">.xcworkspace</code> when using CocoaPods) and apply a few changes there.
+Please see the section <a href="https://scanbotsdk.github.io/documentation/ios/installation.html">“2.1. Step-by-step guide” in our iOS docs</a> on how to setup this script, namely the <strong>sub-steps 7 and 8</strong>.</p>
+
+<p>The proper paths in a React Native projects are:</p>
+
+<p><em>Script code:</em></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>bash "$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/ScanbotSDK.framework/strip-SBSDK-Framework.sh"
+</code></pre>
+</div>
+
+<p><em>Script input file:</em></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$(SRCROOT)/../node_modules/react-native-scanbot-sdk/ios/ScanbotSDK.framework.dSYM
+</code></pre>
+</div>
+
 <h3 id="api-reference-">API Reference <a name="api_reference"></a></h3>
 
 <ul>
