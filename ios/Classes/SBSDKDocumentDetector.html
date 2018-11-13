@@ -118,6 +118,9 @@
                 <a class="nav-group-task-link" href="../Classes/SBSDKDisabilityCertificatesRecognizerResult.html">SBSDKDisabilityCertificatesRecognizerResult</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SBSDKDocumentDetectionMetrics.html">SBSDKDocumentDetectionMetrics</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SBSDKDocumentDetector.html">SBSDKDocumentDetector</a>
               </li>
               <li class="nav-group-task">
@@ -125,6 +128,12 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SBSDKEventQRCode.html">SBSDKEventQRCode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SBSDKFinderLayer.html">SBSDKFinderLayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SBSDKFrameLimiter.html">SBSDKFrameLimiter</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes.html#/c:objc(cs)SBSDKGenericBarcode">SBSDKGenericBarcode</a>
@@ -383,16 +392,13 @@
                 <a class="nav-group-task-link" href="../Enums/SBSDKDocumentDetectionStatus.html">SBSDKDocumentDetectionStatus</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Enums/SBSDKErrorCode.html">SBSDKErrorCode</a>
+                <a class="nav-group-task-link" href="../Enums/SBSDKFinderMode.html">SBSDKFinderMode</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/SBSDKImageFileFormat.html">SBSDKImageFileFormat</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/SBSDKImageFilterType.html">SBSDKImageFilterType</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Enums/SBSDKImageMode.html">SBSDKImageMode</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/SBSDKMachineReadableZoneRecognizerFieldName.html">SBSDKMachineReadableZoneRecognizerFieldName</a>
@@ -417,9 +423,6 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/SBSDKPolygonEdgeOrientation.html">SBSDKPolygonEdgeOrientation</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Enums/SBSDKScannerStatus.html">SBSDKScannerStatus</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/SBSDKShutterMode.html">SBSDKShutterMode</a>
@@ -489,6 +492,9 @@
                 <a class="nav-group-task-link" href="../Type Definitions.html#/c:SBSDKImageProcessor.h@T@SBSDKImageProcessingHandler">SBSDKImageProcessingHandler</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Type Definitions.html#/c:ScanbotSDKClass.h@T@SBSDKLicenseFailureHandler">SBSDKLicenseFailureHandler</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Type Definitions.html#/c:SBSDKProgress.h@T@SBSDKProgessUpdateHandler">SBSDKProgessUpdateHandler</a>
               </li>
             </ul>
@@ -496,6 +502,9 @@
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Functions.html">Functions</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/c:@F@NS_ENUM">NS_ENUM</a>
+              </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Functions.html#/c:@F@isDetectionStatusOK">isDetectionStatusOK</a>
               </li>
@@ -613,6 +622,92 @@ you should call resetSmoothingData regularly.</p>
                               <td>
                                 <div>
                                   <p>Set YES if you want to use faster live detection. Live detection is less reliable than normal detection.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The detection result containing the status and a polygon.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKDocumentDetector(im)detectPhotoPolygonOnImage:visibleImageRect:smoothingEnabled:"></a>
+                    <a name="//apple_ref/objc/Method/-detectPhotoPolygonOnImage:visibleImageRect:smoothingEnabled:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKDocumentDetector(im)detectPhotoPolygonOnImage:visibleImageRect:smoothingEnabled:">-detectPhotoPolygonOnImage:visibleImageRect:smoothingEnabled:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Executes an edge detection algorithm on the given image and returns
+a polygon describing the extends of the detected photos box.
+For a short period of time the uncompressed image data is hold twice in memory. Use with attention.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKDocumentDetectorResult.html">SBSDKDocumentDetectorResult</a></span> <span class="o">*</span><span class="p">)</span>
+<span class="nf">detectPhotoPolygonOnImage</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nv">image</span>
+         <span class="nf">visibleImageRect</span><span class="p">:(</span><span class="n">CGRect</span><span class="p">)</span><span class="nv">visibleRect</span>
+         <span class="nf">smoothingEnabled</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">smooth</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">detectPhotoPolygon</span><span class="p">(</span><span class="n">on</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">,</span> <span class="n">visibleImageRect</span> <span class="nv">visibleRect</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">,</span> <span class="n">smoothingEnabled</span> <span class="nv">smooth</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKDocumentDetectorResult.html">SBSDKDocumentDetectorResult</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>image</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The image to analyze.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>visibleRect</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The unified image rectangle that should be analyzed.
+(0, 0)-(1, 1) or an empty rect means the whole image is being analyzed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>smooth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Set to YES if you want the polygon output to be smoothed with latest frames. If you choose to use smooting
+you should call resetSmoothingData regularly.</p>
                                 </div>
                               </td>
                             </tr>
@@ -772,92 +867,6 @@ For a short period of time the uncompressed image data is hold twice in memory. 
                               <td>
                                 <div>
                                   <p>The CMSampleBufferRef to analyze.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>visibleRect</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The unified image rectangle that should be analyzed.
-(0, 0)-(1, 1) or an empty rect means the whole image is being analyzed.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>smooth</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Set to YES if you want the polygon output to be smoothed with latest frames. If you choose to use smooting
-you should call resetSmoothingData regularly.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The detection result containing the status and a polygon.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKDocumentDetector(im)detectPhotoPolygonOnImage:visibleImageRect:smoothingEnabled:"></a>
-                    <a name="//apple_ref/objc/Method/-detectPhotoPolygonOnImage:visibleImageRect:smoothingEnabled:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKDocumentDetector(im)detectPhotoPolygonOnImage:visibleImageRect:smoothingEnabled:">-detectPhotoPolygonOnImage:visibleImageRect:smoothingEnabled:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Executes an edge detection algorithm on the given image and returns
-a polygon describing the extends of the detected photos box.
-For a short period of time the uncompressed image data is hold twice in memory. Use with attention.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKDocumentDetectorResult.html">SBSDKDocumentDetectorResult</a></span> <span class="o">*</span><span class="p">)</span>
-<span class="nf">detectPhotoPolygonOnImage</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nv">image</span>
-         <span class="nf">visibleImageRect</span><span class="p">:(</span><span class="n">CGRect</span><span class="p">)</span><span class="nv">visibleRect</span>
-         <span class="nf">smoothingEnabled</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">smooth</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">detectPhotoPolygon</span><span class="p">(</span><span class="n">on</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">,</span> <span class="n">visibleImageRect</span> <span class="nv">visibleRect</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">,</span> <span class="n">smoothingEnabled</span> <span class="nv">smooth</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKDocumentDetectorResult.html">SBSDKDocumentDetectorResult</a></span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>image</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The image to analyze.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1161,6 +1170,71 @@ Warning: Lower values result in more blurred document images.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:objc(cs)SBSDKDocumentDetector(py)currentDistanceScore"></a>
+                    <a name="//apple_ref/objc/Property/currentDistanceScore" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKDocumentDetector(py)currentDistanceScore">currentDistanceScore</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The distance-from-center score of the latest detected polygon (0 - 100). Part of the total score.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="kt">double</span> <span class="n">currentDistanceScore</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">currentDistanceScore</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKDocumentDetector(py)detectionMetrics"></a>
+                    <a name="//apple_ref/objc/Property/detectionMetrics" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKDocumentDetector(py)detectionMetrics">detectionMetrics</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The metrics of the last detection or nil. *</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">atomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span>
+    <span class="n"><a href="../Classes/SBSDKDocumentDetectionMetrics.html">SBSDKDocumentDetectionMetrics</a></span> <span class="o">*</span><span class="n">detectionMetrics</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">detectionMetrics</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKDocumentDetectionMetrics.html">SBSDKDocumentDetectionMetrics</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:objc(cs)SBSDKDocumentDetector(py)preferredAspectRatios"></a>
                     <a name="//apple_ref/objc/Property/preferredAspectRatios" class="dashAnchor"></a>
                     <a class="token" href="#/c:objc(cs)SBSDKDocumentDetector(py)preferredAspectRatios">preferredAspectRatios</a>
@@ -1191,6 +1265,44 @@ Warning: Lower values result in more blurred document images.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">preferredAspectRatios</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSNumber</span><span class="p">]?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKDocumentDetector(py)requiredAspectRatios"></a>
+                    <a name="//apple_ref/objc/Property/requiredAspectRatios" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKDocumentDetector(py)requiredAspectRatios">requiredAspectRatios</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Required aspect ratios for detector. Calculated by dividing image height by width.</p>
+
+<ul>
+<li>If not nil or empty, only polygons resulting in crops with one of the required aspect ratios will be detected.</li>
+<li>Default is nil.</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span>
+    <span class="n">NSArray</span><span class="o">&lt;</span><span class="n">NSNumber</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">requiredAspectRatios</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">requiredAspectRatios</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSNumber</span><span class="p">]?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1271,8 +1383,8 @@ Warning: Lower values result in more blurred document images.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2018-09-27)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2018 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2018-11-13)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
