@@ -808,7 +808,58 @@ To further improve the user experience you might want to automatically take a ph
   <li><code class="highlighter-rouge">ErrorNothingDetected</code> - Document was not found. Probably it is not in the viewport. Usually it does not make sense to show any information to the user at this point.</li>
 </ul>
 
+<p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release history</h3>
+
+<h4 id="scanbotsdkxamarin-110">ScanbotSDK.Xamarin 1.1.0</h4>
+<ul>
+  <li>🎉 NEW:
+    <ul>
+      <li>Android &amp; iOS: Reset/Detect functionality in the RTU Cropping UI.</li>
+      <li>Android &amp; iOS: Cheque Scanner as Classical SDK Components (see bindings <code class="highlighter-rouge">SBSDKChequeRecognizer*</code> for iOS and <code class="highlighter-rouge">Net.Doo.Snap.Chequescanner.*</code> for Android).</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Android &amp; iOS: MRZ Scanner: improved detection on still images and parsing of some optional MRZ fields.</li>
+      <li>Android &amp; iOS: DC Scanner: improved recognition and extraction.</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li>Android: Added file format extension (.jpg or .png) for RTU UI Page images.
+Affects image files created by all RTU UI components, like <code class="highlighter-rouge">DocumentScannerActivity</code>, <code class="highlighter-rouge">CroppingActivity</code>, etc.
+Please note that only the new created image files will contain extensions. The currently available image files 
+in the temporary storage of the Scanbot SDK will not get file extensions and may become inaccessible. 
+So please make sure to implement a suitable migration mechanism.</li>
+      <li>Android: All MRZ Scanner and Recognizer components (<code class="highlighter-rouge">MRZScanner</code>, <code class="highlighter-rouge">MRZScannerActivity</code>) now require an additional trained data blob file 
+(MRZ cascade blob file <code class="highlighter-rouge">mrz.xml</code>), which is included in the SDK and can be fetched via <code class="highlighter-rouge">blobManager.fetch(blobFactory.mrzCascadeBlob())</code>.</li>
+      <li>Android &amp; iOS: The config parameter <code class="highlighter-rouge">pageCounterButtonTitle</code> in RTU Document Scanner UI now requires a placeholder “%d” for the number of pages 
+(e.g. <code class="highlighter-rouge">pageCounterButtonTitle = "%d Pages"</code>)</li>
+      <li>Android: Replaced NuGet packages <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <code class="highlighter-rouge">Xamarin.Kotlin.StdLib.Jre7</code> 
+by <code class="highlighter-rouge">Scanbot.Xamarin.Kotlin.StdLib</code> and <code class="highlighter-rouge">Scanbot.Xamarin.Kotlin.StdLib.Jre7</code>. 
+Please remove <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <code class="highlighter-rouge">Xamarin.Kotlin.StdLib.Jre7</code> from your Android project after the upgrade!</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Android: Fixed some camera issues on “Xiaomi Redmi 5 Plus” devices with MIUI Chinese ROM.</li>
+      <li>Android: Fixed a bug with freezing camera on Activity start.</li>
+      <li>Android: Small fixes in <code class="highlighter-rouge">MRZScanner</code> (improved detection on still images of some ID cards)</li>
+      <li>Android: Some layout fixes in RTU Cropping UI (aka. inaccessible “DONE” button).</li>
+      <li>Android &amp; iOS: MRZ Scanner: Fixed extraction of the field <code class="highlighter-rouge">dateOfBirth</code> from some French ID cards.</li>
+      <li>iOS: Fixed issues with <code class="highlighter-rouge">orientationLockMode</code> in RTU Document Scanner UI.</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Android: Upgraded the native Scanbot Android SDK to v1.38.3
+(see the full <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">Changelog</a> of the native Scanbot Android SDK).</li>
+      <li>iOS: Upgraded the native Scanbot iOS SDK to v1.8.2
+(see the full <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">Changelog</a> of the native Scanbot iOS SDK).</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="scanbotsdkxamarin-107">ScanbotSDK.Xamarin 1.0.7</h4>
 <ul>

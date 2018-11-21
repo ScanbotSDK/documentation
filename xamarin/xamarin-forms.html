@@ -328,7 +328,52 @@
 </code></pre>
 </div>
 
+<p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release history</h3>
+
+<h4 id="scanbotsdkxamarinforms-110">ScanbotSDK.Xamarin.Forms 1.1.0</h4>
+<ul>
+  <li>🎉 NEW:
+    <ul>
+      <li>Android &amp; iOS: Reset/Detect functionality in the Cropping UI.</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Android &amp; iOS: MRZ Scanner: improved detection on still images and parsing of some optional MRZ fields.</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li>Android: Added file format extension (.jpg or .png) for <code class="highlighter-rouge">Page</code> images.
+Affects image files created by all UI components, like Document Scanner, Cropping UI, etc.
+Please note that only the new created image files will contain extensions. The currently available image files 
+in the temporary storage of the Scanbot SDK will not get file extensions and may become inaccessible. 
+So please make sure to implement a suitable migration mechanism.</li>
+      <li>Android &amp; iOS: The config parameter <code class="highlighter-rouge">PageCounterButtonTitle</code> in <code class="highlighter-rouge">DocumentScannerConfiguration</code> now requires 
+a placeholder “%d” for the number of pages (e.g. <code class="highlighter-rouge">PageCounterButtonTitle = "%d Pages"</code>).</li>
+      <li>Android: Replaced NuGet packages <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <code class="highlighter-rouge">Xamarin.Kotlin.StdLib.Jre7</code> 
+by <code class="highlighter-rouge">Scanbot.Xamarin.Kotlin.StdLib</code> and <code class="highlighter-rouge">Scanbot.Xamarin.Kotlin.StdLib.Jre7</code>. 
+Please remove <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <code class="highlighter-rouge">Xamarin.Kotlin.StdLib.Jre7</code> from your Android project after the upgrade!</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Android: Fixed some camera issues on “Xiaomi Redmi 5 Plus” devices with MIUI Chinese ROM.</li>
+      <li>Android: Fixed a bug with freezing camera on Document Scanner start.</li>
+      <li>Android: Fixed a bug in <code class="highlighter-rouge">ApplyImageFilterAsync()</code> in combination with <code class="highlighter-rouge">ResultStorage.Png</code>.</li>
+      <li>Android: Some layout fixes in Cropping UI (aka. inaccessible “DONE” button).</li>
+      <li>Android &amp; iOS: MRZ Scanner: Fixed extraction of the field <code class="highlighter-rouge">DateOfBirth</code> from some French ID cards.</li>
+      <li>iOS: Fixed issues with <code class="highlighter-rouge">OrientationLockMode</code> in Document Scanner UI.</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Android &amp; iOS: Upgraded <code class="highlighter-rouge">ScanbotSDK.Xamarin</code> to v1.1.0
+(see the full <a href="/documentation/xamarin/xamarin.html#releaseHistory">Changelog</a>).</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="scanbotsdkxamarinforms-107">ScanbotSDK.Xamarin.Forms 1.0.7</h4>
 <ul>
