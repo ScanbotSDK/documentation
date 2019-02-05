@@ -218,13 +218,13 @@
     <span class="c1">/// Creates a PDF file out of one or more ImageSource objects. All images must be instances of FileImageSource.
 </span>    <span class="c1">/// Those are images created with ImageSource.FromFile and images stored as files by the SDK
 </span>    <span class="c1">/// (which is the default behavior, corresponds to ResultStorage.File).
-</span>    <span class="c1">/// 
+</span>    <span class="c1">///
 </span>    <span class="c1">/// The generated file will be deleted when calling CleanUp. If you want to keep the file, move it to a folder that you have control over.
 </span>    <span class="n">Task</span><span class="p">&lt;</span><span class="n">Uri</span><span class="p">&gt;</span> <span class="nf">CreatePdfAsync</span><span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">ImageSource</span><span class="p">&gt;</span> <span class="n">images</span><span class="p">);</span>
 
     <span class="c1">/// Writes the given images into a TIFF file. If more than one image is given, the function creates a multi-page TIFF.
 </span>    <span class="c1">/// The function can optionally create a 1-bit encoded TIFF.
-</span>    <span class="c1">/// 
+</span>    <span class="c1">///
 </span>    <span class="c1">/// The generated file will be deleted when calling CleanUp. If you want to keep the file, move it to a folder that you have control over.
 </span>    <span class="n">Task</span><span class="p">&lt;</span><span class="n">Uri</span><span class="p">&gt;</span> <span class="nf">WriteTiffAsync</span><span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">ImageSource</span><span class="p">&gt;</span> <span class="n">images</span><span class="p">,</span> <span class="n">TiffOptions</span> <span class="n">options</span> <span class="p">=</span> <span class="k">null</span><span class="p">);</span>
 
@@ -331,6 +331,15 @@
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release history</h3>
 
+<h4 id="scanbotsdkxamarinforms-111">ScanbotSDK.Xamarin.Forms 1.1.1</h4>
+<ul>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>iOS: Fixed linker behavior for debugging.</li>
+    </ul>
+  </li>
+</ul>
+
 <h4 id="scanbotsdkxamarinforms-110">ScanbotSDK.Xamarin.Forms 1.1.0</h4>
 <ul>
   <li>🎉 NEW:
@@ -347,13 +356,13 @@
     <ul>
       <li>Android: Added file format extension (.jpg or .png) for <code class="highlighter-rouge">Page</code> images.
 Affects image files created by all UI components, like Document Scanner, Cropping UI, etc.
-Please note that only the new created image files will contain extensions. The currently available image files 
-in the temporary storage of the Scanbot SDK will not get file extensions and may become inaccessible. 
+Please note that only the new created image files will contain extensions. The currently available image files
+in the temporary storage of the Scanbot SDK will not get file extensions and may become inaccessible.
 So please make sure to implement a suitable migration mechanism.</li>
-      <li>Android &amp; iOS: The config parameter <code class="highlighter-rouge">PageCounterButtonTitle</code> in <code class="highlighter-rouge">DocumentScannerConfiguration</code> now requires 
+      <li>Android &amp; iOS: The config parameter <code class="highlighter-rouge">PageCounterButtonTitle</code> in <code class="highlighter-rouge">DocumentScannerConfiguration</code> now requires
 a placeholder “%d” for the number of pages (e.g. <code class="highlighter-rouge">PageCounterButtonTitle = "%d Pages"</code>).</li>
-      <li>Android: Replaced NuGet packages <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <code class="highlighter-rouge">Xamarin.Kotlin.StdLib.Jre7</code> 
-by <code class="highlighter-rouge">Scanbot.Xamarin.Kotlin.StdLib</code> and <code class="highlighter-rouge">Scanbot.Xamarin.Kotlin.StdLib.Jre7</code>. 
+      <li>Android: Replaced NuGet packages <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <code class="highlighter-rouge">Xamarin.Kotlin.StdLib.Jre7</code>
+by <code class="highlighter-rouge">Scanbot.Xamarin.Kotlin.StdLib</code> and <code class="highlighter-rouge">Scanbot.Xamarin.Kotlin.StdLib.Jre7</code>.
 Please remove <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <code class="highlighter-rouge">Xamarin.Kotlin.StdLib.Jre7</code> from your Android project after the upgrade!</li>
     </ul>
   </li>

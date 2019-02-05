@@ -479,7 +479,7 @@ To further improve the user experience you might want to automatically take a ph
     <span class="c1">// Set the sensitivity of AutoSnappingController
 </span>    <span class="c1">// Range is from 0 to 1, where 1 is the most sensitive. The more sensitive it is the faster it shoots.
 </span>    <span class="n">autoSnappingController</span><span class="p">.</span><span class="nf">SetSensitivity</span><span class="p">(</span><span class="m">1.0f</span><span class="p">);</span>
-    
+
     <span class="n">cameraView</span><span class="p">.</span><span class="nf">AddPictureCallback</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
     <span class="n">cameraView</span><span class="p">.</span><span class="nf">SetCameraOpenCallback</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 
@@ -504,7 +504,7 @@ To further improve the user experience you might want to automatically take a ph
     <span class="k">base</span><span class="p">.</span><span class="nf">OnPause</span><span class="p">();</span>
     <span class="n">cameraView</span><span class="p">.</span><span class="nf">OnPause</span><span class="p">();</span>
   <span class="p">}</span>
-  
+
   <span class="k">public</span> <span class="k">void</span> <span class="nf">OnCameraOpened</span><span class="p">()</span>
   <span class="p">{</span>
     <span class="n">cameraView</span><span class="p">.</span><span class="nf">PostDelayed</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
@@ -811,6 +811,15 @@ To further improve the user experience you might want to automatically take a ph
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release history</h3>
 
+<h4 id="scanbotsdkxamarin-111">ScanbotSDK.Xamarin 1.1.1</h4>
+<ul>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>iOS: Fixed linker behavior for debugging.</li>
+    </ul>
+  </li>
+</ul>
+
 <h4 id="scanbotsdkxamarin-110">ScanbotSDK.Xamarin 1.1.0</h4>
 <ul>
   <li>🎉 NEW:
@@ -829,15 +838,15 @@ To further improve the user experience you might want to automatically take a ph
     <ul>
       <li>Android: Added file format extension (.jpg or .png) for RTU UI Page images.
 Affects image files created by all RTU UI components, like <code class="highlighter-rouge">DocumentScannerActivity</code>, <code class="highlighter-rouge">CroppingActivity</code>, etc.
-Please note that only the new created image files will contain extensions. The currently available image files 
-in the temporary storage of the Scanbot SDK will not get file extensions and may become inaccessible. 
+Please note that only the new created image files will contain extensions. The currently available image files
+in the temporary storage of the Scanbot SDK will not get file extensions and may become inaccessible.
 So please make sure to implement a suitable migration mechanism.</li>
-      <li>Android: All MRZ Scanner and Recognizer components (<code class="highlighter-rouge">MRZScanner</code>, <code class="highlighter-rouge">MRZScannerActivity</code>) now require an additional trained data blob file 
+      <li>Android: All MRZ Scanner and Recognizer components (<code class="highlighter-rouge">MRZScanner</code>, <code class="highlighter-rouge">MRZScannerActivity</code>) now require an additional trained data blob file
 (MRZ cascade blob file <code class="highlighter-rouge">mrz.xml</code>), which is included in the SDK and can be fetched via <code class="highlighter-rouge">blobManager.fetch(blobFactory.mrzCascadeBlob())</code>.</li>
-      <li>Android &amp; iOS: The config parameter <code class="highlighter-rouge">pageCounterButtonTitle</code> in RTU Document Scanner UI now requires a placeholder “%d” for the number of pages 
+      <li>Android &amp; iOS: The config parameter <code class="highlighter-rouge">pageCounterButtonTitle</code> in RTU Document Scanner UI now requires a placeholder “%d” for the number of pages
 (e.g. <code class="highlighter-rouge">pageCounterButtonTitle = "%d Pages"</code>)</li>
-      <li>Android: Replaced NuGet packages <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <code class="highlighter-rouge">Xamarin.Kotlin.StdLib.Jre7</code> 
-by <code class="highlighter-rouge">Scanbot.Xamarin.Kotlin.StdLib</code> and <code class="highlighter-rouge">Scanbot.Xamarin.Kotlin.StdLib.Jre7</code>. 
+      <li>Android: Replaced NuGet packages <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <code class="highlighter-rouge">Xamarin.Kotlin.StdLib.Jre7</code>
+by <code class="highlighter-rouge">Scanbot.Xamarin.Kotlin.StdLib</code> and <code class="highlighter-rouge">Scanbot.Xamarin.Kotlin.StdLib.Jre7</code>.
 Please remove <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <code class="highlighter-rouge">Xamarin.Kotlin.StdLib.Jre7</code> from your Android project after the upgrade!</li>
     </ul>
   </li>
@@ -969,9 +978,9 @@ Please remove <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <
 
 <h4 id="deprecated-packages">Deprecated Packages:</h4>
 
-<p>⚠️ <strong>Please note:</strong> The Nuget packages <code class="highlighter-rouge">ScanbotSDK.Xamarin.Android</code> and <code class="highlighter-rouge">ScanbotSDK.Xamarin.iOS</code> are deprecated. 
+<p>⚠️ <strong>Please note:</strong> The Nuget packages <code class="highlighter-rouge">ScanbotSDK.Xamarin.Android</code> and <code class="highlighter-rouge">ScanbotSDK.Xamarin.iOS</code> are deprecated.
 Please use the new universal <code class="highlighter-rouge">ScanbotSDK.Xamarin</code> Nuget package instead.
-The new package <code class="highlighter-rouge">ScanbotSDK.Xamarin</code> contains the SDK assemblies for both platforms iOS and Android. 
+The new package <code class="highlighter-rouge">ScanbotSDK.Xamarin</code> contains the SDK assemblies for both platforms iOS and Android.
 It is fully compatible with the deprecated packages <code class="highlighter-rouge">ScanbotSDK.Xamarin.Android</code> and <code class="highlighter-rouge">ScanbotSDK.Xamarin.iOS</code>. You have just to change the following namespace:</p>
 <ul>
   <li>old <code class="highlighter-rouge">ScanbotSDK.Xamarin.Android.Wrapper</code> =&gt; new <code class="highlighter-rouge">ScanbotSDK.Xamarin.Android</code></li>
@@ -1007,7 +1016,7 @@ It is fully compatible with the deprecated packages <code class="highlighter-rou
 <h5 id="scanbotsdkxamarinandroid-130">ScanbotSDK.Xamarin.Android 1.3.0</h5>
 <ul>
   <li>Upgraded the native Scanbot Android SDK to v1.26.2</li>
-  <li>Optimized <code class="highlighter-rouge">AutoSnappingController</code> sensitivity and auto snapping timings. Added <code class="highlighter-rouge">SetShutterSound(boolean enable)</code>, 
+  <li>Optimized <code class="highlighter-rouge">AutoSnappingController</code> sensitivity and auto snapping timings. Added <code class="highlighter-rouge">SetShutterSound(boolean enable)</code>,
 <code class="highlighter-rouge">SetAutoFocusSound(boolean enable)</code> and <code class="highlighter-rouge">SetAutoFocusOnTouch(boolean enable)</code> methods in <code class="highlighter-rouge">ScanbotCameraView</code></li>
   <li>Optimized Scanbot SDK license check and error handling. Added Java exceptions with human readable messages</li>
 </ul>
