@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SBSDKImageEditingViewController Class Reference</title>
+    <title>SBSDKMultipleObjectScannerViewControllerDelegate Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/objc/Class/SBSDKImageEditingViewController" class="dashAnchor"></a>
+    <a name="//apple_ref/objc/Protocol/SBSDKMultipleObjectScannerViewControllerDelegate" class="dashAnchor"></a>
 
-    <a title="SBSDKImageEditingViewController Class Reference"></a>
+    <a title="SBSDKMultipleObjectScannerViewControllerDelegate Protocol Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">ScanbotSDK for iOS Reference</a>
       <img class="carat" src="../img/carat.png" />
-      SBSDKImageEditingViewController Class Reference
+      SBSDKMultipleObjectScannerViewControllerDelegate Protocol Reference
     </p>
 
     <div class="content-wrapper">
@@ -564,19 +564,14 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>SBSDKImageEditingViewController</h1>
+            <h1>SBSDKMultipleObjectScannerViewControllerDelegate</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">SBSDKImageEditingViewController</span> <span class="p">:</span> <span class="nc">UIViewController</span></code></pre>
+                  <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SBSDKMultipleObjectScannerViewControllerDelegate</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
 
                 </div>
               </div>
-            <p>UIViewController subclass showing an image and a polygon The user can move edge and corner handles to redefine the
- polygon manually and rotate the image in 90 degree steps (counter)clockwise.
- This class cannot be instanced from a storyboard.
- Instead it is installing itself as a child view controller onto a given parent view controller.</p>
-
-<p>Replaces the deprecated <code><a href="../Classes/SBSDKCropViewController.html">SBSDKCropViewController</a></code>.</p>
+            <p>The delegate protocol for SBSDKMultipleObkectsViewController.</p>
 
           </div>
         </section>
@@ -588,9 +583,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKImageEditingViewController(py)image"></a>
-                    <a name="//apple_ref/objc/Property/image" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKImageEditingViewController(py)image">image</a>
+                    <a name="/c:objc(pl)SBSDKMultipleObjectScannerViewControllerDelegate(im)scannerControllerShouldAnalyseVideoFrame:"></a>
+                    <a name="//apple_ref/objc/Method/-scannerControllerShouldAnalyseVideoFrame:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SBSDKMultipleObjectScannerViewControllerDelegate(im)scannerControllerShouldAnalyseVideoFrame:">-scannerControllerShouldAnalyseVideoFrame:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -598,285 +593,22 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The uncropped input image. If polygon is nil, the receiver tries to detect and set a polygon from the image.
-Must be called on main-thread!</p>
+                        <p>Asks the delegate whether to detect on the next video frame or not.
+Return NO if you dont want detection on video frames, e.g. when a view controller is presented modally or when your
+view contollers view currently is not in the view hierarchy.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">UIImage</span> <span class="o">*</span><span class="n">image</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">scannerControllerShouldAnalyseVideoFrame</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKMultipleObjectScannerViewController.html">SBSDKMultipleObjectScannerViewController</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">controller</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKImageEditingViewController(py)polygon"></a>
-                    <a name="//apple_ref/objc/Property/polygon" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKImageEditingViewController(py)polygon">polygon</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The current polygon. If nil, the default, fully enclosing, polygon is used.
-Must be called on main-thread!</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n"><a href="../Classes/SBSDKPolygon.html">SBSDKPolygon</a></span> <span class="o">*</span><span class="n">polygon</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@NSCopying</span> <span class="k">var</span> <span class="nv">polygon</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKPolygon.html">SBSDKPolygon</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKImageEditingViewController(py)rotations"></a>
-                    <a name="//apple_ref/objc/Property/rotations" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKImageEditingViewController(py)rotations">rotations</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The number of clockwise rotations.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">rotations</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">rotations</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKImageEditingViewController(py)edgeColor"></a>
-                    <a name="//apple_ref/objc/Property/edgeColor" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKImageEditingViewController(py)edgeColor">edgeColor</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The rendering color of non-snapped edges.
-Must be called on main-thread!</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">edgeColor</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">edgeColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKImageEditingViewController(py)magneticEdgeColor"></a>
-                    <a name="//apple_ref/objc/Property/magneticEdgeColor" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKImageEditingViewController(py)magneticEdgeColor">magneticEdgeColor</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The rendering color of magnetically snapped edges.
-Must be called on main-thread!</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">magneticEdgeColor</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">magneticEdgeColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKImageEditingViewController(py)croppedImage"></a>
-                    <a name="//apple_ref/objc/Property/croppedImage" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKImageEditingViewController(py)croppedImage">croppedImage</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The cropped and rotated image. This is the final result of the receiver.
-Must be called on main-thread!</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">UIImage</span> <span class="o">*</span><span class="n">croppedImage</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">croppedImage</span><span class="p">:</span> <span class="kt">UIImage</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKImageEditingViewController(py)contentInsets"></a>
-                    <a name="//apple_ref/objc/Property/contentInsets" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKImageEditingViewController(py)contentInsets">contentInsets</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The insets of the contents: image and handles. Defaults to (12, 12, 12, 12).</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">UIEdgeInsets</span> <span class="n">contentInsets</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">contentInsets</span><span class="p">:</span> <span class="kt">UIEdgeInsets</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKImageEditingViewController(py)delegate"></a>
-                    <a name="//apple_ref/objc/Property/delegate" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKImageEditingViewController(py)delegate">delegate</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Delegate for result callback methods.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span>
-    <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/SBSDKImageEditingViewControllerDelegate.html">SBSDKImageEditingViewControllerDelegate</a></span><span class="o">&gt;</span>
-        <span class="n">delegate</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SBSDKImageEditingViewControllerDelegate.html">SBSDKImageEditingViewControllerDelegate</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKImageEditingViewController(im)initWithParentViewController:containerView:"></a>
-                    <a name="//apple_ref/objc/Method/-initWithParentViewController:containerView:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKImageEditingViewController(im)initWithParentViewController:containerView:">-initWithParentViewController:containerView:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Desginated initializer. Installs the receiver as child view controller onto the parent view controllers
-view using its entire bounds area.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span>
-<span class="nf">initWithParentViewController</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">UIViewController</span> <span class="o">*</span><span class="p">)</span><span class="nv">parentViewController</span>
-               <span class="nf">containerView</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nv">container</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">parentViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="n">containerView</span> <span class="nv">container</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">scannerControllerShouldAnalyseVideoFrame</span><span class="p">(</span><span class="n">_</span> <span class="nv">controller</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKMultipleObjectScannerViewController.html">SBSDKMultipleObjectScannerViewController</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -887,24 +619,69 @@ view using its entire bounds area.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>parentViewController</em>
+                                <em>controller</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The view controller the newly created instance is embedded into.</p>
+                                  <p>The calling SBSDKMultipleObjectScannerViewController.</p>
                                 </div>
                               </td>
                             </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>YES if the video frame should be analyzed, NO otherwise.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SBSDKMultipleObjectScannerViewControllerDelegate(im)scannerControllerWillCaptureImage:"></a>
+                    <a name="//apple_ref/objc/Method/-scannerControllerWillCaptureImage:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SBSDKMultipleObjectScannerViewControllerDelegate(im)scannerControllerWillCaptureImage:">-scannerControllerWillCaptureImage:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tells the delegate that a still image is about to be captured. Here you can change the appearance of you custom
+shutter button or HUD to reflect in the UI that we are now busy taking an image.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">scannerControllerWillCaptureImage</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKMultipleObjectScannerViewController.html">SBSDKMultipleObjectScannerViewController</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">controller</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">scannerControllerWillCaptureImage</span><span class="p">(</span><span class="n">_</span> <span class="nv">controller</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKMultipleObjectScannerViewController.html">SBSDKMultipleObjectScannerViewController</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
                             <tr>
                               <td>
                                 <code>
-                                <em>container</em>
+                                <em>controller</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The view to embed the receivers view into. Must be a descendant of parentViewControllers view.</p>
+                                  <p>The calling SBSDKMultipleObjectScannerViewController.</p>
                                 </div>
                               </td>
                             </tr>
@@ -917,9 +694,9 @@ view using its entire bounds area.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKImageEditingViewController(im)rotateInputImageClockwise:animated:"></a>
-                    <a name="//apple_ref/objc/Method/-rotateInputImageClockwise:animated:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKImageEditingViewController(im)rotateInputImageClockwise:animated:">-rotateInputImageClockwise:animated:</a>
+                    <a name="/c:objc(pl)SBSDKMultipleObjectScannerViewControllerDelegate(im)scannerController:didCaptureOriginalImage:"></a>
+                    <a name="//apple_ref/objc/Method/-scannerController:didCaptureOriginalImage:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SBSDKMultipleObjectScannerViewControllerDelegate(im)scannerController:didCaptureOriginalImage:">-scannerController:didCaptureOriginalImage:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -927,19 +704,21 @@ view using its entire bounds area.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Asks the controller to rotate input image</p>
+                        <p>Tells the delegate that a still image has been captured and its orientation has been corrected. Optional.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">rotateInputImageClockwise</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">clockwise</span> <span class="nf">animated</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">animated</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">scannerController</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKMultipleObjectScannerViewController.html">SBSDKMultipleObjectScannerViewController</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">controller</span>
+    <span class="nf">didCaptureOriginalImage</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nv">originalImage</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">rotateInputImageClockwise</span><span class="p">(</span><span class="n">_</span> <span class="nv">clockwise</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">scannerController</span><span class="p">(</span><span class="n">_</span> <span class="nv">controller</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKMultipleObjectScannerViewController.html">SBSDKMultipleObjectScannerViewController</a></span><span class="p">,</span> <span class="n">didCaptureOriginalImage</span> <span class="nv">originalImage</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -950,24 +729,24 @@ view using its entire bounds area.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>clockwise</em>
+                                <em>controller</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The rotation direction. If set YES, rotates clockwise, counterclockwise otherwise.</p>
+                                  <p>The calling SBSDKMultipleObjectScannerViewController.</p>
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td>
                                 <code>
-                                <em>animated</em>
+                                <em>originalImage</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>If set to YES, animates the rotation.</p>
+                                  <p>The whole captured image.</p>
                                 </div>
                               </td>
                             </tr>
@@ -980,9 +759,9 @@ view using its entire bounds area.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKImageEditingViewController(im)updateNavigationBarItems"></a>
-                    <a name="//apple_ref/objc/Method/-updateNavigationBarItems" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKImageEditingViewController(im)updateNavigationBarItems">-updateNavigationBarItems</a>
+                    <a name="/c:objc(pl)SBSDKMultipleObjectScannerViewControllerDelegate(im)scannerController:didCaptureObjectImagesInStorage:"></a>
+                    <a name="//apple_ref/objc/Method/-scannerController:didCaptureObjectImagesInStorage:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SBSDKMultipleObjectScannerViewControllerDelegate(im)scannerController:didCaptureObjectImagesInStorage:">-scannerController:didCaptureObjectImagesInStorage:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -990,21 +769,54 @@ view using its entire bounds area.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Updates the navigation bars buttons of the receiver by calling the appropriate delegate functions.</p>
+                        <p>Tells the delegate that object images have been captured and placed into the image storage. Optional.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">updateNavigationBarItems</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">scannerController</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKMultipleObjectScannerViewController.html">SBSDKMultipleObjectScannerViewController</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">controller</span>
+    <span class="nf">didCaptureObjectImagesInStorage</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/SBSDKImageStoring.html">SBSDKImageStoring</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">imageStorage</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">updateNavigationBarItems</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">scannerController</span><span class="p">(</span><span class="n">_</span> <span class="nv">controller</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKMultipleObjectScannerViewController.html">SBSDKMultipleObjectScannerViewController</a></span><span class="p">,</span> <span class="n">didCaptureObjectImagesInStorage</span> <span class="nv">imageStorage</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SBSDKImageStoring.html">SBSDKImageStoring</a></span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>controller</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calling SBSDKMultipleObjectScannerViewController.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>imageStorage</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The image storage containing the captured object images.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -1012,9 +824,9 @@ view using its entire bounds area.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKImageEditingViewController(im)updateToolBarItems"></a>
-                    <a name="//apple_ref/objc/Method/-updateToolBarItems" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKImageEditingViewController(im)updateToolBarItems">-updateToolBarItems</a>
+                    <a name="/c:objc(pl)SBSDKMultipleObjectScannerViewControllerDelegate(im)scannerControllerCustomShutterButton:"></a>
+                    <a name="//apple_ref/objc/Method/-scannerControllerCustomShutterButton:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SBSDKMultipleObjectScannerViewControllerDelegate(im)scannerControllerCustomShutterButton:">-scannerControllerCustomShutterButton:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1022,85 +834,46 @@ view using its entire bounds area.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Updates the toolbars buttons of the receiver by calling the appropriate delegate functions.</p>
+                        <p>Asks the delegate for custom shutter release button. Optional.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">updateToolBarItems</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">UIButton</span> <span class="o">*</span><span class="p">)</span><span class="nf">scannerControllerCustomShutterButton</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKMultipleObjectScannerViewController.html">SBSDKMultipleObjectScannerViewController</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">controller</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">updateToolBarItems</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">scannerControllerCustomShutterButton</span><span class="p">(</span><span class="n">_</span> <span class="nv">controller</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKMultipleObjectScannerViewController.html">SBSDKMultipleObjectScannerViewController</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIButton</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKImageEditingViewController(im)applyChanges"></a>
-                    <a name="//apple_ref/objc/Method/-applyChanges" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKImageEditingViewController(im)applyChanges">-applyChanges</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Tells the receiver to apply changes immediately. Calls the appropriate delegate method when finished.</p>
-
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>controller</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calling SBSDKMultipleObjectScannerViewController.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">applyChanges</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">applyChanges</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKImageEditingViewController(im)dismissChanges"></a>
-                    <a name="//apple_ref/objc/Method/-dismissChanges" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKImageEditingViewController(im)dismissChanges">-dismissChanges</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Tells the receiver to cancel changes immediately. Calls the appropriate delegate method.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dismissChanges</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">dismissChanges</span><span class="p">()</span></code></pre>
-
-                        </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An instance of your custom shutter release button. Target and action are set automatically by controller.
+If you return nil, the built-in standard button is used.</p>
                       </div>
                     </section>
                   </div>
