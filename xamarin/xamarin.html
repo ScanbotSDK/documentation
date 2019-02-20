@@ -67,9 +67,11 @@
   <div class="post-content">
     <h2 id="integration-with-xamarinandroid-and-xamarinios">Integration with Xamarin.Android and Xamarin.iOS</h2>
 
+<p>The NuGet package <a href="https://www.nuget.org/packages/ScanbotSDK.Xamarin">ScanbotSDK.Xamarin</a> is an universal package for Android and iOS.
+It contains the Xamarin Bindings for the <strong>Native Scanbot SDKs</strong> for Android and iOS and the <strong>Wrappers</strong>.</p>
+
 <h4 id="namespaces">Namespaces</h4>
-<p>The NuGet packages for Android and iOS contain <strong>Native SDKs</strong> and corresponding <strong>Wrappers</strong>.
-The native SDKs and the wrappers are stored in different namespaces which are explained here.</p>
+<p>The bindings for Native SDKs and the Wrappers are stored in different namespaces which are explained here.</p>
 
 <h4 id="xamarin-wrapper">Xamarin Wrapper</h4>
 <ul>
@@ -78,15 +80,16 @@ The native SDKs and the wrappers are stored in different namespaces which are ex
 </ul>
 
 <p>The idea of the Scanbot SDK Xamarin Wrapper is to provide an unified and convenient API for iOS and Android.
-However, since not all native SDK classes and functions are available in the Wrapper namespace yet, you can use and call them as needed directly from the native namespaces.</p>
+However, since not all Native SDK functionalities are available in the Wrapper namespace, you can use and call them as needed directly from the native namespaces.</p>
 
-<p>Currently the following <strong><a href="https://scanbot.io/sdk.html#packages">Package I</a></strong> modules are available for the Xamarin Wrapper</p>
+<p>Currently the following <strong><a href="https://scanbot.io/sdk.html#packages">Package II</a></strong> functionalities are available for the Xamarin Wrapper classes:</p>
 <ul>
-  <li>Document detection of digital images;</li>
-  <li>User interface for guided, automatic document scanning using the document detection module;</li>
-  <li>Image processing for rotating, cropping, filtering and perspective correction, optimized for the needs of document scanning;</li>
-  <li>PDF creation, merge a collection of processed or unprocessed document images and write them into a PDF document with one page per image.</li>
+  <li>Document detection on images</li>
+  <li>Image processing (cropping and perspective correction, rotating, etc)</li>
+  <li>Image filters</li>
+  <li>PDF creation</li>
   <li>TIFF creation</li>
+  <li>Text Recognition (OCR)</li>
 </ul>
 
 <h4 id="native-sdks">Native SDKs</h4>
@@ -97,18 +100,22 @@ However, since not all native SDK classes and functions are available in the Wra
   <li>iOS: <code class="highlighter-rouge">ScanbotSDK.iOS</code></li>
 </ul>
 
-<p>Native SDKs provide the functionality of <strong><a href="https://scanbot.io/sdk.html#packages">Package I</a></strong> and <strong><a href="https://scanbot.io/sdk.html#packages">Package II</a></strong>.</p>
+<p>The Xamarin Bindings for the Native SDKs provide the most available functionality of the Scanbot SDK.</p>
 
-<p>Documentation for native SDKs classes can be found here:</p>
+<p>👉 Documentation for Native SDKs classes can be found here:</p>
 <ul>
-  <li><a href="https://doo.github.io/Scanbot-SDK-Documentation/Android/">Android native SDK docs</a></li>
-  <li><a href="https://scanbotsdk.github.io/documentation/ios/html/classes.html">iOS native SDK docs</a></li>
+  <li><a href="https://scanbotsdk.github.io/documentation/android/">Android native SDK docs</a></li>
+  <li><a href="https://scanbotsdk.github.io/documentation/ios/">iOS native SDK docs</a></li>
 </ul>
+
+<h3 id="getting-started">Getting started</h3>
 
 <p><a name="initializeSdk"></a></p>
 <h4 id="initialize-sdk">Initialize SDK</h4>
-<p>The Scanbot SDK must be initialized before usage. Make sure to run the initialization only once per app lifetime.
-In the following examples we will use the convenient wrapper class <code class="highlighter-rouge">SBSDK</code>.</p>
+<p>The Scanbot SDK must be initialized before usage. Make sure to run the initialization as early as possible.
+We recommend to implement the initialization in the <code class="highlighter-rouge">Application</code> class of the Android app, and in the <code class="highlighter-rouge">AppDelegate</code> class of the iOS app.</p>
+
+<p>In the following examples we will use the convenient wrapper class <code class="highlighter-rouge">SBSDK</code>.</p>
 
 <h5 id="android"><strong>Android</strong></h5>
 <p>Add the following code to your <code class="highlighter-rouge">Application</code> class:</p>
@@ -131,7 +138,8 @@ In the following examples we will use the convenient wrapper class <code class="
 </code></pre>
 </div>
 
-<p>Furthermore, it is recommended to add the <code class="highlighter-rouge">(LargeHeap = true)</code> flag to the <code class="highlighter-rouge">Application</code> attribute on the <code class="highlighter-rouge">MainApplication</code> since image processing is very memory-intensive.</p>
+<p>Furthermore, it is highly recommended to add the flag <a href="https://developer.android.com/guide/topics/manifest/application-element#largeHeap"><code class="highlighter-rouge">LargeHeap = true</code></a>
+to the <code class="highlighter-rouge">Application</code> attribute on the <code class="highlighter-rouge">MainApplication</code> since image processing is very memory-intensive.</p>
 
 <h5 id="ios"><strong>iOS</strong></h5>
 <p>Add the following code to your <code class="highlighter-rouge">AppDelegate</code> class:</p>
@@ -811,6 +819,33 @@ To further improve the user experience you might want to automatically take a ph
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release history</h3>
 
+<h4 id="scanbotsdkxamarin-120">ScanbotSDK.Xamarin 1.2.0</h4>
+<ul>
+  <li>🎉 NEW:
+    <ul>
+      <li>iOS: Added bindings for the new feature <strong>Business Card Scanner</strong>, based on classes <code class="highlighter-rouge">SBSDKMultipleObjectsDetector</code>, <code class="highlighter-rouge">SBSDKBusinessCardsImageProcessor</code> and <code class="highlighter-rouge">SBSDKTextOrientationRecognizer</code>.
+Check out the iOS example app <a href="https://github.com/doo/scanbot-sdk-example-xamarin">scanbot-sdk-example-xamarin</a>.</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>iOS: Fixed issues with not loaded assets (Changed the behaviour of image resource loading in the native SDK framework)</li>
+      <li>iOS: Fixed animation of the Shutter Button in SmartMode in <code class="highlighter-rouge">SBSDKScannerViewController</code></li>
+      <li>iOS: Fixed handling of 24bit PNG images (e.g iOS 12 screenshots)</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>iOS: Upgraded the native Scanbot iOS SDK from v1.8.2 to v1.8.6</li>
+    </ul>
+  </li>
+  <li>👉 Please also see:
+    <ul>
+      <li>The <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">Changelog</a> of the native Scanbot iOS SDK</li>
+    </ul>
+  </li>
+</ul>
+
 <h4 id="scanbotsdkxamarin-111">ScanbotSDK.Xamarin 1.1.1</h4>
 <ul>
   <li>🐞 Bug fixes:
@@ -862,10 +897,14 @@ Please remove <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <
   </li>
   <li>🚙 Under the hood:
     <ul>
-      <li>Android: Upgraded the native Scanbot Android SDK to v1.38.3
-(see the full <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">Changelog</a> of the native Scanbot Android SDK).</li>
-      <li>iOS: Upgraded the native Scanbot iOS SDK to v1.8.2
-(see the full <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">Changelog</a> of the native Scanbot iOS SDK).</li>
+      <li>Android: Upgraded the native Scanbot Android SDK to v1.38.3</li>
+      <li>iOS: Upgraded the native Scanbot iOS SDK to v1.8.2</li>
+    </ul>
+  </li>
+  <li>👉 Please also see:
+    <ul>
+      <li>The <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">Changelog</a> of the native Scanbot Android SDK</li>
+      <li>The <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">Changelog</a> of the native Scanbot iOS SDK</li>
     </ul>
   </li>
 </ul>

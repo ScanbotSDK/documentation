@@ -71,7 +71,8 @@
 
 <p><a name="initializeSdk"></a></p>
 <h4 id="initialize-sdk">Initialize SDK</h4>
-<p>The Scanbot SDK must be initialized before usage. Make sure to run the initialization only once per app lifetime. The initialization code is placed in each of the platform-specific projects of your Xamarin.Forms app.</p>
+<p>The Scanbot SDK must be initialized before usage. Make sure to run the initialization as early as possible.
+We recommend to implement the initialization in the <code class="highlighter-rouge">Application</code> class of the Android app, and in the <code class="highlighter-rouge">AppDelegate</code> class of the iOS app.</p>
 
 <h5 id="android"><strong>Android</strong></h5>
 <p>Add the following code to your <code class="highlighter-rouge">Application</code> class:</p>
@@ -95,7 +96,8 @@
 </code></pre>
 </div>
 
-<p>Furthermore, it is recommended to add the <code class="highlighter-rouge">(LargeHeap = true)</code> flag to the <code class="highlighter-rouge">Application</code> attribute on the <code class="highlighter-rouge">MainApplication</code> since image processing is very memory-intensive.</p>
+<p>Furthermore, it is highly recommended to add the flag <a href="https://developer.android.com/guide/topics/manifest/application-element#largeHeap"><code class="highlighter-rouge">LargeHeap = true</code></a>
+to the <code class="highlighter-rouge">Application</code> attribute on the <code class="highlighter-rouge">MainApplication</code> since image processing is very memory-intensive.</p>
 
 <h5 id="ios"><strong>iOS</strong></h5>
 <p>Add the following code to your <code class="highlighter-rouge">AppDelegate</code> class:</p>
@@ -331,6 +333,27 @@
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release history</h3>
 
+<h4 id="scanbotsdkxamarinforms-112">ScanbotSDK.Xamarin.Forms 1.1.2</h4>
+<ul>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>iOS: Fixed issues with not loaded assets (Changed the behaviour of image resource loading in the native SDK framework)</li>
+      <li>iOS: Fixed animation of the Shutter Button in SmartMode in Document Scanner</li>
+      <li>iOS: Fixed handling of 24bit PNG images (e.g iOS 12 screenshots)</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded <code class="highlighter-rouge">ScanbotSDK.Xamarin</code> to v1.2.0</li>
+    </ul>
+  </li>
+  <li>👉 Please also see:
+    <ul>
+      <li>The <a href="/documentation/xamarin/xamarin.html#releaseHistory">Changelog</a> of <code class="highlighter-rouge">ScanbotSDK.Xamarin</code>.</li>
+    </ul>
+  </li>
+</ul>
+
 <h4 id="scanbotsdkxamarinforms-111">ScanbotSDK.Xamarin.Forms 1.1.1</h4>
 <ul>
   <li>🐞 Bug fixes:
@@ -378,8 +401,12 @@ Please remove <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <
   </li>
   <li>🚙 Under the hood:
     <ul>
-      <li>Android &amp; iOS: Upgraded <code class="highlighter-rouge">ScanbotSDK.Xamarin</code> to v1.1.0
-(see the full <a href="/documentation/xamarin/xamarin.html#releaseHistory">Changelog</a>).</li>
+      <li>Upgraded <code class="highlighter-rouge">ScanbotSDK.Xamarin</code> to v1.1.0</li>
+    </ul>
+  </li>
+  <li>👉 Please also see:
+    <ul>
+      <li>The <a href="/documentation/xamarin/xamarin.html#releaseHistory">Changelog</a> of <code class="highlighter-rouge">ScanbotSDK.Xamarin</code>.</li>
     </ul>
   </li>
 </ul>
