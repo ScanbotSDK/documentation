@@ -164,6 +164,7 @@ to the <code class="highlighter-rouge">Application</code> attribute on the <code
 <h4 id="scanbot-sdk-modules-functions">Scanbot SDK modules functions</h4>
 <p>All methods in the Scanbot SDK are synchronous, they perform on the current thread. Please handle the SDK calls according to the requirements of your app to avoid blocking the main UI thread (e.g. see <em>Task Parallel Library (TPL)</em>).</p>
 
+<p><a name="DetectDocument"></a></p>
 <h4 id="document-detection">Document Detection</h4>
 <p>The Scanbot SDK uses digital image processing algorithms to find rectangular, document like, polygons in a digital image.
 As input an <code class="highlighter-rouge">UIImage</code> on iOS or <code class="highlighter-rouge">Bitmap</code> on Android are accepted.</p>
@@ -171,7 +172,7 @@ As input an <code class="highlighter-rouge">UIImage</code> on iOS or <code class
 <div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">Bitmap</span> <span class="n">image</span> <span class="p">=</span> <span class="p">...;</span> <span class="c1">// on Android
 </span><span class="n">UIImage</span> <span class="n">image</span> <span class="p">=</span> <span class="p">...;</span> <span class="c1">// on iOS
 </span>
-<span class="kt">var</span> <span class="n">detectionResult</span> <span class="p">=</span> <span class="n">SBSDK</span><span class="p">.</span><span class="nf">DocumentDetection</span><span class="p">(</span><span class="n">image</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">detectionResult</span> <span class="p">=</span> <span class="n">SBSDK</span><span class="p">.</span><span class="nf">DetectDocument</span><span class="p">(</span><span class="n">image</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">detectionResult</span><span class="p">.</span><span class="n">Status</span> <span class="p">==</span> <span class="n">DocumentDetectionStatus</span><span class="p">.</span><span class="n">Ok</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="kt">var</span> <span class="n">resultImage</span> <span class="p">=</span> <span class="n">detectionResult</span><span class="p">.</span><span class="n">Image</span> <span class="k">as</span> <span class="n">Bitmap</span><span class="p">;</span> <span class="c1">// on Android
@@ -190,19 +191,20 @@ The polygon is a list with 4 float points (one for each corner). Each point has 
 
 <p>On Android:</p>
 
-<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="n">DocumentDetectionResult</span> <span class="nf">DocumentDetection</span><span class="p">(</span><span class="n">Android</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">Uri</span> <span class="n">imageUri</span><span class="p">,</span> <span class="n">Android</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">Context</span> <span class="n">context</span><span class="p">)</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="n">DocumentDetectionResult</span> <span class="nf">DetectDocument</span><span class="p">(</span><span class="n">Android</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">Uri</span> <span class="n">imageUri</span><span class="p">,</span> <span class="n">Android</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">Context</span> <span class="n">context</span><span class="p">)</span>
 </code></pre>
 </div>
 
 <p>On iOS:</p>
 
-<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="n">DocumentDetectionResult</span> <span class="nf">DocumentDetection</span><span class="p">(</span><span class="n">Foundation</span><span class="p">.</span><span class="n">NSUrl</span> <span class="n">imageUrl</span><span class="p">)</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="n">DocumentDetectionResult</span> <span class="nf">DetectDocument</span><span class="p">(</span><span class="n">Foundation</span><span class="p">.</span><span class="n">NSUrl</span> <span class="n">imageUrl</span><span class="p">)</span>
 </code></pre>
 </div>
 
 <p>Please note that <code class="highlighter-rouge">NSUrl</code> must be a valid file URL (<em>file:///</em>). Assets URLs (<em>assets-library://</em>) are not supported.</p>
 
-<h4 id="image-filtering">Image filtering</h4>
+<p><a name="ApplyImageFilter"></a></p>
+<h4 id="image-filtering">Image Filtering</h4>
 
 <div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">Bitmap</span> <span class="n">image</span> <span class="p">=</span> <span class="p">...;</span> <span class="c1">// on Android
 </span><span class="n">UIImage</span> <span class="n">image</span> <span class="p">=</span> <span class="p">...;</span> <span class="c1">// on iOS
@@ -210,7 +212,8 @@ The polygon is a list with 4 float points (one for each corner). Each point has 
 </code></pre>
 </div>
 
-<p>Supported image filters:</p>
+<p><a name="ImageFilter"></a>
+Supported image filters:</p>
 <ul>
   <li><code class="highlighter-rouge">ImageFilter.ColorEnhanced</code> - Optimizes colors, contrast and brightness.</li>
   <li><code class="highlighter-rouge">ImageFilter.Grayscale</code> - Grayscale filter</li>
@@ -219,26 +222,113 @@ The polygon is a list with 4 float points (one for each corner). Each point has 
   <li><code class="highlighter-rouge">ImageFilter.PureBinarized</code> - A filter for binarizing an image. Creates an image with pixel values set to either pure black or pure white.</li>
   <li><code class="highlighter-rouge">ImageFilter.BackgroundClean</code> - Cleans up the background and tries to preserve photos within the image.</li>
   <li><code class="highlighter-rouge">ImageFilter.BlackAndWhite</code> - Black and white filter with background cleaning. Creates a grayscaled 8-bit image with mostly black or white pixels.</li>
+  <li><code class="highlighter-rouge">ImageFilter.OtsuBinarization</code> - A filter for black and white conversion using OTSU binarization.</li>
+  <li><code class="highlighter-rouge">ImageFilter.DeepBinarization</code> - A filter for black and white conversion primary used for low-contrast documents.</li>
+  <li><code class="highlighter-rouge">ImageFilter.EdgeHighlight</code> - A filter that enhances edges in low-contrast documents.</li>
 </ul>
 
+<p><a name="CreatePDF"></a></p>
 <h4 id="pdf-creation">PDF Creation</h4>
 <p>The Scanbot SDK renders images into a PDF document and stores it as given target file. For each image a separate page is generated.</p>
 
 <p>Example code for Android:</p>
 
 <div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">Android</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">Uri</span><span class="p">[]</span> <span class="n">images</span> <span class="p">=</span> <span class="p">...;</span>
-<span class="n">Android</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">Uri</span><span class="p">[]</span> <span class="n">pdfOutputFileUri</span> <span class="p">=</span> <span class="p">...;</span>
-<span class="n">SBSDK</span><span class="p">.</span><span class="nf">CreatePDF</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">pdfOutputUri</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span> <span class="c1">// as last parameter current Activity must be passed
-</span></code></pre>
+<span class="n">Android</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">Uri</span> <span class="n">pdfOutputFileUri</span> <span class="p">=</span> <span class="p">...;</span>
+<span class="n">SBSDK</span><span class="p">.</span><span class="nf">CreatePDF</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">pdfOutputFileUri</span><span class="p">,</span> <span class="n">PDFPageSize</span><span class="p">.</span><span class="n">FixedA4</span><span class="p">);</span>
+</code></pre>
 </div>
 
 <p>Example code for iOS:</p>
 
 <div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">NSUrl</span><span class="p">[]</span> <span class="n">images</span> <span class="p">=</span> <span class="p">...;</span>
 <span class="n">NSUrl</span> <span class="n">pdfOutputFileUrl</span> <span class="p">=</span> <span class="p">...;</span>
-<span class="n">SBSDK</span><span class="p">.</span><span class="nf">CreatePDF</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">pdfOutputFileUrl</span><span class="p">);</span>
+<span class="n">SBSDK</span><span class="p">.</span><span class="nf">CreatePDF</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">pdfOutputFileUrl</span><span class="p">,</span> <span class="n">PDFPageSize</span><span class="p">.</span><span class="n">FixedA4</span><span class="p">);</span>
 </code></pre>
 </div>
+
+<p><a name="PDFPageSize"></a>
+Following PDF page sizes are supported:</p>
+<ul>
+  <li><code class="highlighter-rouge">PDFPageSize.A4</code> - The page has the aspect ratio of the image, but is fitted into A4 size. Whether portrait or landscape depends on the images aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.FixedA4</code> - The page has A4 size. The image is fitted and centered within the page. Whether portrait or landscape depends on the images aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.USLetter</code> - The page has the aspect ratio of the image, but is fitted into US letter size. Whether portrait or landscape depends on the images aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.FixedUsLetter</code> - The page has US letter size. The image is fitted and centered within the page. Whether portrait or landscape depends on the images aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.Auto</code> - For each page the best matching format (A4 or US letter) is used. Whether portrait or landscape depends on the images aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.AutoLocale</code> - Each page of the result PDF will be of US letter or A4 size depending on the current locale. Whether portrait or landscape depends on the images aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.FromImage</code> - Each page is as large as its image at 72 dpi.</li>
+</ul>
+
+<p><a name="OCR"></a></p>
+<h4 id="ocr---optical-character-recognition">OCR - Optical Character Recognition</h4>
+<p>The Scanbot SDK provides a simple and convenient APIs to run Optical Character Recognition (OCR) on images.</p>
+
+<p>As result you can get:</p>
+<ul>
+  <li>a searchable PDF document with the recognized text layer (aka. sandwiched PDF document)</li>
+  <li>recognized text as plain text</li>
+  <li>bounding boxes of all recognized paragraphs, lines and words</li>
+  <li>text results and confidence values for each bounding box.</li>
+</ul>
+
+<p>The Scanbot OCR feature is based on the Tesseract OCR engine with some modifications and enhancements. The OCR engine supports a wide variety of languages. For each desired language a corresponding OCR training data file (<code class="highlighter-rouge">.traineddata</code>) must be provided. Furthermore the special data file <code class="highlighter-rouge">osd.traineddata</code> is required (used for orientation and script detection). The Scanbot SDK package contains no language data files to keep the SDK small in size. You have to download and include the desired language files in your app.</p>
+
+<h4 id="download-and-provide-ocr-language-files">Download and Provide OCR Language Files</h4>
+<p>Please find a list of all supported OCR languages and download links on this <a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files#data-files-for-version-304305">Tesseract wiki page</a>.
+The current Scanbot SDK supports <code class="highlighter-rouge">.traineddata</code> files of Tesseract version <strong>3.04/3.05</strong> only!</p>
+
+<p>Download the desired language files as well as the <code class="highlighter-rouge">osd.traineddata</code> file and place them in the <strong>Assets</strong> sub-folder <code class="highlighter-rouge">SBSDKLanguageData/</code> of your Android app or
+in the <strong>Resources</strong> sub-folder <code class="highlighter-rouge">SBSDKLanguageData/</code> of your iOS app.</p>
+
+<p>Example for Android:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>Droid/Assets/SBSDKLanguageData/eng.traineddata  // english language file
+Droid/Assets/SBSDKLanguageData/deu.traineddata  // german language file
+Droid/Assets/SBSDKLanguageData/osd.traineddata  // required special data file
+</code></pre>
+</div>
+
+<p>Example for iOS:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>iOS/Resources/SBSDKLanguageData/eng.traineddata  // english language file
+iOS/Resources/SBSDKLanguageData/deu.traineddata  // german language file
+iOS/Resources/SBSDKLanguageData/osd.traineddata  // required special data file
+</code></pre>
+</div>
+
+<h4 id="ocr-api">OCR API</h4>
+
+<p>Example code for Android:</p>
+
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">Android</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">Uri</span><span class="p">[]</span> <span class="n">images</span> <span class="p">=</span> <span class="p">...;</span>
+<span class="n">Android</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">Uri</span> <span class="n">pdfOutputFileUri</span> <span class="p">=</span> <span class="p">...;</span>
+<span class="n">OcrResult</span> <span class="n">result</span> <span class="p">=</span> <span class="n">SBSDK</span><span class="p">.</span><span class="nf">PerformOCR</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="k">new</span> <span class="p">[]{</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"de"</span> <span class="p">},</span> <span class="n">pdfOutputFileUri</span><span class="p">);</span>
+
+<span class="c1">// recognized plain text
+</span><span class="kt">string</span> <span class="n">text</span> <span class="p">=</span> <span class="n">result</span><span class="p">.</span><span class="n">recognizedText</span><span class="p">;</span>
+
+<span class="c1">// bounding boxes and text results of recognized paragraphs, lines and words:
+</span><span class="n">List</span><span class="p">&lt;</span><span class="n">OcrResultBlock</span><span class="p">&gt;</span> <span class="n">paragraphs</span> <span class="p">=</span> <span class="n">result</span><span class="p">.</span><span class="n">Paragraphs</span><span class="p">;</span>
+<span class="n">List</span><span class="p">&lt;</span><span class="n">OcrResultBlock</span><span class="p">&gt;</span> <span class="n">lines</span> <span class="p">=</span> <span class="n">result</span><span class="p">.</span><span class="n">Lines</span><span class="p">;</span>
+<span class="n">List</span><span class="p">&lt;</span><span class="n">OcrResultBlock</span><span class="p">&gt;</span> <span class="n">words</span> <span class="p">=</span> <span class="n">result</span><span class="p">.</span><span class="n">Words</span><span class="p">;</span>
+</code></pre>
+</div>
+<p>See the API reference of the <a href="https://scanbotsdk.github.io/documentation/android/api/net.doo.snap/net/doo/snap/process/OcrResult.html">OcrResult</a> class for more details.</p>
+
+<p>Example code for iOS:</p>
+
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">NSUrl</span><span class="p">[]</span> <span class="n">images</span> <span class="p">=</span> <span class="p">...;</span>
+<span class="n">NSUrl</span> <span class="n">pdfOutputFileUrl</span> <span class="p">=</span> <span class="p">...;</span>
+<span class="n">SBSDKOCRResult</span> <span class="n">result</span> <span class="p">=</span> <span class="n">SBSDK</span><span class="p">.</span><span class="nf">PerformOCR</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="k">new</span><span class="p">[]</span> <span class="p">{</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"de"</span> <span class="p">},</span> <span class="n">pdfOutputFileUrl</span><span class="p">);</span>
+
+<span class="c1">// recognized plain text
+</span><span class="kt">string</span> <span class="n">text</span> <span class="p">=</span> <span class="n">result</span><span class="p">.</span><span class="n">recognizedText</span><span class="p">;</span>
+
+<span class="c1">// bounding boxes and text results of recognized paragraphs, lines and words:
+</span><span class="n">SBSDKOCRResultBlock</span><span class="p">[]</span> <span class="n">paragraphs</span> <span class="p">=</span> <span class="n">result</span><span class="p">.</span><span class="n">Paragraphs</span><span class="p">;</span>
+<span class="n">SBSDKOCRResultBlock</span><span class="p">[]</span> <span class="n">lines</span> <span class="p">=</span> <span class="n">result</span><span class="p">.</span><span class="n">Lines</span><span class="p">;</span>
+<span class="n">SBSDKOCRResultBlock</span><span class="p">[]</span> <span class="n">words</span> <span class="p">=</span> <span class="n">result</span><span class="p">.</span><span class="n">Words</span><span class="p">;</span>
+</code></pre>
+</div>
+<p>See the API reference of the <a href="https://scanbotsdk.github.io/documentation/ios/Classes/SBSDKOCRResult.html">SBSDKOCRResult</a> class for more details.</p>
 
 <h4 id="camera-ui-for-document-scanning">Camera UI for document scanning</h4>
 <p>The Scanbot SDK provides UI components for guided, automatic document scanning.
@@ -817,7 +907,44 @@ To further improve the user experience you might want to automatically take a ph
 </ul>
 
 <p><a name="releaseHistory"></a></p>
-<h3 id="release-history">Release history</h3>
+<h3 id="release-history">Release History</h3>
+
+<h4 id="scanbotsdkxamarin-130">ScanbotSDK.Xamarin 1.3.0</h4>
+<ul>
+  <li>🎉 NEW:
+    <ul>
+      <li>Android &amp; iOS: Added new <a href="#ImageFilter">Images Filters</a> <code class="highlighter-rouge">OtsuBinarization</code>, <code class="highlighter-rouge">DeepBinarization</code> and <code class="highlighter-rouge">EdgeHighlight</code>.</li>
+      <li>Android &amp; iOS: Support for <a href="#PDFPageSize">PDF page sizes</a> (e.g. A4, US Letter, etc). See the new Wrapper methods <a href="#CreatePDF"><code class="highlighter-rouge">SBSDK.CreatePDF(images, pdfOutputFile, pageSize)</code></a> for Android and iOS.</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Android: Improved the OCR API and implemented a new mechanism to handle OCR language files as well as other blob files (MRZ blobs, etc) as Assets. It replaces the obsolete mechanism based on fetch-methods (<code class="highlighter-rouge">blobManager.fetch(..)</code>).
+        <ul>
+          <li>If you use the OCR feature with the unified and convenient Xamarin <strong>Wrapper</strong> class <code class="highlighter-rouge">SBSDK</code> (recommended), please see the <a href="#OCR">OCR section</a> in this documentation.</li>
+          <li>If you use the Xamarin <strong>Binding</strong> classes of the native Scanbot SDK, please see our native docs <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Optical-Character-Recognition">Optical Character Recognition</a> for more details.</li>
+        </ul>
+      </li>
+      <li>iOS: Improved the OCR API. See the <a href="#OCR">OCR section</a> in this documentation.</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li>Android: <strong>Internal Storage for RTU UI</strong> - The RTU UI Components of the Scanbot SDK now use the internal storage by default, which is more secure and do not require storage permission prompts. Please note: In case your app is using the storage for RTU UI Pages as permanent storage, make sure to implement a suitable migration (E.g. move the archived <code class="highlighter-rouge">Page</code> images from external storage folder to the new internal storage. Or alternatively overwrite the storage to the external folder again).</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Android: Upgraded the native Scanbot Android SDK from v1.38.3 to <strong>v1.39.1</strong></li>
+      <li>Android: Requires upgrade of <code class="highlighter-rouge">Xamarin.Android.Support.*</code> Libs to <strong>v28.0.0.1</strong> or higher</li>
+    </ul>
+  </li>
+  <li>👉 Please also see:
+    <ul>
+      <li>The <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">Changelog</a> of the native Scanbot Android SDK</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="scanbotsdkxamarin-120">ScanbotSDK.Xamarin 1.2.0</h4>
 <ul>

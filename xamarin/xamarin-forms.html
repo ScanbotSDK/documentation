@@ -196,7 +196,7 @@ to the <code class="highlighter-rouge">Application</code> attribute on the <code
 </code></pre>
 </div>
 
-<p>Pages are stored in an internal page file storage, where the <code class="highlighter-rouge"><span class="p">{</span><span class="err">ageId</span></code> serves as a name prefix for the stored image files. Operations that modify pages work in-place. That is, for example, <code class="highlighter-rouge">RotatePage()</code> overwrites the page’s image files with their rotated versions. This behavior differs from the behavior of raw image functions like <code class="highlighter-rouge">RotateImage()</code> which always create a new file.</p>
+<p>Pages are stored in an internal page file storage, where the <code class="highlighter-rouge">pageId</code> serves as a name prefix for the stored image files. Operations that modify pages work in-place. That is, for example, <code class="highlighter-rouge">RotatePage()</code> overwrites the page’s image files with their rotated versions. This behavior differs from the behavior of raw image functions like <code class="highlighter-rouge">RotateImage()</code> which always create a new file.</p>
 
 <p><code class="highlighter-rouge">IScannedPage</code> implements <code class="highlighter-rouge">INotifyPropertyChanged</code> and can be directly used as a <code class="highlighter-rouge">BindingContext</code>.</p>
 
@@ -331,7 +331,32 @@ to the <code class="highlighter-rouge">Application</code> attribute on the <code
 </div>
 
 <p><a name="releaseHistory"></a></p>
-<h3 id="release-history">Release history</h3>
+<h3 id="release-history">Release History</h3>
+
+<h4 id="scanbotsdkxamarinforms-130">ScanbotSDK.Xamarin.Forms 1.3.0</h4>
+<ul>
+  <li>🎉 NEW:
+    <ul>
+      <li>Android &amp; iOS: Added new Images Filters <code class="highlighter-rouge">OtsuBinarization</code>, <code class="highlighter-rouge">DeepBinarization</code> and <code class="highlighter-rouge">EdgeHighlight</code>.</li>
+      <li>Android &amp; iOS: Support for PDF page sizes in <code class="highlighter-rouge">CreatePdfAsync(IEnumerable&lt;ImageSource&gt; images, PDFPageSize pageSize)</code> method.</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li>Android: <strong>Internal Storage</strong> - All components of the ScanbotSDK.Xamarin.Forms now use the internal storage by default, which is more secure and do not require storage permission prompts. Please note: In case your app is using the storage for scanned <code class="highlighter-rouge">Page</code>s as permanent storage, make sure to implement a suitable migration. E.g. move the archived <code class="highlighter-rouge">Page</code> images from the old external storage folder to the new internal storage. Or alternatively overwrite the storage to the external folder again. The <code class="highlighter-rouge">SBSDKInitializer</code> allows to overwrite the <code class="highlighter-rouge">StorageBaseDirectory</code> via configuration: <code class="highlighter-rouge">SBSDKInitializer.Initialize(app, licenseKey, new SBSDKConfiguration { StorageBaseDirectory = MyCustomStorageBaseDirectory });</code>. Also see our example app <a href="https://github.com/doo/scanbot-sdk-example-xamarin-forms">scanbot-sdk-example-xamarin-forms</a>.</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded <code class="highlighter-rouge">ScanbotSDK.Xamarin</code> to v1.3.0</li>
+    </ul>
+  </li>
+  <li>👉 Please also see:
+    <ul>
+      <li>The <a href="/documentation/xamarin/xamarin.html#releaseHistory">Changelog</a> of <code class="highlighter-rouge">ScanbotSDK.Xamarin</code>.</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="scanbotsdkxamarinforms-112">ScanbotSDK.Xamarin.Forms 1.1.2</h4>
 <ul>
