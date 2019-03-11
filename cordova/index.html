@@ -61,13 +61,14 @@
   <div class="post-content">
     <h2 id="scanbot-sdk-cordova-plugin">Scanbot SDK Cordova Plugin</h2>
 
-<p>⚠️ This documentation is for the latest released version <strong>2.x</strong> of the Scanbot SDK Cordova Plugin (<code class="highlighter-rouge">cordova-plugin-scanbot-sdk@2.x</code>)!
-<a href="https://scanbotsdk.github.io/documentation/cordova/v1.x/">Click here for the version 1.x</a></p>
+<p>This documentation is for the <strong>latest release</strong> version of the Scanbot SDK Cordova Plugin (<code class="highlighter-rouge">cordova-plugin-scanbot-sdk@3.x</code>).</p>
+
+<p>If you are looking for the docs of the old deprecated version 1.x, it can still be found <a href="https://scanbotsdk.github.io/documentation/cordova/v1.x/">here</a>.</p>
 
 <h3 id="introduction">Introduction</h3>
 <p>The Scanbot SDK brings scanning and document creation capabilities to your mobile apps.
 It contains modules which are individually licensable as license packages.
-For more details visit our website <a href="https://scanbot.io/sdk.html">https://scanbot.io/sdk.html</a></p>
+For more details visit our website <a href="https://scanbot.io/sdk">https://scanbot.io/sdk</a></p>
 
 <p>This Cordova plugin provides implementations of Scanbot SDK for iOS and Android.</p>
 
@@ -94,10 +95,10 @@ For more details visit our website <a href="https://scanbot.io/sdk.html">https:/
 <h4 id="tools">Tools</h4>
 <ul>
   <li>Node.js, npm</li>
-  <li>Cordova CLI or PhoneGap CLI, both 6.x+ (recommended 7+)</li>
+  <li>Cordova CLI 6.x+ (recommended 8+)</li>
   <li>Cordova Platforms:
     <ul>
-      <li><a href="https://www.npmjs.com/package/cordova-android">cordova-android</a> <strong>6.4.0+</strong> (recommended 7+)</li>
+      <li><a href="https://www.npmjs.com/package/cordova-android">cordova-android</a> <strong>6.4.0+</strong> (recommended 8+)</li>
       <li><a href="https://www.npmjs.com/package/cordova-ios">cordova-ios</a> <strong>4.4.0+</strong> (recommended 4.5+)</li>
     </ul>
   </li>
@@ -148,7 +149,8 @@ You have to build your app and deploy it on the target mobile device.</p>
 <p>Check out our Example Apps on GitHub:</p>
 
 <ul>
-  <li>Ionic 2+ App: <a href="https://github.com/doo/scanbot-sdk-example-ionic2">https://github.com/doo/scanbot-sdk-example-ionic2</a></li>
+  <li>Ionic Cordova App: <a href="https://github.com/doo/scanbot-sdk-example-ionic">https://github.com/doo/scanbot-sdk-example-ionic</a></li>
+  <li>Ionic Capacitor App: <a href="https://github.com/doo/scanbot-sdk-example-capacitor-ionic">https://github.com/doo/scanbot-sdk-example-capacitor-ionic</a></li>
 </ul>
 
 <h3 id="installation">Installation</h3>
@@ -215,15 +217,13 @@ those permissions just for your information:</p>
 
 <ul>
   <li><code class="highlighter-rouge">&lt;uses-permission android:name="android.permission.CAMERA" /&gt;</code> - This permission is used for the camera views.</li>
-  <li><code class="highlighter-rouge">&lt;uses-feature android:name="android.hardware.camera" /&gt;</code> - Camera hardware features.</li>
-  <li><code class="highlighter-rouge">&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;</code> - Required to handle temporary files (e.g. PDF creation).</li>
-  <li><code class="highlighter-rouge">&lt;uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /&gt;</code> - Required to handle temporary files (e.g. PDF creation).</li>
 </ul>
 
 <p><strong>iOS</strong> (will be added in your <code class="highlighter-rouge">Info.plist</code> file)</p>
 
 <ul>
-  <li><code class="highlighter-rouge">NSCameraUsageDescription</code> - <em>“Privacy - Camera Usage Description”</em>. As value describe why your app wants to access the device’s camera.</li>
+  <li><code class="highlighter-rouge">NSCameraUsageDescription</code> - <em>“Privacy - Camera Usage Description”</em>. As value describe why your app wants to access the camera.
+By default an empty string value will be added. You can change this value in the <code class="highlighter-rouge">config.xml</code> file of your Cordova project - see <code class="highlighter-rouge">CAMERA_USAGE_DESCRIPTION</code>.</li>
 </ul>
 
 <h3 id="building-ios-production-apps--submitting-to-the-app-storetestflight">Building iOS Production Apps / Submitting to the App Store/TestFlight</h3>
@@ -251,7 +251,8 @@ But you have to remove the architectures <strong>x86_64</strong> and <strong>i38
   </li>
 </ul>
 
-<h2 id="api-reference-">API Reference <a name="api_reference"></a></h2>
+<p><a name="apiReference"></a></p>
+<h2 id="api-reference">API Reference</h2>
 
 <ul>
   <li><strong><code class="highlighter-rouge">ScanbotSdk</code></strong>
@@ -296,10 +297,28 @@ But you have to remove the architectures <strong>x86_64</strong> and <strong>i38
 <h3 id="initialize-sdk">Initialize SDK</h3>
 <h4 id="scanbotsdkinitializesdksuccesscallback-errorcallback-options">ScanbotSdk.initializeSdk(successCallback, errorCallback, options)</h4>
 
-<p>The Scanbot SDK must be initialized before usage. Make sure to run the initialization only once per app lifetime.
-Call the initialization after the ‘deviceready’ event has been fired.</p>
+<p>The Scanbot SDK must be initialized before usage. Make sure to call the initialization after the <code class="highlighter-rouge">deviceready</code> event has been fired.</p>
 
-<p><a href="https://github.com/doo/scanbot-sdk-example-ionic2/blob/8d31eb4b32a2e0ff17806ef57090c19347c2b526/src/services/sdk-initializer.ts#L17">Ionic2 example</a></p>
+<p>Following configuration options can be passed on initialization:</p>
+
+<h5 id="options">Options:</h5>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">licenseKey</span><span class="p">:</span> <span class="s1">'&lt;YOUR_SCANBOT_SDK_LICENSE_KEY&gt;'</span><span class="p">,</span>
+  <span class="na">loggingEnabled</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">storageImageQuality</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span>
+  <span class="na">storageImageFormat</span><span class="p">:</span> <span class="s1">'JPG'</span><span class="p">,</span>
+  <span class="na">storageBaseDirectory</span><span class="p">:</span> <span class="s1">'file:///some/custom/storage-dir/'</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">licenseKey</code>: Your <a href="#licenseKey">license key</a> for the Scanbot SDK.</li>
+  <li><code class="highlighter-rouge">loggingEnabled</code>: Optional <a href="#logging">logging</a> flag.</li>
+  <li><code class="highlighter-rouge">storageImageQuality</code>: Optional <a href="#imageQuality">image quality</a> value.</li>
+  <li><code class="highlighter-rouge">storageImageFormat</code>: Optional <a href="#imageQuality">image format</a> value.</li>
+  <li><code class="highlighter-rouge">storageBaseDirectory</code>: Optional directory as file URI to overwrite the default <a href="#storage">storage directory</a> of the Scanbot SDK.</li>
+</ul>
 
 <h5 id="callbacks">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
@@ -346,6 +365,7 @@ Call the initialization after the ‘deviceready’ event has been fired.</p>
 </code></pre>
 </div>
 
+<p><a name="licenseKey"></a></p>
 <h4 id="license-key">License Key</h4>
 <p>In order to run the Scanbot SDK plugin functionality within your production app you have to purchase and use a valid Scanbot SDK license.</p>
 
@@ -394,6 +414,7 @@ Please find this identifier in the <code class="highlighter-rouge">config.xml</c
 
 <p><code class="highlighter-rouge">&lt;widget id="my.awesome.app.id" ...&gt;</code></p>
 
+<p><a name="logging"></a></p>
 <h4 id="logging">Logging</h4>
 <p>When initializing the Scanbot SDK you can enable logging of the SDK. By default logging is disabled.</p>
 
@@ -417,7 +438,9 @@ There will be no log files created by the Scanbot SDK plugin.</p>
 
 <p><a name="imageQuality"></a></p>
 <h4 id="image-quality--compression">Image Quality / Compression</h4>
-<p><code class="highlighter-rouge">initializeSdk</code> can take two more optional parameters that specify the image storage format and compression for temporary images. Temporary images are all images created by the document scanner, cropping UI, as well as all image manipulation functions like <code class="highlighter-rouge">applyImageFilter</code>.</p>
+<p>The <code class="highlighter-rouge">initializeSdk</code> function can take some optional parameters that specify the image storage format and compression for generated <code class="highlighter-rouge">Page</code> images. 
+<code class="highlighter-rouge">Page</code> images are all images created by the Ready-To-Use UI Components (like Document Scanner, Cropping UI, etc), as well as all image manipulation functions 
+working with <code class="highlighter-rouge">Page</code> objects as input (like <code class="highlighter-rouge">applyImageFilterOnPage</code>, <code class="highlighter-rouge">detectDocumentOnPage</code>, etc).</p>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">storageImageFormat</span><span class="p">:</span> <span class="s1">'JPG'</span><span class="p">,</span>
@@ -485,6 +508,67 @@ If the result of the <code class="highlighter-rouge">successCallback</code> retu
 </code></pre>
 </div>
 
+<p><a name="storage"></a></p>
+<h3 id="storage">Storage</h3>
+<p>Since version 3.0 of this Plugin the native Scanbot SDKs as well as the Plugin itself use the internal and secure 
+storage locations for all produced files (JPG, PNG, PDF, TIFF, etc) by default.</p>
+
+<ul>
+  <li>
+    <p>On <strong>Android</strong> all files will be stored in the internal <strong>files</strong> directory of your application.
+No permissions are required for your app to read or write files in this directory.</p>
+  </li>
+  <li>
+    <p>On <strong>iOS</strong> all files will be stored in the <strong>Application Support</strong> folder of your application.</p>
+  </li>
+</ul>
+
+<h4 id="customize-storage-location">Customize Storage Location</h4>
+
+<p>It is strongly recommended to use the default storage location. However, you can overwrite the storage directory on initialization of the Plugin.
+The <code class="highlighter-rouge">initializeSdk</code> method can take an optional parameter <code class="highlighter-rouge">storageBaseDirectory</code> to set a custom storage location.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">storageBaseDirectory</span><span class="p">:</span> <span class="s1">'file:///some/custom/storage-dir/'</span><span class="p">,</span>
+  <span class="p">...</span>
+<span class="p">};</span>
+
+<span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">initializeSdk</span><span class="p">(</span><span class="nx">successCallback</span><span class="p">,</span> <span class="nx">errorCallback</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>The value of the <code class="highlighter-rouge">storageBaseDirectory</code> must be a file URL (<code class="highlighter-rouge">'file:///...</code>) pointing to a valid platform-specific file system path. 
+If this directory does not exist yet, the Plugin will try to create it.
+To work with the file system we recommend the Cordova Plugin <a href="https://www.npmjs.com/package/cordova-plugin-file">cordova-plugin-file</a></p>
+
+<p>For the full demo code please checkout our example app <a href="https://github.com/doo/scanbot-sdk-example-ionic">scanbot-sdk-example-ionic</a>.</p>
+
+<p>⚠️ <strong>Note:</strong> When overwriting the default storage location, make sure</p>
+<ul>
+  <li>you have implemented a suitable storage permissions request handling on Android</li>
+  <li>you fully understand the consequences regarding the accessibility (security) of the produced document files.</li>
+</ul>
+
+<p>👉 For more details about the storage locations on Android and iOS please also see:</p>
+
+<ul>
+  <li><a href="https://developer.android.com/guide/topics/data/data-storage">Android - File Storage Overview</a></li>
+  <li><a href="https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html">iOS - File System Basics</a></li>
+</ul>
+
+<h4 id="storage-cleanup">Storage Cleanup</h4>
+
+<p>There is <strong>no automatic</strong> file clean mechanism in this Plugin, because only your App can decide when is the perfect time 
+to remove the files produced by this Plugin (images, PDFs, etc).</p>
+
+<p>To avoid storage space issues caused by too many produced image files it is strongly recommended to implement a suitable 
+cleanup functionality based on the requirements of your app. 
+This Plugin provides the following helper methods to keep the storage clean:</p>
+<ul>
+  <li><a href="#module_ScanbotSdk.removePage">removePage</a> method to delete a certain <code class="highlighter-rouge">Page</code> object with all its files.</li>
+  <li><a href="#module_ScanbotSdk.cleanup">cleanup</a> method to remove <strong>all</strong> generated files by this Plugin (scanned and imported images, export files like PDF, TIFF, etc).</li>
+</ul>
+
 <p><a name="promisify"></a></p>
 <h3 id="promise-based-api">Promise-based API</h3>
 <p>The API as presented in the documentation uses the Cordova-style plugin callback signature, where the success and error callbacks are always passed as the first and second argument to each plugin method.</p>
@@ -541,7 +625,7 @@ If the result of the <code class="highlighter-rouge">successCallback</code> retu
 <h3 id="configuration">Configuration</h3>
 <p>Settings controlling color are expected to be passed as strings in the <code class="highlighter-rouge">'#RRGGBB'</code> format.</p>
 
-<p><a name="page_object"></a></p>
+<p><a name="pageObject"></a></p>
 <h3 id="pages">Pages</h3>
 
 <p>The Scanbot SDK provides a ready-to-use UI for document scanning and cropping. Both components use the notion of a ‘page’ as a data model for the scanning and cropping activities. An page object has the following fields:</p>
@@ -579,7 +663,7 @@ If the result of the <code class="highlighter-rouge">successCallback</code> retu
 
 <p>Starts the ready-to-use Document Scanner for guided, automatic document scanning.</p>
 
-<p><a href="https://github.com/doo/scanbot-sdk-example-ionic2/blob/8d31eb4b32a2e0ff17806ef57090c19347c2b526/src/pages/sdk-ui/sdk-ui.ts#L50">Ionic2+ example</a></p>
+<p><a href="https://github.com/doo/scanbot-sdk-example-ionic/blob/8d31eb4b32a2e0ff17806ef57090c19347c2b526/src/pages/sdk-ui/sdk-ui.ts#L50">Ionic example</a></p>
 
 <p><img src="./assets/images/document_scanner.jpg" alt="alt text" title="Document Scanner Screenshot" /></p>
 
@@ -590,7 +674,7 @@ If the result of the <code class="highlighter-rouge">successCallback</code> retu
 
 <ul>
   <li><code class="highlighter-rouge">result.status</code> - <code class="highlighter-rouge">'OK'</code> if some pages were snapped, <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation.</li>
-  <li><code class="highlighter-rouge">result.pages</code> - an array of <a href="#page_object">pages</a>. If multi-page mode is enabled, this array may contain more than one page. If multi-page mode is not enabled and <code class="highlighter-rouge">result.status</code> is <code class="highlighter-rouge">'OK'</code>, this array contains one object.</li>
+  <li><code class="highlighter-rouge">result.pages</code> - an array of <a href="#pageObject">pages</a>. If multi-page mode is enabled, this array may contain more than one page. If multi-page mode is not enabled and <code class="highlighter-rouge">result.status</code> is <code class="highlighter-rouge">'OK'</code>, this array contains one object.</li>
 </ul>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
@@ -602,7 +686,7 @@ If the result of the <code class="highlighter-rouge">successCallback</code> retu
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options">Options:</h5>
+<h5 id="options-1">Options:</h5>
 <p>All UI configuration options are optional.</p>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
@@ -823,8 +907,6 @@ If the result of the <code class="highlighter-rouge">successCallback</code> retu
 <p>The Cropping UI provides functionality for manual cropping and rotation of an image. 
 It uses the edge detection algorithm of the Scanbot SDK and containts some smart UI elements like magnetic lines and a magnifier.</p>
 
-<p><a href="https://github.com/doo/scanbot-sdk-example-ionic2/blob/8d31eb4b32a2e0ff17806ef57090c19347c2b526/src/pages/sdk-ui/sdk-ui.ts#L68">Ionic2+ example</a></p>
-
 <p><img src="./assets/images/cropping.jpg" alt="alt" title="Cropping screen screenshot" /></p>
 
 <h5 id="callbacks-3">Callbacks:</h5>
@@ -834,7 +916,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
 
 <ul>
   <li><code class="highlighter-rouge">result.status</code> - <code class="highlighter-rouge">'OK'</code> if the user applied changes on image (tapped on the “done” button), <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation (tapped on the “cancel” button).</li>
-  <li><code class="highlighter-rouge">result.page</code> - the cropped <a href="#page_object">page</a>.</li>
+  <li><code class="highlighter-rouge">result.page</code> - the cropped <a href="#pageObject">page</a>.</li>
 </ul>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
@@ -846,7 +928,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-1">Options:</h5>
+<h5 id="options-2">Options:</h5>
 <p>The cropping UI requires a page object. A page object can be initially created using the <a href="#module_ScanbotSdk.UI.startDocumentScanner">Document Scanner</a> or <a href="#module_ScanbotSdk.createPage">createPage()</a>.</p>
 
 <p>All UI configuration settings are optional.</p>
@@ -938,8 +1020,6 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
 
 <p>Opens a Scanning UI for barcodes and QR codes.</p>
 
-<p><a href="https://github.com/doo/scanbot-sdk-example-ionic2/blob/8d31eb4b32a2e0ff17806ef57090c19347c2b526/src/pages/sdk-ui/sdk-ui.ts#L141">Ionic2+ example</a></p>
-
 <p><img src="./assets/images/barcode.jpg" alt="alt" title="Barcode scanner screenshot" /></p>
 
 <h5 id="callbacks-4">Callbacks:</h5>
@@ -962,7 +1042,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-2">Options:</h5>
+<h5 id="options-3">Options:</h5>
 <p>All settings are optional.</p>
 
 <p><code class="highlighter-rouge">uiConfigs.barcodeFormats</code> is an optional array of <a href="#barcodeFormat">barcode formats</a> that act as a detection filter. By default all supported formats will be detected.</p>
@@ -1052,8 +1132,6 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
 
 <p>Opens a Scanner for machine-readable zones.</p>
 
-<p><a href="https://github.com/doo/scanbot-sdk-example-ionic2/blob/8d31eb4b32a2e0ff17806ef57090c19347c2b526/src/pages/sdk-ui/sdk-ui.ts#L133">Ionic2+ example</a></p>
-
 <p><img src="./assets/images/mrz.jpg" alt="alt" title="MRZ scanner screenshot" /></p>
 
 <h5 id="callbacks-5">Callbacks:</h5>
@@ -1081,7 +1159,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-3">Options:</h5>
+<h5 id="options-4">Options:</h5>
 <p>The finder window must have a width-to-height of 5, otherwise the detection process will fail. All other settings are optional.</p>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
@@ -1165,7 +1243,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
 <p><a name="module_ScanbotSdk.createPage"></a></p>
 <h4 id="scanbotsdkcreatepagesuccesscallback-errorcallback-options"><code class="highlighter-rouge">ScanbotSdk.createPage(successCallback, errorCallback, options)</code></h4>
 
-<p>Creates a <a href="#page_object">page</a> from an image (presumably the image of an uncropped document).</p>
+<p>Creates a <a href="#pageObject">page</a> from an image (presumably the image of an uncropped document).</p>
 
 <h5 id="callbacks-6">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
@@ -1185,7 +1263,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-4">Options:</h5>
+<h5 id="options-5">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">originalImageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span>
 <span class="p">};</span>
@@ -1219,7 +1297,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-5">Options:</h5>
+<h5 id="options-6">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">page</span><span class="p">:</span> <span class="p">...,</span>
   <span class="na">imageUri</span><span class="p">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
@@ -1255,7 +1333,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-6">Options:</h5>
+<h5 id="options-7">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">page</span><span class="p">:</span> <span class="p">...</span>
 <span class="p">};</span>
@@ -1289,7 +1367,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-7">Options:</h5>
+<h5 id="options-8">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">page</span><span class="p">:</span> <span class="p">...,</span>
   <span class="na">imageFilter</span><span class="p">:</span> <span class="nx">ImageFilter</span><span class="p">,</span>
@@ -1325,7 +1403,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-8">Options:</h5>
+<h5 id="options-9">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">page</span><span class="p">:</span> <span class="p">...,</span>
   <span class="na">imageFilter</span><span class="p">:</span> <span class="nx">ImageFilter</span><span class="p">,</span>
@@ -1361,7 +1439,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-9">Options:</h5>
+<h5 id="options-10">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">page</span><span class="p">:</span> <span class="s1">'...'</span><span class="p">,</span>
   <span class="na">times</span><span class="p">:</span> <span class="nx">number</span>
@@ -1377,7 +1455,8 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
 <p><a name="module_ScanbotSdk.removePage"></a></p>
 <h4 id="scanbotsdkremovepagesuccesscallback-errorcallback-page"><code class="highlighter-rouge">ScanbotSdk.removePage(successCallback, errorCallback, page)</code></h4>
 
-<p>Removes a page from the internal file storage.</p>
+<p>Removes a page with all its files (original image, document image, thumbnails, filtered images, etc) from the internal file storage.
+This method <strong>does not</strong> remove any export files (PDF, TIFF) which were generated based on this page object.</p>
 
 <h5 id="callbacks-12">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
@@ -1398,6 +1477,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
 </ul>
 
 <h2 id="raw-image-operations">Raw image operations</h2>
+
 <p><a name="module_ScanbotSdk.detectDocument"></a></p>
 <h3 id="document-detection">Document Detection</h3>
 <h4 id="scanbotsdkdetectdocumentsuccesscallback-errorcallback-options">ScanbotSdk.detectDocument(successCallback, errorCallback, options)</h4>
@@ -1430,7 +1510,7 @@ Maybe <code class="highlighter-rouge">null</code> if detection was not successfu
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-10">Options:</h5>
+<h5 id="options-11">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">imageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
   <span class="na">quality</span><span class="p">:</span> <span class="mi">80</span>
@@ -1468,7 +1548,7 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-11">Options:</h5>
+<h5 id="options-12">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">imageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
   <span class="na">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span>
@@ -1508,7 +1588,7 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-12">Options:</h5>
+<h5 id="options-13">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">imageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
   <span class="na">imageFilter</span><span class="p">:</span> <span class="s1">'BINARIZED'</span><span class="p">,</span>
@@ -1547,15 +1627,17 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-13">Options:</h5>
+<h5 id="options-14">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">]</span>
+  <span class="na">pageSize</span><span class="p">:</span> <span class="s2">"FIXED_A4"</span>
 <span class="p">};</span>
 </code></pre>
 </div>
 
 <ul>
   <li><code class="highlighter-rouge">options.images</code> - Input images as an array of file URIs in proper order (image element 1 =&gt; page 1, etc).</li>
+  <li><code class="highlighter-rouge">pageSize</code> - <a href="#pdfPageSize">PDFPageSize</a> enum value to specify the output page size.</li>
 </ul>
 
 <p><a name="module_ScanbotSdk.writeTiff"></a></p>
@@ -1582,7 +1664,7 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-14">Options:</h5>
+<h5 id="options-15">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">],</span>
   <span class="na">oneBitEncoded</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
@@ -1595,11 +1677,87 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">options.oneBitEncoded</code> - if true, the input images will be binarized and the output TIFF file will be saved with one bit per pixel. If false, the input images will be stored as-is. The default value is false.</li>
 </ul>
 
+<p><a name="ocr"></a></p>
 <h3 id="ocr---optical-character-recognition">OCR - Optical Character Recognition</h3>
 
-<p>The OCR feature is a part of the Scanbot SDK <strong><a href="https://scanbot.io/sdk.html#packages">Package II</a></strong>. 
-It is based on the Tesseract OCR Engine with some modifications and enhancements.</p>
+<p>The Scanbot SDK Plugin provides a simple and convenient API to run Optical Character Recognition (OCR) on images.
+The OCR feature is a part of the Scanbot SDK <strong><a href="https://scanbot.io/sdk.html#packages">Package II</a></strong>. 
+It is based on the <em>Tesseract OCR Engine</em> with some modifications and enhancements.</p>
 
+<p><a name="ocrLanguages"></a></p>
+<h4 id="ocr-languages-and-data-files">OCR Languages and Data Files</h4>
+
+<p>The OCR engine supports a wide variety of languages. For each desired language a corresponding OCR training data file (<code class="highlighter-rouge">.traineddata</code>) must be provided. 
+Furthermore the special data file <code class="highlighter-rouge">osd.traineddata</code> is required (used for orientation and script detection).</p>
+
+<p>The Scanbot SDK plugin ships with no training data files by default to keep the plugin package small in size. 
+You have to download and provide the desired language files in your app.</p>
+
+<h4 id="download-and-provide-ocr-language-files">Download and Provide OCR Language Files</h4>
+
+<p>Please find a list of all supported OCR languages and download links on this <a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files#data-files-for-version-304305">Tesseract wiki page</a>. 
+The current Scanbot SDK supports <code class="highlighter-rouge">.traineddata</code> files of Tesseract version <strong>3.04/3.05</strong> only.</p>
+
+<p><strong>Option 1 - Provide the Language Files in the App Package:</strong></p>
+
+<p>Download the desired language files as well as the <code class="highlighter-rouge">osd.traineddata</code> file and make sure they will be packaged in your app as:</p>
+
+<ul>
+  <li>for Android: as <strong>assets</strong> in the sub-folder <code class="highlighter-rouge">SBSDKLanguageData/</code></li>
+  <li>for iOS: as <strong>resources</strong> in the sub-folder <code class="highlighter-rouge">SBSDKLanguageData/</code></li>
+</ul>
+
+<p>This can be done by defining the following simple mappings in the <code class="highlighter-rouge">config.xml</code> of your Cordova project:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;platform</span> <span class="na">name=</span><span class="s">"android"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;resource-file</span> <span class="na">src=</span><span class="s">"SBSDKLanguageData/eng.traineddata"</span> <span class="na">target=</span><span class="s">"app/src/main/assets/SBSDKLanguageData/eng.traineddata"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;resource-file</span> <span class="na">src=</span><span class="s">"SBSDKLanguageData/osd.traineddata"</span> <span class="na">target=</span><span class="s">"app/src/main/assets/SBSDKLanguageData/osd.traineddata"</span> <span class="nt">/&gt;</span>
+  ...
+<span class="nt">&lt;/platform&gt;</span>
+
+<span class="nt">&lt;platform</span> <span class="na">name=</span><span class="s">"ios"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;resource-file</span> <span class="na">src=</span><span class="s">"SBSDKLanguageData"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;resource-file</span> <span class="na">src=</span><span class="s">"SBSDKLanguageData/eng.traineddata"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;resource-file</span> <span class="na">src=</span><span class="s">"SBSDKLanguageData/osd.traineddata"</span> <span class="nt">/&gt;</span>
+  ...
+<span class="nt">&lt;/platform&gt;</span>
+</code></pre>
+</div>
+
+<p>See the <code class="highlighter-rouge">config.xml</code> of our <a href="https://github.com/doo/scanbot-sdk-example-ionic/blob/master/config.xml">example app</a></p>
+
+<p><strong>Option 2 - Provide the Language Files On-Demand:</strong></p>
+
+<p>Alternatively, to keep the app package small, you can download and provide the language files in your app <strong>on run-time</strong>.
+Implement a suitable download functionality of the desired language files + <code class="highlighter-rouge">osd.traineddata</code> file and place them 
+in the <code class="highlighter-rouge">languageDataPath</code> directory which can be determined by the <a href="#module_ScanbotSdk.getOcrConfigs"><code class="highlighter-rouge">getOcrConfigs</code></a> method on run-time.</p>
+
+<h4 id="language-codes">Language Codes</h4>
+<p>The Tesseract language data files are identified by a <strong>3-letter</strong> language code. For example:</p>
+<ul>
+  <li><code class="highlighter-rouge">eng</code> - English</li>
+  <li><code class="highlighter-rouge">deu</code> - German</li>
+  <li>etc.</li>
+</ul>
+
+<p>The Scanbot SDK API uses a <strong>2-letter</strong> ISO code:</p>
+<ul>
+  <li><code class="highlighter-rouge">en</code> - English</li>
+  <li><code class="highlighter-rouge">de</code> - German</li>
+  <li>etc.</li>
+</ul>
+
+<h5 id="example">Example:</h5>
+<p>If you want to perform OCR with languages English and German, you have to download and install the following data files:</p>
+<ul>
+  <li><code class="highlighter-rouge">eng.traineddata</code> - language file for English</li>
+  <li><code class="highlighter-rouge">deu.traineddata</code> - language file for German</li>
+  <li><code class="highlighter-rouge">osd.traineddata</code> - special data file for orientation and script detection</li>
+</ul>
+
+<p>In the Scanbot SDK plugin then use <code class="highlighter-rouge">languages: ["en", "de"]</code>.</p>
+
+<h3 id="ocr-api">OCR API</h3>
 <p><a name="module_ScanbotSdk.getOcrConfigs"></a></p>
 <h4 id="scanbotsdkgetocrconfigssuccesscallback-errorcallback-options">ScanbotSdk.getOcrConfigs(successCallback, errorCallback, options)</h4>
 
@@ -1611,11 +1769,9 @@ It is based on the Tesseract OCR Engine with some modifications and enhancements
 </div>
 
 <ul>
-  <li><code class="highlighter-rouge">result.languageDataPath</code> - Contains absolute file URI of the directory where to place the <a href="#ocrLanguages">OCR training data files</a>. 
-You have to copy the corresponding <code class="highlighter-rouge">*.traineddata</code> files into this directory. The directory is a part of your App. If you uninstall the app, 
-this directory will also be removed.</li>
+  <li><code class="highlighter-rouge">result.languageDataPath</code> - Contains the absolute file URI of the directory where to place the <a href="#ocrLanguages">OCR training data files</a> <strong>on run-time</strong>.</li>
   <li><code class="highlighter-rouge">result.installedLanguages</code> - Returns an array of current installed OCR languages (e.g. <code class="highlighter-rouge">["en", "fr"]</code>). 
-The Scanbot SDK uses the <code class="highlighter-rouge">languageDataPath</code> directory to determine installed OCR languages.</li>
+The Scanbot SDK uses the <code class="highlighter-rouge">languageDataPath</code> directory to determine current installed OCR languages.</li>
 </ul>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
@@ -1627,7 +1783,7 @@ The Scanbot SDK uses the <code class="highlighter-rouge">languageDataPath</code>
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-15">Options:</h5>
+<h5 id="options-16">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{};</span>
 </code></pre>
 </div>
@@ -1659,7 +1815,7 @@ As result the recognized text can be returned as plain text or a composed PDF fi
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-16">Options:</h5>
+<h5 id="options-17">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">],</span>
   <span class="na">languages</span><span class="p">:</span> <span class="p">[</span><span class="s1">'en'</span><span class="p">,</span> <span class="s1">'de'</span><span class="p">],</span>
@@ -1677,46 +1833,6 @@ Please use the <a href="#module_ScanbotSdk.getOcrConfigs">getOcrConfigs</a> func
   <li><code class="highlighter-rouge">options.outputFormat</code> - <a href="#ocrOutputFormat">OcrOutputFormat</a> enum value to specify the result.</li>
 </ul>
 
-<p><a name="ocrLanguages"></a></p>
-<h3 id="ocr-languages-and-data-files">OCR Languages and Data Files</h3>
-
-<p>For each desired OCR language a corresponding training data file (aka. tessdata) must be installed in the <code class="highlighter-rouge">languageDataPath</code> directory of the Scanbot SDK.</p>
-
-<p>Furthermore the special data file <code class="highlighter-rouge">osd.traineddata</code> is required and must be installed. It is used for orientation and script detection.</p>
-
-<p>The Scanbot SDK plugin ships with no training data files by default to keep the plugin package small in size.</p>
-
-<h4 id="download-ocr-files">Download OCR files</h4>
-
-<p>Please find a list of all supported languages in the <a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files#data-files-for-version-304305">Tesseract wiki</a>.</p>
-
-<p>Note: Scanbot SDK supports training data files of Tesseract <strong>version 3.0x</strong> only.</p>
-
-<h4 id="language-codes">Language Codes</h4>
-<p>The Tesseract language data files are identified by a <strong>3-letter</strong> language code. For example:</p>
-<ul>
-  <li><code class="highlighter-rouge">eng</code> - English</li>
-  <li><code class="highlighter-rouge">deu</code> - German</li>
-  <li>etc.</li>
-</ul>
-
-<p>The Scanbot SDK API uses a <strong>2-letter</strong> ISO code:</p>
-<ul>
-  <li><code class="highlighter-rouge">en</code> - English</li>
-  <li><code class="highlighter-rouge">de</code> - German</li>
-  <li>etc.</li>
-</ul>
-
-<h5 id="example">Example:</h5>
-<p>If you want to perform OCR with languages English and German, you have to download and install the following data files:</p>
-<ul>
-  <li><code class="highlighter-rouge">eng.traineddata</code> - language file for English</li>
-  <li><code class="highlighter-rouge">deu.traineddata</code> - language file for German</li>
-  <li><code class="highlighter-rouge">osd.traineddata</code> - special data file for orientation and script detection</li>
-</ul>
-
-<p>In the Scanbot SDK plugin then use <code class="highlighter-rouge">languages: ["en", "de"]</code>.</p>
-
 <p><a name="ocrOutputFormat"></a></p>
 <h3 id="ocr-output-format-values">OCR Output Format values</h3>
 <h4 id="scanbotsdkocroutputformat">ScanbotSdk.OcrOutputFormat</h4>
@@ -1732,7 +1848,8 @@ Please use the <a href="#module_ScanbotSdk.getOcrConfigs">getOcrConfigs</a> func
 <h3 id="cleanup">Cleanup</h3>
 <h4 id="scanbotsdkcleanupsuccesscallback-errorcallback">ScanbotSdk.cleanup(successCallback, errorCallback)</h4>
 
-<p>By calling ths function all temporary output files generated by the Scanbot SDK plugin will be deleted.</p>
+<p>By calling this function <strong>all</strong> output files generated by the native Scanbot SDKs or by this Plugin will be deleted, 
+including the image files of all scanned or imported <code class="highlighter-rouge">Page</code> objects, all produced PDF files, TIFF files, etc.</p>
 
 <h5 id="callbacks-20">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">()</span>
@@ -1752,29 +1869,21 @@ Please use the <a href="#module_ScanbotSdk.getOcrConfigs">getOcrConfigs</a> func
 </ul>
 
 <p><a name="fileHandling"></a></p>
-<h3 id="file-handling--storage-concept">File Handling &amp; Storage Concept</h3>
+<h3 id="file--directory-handles">File &amp; Directory Handles</h3>
 
-<p>The Scanbot SDK plugin works with file URIs. That means all input and output files (images, PDFs, etc) are identified by a file URI. 
+<p>The Scanbot SDK plugin works with file URIs. That means all input and output files (images, PDFs, etc) as well as directories are identified by <strong>file URIs</strong>. 
 Please note that a file <strong>URI</strong> is not just a file <strong>path</strong> : <code class="highlighter-rouge">"file:///some/file/path/.."</code> vs. <code class="highlighter-rouge">"/some/file/path/.."</code></p>
 
 <p>Examples of valid file URIs:</p>
 
 <ul>
   <li>
-    <p>On Android: <code class="highlighter-rouge">file:///storage/emulated/0/Android/data/my.awesome.app/cache/sbsdk-temp/ce8de3c4-3c96-4ce1-b285-483d01e1dc9a.jpg</code></p>
+    <p>On Android: <code class="highlighter-rouge">file:///storage/emulated/0/Android/data/my.awesome.app/some-sub-folder/ce8de3c4-3c96-4ce1-b285-483d01e1dc9a.jpg</code></p>
   </li>
   <li>
-    <p>On iOS: <code class="highlighter-rouge">file:///var/mobile/Containers/Data/Application/D2BF9FB2-1024-4418-99B2-3709AB2C171E/Documents/sbsdk-temp/05719BF8-63DB-4C8A-9A57-25B233AED33C.jpg</code></p>
+    <p>On iOS: <code class="highlighter-rouge">file:///var/mobile/Containers/Data/Application/D2BF9FB2-1024-4418-99B2-3709AB2C171E/Documents/some-sub-folder/05719BF8-63DB-4C8A-9A57-25B233AED33C.jpg</code></p>
   </li>
 </ul>
-
-<p>All output files generated by the Scanbot SDK plugin are a kind of temporary files.
-We recommend to copy, move or delete the files you get from callbacks to a appropriate storage place.</p>
-
-<p>There is <strong>no automatic</strong> file clean mechanism in the plugin, because only your App can decide when is the perfect time to remove a file.</p>
-
-<p>To avoid storage space issues caused by temporary files please implement a suitable hook for the 
-<a href="#module_ScanbotSdk.cleanup">cleanup</a> function in your App.</p>
 
 <p><a name="detectionResult"></a></p>
 <h3 id="detection-result-values">Detection Result values</h3>
@@ -1802,6 +1911,22 @@ We recommend to copy, move or delete the files you get from callbacks to a appro
   <li><code class="highlighter-rouge">PURE_BINARIZED</code> - A filter for binarizing an image. Creates an image with pixel values set to either pure black or pure white.</li>
   <li><code class="highlighter-rouge">BACKGROUND_CLEAN</code> - Cleans up the background and tries to preserve photos within the image.</li>
   <li><code class="highlighter-rouge">BLACK_AND_WHITE</code> - Black and white filter with background cleaning. Creates a grayscaled 8-bit image with mostly black or white pixels.</li>
+  <li><code class="highlighter-rouge">OTSU_BINARIZATION</code> - A filter for black and white conversion using OTSU binarization.</li>
+  <li><code class="highlighter-rouge">DEEP_BINARIZATION</code> - A filter for black and white conversion primary used for low-contrast documents.</li>
+  <li><code class="highlighter-rouge">EDGE_HIGHLIGHT</code> - A filter that enhances edges in low-contrast documents.</li>
+</ul>
+
+<p><a name="pdfPageSize"></a></p>
+<h3 id="page-size-values">Page Size values</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">PDFPageSize.A4</code>: The page has the aspect ratio of the image, but is fitted into A4 size. Whether portrait or landscape depends on the images aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.FIXED_A4</code>: The page has A4 size. The image is fitted and centered within the page. Whether portrait or landscape depends on the images aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.US_LETTER</code>: The page has the aspect ratio of the image, but is fitted into US letter size. Whether portrait or landscape depends on the images aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.FIXED_US_LETTER</code>: The page has US letter size. The image is fitted and centered within the page. Whether portrait or landscape depends on the images aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.AUTO</code>: For each page the best matching format (A4 or US letter) is used. Whether portrait or landscape depends on the images aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.AUTO_LOCALE</code>: Each page of the result PDF will be of US letter or A4 size depending on the current locale. Whether portrait or landscape depends on the images aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.FROM_IMAGE</code>: Each page is as large as its image at 72 dpi.</li>
 </ul>
 
 <p><a name="polygon"></a></p>
@@ -1868,9 +1993,50 @@ For instance, if a point has the coordinates (0.5, 0.5), it means that it is loc
 </ul>
 
 <p><a name="releaseHistory"></a></p>
-<h2 id="release-history">Release history</h2>
+<h2 id="release-history">Release History</h2>
 
-<h4 id="release-history-for-version-2x">Release history for version 2.x</h4>
+<h5 id="300">3.0.0</h5>
+<ul>
+  <li>🎉 NEW:
+    <ul>
+      <li>Android &amp; iOS: Support for <a href="#pdfPageSize">PDF page sizes</a> (see the <a href="#module_ScanbotSdk.createPdf">createPdf</a> method).</li>
+      <li>Android &amp; iOS: Added new <a href="#imageFilter">Images Filters</a> <code class="highlighter-rouge">OTSU_BINARIZATION</code>, <code class="highlighter-rouge">DEEP_BINARIZATION</code> and <code class="highlighter-rouge">EDGE_HIGHLIGHT</code>.</li>
+      <li>Android &amp; iOS: A new config option <code class="highlighter-rouge">storageBaseDirectory</code> allows to overwrite the storage location of the native Scanbot SDKs 
+as well as of this Plugin on <a href="#module_ScanbotSdk.initializeSdk">initialization</a>.</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Android: <strong>Internal Storage</strong> - All components of this Plugin now use the internal storage by default, which is more secure and do not require storage permission prompts.
+See the <a href="#storage">Storage</a> section of this documentation for more details.</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li>Android: <strong>Internal Storage</strong> - In case your app is using the storage for scanned <code class="highlighter-rouge">Page</code>s as permanent storage, please make sure to implement a suitable migration.
+E.g. move the previous archived <code class="highlighter-rouge">Page</code> images from the old external storage folder to the new internal storage. 
+Or alternatively overwrite the storage directory to the external folder again by using the new <code class="highlighter-rouge">storageBaseDirectory</code> config option.</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>iOS: Fixed a bug with missing <code class="highlighter-rouge">Page</code> meta data as result of the <code class="highlighter-rouge">detectDocumentOnPage</code> method.</li>
+      <li>Android &amp; iOS: Various minor fixes and improvements.</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded the native Scanbot Android SDK to v1.39.1 (see the <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">changelog</a>)</li>
+      <li>Upgraded the native Scanbot iOS SDK to v1.8.6 (see the <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">changelog</a>)</li>
+    </ul>
+  </li>
+  <li>🛠 Dependencies:
+    <ul>
+      <li>Android: Requires Android SDK 28, Android Support Libs 28+ (<code class="highlighter-rouge">com.android.support:*</code>). 
+Upgrade to <code class="highlighter-rouge">cordova-android@8.x</code> is recommended or alternatively apply <a href="https://gist.github.com/eddyfrank/db8d3671906dae178733478a3c0cc444">these gradle settings</a>.</li>
+    </ul>
+  </li>
+</ul>
 
 <h5 id="212">2.1.2</h5>
 <ul>
@@ -2017,14 +2183,14 @@ Please note that only the <strong>new created</strong> image files will contain 
   <li>Minor bug fixes and improvements</li>
 </ul>
 
-<h4 id="release-history-for-version-1x">Release history for version 1.x</h4>
+<h4 id="release-history-for-the-deprecated-version-1x">Release History for the Deprecated Version 1.x</h4>
 <p>See the <a href="https://scanbotsdk.github.io/documentation/cordova/v1.x/#releaseHistory">v1.x documentation</a></p>
 
 <p><a name="librariesLicenses"></a></p>
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
 
 <div class="language-text highlighter-rouge"><pre class="highlight"><code>
-Open Source libraries used in the Scanbot SDK for Android version 1.38.2:
+Open Source libraries used in the Scanbot SDK for Android version 1.39.1:
 
 Android PDF Writer version 1.0.8
 Copyright (c) 2010 - 2013, Javier Santo Domingo (j-a-s-d@coderesearchlabs.com).
@@ -2045,7 +2211,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 Animal Sniffer Annotations version 1.14
 This library is distributed under the terms of a MIT License
-(https://mvnrepository.com/artifact/org.codehaus.mojo/animal-sniffer-annotations/1.14) 
+(https://mvnrepository.com/artifact/org.codehaus.mojo/animal-sniffer-annotations/1.14)
 
 Permission is hereby  granted, free of charge, to any  person obtaining a copy of this software and associated  documentation files (the "Software"), to deal in the Software  without restriction, including without  limitation the rights to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell copies  of  the Software,  and  to  permit persons  to  whom  the Software  is furnished to do so, subject to the following conditions:
 
@@ -2055,7 +2221,7 @@ copies or substantial portions of the Software.
 THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF MERCHANTABILITY, FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 BOOST C++ Libraries version 1.68
-This library is distributed under the terms of the following license: https://www.boost.org/LICENSE_1_0.txt 
+This library is distributed under the terms of the following license: https://www.boost.org/LICENSE_1_0.txt
 
 Boost Software License - Version 1.0 - August 17th, 2003
 
@@ -2120,8 +2286,8 @@ Redistribution and use in source and binary forms, with or without modification,
 
 1. Redistributions of source code must retain the copyright notice, this list of conditions and the following disclaimer.
 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3. All advertising materials mentioning features or use of this software must display the following acknowledgement: 
-"This product includes cryptographic software written by Eric Young (eay@cryptsoft.com)"   
+3. All advertising materials mentioning features or use of this software must display the following acknowledgement:
+"This product includes cryptographic software written by Eric Young (eay@cryptsoft.com)"
 The word 'cryptographic' can be left out if the rouines from the library being used are not cryptographic related :-).
 4. If you include any Windows specific code (or a derivative thereof) from the apps directory (application code) you must include an acknowledgement:
 "This product includes software written by Tim Hudson (tjh@cryptsoft.com)"
@@ -2220,18 +2386,18 @@ is distributed under a Creative Commons Attribution 3.0 United States License ( 
 LibTIFF - TIFF Library and Utilities v4.0.9
 Copyright (c) 1988-1997 Sam Leffler
 Copyright (c) 1991-1997 Silicon Graphics, Inc.
-This license is distributed under the terms of the following license: http://libtiff.maptools.org/misc.html. 
+This license is distributed under the terms of the following license: http://libtiff.maptools.org/misc.html.
 
 Permission to use, copy, modify, distribute, and sell this software and its documentation for any purpose is hereby granted without fee, provided that (i) the above copyright notices and this permission notice appear in all copies of the software and related documentation, and (ii) the names of Sam Leffler and Silicon Graphics may not be used in any advertising or publicity relating to the software without the specific, prior written permission of Sam Leffler and Silicon Graphics.
 
-THE SOFTWARE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND, 
-EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY 
-WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.  
+THE SOFTWARE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND,
+EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY
+WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
 
 IN NO EVENT SHALL SAM LEFFLER OR SILICON GRAPHICS BE LIABLE FOR
 ANY SPECIAL, INCIDENTAL, INDIRECT OR CONSEQUENTIAL DAMAGES OF ANY KIND,
 OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
-WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE 
+WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
 OF THIS SOFTWARE.
 
 OpenCV 3.4.2
@@ -2295,7 +2461,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
-This software includes several classes from the Android Open Source Project distributed under the Apache License Version 2.0. 
+This software includes several classes from the Android Open Source Project distributed under the Apache License Version 2.0.
 Copyright (c) 2010 - present The Android Open Source Project.
 
 CWAC-Camera version 0.6.30
@@ -2356,8 +2522,10 @@ Tesseract 3.05.02
 Tesseract, maintained by Google (http://code.google.com/p/tesseract-ocr/),
 
 
+------------------------------------------------------------------------------------------------------------------------
 
-Open Source libraries used in the Scanbot SDK for iOS version 1.8.0:
+
+Open Source libraries used in the Scanbot SDK for iOS version 1.8.6:
 
 BOOST C++ Libraries version 1.68
 This library is distributed under the terms of the following license: https://www.boost.org/LICENSE_1_0.txt
@@ -2398,21 +2566,21 @@ Leptonica 1.71
 Copyright @ 2001-2015, Leptonica, (http://leptonica.org),
 is distributed under a Creative Commons Attribution 3.0 United States License ( http://creativecommons.org/licenses/by/3.0/us/).
 
-LibTIFF - TIFF Library and Utilities v4.0.9
+LibTIFF - TIFF Library and Utilities v4.0.10
 Copyright (c) 1988-1997 Sam Leffler
 Copyright (c) 1991-1997 Silicon Graphics, Inc.
-This license is distributed under the terms of the following license: http://libtiff.maptools.org/misc.html. 
+This license is distributed under the terms of the following license: http://libtiff.maptools.org/misc.html.
 
 Permission to use, copy, modify, distribute, and sell this software and its documentation for any purpose is hereby granted without fee, provided that (i) the above copyright notices and this permission notice appear in all copies of the software and related documentation, and (ii) the names of Sam Leffler and Silicon Graphics may not be used in any advertising or publicity relating to the software without the specific, prior written permission of Sam Leffler and Silicon Graphics.
 
-THE SOFTWARE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND, 
-EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY 
-WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.  
+THE SOFTWARE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND,
+EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY
+WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
 
 IN NO EVENT SHALL SAM LEFFLER OR SILICON GRAPHICS BE LIABLE FOR
 ANY SPECIAL, INCIDENTAL, INDIRECT OR CONSEQUENTIAL DAMAGES OF ANY KIND,
 OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
-WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE 
+WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
 OF THIS SOFTWARE.
 
 G8Tesseract
@@ -2442,10 +2610,10 @@ Neither the names of the copyright holders nor the names of the contributors may
 
 This software is provided by the copyright holders and contributors “as is” and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall copyright holders or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.
 
- 
-OpenSSL 1.0.2d
+
+OpenSSL 1.0.2q
 Copyright @ 1998-2011 The OpenSSL Project. All rights reserved. (https://www.openssl.org)
-This library is distributed under the terms of the following license: https://github.com/openssl/openssl/blob/master/LICENSE 
+This library is distributed under the terms of the following license: https://github.com/openssl/openssl/blob/master/LICENSE
 
 The OpenSSL toolkit stays under a double license, i.e. both the conditions of the OpenSSL License and the original SSLeay license apply to the toolkit. See below for the actual license texts.
 
@@ -2459,23 +2627,20 @@ PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE OpenSSL PROJECT OR ITS CONTRIBUTO
 This product includes cryptographic software written by Eric Young (eay@cryptsoft.com).  This product includes software written by Tim Hudson (tjh@cryptsoft.com).
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-Redistributions of source code must retain the copyright notice, this list of conditions and the following disclaimer. 
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. 
-All advertising materials mentioning features or use of this software must display the following acknowledgement: "This product includes cryptographic software written by Eric Young (eay@cryptsoft.com)". The word 'cryptographic' can be left out if the rouines from the library being used are not cryptographic related :-). 
+Redistributions of source code must retain the copyright notice, this list of conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+All advertising materials mentioning features or use of this software must display the following acknowledgement: "This product includes cryptographic software written by Eric Young (eay@cryptsoft.com)". The word 'cryptographic' can be left out if the rouines from the library being used are not cryptographic related :-).
 If you include any Windows specific code (or a derivative thereof) from the apps directory (application code) you must include an acknowledgement:  "This product includes software written by Tim Hudson (tjh@cryptsoft.com)"
 
 THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 The licence and distribution terms for any publically available version or derivative of this code cannot be changed. i.e. this code cannot simply be copied and put under another distribution licence [including the GNU Public Licence.]
- 
+
 Tesseract 3.05.02
 Tesseract, maintained by Google (http://code.google.com/p/tesseract-ocr/),
 is distributed under the Apache 2.0 license (http://www.apache.org/licenses/LICENSE-2.0).
- 
+
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
-
-
 
 
 </code></pre>
