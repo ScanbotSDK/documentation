@@ -161,8 +161,96 @@ to the <code class="highlighter-rouge">Application</code> attribute on the <code
 </code></pre>
 </div>
 
-<h4 id="scanbot-sdk-modules-functions">Scanbot SDK modules functions</h4>
-<p>All methods in the Scanbot SDK are synchronous, they perform on the current thread. Please handle the SDK calls according to the requirements of your app to avoid blocking the main UI thread (e.g. see <em>Task Parallel Library (TPL)</em>).</p>
+<h3 id="scanbot-sdk-ui-components">Scanbot SDK UI Components</h3>
+
+<p><a name="RTUUIComponents"></a></p>
+<h4 id="rtu-ui-components">RTU UI Components</h4>
+<p>The Ready-To-Use UI (RTU UI) is a set of easy to integrate and customize high-level UI components 
+(View Controllers for iOS and Activities for Android) for the most common tasks in Scanbot SDK.
+The design and behavior of these RTU UI Components are based on our long years of experience as well as the feedback from our SDK customers.</p>
+
+<p>Following RTU UI Components and classes are currently provided:</p>
+
+<p>Android:</p>
+<ul>
+  <li>Document Scanner - <code class="highlighter-rouge">DocumentScannerActivity</code></li>
+  <li>Cropping - <code class="highlighter-rouge">CroppingActivity</code></li>
+  <li>MRZ Scanner - <code class="highlighter-rouge">MRZScannerActivity</code></li>
+  <li>Barcode and QR-Code Scanner - <code class="highlighter-rouge">BarcodeScannerActivity</code></li>
+</ul>
+
+<p>iOS:</p>
+<ul>
+  <li>Document Scanner - <code class="highlighter-rouge">SBSDKUIDocumentScannerViewController</code></li>
+  <li>Cropping - <code class="highlighter-rouge">SBSDKUICroppingViewController</code></li>
+  <li>MRZ Scanner - <code class="highlighter-rouge">SBSDKUIMRZScannerViewController</code></li>
+  <li>Barcode and QR-Code Scanner - <code class="highlighter-rouge">SBSDKUIBarcodeScannerViewController</code></li>
+</ul>
+
+<p>For more details please see the corresponding API docs of the classes as well as our example app.</p>
+
+<p><strong>Customization of RTU UI:</strong></p>
+
+<p>The main idea of the RTU UI is to provide a simple-to-integrate and simple-to-customize screen components. 
+Due to this idea there are some limitations with the possibilities of customization:</p>
+
+<ul>
+  <li>UI: All colors and text resources (localization)</li>
+  <li>Behavior: Enable or disable features like Multi-Page Scanning, Auto Snapping, Torch Light</li>
+</ul>
+
+<p>If you need more customization options you have to implement custom screens (View Controllers for iOS and Activities for Android) 
+using our <a href="#ClassicalUIComponents">Classical UI Components</a>.</p>
+
+<p><strong>RTU UI Examples:</strong></p>
+
+<p>Please see our example app <a href="https://github.com/doo/scanbot-sdk-example-xamarin">scanbot-sdk-example-xamarin</a> on GitHub.</p>
+
+<p><a name="Workflows"></a></p>
+<h4 id="workflows">Workflows</h4>
+<p>The Workflow Components are also part of the RTU UI Components. A Workflow represents a set of multiple scanning steps. 
+You can combine Document Scanning with QR code detection or MRZ recognition on an ID card image, for example. 
+Workflow Steps can be run on a captured still image or a video frame, so a step can either be a live-detection or 
+a still-image capturing step. You can validate each step result, present an error message to the user if the validation fails and restart a step.</p>
+
+<p>Following predefined Workflow Step classes are provided:</p>
+
+<p>Android:</p>
+<ul>
+  <li><code class="highlighter-rouge">ScanDocumentPageWorkflowStep</code> - Specialized for capturing documents from high-res still images.</li>
+  <li><code class="highlighter-rouge">ScanBarCodeWorkflowStep</code> - Recognition of Barcodes/QR codes on low-res video frames (live detection).</li>
+  <li><code class="highlighter-rouge">ScanMachineReadableZoneWorkflowStep</code> - For scanning of ID cards or passports with MRZ recognition.</li>
+  <li><code class="highlighter-rouge">ScanDisabilityCertificateWorkflowStep</code> - For recognition and data extraction from Disability Certificates (DC) forms.</li>
+  <li><code class="highlighter-rouge">ScanPayFormWorkflowStep</code> - For recognition and data extraction from SEPA Payforms.</li>
+</ul>
+
+<p>iOS:</p>
+<ul>
+  <li><code class="highlighter-rouge">SBSDKUIScanDocumentPageWorkflowStep</code> - Specialized for capturing documents from high-res still images.</li>
+  <li><code class="highlighter-rouge">SBSDKUIScanBarCodeWorkflowStep</code> - Recognition of Barcodes/QR codes on low-res video frames (live detection).</li>
+  <li><code class="highlighter-rouge">SBSDKUIScanMachineReadableZoneWorkflowStep</code> - For scanning of ID cards or passports with MRZ recognition.</li>
+  <li><code class="highlighter-rouge">SBSDKUIScanDisabilityCertificateWorkflowStep</code> - For recognition and data extraction from Disability Certificates (DC) forms.</li>
+  <li><code class="highlighter-rouge">SBSDKUIScanPayFormWorkflowStep</code> - For recognition and data extraction from SEPA Payforms.</li>
+</ul>
+
+<p>For more details please see the corresponding API docs of the classes as well as our example app.</p>
+
+<p><strong>Workflows Examples:</strong></p>
+
+<p>Please see our example app <a href="https://github.com/doo/scanbot-sdk-example-xamarin">scanbot-sdk-example-xamarin</a> on GitHub.</p>
+
+<p><a name="ClassicalUIComponents"></a></p>
+<h4 id="classical-ui-components">Classical UI Components</h4>
+<p>Our Classical UI Components allows you to build your custom screens which are very flexible and fully customizable. 
+It is a set of easy to integrate and customize components (Views, Buttons, Handlers, Controllers, etc.) which can be embedded 
+and extended in your custom screens.</p>
+
+<p>For more details please see the docs of the native SDKs for <a href="https://scanbotsdk.github.io/documentation/ios/">iOS</a> and 
+<a href="https://scanbotsdk.github.io/documentation/android/">Android</a> as well as our example app.</p>
+
+<p><strong>Classical UI Examples:</strong></p>
+
+<p>Please see our example app <a href="https://github.com/doo/scanbot-sdk-example-xamarin">scanbot-sdk-example-xamarin</a> on GitHub.</p>
 
 <p><a name="DetectDocument"></a></p>
 <h4 id="document-detection">Document Detection</h4>
@@ -225,6 +313,7 @@ Supported image filters:</p>
   <li><code class="highlighter-rouge">ImageFilter.OtsuBinarization</code> - A filter for black and white conversion using OTSU binarization.</li>
   <li><code class="highlighter-rouge">ImageFilter.DeepBinarization</code> - A filter for black and white conversion primary used for low-contrast documents.</li>
   <li><code class="highlighter-rouge">ImageFilter.EdgeHighlight</code> - A filter that enhances edges in low-contrast documents.</li>
+  <li><code class="highlighter-rouge">ImageFilter.LowLightBinarization</code> - A binarization filter primarily intended for use on low-contrast documents with hard shadows.</li>
 </ul>
 
 <p><a name="CreatePDF"></a></p>
@@ -274,11 +363,16 @@ Following PDF page sizes are supported:</p>
 <p>The Scanbot OCR feature is based on the Tesseract OCR engine with some modifications and enhancements. The OCR engine supports a wide variety of languages. For each desired language a corresponding OCR training data file (<code class="highlighter-rouge">.traineddata</code>) must be provided. Furthermore the special data file <code class="highlighter-rouge">osd.traineddata</code> is required (used for orientation and script detection). The Scanbot SDK package contains no language data files to keep the SDK small in size. You have to download and include the desired language files in your app.</p>
 
 <h4 id="download-and-provide-ocr-language-files">Download and Provide OCR Language Files</h4>
-<p>Please find a list of all supported OCR languages and download links on this <a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files#data-files-for-version-304305">Tesseract wiki page</a>.
-The current Scanbot SDK supports <code class="highlighter-rouge">.traineddata</code> files of Tesseract version <strong>3.04/3.05</strong> only!</p>
+<p>You can find a list of all supported OCR languages and download links on this <a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files">Tesseract wiki page</a>.</p>
+
+<p>⚠️️️ Please choose and download the proper version of the language data files:</p>
+<ul>
+  <li>For the latest version of Scanbot Xamarin SDK <strong>1.4.0 or newer</strong> - <a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files#updated-data-files-for-version-400-september-15-2017">LSTM Data Files for Version <strong>4.00</strong></a>.</li>
+  <li>For the older versions of Scanbot Xamarin SDK <strong>&lt;= 1.3.0</strong> - <a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files#data-files-for-version-304305">Data Files for Version <strong>3.04/3.05</strong></a>.</li>
+</ul>
 
 <p>Download the desired language files as well as the <code class="highlighter-rouge">osd.traineddata</code> file and place them in the <strong>Assets</strong> sub-folder <code class="highlighter-rouge">SBSDKLanguageData/</code> of your Android app or
-in the <strong>Resources</strong> sub-folder <code class="highlighter-rouge">SBSDKLanguageData/</code> of your iOS app.</p>
+in the <strong>Resources</strong> sub-folder <code class="highlighter-rouge">ScanbotSDKOCRData.bundle/</code> of your iOS app.</p>
 
 <p>Example for Android:</p>
 <div class="highlighter-rouge"><pre class="highlight"><code>Droid/Assets/SBSDKLanguageData/eng.traineddata  // english language file
@@ -288,9 +382,9 @@ Droid/Assets/SBSDKLanguageData/osd.traineddata  // required special data file
 </div>
 
 <p>Example for iOS:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>iOS/Resources/SBSDKLanguageData/eng.traineddata  // english language file
-iOS/Resources/SBSDKLanguageData/deu.traineddata  // german language file
-iOS/Resources/SBSDKLanguageData/osd.traineddata  // required special data file
+<div class="highlighter-rouge"><pre class="highlight"><code>iOS/Resources/ScanbotSDKOCRData.bundle/eng.traineddata  // english language file
+iOS/Resources/ScanbotSDKOCRData.bundle/deu.traineddata  // german language file
+iOS/Resources/ScanbotSDKOCRData.bundle/osd.traineddata  // required special data file
 </code></pre>
 </div>
 
@@ -907,9 +1001,67 @@ To further improve the user experience you might want to automatically take a ph
 </ul>
 
 <p><a name="releaseHistory"></a></p>
-<h3 id="release-history">Release History</h3>
+<h3 id="release-history-and-changelog">Release History and Changelog</h3>
 
-<h4 id="scanbotsdkxamarin-130">ScanbotSDK.Xamarin 1.3.0</h4>
+<h4 id="scanbotsdkxamarin---version-140-16-may-2019">ScanbotSDK.Xamarin - Version 1.4.0 (16 May 2019)</h4>
+<ul>
+  <li>🎉 NEW:
+    <ul>
+      <li>Android &amp; iOS: OCR - Upgraded the OCR engine to Tesseract v4.00. Improved recognition speed and quality. Please also note the Breaking Changes below.</li>
+      <li>Android &amp; iOS: Workflows - New RTU UI Scanning Components. See the <a href="#Workflows">Workflows</a> section for more details.</li>
+      <li>Android &amp; iOS: Added new config properties for the RTU UI Document Scanner Component:
+        <ul>
+          <li>limit the size of the document image:
+            <ul>
+              <li>iOS: <code class="highlighter-rouge">SBSDKUIDocumentScannerBehaviorConfiguration.DocumentImageSizeLimit</code></li>
+              <li>Android: <code class="highlighter-rouge">DocumentScannerConfiguration.setDocumentImageSizeLimit</code></li>
+            </ul>
+          </li>
+          <li>hide the shutter button:
+            <ul>
+              <li>iOS: <code class="highlighter-rouge">SBSDKUIDocumentScannerUIConfiguration.ShutterButtonHidden</code></li>
+              <li>Android: <code class="highlighter-rouge">DocumentScannerConfiguration.setShutterButtonHidden</code></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Android &amp; iOS: Added new <a href="#ImageFilter">Images Filter</a> <code class="highlighter-rouge">LowLightBinarization</code> - a binarization filter primarily intended for use on low-contrast documents with hard shadows.</li>
+      <li>Android: <code class="highlighter-rouge">x86_64</code> architecture is now fully supported. Added native libs (.so) for the <code class="highlighter-rouge">x86_64</code> architecture.</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Android &amp; iOS: OCR - Upgraded the OCR engine to Tesseract v4.00. Improved recognition speed and quality. Please also note the Breaking Changes below.</li>
+      <li>Android &amp; iOS: Improved performance of the images filter <code class="highlighter-rouge">DeepBinarization</code>.</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li>Android &amp; iOS: OCR Language Files - If you use the OCR feature of the Scanbot SDK or some recognizer components which are based on OCR, 
+please upgrade the OCR language files to Tesseract 4.00. See the <a href="#OCR">OCR section</a> for more details.</li>
+      <li>iOS: The <code class="highlighter-rouge">SBSDKLanguageData</code> resource folder for OCR files no longer works. Add the <code class="highlighter-rouge">ScanbotSDKOCRData.bundle</code> to the project’s resources instead.</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Android &amp; iOS: Various bug fixes and improvements in native SDKs. Please refer to the release notes of the native SDKs.</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Android: Upgraded the native Scanbot Android SDK to 1.39.50</li>
+      <li>iOS: Upgraded the native Scanbot iOS SDK to v1.9.0</li>
+    </ul>
+  </li>
+  <li>👉 Please also see:
+    <ul>
+      <li>The <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">Changelog</a> of the native Scanbot Android SDK</li>
+      <li>The <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">Changelog</a> of the native Scanbot iOS SDK</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="scanbotsdkxamarin---version-130-5-mar-2019">ScanbotSDK.Xamarin - Version 1.3.0 (5 Mar 2019)</h4>
 <ul>
   <li>🎉 NEW:
     <ul>
@@ -953,7 +1105,7 @@ To further improve the user experience you might want to automatically take a ph
   </li>
 </ul>
 
-<h4 id="scanbotsdkxamarin-120">ScanbotSDK.Xamarin 1.2.0</h4>
+<h4 id="scanbotsdkxamarin---version-120-20-feb-2019">ScanbotSDK.Xamarin - Version 1.2.0 (20 Feb 2019)</h4>
 <ul>
   <li>🎉 NEW:
     <ul>
@@ -980,7 +1132,7 @@ Check out the iOS example app <a href="https://github.com/doo/scanbot-sdk-exampl
   </li>
 </ul>
 
-<h4 id="scanbotsdkxamarin-111">ScanbotSDK.Xamarin 1.1.1</h4>
+<h4 id="scanbotsdkxamarin---version-111-5-feb-2019">ScanbotSDK.Xamarin - Version 1.1.1 (5 Feb 2019)</h4>
 <ul>
   <li>🐞 Bug fixes:
     <ul>
@@ -989,7 +1141,7 @@ Check out the iOS example app <a href="https://github.com/doo/scanbot-sdk-exampl
   </li>
 </ul>
 
-<h4 id="scanbotsdkxamarin-110">ScanbotSDK.Xamarin 1.1.0</h4>
+<h4 id="scanbotsdkxamarin---version-110-21-nov-2018">ScanbotSDK.Xamarin - Version 1.1.0 (21 Nov 2018)</h4>
 <ul>
   <li>🎉 NEW:
     <ul>
@@ -1043,7 +1195,7 @@ Please remove <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <
   </li>
 </ul>
 
-<h4 id="scanbotsdkxamarin-107">ScanbotSDK.Xamarin 1.0.7</h4>
+<h4 id="scanbotsdkxamarin---version-107-7-sep-2018">ScanbotSDK.Xamarin - Version 1.0.7 (7 Sep 2018)</h4>
 <ul>
   <li>Upgraded the native Scanbot iOS SDK to v1.7.8:
     <ul>
@@ -1052,12 +1204,12 @@ Please remove <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <
   </li>
 </ul>
 
-<h4 id="scanbotsdkxamarin-106">ScanbotSDK.Xamarin 1.0.6</h4>
+<h4 id="scanbotsdkxamarin---version-106-28-aug-2018">ScanbotSDK.Xamarin - Version 1.0.6 (28 Aug 2018)</h4>
 <ul>
   <li>Upgraded the native Scanbot iOS SDK to v1.7.7</li>
 </ul>
 
-<h4 id="scanbotsdkxamarin-105">ScanbotSDK.Xamarin 1.0.5</h4>
+<h4 id="scanbotsdkxamarin---version-105-28-aug-2018">ScanbotSDK.Xamarin - Version 1.0.5 (28 Aug 2018)</h4>
 <ul>
   <li>Upgraded the native Scanbot Android SDK to v1.34.0:
     <ul>
@@ -1067,7 +1219,7 @@ Please remove <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <
   <li>Upgraded the native Scanbot iOS SDK to v1.7.6</li>
 </ul>
 
-<h4 id="scanbotsdkxamarin-103">ScanbotSDK.Xamarin 1.0.3</h4>
+<h4 id="scanbotsdkxamarin---version-103-27-jul-2018">ScanbotSDK.Xamarin - Version 1.0.3 (27 Jul 2018)</h4>
 <ul>
   <li>Android:
     <ul>
@@ -1082,7 +1234,7 @@ Please remove <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <
   </li>
 </ul>
 
-<h4 id="scanbotsdkxamarin-102">ScanbotSDK.Xamarin 1.0.2</h4>
+<h4 id="scanbotsdkxamarin---version-102-25-jul-2018">ScanbotSDK.Xamarin - Version 1.0.2 (25 Jul 2018)</h4>
 <ul>
   <li>Upgraded the native Scanbot Android SDK to v1.33.3:
     <ul>
@@ -1098,7 +1250,7 @@ Please remove <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <
   </li>
 </ul>
 
-<h4 id="scanbotsdkxamarin-101">ScanbotSDK.Xamarin 1.0.1</h4>
+<h4 id="scanbotsdkxamarin---version-101-12-jul-2018">ScanbotSDK.Xamarin - Version 1.0.1 (12 Jul 2018)</h4>
 <ul>
   <li>Upgraded the native Scanbot Android SDK to v1.33.1:
     <ul>
@@ -1107,7 +1259,7 @@ Please remove <code class="highlighter-rouge">Xamarin.Kotlin.StdLib</code> and <
   </li>
 </ul>
 
-<h4 id="scanbotsdkxamarin-100">ScanbotSDK.Xamarin 1.0.0</h4>
+<h4 id="scanbotsdkxamarin---version-100-3-jul-2018">ScanbotSDK.Xamarin - Version 1.0.0 (3 Jul 2018)</h4>
 <p>🎉 First release of the new universal <code class="highlighter-rouge">ScanbotSDK.Xamarin</code> Nuget package for Xamarin.Android and Xamarin.iOS.</p>
 
 <ul>

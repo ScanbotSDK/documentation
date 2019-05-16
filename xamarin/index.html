@@ -88,7 +88,7 @@ For more details visit our website <a href="https://scanbot.io/sdk">https://scan
 <p>Check out our example apps for Android and iOS on GitHub:</p>
 
 <ul>
-  <li><a href="https://github.com/doo/scanbot-sdk-example-xamarin">Example App for Xamarin.iOS &amp; Xamarin.Android</a></li>
+  <li><a href="https://github.com/doo/scanbot-sdk-example-xamarin">Example App for Xamarin Native (iOS &amp; Android)</a></li>
   <li><a href="https://github.com/doo/scanbot-sdk-example-xamarin-forms">Example App for Xamarin.Forms (iOS &amp; Android)</a></li>
 </ul>
 
@@ -121,7 +121,8 @@ Also, ScanbotSDK.Xamarin.Forms must be installed in the portable app project (if
 
 <p><strong>ABI Settings</strong></p>
 
-<p>The Scanbot SDK uses native libraries under the hood and supports following <a href="https://developer.android.com/ndk/guides/arch.html">ABIs</a>: <code class="highlighter-rouge">armeabi-v7a</code>, <code class="highlighter-rouge">arm64-v8a</code> and <code class="highlighter-rouge">x86</code>.</p>
+<p>The Scanbot SDK uses native libraries under the hood and supports following <a href="https://developer.android.com/ndk/guides/arch.html">ABIs</a>: 
+<code class="highlighter-rouge">armeabi-v7a</code>, <code class="highlighter-rouge">arm64-v8a</code>, <code class="highlighter-rouge">x86</code> and <code class="highlighter-rouge">x86_64</code>.</p>
 
 <p>Please adjust the <strong>Supported ABIs</strong> configuration in your Android project settings accordingly:</p>
 
@@ -129,10 +130,13 @@ Also, ScanbotSDK.Xamarin.Forms must be installed in the portable app project (if
 
 <p><img src="./assets/images/xamarin_android_abi_settings.png" alt="alt" title="Xamarin Android ABI Settings" /></p>
 
-<p><strong>Please note:</strong> Typically the <code class="highlighter-rouge">x86</code> architecture can be removed for the release (production) build, since it’s used on emulators and on some rare devices with the Intel Atom architecture.
-Also, by removing the <code class="highlighter-rouge">x86</code> architecture the size of the app package (APK) will be reduced.</p>
+<p><strong>Please note:</strong>
+In most cases the architectures <code class="highlighter-rouge">x86</code> and <code class="highlighter-rouge">x86_64</code> can be removed for the release (production) build, 
+since they are only used on emulators and on some rare devices with the Intel Atom architecture. 
+The support for the <code class="highlighter-rouge">x86_64</code> architecture was added in version <strong>1.4.0</strong> of ScanbotSDK.Xamarin.
+Also, by removing the “x86” architectures the size of the app package (APK) will be reduced.</p>
 
-<p>Furthermore please increase the <strong>Java Heap Size</strong> value to <strong>4G</strong>.</p>
+<p>Furthermore please increase the <strong>Java Heap Size</strong> value to <strong>4G</strong>. This is required for the build process.</p>
 
 <p><strong>ProGuard</strong></p>
 
@@ -142,19 +146,10 @@ please check <a href="https://github.com/doo/Scanbot-SDK-Examples/wiki/ProGuard"
 <h4 id="permissions">Permissions</h4>
 <p><strong>Required permissions for Android</strong></p>
 
-<p>Make sure to add these permissions in your <code class="highlighter-rouge">AndroidManifest.xml</code> file:</p>
-
-<p>This permission is used for the camera views:</p>
+<p>Make sure to add the Camera permission in your <code class="highlighter-rouge">AndroidManifest.xml</code> file:</p>
 
 <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.CAMERA"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;uses-feature</span> <span class="na">android:name=</span><span class="s">"android.hardware.camera"</span> <span class="nt">/&gt;</span>
-</code></pre>
-</div>
-
-<p>The following permissions are required for PDF creation (to handle temporary files):</p>
-
-<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.WRITE_EXTERNAL_STORAGE"</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.READ_EXTERNAL_STORAGE"</span> <span class="nt">/&gt;</span>
 </code></pre>
 </div>
 
@@ -163,8 +158,7 @@ please check <a href="https://github.com/doo/Scanbot-SDK-Examples/wiki/ProGuard"
 <p>Add the following properties to your <code class="highlighter-rouge">Info.plist</code> file:</p>
 
 <ul>
-  <li>“Privacy - Camera Usage Description” (NSCameraUsageDescription).
-As value describe why your app wants to access the device’s camera.</li>
+  <li><strong>“Privacy - Camera Usage Description”</strong> (<code class="highlighter-rouge">NSCameraUsageDescription</code>). As value describe why your app wants to access the device’s camera.</li>
 </ul>
 
 <h4 id="license-key">License Key</h4>
@@ -266,7 +260,7 @@ where 100 means maximum quality and largest file size. The default value is 80 w
 <h4 id="integration-with-xamarin">Integration with Xamarin</h4>
 <p>For native integration with <strong>Xamarin.Android</strong> and <strong>Xamarin.iOS</strong> please follow this documentation:</p>
 
-<p>👉 <a href="./xamarin.html">Integration with Xamarin.Android and Xamarin.iOS</a></p>
+<p>👉 <a href="./xamarin.html">Integration with Xamarin Native</a></p>
 
 <h3 id="pitfalls-and-issues">Pitfalls and issues</h3>
 
