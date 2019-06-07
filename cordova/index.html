@@ -635,6 +635,7 @@ This Plugin provides the following helper methods to keep the storage clean:</p>
     <span class="na">polygon</span><span class="p">:</span> <span class="p">[</span><span class="cm">/*points*/</span><span class="p">],</span>
     <span class="na">detectionResult</span><span class="p">:</span> <span class="s1">'OK'</span><span class="p">,</span>
     <span class="na">filter</span><span class="p">:</span> <span class="s1">'NONE'</span><span class="p">,</span>
+    <span class="na">documentImageSizeLimit</span><span class="p">:</span> <span class="cm">/* { width: number, height: number } */</span><span class="p">,</span>
     <span class="na">originalImageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
     <span class="na">documentImageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
     <span class="na">originalPreviewImageFileUri</span><span class="p">:</span> <span class="s1">'file:///...'</span><span class="p">,</span>
@@ -649,6 +650,7 @@ This Plugin provides the following helper methods to keep the storage clean:</p>
   <li><code class="highlighter-rouge">polygon</code> - the page’s cropping <a href="#polygon">polygon</a> as calculated by a document detection operation or as set by the cropping UI. Modifying the polygon will change the polygon as shown in the cropping UI but will not automatically re-crop the original image.</li>
   <li><code class="highlighter-rouge">detectionResult</code> - the <a href="#detectionResult">detection result</a> of the document detection operation that produced the page (either the document scanner or <code class="highlighter-rouge">detectDocument()</code>).</li>
   <li><code class="highlighter-rouge">filter</code> - the <a href="#imageFilter">image filter</a> which was applied on the document image of this page.</li>
+  <li><code class="highlighter-rouge">documentImageSizeLimit</code> - limits the maximum size of the document image. If width or height are zero, this property is effectively ignored.</li>
   <li><code class="highlighter-rouge">originalImageFileUri</code> - file URI of the original image</li>
   <li><code class="highlighter-rouge">documentImageFileUri</code> - file URI of the cropped document image (if document detection was successful)</li>
   <li><code class="highlighter-rouge">originalPreviewImageFileUri</code> - file URI of a screen-sized preview of the original image</li>
@@ -895,6 +897,31 @@ This Plugin provides the following helper methods to keep the storage clean:</p>
     * The text color of the user guidance hints.
     */</span>
     <span class="na">userGuidanceTextColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="cm">/**
+     * Limits the maximum size of the document image. If width or height are zero, this property is effectively ignored.
+     * Where Size is 
+     * {
+     * width: number;
+     * height: number;
+     * }
+     */</span>
+    <span class="na">documentImageSizeLimit</span><span class="p">:</span> <span class="nx">Size</span><span class="p">;</span>
+    <span class="cm">/**
+     * Hides the shutter button if set to TRUE. Shows it otherwise. Defaults to FALSE.
+     * If set to TRUE, auto-snapping is enabled and the property autoSnappingEnabled of the behaviour configuration will
+     * have no effect.
+     * Also the auto-snapping button will be hidden.
+     */</span>
+    <span class="nl">shutterButtonHidden</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+    <span class="cm">/** 
+     * The text being displayed on the user-guidance label, when the scanners energy saver is activated. 
+     * iOS only.
+     */</span>
+    <span class="nl">textHintEnergySavingActive</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Maximum number of pages to scan. Ignored when set to null, or when `multiPageEnabled` is FALSE. Default value is null.
+     */</span>
+    <span class="nx">maxNumberOfPages</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">};</span>
 </code></pre>
@@ -1695,30 +1722,38 @@ You have to download and provide the desired language files in your app.</p>
 
 <h4 id="download-and-provide-ocr-language-files">Download and Provide OCR Language Files</h4>
 
-<p>Please find a list of all supported OCR languages and download links on this <a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files#data-files-for-version-304305">Tesseract wiki page</a>. 
-The current Scanbot SDK supports <code class="highlighter-rouge">.traineddata</code> files of Tesseract version <strong>3.04/3.05</strong> only.</p>
+<p>You can find a list of all supported OCR languages and download links on this <a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files">Tesseract wiki page</a>.</p>
 
+<h4 id="download">Download</h4>
+
+<p>⚠️️️ Please choose and download the proper version of the language data files:</p>
+<ul>
+  <li>For the latest version of Scanbot SDK Cordova Plugin <strong>3.1.0 or newer</strong> - <a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files#updated-data-files-for-version-400-september-15-2017">LSTM Data Files for Version <strong>4.00</strong></a>.</li>
+  <li>For the older versions of Scanbot SDK Cordova Plugin <strong>&lt;= 3.0.1</strong> - <a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files#data-files-for-version-304305">Data Files for Version <strong>3.04/3.05</strong></a>.</li>
+</ul>
+
+<h4 id="provide">Provide</h4>
 <p><strong>Option 1 - Provide the Language Files in the App Package:</strong></p>
 
 <p>Download the desired language files as well as the <code class="highlighter-rouge">osd.traineddata</code> file and make sure they will be packaged in your app as:</p>
 
 <ul>
-  <li>for Android: as <strong>assets</strong> in the sub-folder <code class="highlighter-rouge">SBSDKLanguageData/</code></li>
-  <li>for iOS: as <strong>resources</strong> in the sub-folder <code class="highlighter-rouge">SBSDKLanguageData/</code></li>
+  <li>for Android: as <strong>assets</strong> in the sub-folder <strong><code class="highlighter-rouge">ocr_blobs/</code></strong></li>
+  <li>for iOS: as <strong>resources</strong> in the sub-folder <strong><code class="highlighter-rouge">ScanbotSDKOCRData.bundle/</code></strong></li>
 </ul>
 
 <p>This can be done by defining the following simple mappings in the <code class="highlighter-rouge">config.xml</code> of your Cordova project:</p>
 
 <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;platform</span> <span class="na">name=</span><span class="s">"android"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;resource-file</span> <span class="na">src=</span><span class="s">"SBSDKLanguageData/eng.traineddata"</span> <span class="na">target=</span><span class="s">"app/src/main/assets/SBSDKLanguageData/eng.traineddata"</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;resource-file</span> <span class="na">src=</span><span class="s">"SBSDKLanguageData/osd.traineddata"</span> <span class="na">target=</span><span class="s">"app/src/main/assets/SBSDKLanguageData/osd.traineddata"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;resource-file</span> <span class="na">src=</span><span class="s">"arbitrary-source-folder-of-your-project/osd.traineddata"</span> <span class="na">target=</span><span class="s">"app/src/main/assets/ocr_blobs/osd.traineddata"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;resource-file</span> <span class="na">src=</span><span class="s">"arbitrary-source-folder-of-your-project/eng.traineddata"</span> <span class="na">target=</span><span class="s">"app/src/main/assets/ocr_blobs/eng.traineddata"</span> <span class="nt">/&gt;</span>
   ...
 <span class="nt">&lt;/platform&gt;</span>
 
 <span class="nt">&lt;platform</span> <span class="na">name=</span><span class="s">"ios"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;resource-file</span> <span class="na">src=</span><span class="s">"SBSDKLanguageData"</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;resource-file</span> <span class="na">src=</span><span class="s">"SBSDKLanguageData/eng.traineddata"</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;resource-file</span> <span class="na">src=</span><span class="s">"SBSDKLanguageData/osd.traineddata"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;resource-file</span> <span class="na">src=</span><span class="s">"arbitrary-source-folder-of-your-project/ScanbotSDKOCRData.bundle"</span> <span class="na">target=</span><span class="s">"ScanbotSDKOCRData.bundle"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;resource-file</span> <span class="na">src=</span><span class="s">"arbitrary-source-folder-of-your-project/osd.traineddata"</span> <span class="na">target=</span><span class="s">"ScanbotSDKOCRData.bundle/osd.traineddata"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;resource-file</span> <span class="na">src=</span><span class="s">"arbitrary-source-folder-of-your-project/eng.traineddata"</span> <span class="na">target=</span><span class="s">"ScanbotSDKOCRData.bundle/eng.traineddata"</span> <span class="nt">/&gt;</span>
   ...
 <span class="nt">&lt;/platform&gt;</span>
 </code></pre>
@@ -1804,6 +1839,7 @@ As result the recognized text can be returned as plain text or a composed PDF fi
 <ul>
   <li><code class="highlighter-rouge">result.plainText</code> - Contains the recognized plain text.</li>
   <li><code class="highlighter-rouge">result.pdfFileUri</code> - <a href="#fileHandling">File URI</a> of the composed PDF file (<code class="highlighter-rouge">'file:///...'</code>).</li>
+  <li><code class="highlighter-rouge">result.jsonFileUri</code> - <a href="#fileHandling">File URI</a> of OCR result JSON file (<code class="highlighter-rouge">'file:///...'</code>).</li>
 </ul>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
@@ -1840,9 +1876,100 @@ Please use the <a href="#module_ScanbotSdk.getOcrConfigs">getOcrConfigs</a> func
 <p>Following output formats can be specified for OCR result:</p>
 <ul>
   <li><code class="highlighter-rouge">OcrOutputFormat.PLAIN_TEXT</code> - Returns the recognized text as plain text only.</li>
+  <li><code class="highlighter-rouge">OcrOutputFormat.RESULT_JSON</code> - Returns the OCR result as JSON object.</li>
   <li><code class="highlighter-rouge">OcrOutputFormat.PDF_FILE</code> - Creates a composed PDF file containing selectable and searchable text.</li>
-  <li><code class="highlighter-rouge">OcrOutputFormat.FULL_OCR_RESULT</code> - Full result: composed PDF file and recognized plain text.</li>
+  <li><code class="highlighter-rouge">OcrOutputFormat.FULL_OCR_RESULT</code> - Full result: composed PDF file and OCR result as JSON object.</li>
 </ul>
+
+<p>Example of an OCR result as JSON:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
+   <span class="s2">"pages"</span><span class="err">:</span><span class="p">[</span>
+      <span class="p">{</span>
+         <span class="s2">"text"</span><span class="p">:</span><span class="s2">"Ut enim ad minim veniam, quis nostrud exercitation\nullamco laboris nisi ut aliquip ex ea commodo\nconsequat\n"</span><span class="p">,</span>
+         <span class="s2">"words"</span><span class="p">:[</span>
+            <span class="p">{</span>
+               <span class="s2">"boundingBox"</span><span class="p">:{</span>
+                  <span class="s2">"y"</span><span class="p">:</span><span class="mf">0.46182008368200839</span><span class="p">,</span>
+                  <span class="s2">"x"</span><span class="p">:</span><span class="mf">0.011823899371069183</span><span class="p">,</span>
+                  <span class="s2">"width"</span><span class="p">:</span><span class="mf">0.040000000000000001</span><span class="p">,</span>
+                  <span class="s2">"height"</span><span class="p">:</span><span class="mf">0.070606694560669453</span>
+               <span class="p">},</span>
+               <span class="s2">"text"</span><span class="p">:</span><span class="s2">"Ut"</span><span class="p">,</span>
+               <span class="s2">"confidence"</span><span class="p">:</span><span class="mf">96.546516418457031</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+               <span class="s2">"boundingBox"</span><span class="p">:{</span>
+                  <span class="s2">"y"</span><span class="p">:</span><span class="mf">0.46443514644351463</span><span class="p">,</span>
+                  <span class="s2">"x"</span><span class="p">:</span><span class="mf">0.064402515723270437</span><span class="p">,</span>
+                  <span class="s2">"width"</span><span class="p">:</span><span class="mf">0.091320754716981131</span><span class="p">,</span>
+                  <span class="s2">"height"</span><span class="p">:</span><span class="mf">0.06903765690376569</span>
+               <span class="p">},</span>
+               <span class="s2">"text"</span><span class="p">:</span><span class="s2">"enim"</span><span class="p">,</span>
+               <span class="s2">"confidence"</span><span class="p">:</span><span class="mf">95.442947387695312</span>
+            <span class="p">},</span>
+            <span class="p">...</span>
+            <span class="p">{</span>
+               <span class="s2">"boundingBox"</span><span class="p">:{</span>
+                  <span class="s2">"y"</span><span class="p">:</span><span class="mf">0.68462343096234313</span><span class="p">,</span>
+                  <span class="s2">"x"</span><span class="p">:</span><span class="mf">0.010817610062893081</span><span class="p">,</span>
+                  <span class="s2">"width"</span><span class="p">:</span><span class="mf">0.22213836477987423</span><span class="p">,</span>
+                  <span class="s2">"height"</span><span class="p">:</span><span class="mf">0.13702928870292888</span>
+               <span class="p">},</span>
+               <span class="s2">"text"</span><span class="p">:</span><span class="s2">"consequat"</span><span class="p">,</span>
+               <span class="s2">"confidence"</span><span class="p">:</span><span class="mf">23.432151794433594</span>
+            <span class="p">}</span>
+         <span class="p">],</span>
+         <span class="s2">"lines"</span><span class="p">:[</span>
+            <span class="p">{</span>
+               <span class="s2">"boundingBox"</span><span class="p">:{</span>
+                  <span class="s2">"y"</span><span class="p">:</span><span class="mf">0.41684100418410042</span><span class="p">,</span>
+                  <span class="s2">"x"</span><span class="p">:</span><span class="mf">0.011823899371069183</span><span class="p">,</span>
+                  <span class="s2">"width"</span><span class="p">:</span><span class="mf">0.98037735849056606</span><span class="p">,</span>
+                  <span class="s2">"height"</span><span class="p">:</span><span class="mf">0.14225941422594143</span>
+               <span class="p">},</span>
+               <span class="s2">"text"</span><span class="p">:</span><span class="s2">"Ut enim ad minim veniam, quis nostrud exercitation\n"</span><span class="p">,</span>
+               <span class="s2">"confidence"</span><span class="p">:</span><span class="mf">95.124320983886719</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+               <span class="s2">"boundingBox"</span><span class="p">:{</span>
+                  <span class="s2">"y"</span><span class="p">:</span><span class="mf">0.57112970711297073</span><span class="p">,</span>
+                  <span class="s2">"x"</span><span class="p">:</span><span class="mf">0.011572327044025157</span><span class="p">,</span>
+                  <span class="s2">"width"</span><span class="p">:</span><span class="mf">0.86792452830188682</span><span class="p">,</span>
+                  <span class="s2">"height"</span><span class="p">:</span><span class="mf">0.1192468619246862</span>
+               <span class="p">},</span>
+               <span class="s2">"text"</span><span class="p">:</span><span class="s2">"ullamco laboris nisi ut aliquip ex ea commodo\n"</span><span class="p">,</span>
+               <span class="s2">"confidence"</span><span class="p">:</span><span class="mf">95.142372131347656</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+               <span class="s2">"boundingBox"</span><span class="p">:{</span>
+                  <span class="s2">"y"</span><span class="p">:</span><span class="mf">0.68462343096234313</span><span class="p">,</span>
+                  <span class="s2">"x"</span><span class="p">:</span><span class="mf">0.010817610062893081</span><span class="p">,</span>
+                  <span class="s2">"width"</span><span class="p">:</span><span class="mf">0.22213836477987423</span><span class="p">,</span>
+                  <span class="s2">"height"</span><span class="p">:</span><span class="mf">0.13702928870292888</span>
+               <span class="p">},</span>
+               <span class="s2">"text"</span><span class="p">:</span><span class="s2">"consequat\n"</span><span class="p">,</span>
+               <span class="s2">"confidence"</span><span class="p">:</span><span class="mf">23.432151794433594</span>
+            <span class="p">}</span>
+         <span class="p">],</span>
+         <span class="s2">"paragraphs"</span><span class="p">:[</span>
+            <span class="p">{</span>
+               <span class="s2">"boundingBox"</span><span class="p">:{</span>
+                  <span class="s2">"y"</span><span class="p">:</span><span class="mf">0.41684100418410042</span><span class="p">,</span>
+                  <span class="s2">"x"</span><span class="p">:</span><span class="mf">0.011320754716981131</span><span class="p">,</span>
+                  <span class="s2">"width"</span><span class="p">:</span><span class="mf">0.98088050314465414</span><span class="p">,</span>
+                  <span class="s2">"height"</span><span class="p">:</span><span class="mf">0.34884937238493724</span>
+               <span class="p">},</span>
+               <span class="s2">"text"</span><span class="p">:</span><span class="s2">"Ut enim ad minim veniam, quis nostrud exercitation\nullamco laboris nisi ut aliquip ex ea commodo\nconsequat\n"</span><span class="p">,</span>
+               <span class="s2">"confidence"</span><span class="p">:</span><span class="mf">90.915626525878906</span>
+            <span class="p">}</span>
+         <span class="p">]</span>
+      <span class="p">}</span>
+      <span class="p">...</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+</div>
 
 <p><a name="module_ScanbotSdk.cleanup"></a></p>
 <h3 id="cleanup">Cleanup</h3>
@@ -1914,6 +2041,7 @@ Please note that a file <strong>URI</strong> is not just a file <strong>path</st
   <li><code class="highlighter-rouge">OTSU_BINARIZATION</code> - A filter for black and white conversion using OTSU binarization.</li>
   <li><code class="highlighter-rouge">DEEP_BINARIZATION</code> - A filter for black and white conversion primary used for low-contrast documents.</li>
   <li><code class="highlighter-rouge">EDGE_HIGHLIGHT</code> - A filter that enhances edges in low-contrast documents.</li>
+  <li><code class="highlighter-rouge">LOW_LIGHT_BINARIZATION</code> - Binarization filter primarily intended to use on low-contrast documents with hard shadows.</li>
 </ul>
 
 <p><a name="pdfPageSize"></a></p>
@@ -1994,6 +2122,50 @@ For instance, if a point has the coordinates (0.5, 0.5), it means that it is loc
 
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release History</h2>
+
+<h5 id="310">3.1.0</h5>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>New black &amp; white <a href="#imageFilter">Image Filter</a> <code class="highlighter-rouge">LOW_LIGHT_BINARIZATION</code>.</li>
+      <li>Added new config properties in the Document Scanner UI:
+        <ul>
+          <li><code class="highlighter-rouge">documentImageSizeLimit</code> - to limit the resolution of the document image.</li>
+          <li><code class="highlighter-rouge">maxNumberOfPages</code> - maximum number of pages to scan.</li>
+          <li><code class="highlighter-rouge">shutterButtonHidden</code> - to hide the shutter button.</li>
+          <li><code class="highlighter-rouge">textHintEnergySavingActive</code> - the text being displayed on the user-guidance label, when the scanners energy saver is activated (iOS only).</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Improved performance of the image filter <code class="highlighter-rouge">DEEP_BINARIZATION</code>.</li>
+      <li>OCR - Upgraded the OCR engine to Tesseract v4.00. Improved recognition speed and quality. Please also note the Breaking Changes below.</li>
+      <li>OCR API - Detailed OCR results per page, including bounding boxes for words, lines and paragraphs. 
+See <a href="#ocrOutputFormat">OcrOutputFormat.RESULT_JSON</a>.</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking Changes:
+    <ul>
+      <li>OCR Language Files - If you use the OCR feature of this plugin, please upgrade the OCR language files to Tesseract 4.00. 
+See the <a href="#ocr">OCR</a> section of this documentation for more details.</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Fixed the status of the torch light toggle button in the Document Scanner on reactivating the scanning screen.</li>
+      <li>Fixed a bug with the Magnifier in Cropping UI (the Magnifier was stuck in a corner)</li>
+      <li>Various minor bug fixes and improvements.</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded the native Scanbot Android SDK to v1.39.51 (see the <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">changelog</a>)</li>
+      <li>Upgraded the native Scanbot iOS SDK to v1.9.2 (see the <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">changelog</a>)</li>
+    </ul>
+  </li>
+</ul>
 
 <h5 id="301">3.0.1</h5>
 <ul>
@@ -2199,7 +2371,7 @@ Please note that only the <strong>new created</strong> image files will contain 
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
 
 <div class="language-text highlighter-rouge"><pre class="highlight"><code>
-Open Source libraries used in the Scanbot SDK for Android version 1.39.1:
+Open Source libraries used in the Scanbot SDK for Android version 1.39.51:
 
 Android PDF Writer version 1.0.8
 Copyright (c) 2010 - 2013, Javier Santo Domingo (j-a-s-d@coderesearchlabs.com).
@@ -2392,7 +2564,7 @@ Leptonica 1.71
 Copyright @ 2001-2015, Leptonica, (http://leptonica.org),
 is distributed under a Creative Commons Attribution 3.0 United States License ( http://creativecommons.org/licenses/by/3.0/us/).
 
-LibTIFF - TIFF Library and Utilities v4.0.9
+LibTIFF - TIFF Library and Utilities v4.0.10
 Copyright (c) 1988-1997 Sam Leffler
 Copyright (c) 1991-1997 Silicon Graphics, Inc.
 This license is distributed under the terms of the following license: http://libtiff.maptools.org/misc.html.
@@ -2409,7 +2581,7 @@ OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
 WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
 OF THIS SOFTWARE.
 
-OpenCV 3.4.2
+OpenCV 3.4.5
 Copyright © 2014, Itseez. All rights reserved.
 This library is distributed under the terms of a 3-clause BSD license: http://opencv.org/license.html.
 
@@ -2527,14 +2699,14 @@ RxAndroid version 2.0.1
 Copyright (c) 2015 The RxAndroid authors
 (https://github.com/ReactiveX/RxAndroid)
 
-Tesseract 3.05.02
+Tesseract 4.00
 Tesseract, maintained by Google (http://code.google.com/p/tesseract-ocr/),
 
 
 ------------------------------------------------------------------------------------------------------------------------
 
 
-Open Source libraries used in the Scanbot SDK for iOS version 1.8.6:
+Open Source libraries used in the Scanbot SDK for iOS version 1.9.2:
 
 BOOST C++ Libraries version 1.68
 This library is distributed under the terms of the following license: https://www.boost.org/LICENSE_1_0.txt
@@ -2645,7 +2817,7 @@ THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND ANY EXPRESS OR IMPLIED WAR
 
 The licence and distribution terms for any publically available version or derivative of this code cannot be changed. i.e. this code cannot simply be copied and put under another distribution licence [including the GNU Public Licence.]
 
-Tesseract 3.05.02
+Tesseract 4.0.0
 Tesseract, maintained by Google (http://code.google.com/p/tesseract-ocr/),
 is distributed under the Apache 2.0 license (http://www.apache.org/licenses/LICENSE-2.0).
 
