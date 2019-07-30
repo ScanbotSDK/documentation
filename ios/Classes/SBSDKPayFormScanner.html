@@ -115,6 +115,9 @@
                 <a class="nav-group-task-link" href="../Classes/SBSDKDeviceInformation.html">SBSDKDeviceInformation</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SBSDKDisabilityCertificateRecognizerConfigurationOptions.html">SBSDKDisabilityCertificateRecognizerConfigurationOptions</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SBSDKDisabilityCertificatesRecognizer.html">SBSDKDisabilityCertificatesRecognizer</a>
               </li>
               <li class="nav-group-task">
@@ -125,6 +128,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SBSDKDisabilityCertificatesRecognizerResult.html">SBSDKDisabilityCertificatesRecognizerResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SBSDKDisabilityCertificatesRecognizerResultPatientField.html">SBSDKDisabilityCertificatesRecognizerResultPatientField</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SBSDKDocumentDetectionMetrics.html">SBSDKDocumentDetectionMetrics</a>
@@ -235,22 +241,10 @@
                 <a class="nav-group-task-link" href="../Classes/SBSDKPageAspectRatio.html">SBSDKPageAspectRatio</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/SBSDKPayFormDetectedBox.html">SBSDKPayFormDetectedBox</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/SBSDKPayFormDetectionResult.html">SBSDKPayFormDetectionResult</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/SBSDKPayFormPolygon.html">SBSDKPayFormPolygon</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SBSDKPayFormRecognitionResult.html">SBSDKPayFormRecognitionResult</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SBSDKPayFormRecognizedField.html">SBSDKPayFormRecognizedField</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/SBSDKPayFormResult.html">SBSDKPayFormResult</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SBSDKPayFormScanner.html">SBSDKPayFormScanner</a>
@@ -476,6 +470,15 @@
                 <a class="nav-group-task-link" href="../Enums/SBSDKDisabilityCertificatesRecognizerDateResultType.html">SBSDKDisabilityCertificatesRecognizerDateResultType</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SBSDKDisabilityCertificatesRecognizerDocumentIntentionType.html">SBSDKDisabilityCertificatesRecognizerDocumentIntentionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SBSDKDisabilityCertificatesRecognizerInsuredPersonType.html">SBSDKDisabilityCertificatesRecognizerInsuredPersonType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SBSDKDisabilityCertificatesRecognizerResultPatientFieldType.html">SBSDKDisabilityCertificatesRecognizerResultPatientFieldType</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/SBSDKDocumentDetectionStatus.html">SBSDKDocumentDetectionStatus</a>
               </li>
               <li class="nav-group-task">
@@ -504,6 +507,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/SBSDKPageOrientation.html">SBSDKPageOrientation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SBSDKPayFormScannerRecognitionMode.html">SBSDKPayFormScannerRecognitionMode</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/SBSDKPayFormTokenType.html">SBSDKPayFormTokenType</a>
@@ -644,14 +650,9 @@
                 </div>
               </div>
             <p>The main scanner class that performs detection and recognition on either UIImage or CMSampleBufferRef (from camera).
- Usually start with detection on a smaller image (video frame) and if detection was successful (isValidForm == YES)
- run recognition on either the same or a larger image (camera still shot). The larger the image
- the better the recognition results. Images are rotated accordingly to either the UIImage imageOrientation property
- or the given video orientation.
- Detection and recognition are successful only if the rotated image has natural orientation.</p>
-
-<p>Note: This class needs the german (deu.traineddata) language file installed. See SBSDKOpticalTextRecognizer on how to install
- language files in your app.</p>
+The larger the image the better the recognition results. Images are rotated accordingly to either the UIImage
+imageOrientation property or the given video orientation.
+Detection and recognition are successful only if the rotated image has natural orientation.</p>
 
           </div>
         </section>
@@ -663,134 +664,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKPayFormScanner(im)detectOnImage:"></a>
-                    <a name="//apple_ref/objc/Method/-detectOnImage:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKPayFormScanner(im)detectOnImage:">-detectOnImage:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Detects whether an image contains a bank transfer form or not on the given UIImage.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/SBSDKPayFormDetectionResult.html">SBSDKPayFormDetectionResult</a></span> <span class="o">*</span><span class="p">)</span><span class="nf">detectOnImage</span><span class="p">:</span>
-    <span class="p">(</span><span class="n">nonnull</span> <span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nv">image</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">detect</span><span class="p">(</span><span class="n">on</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKPayFormDetectionResult.html">SBSDKPayFormDetectionResult</a></span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>image</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The image to detect a payform on.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The detectors result.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKPayFormScanner(im)detectInSampleBuffer:orientation:"></a>
-                    <a name="//apple_ref/objc/Method/-detectInSampleBuffer:orientation:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKPayFormScanner(im)detectInSampleBuffer:orientation:">-detectInSampleBuffer:orientation:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Detects whether an image contains a bank transfer form or not on the given CMSampleBufferRef.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/SBSDKPayFormDetectionResult.html">SBSDKPayFormDetectionResult</a></span> <span class="o">*</span><span class="p">)</span>
-    <span class="nf">detectInSampleBuffer</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">CMSampleBufferRef</span><span class="p">)</span><span class="nv">sampleBuffer</span>
-             <span class="nf">orientation</span><span class="p">:(</span><span class="n">AVCaptureVideoOrientation</span><span class="p">)</span><span class="nv">videoOrientation</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">detect</span><span class="p">(</span><span class="k">in</span> <span class="nv">sampleBuffer</span><span class="p">:</span> <span class="kt">CMSampleBuffer</span><span class="p">,</span> <span class="n">orientation</span> <span class="nv">videoOrientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKPayFormDetectionResult.html">SBSDKPayFormDetectionResult</a></span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>sampleBuffer</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The CMSampleBuffer to detect a payform on.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>videoOrientation</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The orientation the sample buffer is taken with.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The detectors result.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKPayFormScanner(im)recognizeFieldsOnImage:"></a>
-                    <a name="//apple_ref/objc/Method/-recognizeFieldsOnImage:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKPayFormScanner(im)recognizeFieldsOnImage:">-recognizeFieldsOnImage:</a>
+                    <a name="/c:objc(cs)SBSDKPayFormScanner(im)recognizeFromImage:"></a>
+                    <a name="//apple_ref/objc/Method/-recognizeFromImage:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKPayFormScanner(im)recognizeFromImage:">-recognizeFromImage:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -805,13 +681,13 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/SBSDKPayFormRecognitionResult.html">SBSDKPayFormRecognitionResult</a></span> <span class="o">*</span><span class="p">)</span><span class="nf">recognizeFieldsOnImage</span><span class="p">:</span>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/SBSDKPayFormRecognitionResult.html">SBSDKPayFormRecognitionResult</a></span> <span class="o">*</span><span class="p">)</span><span class="nf">recognizeFromImage</span><span class="p">:</span>
     <span class="p">(</span><span class="n">nonnull</span> <span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nv">image</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">recognizeFields</span><span class="p">(</span><span class="n">on</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKPayFormRecognitionResult.html">SBSDKPayFormRecognitionResult</a></span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">recognize</span><span class="p">(</span><span class="n">from</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKPayFormRecognitionResult.html">SBSDKPayFormRecognitionResult</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -844,9 +720,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKPayFormScanner(im)recognizeFieldsInSampleBuffer:orientation:"></a>
-                    <a name="//apple_ref/objc/Method/-recognizeFieldsInSampleBuffer:orientation:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKPayFormScanner(im)recognizeFieldsInSampleBuffer:orientation:">-recognizeFieldsInSampleBuffer:orientation:</a>
+                    <a name="/c:objc(cs)SBSDKPayFormScanner(im)recognizeFromSampleBuffer:orientation:"></a>
+                    <a name="//apple_ref/objc/Method/-recognizeFromSampleBuffer:orientation:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKPayFormScanner(im)recognizeFromSampleBuffer:orientation:">-recognizeFromSampleBuffer:orientation:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -862,13 +738,13 @@
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
                           <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/SBSDKPayFormRecognitionResult.html">SBSDKPayFormRecognitionResult</a></span> <span class="o">*</span><span class="p">)</span>
-    <span class="nf">recognizeFieldsInSampleBuffer</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">CMSampleBufferRef</span><span class="p">)</span><span class="nv">sampleBuffer</span>
-                      <span class="nf">orientation</span><span class="p">:(</span><span class="n">AVCaptureVideoOrientation</span><span class="p">)</span><span class="nv">videoOrientation</span><span class="p">;</span></code></pre>
+    <span class="nf">recognizeFromSampleBuffer</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">CMSampleBufferRef</span><span class="p">)</span><span class="nv">sampleBuffer</span>
+                  <span class="nf">orientation</span><span class="p">:(</span><span class="n">AVCaptureVideoOrientation</span><span class="p">)</span><span class="nv">videoOrientation</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">recognizeFields</span><span class="p">(</span><span class="k">in</span> <span class="nv">sampleBuffer</span><span class="p">:</span> <span class="kt">CMSampleBuffer</span><span class="p">,</span> <span class="n">orientation</span> <span class="nv">videoOrientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKPayFormRecognitionResult.html">SBSDKPayFormRecognitionResult</a></span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">recognize</span><span class="p">(</span><span class="n">from</span> <span class="nv">sampleBuffer</span><span class="p">:</span> <span class="kt">CMSampleBuffer</span><span class="p">,</span> <span class="n">orientation</span> <span class="nv">videoOrientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKPayFormRecognitionResult.html">SBSDKPayFormRecognitionResult</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -910,6 +786,57 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKPayFormScanner(im)setRecognitionMode:"></a>
+                    <a name="//apple_ref/objc/Method/-setRecognitionMode:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKPayFormScanner(im)setRecognitionMode:">-setRecognitionMode:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the recognition mode of the scanner.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setRecognitionMode</span><span class="p">:(</span><span class="n"><a href="../Enums/SBSDKPayFormScannerRecognitionMode.html">SBSDKPayFormScannerRecognitionMode</a></span><span class="p">)</span><span class="nv">mode</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">setRecognitionMode</span><span class="p">(</span><span class="n">_</span> <span class="nv">mode</span><span class="p">:</span> <span class="kt"><a href="../Enums/SBSDKPayFormScannerRecognitionMode.html">SBSDKPayFormScannerRecognitionMode</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>mode</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>New recognition mode.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -918,7 +845,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2019-06-06)</p>
+      <p>&copy; 2019 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2019-07-30)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
