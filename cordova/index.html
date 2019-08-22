@@ -650,7 +650,8 @@ This Plugin provides the following helper methods to keep the storage clean:</p>
   <li><code class="highlighter-rouge">polygon</code> - the page’s cropping <a href="#polygon">polygon</a> as calculated by a document detection operation or as set by the cropping UI. Modifying the polygon will change the polygon as shown in the cropping UI but will not automatically re-crop the original image.</li>
   <li><code class="highlighter-rouge">detectionResult</code> - the <a href="#detectionResult">detection result</a> of the document detection operation that produced the page (either the document scanner or <code class="highlighter-rouge">detectDocument()</code>).</li>
   <li><code class="highlighter-rouge">filter</code> - the <a href="#imageFilter">image filter</a> which was applied on the document image of this page.</li>
-  <li><code class="highlighter-rouge">documentImageSizeLimit</code> - limits the maximum size of the document image. If width or height are zero, this property is effectively ignored.</li>
+  <li><code class="highlighter-rouge">documentImageSizeLimit</code> - limits the maximum resolution (width, height) of the document image. 
+If <code class="highlighter-rouge">null</code> is passed, this property is effectively ignored. If specified, <code class="highlighter-rouge">width</code> and <code class="highlighter-rouge">height</code> must be &gt; 0.</li>
   <li><code class="highlighter-rouge">originalImageFileUri</code> - file URI of the original image</li>
   <li><code class="highlighter-rouge">documentImageFileUri</code> - file URI of the cropped document image (if document detection was successful)</li>
   <li><code class="highlighter-rouge">originalPreviewImageFileUri</code> - file URI of a screen-sized preview of the original image</li>
@@ -2124,6 +2125,21 @@ For instance, if a point has the coordinates (0.5, 0.5), it means that it is loc
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release History</h2>
 
+<h4 id="version-321-22-aug-2019">Version 3.2.1 (22 Aug 2019):</h4>
+<ul>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Android: Fixed crashes with some image filters, like <code class="highlighter-rouge">BACKGROUND_CLEAN</code>, <code class="highlighter-rouge">DEEP_BINARIZATION</code>, 
+<code class="highlighter-rouge">LOW_LIGHT_BINARIZATION</code>, etc. on ARM 32-bit devices (<code class="highlighter-rouge">armeabi-v7</code>).</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded the native Scanbot Android SDK to v1.39.52.2 (see the <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">changelog</a>)</li>
+    </ul>
+  </li>
+</ul>
+
 <h4 id="version-320-30-jul-2019">Version 3.2.0 (30 Jul 2019):</h4>
 <ul>
   <li>🎉 New:
@@ -2399,7 +2415,7 @@ Please note that only the <strong>new created</strong> image files will contain 
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
 
 <div class="language-text highlighter-rouge"><pre class="highlight"><code>
-Open Source libraries used in the Scanbot SDK for Android version 1.39.52.1:
+Open Source libraries used in the Scanbot SDK for Android version 1.39.52.2:
 
 Android PDF Writer version 1.0.8
 Copyright (c) 2010 - 2013, Javier Santo Domingo (j-a-s-d@coderesearchlabs.com).
@@ -2609,7 +2625,7 @@ OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
 WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
 OF THIS SOFTWARE.
 
-OpenCV 3.4.5
+OpenCV 3.4.7
 Copyright © 2014, Itseez. All rights reserved.
 This library is distributed under the terms of a 3-clause BSD license: http://opencv.org/license.html.
 
@@ -2673,7 +2689,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 This software includes several classes from the Android Open Source Project distributed under the Apache License Version 2.0.
 Copyright (c) 2010 - present The Android Open Source Project.
 
-CWAC-Camera version 0.6.30
+CWAC-Camera version 0.6.33
 Copyright © CommonsWare
 (https://github.com/commonsguy/cwac-camera/blob/master/LICENSE)
 
