@@ -204,10 +204,35 @@ You are <strong>not allowed to publish</strong> your app to the App Store, Play 
 <p>Every app has a unique identifier (sometimes also known as “bundle identifier” or “application ID”). Your license will be bound to this identifier.
 To request a trial license or purchase a production license you have to provide us the bundle identifier of your app.</p>
 
-<h4 id="updating-the-license-in-production-apps">Updating the license in production apps</h4>
+<h4 id="updating-the-license-in-production-apps">Updating the License in Production Apps</h4>
 <p>To renew an expired license or extend a valid license with new Scanbot SDK features, you will have to update your app in the App Store / Play Store.
 The expiration date and the feature list of a license are an encrypted data part of the license key string.
 Which means a renewal or extension of a license will cause a new license key string to be generated.</p>
+
+<h4 id="license-checks-in-production-apps">License Checks in Production Apps</h4>
+<p>If your Scanbot SDK license has expired, any call of the Scanbot SDK API will terminate your app. 
+To prevent this you should always check for license expiration during the runtime by calling the method <code class="highlighter-rouge">IsLicenseValid()</code>. 
+If this method returns <code class="highlighter-rouge">false</code>, you should disable any usage of the Scanbot SDK functions or UI components.</p>
+
+<p>We highly recommend to implement a suitable handling of this case in your app!</p>
+
+<p>Example code for checking the license status:</p>
+
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="c1">// Xamarin
+</span><span class="k">if</span> <span class="p">(</span><span class="n">SBSDK</span><span class="p">.</span><span class="nf">IsLicenseValid</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="c1">// Making your call into ScanbotSDK API is safe now.
+</span>    <span class="c1">// e.g. startDocumentScanner(), doSomeScanbotImageOperation(), etc.
+</span><span class="p">}</span>
+
+<span class="c1">// Xamarin.Forms
+</span><span class="k">if</span> <span class="p">(</span><span class="n">SBSDK</span><span class="p">.</span><span class="n">Operations</span><span class="p">.</span><span class="n">IsLicenseValid</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Making your call into ScanbotSDK API is safe now.
+</span>    <span class="c1">// e.g. SBSDK.UI.LaunchDocumentScannerAsync(..), SBSDK.Operations.ApplyImageFilterAsync(..), etc.
+</span><span class="p">}</span>
+</code></pre>
+</div>
 
 <h4 id="logging">Logging</h4>
 <p>When initializing the Scanbot SDK you can enable or disable logging of the SDK.</p>
