@@ -419,7 +419,8 @@ The easiest way to check the log outputs on Android is to use the <a href="https
 <p><strong>Please note:</strong> While it may be useful for development, <strong>consider switching logging OFF in production builds</strong> for security and performance reasons!</p>
 
 <h4 id="image-quality--compression">Image Quality / Compression</h4>
-<p><code class="highlighter-rouge">initializeSDK</code> can take two more optional parameters that specify the image storage format and compression for temporary images. Temporary images are all images created by the document scanner, cropping UI, as well as all image manipulation functions like <code class="highlighter-rouge">applyImageFilter</code>.</p>
+<p><code class="highlighter-rouge">initializeSDK</code> can take two more optional parameters that specify the image storage format and compression for generated JPEG images, 
+created by the Document Scanner, Cropping UI, as well as all image manipulation functions like <code class="highlighter-rouge">applyImageFilter</code>.</p>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">storageImageFormat</span><span class="p">:</span> <span class="s1">'JPG'</span><span class="p">,</span>
@@ -432,7 +433,8 @@ The easiest way to check the log outputs on Android is to use the <a href="https
 
 <ul>
   <li><code class="highlighter-rouge">storageImageQuality</code> - defines the quality factor of JPEG images. The value must be between 1 and 100, 
-where 100 means maximum quality and largest file size. The default value is 80 which is a good compromise between image file size and document legibility.</li>
+where 100 means maximum quality and largest file size. This parameter is optional. The default value is 80 which is 
+a good compromise between image file size and document legibility.</li>
   <li><code class="highlighter-rouge">storageImageFormat</code> - either <code class="highlighter-rouge">'JPG'</code> or <code class="highlighter-rouge">'PNG'</code>. The default value is <code class="highlighter-rouge">'JPG'</code>.</li>
 </ul>
 
@@ -1498,13 +1500,6 @@ For instance, if a point has the coordinates (0.5, 0.5), it means that it is loc
 <span class="p">]</span>
 </code></pre>
 </div>
-
-<p><a name="imageQuality"></a></p>
-<h3 id="image-quality--compression-1">Image Quality / Compression</h3>
-<p>The <code class="highlighter-rouge">imageCompressionQuality</code> parameter defines the quality factor of the JPEG output image. The value must be in a range of 1-100,
-where 100 means the least quality loss.</p>
-
-<p>This parameter is optional. The default value used by the Scanbot SDK module is 80.</p>
 
 <p><a name="productionApps"></a></p>
 <h3 id="building-production-apps">Building Production Apps</h3>
