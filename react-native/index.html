@@ -1469,6 +1469,7 @@ We recommend to copy, move or delete the files you get from callbacks to a appro
   <li><code class="highlighter-rouge">DEEP_BINARIZATION</code> - A filter for black and white conversion primary used for low-contrast documents.</li>
   <li><code class="highlighter-rouge">EDGE_HIGHLIGHT</code> - A filter that enhances edges in low-contrast documents.</li>
   <li><code class="highlighter-rouge">LOW_LIGHT_BINARIZATION</code> - Binarization filter primarily intended to use on low-contrast documents with hard shadows.</li>
+  <li><code class="highlighter-rouge">LOW_LIGHT_BINARIZATION_2</code> - Binarization filter primarily intended to use on low-contrast documents with hard shadows.</li>
 </ul>
 
 <p><a name="pdfPageSize"></a></p>
@@ -1569,6 +1570,29 @@ It allows you to create and distribute dedicated and smaller APKs via <strong>Pl
 
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release History</h3>
+
+<h4 id="version-310-10-oct-2019">Version 3.1.0 (10 Oct 2019)</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Android &amp; iOS: Added a new <a href="#imageFilter">Images Filter</a> <code class="highlighter-rouge">LOW_LIGHT_BINARIZATION_2</code>.</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Android: Fixed crashes with some image filters, like <code class="highlighter-rouge">BACKGROUND_CLEAN</code>, <code class="highlighter-rouge">DEEP_BINARIZATION</code>, 
+<code class="highlighter-rouge">LOW_LIGHT_BINARIZATION</code>, etc. on ARM 32-bit devices (<code class="highlighter-rouge">armeabi-v7</code>).</li>
+      <li>iOS: Fixed modal dialog style of the Document Scanner UI, Cropping UI, Barcode Scanner UI and MRZ Scanner UI on iOS 13. 
+All UI screens are opened in full-screen mode again.</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded the native Scanbot Android SDK to v1.39.52.2 (see the <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">changelog</a>)</li>
+      <li>Upgraded the native Scanbot iOS SDK to v1.9.3 (see the <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">changelog</a>)</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="version-300-26-jul-2019">Version 3.0.0 (26 Jul 2019)</h4>
 <ul>
@@ -1738,7 +1762,7 @@ See the <a href="#ocr">OCR</a> section of this documentation for more details.</
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
 
 <div class="language-text highlighter-rouge"><pre class="highlight"><code>
-Open Source libraries used in the Scanbot SDK for Android version 1.39.52:
+Open Source libraries used in the Scanbot SDK for Android version 1.39.52.2:
 
 Android PDF Writer version 1.0.8
 Copyright (c) 2010 - 2013, Javier Santo Domingo (j-a-s-d@coderesearchlabs.com).
@@ -2075,7 +2099,7 @@ Tesseract, maintained by Google (http://code.google.com/p/tesseract-ocr/),
 
 
 
-Open Source libraries used in the Scanbot SDK for iOS version 1.9.2:
+Open Source libraries used in the Scanbot SDK for iOS version 1.9.3:
 
 BOOST C++ Libraries version 1.68
 This library is distributed under the terms of the following license: https://www.boost.org/LICENSE_1_0.txt
@@ -2191,6 +2215,28 @@ Tesseract, maintained by Google (http://code.google.com/p/tesseract-ocr/),
 is distributed under the Apache 2.0 license (http://www.apache.org/licenses/LICENSE-2.0).
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+
+Nameof C++ 0.8.3
+Copyright (c) 2016, 2018 - 2019 Daniil Goncharov
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 
 </code></pre>
