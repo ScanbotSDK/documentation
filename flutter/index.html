@@ -161,78 +161,76 @@ You can simply add it as dependency to your App.</p>
 
 <p>In the top-level <code class="highlighter-rouge">android/build.gradle</code> file:</p>
 
-<p>Update kotlin and android plugin to latest versions.</p>
-
-<div class="language-groovy highlighter-rouge"><pre class="highlight"><code><span class="n">buildscript</span> <span class="o">{</span>
-    <span class="n">ext</span><span class="o">.</span><span class="na">kotlin_version</span> <span class="o">=</span> <span class="s1">'1.3.41'</span>
-
-    <span class="n">dependencies</span> <span class="o">{</span>
-        <span class="n">classpath</span> <span class="s1">'com.android.tools.build:gradle:3.5.0'</span>
-        <span class="n">classpath</span> <span class="s2">"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"</span>
-    <span class="o">}</span>
-<span class="o">}</span>
+<ul>
+  <li>Update kotlin version to at least <code class="highlighter-rouge">1.3.41</code> or higher. Typically defined via <code class="highlighter-rouge">ext.kotlin_version</code> variable:
+    <div class="language-groovy highlighter-rouge"><pre class="highlight"><code>  <span class="o">...</span>
+  <span class="n">buildscript</span> <span class="o">{</span>
+      <span class="n">ext</span><span class="o">.</span><span class="na">kotlin_version</span> <span class="o">=</span> <span class="s1">'1.3.41'</span>
+      <span class="o">...</span>
+  <span class="o">}</span>
 </code></pre>
-</div>
+    </div>
+  </li>
+</ul>
 
 <p>In the app-level <code class="highlighter-rouge">android/app/build.gradle</code> file:</p>
 
-<p>Add the following <code class="highlighter-rouge">packagingOptions</code></p>
-
-<div class="language-groovy highlighter-rouge"><pre class="highlight"><code><span class="n">android</span> <span class="o">{</span>
-    <span class="o">...</span>
-    <span class="n">packagingOptions</span> <span class="o">{</span>
-        <span class="n">pickFirst</span> <span class="s1">'META-INF/atomicfu.kotlin_module'</span>
-        <span class="n">pickFirst</span> <span class="s1">'META-INF/proguard/coroutines.pro'</span>
-        <span class="n">exclude</span> <span class="s1">'META-INF/LICENSE.txt'</span>
-        <span class="n">exclude</span> <span class="s1">'META-INF/NOTICE.txt'</span>
-        <span class="n">exclude</span> <span class="s1">'META-INF/LICENSE'</span>
-        <span class="n">exclude</span> <span class="s1">'META-INF/NOTICE'</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-</div>
-
-<p>Update dependencies</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation ("com.google.code.findbugs:jsr305:3.0.2"){ //add this library with forced resolution of version
-        force = true
-    }
-    implementation 'androidx.multidex:multidex:2.0.0' // enable multidex for android &lt; API21
-}
-</code></pre>
-</div>
-
-<p>Enable <a href="https://developer.android.com/studio/build/multidex">multidex</a>:</p>
-
-<div class="language-groovy highlighter-rouge"><pre class="highlight"><code><span class="n">android</span> <span class="o">{</span>
-    <span class="n">defaultConfig</span> <span class="o">{</span>
+<ul>
+  <li>Add the following <code class="highlighter-rouge">packagingOptions</code>
+    <div class="language-groovy highlighter-rouge"><pre class="highlight"><code>  <span class="n">android</span> <span class="o">{</span>
       <span class="o">...</span>
-      <span class="n">multiDexEnabled</span> <span class="kc">true</span>
-    <span class="o">}</span>
-<span class="o">}</span>
+      <span class="n">packagingOptions</span> <span class="o">{</span>
+          <span class="n">pickFirst</span> <span class="s1">'META-INF/atomicfu.kotlin_module'</span>
+          <span class="n">pickFirst</span> <span class="s1">'META-INF/proguard/coroutines.pro'</span>
+          <span class="n">exclude</span> <span class="s1">'META-INF/LICENSE.txt'</span>
+          <span class="n">exclude</span> <span class="s1">'META-INF/NOTICE.txt'</span>
+          <span class="n">exclude</span> <span class="s1">'META-INF/LICENSE'</span>
+          <span class="n">exclude</span> <span class="s1">'META-INF/NOTICE'</span>
+      <span class="o">}</span>
+  <span class="o">}</span>
 </code></pre>
-</div>
+    </div>
+  </li>
+  <li>Enable <a href="https://developer.android.com/studio/build/multidex">multidex</a>:
+    <div class="language-groovy highlighter-rouge"><pre class="highlight"><code>  <span class="n">android</span> <span class="o">{</span>
+      <span class="n">defaultConfig</span> <span class="o">{</span>
+        <span class="o">...</span>
+        <span class="n">multiDexEnabled</span> <span class="kc">true</span>
+      <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre>
+    </div>
+  </li>
+</ul>
 
-<p>In the <code class="highlighter-rouge">AndroidManifest.xml</code> file:</p>
+<p>In the <code class="highlighter-rouge">android/app/src/main/AndroidManifest.xml</code> file:</p>
 
-<p>Add the <code class="highlighter-rouge">largeHeap</code> flag:</p>
-
-<p>Since your application will work with high-resolution images it is strongly recommended to add the attribute <code class="highlighter-rouge">android:largeHeap="true"</code> 
+<ul>
+  <li>
+    <p>Add the <code class="highlighter-rouge">largeHeap</code> flag:
+Since your application will work with high-resolution images it is strongly recommended to add the attribute <code class="highlighter-rouge">android:largeHeap="true"</code> 
 in the <code class="highlighter-rouge">&lt;application&gt;</code> element of your <code class="highlighter-rouge">AndroidManifest.xml</code> file, especially for Android &lt;= 7.x. 
 Processing hi-res images is a memory intensive task and this property will ensure your app has enough heap allocated to avoid <code class="highlighter-rouge">OutOfMemoryError</code> exceptions.</p>
-
-<p>Add the <code class="highlighter-rouge">CAMERA</code> permission:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;uses-permission android:name="android.permission.CAMERA" /&gt;
+  </li>
+  <li>
+    <p>Add the <code class="highlighter-rouge">CAMERA</code> permission:</p>
+    <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.CAMERA"</span> <span class="nt">/&gt;</span>
 </code></pre>
-</div>
+    </div>
+  </li>
+</ul>
 
 <p><a name="ios_setup"></a></p>
 <h4 id="ios">iOS</h4>
-<p>For iOS you need to install or update the Pods:</p>
+<p>For iOS you need to adjust the Podfile and install or update the Pods:</p>
 
+<p>Make sure you have specified a global <code class="highlighter-rouge">platform</code> version in the <code class="highlighter-rouge">ios/Podfile</code> file, like:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>platform :ios, '9.0'
+</code></pre>
+</div>
+
+<p>Then run:</p>
 <div class="highlighter-rouge"><pre class="highlight"><code>$ cd ios/
 $ pod install
 </code></pre>
