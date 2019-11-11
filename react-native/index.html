@@ -59,7 +59,7 @@
   <div class="post-content">
     <h2 id="scanbot-sdk-react-native-module">Scanbot SDK React Native Module</h2>
 
-<p>This documentation is for the <strong>latest release</strong> version of the Scanbot SDK React Native Module (<code class="highlighter-rouge">react-native-scanbot-sdk@3.x</code>).</p>
+<p>This documentation is for the <strong>latest release</strong> version of the Scanbot SDK React Native Module (<code class="highlighter-rouge">react-native-scanbot-sdk@4.x</code>).</p>
 
 <h3 id="introduction">Introduction</h3>
 <p>The Scanbot SDK brings scanning and document creation capabilities to your mobile apps.
@@ -91,9 +91,22 @@ For more details visit our website <a href="https://scanbot.io/sdk.html">https:/
 <h4 id="dev-tools">Dev Tools</h4>
 <ul>
   <li>Node.js, npm</li>
-  <li>React Native 0.47+ (latest available version is highly recommended)</li>
-  <li>For Android apps: Android SDK (API Level 16+), Platforms and Developer Tools</li>
-  <li>For iOS apps: Mac OS with latest Xcode and Command Line Tools</li>
+  <li>For Android apps:
+    <ul>
+      <li>Android SDK (API Level 16+), Platforms and Developer Tools</li>
+    </ul>
+  </li>
+  <li>For iOS apps:
+    <ul>
+      <li>Mac OS X with latest Xcode and Command Line Tools</li>
+      <li><a href="https://cocoapods.org/">CocoaPods</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="react-native-framework">React Native Framework</h4>
+<ul>
+  <li>React Native 0.60+</li>
 </ul>
 
 <h4 id="mobile-platforms">Mobile Platforms</h4>
@@ -138,21 +151,23 @@ Depending on the emulated Camera you may not be able to test/evaluate the full f
   <li><a href="https://github.com/doo/scanbot-sdk-example-react-native">https://github.com/doo/scanbot-sdk-example-react-native</a></li>
 </ul>
 
+<p><a name="installation"></a></p>
 <h3 id="installation">Installation</h3>
 
 <p>The Scanbot SDK module is available as <a href="https://www.npmjs.com/package/react-native-scanbot-sdk">npm package</a>.</p>
 
-<p>You can simply install and add it to your App by following command:</p>
+<p>You can simply add it to your project by npm install:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>npm install --save react-native-scanbot-sdk
 </code></pre>
 </div>
 
-<p>After the installation of the npm package you have to link the native dependencies of the Scanbot SDK module into the native build files of your project:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>react-native link react-native-scanbot-sdk
-</code></pre>
-</div>
+<h4 id="react-native-autolinking">React Native Autolinking</h4>
+<p>Since version 4.0 <code class="highlighter-rouge">react-native-scanbot-sdk</code> requires React Native v0.60 or higher, which supports the 
+<a href="https://github.com/react-native-community/cli/blob/master/docs/autolinking.md">Autolinking</a> feature. 
+So “react-native link” should <strong>not</strong> be used anymore.
+Please <code class="highlighter-rouge">unlink</code> the native dependencies of <code class="highlighter-rouge">react-native-scanbot-sdk</code> if you are migrating from a previous version 
+to <code class="highlighter-rouge">react-native-scanbot-sdk@4.x</code>.</p>
 
 <h4 id="android-settings">Android Settings</h4>
 
@@ -165,19 +180,17 @@ Please add these repositories in your <code class="highlighter-rouge">android/bu
 <div class="language-groovy highlighter-rouge"><pre class="highlight"><code><span class="n">allprojects</span> <span class="o">{</span>
     <span class="n">repositories</span> <span class="o">{</span>
         <span class="n">mavenLocal</span><span class="o">()</span>
-        <span class="n">jcenter</span><span class="o">()</span>
         <span class="n">maven</span> <span class="o">{</span>
             <span class="c1">// All of React Native (JS, Obj-C sources, Android binaries) is installed from npm</span>
             <span class="n">url</span> <span class="s2">"$rootDir/../node_modules/react-native/android"</span>
         <span class="o">}</span>
 
+        <span class="n">google</span><span class="o">()</span>
+        <span class="n">jcenter</span><span class="o">()</span>
+
         <span class="c1">// Scanbot SDK Maven repositories:</span>
-        <span class="n">maven</span> <span class="o">{</span>
-            <span class="n">url</span> <span class="s1">'https://nexus.scanbot.io/nexus/content/repositories/releases/'</span>
-        <span class="o">}</span>
-        <span class="n">maven</span> <span class="o">{</span>
-            <span class="n">url</span> <span class="s1">'https://nexus.scanbot.io/nexus/content/repositories/snapshots/'</span>
-        <span class="o">}</span>
+        <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="s1">'https://nexus.scanbot.io/nexus/content/repositories/releases/'</span> <span class="o">}</span>
+        <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="s1">'https://nexus.scanbot.io/nexus/content/repositories/snapshots/'</span> <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
@@ -222,48 +235,48 @@ to avoid <code class="highlighter-rouge">OutOfMemoryError</code> exceptions.</p>
 </code></pre>
 </div>
 
-<h4 id="ios-settings-in-xcode">iOS Settings in Xcode</h4>
+<h4 id="ios-setup">iOS Setup</h4>
 
-<p>After installing and linking the module, your Xcode project must be configured to utilize the Scanbot SDK Framework for iOS.</p>
+<p>Please note that since version 4.0 of <code class="highlighter-rouge">react-native-scanbot-sdk</code> the iOS integration can be done only via <a href="https://cocoapods.org/">CocoaPods</a>.</p>
 
-<p>Please make sure <code class="highlighter-rouge">RNScanbotSDK.xcodeproj</code> was added correctly by <code class="highlighter-rouge">react-native link</code> command as a sub-project in Libraries folder of your project.</p>
+<p>In your <code class="highlighter-rouge">ios/Podfile</code> add the “RNScanbotSDK” pod:</p>
 
-<p>Also, <code class="highlighter-rouge">libRNScanbotSDK.a</code> should be available in the <code class="highlighter-rouge">Linked Frameworks and Libraries</code> section of your application main target.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>pod 'RNScanbotSDK', :podspec =&gt; '../node_modules/react-native-scanbot-sdk/react-native-scanbot-sdk.podspec'
+</code></pre>
+</div>
 
-<p>And last but not least, you need to add <code class="highlighter-rouge">ScanbotSDK.framework</code> to your application project’s <code class="highlighter-rouge">Embedded Binaries</code> section.</p>
+<p>The pod <code class="highlighter-rouge">RNScanbotSDK</code> defines a dependency to the pod <code class="highlighter-rouge">ScanbotSDK</code> which is the native Scanbot SDK iOS Framework.</p>
 
+<p>If you need features like OCR or MRZ Scanner you have to add the corresponding additional bundles by specifying them by following subspecs:</p>
 <ul>
-  <li>
-    <p>Open the generated Xcode project file with Xcode IDE:</p>
-
-    <p><code class="highlighter-rouge">&lt;YOUR_APP_PROJECT_PATH&gt;/ios/&lt;YOUR_APP_NAME&gt;.xcodeproj</code></p>
-  </li>
-  <li>
-    <p>Go to <code class="highlighter-rouge">TARGETS</code> settings, open the tab <code class="highlighter-rouge">General</code> and find the section <code class="highlighter-rouge">Embedded Binaries</code>. 
-Then add the <code class="highlighter-rouge">ScanbotSDK.framework</code> (situated in <code class="highlighter-rouge">node_modules/react-native-scanbot-sdk/ios</code>) to <strong>“Embedded Binaries”</strong>.
-The <code class="highlighter-rouge">ScanbotSDK.framework</code> is provided with the Scanbot SDK React Native Module. 
-The following screenshot shows correct settings of <code class="highlighter-rouge">ScanbotSDK.framework</code>:</p>
-  </li>
+  <li><code class="highlighter-rouge">OCR</code>: for the default OCR data bundle <code class="highlighter-rouge">ScanbotSDKOCRData.bundle</code> containing default language files for DE and EN</li>
+  <li><code class="highlighter-rouge">MRZ</code>: for the MRZ Scanner data bundle <code class="highlighter-rouge">ScanbotSDKMRZData.bundle</code></li>
+  <li><code class="highlighter-rouge">ALL</code>: for all available bundles (currently OCR + MRZ)</li>
 </ul>
 
-<p><a href="./assets/images/react-native_xcode_scanbot-sdk-framework.png"><img src="./assets/images/react-native_xcode_scanbot-sdk-framework.png" alt="alt text" title="Xcode ScanbotSDK.framework settings" /></a></p>
+<p>Example for <code class="highlighter-rouge">MRZ</code> subspecs/bundle:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>pod 'RNScanbotSDK', :podspec =&gt; '../node_modules/react-native-scanbot-sdk/react-native-scanbot-sdk.podspec', :subspecs =&gt; ['MRZ']
+</code></pre>
+</div>
 
-<p><strong>Please note:</strong> If  <code class="highlighter-rouge">ScanbotSDK.framework</code> is put into “Linked Frameworks and Libraries” and not into “Embedded Binaries”, 
-then the module <strong>will not work</strong>. The project will compile but your App will crash right after the start!</p>
+<p>Run:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cd ios/
+$ pod install
+</code></pre>
+</div>
 
-<p>Also, point Xcode to correct path for framework searching. Open the tab <code class="highlighter-rouge">Build Settings</code>, navigate to <code class="highlighter-rouge">Search Paths</code> 
-and add the following new path to <code class="highlighter-rouge">Framework Search Paths</code> for “Debug” and “Release”:</p>
+<p>That’s it, no manual linking required anymore! Just open the Xcode workspace (<code class="highlighter-rouge">.xcworkspace</code>) and you should be able 
+to build the native Scanbot SDK linked via CocoaPods.</p>
 
-<p><code class="highlighter-rouge">${PROJECT_DIR}/../node_modules/react-native-scanbot-sdk/ios</code></p>
+<p>The following screenshot shows the proper setup of the pod <code class="highlighter-rouge">RNScanbotSDK</code> with the resolved dependency to the pod <code class="highlighter-rouge">ScanbotSDK</code> 
+via CocoaPods using the subspec <code class="highlighter-rouge">ALL</code>:</p>
 
-<p><a href="./assets/images/react-native_xcode-framework-search-path.png"><img src="./assets/images/react-native_xcode-framework-search-path.png" alt="alt text" title="Xcode Framework search path" /></a></p>
-
-<p>Furthermore, if you are planning to use the OCR functionality of Scanbot SDK, you may also want to add the bundle <code class="highlighter-rouge">ScanbotSDKOCRData.bundle</code>.
-See the <a href="#ocr">OCR</a> section of this docs for more details.</p>
+<p><a href="./assets/images/react-native_xcode_pods.png"><img src="./assets/images/react-native_xcode_pods.png" alt="alt text" title="Xcode Pods" /></a></p>
 
 <h4 id="permissions">Permissions</h4>
 
-<p>In order to operate correctly an application that utilizes ScanbotSDK module must have all required permissions to your App. Here is a listing of those permissions:</p>
+<p>In order to operate correctly an application that utilizes ScanbotSDK module must have all required permissions to your App. 
+Here is a listing of those permissions:</p>
 
 <p><strong>Android</strong> (must be added in your <code class="highlighter-rouge">android/app/src/main/AndroidManifest.xml</code> file)</p>
 
@@ -278,7 +291,8 @@ See the <a href="#ocr">OCR</a> section of this docs for more details.</p>
   <li><code class="highlighter-rouge">NSCameraUsageDescription</code> - <em>“Privacy - Camera Usage Description”</em>. As value describe why your app wants to access the device’s camera.</li>
 </ul>
 
-<h3 id="api-reference-">API Reference <a name="api_reference"></a></h3>
+<p><a name="api_reference"></a></p>
+<h3 id="api-reference">API Reference</h3>
 
 <ul>
   <li><strong><code class="highlighter-rouge">ScanbotSdk</code></strong>
@@ -698,7 +712,7 @@ This SDK Module provides the following helper methods to keep the storage clean:
     <span class="nx">orientationLockMode</span><span class="err">:</span> <span class="nx">CameraOrientationMode</span><span class="p">,</span>
     <span class="cm">/**
     * Title suffix of the button that finishes the document scanning when multi-page scanning is enabled.
-    * The button's title has the format "# Pages", where # shows the number of images captured up to now and the
+    * The button's title has the format "%d Pages", where %d shows the number of images captured up to now and the
     * suffix "Pages" is set using this method.
     */</span>
     <span class="nx">pageCounterButtonTitle</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
@@ -791,6 +805,31 @@ This SDK Module provides the following helper methods to keep the storage clean:
     * The text color of the user guidance hints.
     */</span>
     <span class="nx">userGuidanceTextColor</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+     * Limits the maximum size of the document image. If width or height are zero, this property is effectively ignored.
+     * Where Size is 
+     * {
+     * width: number;
+     * height: number;
+     * }
+     */</span>
+    <span class="nx">documentImageSizeLimit</span><span class="err">:</span> <span class="nx">Size</span><span class="p">,</span>
+    <span class="cm">/**
+     * Hides the shutter button if set to TRUE. Shows it otherwise. Defaults to FALSE.
+     * If set to TRUE, auto-snapping is enabled and the property autoSnappingEnabled of the behaviour configuration will
+     * have no effect.
+     * Also the auto-snapping button will be hidden.
+     */</span>
+    <span class="nx">shutterButtonHidden</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span>
+    <span class="cm">/** 
+     * The text being displayed on the user-guidance label, when the scanners energy saver is activated. 
+     * iOS only.
+     */</span>
+    <span class="nx">textHintEnergySavingActive</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="cm">/**
+     * Maximum number of pages to scan. Ignored when set to null, or when `multiPageEnabled` is FALSE. Default value is null.
+     */</span>
+    <span class="nx">maxNumberOfPages</span><span class="p">?:</span> <span class="kr">number</span><span class="p">,</span>
 <span class="p">};</span>
 </code></pre>
 </div>
@@ -1509,34 +1548,32 @@ For instance, if a point has the coordinates (0.5, 0.5), it means that it is loc
 <p>The Scanbot SDK iOS Framework (included in this React Native npm package) contains the most used architectures (<code class="highlighter-rouge">arm64, armv7, x86_64, i386</code>). 
 So you can run it on all most used iOS devices as well as on simulators during the development phase. 
 To be able to submit a production build to the <strong>App Store</strong> or a test build for <strong>TestFlight</strong> you have to remove (strip away) 
-the architectures <strong><code class="highlighter-rouge">x86_64</code></strong> and <strong><code class="highlighter-rouge">i386</code></strong> from the Scanbot SDK Framework. These architectures are only for <strong>simulators</strong> and not allowed to submit to iTunes Connect.</p>
+the architectures <strong><code class="highlighter-rouge">x86_64</code></strong> and <strong><code class="highlighter-rouge">i386</code></strong> from the Scanbot SDK Framework. These architectures are only for <strong>simulators</strong> and not allowed 
+to submit to iTunes Connect.</p>
 
-<p>We provide a script for that, which can be found in:</p>
-
-<p><code class="highlighter-rouge">node_modules/react-native-scanbot-sdk/ios/ScanbotSDK.framework/strip-SBSDK-Framework.sh</code></p>
-
-<p>This script removes the unnecessary architectures from the frameworks binary, code signs the framework and adds the crash symbols (dSYM) file to your apps archive.
+<p>To do so, we provide a script <code class="highlighter-rouge">strip-SBSDK-Framework.sh</code> which is part of the <code class="highlighter-rouge">ScanbotSDK.framework</code> and can be easily integrated in the build process.
+This script removes the unnecessary architectures from the frameworks binary, code signs the framework and adds the crash symbols (dSYM) file to your apps archive.
 The final package size (IPA) of your app will then be significantly smaller than a debug version used during the development phase.</p>
 
-<p>To add this script in your build process, you will need to open the Xcode project <code class="highlighter-rouge">.xcodeproj</code> (or <code class="highlighter-rouge">.xcworkspace</code> when using CocoaPods) and apply a few changes there:</p>
+<p>To add this script in your build process, you will need to open the Xcode workspace <code class="highlighter-rouge">.xcworkspace</code> and apply a few changes there:</p>
 
 <ol>
   <li>Go to <code class="highlighter-rouge">TARGETS</code> settings and open the tab <code class="highlighter-rouge">Build Phases</code>.
-Add a new <code class="highlighter-rouge">Run Script Phase</code> and make sure this phase is <strong>below</strong> the <code class="highlighter-rouge">Embed Frameworks</code> build phase.</li>
+Add a new <code class="highlighter-rouge">Run Script Phase</code> via “+” button.</li>
   <li>Adjust this <code class="highlighter-rouge">Run Script Phase</code> with the following script data:</li>
 </ol>
 
 <p><strong>Script code</strong>:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>bash "$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/ScanbotSDK.framework/strip-SBSDK-Framework.sh"
+<div class="highlighter-rouge"><pre class="highlight"><code>bash "${PODS_ROOT}/ScanbotSDK/ScanbotSDK.framework/strip-SBSDK-Framework.sh"
 </code></pre>
 </div>
 
 <p><strong>Script Input File</strong>:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$(SRCROOT)/../node_modules/react-native-scanbot-sdk/ios/ScanbotSDK.framework.dSYM
+<div class="highlighter-rouge"><pre class="highlight"><code>${PODS_ROOT}/ScanbotSDK/ScanbotSDK.framework.dSYM
 </code></pre>
 </div>
 
-<p><a href="./assets/images/react-native_xcode_build_phases_settings.png"><img src="./assets/images/react-native_xcode_build_phases_settings.png" alt="alt text" title="Xcode Build Phases settings" /></a></p>
+<p><a href="./assets/images/react-native_xcode_strip-script_settings.png"><img src="./assets/images/react-native_xcode_strip-script_settings.png" alt="alt text" title="Xcode Build Phases settings" /></a></p>
 
 <h4 id="android">Android</h4>
 <p>The Scanbot SDK uses native libraries under the hood and supports following <a href="https://developer.android.com/ndk/guides/arch.html">ABIs</a>: 
@@ -1570,6 +1607,23 @@ It allows you to create and distribute dedicated and smaller APKs via <strong>Pl
 
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release History</h3>
+
+<h4 id="version-400-8-nov-2019">Version 4.0.0 (8 Nov 2019)</h4>
+<p>This version requires React Native 0.60 or higher as well as <a href="https://cocoapods.org/">CocoaPods</a> integration for iOS.</p>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Added official support for React Native 0.60+ with the <a href="https://github.com/react-native-community/cli/blob/master/docs/autolinking.md">Autolinking</a> feature.</li>
+      <li>Android: Migrated to <a href="https://developer.android.com/jetpack/androidx">AndroidX</a> libraries.</li>
+      <li>iOS: Added default support for <a href="https://cocoapods.org/">CocoaPods</a>. See the updated <a href="#installation">installation instructions</a> for iOS.</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded the native Scanbot Android SDK to v1.54.0 (see the <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">changelog</a>)</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="version-310-10-oct-2019">Version 3.1.0 (10 Oct 2019)</h4>
 <ul>
@@ -1762,7 +1816,7 @@ See the <a href="#ocr">OCR</a> section of this documentation for more details.</
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
 
 <div class="language-text highlighter-rouge"><pre class="highlight"><code>
-Open Source libraries used in the Scanbot SDK for Android version 1.39.52.2:
+Open Source libraries used in the Scanbot SDK for Android version 1.54.0:
 
 Android PDF Writer version 1.0.8
 Copyright (c) 2010 - 2013, Javier Santo Domingo (j-a-s-d@coderesearchlabs.com).
@@ -1972,7 +2026,7 @@ OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
 WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
 OF THIS SOFTWARE.
 
-OpenCV 3.4.5
+OpenCV 3.4.7
 Copyright © 2014, Itseez. All rights reserved.
 This library is distributed under the terms of a 3-clause BSD license: http://opencv.org/license.html.
 
@@ -2092,6 +2146,46 @@ Copyright (c) 2015 The RxAndroid authors
 
 Tesseract 4.00
 Tesseract, maintained by Google (http://code.google.com/p/tesseract-ocr/),
+
+
+Nameof C++ 0.8.3
+Copyright (c) 2016, 2018 - 2019 Daniil Goncharov
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+ZXing-C++
+C++ port of ZXing (https://github.com/nu-book/zxing-cpp)
+Copyright 2016 Nu-book Inc.
+Copyright 2016 ZXing authors
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 
 
