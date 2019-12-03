@@ -1728,6 +1728,32 @@ The output image will be a new file. The input image file will not be modified.<
 The OCR feature is a part of the Scanbot SDK <strong><a href="https://scanbot.io/sdk.html#packages">Package II</a></strong>. 
 It is based on the <em>Tesseract OCR Engine</em> with some modifications and enhancements.</p>
 
+<h4 id="preconditions-to-achieve-a-good-ocr-result">Preconditions to achieve a good OCR result</h4>
+
+<p><strong>Conditions while scanning</strong></p>
+
+<p>A perfect document for OCR is flat, straight, doesn’t show large shadows, folds, or any other objects that could distract it and is in the highest possible resolution. Our UI and algorithms do their best to help you meet these requirements. But as in photography, you can never fully get the image information back that was lost during the shot.</p>
+
+<p><strong>Languages</strong></p>
+
+<p>You can use multiple languages for OCR. But since the recognition of characters and words is a very complicated process, increasing the number of languages lowers the overall precision. With more languages, there are more results where the detected word could match. We suggest using as few languages as possible. Make sure that the language you’re trying to detect is supported by the SDK and added to the project.</p>
+
+<p><strong>Size and position</strong></p>
+
+<p>Put the document on a flat surface. Take the photo from straight above in parallel to the document to make sure that the perspective correction doesn’t need to fix much. The document should fill out the camera frame while still showing all of the text that needs to be recognized. This results in more pixels for each character that needs to be detected and hence, more detail. Skewed pages decrease the recognition quality.</p>
+
+<p><strong>Light and shadows</strong></p>
+
+<p>More ambient light is always better. The camera takes the shot at a lower ISO value, which results in less grainy photos. You should make sure that there are no visible shadows. If you have large shadows, it’s better to take the shot at an angle instead. That’s why we also don’t recommend to use the flashlight. From this low distance, it creates a light spot at the center of the document, which decreases the quality.</p>
+
+<p><strong>Focus</strong></p>
+
+<p>The document needs to be properly focused so that the characters are sharp and clear. The auto-focus of the camera works well if you meet the minimum required distance for the lens to be able to focus. Which usually starts at 5-10cm.</p>
+
+<p><strong>Typefaces</strong></p>
+
+<p>The OCR trained data is optimized for common serif and sans-serif font types. Decorative or script fonts decrease the quality of the detection a lot.</p>
+
 <p><a name="ocrLanguages"></a></p>
 <h4 id="ocr-languages-and-data-files">OCR Languages and Data Files</h4>
 
