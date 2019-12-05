@@ -372,12 +372,11 @@
 <h2 id='barcode-and-qr-code-scanner' class='heading'>Barcode and QR-Code Scanner</h2>
 
 <p>The Scanbot Barcode Scanner SDK provides ability to scan and extract content from 1D and 2D barcodes.
-You can use the mobile device&rsquo;s camera for live scanning or other image sources like still images from the photo library.</p>
+You can use the mobile device&rsquo;s camera for live scanning (<code>CMSampleBufferRef</code>) or other image sources 
+like still images from the photo library (<code>UIImage</code>).</p>
 
 <p>See the API of the class <code><a href="Classes/SBSDKBarcodeScanner.html">SBSDKBarcodeScanner</a></code>.</p>
 <h3 id='supported-barcode-types' class='heading'>Supported Barcode Types</h3>
-
-<p>Following barcode formats are currently supported:</p>
 <h4 id='1d-barcodes' class='heading'>1D Barcodes</h4>
 
 <ul>
@@ -398,6 +397,21 @@ You can use the mobile device&rsquo;s camera for live scanning or other image so
 <li>Aztec</li>
 <li>PDF-417</li>
 <li>Data Matrix</li>
+</ul>
+
+<p>💡 You might also be interested in an overview in our blog post <a href="https://scanbot.io/blog/types-of-barcodes-and-their-usage/">Types of barcodes</a>.</p>
+<h3 id='data-parsers' class='heading'>Data Parsers</h3>
+
+<p>Following data parsers are currently supported:</p>
+
+<ul>
+<li>AAMVA: Parse the <a href="https://www.aamva.org">AAMVA</a> data format from PDF-417 barcodes on US driver&rsquo;s licenses. See <code><a href="Classes/SBSDKAAMVADocumentFormat.html">SBSDKAAMVADocumentFormat</a></code>.</li>
+<li>Boarding pass data from PDF-417 barcodes. See <code><a href="Classes/SBSDKBoardingPassDocumentFormat.html">SBSDKBoardingPassDocumentFormat</a></code>.</li>
+<li>Parser for German Medical Certificates (aka. Disability Certificate or AU-Bescheinigung) coded in a PDF-417 barcode. See <code><a href="Classes/SBSDKDisabilityCertificateDocumentFormat.html">SBSDKDisabilityCertificateDocumentFormat</a></code>.</li>
+<li>Data from PDF-417 barcodes on ID Cards. See <code><a href="Classes/SBSDKIDCardPDF417DocumentFormat.html">SBSDKIDCardPDF417DocumentFormat</a></code>.</li>
+<li>Parse and extract data from XML of Data Matrix barcodes on Medical Plans (German Medikationsplan). See <code><a href="Classes/SBSDKMedicalPlanDocumentFormat.html">SBSDKMedicalPlanDocumentFormat</a></code>.</li>
+<li>Data parser of QR-Code values printed on SEPA pay forms. See <code><a href="Classes/SBSDKSEPADocumentFormat.html">SBSDKSEPADocumentFormat</a></code>.</li>
+<li>vCard data from a QR-Code (e.g. on business cards). See <code><a href="Classes/SBSDKVCardDocumentFormat.html">SBSDKVCardDocumentFormat</a></code>.</li>
 </ul>
 <h2 id='ui-components' class='heading'>UI Components</h2>
 
