@@ -1272,21 +1272,46 @@ This method <strong>does not</strong> remove any export files (PDF, TIFF) which 
 <p>The Scanbot SDK renders the given page images into a multi-page TIFF file and stores it as a file. For each DOCUMENT image a separate page is generated.</p>
 
 <div class="language-dart highlighter-rouge"><pre class="highlight"><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Page</span><span class="o">&gt;</span> <span class="n">pages</span> <span class="o">=</span> <span class="o">...</span>
-<span class="kd">var</span> <span class="n">options</span> <span class="o">=</span> <span class="n">TiffCreationOptions</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="kd">var</span> <span class="n">options</span> <span class="o">=</span> <span class="n">TiffCreationOptions</span><span class="o">(</span><span class="nl">binarized:</span> <span class="kc">true</span><span class="o">,</span> <span class="nl">dpi:</span> <span class="mi">300</span><span class="o">,</span> <span class="nl">compression:</span> <span class="n">TiffCompression</span><span class="o">.</span><span class="na">CCITT_T6</span><span class="o">);</span>
 <span class="n">Uri</span> <span class="n">tiffFileUri</span> <span class="o">=</span> <span class="n">await</span> <span class="n">ScanbotSdk</span><span class="o">.</span><span class="na">createTiff</span><span class="o">(</span><span class="n">pages</span><span class="o">,</span> <span class="n">options</span><span class="o">);</span>
 </code></pre>
 </div>
 
 <h5 id="arguments-1">Arguments:</h5>
+
 <ul>
   <li><code class="highlighter-rouge">pages</code> - a list of valid <code class="highlighter-rouge">Page</code> objects. Each <code class="highlighter-rouge">page</code> should have the cropped DOCUMENT image.</li>
-  <li><code class="highlighter-rouge">options</code> - <code class="highlighter-rouge">TiffCreationOptions(bool binarized)</code>
+  <li><code class="highlighter-rouge">options</code> - <code class="highlighter-rouge">TiffCreationOptions</code>:
     <ul>
-      <li><code class="highlighter-rouge">binarized</code> - if true, the input images will be binarized and the output TIFF file will be saved with one bit per pixel. 
-If false, the input images will be stored as-is.</li>
+      <li><code class="highlighter-rouge">binarized</code> : Optional boolean flag to create binarized (one bit encoded) black-and-white images.
+If <code class="highlighter-rouge">true</code>, the input images will be binarized and the output TIFF file will be saved with one bit per pixel.
+If <code class="highlighter-rouge">false</code>, the input images will be stored as-is. The default value is true.</li>
+      <li><code class="highlighter-rouge">dpi</code> : Dots Per Inches as optional integer value. The default value is 200 dpi. 
+Please note that the DPI value is just meta data. It does <strong>not</strong> affect the quality or the resolution of the 
+TIFF image file. The resolution of the output TIFF images will stay the same as of the input images.</li>
+      <li><code class="highlighter-rouge">compression</code> : Optional TIFF compression type. Default value is <code class="highlighter-rouge">LZW</code>. See supported types below.</li>
     </ul>
   </li>
 </ul>
+
+<p><a name="TiffCompression"></a>
+<strong>Supported TIFF compression types:</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">TiffCompression.CCITTRLE</code></li>
+  <li><code class="highlighter-rouge">TiffCompression.CCITTFAX3</code></li>
+  <li><code class="highlighter-rouge">TiffCompression.CCITT_T4</code></li>
+  <li><code class="highlighter-rouge">TiffCompression.CCITTFAX4</code></li>
+  <li><code class="highlighter-rouge">TiffCompression.CCITT_T6</code></li>
+  <li><code class="highlighter-rouge">TiffCompression.CCITTRLEW</code></li>
+  <li><code class="highlighter-rouge">TiffCompression.LZW</code></li>
+  <li><code class="highlighter-rouge">TiffCompression.PACKBITS</code></li>
+  <li><code class="highlighter-rouge">TiffCompression.DEFLATE</code></li>
+  <li><code class="highlighter-rouge">TiffCompression.ADOBE_DEFLATE</code></li>
+</ul>
+
+<p>⚠️️️ Please note that some compression types are only compatible for binarized images (1-bit encoded black &amp; white images)!
+See the list <code class="highlighter-rouge">PredefinedCompressionTypes.binarizedOnlyCompressionTypes()</code>.</p>
 
 <p><a name="ocr"></a></p>
 <h3 id="ocr---optical-character-recognition">OCR - Optical Character Recognition</h3>
@@ -1414,8 +1439,10 @@ As result the recognized text can be returned as plain text or a composed PDF fi
 </div>
 
 <ul>
-  <li><code class="highlighter-rouge">result.plainText</code> - Contains the recognized plain text.</li>
+  <li><code class="highlighter-rouge">result.plainText</code> - Contains the recognized plain text of all images.</li>
   <li><code class="highlighter-rouge">result.pdfFileUri</code> - <a href="#fileHandling">File URI</a> of the composed PDF file (<code class="highlighter-rouge">'file:///...'</code>).</li>
+  <li><code class="highlighter-rouge">result.pages</code> - A list of <code class="highlighter-rouge">OcrPage</code>s with OCR data. Each <code class="highlighter-rouge">OcrPage</code> represents OCR result of given scanned <code class="highlighter-rouge">Page</code> document image.
+You can get bounding boxes and values of recognized words, lines and paragraphs.</li>
 </ul>
 
 <h5 id="options-6">Options:</h5>
@@ -1636,6 +1663,26 @@ It allows you to create and distribute dedicated and smaller APKs <strong>via Pl
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history-and-changelog">Release History and Changelog</h2>
 
+<h4 id="version-110-9-dec-2019">Version 1.1.0 (9 Dec 2019):</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Added further TIFF options <code class="highlighter-rouge">dpi</code> and <code class="highlighter-rouge">compression</code>. See <a href="#module_ScanbotSdk.createTiff">createTiff(pages, options)</a>.</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Improved OCR API. The OCR results contain now bounding boxes and values of recognized words, lines and paragraphs. 
+See the API docs of <code class="highlighter-rouge">OcrResult.pages</code> for more details.</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>iOS: Fixed file URI handling in the native implementation of the <code class="highlighter-rouge">createPage()</code> method.</li>
+    </ul>
+  </li>
+</ul>
+
 <h4 id="version-100-6-nov-2019">Version 1.0.0 (6 Nov 2019):</h4>
 <ul>
   <li>🎉 First release.</li>
@@ -1646,7 +1693,7 @@ It allows you to create and distribute dedicated and smaller APKs <strong>via Pl
 
 <div class="language-text highlighter-rouge"><pre class="highlight"><code>
 
-Open Source libraries used in the Scanbot SDK Flutter Plugin version 1.0.0:
+Open Source libraries used in the Scanbot SDK Flutter Plugin version 1.1.0:
 
 json_serializable version 3.2.0 and json_annotation version 3.0.0
 (https://github.com/dart-lang/json_serializable/blob/master/LICENSE)
