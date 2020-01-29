@@ -302,10 +302,10 @@ Here is a listing of those permissions:</p>
       <li><a href="#module_ScanbotSDK.detectDocument">.detectDocument</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.rotateImage">.rotateImage</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.applyImageFilter">.applyImageFilter</a> - <code class="highlighter-rouge">function</code></li>
-      <li><a href="#module_ScanbotSDK.createPDF">.createPdf</a> - <code class="highlighter-rouge">function</code></li>
-      <li><a href="#module_ScanbotSDK.writeTiff">.writeTiff</a> - <code class="highlighter-rouge">function</code></li>
-      <li><a href="#module_ScanbotSDK.getOCRConfigs">.getOcrConfigs</a> - <code class="highlighter-rouge">function</code></li>
-      <li><a href="#module_ScanbotSDK.performOCR">.performOcr</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSDK.createPDF">.createPDF</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSDK.writeTIFF">.writeTIFF</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSDK.getOCRConfigs">.getOCRConfigs</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSDK.performOCR">.performOCR</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.createPage">.createPage</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.setDocumentImage">.setDocumentImage</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.detectDocumentOnPage">.detectDocumentOnPage</a> - <code class="highlighter-rouge">function</code></li>
@@ -628,7 +628,7 @@ This SDK Module provides the following helper methods to keep the storage clean:
     <span class="cm">/**
     * Controls the auto-snapping speed. Sensitivity must be within the 0..1 range.
     * A value of 1.0 triggers automatic capturing immediately, a value of 0.0 delays the automatic by 3 seconds.
-    * The default value is 0.66 (2 seconds)
+    * The default value is 0.66 (1 second).
     */</span>
     <span class="nx">autoSnappingSensitivity</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
     <span class="cm">/**
@@ -843,7 +843,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
 
 <p><img src="./assets/images/cropping.jpg" alt="alt" title="Cropping screen screenshot" /></p>
 
-<h5 id="returns">Returns</h5>
+<h4 id="returns">Returns</h4>
 <p>The promise resolves to an object with the following properties:</p>
 <ul>
   <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> if the user modified the page, <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation.</li>
@@ -914,7 +914,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
 
 <p><img src="./assets/images/barcode.jpg" alt="alt" title="Barcode scanner screenshot" /></p>
 
-<h5 id="returns-1">Returns</h5>
+<h4 id="returns-1">Returns</h4>
 <p>The promise resolves to an object with the following properties:</p>
 <ul>
   <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> if the user modified the , <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation.</li>
@@ -1011,7 +1011,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
 
 <p><img src="./assets/images/mrz.jpg" alt="alt" title="MRZ scanner screenshot" /></p>
 
-<h5 id="returns-2">Returns</h5>
+<h4 id="returns-2">Returns</h4>
 <p>The promise resolves to an object with the following properties:</p>
 <ul>
   <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> if the user modified the , <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation.</li>
@@ -1108,7 +1108,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
 
 <p>Creates a <a href="#page_object">page</a> from an image (presumably the image of an uncropped document).</p>
 
-<h5 id="returns-3">Returns</h5>
+<h4 id="returns-3">Returns</h4>
 <p>The promise resolves to a page object. As the page hasn’t been cropped yet, the <code class="highlighter-rouge">documentImageFileUri</code> and <code class="highlighter-rouge">documentPreviewImageFileUri</code> properties will be empty.</p>
 
 <p><a name="module_ScanbotSDK.setDocumentImage"></a></p>
@@ -1121,7 +1121,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
   <li><code class="highlighter-rouge">imageUri</code> - the URI of an image file with which to overwrite the page’s document image.</li>
 </ul>
 
-<h5 id="returns-4">Returns</h5>
+<h4 id="returns-4">Returns</h4>
 <p>The promise resolves to a page object with the replaced document image.</p>
 
 <p><a name="module_ScanbotSDK.detectDocumentOnPage"></a></p>
@@ -1149,7 +1149,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
   <li><code class="highlighter-rouge">imageFilter</code> - the <a href="#imageFilter">image filter</a> to apply. The special value <code class="highlighter-rouge">'NONE'</code> will remove any previously applied filter from the document image.</li>
 </ul>
 
-<h5 id="returns-5">Returns</h5>
+<h4 id="returns-5">Returns</h4>
 <p>A file URI with the preview image of the filtered document page.</p>
 
 <p><a name="module_ScanbotSDK.rotatePage"></a></p>
@@ -1180,7 +1180,7 @@ on success the cropped and perspective corrected image as a new file as well as 
 If there was no document detected the result enum provides the exact reason (noisy background, too dark, etc).
 The input image file will not be modified.</p>
 
-<h5 id="returns-6">Returns</h5>
+<h4 id="returns-6">Returns</h4>
 
 <p>Returns object with the following fields</p>
 <ul>
@@ -1197,7 +1197,7 @@ Maybe <code class="highlighter-rouge">null</code> if detection was not successfu
 <p>Rotates an image by given degrees value. As input a file URI of the image must be passed. 
 The output image will be a new file. The input image file will not be modified.</p>
 
-<h5 id="returns-7">Returns</h5>
+<h4 id="returns-7">Returns</h4>
 <p>Promise returning the <a href="#fileHandling">file URI</a> of the rotated result image.</p>
 
 <p><a name="module_ScanbotSDK.applyImageFilter"></a></p>
@@ -1212,7 +1212,7 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">filter</code> - <a href="#imageFilter">ImageFilter</a> string value.</li>
 </ul>
 
-<h5 id="returns-8">Returns</h5>
+<h4 id="returns-8">Returns</h4>
 <p>File URI to the rotated image file.</p>
 
 <p><a name="module_ScanbotSDK.createPDF"></a></p>
@@ -1226,11 +1226,36 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">pageSize</code> - <a href="#pdfPageSize">PDFPageSize</a> enum value to specify the output page size.</li>
 </ul>
 
-<h5 id="returns-9">Returns</h5>
+<h4 id="returns-9">Returns</h4>
 <p>Returns an object with the following properties:</p>
 
 <ul>
   <li><code class="highlighter-rouge">pdfFileUri</code> - file URI with the path to the created PDF file</li>
+</ul>
+
+<p><a name="module_ScanbotSDK.writeTIFF"></a></p>
+<h3 id="tiff-creation">TIFF Creation</h3>
+<h4 id="scanbotsdkwritetiffimagefileuris-string-options-promise"><code class="highlighter-rouge">ScanbotSDK.writeTIFF(imageFileUris: string[], options): Promise</code></h4>
+
+<p>The Scanbot SDK renders the given images into a multi-page TIFF file and stores it as a file. 
+For each image a separate page is generated.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">imageFileUris</code> - Input images as an array of file URIs in proper order (image element 1 =&gt; page 1, etc).</li>
+  <li><code class="highlighter-rouge">options</code> - An object containing some of the following properties:
+    <ul>
+      <li><code class="highlighter-rouge">oneBitEncoded</code> - if true, the input images will be binarized 
+and the output TIFF file will be saved with one bit per pixel. 
+If false, the input images will be stored as-is. The default value is false.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="returns-10">Returns</h4>
+<p>Returns an object with the following properties:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">tiffFileUri</code> - file URI with the path to the created TIFF file</li>
 </ul>
 
 <p><a name="ocr"></a></p>
@@ -1301,7 +1326,7 @@ You have to download and provide the desired language files in your app.</p>
 
 <p>Alternatively, to keep the app package small, you can download and provide the language files in your app <strong>on run-time</strong>.
 Implement a suitable download functionality of the desired language files + <code class="highlighter-rouge">osd.traineddata</code> file and place them 
-in the <code class="highlighter-rouge">languageDataPath</code> directory which can be determined by the <a href="#module_ScanbotSDK.getOCRConfigs"><code class="highlighter-rouge">getOcrConfigs</code></a> method on run-time.</p>
+in the <code class="highlighter-rouge">languageDataPath</code> directory which can be determined by the <a href="#module_ScanbotSDK.getOCRConfigs"><code class="highlighter-rouge">getOCRConfigs</code></a> method on run-time.</p>
 
 <h4 id="language-codes">Language Codes</h4>
 <p>The Tesseract language data files are identified by a <strong>3-letter</strong> language code. For example:</p>
@@ -1340,7 +1365,7 @@ As result the recognized text can be returned as plain text or a composed PDF fi
   <li><code class="highlighter-rouge">languages</code> - An array with OCR languages of the text to be recognized (e.g. <code class="highlighter-rouge">["en", "de"]</code>).
 The number of languages has an impact on the performance - the more languages, the slower the recognition process.
 The OCR operation will fail with an error if some of the specified languages are missing.
-Please use the <a href="#module_ScanbotSDK.getOCRConfigs">getOcrConfigs</a> function to make sure that desired languages are installed.</li>
+Please use the <a href="#module_ScanbotSDK.getOCRConfigs">getOCRConfigs</a> function to make sure that desired languages are installed.</li>
   <li><code class="highlighter-rouge">options</code> - an object containing some of the following properties:
     <ul>
       <li><code class="highlighter-rouge">outputFormat</code> - <a href="#ocrOutputFormat">OcrOutputFormat</a> enum value to specify the result.</li>
@@ -1348,7 +1373,7 @@ Please use the <a href="#module_ScanbotSDK.getOCRConfigs">getOcrConfigs</a> func
   </li>
 </ul>
 
-<h5 id="returns-10">Returns</h5>
+<h4 id="returns-11">Returns</h4>
 <p>The promise resolves to an object with the following properties:</p>
 
 <ul>
@@ -1463,7 +1488,7 @@ Please use the <a href="#module_ScanbotSDK.getOCRConfigs">getOcrConfigs</a> func
 
 <p>Use this function to get Scanbot SDK OCR properties of the current App installation.</p>
 
-<h5 id="returns-11">Returns</h5>
+<h4 id="returns-12">Returns</h4>
 <p>Returns an object with the following properties:</p>
 
 <ul>
