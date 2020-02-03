@@ -252,9 +252,6 @@
                 <a class="nav-group-task-link" href="../Constants.html#/c:@SBSDKBarcodeTypeITF">SBSDKBarcodeTypeITF</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Constants.html#/c:@SBSDKBarcodeTypeMaxicode">SBSDKBarcodeTypeMaxicode</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Constants.html#/c:@SBSDKBarcodeTypePDF417">SBSDKBarcodeTypePDF417</a>
               </li>
               <li class="nav-group-task">
@@ -271,9 +268,6 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Constants.html#/c:@SBSDKBarcodeTypeUPCE">SBSDKBarcodeTypeUPCE</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Constants.html#/c:@SBSDKBarcodeTypeUPCEANExtension">SBSDKBarcodeTypeUPCEANExtension</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Constants.html#/c:@SBSDKBarcodeTypeUnknown">SBSDKBarcodeTypeUnknown</a>
@@ -469,7 +463,7 @@ or SampleBufferRef, result is incapsulated in an array of SBSDKBarcodeScannerRes
                         <p>Creates an SBSDKBarcodeScanner that accumulates multiple frames before returning a detection result.
 The barcode scanner&rsquo;s detect* methods will return empty results until they&rsquo;ve been called the
 given number of times. Then, they will perform detection on the frame with the least
-amount of blur. Intended for use with live detection.</p>
+amount of blur. Intended for using with live detection.</p>
 
                       </div>
                       <div class="declaration">
@@ -535,20 +529,24 @@ amount of blur. Intended for use with live detection.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Search and decode specified types of bar codes on given image.</p>
+                        <p>Search and decode specified types of bar codes on given image.
+Strong recommendation is to use this method with static image barcode detection and not live detection.
+The reason is that video stream returns rotated image, so for example for portrait device orientation, every frame returned will be in landscape left orientation.
+This method does not handle this orientation difference.
+For live detection using <code>detectBarCodesOnImage:orientation:inRect:</code> or <code>detectBarCodesOnSampleBuffer:orientation:inRect:</code> is more preferable.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nf">detectBarCodesOnImage</span><span class="p">:</span>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nf">detectBarCodesOnImage</span><span class="p">:</span>
     <span class="p">(</span><span class="n">nonnull</span> <span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nv">image</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">detectBarCodes</span><span class="p">(</span><span class="n">on</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">detectBarCodes</span><span class="p">(</span><span class="n">on</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span><span class="p">]?</span></code></pre>
 
                         </div>
                       </div>
@@ -603,21 +601,25 @@ amount of blur. Intended for use with live detection.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Search and decode specified types of bar codes on given image.</p>
+                        <p>Search and decode specified types of bar codes on given image.
+Strong recommendation is to use this method with static image barcode detection and not live detection.
+The reason is that video stream returns rotated image, so for example for portrait device orientation, every frame returned will be in landscape left orientation.
+This method does not handle this orientation difference.
+For live detection using <code>detectBarCodesOnImage:orientation:inRect:</code> or <code>detectBarCodesOnSampleBuffer:orientation:inRect:</code> is more preferable.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span>
     <span class="nf">detectBarCodesOnImage</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nv">image</span>
                    <span class="nf">inRect</span><span class="p">:(</span><span class="n">CGRect</span><span class="p">)</span><span class="nv">rect</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">detectBarCodes</span><span class="p">(</span><span class="n">on</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">,</span> <span class="k">in</span> <span class="nv">rect</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">detectBarCodes</span><span class="p">(</span><span class="n">on</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">,</span> <span class="k">in</span> <span class="nv">rect</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span><span class="p">]?</span></code></pre>
 
                         </div>
                       </div>
@@ -672,14 +674,17 @@ amount of blur. Intended for use with live detection.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Search and decode specified types of bar codes on given image.</p>
+                        <p>Search and decode specified types of bar codes on given image.
+This function is intended to be used use with live detection.
+Video stream from device returns a rotated image, so for example for portrait device orientation, every frame returned will be in landscape left orientation.
+This function handles these orientation differences, so you shouldn&rsquo;t fix or rotate the input image.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span>
     <span class="nf">detectBarCodesOnImage</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nv">image</span>
               <span class="nf">orientation</span><span class="p">:(</span><span class="n">AVCaptureVideoOrientation</span><span class="p">)</span><span class="nv">videoOrientation</span>
                    <span class="nf">inRect</span><span class="p">:(</span><span class="n">CGRect</span><span class="p">)</span><span class="nv">rect</span><span class="p">;</span></code></pre>
@@ -687,7 +692,7 @@ amount of blur. Intended for use with live detection.</p>
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">detectBarCodes</span><span class="p">(</span><span class="n">on</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">,</span> <span class="n">orientation</span> <span class="nv">videoOrientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span><span class="p">,</span> <span class="k">in</span> <span class="nv">rect</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">detectBarCodes</span><span class="p">(</span><span class="n">on</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">,</span> <span class="n">orientation</span> <span class="nv">videoOrientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span><span class="p">,</span> <span class="k">in</span> <span class="nv">rect</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span><span class="p">]?</span></code></pre>
 
                         </div>
                       </div>
@@ -715,7 +720,7 @@ amount of blur. Intended for use with live detection.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>Video frame orientation.</p>
+                                  <p>Video frame orientation. Should be the orientation that the device currently has, not actual image orientation.</p>
                                 </div>
                               </td>
                             </tr>
@@ -727,7 +732,7 @@ amount of blur. Intended for use with live detection.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>Rectangle in image coordinates in which to perform the search. Must be inside the image.</p>
+                                  <p>Rectangle in image coordinates in which to perform the search. Must be within the image frame.</p>
                                 </div>
                               </td>
                             </tr>
@@ -754,21 +759,26 @@ amount of blur. Intended for use with live detection.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Search and decode specified types of bar codes from sample buffer reference.</p>
+                        <p>Search and decode specified types of bar codes from sample buffer reference.
+This function is intended to be used with live detection.
+Video stream from device returns a rotated image, so for example for portrait device orientation, every frame returned will be in landscape left orientation.
+This function handles these orientation differences, so you shouldn&rsquo;t fix or rotate the input buffer.
+Keep in mind, that the buffer received from the video stream is handled by the system. So in some cases it might be cleaned or changed by the system
+before recognition occurs. You may convert the buffer to UIImage upon receiving it and use <code>detectBarCodesOnImage:orientation:inRect:</code> function, if that is an issue.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span>
     <span class="nf">detectBarCodesOnSampleBuffer</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">CMSampleBufferRef</span><span class="p">)</span><span class="nv">sampleBuffer</span>
                      <span class="nf">orientation</span><span class="p">:(</span><span class="n">AVCaptureVideoOrientation</span><span class="p">)</span><span class="nv">videoOrientation</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">detectBarCodes</span><span class="p">(</span><span class="n">on</span> <span class="nv">sampleBuffer</span><span class="p">:</span> <span class="kt">CMSampleBuffer</span><span class="p">,</span> <span class="n">orientation</span> <span class="nv">videoOrientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">detectBarCodes</span><span class="p">(</span><span class="n">on</span> <span class="nv">sampleBuffer</span><span class="p">:</span> <span class="kt">CMSampleBuffer</span><span class="p">,</span> <span class="n">orientation</span> <span class="nv">videoOrientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span><span class="p">]?</span></code></pre>
 
                         </div>
                       </div>
@@ -808,7 +818,7 @@ amount of blur. Intended for use with live detection.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>Video frame orientation.</p>
+                                  <p>Video frame orientation. Should be the orientation that the device currently has, not actual image orientation.</p>
                                 </div>
                               </td>
                             </tr>
@@ -835,14 +845,19 @@ amount of blur. Intended for use with live detection.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Search and decode specified types of bar codes from sample buffer reference.</p>
+                        <p>Search and decode specified types of bar codes from sample buffer reference.
+This function is intended to be used with live detection.
+Video stream from device returns a rotated image, so for example for portrait device orientation, every frame returned will be in landscape left orientation.
+This function handles these orientation differences, so you shouldn&rsquo;t fix or rotate the input buffer.
+Keep in mind, that the buffer received from the video stream is handled by the system. So in some cases it might be cleaned or changed by the system
+before recognition occurs. You may convert the buffer to UIImage upon receiving it and use <code>detectBarCodesOnImage:orientation:inRect:</code> function, if that is an issue.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span>
     <span class="nf">detectBarCodesOnSampleBuffer</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">CMSampleBufferRef</span><span class="p">)</span><span class="nv">sampleBuffer</span>
                      <span class="nf">orientation</span><span class="p">:(</span><span class="n">AVCaptureVideoOrientation</span><span class="p">)</span><span class="nv">videoOrientation</span>
                           <span class="nf">inRect</span><span class="p">:(</span><span class="n">CGRect</span><span class="p">)</span><span class="nv">rect</span><span class="p">;</span></code></pre>
@@ -850,7 +865,7 @@ amount of blur. Intended for use with live detection.</p>
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">detectBarCodes</span><span class="p">(</span><span class="n">on</span> <span class="nv">sampleBuffer</span><span class="p">:</span> <span class="kt">CMSampleBuffer</span><span class="p">,</span> <span class="n">orientation</span> <span class="nv">videoOrientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span><span class="p">,</span> <span class="k">in</span> <span class="nv">rect</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">detectBarCodes</span><span class="p">(</span><span class="n">on</span> <span class="nv">sampleBuffer</span><span class="p">:</span> <span class="kt">CMSampleBuffer</span><span class="p">,</span> <span class="n">orientation</span> <span class="nv">videoOrientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span><span class="p">,</span> <span class="k">in</span> <span class="nv">rect</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span><span class="p">]?</span></code></pre>
 
                         </div>
                       </div>
@@ -878,7 +893,7 @@ amount of blur. Intended for use with live detection.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>Video frame orientation.</p>
+                                  <p>Video frame orientation. Should be the orientation that the device currently has, not actual image orientation.</p>
                                 </div>
                               </td>
                             </tr>
@@ -917,20 +932,20 @@ amount of blur. Intended for use with live detection.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This method is used only in purposes of debugging.</p>
+                        <p>This method is used only for debugging.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nf">showOutput</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">CMSampleBufferRef</span><span class="p">)</span><span class="nv">sampleBuffer</span>
-                    <span class="nf">orientation</span><span class="p">:(</span><span class="n">AVCaptureVideoOrientation</span><span class="p">)</span><span class="nv">videoOrientation</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nf">showOutput</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">CMSampleBufferRef</span><span class="p">)</span><span class="nv">sampleBuffer</span>
+                     <span class="nf">orientation</span><span class="p">:(</span><span class="n">AVCaptureVideoOrientation</span><span class="p">)</span><span class="nv">videoOrientation</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">showOutput</span><span class="p">(</span><span class="n">_</span> <span class="nv">sampleBuffer</span><span class="p">:</span> <span class="kt">CMSampleBuffer</span><span class="p">,</span> <span class="n">orientation</span> <span class="nv">videoOrientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">showOutput</span><span class="p">(</span><span class="n">_</span> <span class="nv">sampleBuffer</span><span class="p">:</span> <span class="kt">CMSampleBuffer</span><span class="p">,</span> <span class="n">orientation</span> <span class="nv">videoOrientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -1002,6 +1017,40 @@ amount of blur. Intended for use with live detection.</p>
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKBarcodeScanner(py)enableHighSensitivityMode"></a>
+                    <a name="//apple_ref/objc/Property/enableHighSensitivityMode" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScanner(py)enableHighSensitivityMode">enableHighSensitivityMode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A parameter, that switches scanner to high sensitivity detection. Detects barcodes more often, but can have more false-positives results.
+Generally, it is recommended to set this parameter to <code>false</code> during live detection, but have it enabled for static image recognition.
+Default is false.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">enableHighSensitivityMode</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">enableHighSensitivityMode</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -1010,7 +1059,7 @@ amount of blur. Intended for use with live detection.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2019-12-17)</p>
+      <p>&copy; 2020 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2020-02-03)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
