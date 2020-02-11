@@ -63,8 +63,6 @@
 
 <p>This documentation is for the <strong>latest release</strong> version of the Scanbot SDK Cordova Plugin (<code class="highlighter-rouge">cordova-plugin-scanbot-sdk@3.x</code>).</p>
 
-<p>If you are looking for the docs of the old deprecated version 1.x, it can still be found <a href="https://scanbotsdk.github.io/documentation/cordova/v1.x/">here</a>.</p>
-
 <h3 id="introduction">Introduction</h3>
 <p>The Scanbot SDK brings scanning and document creation capabilities to your mobile apps.
 It contains modules which are individually licensable as license packages.
@@ -1673,8 +1671,8 @@ The output image will be a new file. The input image file will not be modified.<
 
 <h5 id="options-14">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">]</span>
-  <span class="na">pageSize</span><span class="p">:</span> <span class="s2">"FIXED_A4"</span>
+  <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">],</span>
+  <span class="na">pageSize</span><span class="p">:</span> <span class="s1">'FIXED_A4'</span>
 <span class="p">};</span>
 </code></pre>
 </div>
@@ -1711,15 +1709,44 @@ The output image will be a new file. The input image file will not be modified.<
 <h5 id="options-15">Options:</h5>
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">,</span> <span class="s1">'file:///...'</span><span class="p">],</span>
-  <span class="na">oneBitEncoded</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+  <span class="na">oneBitEncoded</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">dpi</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+  <span class="na">compression</span><span class="p">:</span> <span class="s1">'LZW'</span>
 <span class="p">};</span>
 </code></pre>
 </div>
 
 <ul>
-  <li><code class="highlighter-rouge">options.images</code> - Input images as an array of file URIs in proper order (image element 1 =&gt; page 1, etc).</li>
-  <li><code class="highlighter-rouge">options.oneBitEncoded</code> - if true, the input images will be binarized and the output TIFF file will be saved with one bit per pixel. If false, the input images will be stored as-is. The default value is false.</li>
+  <li><code class="highlighter-rouge">options.images</code> : Input images as an array of file URIs in proper order (image element 1 =&gt; page 1, etc).</li>
+  <li><code class="highlighter-rouge">options.oneBitEncoded</code> : Optional boolean flag. If <code class="highlighter-rouge">true</code>, the input images will be binarized and the output 
+TIFF file will be saved with one bit per pixel. If <code class="highlighter-rouge">false</code>, the input images will be stored as-is. The default value is false.</li>
+  <li><code class="highlighter-rouge">options.dpi</code> : Optional integer value for Dots Per Inches. The default value is <code class="highlighter-rouge">200</code> dpi.</li>
+  <li><code class="highlighter-rouge">options.compression</code> : Optional <a href="#tiffCompressionTypes">TIFF compression type</a>. The default value depends on the <code class="highlighter-rouge">oneBitEncoded</code> flag.
+<code class="highlighter-rouge">CCITT_T6</code> (CCITT Fax 4) is the default value for <strong>binarized</strong> (<code class="highlighter-rouge">oneBitEncoded=true</code>) images. 
+For <strong>color</strong> images (<code class="highlighter-rouge">oneBitEncoded=false</code>) the default value is <code class="highlighter-rouge">ADOBE_DEFLATE</code> (ZIP).</li>
 </ul>
+
+<p><a name="tiffCompressionTypes"></a></p>
+<h4 id="tiff-compression-types">TIFF Compression Types</h4>
+
+<p>Following TIFF compression types are supported:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">NONE</code> : No compression.</li>
+  <li><code class="highlighter-rouge">CCITT_T6</code> : “CCITT Fax 4” compression type. Most common and recommended type for binarized (1-bit) black and white images to get achieve small TIFF file size.</li>
+  <li><code class="highlighter-rouge">ADOBE_DEFLATE</code> : “ZIP” compression type. Most common type for color images.</li>
+  <li><code class="highlighter-rouge">CCITTRLE</code></li>
+  <li><code class="highlighter-rouge">CCITTFAX3</code></li>
+  <li><code class="highlighter-rouge">CCITT_T4</code></li>
+  <li><code class="highlighter-rouge">CCITTFAX4</code></li>
+  <li><code class="highlighter-rouge">CCITTRLEW</code></li>
+  <li><code class="highlighter-rouge">LZW</code></li>
+  <li><code class="highlighter-rouge">PACKBITS</code></li>
+  <li><code class="highlighter-rouge">DEFLATE</code></li>
+</ul>
+
+<p>⚠️ <strong>Please note</strong> that the following compression types are only compatible for <strong>binarized</strong> images (1-bit encoded black &amp; white images):
+<code class="highlighter-rouge">CCITTRLE</code>, <code class="highlighter-rouge">CCITTFAX3</code>, <code class="highlighter-rouge">CCITT_T4</code>, <code class="highlighter-rouge">CCITTFAX4</code>, <code class="highlighter-rouge">CCITT_T6</code>, <code class="highlighter-rouge">CCITTRLEW</code>.</p>
 
 <p><a name="ocr"></a></p>
 <h3 id="ocr---optical-character-recognition">OCR - Optical Character Recognition</h3>
@@ -2232,6 +2259,21 @@ It allows you to create and distribute dedicated and smaller APKs <strong>via Pl
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release History</h2>
 
+<h4 id="version-330-11-feb-2020">Version 3.3.0 (11 Feb 2020):</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Android &amp; iOS: Added support for <a href="#tiffCompressionTypes">TIFF compression types</a> and for defining custom DPI value as TIFF meta data. 
+See the new options <code class="highlighter-rouge">compression</code> and <code class="highlighter-rouge">dpi</code> of the <a href="#module_ScanbotSdk.writeTiff">writeTiff()</a> method.</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded the native Scanbot Android SDK to v1.39.56.3.</li>
+    </ul>
+  </li>
+</ul>
+
 <h4 id="version-323-4-feb-2020">Version 3.2.3 (4 Feb 2020):</h4>
 <ul>
   <li>🚀 Improvements:
@@ -2539,14 +2581,14 @@ Please note that only the <strong>new created</strong> image files will contain 
   <li>Minor bug fixes and improvements</li>
 </ul>
 
-<h4 id="release-history-for-the-deprecated-version-1x">Release History for the Deprecated Version 1.x</h4>
+<h4 id="release-history-for-version-1x">Release History for Version 1.x</h4>
 <p>See the <a href="https://scanbotsdk.github.io/documentation/cordova/v1.x/#releaseHistory">v1.x documentation</a></p>
 
 <p><a name="librariesLicenses"></a></p>
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
 
 <div class="language-text highlighter-rouge"><pre class="highlight"><code>
-Open Source libraries used in the Scanbot SDK for Android version 1.39.52.2:
+Open Source libraries used in the Scanbot SDK for Android version 1.39.56.3:
 
 Android PDF Writer version 1.0.8
 Copyright (c) 2010 - 2013, Javier Santo Domingo (j-a-s-d@coderesearchlabs.com).
