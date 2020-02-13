@@ -1,13 +1,1501 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
   <meta charset="utf-8">
-  <title>Barcode Scanner SDK Cordova Plugin</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Scanbot Barcode Scanner SDK Cordova Plugin</title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="/documentation/barcode-scanner-sdk/cordova/assets/main.css">
+  <link rel="canonical" href="https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/cordova/">
+  <link rel="alternate" type="application/rss+xml" title="Scanbot Barcode Scanner SDK Cordova Plugin" href="/documentation/barcode-scanner-sdk/cordova/feed.xml">
+  
+  
 </head>
 
-<body>
-</body>
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/documentation/barcode-scanner-sdk/cordova/">Scanbot Barcode Scanner SDK Cordova Plugin</a>
+
+    <nav class="site-nav">
+      <span class="menu-icon">
+        <svg viewBox="0 0 18 15" width="18px" height="15px">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </span>
+
+      <div class="trigger">
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="scanbot-barcode-scanner-sdk-for-cordova">Scanbot Barcode Scanner SDK for Cordova</h2>
+
+<h3 id="introduction">Introduction</h3>
+<p>The <a href="https://scanbot.io/sdk">Scanbot Barcode Scanner SDK</a> brings barcode scanning capabilities to your mobile apps.</p>
+
+<p>The Cordova plugin <a href="https://www.npmjs.com/package/cordova-plugin-scanbot-barcode-scanner"><code class="highlighter-rouge">cordova-plugin-scanbot-barcode-scanner</code></a> 
+provides the implementation of the native Scanbot Barcode Scanner SDK for Android and iOS.</p>
+
+<p>Following functionality is covered by this Cordova plugin:</p>
+
+<ul>
+  <li>Scanning of 1D and 2D barcodes via ready-to-use scanner UI</li>
+  <li>Recognition of 1D and 2D barcodes on still images (e.g. JPG files)</li>
+  <li>Support for multiple barcode scanning and recognition</li>
+</ul>
+
+<h3 id="supported-barcode-types">Supported Barcode Types</h3>
+<h4 id="1d-barcodes">1D Barcodes</h4>
+<ul>
+  <li>Code 39</li>
+  <li>Code 93</li>
+  <li>Code 128</li>
+  <li>Codabar</li>
+  <li>UPC-A</li>
+  <li>UPC-E</li>
+  <li>EAN-8</li>
+  <li>EAN-13</li>
+  <li>ITF (Interleaved 2 of 5)</li>
+</ul>
+
+<h4 id="2d-barcodes">2D Barcodes</h4>
+<ul>
+  <li>QR-Code</li>
+  <li>Aztec</li>
+  <li>PDF-417</li>
+  <li>Data Matrix</li>
+</ul>
+
+<p>💡 You might also be interested in an overview in our blog post <a href="https://scanbot.io/blog/types-of-barcodes-and-their-usage/">Types of barcodes</a>.</p>
+
+<h3 id="requirements">Requirements</h3>
+
+<h4 id="dev-tools">Dev Tools</h4>
+
+<ul>
+  <li>Node.js, npm</li>
+  <li><a href="https://www.npmjs.com/package/cordova">Cordova CLI</a> 9.x+</li>
+  <li>Cordova Platforms:
+    <ul>
+      <li><a href="https://www.npmjs.com/package/cordova-android">cordova-android</a> 8.1+</li>
+      <li><a href="https://www.npmjs.com/package/cordova-ios">cordova-ios</a> 5.1+</li>
+    </ul>
+  </li>
+  <li>For Android apps:
+    <ul>
+      <li>Android SDK (API Level 21+), Platforms and Developer Tools</li>
+      <li><a href="https://developer.android.com/jetpack/androidx">AndroidX</a> enabled Cordova Android project. 
+Please note that this plugin <strong>does not work</strong> with the deprecated <em>Android Support Libs</em>.</li>
+    </ul>
+  </li>
+  <li>For iOS apps: Mac OS with latest Xcode and Command Line Tools</li>
+</ul>
+
+<h4 id="mobile-platforms">Mobile Platforms</h4>
+
+<ul>
+  <li>Android 5.0 (API Level 21) and higher</li>
+  <li>iOS 9 and higher</li>
+</ul>
+
+<p>Please note:</p>
+
+<ul>
+  <li>This Plugin and the Scanbot Barcode Scanner SDK are available only for Android and iOS</li>
+  <li>We <strong>don’t support</strong> rooted Android devices (custom ROMs)</li>
+  <li>This Plugin <strong>does not work</strong> on other platforms like Windows Phone, Desktop or Web Apps</li>
+</ul>
+
+<h4 id="mobile-devices">Mobile Devices</h4>
+<ul>
+  <li>Smartphones and Tablets with a <strong>rear-facing camera with autofocus</strong></li>
+  <li>Supported CPUs and Architectures:
+    <ul>
+      <li>Android: <code class="highlighter-rouge">armeabi-v7, arm64-v8a, x86, x86_64</code></li>
+      <li>iOS: <code class="highlighter-rouge">arm64, armv7, x86_64, i386</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="no-internet-connection-required">No Internet Connection Required</h4>
+<p><strong>The Scanbot Barcode Scanner SDK works completely offline.</strong> It doesn’t even contain any networking code. 
+This can easily be verified by routing all networking traffic coming from the app through a proxy. 
+All data generated by the Scanbot Barcode Scanner SDK is only stored on the end users device and in absolutely no case ever 
+transferred to a server / cloud service controlled by us. You as the customer will need to take care of uploading 
+the scans / data to your backend, if desired.</p>
+
+<h4 id="simulators--emulators">Simulators / Emulators</h4>
+<p>While it is possible to test your App with the Scanbot Barcode Scanner SDK Plugin on simulators/emulators, we strongly recommend to use real Android/iOS devices. 
+Depending on the emulated Camera you may not be able to test/evaluate the full functionality of the Scanbot Barcode Scanner SDK Plugin.</p>
+
+<h3 id="example-apps">Example Apps</h3>
+
+<p>Check out our example apps on GitHub:</p>
+
+<ul>
+  <li><a href="https://github.com/doo/scanbot-barcode-scanner-sdk-example-cordova-ionic">Example app based on Cordova + Ionic</a></li>
+</ul>
+
+<p><a name="gettingStarted"></a></p>
+<h2 id="getting-started">Getting Started</h2>
+
+<h3 id="installation">Installation</h3>
+
+<p>The Scanbot Barcode Scanner SDK Cordova Plugin is available as an npm package 
+<a href="https://www.npmjs.com/package/cordova-plugin-scanbot-barcode-scanner"><code class="highlighter-rouge">cordova-plugin-scanbot-barcode-scanner</code></a>.</p>
+
+<p>You can simply install and add it to your Cordova project by following command:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cordova plugin add cordova-plugin-scanbot-barcode-scanner
+</code></pre>
+</div>
+
+<p>Or in an <a href="https://ionicframework.com">Ionic</a> based projects:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ ionic cordova plugin add cordova-plugin-scanbot-barcode-scanner
+</code></pre>
+</div>
+
+<h4 id="permissions">Permissions</h4>
+
+<p>During the installation this plugin will try to add all required permissions to your projects automatically. 
+Here is a listing of those permissions to verify:</p>
+
+<ul>
+  <li>
+    <p><strong>Android</strong> (will be added in your <code class="highlighter-rouge">AndroidManifest.xml</code> file):</p>
+
+    <p><code class="highlighter-rouge">&lt;uses-permission android:name="android.permission.CAMERA" /&gt;</code> - This permission is used for the camera views.</p>
+  </li>
+  <li>
+    <p><strong>iOS</strong> (will be added in your <code class="highlighter-rouge">Info.plist</code> file):</p>
+
+    <p><code class="highlighter-rouge">NSCameraUsageDescription</code> - <em>“Privacy - Camera Usage Description”</em>. As value describe why your app wants to access the camera.
+By default an empty string value will be added. You can change this value in the <code class="highlighter-rouge">config.xml</code> file of your Cordova project - see <code class="highlighter-rouge">CAMERA_USAGE_DESCRIPTION</code>.</p>
+  </li>
+</ul>
+
+<p><a name="apiReference"></a></p>
+<h3 id="api-reference">API Reference</h3>
+
+<ul>
+  <li><strong><code class="highlighter-rouge">ScanbotBarcodeSdk</code></strong>
+    <ul>
+      <li><a href="#scanbotBarcodeSdk.initializeSdk">.initializeSdk(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#scanbotBarcodeSdk.startBarcodeScanner">.startBarcodeScanner(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#scanbotBarcodeSdk.detectBarcodesOnImage">.detectBarcodesOnImage(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#scanbotBarcodeSdk.getLicenseInfo">.getLicenseInfo()</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#scanbotBarcodeSdk.cleanup">.cleanup()</a> - <code class="highlighter-rouge">function</code></li>
+    </ul>
+  </li>
+  <li><strong><code class="highlighter-rouge">ScanbotBarcodeSdk</code> promise-based API</strong>
+    <ul>
+      <li><a href="#promisify">ScanbotBarcodeSdk.promisify()</a> - <code class="highlighter-rouge">function</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p><a name="promisify"></a></p>
+<h3 id="promise-based-api">Promise-based API</h3>
+<p>The API as presented in the documentation uses the Cordova-style plugin callback signature, where the success and 
+error callbacks are always passed as the first and second argument to each plugin method.</p>
+
+<p>The <code class="highlighter-rouge">ScanbotBarcodeSdk.promisify()</code> method returns an object that has all the functions of <code class="highlighter-rouge">ScanbotBarcodeSdk</code> 
+but with a promisified signature, that is, where every method returns a <code class="highlighter-rouge">Promise</code>, instead of taking success/error 
+callbacks as parameters. The promise-based API is only available when there is a global <code class="highlighter-rouge">Promise</code> function provided 
+either by the runtime or by a polyfill. The arrow-style and async/await syntaxes are available only with transpilation, 
+which is available by default to Ionic projects thanks to webpack and Babel.</p>
+
+<p>An example with <code class="highlighter-rouge">initializeSdk(success, error, options)</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">//------ Cordova-style call with callbacks ----------------</span>
+<span class="nx">ScanbotBarcodeSdk</span><span class="p">.</span><span class="nx">initializeSdk</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// success</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// error</span>
+<span class="p">},</span> <span class="nx">options</span><span class="p">);</span>
+
+
+<span class="c1">//---------- Promise-style with arrow functions -----------</span>
+<span class="nx">ScanbotBarcodeSdk</span><span class="p">.</span><span class="nx">promisify</span><span class="p">().</span><span class="nx">initializeSdk</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// success</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// error</span>
+<span class="p">});</span>
+
+
+<span class="c1">//---------- async/await style (recommended) --------------</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">promisify</span><span class="p">().</span><span class="nx">initializeSdk</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+  <span class="c1">// success</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// error</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><a name="scanbotBarcodeSdk.initializeSdk"></a></p>
+<h3 id="initialize-sdk">Initialize SDK</h3>
+<h4 id="scanbotbarcodesdkinitializesdksuccesscallback-errorcallback-options">ScanbotBarcodeSdk.initializeSdk(successCallback, errorCallback, options)</h4>
+
+<p>The Scanbot Barcode Scanner SDK must be initialized before usage. Make sure to call the initialization after 
+the <code class="highlighter-rouge">deviceready</code> Cordova event has been fired.</p>
+
+<p>Following arguments can be passed as options on initialization:</p>
+
+<p><strong>Options:</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">licenseKey</code>: Your <a href="#licenseKey">license key</a> for the Scanbot Barcode Scanner SDK.</li>
+  <li><code class="highlighter-rouge">loggingEnabled</code>: Optional <a href="#logging">logging</a> flag. Recommended enabling for debug builds.</li>
+  <li><code class="highlighter-rouge">storageBaseDirectory</code>: Optional directory as file URI to overwrite the default <a href="#storage">storage directory</a> 
+of the Scanbot Barcode Scanner SDK. The SDK stores the optional snapped images in this folder.</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// Please note: this is just an example license key string (it's not a valid license)</span>
+<span class="kd">var</span> <span class="nx">licenseKey</span> <span class="o">=</span> 
+    <span class="s2">"fXbN2PmyqEAZ+btdkSIS36TuX2j/EE5qxVNcZMXYErbLQ"</span> <span class="o">+</span>
+    <span class="s2">"3OBnE10aOQxYI8L4UKwHiZ63jthvoFwUevttctBk0wVJ7Z"</span> <span class="o">+</span>
+    <span class="s2">"+Psz3/Ry8w7pXvfpB1o+JrnzGGcfwBnRi/5raQ2THDeokR"</span> <span class="o">+</span>
+    <span class="s2">"RB1keky2VBOFYbCfYt3Hqms5txF2z70PE/SBTMTIVuxL7q"</span> <span class="o">+</span>
+    <span class="s2">"1xcHDHclbEBriDtrHw8Pmhh9FqTg/r/4kRN/oEX37QGp+Y"</span> <span class="o">+</span>
+    <span class="s2">"3ogwIBbSmV+Cv+VuwtI31uXY3/GkyN/pSJZspIl+exwQDv"</span> <span class="o">+</span>
+    <span class="s2">"O0O1/R/oAURpfM4ydaWReRJtjW8+b1r9rUgPERguaXfcse"</span> <span class="o">+</span>
+    <span class="s2">"HlnclItgDfBHzUUFJJU/g==\nU2NhbmJvdFNESwppby5zY"</span> <span class="o">+</span>
+    <span class="s2">"2FuYm90LmRlbW8ueGFtYXJpbgoxNDg0NjExMTk5CjcxNjc"</span> <span class="o">+</span>
+    <span class="s2">"KMw==\n"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">licenseKey</span><span class="p">:</span> <span class="s1">'&lt;YOUR_SCANBOT_SDK_LICENSE_KEY&gt;'</span><span class="p">,</span>
+  <span class="na">loggingEnabled</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">storageBaseDirectory</span><span class="p">:</span> <span class="s1">'file:///some/optional/custom/storage-folder/'</span>
+<span class="p">};</span>
+
+<span class="nx">ScanbotBarcodeSdk</span><span class="p">.</span><span class="nx">initializeSdk</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// SDK initialized</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+  <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Error initializing the SDK</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Unable to initialize the Scanbot Barcode Scanner SDK: '</span> <span class="o">+</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">},</span> <span class="nx">options</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><a name="licenseKey"></a></p>
+<h4 id="license-key">License Key</h4>
+<p>In order to run the Scanbot Barcode Scanner SDK plugin functionality within your production app you have to purchase and use a valid Scanbot Barcode Scanner SDK license.</p>
+
+<p>Each license key is valid only for a given app bundle identifier. The license also defines which modules you are allowed to use. 
+The usage of unlicensed modules will log an error to the console and terminate the app. If your license has expired any calls 
+of the Scanbot Barcode Scanner SDK plugin will terminate your app.</p>
+
+<h4 id="trial-license">Trial License</h4>
+<p>The Scanbot Barcode Scanner SDK will run without a license for one minute per session!
+To get an unrestricted “no-strings-attached” 30 day trial license, please submit the <a href="https://scanbot.io/sdk/trial.html">Trial License Form</a> on our website.</p>
+
+<p>Please kindly note that a trial license can only be used in a <strong>development and staging environment</strong>. 
+You are <strong>not allowed to publish</strong> your app to the App Store, Play Store or any 3rd party Android App Store with a trial license.</p>
+
+<h4 id="purchase-a-production-license">Purchase a Production License</h4>
+<p>You can check and purchase the Scanbot Barcode Scanner SDK licenses here: <a href="https://scanbot.io/sdk.html">https://scanbot.io/sdk.html</a>.</p>
+
+<h4 id="app-identifier">App Identifier</h4>
+<p>Every app has a unique identifier (on iOS known as “Bundle Identifier”, on Android as “Application ID”). 
+Your license will be bound to this identifier.
+To request a trial license or purchase a production license you have to provide to us the identifier of your app.
+Please find this identifier in the <code class="highlighter-rouge">config.xml</code> file of your Cordova app project:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;widget</span> <span class="na">id=</span><span class="s">"my.awesome.app.id"</span> <span class="err">...</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<p><a name="logging"></a></p>
+<h4 id="logging">Logging</h4>
+<p>When initializing the Scanbot Barcode Scanner SDK you can enable logging of the SDK. By default logging is disabled.</p>
+
+<p>On Android logs are printed into <em>LogCat</em> as well as saved on the device.
+The easiest way to check the log outputs on Android is to use the <a href="https://developer.android.com/studio/command-line/adb.html">Android Debug Bridge (adb)</a>. 
+(e.g. <code class="highlighter-rouge">$ adb -s &lt;DEVICE_ID&gt; shell "logcat"</code>)</p>
+
+<p>On iOS all logs are printed to the console. Please use Xcode to check the log outputs. 
+There will be no log files created by the Scanbot Barcode Scanner SDK plugin.</p>
+
+<p><strong>Please note:</strong> While it may be useful for development, <strong>consider switching logging OFF in production builds</strong> for security and performance reasons!</p>
+
+<h3 id="updating-license-key-in-production-apps">Updating License Key in Production Apps</h3>
+<p>To renew an expired license or extend a valid license with new Scanbot Barcode Scanner SDK features, you will have to update your app in the App Store or Play Store. 
+The expiration date and the feature list of a license are an encrypted data part of the license key string. 
+Which means a renewal or extension of a license will cause a new license key string to be generated.</p>
+
+<p><a name="scanbotBarcodeSdk.getLicenseInfo"></a></p>
+<h3 id="license-check-in-production-apps">License Check in Production Apps</h3>
+<p>If your Scanbot Barcode Scanner SDK license has expired, any call of the Scanbot Barcode Scanner SDK API will terminate your app or result in an error. 
+To prevent this you should always check for license expiration during the runtime by calling the method <code class="highlighter-rouge">ScanbotBarcodeSdk.getLicenseInfo()</code>.
+If the result of await returns <code class="highlighter-rouge">result.isLicenseValid == false</code>, you should disable any usage of the Scanbot Barcode Scanner SDK functions or UI components in your app.
+We highly recommend to implement a suitable handling of this case in your app!</p>
+
+<h4 id="scanbotbarcodesdkgetlicenseinfo">ScanbotBarcodeSdk.getLicenseInfo()</h4>
+<p>Use this function to check the current state of the license. The SDK must be initialized.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">ScanbotBarcodeSdk</span><span class="p">.</span><span class="nx">getLicenseInfo</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">isLicenseValid</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Making your calls of the Scanbot Barcode Scanner SDK Plugin API is safe now.</span>
+        <span class="c1">// e.g. start the Barcode Scanner: </span>
+        <span class="nx">ScanbotBarcodeSdk</span><span class="p">.</span><span class="nx">startBarcodeScanner</span><span class="p">(...);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// Implement a suitable handling (e.g. disable Scanbot functionality in your App)</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">"Scanbot SDK (trial) license has expired!"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">},</span> <span class="nx">sdkErrorCallback</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><strong>Result:</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">result.isLicenseValid</code> : Contains a boolean status value of the license.
+<code class="highlighter-rouge">true</code> means the Scanbot Barcode Scanner SDK license is valid and all features can be used normally. 
+<code class="highlighter-rouge">false</code> means the license is <strong>not valid</strong> and any call of the Scanbot Barcode Scanner SDK API will not work or result in an error.</li>
+  <li><code class="highlighter-rouge">result.licenseStatus</code> : A <a href="#licenseStatusTypes"><code class="highlighter-rouge">LicenseStatus</code></a> enum type that describes the status of the current license key.</li>
+  <li><code class="highlighter-rouge">result.licenseStatusMessage</code> - A detailed message string for debugging purposes. <strong>Not</strong> intended for displaying in the UI for the end user.</li>
+</ul>
+
+<p><a name="licenseStatusTypes"></a></p>
+<h4 id="license-status-types">License Status Types</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">LicenseStatus.StatusOkay</code> : OK, the license key is valid.</li>
+  <li><code class="highlighter-rouge">LicenseStatus.StatusTrial</code> : No license key installed, trial mode is active.</li>
+  <li><code class="highlighter-rouge">LicenseStatus.StatusFailureNotSet</code> : License error: No license installed.</li>
+  <li><code class="highlighter-rouge">LicenseStatus.StatusFailureCorrupted</code> : License error: The license key string is corrupted. Please check the format.</li>
+  <li><code class="highlighter-rouge">LicenseStatus.StatusFailureWrongOS</code> : License error: The license key does not include support for current Operating System (Android or iOS).</li>
+  <li><code class="highlighter-rouge">LicenseStatus.StatusFailureAppIDMismatch</code> : License error: The license key does not match to the Application ID (on Android) 
+or Bundle ID (on iOS) of the this app.</li>
+  <li><code class="highlighter-rouge">LicenseStatus.StatusFailureExpired</code> : License error: License has expired.</li>
+</ul>
+
+<p><a name="storage"></a></p>
+<h3 id="storage">Storage</h3>
+<p>By default the native Scanbot Barcode Scanner SDKs as well as the Plugin itself use the internal and secure 
+storage locations for all snapped barcode image files.</p>
+
+<ul>
+  <li>
+    <p>On <strong>Android</strong> all files will be stored in the internal <strong>files</strong> directory of your application.
+No permissions are required for your app to read or write files in this directory.</p>
+  </li>
+  <li>
+    <p>On <strong>iOS</strong> all files will be stored in the <strong>Application Support</strong> folder of your application.</p>
+  </li>
+</ul>
+
+<h4 id="customize-storage-location">Customize Storage Location</h4>
+
+<p>It is strongly recommended to use the default storage location. However, you can overwrite the storage directory on initialization of the Plugin.
+The <code class="highlighter-rouge">initializeSdk</code> method can take an optional parameter <code class="highlighter-rouge">storageBaseDirectory</code> to set a custom storage location.</p>
+
+<p>The value of the <code class="highlighter-rouge">storageBaseDirectory</code> must be a file URL (<code class="highlighter-rouge">'file:///...</code>) pointing to a valid platform-specific file system path. 
+If this directory does not exist yet, the Plugin will try to create it.
+To work with the file system we recommend the Cordova Plugin <a href="https://www.npmjs.com/package/cordova-plugin-file">cordova-plugin-file</a></p>
+
+<p>For the full demo code please checkout our example app on GitHub.</p>
+
+<p>⚠️ <strong>Note:</strong> When overwriting the default storage location, make sure</p>
+<ul>
+  <li>you have implemented a suitable storage permissions request handling on Android</li>
+  <li>you fully understand the consequences regarding the accessibility (security) of the produced document files.</li>
+</ul>
+
+<p>👉 For more details about the storage locations on Android and iOS please also see:</p>
+
+<ul>
+  <li><a href="https://developer.android.com/guide/topics/data/data-storage">Android - File Storage Overview</a></li>
+  <li><a href="https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html">iOS - File System Basics</a></li>
+</ul>
+
+<p><a name="scanbotBarcodeSdk.cleanup"></a></p>
+<h4 id="storage-cleanup">Storage Cleanup</h4>
+
+<p>There is <strong>no automatic</strong> file clean mechanism in this Plugin, because only your app can decide when is the perfect time 
+to remove the optional barcode image files snapped by this Plugin.</p>
+
+<p>This Plugin provides the method <code class="highlighter-rouge">cleanup()</code> to delete all optional barcode images:</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">ScanbotBarcodeSdk</span><span class="p">.</span><span class="nx">cleanup</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// cleanup do</span>
+<span class="p">},</span> <span class="nx">sdkErrorCallback</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><a name="scanbotBarcodeSdk.startBarcodeScanner"></a></p>
+<h3 id="barcode-and-qr-code-scanning-ui">Barcode and QR Code Scanning UI</h3>
+<h4 id="scanbotbarcodesdkstartbarcodescannerbarcodescannerconfiguration-config">ScanbotBarcodeSdk.startBarcodeScanner(BarcodeScannerConfiguration config)</h4>
+
+<p>Opens a Scanning UI for barcodes and QR codes.</p>
+
+<p><img src="./assets/images/barcode.jpg" alt="alt" title="Barcode scanner screenshot" /></p>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">finderLineColor</span><span class="p">:</span> <span class="s1">'#ff0000'</span><span class="p">,</span>
+  <span class="na">cancelButtonTitle</span><span class="p">:</span> <span class="s1">'Cancel'</span><span class="p">,</span>
+  <span class="na">finderTextHint</span><span class="p">:</span> <span class="s1">'Please align any supported 1D or 2D barcode in the frame above to scan it.'</span><span class="p">,</span>
+  <span class="na">barcodeFormats</span><span class="p">:</span> <span class="p">[</span><span class="s1">'ALL_FORMATS'</span><span class="p">],</span> <span class="c1">// or use a filter like so ['DATA_MATRIX', 'QR_CODE', ...]</span>
+  <span class="c1">// see further customization options below ...  </span>
+<span class="p">};</span>
+
+<span class="nx">ScanbotBarcodeSdk</span><span class="p">.</span><span class="nx">startBarcodeScanner</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="s1">'OK'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">showBarcodeResults</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">barcodes</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">},</span> <span class="nx">sdkErrorCallback</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><strong>Result:</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">result.status</code> - <code class="highlighter-rouge">OK</code> If at least one barcode was detected, <code class="highlighter-rouge">CANCELED</code> if the user has canceled the operation (tapped on the “cancel” button).</li>
+  <li><code class="highlighter-rouge">result.barcodes[]</code> - List of recognized barcodes as items. See the barcode item structure below.</li>
+  <li><code class="highlighter-rouge">result.imageFileUri</code> - Optional file URI of the barcode image. See the config parameter <code class="highlighter-rouge">barcodeImageGenerationType</code> to enable image snapping.</li>
+</ul>
+
+<p>Barcode item structure:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">type</code> - <a href="#barcodeFormat">Format</a> of detected barcode/QR code (e.g. “CODE_128”, “EAN_13”, “QR_CODE”, etc).</li>
+  <li><code class="highlighter-rouge">text</code> - Raw text value of detected barcode/QR code.</li>
+</ul>
+
+<h5 id="barcodescannerconfiguration">BarcodeScannerConfiguration</h5>
+<p>Use this configuration class to customize the UI and the behaviour of the Barcode Scanner UI.
+All config properties are optional.</p>
+
+<p><strong>Options:</strong></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>    <span class="cm">/**
+    * Allowed orientations for automatic interface rotations. *
+    */</span>
+    <span class="nx">allowedInterfaceOrientations</span><span class="p">?:</span> <span class="nx">UIOrientationMode</span><span class="p">;</span>
+    <span class="cm">/**
+    * Specifies the way of barcode images generation or disables this generation at all.
+    * Use, if you want to receive a full sized image with barcodes.
+    * Defaults to SBSDKBarcodeImageGenerationTypeNone.
+    */</span>
+    <span class="nx">barcodeImageGenerationType</span><span class="p">?:</span> <span class="nx">BarcodeImageGenerationType</span><span class="p">;</span>
+    <span class="cm">/**
+    * Foreground color of the flash button when flash is on.
+    */</span>
+    <span class="nx">bottomButtonsActiveColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Foreground color of the flash button when flash is off.
+    */</span>
+    <span class="nx">bottomButtonsInactiveColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Background color of the detection overlay.
+    */</span>
+    <span class="nx">cameraOverlayColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Whether the cancel button is hidden or not.
+    */</span>
+    <span class="nx">cancelButtonHidden</span><span class="p">?:</span> <span class="kr">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+    * String being displayed on the cancel button.
+    */</span>
+    <span class="nx">cancelButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Relative height of finder frame. Together with finderWidth it defines the aspect ratio, which is used to build actual finder frame. Default is 1.
+    * For example if finderWidth and finderHeight both equals 1 - it will make a square frame, which is good for QR capturing.
+    */</span>
+    <span class="nx">finderHeight</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="cm">/**
+    * Foreground color of the detection overlay.
+    */</span>
+    <span class="nx">finderLineColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Width of finder frame border. Default is 2.
+    */</span>
+    <span class="nx">finderLineWidth</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="cm">/**
+    * String being displayed as description.
+    */</span>
+    <span class="nx">finderTextHint</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Foreground color of the description label.
+    */</span>
+    <span class="nx">finderTextHintColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Relative width of finder frame. Together with finderHeight it defines the aspect ratio, which is used to build actual finder frame. Default is 1.
+    * For example if finderWidth and finderHeight both equals 1 - it will make a square frame, which is good for QR capturing.
+    */</span>
+    <span class="nx">finderWidth</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="cm">/**
+    * String being displayed on the flash button.
+    */</span>
+    <span class="nx">flashButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Whether flash is toggled on or off.
+    */</span>
+    <span class="nx">flashEnabled</span><span class="p">?:</span> <span class="kr">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+    * Whether scanner screen should make a sound on successful barcode or MRZ detection.
+    */</span>
+    <span class="nx">successBeepEnabled</span><span class="p">?:</span> <span class="kr">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+    * Background color of the top bar.
+    */</span>
+    <span class="nx">topBarBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Foreground color of the cancel button.
+    */</span>
+    <span class="nx">topBarButtonsColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * An optional list of barcode formats to enable for detection. If the
+     * list contains "ALL_FORMATS", then all supported formats will be
+     * enabled.
+     */</span>
+    <span class="nx">barcodeFormats</span><span class="p">?:</span> <span class="p">[</span><span class="nx">BarcodeFormat</span> <span class="o">|</span> <span class="s2">"ALL_FORMATS"</span><span class="p">];</span>
+</code></pre>
+</div>
+
+<p><a name="scanbotBarcodeSdk.detectBarcodesOnImage"></a></p>
+<h3 id="barcode-detection-from-still-images">Barcode Detection from Still Images</h3>
+<h4 id="scanbotbarcodesdkdetectbarcodesonimagesuccesscallback-errorcallback-options">ScanbotBarcodeSdk.detectBarcodesOnImage(successCallback, errorCallback, options)</h4>
+<p>This method provides the functionality of detecting barcodes from a still image, e.g. a JPG image from Photo Library or other source. 
+The image must be passed as file URI.</p>
+
+<p><strong>Options:</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">imageFileUri</code> - A valid file URI of the image (e.g. <code class="highlighter-rouge">file:///some/path/image-with-barcodes.jpg</code>). 
+Supported image formats are JPG and PNG. Please make sure your app has the read permission to access this file.</li>
+</ul>
+
+<p><strong>Result:</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">result.barcodes[]</code> - List of recognized barcodes as items. Same structure as in the <code class="highlighter-rouge">startBarcodeScanner</code> result.</li>
+</ul>
+
+<p><a name="barcodeFormat"></a></p>
+<h3 id="barcode-format">Barcode Format</h3>
+
+<p>The following barcode formats are currently supported on Android and iOS.</p>
+
+<h4 id="1d-barcodes-1">1D Barcodes</h4>
+<ul>
+  <li><code class="highlighter-rouge">BarcodeFormat.CODE_39</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.CODE_93</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.CODE_128</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.CODABAR</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.UPC_A</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.UPC_E</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.EAN_8</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.EAN_13</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.ITF</code></li>
+</ul>
+
+<h4 id="2d-barcodes-1">2D Barcodes</h4>
+<ul>
+  <li><code class="highlighter-rouge">BarcodeFormat.QR_CODE</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.AZTEC</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.PDF_417</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.DATA_MATRIX</code></li>
+</ul>
+
+<p><a name="productionApps"></a></p>
+<h2 id="building-production-apps">Building Production Apps</h2>
+
+<h3 id="ios">iOS</h3>
+<p>The Scanbot SDK iOS Framework (included in this Cordova Plugin) contains the most used architectures (<code class="highlighter-rouge">arm64, armv7, x86_64, i386</code>). 
+So you can run it on all most used iOS devices as well as on simulators during the development phase.
+To be able to submit a production build to the <strong>App Store</strong> or a test build for <strong>TestFlight</strong> you have to remove (strip away) 
+the architectures <strong><code class="highlighter-rouge">x86_64</code></strong> and <strong><code class="highlighter-rouge">i386</code></strong> from the Scanbot SDK Framework.
+These architectures are only for <strong>simulators</strong> and not allowed to submit to iTunes Connect.</p>
+
+<p>We provide a script for that, which can be found in:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>plugins/cordova-plugin-scanbot-barcode-scanner/src/ios/Frameworks/ScanbotBarcodeScannerSDK.framework/strip-SBSDK-Framework.sh
+</code></pre>
+</div>
+
+<p>This script removes the unnecessary architectures from the frameworks binary, code signs the framework and adds the crash symbols (dSYM) file to your apps archive.
+The final package size (IPA) of your app will then be significantly smaller than a debug version used during the development phase.</p>
+
+<p>To add this script in your build process, you need to apply a few changes in the Xcode project:</p>
+
+<ol>
+  <li>Open the generated Xcode project file with Xcode IDE:
+  <code class="highlighter-rouge">&lt;YOUR_APP_PROJECT_PATH&gt;/platforms/ios/&lt;YOUR_APP_NAME&gt;.xcodeproj</code></li>
+  <li>Go to <code class="highlighter-rouge">TARGETS</code> settings and open the tab <code class="highlighter-rouge">Build Phases</code>.
+Add a new <code class="highlighter-rouge">Run Script Phase</code> and make sure this phase is <strong>below</strong> the <code class="highlighter-rouge">Embed Frameworks</code> build phase.</li>
+  <li>Adjust this <code class="highlighter-rouge">Run Script Phase</code> with the following script data:</li>
+</ol>
+
+<p><strong>Script code</strong>:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>bash "$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/ScanbotBarcodeScannerSDK.framework/strip-SBSDK-Framework.sh"
+</code></pre>
+</div>
+
+<p><strong>Script Input File</strong>:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$(SRCROOT)/../../plugins/cordova-plugin-scanbot-barcode-scanner/src/ios/Frameworks/ScanbotBarcodeScannerSDK.framework.dSYM
+</code></pre>
+</div>
+
+<p><a href="./assets/images/cordova_xcode_build_phases_settings.png"><img src="./assets/images/cordova_xcode_build_phases_settings.png" alt="alt text" title="Xcode Build Phases settings" /></a></p>
+
+<h3 id="android">Android</h3>
+<p>The Scanbot Android SDK uses native libraries under the hood and supports following <a href="https://developer.android.com/ndk/guides/arch.html">ABIs</a>: 
+<code class="highlighter-rouge">armeabi-v7a, arm64-v8a, x86 and x86_64</code>.</p>
+
+<p>By default the native libraries of <strong>all</strong> these architectures will be included in the app package (APK), which will result in a big APK file.
+Please consider to remove support for <code class="highlighter-rouge">x86</code> and <code class="highlighter-rouge">x86_64</code> architectures. In most cases both “x86” architectures can be removed for the 
+release (production) build, since they are only used on emulators and on some rare devices with the Intel Atom architecture.</p>
+
+<p>To exclude certain ABIs from the APK, use the <code class="highlighter-rouge">abiFilters</code> property in the Android Gradle settings of your project.
+To apply any custom Gradle settings on a Cordova generated Android project, create the additional custom .gradle file with the name</p>
+
+<p><strong><code class="highlighter-rouge">platforms/android/app/build-extras.gradle</code></strong></p>
+
+<p>and define your custom Gradle settings in it. 
+In this case we define <code class="highlighter-rouge">abiFilters</code> to <strong>exclude</strong>  <code class="highlighter-rouge">x86</code> and <code class="highlighter-rouge">x86_64</code> architectures:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ext.postBuildExtras = {
+    android.defaultConfig.ndk.abiFilters = ["armeabi-v7a", "arm64-v8a"]
+}
+</code></pre>
+</div>
+
+<p>💡 However, if you need to support <strong>all</strong> architectures and to optimize the APK size in any case, we highly recommend to 
+checkout the <a href="https://developer.android.com/platform/technology/app-bundle/"><strong>Android App Bundle</strong></a> approach. 
+It allows you to create and distribute dedicated and smaller APKs <strong>via PlayStore</strong> (basically it’s similar to the iOS App Store approach).</p>
+
+<h4 id="proguard">ProGuard</h4>
+
+<p>If you have ProGuard / R8 enabled for the <strong>release build</strong>, you will need to add the following rules 
+to cover the classes of this Cordova plugin as well as of the native Scanbot Barcode Scanner SDK for Android:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+-ignorewarnings
+-keep public class net.doo.snap.ui.** { *; }
+-keeppackagenames io.scanbot.barcodescanner.**
+-keep public class io.scanbot.barcodescanner.**{ *; }
+-keep public class io.scanbot.sap.SapManager { *; }
+# JSR 305 annotations are for embedding nullability information.
+-dontwarn javax.annotation.**
+-dontwarn org.jetbrains.annotations.**
+# Moshi
+# JSR 305 annotations are for embedding nullability information.
+-dontwarn javax.annotation.**
+-keepclasseswithmembers class * {
+    @com.squareup.moshi.* &lt;methods&gt;;
+}
+-keep @com.squareup.moshi.JsonQualifier interface *
+# Enum field names are used by the integrated EnumJsonAdapter.
+# values() is synthesized by the Kotlin compiler and is used by EnumJsonAdapter indirectly
+# Annotate enums with @JsonClass(generateAdapter = false) to use them with Moshi.
+-keepclassmembers @com.squareup.moshi.JsonClass class * extends java.lang.Enum {
+    &lt;fields&gt;;
+    **[] values();
+}
+# The name of @JsonClass types is used to look up the generated adapter.
+-keepnames @com.squareup.moshi.JsonClass class *
+# Retain generated target class's synthetic defaults constructor and keep DefaultConstructorMarker's
+# name. We will look this up reflectively to invoke the type's constructor.
+#
+# We can't _just_ keep the defaults constructor because Proguard/R8's spec doesn't allow wildcard
+# matching preceding parameters.
+-keepnames class kotlin.jvm.internal.DefaultConstructorMarker
+-keepclassmembers @com.squareup.moshi.JsonClass @kotlin.Metadata class * {
+    synthetic &lt;init&gt;(...);
+}
+# Retain generated JsonAdapters if annotated type is retained.
+-if @com.squareup.moshi.JsonClass class *
+-keep class &lt;1&gt;JsonAdapter {
+    &lt;init&gt;(...);
+    &lt;fields&gt;;
+}
+-if @com.squareup.moshi.JsonClass class **$*
+-keep class &lt;1&gt;_&lt;2&gt;JsonAdapter {
+    &lt;init&gt;(...);
+    &lt;fields&gt;;
+}
+-if @com.squareup.moshi.JsonClass class **$*$*
+-keep class &lt;1&gt;_&lt;2&gt;_&lt;3&gt;JsonAdapter {
+    &lt;init&gt;(...);
+    &lt;fields&gt;;
+}
+-if @com.squareup.moshi.JsonClass class **$*$*$*
+-keep class &lt;1&gt;_&lt;2&gt;_&lt;3&gt;_&lt;4&gt;JsonAdapter {
+    &lt;init&gt;(...);
+    &lt;fields&gt;;
+}
+-if @com.squareup.moshi.JsonClass class **$*$*$*$*
+-keep class &lt;1&gt;_&lt;2&gt;_&lt;3&gt;_&lt;4&gt;_&lt;5&gt;JsonAdapter {
+    &lt;init&gt;(...);
+    &lt;fields&gt;;
+}
+-if @com.squareup.moshi.JsonClass class **$*$*$*$*$*
+-keep class &lt;1&gt;_&lt;2&gt;_&lt;3&gt;_&lt;4&gt;_&lt;5&gt;_&lt;6&gt;JsonAdapter {
+    &lt;init&gt;(...);
+    &lt;fields&gt;;
+}
+-keep public class kotlin.reflect.jvm.internal.impl.** { public *; }
+-keepclassmembers class kotlin.Metadata {
+    public &lt;methods&gt;;
+}
+-keeppackagenames io.scanbot.sdk.ui.**
+-keep public class io.scanbot.sdk.ui.**{ *; }
+
+-keeppackagenames io.scanbot.barcodesdk.plugin.cordova.**
+-keep public class io.scanbot.barcodesdk.plugin.cordova.**{ *; }
+
+</code></pre>
+</div>
+
+<p><a name="releaseHistory"></a></p>
+<h2 id="release-history-and-changelog">Release History and Changelog</h2>
+
+<h4 id="version-100-13-feb-2020">Version 1.0.0 (13 Feb 2020):</h4>
+<ul>
+  <li>🎉 First release.</li>
+</ul>
+
+<p><a name="librariesLicenses"></a></p>
+<h3 id="libraries-and-licenses">Libraries and Licenses</h3>
+
+<div class="language-text highlighter-rouge"><pre class="highlight"><code>
+Open Source libraries used in the Scanbot Barcode Scanner SDK for Android version 1.0.1:
+
+CWAC-Camera
+
+Version 0.6.33
+(https://github.com/doo/cwac-camera)
+(https://github.com/commonsguy/cwac-camera/)
+
+Copyright © CommonsWare
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+Apache Commons IO
+
+Version 2.4
+(https://github.com/apache/commons-io)
+
+Copyright (c) The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+JetBrains Java Annotations (Annotations for JVM-based languages)
+
+Version 13.0
+(https://github.com/JetBrains/java-annotations)
+
+Copyright 2000-2016 JetBrains s.r.o.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+Kotlin Standard Library
+
+Version 1.3.50
+(https://github.com/JetBrains/kotlin)
+
+Copyright 2010-2018 JetBrains s.r.o.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+Kotlin Standard Library JDK
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+Moshi Kotlin
+Moshi Adapters
+
+Version 1.8.0
+(https://github.com/square/moshi)
+
+Copyright 2015 Square, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+Dagger
+
+Version 2.16
+(https://github.com/google/dagger)
+
+Copyright 2012 The Dagger Authors
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+Dagger Compiler
+
+Copyright 2012 The Dagger Authors
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+Guava: Google Core Libraries For Java
+
+Version 23.0-android
+(https://github.com/google/guava)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+RxJava
+
+Version 2.1.5
+(https://github.com/ReactiveX/RxJava)
+
+Copyright (c) 2016-present, RxJava Contributors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+RxAndroid
+
+Version 2.0.1
+(https://github.com/ReactiveX/RxAndroid)
+
+Copyright 2015 The RxAndroid authors
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+Nameof C++
+
+Version 0.8.3
+(https://github.com/Neargye/nameof)
+
+MIT License
+
+Copyright (c) 2016, 2018 - 2019 Daniil Goncharov
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+ZXing-C++, C++ port of ZXing
+
+(https://github.com/nu-book/zxing-cpp)
+
+Copyright 2016 Nu-book Inc.
+Copyright 2016 ZXing authors
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+TensorFlow
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+BOOST C++ Libraries
+
+Version 1.68
+(https://github.com/boostorg/boost)
+
+This library is distributed under the terms of the following license: https://www.boost.org/LICENSE_1_0.txt
+
+Boost Software License - Version 1.0 - August 17th, 2003
+
+Permission is hereby granted, free of charge, to any person or organization obtaining
+a copy of the software and accompanying documentation covered by this license
+(the "Software") to use, reproduce, display, distribute, execute, and transmit
+the Software, and to prepare derivative works of the Software, and to permit third-parties
+to whom the Software is furnished to do so, all subject to the following:
+
+The copyright notices in the Software and this entire statement, including the above
+license grant, this restriction and the following disclaimer, must be included in
+all copies of the Software, in whole or in part, and all derivative works of the
+Software, unless such copies or derivative
+works are solely in the form of machine-executable object code generated by a source
+language processor.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR ANYONE
+DISTRIBUTING THE SOFTWARE BE LIABLE FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+BoringSSL
+
+https://github.com/google/boringssl
+
+Copyright (c) 1998-2011 The OpenSSL Project.  All rights reserved.
+Original SSLeay License. Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com). All rights reserved.
+Copyright (c) 2015, Google Inc.
+Some files from Intel carry the following license: Copyright (c) 2012, Intel Corporation.
+
+BoringSSL is a fork of OpenSSL. As such, large parts of it fall under OpenSSL licensing. Files that are completely new have a Google copyright and an ISC license. This library is distributed under the terms of the following license: https://github.com/google/boringssl/blob/master/LICENSE
+
+OpenSSL License
+---------------
+
+====================================================================
+Copyright (c) 1998-2011 The OpenSSL Project.  All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3. All advertising materials mentioning features or use of this software must display the following acknowledgment:
+"This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit. (http://www.openssl.org/)"
+
+4. The names "OpenSSL Toolkit" and "OpenSSL Project" must not be used to endorse or promote products derived from this software without prior written permission. For written permission, please contact openssl-core@openssl.org.
+
+5. Products derived from this software may not be called "OpenSSL" nor may "OpenSSL" appear in their names without prior written permission of the OpenSSL Project.
+
+6. Redistributions of any form whatsoever must retain the following acknowledgment: "This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (http://www.openssl.org/)"
+
+THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE OpenSSL PROJECT OR
+ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+====================================================================
+
+This product includes cryptographic software written by Eric Young (eay@cryptsoft.com).
+This product includes software written by Tim Hudson (tjh@cryptsoft.com).
+
+Original SSLeay License
+-----------------------
+
+Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com)
+All rights reserved.
+
+This package is an SSL implementation written by Eric Young (eay@cryptsoft.com). The implementation was written so as to conform with Netscapes SSL.
+
+This library is free for commercial and non-commercial use as long as the following conditions are aheared to. The following conditions apply to all code found in this distribution, be it the RC4, RSA, lhash, DES, etc., code; not just the SSL code.  The SSL documentation included with this distribution is covered by the same copyright terms except that the holder is Tim Hudson (tjh@cryptsoft.com).
+
+Copyright remains Eric Young's, and as such any Copyright notices in the code are not to be removed. If this package is used in a product, Eric Young should be given attribution
+as the author of the parts of the library used. This can be in the form of a textual message at program startup or in documentation (online or textual) provided with the package.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the copyright notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3. All advertising materials mentioning features or use of this software must display the following acknowledgement:
+"This product includes cryptographic software written by Eric Young (eay@cryptsoft.com)"
+The word 'cryptographic' can be left out if the rouines from the library being used are not cryptographic related :-).
+4. If you include any Windows specific code (or a derivative thereof) from the apps directory (application code) you must include an acknowledgement:
+"This product includes software written by Tim Hudson (tjh@cryptsoft.com)"
+
+THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+The licence and distribution terms for any publically available version or derivative of this code cannot be changed.  i.e. this code cannot simply be copied and put under another distribution licence [including the GNU Public Licence.]
+
+ISC license used for completely new code in BoringSSL:
+
+Copyright (c) 2015, Google Inc.
+
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE. */
+
+Some files from Intel carry the following license
+
+Copyright (c) 2012, Intel Corporation
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+*  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+*  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+*  Neither the name of the Intel Corporation nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION ""AS IS"" AND ANY
+EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+
+Filesystem.hpp
+
+(https://github.com/bin-build/filesystem)
+Copyright (c) 2015-2017, Wenzel Jakob
+Copyright (c) 2017, Josh Junon
+All rights reserved.
+This library is distributed under the terms of a BSD 2-Clause License (https://github.com/bin-build/filesystem/blob/master/LICENSE)
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+
+JSON for Modern C++
+
+Version 3.1.0
+(https://github.com/nlohmann/json)
+Copyright (c) 2013-2018 Niels Lohmann &lt;http://nlohmann.me&gt;.
+This library is distributed under the terms of a MIT License (https://github.com/nlohmann/json/blob/develop/LICENSE.MIT)
+
+Permission is hereby  granted, free of charge, to any  person obtaining a copy of this software and associated  documentation files (the "Software"), to deal in the Software  without restriction, including without  limitation the rights to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell copies  of  the Software,  and  to  permit persons  to  whom  the Software  is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF MERCHANTABILITY, FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+OpenCV
+
+Version 3.4.7
+(https://github.com/opencv/opencv)
+
+By downloading, copying, installing or using the software you agree to this license.
+If you do not agree to this license, do not download, install,
+copy or use the software.
+
+License Agreement
+For Open Source Computer Vision Library
+(3-clause BSD License)
+
+Copyright (C) 2000-2019, Intel Corporation, all rights reserved.
+Copyright (C) 2009-2011, Willow Garage Inc., all rights reserved.
+Copyright (C) 2009-2016, NVIDIA Corporation, all rights reserved.
+Copyright (C) 2010-2013, Advanced Micro Devices, Inc., all rights reserved.
+Copyright (C) 2015-2016, OpenCV Foundation, all rights reserved.
+Copyright (C) 2015-2016, Itseez Inc., all rights reserved.
+Third party copyrights are property of their respective owners.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+
+  * Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+
+  * Neither the names of the copyright holders nor the names of the contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+
+This software is provided by the copyright holders and contributors "as is" and
+any express or implied warranties, including, but not limited to, the implied
+warranties of merchantability and fitness for a particular purpose are disclaimed.
+In no event shall copyright holders or contributors be liable for any direct,
+indirect, incidental, special, exemplary, or consequential damages
+(including, but not limited to, procurement of substitute goods or services;
+loss of use, data, or profits; or business interruption) however caused
+and on any theory of liability, whether in contract, strict liability,
+or tort (including negligence or otherwise) arising in any way out of
+the use of this software, even if advised of the possibility of such damage.
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+Open Source libraries used in the Scanbot Barcode Scanner SDK for iOS version 1.3.0:
+
+BOOST C++ Libraries version 1.68
+This library is distributed under the terms of the following license: https://www.boost.org/LICENSE_1_0.txt
+
+Boost Software License - Version 1.0 - August 17th, 2003
+
+Permission is hereby granted, free of charge, to any person or organization obtaining a copy of the software and accompanying documentation covered by this license (the "Software") to use, reproduce, display, distribute, execute, and transmit the Software, and to prepare derivative works of the Software, and to permit third-parties to whom the Software is furnished to do so, all subject to the following:
+
+The copyright notices in the Software and this entire statement, including the above license grant, this restriction and the following disclaimer, must be included in all copies of the Software, in whole or in part, and all derivative works of the Software, unless such copies or derivative
+works are solely in the form of machine-executable object code generated by a source language processor.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Filesystem.hpp
+Copyright (c) 2015-2017, Wenzel Jakob
+Copyright (c) 2017, Josh Junon
+All rights reserved.
+This library is distributed under the terms of a BSD 2-Clause License (https://github.com/bin-build/filesystem/blob/master/LICENSE)
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+JSON for Modern C++ version 3.1.0
+Copyright (c) 2013-2018 Niels Lohmann &lt;http://nlohmann.me&gt;.
+This library is distributed under the terms of a MIT License (https://github.com/nlohmann/json/blob/develop/LICENSE.MIT)
+
+Permission is hereby  granted, free of charge, to any  person obtaining a copy of this software and associated  documentation files (the "Software"), to deal in the Software  without restriction, including without  limitation the rights to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell copies  of  the Software,  and  to  permit persons  to  whom  the Software  is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF MERCHANTABILITY, FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+OpenCV 3.4.8
+Copyright © 2014, Itseez. All rights reserved.
+This library is distributed under the terms of a 3-clause BSD license: http://opencv.org/license.html.
+
+License Agreement
+For Open Source Computer Vision Library
+(3-clause BSD License)
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+Neither the names of the copyright holders nor the names of the contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+This software is provided by the copyright holders and contributors “as is” and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall copyright holders or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.
+
+
+OpenSSL 1.0.2q
+Copyright @ 1998-2011 The OpenSSL Project. All rights reserved. (https://www.openssl.org)
+This library is distributed under the terms of the following license: https://github.com/openssl/openssl/blob/master/LICENSE
+
+The OpenSSL toolkit stays under a double license, i.e. both the conditions of the OpenSSL License and the original SSLeay license apply to the toolkit. See below for the actual license texts.
+
+This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (http://www.openssl.org).
+
+THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT ``AS IS'' AND ANY
+EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE OpenSSL PROJECT OR ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+This product includes cryptographic software written by Eric Young (eay@cryptsoft.com).  This product includes software written by Tim Hudson (tjh@cryptsoft.com).
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+Redistributions of source code must retain the copyright notice, this list of conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+All advertising materials mentioning features or use of this software must display the following acknowledgement: "This product includes cryptographic software written by Eric Young (eay@cryptsoft.com)". The word 'cryptographic' can be left out if the rouines from the library being used are not cryptographic related :-).
+If you include any Windows specific code (or a derivative thereof) from the apps directory (application code) you must include an acknowledgement:  "This product includes software written by Tim Hudson (tjh@cryptsoft.com)"
+
+THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+The licence and distribution terms for any publically available version or derivative of this code cannot be changed. i.e. this code cannot simply be copied and put under another distribution licence [including the GNU Public Licence.]
+
+
+Nameof C++ 0.8.3
+Copyright (c) 2016, 2018 - 2019 Daniil Goncharov
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+ZXing-C++
+C++ port of ZXing (https://github.com/nu-book/zxing-cpp)
+Copyright 2016 Nu-book Inc.
+Copyright 2016 ZXing authors
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+</code></pre>
+</div>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Scanbot Barcode Scanner SDK Cordova Plugin</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              Scanbot Barcode Scanner SDK Cordova Plugin
+            
+            </li>
+            
+            <li><a href="mailto:sdk@scanbot.io">sdk@scanbot.io</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
 
 </html>
-
