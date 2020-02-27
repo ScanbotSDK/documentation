@@ -1,13 +1,802 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
   <meta charset="utf-8">
-  <title>Barcode Scanner SDK for Xamarin and Xamarin.Forms</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Scanbot Barcode Scanner SDK for Xamarin</title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="/documentation/barcode-scanner-sdk/xamarin/assets/main.css">
+  <link rel="canonical" href="https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/xamarin/">
+  <link rel="alternate" type="application/rss+xml" title="Scanbot Barcode Scanner SDK for Xamarin" href="/documentation/barcode-scanner-sdk/xamarin/feed.xml">
+  
+  
 </head>
 
-<body>
-</body>
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/documentation/barcode-scanner-sdk/xamarin/">Scanbot Barcode Scanner SDK for Xamarin</a>
+
+    <nav class="site-nav">
+      <span class="menu-icon">
+        <svg viewBox="0 0 18 15" width="18px" height="15px">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </span>
+
+      <div class="trigger">
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <!-- UIkit CSS -->
+<link rel="stylesheet" href="assets/uikit/uikit.min.css" />
+
+<!-- UIkit JS -->
+<script src="assets/uikit/uikit.min.js"></script>
+
+<script src="assets/uikit/uikit-icons.min.js"></script>
+
+<h2 id="scanbot-barcode-scanner-sdk-for-xamarin-and-xamarinforms">Scanbot Barcode Scanner SDK for Xamarin and Xamarin.Forms</h2>
+
+<h3 id="introduction">Introduction</h3>
+<p>The <a href="https://scanbot.io/sdk">Scanbot Barcode Scanner SDK</a> brings barcode scanning capabilities to your mobile apps.
+The Xamarin SDK provides bindings for Xamarin Native as well as a ready-to-use implementation for Xamarin.Forms.</p>
+
+<p>Following functionality is covered by the Xamarin SDK:</p>
+<ul>
+  <li>Scanning of 1D and 2D barcodes</li>
+  <li>Recognition of 1D and 2D barcodes on still images (e.g. JPG files)</li>
+  <li>Support for multiple barcode scanning and recognition</li>
+  <li>Ready-to-Use UI Components for Xamarin.Forms and Xamarin Native (Android and iOS)</li>
+  <li>Classical SDK Components for Xamarin Native (Android and iOS) with full customization support</li>
+</ul>
+
+<h3 id="supported-barcode-types">Supported Barcode Types</h3>
+<h4 id="1d-barcodes">1D Barcodes</h4>
+<ul>
+  <li>Code 39</li>
+  <li>Code 93</li>
+  <li>Code 128</li>
+  <li>Codabar</li>
+  <li>UPC-A</li>
+  <li>UPC-E</li>
+  <li>EAN-8</li>
+  <li>EAN-13</li>
+  <li>ITF (Interleaved 2 of 5)</li>
+</ul>
+
+<h4 id="2d-barcodes">2D Barcodes</h4>
+<ul>
+  <li>QR-Code</li>
+  <li>Aztec</li>
+  <li>PDF-417</li>
+  <li>Data Matrix</li>
+</ul>
+
+<p>💡 You might also be interested in an overview in our blog post <a href="https://scanbot.io/blog/types-of-barcodes-and-their-usage/">Types of barcodes</a>.</p>
+
+<h3 id="requirements">Requirements</h3>
+
+<h4 id="dev-tools">Dev Tools</h4>
+<ul>
+  <li>Latest version of <a href="https://visualstudio.microsoft.com/xamarin/">Microsoft Visual Studio</a> with Xamarin Platform</li>
+  <li>For Xamarin.Forms projects: Xamarin.Forms v2.2+ and higher</li>
+  <li>For iOS development: Mac OS with latest Xcode and Command Line Tools</li>
+  <li>For Android development: Android SDK</li>
+</ul>
+
+<h4 id="mobile-platforms">Mobile Platforms</h4>
+<ul>
+  <li>Android 5.0 (API Level 21) and higher</li>
+  <li>iOS 9 and higher</li>
+</ul>
+
+<h4 id="mobile-devices">Mobile Devices</h4>
+<ul>
+  <li>Rear-facing camera with autofocus</li>
+  <li>Supported CPUs and Architectures:
+    <ul>
+      <li>Android: <code class="highlighter-rouge">armeabi-v7</code>, <code class="highlighter-rouge">arm64-v8a</code>, <code class="highlighter-rouge">x86</code>, <code class="highlighter-rouge">x86_64</code></li>
+      <li>iOS: <code class="highlighter-rouge">arm64</code>, <code class="highlighter-rouge">armv7</code>, <code class="highlighter-rouge">x86_64</code>, <code class="highlighter-rouge">i386</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="no-internet-connection-required">No Internet Connection Required</h4>
+<p><strong>The Scanbot Barcode Scanner SDK works completely offline.</strong> It doesn’t even contain any networking code. 
+This can easily be verified by routing all networking traffic coming from the app through a proxy. 
+All data generated by the Scanbot Barcode Scanner SDK is only stored on the end users device and in absolutely no case ever 
+transferred to a server / cloud service controlled by us. You as the customer will need to take care of uploading 
+the scans / data to your backend, if desired.</p>
+
+<h3 id="example-apps">Example Apps</h3>
+<p>Check out our example apps for Xamarin Native and Xamarin.Forms on GitHub:</p>
+<ul>
+  <li><a href="https://github.com/doo/scanbot-barcode-scanner-sdk-example-xamarin">scanbot-barcode-scanner-sdk-example-xamarin</a></li>
+</ul>
+
+<h3 id="getting-started">Getting Started</h3>
+
+<h4 id="download--installation">Download &amp; Installation</h4>
+<p>The Scanbot Barcode Scanner SDK for Xamarin is provided as 2 NuGet packages:</p>
+
+<ul>
+  <li><a href="https://www.nuget.org/packages/ScanbotBarcodeSDK.Xamarin">ScanbotBarcodeSDK.Xamarin</a> -
+contains the Scanbot Barcode Scanner SDK <strong>Xamarin Native</strong> bindings and wrappers for Android and iOS</li>
+  <li><a href="https://www.nuget.org/packages/ScanbotBarcodeSDK.Xamarin.Forms">ScanbotBarcodeSDK.Xamarin.Forms</a> -
+provides portable Scanbot Barcode Scanner SDK wrappers for use with <strong>Xamarin.Forms</strong></li>
+</ul>
+
+<p>Install <code class="highlighter-rouge">ScanbotBarcodeSDK.Xamarin.Forms</code> if your project is based on Xamarin.Forms, 
+otherwise install <code class="highlighter-rouge">ScanbotBarcodeSDK.Xamarin</code>.</p>
+
+<p>You can install them directly via Visual Studio IDE: Open your App-Solution in Visual Studio, 
+select your iOS or Android project and click on the menu item <em>Project -&gt; Add NuGet Packages</em>.<br />
+Make sure <strong>nuget.org</strong> is selected as source and search for the package.</p>
+
+<p>By clicking on <em>Add Package</em> the Scanbot Barcode Scanner SDK will be downloaded and installed into your project. 
+Do that for both your iOS and Android projects.
+Also, <code class="highlighter-rouge">ScanbotBarcodeSDK.Xamarin.Forms</code> must be installed in the portable app project 
+(if one exists - not necessary if you’re using a shared project).</p>
+
+<h4 id="android-settings">Android Settings</h4>
+
+<p><strong>Enable Multi-Dex</strong></p>
+
+<p><em>Android Project</em> =&gt; <em>Options</em> =&gt; <em>Android Build</em> =&gt; <em>General</em> =&gt; <em><strong>Enable Multi-Dex</strong></em></p>
+
+<p><img src="./assets/xamarin_android_multidex_settings.png" alt="alt" title="Xamarin Android Multi-Dex Settings" /></p>
+
+<p><strong>ABI Settings</strong></p>
+
+<p>The Scanbot Barcode Scanner SDK uses native libraries under the hood and supports following 
+<a href="https://developer.android.com/ndk/guides/arch.html">ABIs</a>: 
+<code class="highlighter-rouge">armeabi-v7a</code>, <code class="highlighter-rouge">arm64-v8a</code>, <code class="highlighter-rouge">x86</code> and <code class="highlighter-rouge">x86_64</code>.</p>
+
+<p>Please adjust the <strong>Supported ABIs</strong> configuration in your Android project settings accordingly:</p>
+
+<p><em>Android Project</em> =&gt; <em>Options</em> =&gt; <em>Android Build</em> =&gt; <em>Advanced</em> =&gt; <em><strong>Supported ABIs</strong></em> …</p>
+
+<p><img src="./assets/xamarin_android_abi_settings.png" alt="alt" title="Xamarin Android ABI Settings" /></p>
+
+<p><strong>Please note:</strong>
+In most cases the architectures <code class="highlighter-rouge">x86</code> and <code class="highlighter-rouge">x86_64</code> can be removed for the release (production) build, 
+since they are only used on emulators and on some rare devices with the Intel Atom architecture.</p>
+
+<p>Furthermore, please increase the <strong>Java Heap Size</strong> value to <strong>4G</strong>. This is required for the build process.</p>
+
+<p><strong>ProGuard</strong></p>
+
+<p>If you need to enable <a href="https://docs.microsoft.com/en-us/xamarin/android/deploy-test/release-prep/proguard">ProGuard</a> 
+for your Android release build, please check 
+<a href="https://github.com/doo/Scanbot-SDK-Examples/wiki/ProGuard">this full list of the ProGuard rules for the Scanbot SDK</a>.</p>
+
+<h4 id="ios-settings">iOS settings</h4>
+
+<p>Set <code class="highlighter-rouge">Linker Behaviour</code> to 
+<a href="https://docs.microsoft.com/en-us/xamarin/ios/deploy-test/linker?tabs=macos">Link SDK assemblies only</a></p>
+
+<p><img src="./assets/ios-link.png" alt="alt" title="Link Framework SDKs Only" /></p>
+
+<h4 id="permissions">Permissions</h4>
+<p><strong>Required permissions for Android</strong></p>
+
+<p>Make sure to add the Camera permission in your <code class="highlighter-rouge">AndroidManifest.xml</code> file:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.CAMERA"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;uses-feature</span> <span class="na">android:name=</span><span class="s">"android.hardware.camera"</span> <span class="nt">/&gt;</span>
+</code></pre>
+</div>
+
+<p><strong>Required permissions for iOS</strong></p>
+
+<p>Add the following properties to your <code class="highlighter-rouge">Info.plist</code> file:</p>
+
+<ul>
+  <li><strong>“Privacy - Camera Usage Description”</strong> (<code class="highlighter-rouge">NSCameraUsageDescription</code>). 
+As value describe why your app wants to access the device’s camera.</li>
+</ul>
+
+<h4 id="license-key">License Key</h4>
+<p>In order to run the Scanbot Barcode Scanner SDK functionality within your production app, 
+you have to purchase and use a valid Scanbot Barcode Scanner SDK license.</p>
+
+<p>Each license key is valid only for a given app bundle identifier. You will be unable to 
+use any of the SDK features if the license key is corrupted, expired or invalid in any other way.</p>
+
+<p>The Scanbot Barcode Scanner SDK will run without a license for one minute per session!
+To get an unrestricted “no-strings-attached” 30 day trial license, 
+please submit the <a href="https://scanbot.io/sdk/trial.html">Trial License Form</a> on our website.</p>
+
+<p>Please kindly note that a trial license can only be used in a <strong>development and staging environment</strong>. 
+You are <strong>not allowed to publish</strong> your app to the App Store, 
+Play Store or any 3rd party Android App Store with a trial license.</p>
+
+<h3 id="sdk-features">SDK Features</h3>
+
+<p><a name="Initialization"></a></p>
+<h4 id="initialize-sdk--register-license">Initialize SDK &amp; Register License</h4>
+<p>The Scanbot Barcode Scanner SDK must be initialized before usage. Make sure to run the initialization as early as possible.
+We recommend to implement the initialization in the <code class="highlighter-rouge">Application</code> class of the Android and Forms app, and in the <code class="highlighter-rouge">AppDelegate</code> class of the iOS app.</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#a7b0d45a-0c14-4c38-abb9-721a966097c2'}">
+
+	<li class="uk-active"><a href="#">Xamarin.Droid</a></li>
+
+	<li><a href="#">Xamarin.iOS</a></li>
+
+	<li><a href="#">Xamarin.Forms</a></li>
+
+</ul>
+
+<ul id="a7b0d45a-0c14-4c38-abb9-721a966097c2" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">IO.Scanbot.Sdk.Barcode_scanner</span><span class="p">;;</span>
+
+<span class="na">[Application(LargeHeap = true)]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MainApplication</span> <span class="p">:</span> <span class="n">Application</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnCreate</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="p">...</span>
+        <span class="kt">var</span> <span class="n">initializer</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ScanbotBarcodeScannerSDKInitializer</span><span class="p">();</span>
+            <span class="n">initializer</span><span class="p">.</span><span class="nf">WithLogging</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+            <span class="c1">// To run in trial mode, simply comment out the following line:
+</span>            <span class="n">initializer</span><span class="p">.</span><span class="nf">License</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s">"&lt;your-license-key&gt;"</span><span class="p">);</span>
+            <span class="n">initializer</span><span class="p">.</span><span class="nf">Initialize</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+        <span class="p">....</span>
+    <span class="p">}</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+</li>
+
+	<li>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="na">[Register("AppDelegate")]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">AppDelegate</span> <span class="p">:</span> <span class="n">UIResponder</span><span class="p">,</span> <span class="n">IUIApplicationDelegate</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="n">nfloat</span> <span class="n">TopInset</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="n">UINavigationController</span> <span class="n">Controller</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="n">UIWindow</span> <span class="n">Window</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="p">[</span><span class="nf">Export</span><span class="p">(</span><span class="s">"application:didFinishLaunchingWithOptions:"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">FinishedLaunching</span><span class="p">(</span><span class="n">UIApplication</span> <span class="n">application</span><span class="p">,</span> <span class="n">NSDictionary</span> <span class="n">launchOptions</span><span class="p">)</span>
+    <span class="p">{</span>
+          <span class="c1">// To run in trial mode, simply comment out the following line:
+</span>        <span class="n">ScanbotSDK</span><span class="p">.</span><span class="nf">SetLicense</span><span class="p">(</span><span class="s">"&lt;your-license-key&gt;"</span><span class="p">);</span>
+        <span class="n">ScanbotSDK</span><span class="p">.</span><span class="nf">SetLoggingEnabled</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+</li>
+
+	<li>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">App</span> <span class="p">:</span> <span class="n">Application</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">Key</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">App</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nf">InitializeComponent</span><span class="p">();</span>
+
+        <span class="n">SBSDK</span><span class="p">.</span><span class="nf">Initialize</span><span class="p">(</span><span class="k">new</span> <span class="n">InitializationOptions</span>
+        <span class="p">{</span>
+            <span class="n">LicenseKey</span> <span class="p">=</span> <span class="n">Key</span><span class="p">,</span>
+            <span class="n">LoggingEnabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
+            <span class="n">ErrorHandler</span> <span class="p">=</span> <span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">feature</span><span class="p">)</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">message</span> <span class="p">=</span> <span class="err">$</span><span class="s">"Error! Status: {status}; Your license is missing the feature: {feature}"</span><span class="p">;</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+</li>
+
+</ul>
+
+<p><a name="RTUUIComponents"></a></p>
+<h4 id="rtu-ui-components">RTU UI Components</h4>
+<p>The <em>Ready-To-Use UI (RTU UI) Components</em> is an easy way to integrate and customize high-level UI components 
+(View Controllers for iOS and Activities for Android) for the most common tasks in Scanbot Barcode Scanner SDK. 
+The design and behavior of these RTU UI Components are based on our long years of experience 
+as well as the feedback from our SDK customers.</p>
+
+<p>If you need more customization options you have to implement custom screens (View Controllers for iOS and Activities for Android)
+using our <a href="#ClassicalUIComponents">Classical UI Component</a> (not available for Xamarin forms).</p>
+
+<h5 id="rtu-ui-example">RTU UI Example:</h5>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#01a80318-b5e7-4993-8de1-b4c870089be5'}">
+
+	<li class="uk-active"><a href="#">Xamarin.Droid</a></li>
+
+	<li><a href="#">Xamarin.iOS</a></li>
+
+	<li><a href="#">Xamarin.Forms</a></li>
+
+</ul>
+
+<ul id="01a80318-b5e7-4993-8de1-b4c870089be5" class="uk-switcher uk-margin">
+
+	<li>
+<p>Launching the Barcode Scanner:</p>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">configuration</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">BarcodeScannerConfiguration</span><span class="p">();</span>
+<span class="n">configuration</span><span class="p">.</span><span class="nf">SetBarcodeImageGenerationType</span><span class="p">(</span><span class="n">BarcodeImageGenerationType</span><span class="p">.</span><span class="n">None</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">intent</span> <span class="p">=</span> <span class="n">BarcodeScannerActivity</span><span class="p">.</span><span class="nf">NewIntent</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">configuration</span><span class="p">);</span>
+<span class="nf">StartActivityForResult</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="n">BARCODE_DEFAULT_UI_REQUEST_CODE</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Receiving scan results:</p>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnActivityResult</span><span class="p">(</span><span class="kt">int</span> <span class="n">requestCode</span><span class="p">,</span> <span class="p">[</span><span class="n">GeneratedEnum</span><span class="p">]</span> <span class="n">Result</span> <span class="n">resultCode</span><span class="p">,</span> <span class="n">Intent</span> <span class="n">data</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">barcode</span> <span class="p">=</span> <span class="p">(</span><span class="n">BarcodeScanningResult</span><span class="p">)</span><span class="n">data</span><span class="p">.</span><span class="nf">GetParcelableExtra</span><span class="p">(</span>
+        <span class="n">BaseBarcodeScannerActivity</span><span class="p">.</span><span class="n">ScannedBarcodeExtra</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">imagePath</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="nf">GetStringExtra</span><span class="p">(</span>
+        <span class="n">BaseBarcodeScannerActivity</span><span class="p">.</span><span class="n">ScannedBarcodeImagePathExtra</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">previewPath</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="nf">GetStringExtra</span><span class="p">(</span>
+        <span class="n">BaseBarcodeScannerActivity</span><span class="p">.</span><span class="n">ScannedBarcodePreviewFramePathExtra</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+</li>
+
+	<li>
+<p>Launching the Barcode Scanner:</p>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">configuration</span> <span class="p">=</span> <span class="n">SBSDKUIMachineCodeScannerConfiguration</span><span class="p">.</span><span class="n">DefaultConfiguration</span><span class="p">;</span>
+<span class="n">configuration</span><span class="p">.</span><span class="n">BehaviorConfiguration</span><span class="p">.</span><span class="n">BarcodeImageGenerationType</span> <span class="p">=</span> <span class="n">SBSDKBarcodeImageGenerationType</span><span class="p">.</span><span class="n">None</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">receiver</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">BarcodeResultReceiver</span><span class="p">();</span>
+<span class="n">SBSDKUIBarcodeScannerViewController</span><span class="p">.</span><span class="nf">PresentOn</span><span class="p">(</span>
+    <span class="k">this</span><span class="p">,</span> <span class="n">SBSDKBarcodeType</span><span class="p">.</span><span class="n">AllTypes</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">receiver</span>
+<span class="p">);</span>          
+</code></pre>
+</div>
+
+<p>Receiving scan results:</p>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">BarcodeResultReceiver</span> <span class="p">:</span> <span class="n">SBSDKUIBarcodeScannerViewControllerDelegate</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">QrBarcodeDetectionViewController</span><span class="p">(</span>
+        <span class="n">SBSDKUIBarcodeScannerViewController</span> <span class="n">viewController</span><span class="p">,</span> <span class="n">SBSDKBarcodeScannerResult</span><span class="p">[]</span> <span class="n">barcodeResults</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">Invoke</span><span class="p">(</span><span class="n">viewController</span><span class="p">,</span> <span class="n">barcodeResults</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">QrBarcodeDetectionViewController</span><span class="p">(</span>
+        <span class="n">SBSDKUIBarcodeScannerViewController</span> <span class="n">viewController</span><span class="p">,</span> <span class="n">UIImage</span> <span class="n">barcodeImage</span><span class="p">,</span> <span class="n">NSUrl</span> <span class="n">imageURL</span><span class="p">)</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="nf">Invoke</span><span class="p">(</span><span class="n">SBSDKUIBarcodeScannerViewController</span> <span class="n">viewController</span><span class="p">,</span>
+        <span class="n">SBSDKBarcodeScannerResult</span><span class="p">[]</span> <span class="n">barcodeResults</span><span class="p">,</span> <span class="n">UIImage</span> <span class="n">barcodeImage</span><span class="p">,</span> <span class="n">NSUrl</span> <span class="n">imageURL</span><span class="p">)</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>        
+</code></pre>
+</div>
+</li>
+
+	<li>
+<p>Launching the Barcode Scanner:</p>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">configuration</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">BarcodeScannerConfiguration</span><span class="p">();</span>
+<span class="n">BarcodeResultBundle</span> <span class="n">result</span> <span class="p">=</span> <span class="k">await</span> <span class="n">SBSDK</span><span class="p">.</span><span class="n">Scanner</span><span class="p">.</span><span class="nf">Open</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
+</code></pre>
+</div>
+</li>
+
+</ul>
+
+<p>For a fully-fledged example, please see our example app 
+<a href="https://github.com/doo/scanbot-barcode-scanner-sdk-example-xamarin">scanbot-barcode-scanner-sdk-example-xamarin</a> on GitHub.</p>
+
+<p><a name="ClassicalUIComponents"></a></p>
+<h4 id="classical-ui-components">Classical UI Components</h4>
+<p>Our <em>Classical UI Components</em> allows you to build your custom screens which are very flexible and fully customizable.
+It is a set of easy to integrate and customize components (Views, Buttons, Handlers, Controllers, etc.) which can be embedded
+and extended in your custom screens.</p>
+
+<p>For more details please see the documentation of our native Barcode Scanner SDKs for 
+<a href="https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/ios/">iOS</a> and
+<a href="https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/android/">Android</a> as well as our example apps.</p>
+
+<p>For a fully-functional example, please see our example app 
+<a href="https://github.com/doo/scanbot-barcode-scanner-sdk-example-xamarin">scanbot-barcode-scanner-sdk-example-xamarin</a> on GitHub.</p>
+
+<h5 id="classical-ui-example">Classical UI Example:</h5>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#0fc53563-a1c5-4a00-90e6-b0f7181aae42'}">
+
+	<li class="uk-active"><a href="#">Xamarin.Droid</a></li>
+
+	<li><a href="#">Xamarin.iOS</a></li>
+
+</ul>
+
+<ul id="0fc53563-a1c5-4a00-90e6-b0f7181aae42" class="uk-switcher uk-margin">
+
+	<li>
+<p>Implementing custom Activity that holds <code class="highlighter-rouge">ScanbotCameraView</code>:</p>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">CameraViewActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">,</span> <span class="n">ICameraOpenCallback</span><span class="p">,</span> <span class="n">IPictureCallback</span>
+<span class="p">{</span>
+    <span class="n">ScanbotCameraView</span> <span class="n">cameraView</span><span class="p">;</span>
+    <span class="n">ImageView</span> <span class="n">resultView</span><span class="p">;</span>
+
+    <span class="kt">bool</span> <span class="n">flashEnabled</span><span class="p">;</span>
+    <span class="n">BarcodeDetectorFrameHandler</span> <span class="n">handler</span><span class="p">;</span>
+
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">REQUEST_PERMISSION_CODE</span> <span class="p">=</span> <span class="m">200</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">base</span><span class="p">.</span><span class="nf">OnCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+
+        <span class="n">cameraView</span> <span class="p">=</span> <span class="n">FindViewById</span><span class="p">&lt;</span><span class="n">ScanbotCameraView</span><span class="p">&gt;(</span><span class="n">Resource</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">camera</span><span class="p">);</span>
+        <span class="n">resultView</span> <span class="p">=</span> <span class="n">FindViewById</span><span class="p">&lt;</span><span class="n">ImageView</span><span class="p">&gt;(</span><span class="n">Resource</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">result</span><span class="p">);</span>
+
+        <span class="n">cameraView</span><span class="p">.</span><span class="nf">SetCameraOpenCallback</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+
+        <span class="kt">var</span> <span class="n">SDK</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ScanbotBarcodeScannerSDK</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+        <span class="n">handler</span> <span class="p">=</span> <span class="n">BarcodeDetectorFrameHandler</span><span class="p">.</span><span class="nf">Attach</span><span class="p">(</span><span class="n">cameraView</span><span class="p">,</span> <span class="n">SDK</span><span class="p">.</span><span class="nf">BarcodeDetector</span><span class="p">());</span>
+        <span class="n">handler</span><span class="p">.</span><span class="nf">SetDetectionInterval</span><span class="p">(</span><span class="m">1000</span><span class="p">);</span>
+        <span class="n">handler</span><span class="p">.</span><span class="nf">AddResultHandler</span><span class="p">(</span><span class="k">new</span> <span class="nf">BarcodeResultDelegate</span><span class="p">());</span>
+        <span class="n">handler</span><span class="p">.</span><span class="nf">SaveCameraPreviewFrame</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+        
+        <span class="kt">var</span> <span class="n">snappingcontroller</span> <span class="p">=</span> <span class="n">BarcodeAutoSnappingController</span><span class="p">.</span><span class="nf">Attach</span><span class="p">(</span><span class="n">cameraView</span><span class="p">,</span> <span class="n">handler</span><span class="p">);</span>
+        <span class="n">snappingcontroller</span><span class="p">.</span><span class="nf">SetSensitivity</span><span class="p">(</span><span class="m">1f</span><span class="p">);</span>
+        <span class="n">cameraView</span><span class="p">.</span><span class="nf">AddPictureCallback</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnResume</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">base</span><span class="p">.</span><span class="nf">OnResume</span><span class="p">();</span>
+        <span class="n">cameraView</span><span class="p">.</span><span class="nf">OnResume</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnPause</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">base</span><span class="p">.</span><span class="nf">OnPause</span><span class="p">();</span>
+        <span class="n">cameraView</span><span class="p">.</span><span class="nf">OnPause</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">OnCameraOpened</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">cameraView</span><span class="p">.</span><span class="nf">PostDelayed</span><span class="p">(</span><span class="k">delegate</span>
+        <span class="p">{</span>
+            <span class="n">cameraView</span><span class="p">.</span><span class="nf">UseFlash</span><span class="p">(</span><span class="n">flashEnabled</span><span class="p">);</span>
+            <span class="n">cameraView</span><span class="p">.</span><span class="nf">ContinuousFocus</span><span class="p">();</span>
+        <span class="p">},</span> <span class="m">300</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">OnPictureTaken</span><span class="p">(</span><span class="kt">byte</span><span class="p">[]</span> <span class="n">p0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">image</span> <span class="p">=</span> <span class="n">p0</span><span class="p">;</span>
+        <span class="kt">var</span> <span class="n">orientation</span> <span class="p">=</span> <span class="n">p1</span><span class="p">;</span>
+
+        <span class="kt">var</span> <span class="n">bitmap</span> <span class="p">=</span> <span class="n">BitmapFactory</span><span class="p">.</span><span class="nf">DecodeByteArray</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">orientation</span><span class="p">);</span>
+
+        <span class="kt">var</span> <span class="n">matrix</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Matrix</span><span class="p">();</span>
+        <span class="n">matrix</span><span class="p">.</span><span class="nf">SetRotate</span><span class="p">(</span><span class="n">orientation</span><span class="p">,</span> <span class="n">bitmap</span><span class="p">.</span><span class="n">Width</span> <span class="p">/</span> <span class="m">2</span><span class="p">,</span> <span class="n">bitmap</span><span class="p">.</span><span class="n">Height</span> <span class="p">/</span> <span class="m">2</span><span class="p">);</span>
+
+        <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Bitmap</span><span class="p">.</span><span class="nf">CreateBitmap</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">bitmap</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">bitmap</span><span class="p">.</span><span class="n">Height</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+
+        <span class="n">resultView</span><span class="p">.</span><span class="nf">Post</span><span class="p">(</span><span class="k">delegate</span>
+        <span class="p">{</span>
+            <span class="n">resultView</span><span class="p">.</span><span class="nf">SetImageBitmap</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+            <span class="n">cameraView</span><span class="p">.</span><span class="nf">ContinuousFocus</span><span class="p">();</span>
+            <span class="n">cameraView</span><span class="p">.</span><span class="nf">StartPreview</span><span class="p">();</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Parsing results:</p>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BarcodeResultDelegate</span> <span class="p">:</span> <span class="n">BarcodeDetectorFrameHandler</span><span class="p">.</span><span class="n">BarcodeResultHandler</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="kt">bool</span> <span class="nf">Handle</span><span class="p">(</span><span class="n">FrameHandlerResult</span> <span class="n">p0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">success</span> <span class="p">=</span> <span class="p">(</span><span class="n">FrameHandlerResult</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span><span class="n">p0</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">success</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="n">success</span><span class="p">.</span><span class="n">Value</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="k">value</span> <span class="p">=</span> <span class="p">(</span><span class="n">BarcodeScanningResult</span><span class="p">)</span><span class="n">success</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+            <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+</li>
+
+	<li>
+<p>Implementing custom UIViewController that holds the <code class="highlighter-rouge">SBSDKBarcodeScannerViewController</code>:</p>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">ClassicScannerController</span> <span class="p">:</span> <span class="n">UIViewController</span>
+<span class="p">{</span>
+    <span class="n">SBSDKBarcodeScannerViewController</span> <span class="n">scannerController</span><span class="p">;</span>
+    
+    <span class="n">ClassicScannerReceiver</span> <span class="n">receiver</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">ViewDidLoad</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">base</span><span class="p">.</span><span class="nf">ViewDidLoad</span><span class="p">();</span>
+
+        <span class="n">scannerController</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SBSDKBarcodeScannerViewController</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">View</span><span class="p">);</span>
+
+        <span class="n">receiver</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ClassicScannerReceiver</span><span class="p">();</span>
+        <span class="n">scannerController</span><span class="p">.</span><span class="n">Delegate</span> <span class="p">=</span> <span class="n">receiver</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">ViewWillAppear</span><span class="p">(</span><span class="kt">bool</span> <span class="n">animated</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">base</span><span class="p">.</span><span class="nf">ViewWillAppear</span><span class="p">(</span><span class="n">animated</span><span class="p">);</span>
+        <span class="n">receiver</span><span class="p">.</span><span class="n">ResultReceived</span> <span class="p">+=</span> <span class="n">OnScanResultReceived</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">ViewWillDisappear</span><span class="p">(</span><span class="kt">bool</span> <span class="n">animated</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">base</span><span class="p">.</span><span class="nf">ViewWillDisappear</span><span class="p">(</span><span class="n">animated</span><span class="p">);</span>
+        <span class="n">receiver</span><span class="p">.</span><span class="n">ResultReceived</span> <span class="p">-=</span> <span class="n">OnScanResultReceived</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">void</span> <span class="nf">OnScanResultReceived</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">ClassicScannerEventArgs</span> <span class="n">e</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Results received"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Result receiver:</p>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">ClassicScannerReceiver</span> <span class="p">:</span> <span class="n">SBSDKBarcodeScannerViewControllerDelegate</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">EventHandler</span><span class="p">&lt;</span><span class="n">ClassicScannerEventArgs</span><span class="p">&gt;</span> <span class="n">ResultReceived</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">BarcodeScannerController</span><span class="p">(</span>
+        <span class="n">SBSDKBarcodeScannerViewController</span> <span class="n">controller</span><span class="p">,</span> <span class="n">SBSDKBarcodeScannerResult</span><span class="p">[]</span> <span class="n">codes</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">ResultReceived</span><span class="p">?.</span><span class="nf">Invoke</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="nf">ClassicScannerEventArgs</span><span class="p">(</span><span class="n">codes</span><span class="p">.</span><span class="nf">ToList</span><span class="p">(),</span> <span class="k">null</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">BarcodeScannerController</span><span class="p">(</span>
+        <span class="n">SBSDKBarcodeScannerViewController</span> <span class="n">controller</span><span class="p">,</span> <span class="n">UIImage</span> <span class="n">barcodeImage</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">ResultReceived</span><span class="p">?.</span><span class="nf">Invoke</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="nf">ClassicScannerEventArgs</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="n">barcodeImage</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+</li>
+
+</ul>
+
+<p><a name="BarcodeFormats"></a></p>
+<h4 id="barcode-formats">Barcode Formats</h4>
+
+<p>The Scanbot Barcode Scanner SDK supports various barcode formats:</p>
+
+<h5 id="1d-barcodes-1">1D Barcodes</h5>
+<ul>
+  <li><code class="highlighter-rouge">BarcodeFormat.Code39</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.Code93</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.Code128</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.Codabar</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.UpcA</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.UpcE</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.Ean8</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.Ean13</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.Itf</code></li>
+</ul>
+
+<h5 id="2d-barcodes-1">2D Barcodes</h5>
+<ul>
+  <li><code class="highlighter-rouge">BarcodeFormat.QrCode</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.Aztec</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.Pdf417</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.DataMatrix</code></li>
+</ul>
+
+<p>Out of these, you can also filter which formats you wish to accept or not.</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#dddc91b8-9cc8-44fd-ab61-620d28bd51da'}">
+
+	<li class="uk-active"><a href="#">Xamarin.Droid</a></li>
+
+	<li><a href="#">Xamarin.iOS</a></li>
+
+	<li><a href="#">Xamarin.Forms</a></li>
+
+</ul>
+
+<ul id="dddc91b8-9cc8-44fd-ab61-620d28bd51da" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">configuration</span><span class="p">.</span><span class="nf">SetBarcodeFormatsFilter</span><span class="p">(</span><span class="k">new</span> <span class="n">BarcodeFormat</span><span class="p">[]</span>
+<span class="p">{</span>
+    <span class="n">BarcodeFormat</span><span class="p">.</span><span class="n">QrCode</span><span class="p">,</span> <span class="n">BarcodeFormat</span><span class="p">.</span><span class="n">Aztec</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+</li>
+
+	<li>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">formats</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SBSDKBarcodeType</span><span class="p">[]</span>
+<span class="p">{</span>
+    <span class="n">SBSDKBarcodeType</span><span class="p">.</span><span class="n">QRCode</span><span class="p">,</span> <span class="n">SBSDKBarcodeType</span><span class="p">.</span><span class="n">Aztec</span>
+<span class="p">};</span>
+<span class="n">SBSDKUIBarcodeScannerViewController</span><span class="p">.</span><span class="nf">PresentOn</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">formats</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">receiver</span><span class="p">);</span>
+</code></pre>
+</div>
+</li>
+
+	<li>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">configuration</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">BarcodeScannerConfiguration</span><span class="p">();</span>
+<span class="n">configuration</span><span class="p">.</span><span class="n">AcceptedFormats</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">BarcodeFormat</span><span class="p">&gt;</span>
+<span class="p">{</span>
+    <span class="n">BarcodeFormat</span><span class="p">.</span><span class="n">QrCode</span><span class="p">,</span> <span class="n">BarcodeFormat</span><span class="p">.</span><span class="n">Aztec</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+</li>
+
+</ul>
+
+<p><a name="DetectingCodes"></a></p>
+<h4 id="detecting-on-existing-images">Detecting on Existing Images</h4>
+
+<p>Not only can you scan barcodes, the SDK also offers the option to detect barcodes on an existing still image (e.g. JPG file from Photo Library).</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#3e62e24f-3350-4634-b32d-1b25d562dadd'}">
+
+	<li class="uk-active"><a href="#">Xamarin.Droid</a></li>
+
+	<li><a href="#">Xamarin.iOS</a></li>
+
+	<li><a href="#">Xamarin.Forms</a></li>
+
+</ul>
+
+<ul id="3e62e24f-3350-4634-b32d-1b25d562dadd" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">sdk</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ScanbotBarcodeScannerSDK</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="n">BarcodeScanningResult</span> <span class="n">result</span> <span class="p">=</span> <span class="n">sdk</span><span class="p">.</span><span class="nf">BarcodeDetector</span><span class="p">().</span><span class="nf">DetectFromBitmap</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+</code></pre>
+</div>
+
+</li>
+
+	<li>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">scanner</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SBSDKBarcodeScanner</span><span class="p">(</span><span class="n">formats</span><span class="p">);</span>
+<span class="n">SBSDKBarcodeScannerResult</span><span class="p">[]</span> <span class="n">result</span> <span class="p">=</span> <span class="n">scanner</span><span class="p">.</span><span class="nf">DetectBarCodesOnImage</span><span class="p">(</span><span class="n">image</span><span class="p">);</span>
+</code></pre>
+</div>
+</li>
+
+	<li>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">List</span><span class="p">&lt;</span><span class="n">Barcode</span><span class="p">&gt;</span> <span class="n">barcodes</span> <span class="p">=</span> <span class="k">await</span> <span class="n">SBSDK</span><span class="p">.</span><span class="n">Operations</span><span class="p">.</span><span class="nf">DetectBarcodesFrom</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+</code></pre>
+</div>
+
+</li>
+
+</ul>
+
+<p><a name="ReleaseHistory"></a></p>
+<h3 id="release-history-and-changelog">Release History and Changelog</h3>
+
+<h4 id="scanbotbarcodesdkxamarin">ScanbotBarcodeSDK.Xamarin</h4>
+<h5 id="version-100-27-feb-2020">Version 1.0.0 (27 Feb 2020):</h5>
+<ul>
+  <li>🎉 First release.</li>
+</ul>
+
+<h4 id="scanbotbarcodesdkxamarinforms">ScanbotBarcodeSDK.Xamarin.Forms</h4>
+<h5 id="version-100-27-feb-2020-1">Version 1.0.0 (27 Feb 2020):</h5>
+<ul>
+  <li>🎉 First release.</li>
+</ul>
+
+<h3 id="pitfalls-and-issues">Pitfalls and Issues</h3>
+
+<p>👉 <a href="./pitfalls-and-issues.html">Pitfalls and issues</a></p>
+
+<h3 id="libraries-and-licenses">Libraries and Licenses</h3>
+
+<p>👉 <a href="./libraries.html">Libraries and Licenses</a></p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Scanbot Barcode Scanner SDK for Xamarin</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              Scanbot Barcode Scanner SDK for Xamarin
+            
+            </li>
+            
+            <li><a href="mailto:sdk@scanbot.io">sdk@scanbot.io</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
 
 </html>
-

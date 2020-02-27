@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Scanbot Barcode Scanner SDK for Xamarin</title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="/documentation/barcode-scanner-sdk/xamarin/assets/main.css">
+  <link rel="canonical" href="https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/xamarin/pitfalls-and-issues.html">
+  <link rel="alternate" type="application/rss+xml" title="Scanbot Barcode Scanner SDK for Xamarin" href="/documentation/barcode-scanner-sdk/xamarin/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/documentation/barcode-scanner-sdk/xamarin/">Scanbot Barcode Scanner SDK for Xamarin</a>
+
+    <nav class="site-nav">
+      <span class="menu-icon">
+        <svg viewBox="0 0 18 15" width="18px" height="15px">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </span>
+
+      <div class="trigger">
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <h3 id="pitfalls-and-issues">Pitfalls and Issues</h3>
+
+<blockquote>
+  <p>I’m getting the error: <code class="highlighter-rouge">android.view.InflateException: Binary XML file line #8: Binary XML file line #8: Error inflating class net.doo.snap.camera.ScanbotCameraView</code></p>
+</blockquote>
+
+<p><strong>Solution:</strong> You have to initialize the Scanbot SDK before you can use any UI components like <code class="highlighter-rouge">ScanbotCameraView</code> or other SDK functions.</p>
+
+<blockquote>
+  <p>I got a (trial) license key and integrated it in my app. But now the app crashes.</p>
+</blockquote>
+
+<blockquote>
+  <p>I’m getting the error: <code class="highlighter-rouge">A/libc: Fatal signal 6 (SIGABRT), code -6 in tid 6627 ...</code></p>
+</blockquote>
+
+<p><strong>Solution:</strong> Please make sure the package ID (on Android) or bundle ID (on iOS) of your app matches the one of the license key we generated for you.
+If you are testing our example apps with your license key, please adjust the package/bundle ID accordingly.</p>
+
+<p>Please also make sure you have inserted the license key string exact as it is provided in the license file. 
+The line breaks <code class="highlighter-rouge">\n</code> in the license key string are important and may not be removed!</p>
+
+<blockquote>
+  <p>My app stopped working.</p>
+</blockquote>
+
+<p><strong>Solution:</strong> Either your trial license period is expired or you set the license key incorrectly.</p>
+
+<blockquote>
+  <p>Your example app crashes after some time / after x images.</p>
+</blockquote>
+
+<p><strong>Solution:</strong> Our example apps doesn’t contain a Scanbot SDK license key and run in a <strong>trial mode (trial period of 1 minute)</strong>. 
+After the trial period is over the Scanbot SDK functions will stop working. 
+The UI components (like Scanning UI) will stop working or may be terminated. 
+You have to restart the app to get another trial period.</p>
+
+<blockquote>
+  <p><code class="highlighter-rouge">SBSDK</code> properties are <code class="highlighter-rouge">null</code></p>
+</blockquote>
+
+<p>This issue is a race condition inside Xamarin Forms. 
+It may happen on both iOS and Android, depending on the device’s hardware as well was Xamarin Forms version.</p>
+
+<p><strong>Solution:</strong> Force registration of native dependencies. 
+Add the following lines to your <code class="highlighter-rouge">MainActivity</code> and <code class="highlighter-rouge">AppDelegate</code>, respectively:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ScanbotBarcodeSDK.Forms.Droid.DependencyManager.Register();
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ScanbotBarcodeSDK.Forms.iOS.DependencyManager.Register();
+</code></pre>
+</div>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Scanbot Barcode Scanner SDK for Xamarin</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              Scanbot Barcode Scanner SDK for Xamarin
+            
+            </li>
+            
+            <li><a href="mailto:sdk@scanbot.io">sdk@scanbot.io</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
