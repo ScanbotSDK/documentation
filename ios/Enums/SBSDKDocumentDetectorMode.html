@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SBSDKHealthInsuranceCardRecognizer Class Reference</title>
+    <title>SBSDKDocumentDetectorMode Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/objc/Class/SBSDKHealthInsuranceCardRecognizer" class="dashAnchor"></a>
+    <a name="//apple_ref/objc/Enum/SBSDKDocumentDetectorMode" class="dashAnchor"></a>
 
-    <a title="SBSDKHealthInsuranceCardRecognizer Class Reference"></a>
+    <a title="SBSDKDocumentDetectorMode Enumeration Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">ScanbotSDK for iOS Reference</a>
       <img class="carat" src="../img/carat.png" />
-      SBSDKHealthInsuranceCardRecognizer Class Reference
+      SBSDKDocumentDetectorMode Enumeration Reference
     </p>
 
     <div class="content-wrapper">
@@ -903,16 +903,15 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>SBSDKHealthInsuranceCardRecognizer</h1>
+            <h1>SBSDKDocumentDetectorMode</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">SBSDKHealthInsuranceCardRecognizer</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+                  <pre class="highlight objective_c"><code><span class="k">enum</span> <span class="n">SBSDKDocumentDetectorMode</span> <span class="p">{}</span></code></pre>
 
                 </div>
               </div>
-            <p>Recognizer for European health insurance cards (EHIC), a.k.a. elektronische Gesundheitskarten (eGK).
-NOTE: In order to operate, this class requires tesseract languages and trained data to be present
-in the application bundle.</p>
+            <p>The mode of the document detector: standard or machine-learning-based.
+Machine-learning-based mode is only available for iOS 11.2 and newer.</p>
 
           </div>
         </section>
@@ -924,9 +923,9 @@ in the application bundle.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKHealthInsuranceCardRecognizer(im)initWithValidationType:"></a>
-                    <a name="//apple_ref/objc/Method/-initWithValidationType:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKHealthInsuranceCardRecognizer(im)initWithValidationType:">-initWithValidationType:</a>
+                    <a name="/c:@E@SBSDKDocumentDetectorMode@SBSDKDocumentDetectorModeStandard"></a>
+                    <a name="//apple_ref/objc/Case/SBSDKDocumentDetectorModeStandard" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@SBSDKDocumentDetectorMode@SBSDKDocumentDetectorModeStandard">SBSDKDocumentDetectorModeStandard</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -934,21 +933,19 @@ in the application bundle.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Creates an instance of the EHIC recognizer with specific validation rules. Refer to the documentation of SBSDKHealthInsuranceCardValidationType
-for the available validation modes.</p>
+                        <p>The standard detection mode.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithValidationType</span><span class="p">:</span>
-    <span class="p">(</span><span class="n"><a href="../Enums/SBSDKHealthInsuranceCardValidationType.html">SBSDKHealthInsuranceCardValidationType</a></span><span class="p">)</span><span class="nv">validationType</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="n">SBSDKDocumentDetectorModeStandard</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">?(</span><span class="nv">validationType</span><span class="p">:</span> <span class="kt"><a href="../Enums/SBSDKHealthInsuranceCardValidationType.html">SBSDKHealthInsuranceCardValidationType</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">standard</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
 
                         </div>
                       </div>
@@ -958,9 +955,9 @@ for the available validation modes.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKHealthInsuranceCardRecognizer(im)detectAndRecognizeFromImage:"></a>
-                    <a name="//apple_ref/objc/Method/-detectAndRecognizeFromImage:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKHealthInsuranceCardRecognizer(im)detectAndRecognizeFromImage:">-detectAndRecognizeFromImage:</a>
+                    <a name="/c:@E@SBSDKDocumentDetectorMode@SBSDKDocumentDetectorModeMachineLearning"></a>
+                    <a name="//apple_ref/objc/Case/SBSDKDocumentDetectorModeMachineLearning" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@SBSDKDocumentDetectorMode@SBSDKDocumentDetectorModeMachineLearning">SBSDKDocumentDetectorModeMachineLearning</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -968,359 +965,21 @@ for the available validation modes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Detect and extract data from EHIC in a photo given as an UIImage instance.</p>
+                        <p>The new machine-learning based detection mode. Available from iOS 11.2 and higher.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/SBSDKHealthInsuranceCardRecognitionResult.html">SBSDKHealthInsuranceCardRecognitionResult</a></span> <span class="o">*</span><span class="p">)</span>
-    <span class="nf">detectAndRecognizeFromImage</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nv">image</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="n">SBSDKDocumentDetectorModeMachineLearning</span> <span class="o">=</span> <span class="mi">1</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">detectAndRecognize</span><span class="p">(</span><span class="n">from</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKHealthInsuranceCardRecognitionResult.html">SBSDKHealthInsuranceCardRecognitionResult</a></span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">machineLearning</span> <span class="o">=</span> <span class="mi">1</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>image</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A photo containing an EHIC on a clean background.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Recognizer result. nil if recognition failed or validation is unsuccessful.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKHealthInsuranceCardRecognizer(im)detectAndRecognizeFromSampleBuffer:orientation:"></a>
-                    <a name="//apple_ref/objc/Method/-detectAndRecognizeFromSampleBuffer:orientation:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKHealthInsuranceCardRecognizer(im)detectAndRecognizeFromSampleBuffer:orientation:">-detectAndRecognizeFromSampleBuffer:orientation:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Detect and extract data from a sample buffer reference.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/SBSDKHealthInsuranceCardRecognitionResult.html">SBSDKHealthInsuranceCardRecognitionResult</a></span> <span class="o">*</span><span class="p">)</span>
-    <span class="nf">detectAndRecognizeFromSampleBuffer</span><span class="p">:</span>
-        <span class="p">(</span><span class="n">nonnull</span> <span class="n">CMSampleBufferRef</span><span class="p">)</span><span class="nv">sampleBufferRef</span>
-                           <span class="nf">orientation</span><span class="p">:</span>
-                               <span class="p">(</span><span class="n">AVCaptureVideoOrientation</span><span class="p">)</span><span class="nv">videoOrientation</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">detectAndRecognize</span><span class="p">(</span><span class="n">from</span> <span class="nv">sampleBufferRef</span><span class="p">:</span> <span class="kt">CMSampleBuffer</span><span class="p">,</span> <span class="n">orientation</span> <span class="nv">videoOrientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKHealthInsuranceCardRecognitionResult.html">SBSDKHealthInsuranceCardRecognitionResult</a></span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>sampleBufferRef</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The sample buffer reference possibly containing an EHIC.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Recognizer result. nil if recognition failed or validation is unsuccessful.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKHealthInsuranceCardRecognizer(im)detectAndRecognizeFromSampleBuffer:searchInRect:orientation:"></a>
-                    <a name="//apple_ref/objc/Method/-detectAndRecognizeFromSampleBuffer:searchInRect:orientation:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKHealthInsuranceCardRecognizer(im)detectAndRecognizeFromSampleBuffer:searchInRect:orientation:">-detectAndRecognizeFromSampleBuffer:searchInRect:orientation:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Detect and extract data from a sample buffer reference.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/SBSDKHealthInsuranceCardRecognitionResult.html">SBSDKHealthInsuranceCardRecognitionResult</a></span> <span class="o">*</span><span class="p">)</span>
-    <span class="nf">detectAndRecognizeFromSampleBuffer</span><span class="p">:</span>
-        <span class="p">(</span><span class="n">nonnull</span> <span class="n">CMSampleBufferRef</span><span class="p">)</span><span class="nv">sampleBufferRef</span>
-                          <span class="nf">searchInRect</span><span class="p">:(</span><span class="n">CGRect</span><span class="p">)</span><span class="nv">searchInRect</span>
-                           <span class="nf">orientation</span><span class="p">:</span>
-                               <span class="p">(</span><span class="n">AVCaptureVideoOrientation</span><span class="p">)</span><span class="nv">videoOrientation</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">detectAndRecognize</span><span class="p">(</span><span class="n">from</span> <span class="nv">sampleBufferRef</span><span class="p">:</span> <span class="kt">CMSampleBuffer</span><span class="p">,</span> <span class="n">searchIn</span> <span class="nv">searchInRect</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">,</span> <span class="n">orientation</span> <span class="nv">videoOrientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKHealthInsuranceCardRecognitionResult.html">SBSDKHealthInsuranceCardRecognitionResult</a></span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>sampleBufferRef</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The sample buffer reference possibly containing an EHIC.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>searchInRect</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Rectangle in video frame, where recognizer will try to recognize the data.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Recognizer result. nil if recognition failed or validation is unsuccessful.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKHealthInsuranceCardRecognizer(im)recognizeFromImage:"></a>
-                    <a name="//apple_ref/objc/Method/-recognizeFromImage:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKHealthInsuranceCardRecognizer(im)recognizeFromImage:">-recognizeFromImage:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Extract data from an EHIC in an UIImage instance.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/SBSDKHealthInsuranceCardRecognitionResult.html">SBSDKHealthInsuranceCardRecognitionResult</a></span> <span class="o">*</span><span class="p">)</span><span class="nf">recognizeFromImage</span><span class="p">:</span>
-    <span class="p">(</span><span class="n">nonnull</span> <span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nv">image</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">recognize</span><span class="p">(</span><span class="n">from</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKHealthInsuranceCardRecognitionResult.html">SBSDKHealthInsuranceCardRecognitionResult</a></span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>image</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>An image of an EHIC.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Recognizer result. nil if recognition failed or validation is unsuccessful.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKHealthInsuranceCardRecognizer(im)recognizeFromSampleBuffer:orientation:"></a>
-                    <a name="//apple_ref/objc/Method/-recognizeFromSampleBuffer:orientation:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKHealthInsuranceCardRecognizer(im)recognizeFromSampleBuffer:orientation:">-recognizeFromSampleBuffer:orientation:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Extract data from a sample buffer reference</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/SBSDKHealthInsuranceCardRecognitionResult.html">SBSDKHealthInsuranceCardRecognitionResult</a></span> <span class="o">*</span><span class="p">)</span>
-    <span class="nf">recognizeFromSampleBuffer</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">CMSampleBufferRef</span><span class="p">)</span><span class="nv">sampleBufferRef</span>
-                  <span class="nf">orientation</span><span class="p">:(</span><span class="n">AVCaptureVideoOrientation</span><span class="p">)</span><span class="nv">videoOrientation</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">recognize</span><span class="p">(</span><span class="n">from</span> <span class="nv">sampleBufferRef</span><span class="p">:</span> <span class="kt">CMSampleBuffer</span><span class="p">,</span> <span class="n">orientation</span> <span class="nv">videoOrientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKHealthInsuranceCardRecognitionResult.html">SBSDKHealthInsuranceCardRecognitionResult</a></span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>sampleBufferRef</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The sample buffer reference possibly containing an EHIC.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Recognizer result. nil if recognition failed or validation is unsuccessful.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKHealthInsuranceCardRecognizer(im)recognizeFromSampleBuffer:searchInRect:orientation:"></a>
-                    <a name="//apple_ref/objc/Method/-recognizeFromSampleBuffer:searchInRect:orientation:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKHealthInsuranceCardRecognizer(im)recognizeFromSampleBuffer:searchInRect:orientation:">-recognizeFromSampleBuffer:searchInRect:orientation:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Extract data from a sample buffer reference</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/SBSDKHealthInsuranceCardRecognitionResult.html">SBSDKHealthInsuranceCardRecognitionResult</a></span> <span class="o">*</span><span class="p">)</span>
-    <span class="nf">recognizeFromSampleBuffer</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">CMSampleBufferRef</span><span class="p">)</span><span class="nv">sampleBufferRef</span>
-                 <span class="nf">searchInRect</span><span class="p">:(</span><span class="n">CGRect</span><span class="p">)</span><span class="nv">searchInRect</span>
-                  <span class="nf">orientation</span><span class="p">:(</span><span class="n">AVCaptureVideoOrientation</span><span class="p">)</span><span class="nv">videoOrientation</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">recognize</span><span class="p">(</span><span class="n">from</span> <span class="nv">sampleBufferRef</span><span class="p">:</span> <span class="kt">CMSampleBuffer</span><span class="p">,</span> <span class="n">searchIn</span> <span class="nv">searchInRect</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">,</span> <span class="n">orientation</span> <span class="nv">videoOrientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKHealthInsuranceCardRecognitionResult.html">SBSDKHealthInsuranceCardRecognitionResult</a></span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>sampleBufferRef</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The sample buffer reference possibly containing an EHIC.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>searchInRect</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Rectangle in video frame, where recognizer will try to recognize the data.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Recognizer result. nil if recognition failed or validation is unsuccessful.</p>
                       </div>
                     </section>
                   </div>

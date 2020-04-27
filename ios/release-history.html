@@ -93,6 +93,9 @@
                 <a class="nav-group-task-link" href="Classes/SBSDKAAMVADocumentSubfileField.html">SBSDKAAMVADocumentSubfileField</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SBSDKAspectRatio.html">SBSDKAspectRatio</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKAspectRatioRange.html">SBSDKAspectRatioRange</a>
               </li>
               <li class="nav-group-task">
@@ -322,9 +325,6 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKPageAnalyzerResult.html">SBSDKPageAnalyzerResult</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/SBSDKPageAspectRatio.html">SBSDKPageAspectRatio</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKPayFormRecognitionResult.html">SBSDKPayFormRecognitionResult</a>
@@ -688,6 +688,9 @@
                 <a class="nav-group-task-link" href="Enums/SBSDKDocumentDetectionStatus.html">SBSDKDocumentDetectionStatus</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/SBSDKDocumentDetectorMode.html">SBSDKDocumentDetectorMode</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/SBSDKFilterMethod.html">SBSDKFilterMethod</a>
               </li>
               <li class="nav-group-task">
@@ -698,6 +701,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/SBSDKHealthInsuranceCardFieldType.html">SBSDKHealthInsuranceCardFieldType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/SBSDKHealthInsuranceCardValidationType.html">SBSDKHealthInsuranceCardValidationType</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/SBSDKIDCardPDF417DocumentFieldType.html">SBSDKIDCardPDF417DocumentFieldType</a>
@@ -898,6 +904,44 @@
           <div class="section-content">
             
             <h1 id='release-history-and-changelog' class='heading'>Release History and Changelog</h1>
+<h3 id='version-1-9-12-27-apr-2020' class='heading'>Version 1.9.12 (27 Apr 2020):</h3>
+
+<ul>
+<li><p>🎉 New:</p>
+
+<ul>
+<li>New ML-based document detector</li>
+<li>European Health Insurance Card (EHIC): Automatic country detection and support for Austrian EKVK cards</li>
+<li>Updated Tesseract OCR engine to version 4.1.0</li>
+</ul></li>
+<li><p>⚠️ Breaking Changes:</p>
+
+<ul>
+<li>Renamed <code>SBSDKPageAspectRatio</code> to <code><a href="Classes/SBSDKAspectRatio.html">SBSDKAspectRatio</a></code></li>
+<li>In <code><a href="Classes/SBSDKFinderLayer.html">SBSDKFinderLayer</a></code> type of parameter <code>minimumInsets</code> was changed from <code>CGSize</code> to <code>UIEdgeInsets</code>. So now inset from each side can be set up independently.</li>
+<li>In <code><a href="Classes/SBSDKUIMachineCodeScannerUIConfiguration.html">SBSDKUIMachineCodeScannerUIConfiguration</a></code> removed <code>bottomButtonsInactiveColor</code> and <code>bottomButtonsActiveColor</code>. Parameter <code>topBarButtonsColor</code> now affects flash button active state. Added <code>flashButtonInactiveColor</code>.</li>
+<li>In <code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code> type of parameter <code>capturingFrameMinimumInset</code> was changed from <code>CGSize</code> to <code>UIEdgeInsets</code>.</li>
+<li>In <code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code> parameter <code>CGSize capturingFrameSize</code> is changed to <code>SBSDKAspectRatio *capturingFrameAspectRatio</code>.</li>
+<li>In <code><a href="Classes/SBSDKBarcodeScannerViewController.html">SBSDKBarcodeScannerViewController</a></code> parameter <code>CGSize capturingFrameSize</code> is changed to <code>SBSDKAspectRatio *capturingFrameAspectRatio</code>.</li>
+<li>In <code><a href="Classes/SBSDKBarcodeScannerViewController.html">SBSDKBarcodeScannerViewController</a></code> type of the parameter <code>capturingFrameMinimumInset</code> was changed from <code>CGSize</code> to <code>UIEdgeInsets</code>.</li>
+<li>In <code><a href="Classes/SBSDKUIMachineCodeScannerUIConfiguration.html">SBSDKUIMachineCodeScannerUIConfiguration</a></code> parameters <code>CGFloat finderWidth</code> and <code>CGFloat finderHeight</code> are replaced by <code>SBSDKAspectRatio *finderAspectRatio</code>.</li>
+<li>In <code><a href="Classes/SBSDKUIScanBarCodeWorkflowStep.html">SBSDKUIScanBarCodeWorkflowStep</a></code> the initializer  <code>- (instancetype)initWithTitle:(nullable NSString *)title message:(nullable NSString *)message acceptedCodeTypes:(nullable NSArray&lt;SBSDKBarcodeType *&gt; *)acceptedMachineCodeTypes finderViewSize:(CGSize)finderViewSize resultValidation:(nullable SBSDKUIWorkflowStepValidationHandler)resultValidationHandler</code> is changed to 
+<code>- (instancetype)initWithTitle:(nullable NSString *)title message:(nullable NSString *)message
+     acceptedCodeTypes:(nullable NSArray&lt;SBSDKBarcodeType *&gt;*)acceptedMachineCodeTypes
+     finderViewAspectRatio:(nullable SBSDKAspectRatio *)finderViewAspectRatio  
+      resultValidation:(nullable SBSDKUIWorkflowStepValidationHandler)resultValidationHandler</code><br></li>
+</ul></li>
+<li><p>🐞 Bug fixes:</p>
+
+<ul>
+<li>Finder in <code><a href="Classes/SBSDKUIMRZScannerViewController.html">SBSDKUIMRZScannerViewController</a></code> now has the same behavior, as in <code><a href="Classes/SBSDKUIBarcodeScannerViewController.html">SBSDKUIBarcodeScannerViewController</a></code>. By documentation, both should operate with aspect ratio, but MRZ screen operated with actual sizes.</li>
+</ul></li>
+<li><p>🚀 Improvements:</p>
+
+<ul>
+<li>In <code><a href="Classes/SBSDKUIBarcodeScannerViewController.html">SBSDKUIBarcodeScannerViewController</a></code> and <code><a href="Classes/SBSDKUIMRZScannerViewController.html">SBSDKUIMRZScannerViewController</a></code> flash button was moved to navigation bar to save more space for finder layer.</li>
+</ul></li>
+</ul>
 <h3 id='version-1-9-11-26-mar-2020' class='heading'>Version 1.9.11 (26 Mar 2020):</h3>
 
 <ul>
@@ -1535,7 +1579,7 @@ of the cropped image and let it be very close to the original documents aspect r
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2020-03-26)</p>
+      <p>&copy; 2020 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2020-04-27)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
