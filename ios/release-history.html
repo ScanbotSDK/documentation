@@ -297,10 +297,10 @@
                 <a class="nav-group-task-link" href="Classes/SBSDKMedicalPlanStandardSubheadingField.html">SBSDKMedicalPlanStandardSubheadingField</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/SBSDKMedicalPlanSubheadingReceipe.html">SBSDKMedicalPlanSubheadingReceipe</a>
+                <a class="nav-group-task-link" href="Classes/SBSDKMedicalPlanSubheadingPrescription.html">SBSDKMedicalPlanSubheadingPrescription</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/SBSDKMedicalPlanSubheadingReceipeField.html">SBSDKMedicalPlanSubheadingReceipeField</a>
+                <a class="nav-group-task-link" href="Classes/SBSDKMedicalPlanSubheadingPrescriptionField.html">SBSDKMedicalPlanSubheadingPrescriptionField</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKMultipleObjectScannerViewController.html">SBSDKMultipleObjectScannerViewController</a>
@@ -409,6 +409,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKUICameraViewController.html">SBSDKUICameraViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SBSDKUICroppingScreenBehaviorConfiguration.html">SBSDKUICroppingScreenBehaviorConfiguration</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKUICroppingScreenConfiguration.html">SBSDKUICroppingScreenConfiguration</a>
@@ -739,7 +742,7 @@
                 <a class="nav-group-task-link" href="Enums/SBSDKMedicalPlanStandardSubheadingFieldType.html">SBSDKMedicalPlanStandardSubheadingFieldType</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Enums/SBSDKMedicalPlanSubheadingReceipeFieldType.html">SBSDKMedicalPlanSubheadingReceipeFieldType</a>
+                <a class="nav-group-task-link" href="Enums/SBSDKMedicalPlanSubheadingPrescriptionFieldType.html">SBSDKMedicalPlanSubheadingPrescriptionFieldType</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/SBSDKOCRResultBlockType.html">SBSDKOCRResultBlockType</a>
@@ -904,6 +907,36 @@
           <div class="section-content">
             
             <h1 id='release-history-and-changelog' class='heading'>Release History and Changelog</h1>
+<h3 id='version-1-9-15-18-may-2020' class='heading'>Version 1.9.15 (18 May 2020):</h3>
+
+<ul>
+<li><p>🎉 New:</p>
+
+<ul>
+<li>Added support for inverted barcodes</li>
+<li>Added class <code><a href="Classes/SBSDKUICroppingScreenBehaviorConfiguration.html">SBSDKUICroppingScreenBehaviorConfiguration</a></code> and corresponding property of this class to <code><a href="Classes/SBSDKUICroppingScreenConfiguration.html">SBSDKUICroppingScreenConfiguration</a></code>.</li>
+<li>Added <code>detectorMode</code> parameter to behavior configuration for RTU UI document scanner <code><a href="Classes/SBSDKUIDocumentScannerBehaviorConfiguration.html">SBSDKUIDocumentScannerBehaviorConfiguration</a></code>. This parameter allows to choose the detector type for scanner: standard or machine learning based.</li>
+<li>Added possibility to set default detector mode of <code><a href="Classes/SBSDKDocumentDetector.html">SBSDKDocumentDetector</a></code> via <code>+ (void)setDefaultDetectorMode:(SBSDKDocumentDetectorMode)newDefaultDetectorMode;</code>. The getter function is  <code>+ (SBSDKDocumentDetectorMode)defaultDetectorMode;</code>.</li>
+<li>Added  functions <code>- (nullable SBSDKDocumentDetectorResult *)detectDocument:(BOOL)applyPolygonIfOkay detectorMode:(SBSDKDocumentDetectorMode)detectorMode;</code>  and <code>- (void)applyDocumentDetectionWithDetectorMode:(SBSDKDocumentDetectorMode)detectorMode;</code> to <code><a href="Classes/SBSDKUIPage.html">SBSDKUIPage</a></code>.</li>
+</ul></li>
+<li><p>⚠️ Breaking Changes:</p>
+
+<ul>
+<li><code><a href="Classes/SBSDKUICroppingScreenConfiguration.html">SBSDKUICroppingScreenConfiguration</a></code>  initializer is now 
+<code>- (nonnull instancetype)initWithUIConfiguration:(nonnull SBSDKUICroppingScreenUIConfiguration *)uiConfiguration
+                    textConfiguration:(nonnull SBSDKUICroppingScreenTextConfiguration *)textConfiguration
+                    behaviorConfiguration:(nonnull SBSDKUICroppingScreenBehaviorConfiguration *)behaviorConfiguration</code></li>
+<li>Removed function <code>+ (BOOL)isDocumentDetectorModeAvailable:(SBSDKDocumentDetectorMode)mode;</code> from <code><a href="Classes/SBSDKDocumentDetector.html">SBSDKDocumentDetector</a></code>. IOS version check can now be used instead of this function.</li>
+<li>Removed function <code>+ (BOOL)isDocumentDetectorModeAvailable:(SBSDKDocumentDetectorMode)mode;</code> from <code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code>. IOS version check can now be used instead of this function.</li>
+<li><code>SBSDKMedicalPlanPatientFieldTypeAllergysAndIntolerances</code> is renamed to <code>SBSDKMedicalPlanPatientFieldTypeAllergiesAndIntolerances</code></li>
+<li><code>SBSDKMedicalPlanSubheadingReceipeFieldType</code>  enum is renamed to <code><a href="Enums/SBSDKMedicalPlanSubheadingPrescriptionFieldType.html">SBSDKMedicalPlanSubheadingPrescriptionFieldType</a></code> . Its cases <code>SBSDKMedicalPlanSubheadingReceipeFieldTypeGeneralInformation</code> and <code>SBSDKMedicalPlanSubheadingReceipeFieldTypeReceipeFreeText</code> has been renamed to <code>SBSDKMedicalPlanSubheadingPrescriptionFieldTypeGeneralInformation</code> and <code>SBSDKMedicalPlanSubheadingPrescriptionFieldTypePrescriptionFreeText</code> respectively.</li>
+<li><code>SBSDKMedicalPlanSubheadingReceipeField</code>  class name is changed to <code><a href="Classes/SBSDKMedicalPlanSubheadingPrescriptionField.html">SBSDKMedicalPlanSubheadingPrescriptionField</a></code> .</li>
+<li><code>SBSDKMedicalPlanSubheadingReceipe</code>  class name is changed to <code><a href="Classes/SBSDKMedicalPlanSubheadingPrescription.html">SBSDKMedicalPlanSubheadingPrescription</a></code> .</li>
+<li>Cases of <code><a href="Enums/SBSDKVCardDocumentFieldType.html">SBSDKVCardDocumentFieldType</a></code> - <code>SBSDKVCardDocumentFieldTypeCallendarURIForRequests</code> and <code>SBSDKVCardDocumentFieldTypeCallendarURI</code> has been renamed to <code>SBSDKVCardDocumentFieldTypeCalendarURIForRequests</code> and <code>SBSDKVCardDocumentFieldTypeCalendarURI</code> respectively.</li>
+<li>Case of <code><a href="Enums/SBSDKBoardingPassDocumentFieldType.html">SBSDKBoardingPassDocumentFieldType</a></code> - <code>SBSDKBoardingPassDocumentFieldTypeSecongNonConsecutiveBaggageTagLicensePlateNumber</code> has been renamed to <code>SBSDKBoardingPassDocumentFieldTypeSecondNonConsecutiveBaggageTagLicensePlateNumber</code></li>
+<li>In <code><a href="Protocols/SBSDKBarcodeScannerViewControllerDelegate.html">SBSDKBarcodeScannerViewControllerDelegate</a></code> the function <code>- (void)barcodeScannerController:(nonnull SBSDKBarcodeScannerViewController *)controller didDetecBarcodes:(nonnull NSArray&lt;SBSDKBarcodeScannerResult *&gt; *)codes;</code> is renamed to <code>- (void)barcodeScannerController:(nonnull SBSDKBarcodeScannerViewController *)controller didDetectBarcodes:(nonnull NSArray&lt;SBSDKBarcodeScannerResult *&gt; *)codes;</code>.</li>
+</ul></li>
+</ul>
 <h3 id='version-1-9-14-7-may-2020' class='heading'>Version 1.9.14 (7 May 2020):</h3>
 
 <ul>
@@ -1597,7 +1630,7 @@ of the cropped image and let it be very close to the original documents aspect r
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2020-05-07)</p>
+      <p>&copy; 2020 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2020-05-18)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
