@@ -556,8 +556,16 @@ files with their rotated versions.</p>
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">result.operationResult</code> - <code class="highlighter-rouge">SUCCESS</code> if some pages were snapped, <code class="highlighter-rouge">ERROR</code> if the user canceled the operation or error occurred.</li>
-  <li><code class="highlighter-rouge">result.pages</code> - an array of <a href="#pageObject">pages</a>. If multi-page mode is enabled, this array may contain more than one page. If multi-page mode is not enabled and <code class="highlighter-rouge">result.status</code> is <code class="highlighter-rouge">SUCCESS</code>, this array contains one object.</li>
+  <li><code class="highlighter-rouge">result.operationResult</code> -
+    <ul>
+      <li><code class="highlighter-rouge">SUCCESS</code> if some pages were snapped</li>
+      <li><code class="highlighter-rouge">ERROR</code> if an error occurred</li>
+      <li><code class="highlighter-rouge">CANCELED</code> if the user canceled the request</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">result.pages</code> - an array of <a href="#pageObject">pages</a>. 
+If multi-page mode is enabled, this array may contain more than one page. 
+If multi-page mode is not enabled and <code class="highlighter-rouge">result.status</code> is <code class="highlighter-rouge">SUCCESS</code>, this array contains one object.</li>
 </ul>
 
 <h5 id="documentscannerconfiguration">DocumentScannerConfiguration</h5>
@@ -751,8 +759,13 @@ It uses the edge detection algorithm of the Scanbot SDK and contains some smart 
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">result.operationResult</code> - <code class="highlighter-rouge">SUCCESS</code> if the user applied changes on image (tapped on the “done” button), <code class="highlighter-rouge">ERROR</code> if the user 
-has canceled the operation (tapped on the “cancel” button).</li>
+  <li><code class="highlighter-rouge">result.operationResult</code>
+    <ul>
+      <li><code class="highlighter-rouge">SUCCESS</code> if the user applied changes on image (tapped on the “done” button)</li>
+      <li><code class="highlighter-rouge">ERROR</code> if an error occurred</li>
+      <li><code class="highlighter-rouge">CANCELED</code> if the user has canceled the operation (tapped on the “cancel” button)</li>
+    </ul>
+  </li>
   <li><code class="highlighter-rouge">result.page</code> - the cropped <a href="#pageObject">page</a>.</li>
 </ul>
 
@@ -840,7 +853,13 @@ or <a href="#module_ScanbotSdk.createPage">createPage()</a>.</p>
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">result.operationResult</code> - <code class="highlighter-rouge">SUCCESS</code> if a barcode was detected, <code class="highlighter-rouge">ERROR</code> if the user has canceled the operation (tapped on the “cancel” button).</li>
+  <li><code class="highlighter-rouge">result.operationResult</code> -
+    <ul>
+      <li><code class="highlighter-rouge">SUCCESS</code> if a barcode was detected</li>
+      <li><code class="highlighter-rouge">ERROR</code> if an error occurred</li>
+      <li><code class="highlighter-rouge">CANCELED</code> if the user has canceled the operation (tapped on the “cancel” button)</li>
+    </ul>
+  </li>
   <li><code class="highlighter-rouge">result.barcodeFormat</code> - <a href="#barcodeFormat">Format</a> of detected barcode/QR code (e.g. “CODE_128”, “EAN_13”, “QR_CODE”, etc).</li>
   <li><code class="highlighter-rouge">result.text</code> - Raw text value of detected barcode/QR code.</li>
 </ul>
@@ -942,7 +961,13 @@ By default all supported formats will be detected.</p>
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">result.operationResult</code> - <code class="highlighter-rouge">SUCCESS</code> if some MRZ data was detected, <code class="highlighter-rouge">ERROR</code> if the user canceled the operation (tapped on the “cancel” button).</li>
+  <li><code class="highlighter-rouge">result.operationResult</code>
+    <ul>
+      <li><code class="highlighter-rouge">SUCCESS</code> if some MRZ data was detected</li>
+      <li><code class="highlighter-rouge">CANCELED</code> if the user canceled the operation (tapped on the “cancel” button)</li>
+      <li><code class="highlighter-rouge">ERROR</code> if an error occurred</li>
+    </ul>
+  </li>
   <li><code class="highlighter-rouge">result.fields</code> - an array of MRZ fields. Each field is an object with the following properties:
     <ul>
       <li><code class="highlighter-rouge">field.name</code> - the field type</li>
@@ -1033,7 +1058,13 @@ By default all supported formats will be detected.</p>
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">result.operationResult</code> - <code class="highlighter-rouge">SUCCESS</code> if EHIC data was detected, <code class="highlighter-rouge">ERROR</code> if the user canceled the operation (tapped on the “cancel” button).</li>
+  <li><code class="highlighter-rouge">result.operationResult</code> -
+    <ul>
+      <li><code class="highlighter-rouge">SUCCESS</code> if EHIC data was detected</li>
+      <li><code class="highlighter-rouge">ERROR</code> if an error occurred</li>
+      <li><code class="highlighter-rouge">CANCELED</code> if the user canceled the operation (tapped on the “cancel” button)</li>
+    </ul>
+  </li>
   <li><code class="highlighter-rouge">result.fields</code> - an array of recognized EHIC fields. Each field is an object with the following properties:
     <ul>
       <li><code class="highlighter-rouge">type</code> - the type of card field <a href="">HealthInsuranceCardFieldType</a>.</li>
@@ -1596,7 +1627,18 @@ It allows you to create and distribute dedicated and smaller APKs <strong>via Pl
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history-and-changelog">Release History and Changelog</h2>
 
+<h4 id="version-112-28-may-2020">Version 1.1.2 (28 May 2020):</h4>
+
+<ul>
+  <li>🚀 Improvements:
+    <ul>
+      <li><code class="highlighter-rouge">OperationResult.CANCELED</code> when the user presses <code class="highlighter-rouge">cancel</code> in any Scanbot UI screen component</li>
+    </ul>
+  </li>
+</ul>
+
 <h4 id="version-111-13-may-2020">Version 1.1.1 (13 May 2020):</h4>
+
 <ul>
   <li>🐞 Bug fixes:
     <ul>
