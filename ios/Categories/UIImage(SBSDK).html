@@ -118,6 +118,9 @@
                 <a class="nav-group-task-link" href="../Classes/SBSDKBaseAdjustableFilter.html">SBSDKBaseAdjustableFilter</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SBSDKBlurrinessEstimator.html">SBSDKBlurrinessEstimator</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SBSDKBoardingPassDocumentFormat.html">SBSDKBoardingPassDocumentFormat</a>
               </li>
               <li class="nav-group-task">
@@ -218,6 +221,18 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SBSDKIDCardPDF417DocumentFormat.html">SBSDKIDCardPDF417DocumentFormat</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SBSDKIDCardRecognizer.html">SBSDKIDCardRecognizer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SBSDKIDCardRecognizerResult.html">SBSDKIDCardRecognizerResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SBSDKIDCardRecognizerResultField.html">SBSDKIDCardRecognizerResultField</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SBSDKIDCardScannerViewController.html">SBSDKIDCardScannerViewController</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SBSDKImageChannelMetrics.html">SBSDKImageChannelMetrics</a>
@@ -710,7 +725,16 @@
                 <a class="nav-group-task-link" href="../Enums/SBSDKHealthInsuranceCardValidationType.html">SBSDKHealthInsuranceCardValidationType</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SBSDKIDCardFieldType.html">SBSDKIDCardFieldType</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/SBSDKIDCardPDF417DocumentFieldType.html">SBSDKIDCardPDF417DocumentFieldType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SBSDKIDCardRecognitionStatus.html">SBSDKIDCardRecognitionStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SBSDKIDCardType.html">SBSDKIDCardType</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/SBSDKImageFileFormat.html">SBSDKImageFileFormat</a>
@@ -815,6 +839,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/SBSDKFinderLayerDelegate.html">SBSDKFinderLayerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/SBSDKIDCardScannerViewControllerDelegate.html">SBSDKIDCardScannerViewControllerDelegate</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/SBSDKImageEditingViewControllerDelegate.html">SBSDKImageEditingViewControllerDelegate</a>
@@ -1001,6 +1028,75 @@ queues and proper memory management.</p>
                               <td>
                                 <div>
                                   <p>The sample buffer to convert.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An UIImage.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)UIImage(cm)sbsdk_imageFromSampleBuffer:orientation:"></a>
+                    <a name="//apple_ref/objc/Method/+sbsdk_imageFromSampleBuffer:orientation:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)UIImage(cm)sbsdk_imageFromSampleBuffer:orientation:">+sbsdk_imageFromSampleBuffer:orientation:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Converts a CMSampleBuffer to an UIImage.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span>
+    <span class="nf">sbsdk_imageFromSampleBuffer</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">CMSampleBufferRef</span><span class="p">)</span><span class="nv">sampleBuffer</span>
+                    <span class="nf">orientation</span><span class="p">:(</span><span class="n">AVCaptureVideoOrientation</span><span class="p">)</span><span class="nv">orientation</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">sbsdk_image</span><span class="p">(</span><span class="n">from</span> <span class="nv">sampleBuffer</span><span class="p">:</span> <span class="kt">CMSampleBuffer</span><span class="p">,</span> <span class="nv">orientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sampleBuffer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The sample buffer to convert.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>orientation</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The AVFoundation video orientation.</p>
                                 </div>
                               </td>
                             </tr>
@@ -2054,6 +2150,62 @@ Does nothing, if width or height equal to zero.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:objc(cs)UIImage(im)sbsdk_imageByCenterCroppingToAspectRatio:"></a>
+                    <a name="//apple_ref/objc/Method/-sbsdk_imageByCenterCroppingToAspectRatio:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)UIImage(im)sbsdk_imageByCenterCroppingToAspectRatio:">-sbsdk_imageByCenterCroppingToAspectRatio:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a center crop of the receiver with the given aspect ratio.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nf">sbsdk_imageByCenterCroppingToAspectRatio</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKAspectRatio.html">SBSDKAspectRatio</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">ratio</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">sbsdk_imageByCenterCropping</span><span class="p">(</span><span class="n">to</span> <span class="nv">ratio</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKAspectRatio.html">SBSDKAspectRatio</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ratio</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The aspect ratio of the requested crop.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The cropped image.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:objc(cs)UIImage(cm)sbsdk_imageDataWithFixedOrientation:"></a>
                     <a name="//apple_ref/objc/Method/+sbsdk_imageDataWithFixedOrientation:" class="dashAnchor"></a>
                     <a class="token" href="#/c:objc(cs)UIImage(cm)sbsdk_imageDataWithFixedOrientation:">+sbsdk_imageDataWithFixedOrientation:</a>
@@ -2190,7 +2342,7 @@ for a captured image to rotate it to the upside-down orientation.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2020-05-18)</p>
+      <p>&copy; 2020 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2020-07-02)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
