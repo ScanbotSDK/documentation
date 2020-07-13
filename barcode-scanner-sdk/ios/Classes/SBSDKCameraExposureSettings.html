@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SBSDKAAMVADocumentSubfileField Class Reference</title>
+    <title>SBSDKCameraExposureSettings Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/objc/Class/SBSDKAAMVADocumentSubfileField" class="dashAnchor"></a>
+    <a name="//apple_ref/objc/Class/SBSDKCameraExposureSettings" class="dashAnchor"></a>
 
-    <a title="SBSDKAAMVADocumentSubfileField Class Reference"></a>
+    <a title="SBSDKCameraExposureSettings Class Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">ScanbotBarcodeScannerSDK for iOS Reference</a>
       <img class="carat" src="../img/carat.png" />
-      SBSDKAAMVADocumentSubfileField Class Reference
+      SBSDKCameraExposureSettings Class Reference
     </p>
 
     <div class="content-wrapper">
@@ -358,14 +358,14 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>SBSDKAAMVADocumentSubfileField</h1>
+            <h1>SBSDKCameraExposureSettings</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">SBSDKAAMVADocumentSubfileField</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">SBSDKCameraExposureSettings</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
 
                 </div>
               </div>
-            <p>AAMVA document subfile field.</p>
+            <p>This class provides information about the current cameras exposure settings.</p>
 
           </div>
         </section>
@@ -377,9 +377,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKAAMVADocumentSubfileField(py)type"></a>
-                    <a name="//apple_ref/objc/Property/type" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKAAMVADocumentSubfileField(py)type">type</a>
+                    <a name="/c:objc(cs)SBSDKCameraExposureSettings(py)exposureDuration"></a>
+                    <a name="//apple_ref/objc/Property/exposureDuration" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraExposureSettings(py)exposureDuration">exposureDuration</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -387,19 +387,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Field type.</p>
+                        <p>The exposure duration of the camera in milliseconds.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Enums/SBSDKAAMVARecordFieldType.html">SBSDKAAMVARecordFieldType</a></span> <span class="n">type</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">)</span> <span class="kt">double</span> <span class="n">exposureDuration</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/SBSDKAAMVARecordFieldType.html">SBSDKAAMVARecordFieldType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">exposureDuration</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -409,9 +409,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKAAMVADocumentSubfileField(py)typeString"></a>
-                    <a name="//apple_ref/objc/Property/typeString" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKAAMVADocumentSubfileField(py)typeString">typeString</a>
+                    <a name="/c:objc(cs)SBSDKCameraExposureSettings(py)exposureTargetOffset"></a>
+                    <a name="//apple_ref/objc/Property/exposureTargetOffset" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraExposureSettings(py)exposureTargetOffset">exposureTargetOffset</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -419,19 +419,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Field type string.</p>
+                        <p>The exposure target offset in EV.
+Negative values mean the image is too dark, positive values mean the image is too bright.
+Usually the camera automatically tries to adapt its exposure parameters to keep the exposure target offset at a
+value of 0 resulting in a proper exposure of the image.
+If this value is not close to 0 the camera cannot adjust its exposure parameters properly, the image is either
+way too dark or too bright.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">typeString</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">)</span> <span class="kt">float</span> <span class="n">exposureTargetOffset</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">typeString</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">exposureTargetOffset</span><span class="p">:</span> <span class="kt">Float</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -441,9 +446,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKAAMVADocumentSubfileField(py)typeHumanReadableString"></a>
-                    <a name="//apple_ref/objc/Property/typeHumanReadableString" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKAAMVADocumentSubfileField(py)typeHumanReadableString">typeHumanReadableString</a>
+                    <a name="/c:objc(cs)SBSDKCameraExposureSettings(py)ISOValue"></a>
+                    <a name="//apple_ref/objc/Property/ISOValue" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraExposureSettings(py)ISOValue">ISOValue</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -451,83 +456,20 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Human-readable field type name.</p>
+                        <p>The ISO (or amplification) value of the camera.
+The higher the value the more noise and less detail the image will have.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">readonly</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">typeHumanReadableString</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">)</span> <span class="kt">float</span> <span class="n">ISOValue</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">typeHumanReadableString</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKAAMVADocumentSubfileField(py)value"></a>
-                    <a name="//apple_ref/objc/Property/value" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKAAMVADocumentSubfileField(py)value">value</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Field formatted value.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">value</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKAAMVADocumentSubfileField(py)rawValue"></a>
-                    <a name="//apple_ref/objc/Property/rawValue" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKAAMVADocumentSubfileField(py)rawValue">rawValue</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Field raw value.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">rawValue</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">isoValue</span><span class="p">:</span> <span class="kt">Float</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>

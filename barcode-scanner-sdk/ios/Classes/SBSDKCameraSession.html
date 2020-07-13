@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SBSDKBarcodeScannerViewController Class Reference</title>
+    <title>SBSDKCameraSession Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/objc/Class/SBSDKBarcodeScannerViewController" class="dashAnchor"></a>
+    <a name="//apple_ref/objc/Class/SBSDKCameraSession" class="dashAnchor"></a>
 
-    <a title="SBSDKBarcodeScannerViewController Class Reference"></a>
+    <a title="SBSDKCameraSession Class Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">ScanbotBarcodeScannerSDK for iOS Reference</a>
       <img class="carat" src="../img/carat.png" />
-      SBSDKBarcodeScannerViewController Class Reference
+      SBSDKCameraSession Class Reference
     </p>
 
     <div class="content-wrapper">
@@ -358,16 +358,15 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>SBSDKBarcodeScannerViewController</h1>
+            <h1>SBSDKCameraSession</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">SBSDKBarcodeScannerViewController</span> <span class="p">:</span> <span class="nc">UIViewController</span></code></pre>
+                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">SBSDKCameraSession</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
 
                 </div>
               </div>
-            <p>UIViewController subclass showing a camera screen and barcode detector.
-This class cannot be instanced from a storyboard.
-Instead it is installing itself as a child view controller onto a given parent view controller.</p>
+            <p>An easy-to-use wrapper around the AVFoundations video capture session. Sets up and configures the
+camera device and the preview layer. Provides functionality to capture still images.</p>
 
           </div>
         </section>
@@ -379,9 +378,9 @@ Instead it is installing itself as a child view controller onto a given parent v
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(py)delegate"></a>
-                    <a name="//apple_ref/objc/Property/delegate" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(py)delegate">delegate</a>
+                    <a name="/c:objc(cs)SBSDKCameraSession(py)previewLayer"></a>
+                    <a name="//apple_ref/objc/Property/previewLayer" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(py)previewLayer">previewLayer</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -389,19 +388,20 @@ Instead it is installing itself as a child view controller onto a given parent v
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The delegate. See SBSDKBarcodeScannerViewControllerDelegate protocol. Weak.</p>
+                        <p>The preview layer that the camera device uses to output the current video frames.
+Can be added to any superlayer.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">weak</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/SBSDKBarcodeScannerViewControllerDelegate.html">SBSDKBarcodeScannerViewControllerDelegate</a></span><span class="o">&gt;</span> <span class="n">delegate</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">AVCaptureVideoPreviewLayer</span> <span class="o">*</span><span class="n">previewLayer</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SBSDKBarcodeScannerViewControllerDelegate.html">SBSDKBarcodeScannerViewControllerDelegate</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">previewLayer</span><span class="p">:</span> <span class="kt">AVCaptureVideoPreviewLayer</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -411,9 +411,9 @@ Instead it is installing itself as a child view controller onto a given parent v
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(py)cameraSession"></a>
-                    <a name="//apple_ref/objc/Property/cameraSession" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(py)cameraSession">cameraSession</a>
+                    <a name="/c:objc(cs)SBSDKCameraSession(py)videoOrientation"></a>
+                    <a name="//apple_ref/objc/Property/videoOrientation" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(py)videoOrientation">videoOrientation</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -421,19 +421,19 @@ Instead it is installing itself as a child view controller onto a given parent v
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The controllers camera session.</p>
+                        <p>Sets or gets the current video orientation.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">)</span> <span class="n"><a href="../Classes/SBSDKCameraSession.html">SBSDKCameraSession</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">cameraSession</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">AVCaptureVideoOrientation</span> <span class="n">videoOrientation</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">cameraSession</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKCameraSession.html">SBSDKCameraSession</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">videoOrientation</span><span class="p">:</span> <span class="kt">AVCaptureVideoOrientation</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -443,9 +443,9 @@ Instead it is installing itself as a child view controller onto a given parent v
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(py)detectionRate"></a>
-                    <a name="//apple_ref/objc/Property/detectionRate" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(py)detectionRate">detectionRate</a>
+                    <a name="/c:objc(cs)SBSDKCameraSession(py)videoDelegate"></a>
+                    <a name="//apple_ref/objc/Property/videoDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(py)videoDelegate">videoDelegate</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -453,23 +453,22 @@ Instead it is installing itself as a child view controller onto a given parent v
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The desired maximum detection rate of the receicer. The maximum number of video frames per second to</p>
-
-<ul>
-<li>be analyzed. Defaults to 20.</li>
-</ul>
+                        <p>The delegate object for camera output.
+Its receives the video frames, still image captures and meta data capture, like QR code.
+Delegates can implement all functions from AVCaptureVideoDataOutputSampleBufferDelegate and
+AVCaptureMetadataOutputObjectsDelegate protocols.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSUInteger</span> <span class="n">detectionRate</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">weak</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)SBSDKCameraSessionDelegate">SBSDKCameraSessionDelegate</a></span><span class="o">&gt;</span> <span class="n">videoDelegate</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">detectionRate</span><span class="p">:</span> <span class="kt">UInt</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">weak</span> <span class="k">var</span> <span class="nv">videoDelegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols.html#/c:objc(pl)SBSDKCameraSessionDelegate">SBSDKCameraSessionDelegate</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -479,9 +478,9 @@ Instead it is installing itself as a child view controller onto a given parent v
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(py)stopsCameraSessionWhenDisappeared"></a>
-                    <a name="//apple_ref/objc/Property/stopsCameraSessionWhenDisappeared" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(py)stopsCameraSessionWhenDisappeared">stopsCameraSessionWhenDisappeared</a>
+                    <a name="/c:objc(cs)SBSDKCameraSession(py)isCapturingStillImage"></a>
+                    <a name="//apple_ref/objc/Property/isCapturingStillImage" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(py)isCapturingStillImage">isCapturingStillImage</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -489,25 +488,19 @@ Instead it is installing itself as a child view controller onto a given parent v
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>If set to YES (default), the camera session will be stopped entirely,
- when the receiver disappears and restarts when the receiver reappears.
- There is no CPU usage while the receiver is not on screen.</p>
-
-<p>NO will NOT stop the camera session, but pause the delivery of video frames and barcodes.
- There is some very low CPU activity while the receiver is not on screen, but there is also no
- lag when the receiver returns to the screen.</p>
+                        <p>Returns YES if the camera is currently in the process of taking a still image, NO otherwise.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">stopsCameraSessionWhenDisappeared</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">isCapturingStillImage</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">stopsCameraSessionWhenDisappeared</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">isCapturingStillImage</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -517,9 +510,9 @@ Instead it is installing itself as a child view controller onto a given parent v
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(py)barcodeImageGenerationType"></a>
-                    <a name="//apple_ref/objc/Property/barcodeImageGenerationType" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(py)barcodeImageGenerationType">barcodeImageGenerationType</a>
+                    <a name="/c:objc(cs)SBSDKCameraSession(py)torchLightAvailable"></a>
+                    <a name="//apple_ref/objc/Property/torchLightAvailable" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(py)torchLightAvailable">torchLightAvailable</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -527,21 +520,19 @@ Instead it is installing itself as a child view controller onto a given parent v
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Specifies the way of barcode images generation or disables this generation at all.
-Use, if you want to receive a full sized image with barcodes.
-Defaults to SBSDKBarcodeImageGenerationTypeNone.</p>
+                        <p>Returns YES if the camera device has a torch light and the torch light is available.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Enums/SBSDKBarcodeImageGenerationType.html">SBSDKBarcodeImageGenerationType</a></span> <span class="n">barcodeImageGenerationType</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">torchLightAvailable</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">barcodeImageGenerationType</span><span class="p">:</span> <span class="kt"><a href="../Enums/SBSDKBarcodeImageGenerationType.html">SBSDKBarcodeImageGenerationType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">torchLightAvailable</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -551,9 +542,9 @@ Defaults to SBSDKBarcodeImageGenerationTypeNone.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(py)acceptedBarcodeTypes"></a>
-                    <a name="//apple_ref/objc/Property/acceptedBarcodeTypes" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(py)acceptedBarcodeTypes">acceptedBarcodeTypes</a>
+                    <a name="/c:objc(cs)SBSDKCameraSession(py)torchLightEnabled"></a>
+                    <a name="//apple_ref/objc/Property/torchLightEnabled" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(py)torchLightEnabled">torchLightEnabled</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -561,21 +552,20 @@ Defaults to SBSDKBarcodeImageGenerationTypeNone.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Machine code types (EAN, DataMatrix, Aztec, QR, etc) that can be returned in <code>didDetectBarcodes</code>
-delegate method. When nil or empty - all codes can be returned.
-Default is nil.</p>
+                        <p>Turns the torch light on or off.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKBarcodeType.html">SBSDKBarcodeType</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">acceptedBarcodeTypes</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">assign</span><span class="p">,</span> <span class="n">unsafe_unretained</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span>
+          <span class="n">getter</span><span class="o">=</span><span class="n">isTorchLightEnabled</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">torchLightEnabled</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">acceptedBarcodeTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKBarcodeType.html">SBSDKBarcodeType</a></span><span class="p">]?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">isTorchLightEnabled</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -585,9 +575,9 @@ Default is nil.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(py)barcodeAccumulatedFramesCount"></a>
-                    <a name="//apple_ref/objc/Property/barcodeAccumulatedFramesCount" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(py)barcodeAccumulatedFramesCount">barcodeAccumulatedFramesCount</a>
+                    <a name="/c:objc(cs)SBSDKCameraSession(py)updateTorchlightBlock"></a>
+                    <a name="//apple_ref/objc/Property/updateTorchlightBlock" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(py)updateTorchlightBlock">updateTorchlightBlock</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -595,23 +585,19 @@ Default is nil.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Specifies the amount of frames barcode scanner takes before detecting. Uses the sharpest frame.
-So setting more frames generally improves recognition quality, but reduces recognition speed.
-Keep in mind, that <code><a href="../Classes/SBSDKBarcodeScannerViewController.html#/c:objc(cs)SBSDKBarcodeScannerViewController(py)detectionRate">detectionRate</a></code> also has influence on recognition speed, as it determines
-the amount of frames that can be read  per second.
-Default to 5.</p>
+                        <p>A block being executed when the torch light status changes (mode or availability).</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">barcodeAccumulatedFramesCount</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="n">updateTorchlightBlock</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">barcodeAccumulatedFramesCount</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">updateTorchlightBlock</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -621,9 +607,9 @@ Default to 5.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(py)HUDView"></a>
-                    <a name="//apple_ref/objc/Property/HUDView" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(py)HUDView">HUDView</a>
+                    <a name="/c:objc(cs)SBSDKCameraSession(py)captureSession"></a>
+                    <a name="//apple_ref/objc/Property/captureSession" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(py)captureSession">captureSession</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -631,19 +617,19 @@ Default to 5.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A transparent view that lies over the preview layer. You can add custom UI here. Read-only.</p>
+                        <p>The AVCaptureSession object.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">UIView</span> <span class="o">*</span><span class="n">HUDView</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">AVCaptureSession</span> <span class="o">*</span><span class="n">captureSession</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">hudView</span><span class="p">:</span> <span class="kt">UIView</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">captureSession</span><span class="p">:</span> <span class="kt">AVCaptureSession</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -653,9 +639,9 @@ Default to 5.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(py)shouldUseFinderFrame"></a>
-                    <a name="//apple_ref/objc/Property/shouldUseFinderFrame" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(py)shouldUseFinderFrame">shouldUseFinderFrame</a>
+                    <a name="/c:objc(cs)SBSDKCameraSession(py)exposureSettings"></a>
+                    <a name="//apple_ref/objc/Property/exposureSettings" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(py)exposureSettings">exposureSettings</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -663,19 +649,19 @@ Default to 5.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Defines if barcodeScanner should use limiting frame for detection. Alternatively all camera frame will be used.</p>
+                        <p>Returns the current cameras exposure settings.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">shouldUseFinderFrame</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n"><a href="../Classes/SBSDKCameraExposureSettings.html">SBSDKCameraExposureSettings</a></span> <span class="o">*</span><span class="n">exposureSettings</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">shouldUseFinderFrame</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">exposureSettings</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKCameraExposureSettings.html">SBSDKCameraExposureSettings</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -685,9 +671,9 @@ Default to 5.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(py)capturingFrameAspectRatio"></a>
-                    <a name="//apple_ref/objc/Property/capturingFrameAspectRatio" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(py)capturingFrameAspectRatio">capturingFrameAspectRatio</a>
+                    <a name="/c:objc(cs)SBSDKCameraSession(im)initForFeature:"></a>
+                    <a name="//apple_ref/objc/Method/-initForFeature:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(im)initForFeature:">-initForFeature:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -695,310 +681,19 @@ Default to 5.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Defines the region of interest when scanning barcodes or other machine readable codes.
- Machine readable codes found outside this region of interest are discarded and ignored during detection.
- The property describes the aspect ratio (width / height) of the region of
- interest. This aspect ratio, in conjunction with the screen size and <code><a href="../Classes/SBSDKBarcodeScannerViewController.html#/c:objc(cs)SBSDKBarcodeScannerViewController(py)capturingFrameMinimumInset">capturingFrameMinimumInset</a></code> parameter, is used to create an absolute region of
- interest and render a view finder like rounded rectangle on screen.
- The 0 aspect ratio effectively disables the region of interest.</p>
-
-<p>Note: Only effective if <code><a href="../Classes/SBSDKBarcodeScannerViewController.html#/c:objc(cs)SBSDKBarcodeScannerViewController(py)shouldUseFinderFrame">shouldUseFinderFrame</a></code> is set to <code>YES</code>.</p>
+                        <p>The designated initializer of the class. Does not start the capture session.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/SBSDKAspectRatio.html">SBSDKAspectRatio</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">capturingFrameAspectRatio</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">initForFeature</span><span class="p">:(</span><span class="n">dooFeature</span><span class="p">)</span><span class="nv">feature</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">capturingFrameAspectRatio</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKAspectRatio.html">SBSDKAspectRatio</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(py)capturingFrameMinimumInset"></a>
-                    <a name="//apple_ref/objc/Property/capturingFrameMinimumInset" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(py)capturingFrameMinimumInset">capturingFrameMinimumInset</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Defines a minimum inset for capturing frame. Default is 32 for all parameters.</p>
-
-<p>Note: Only effective if <code><a href="../Classes/SBSDKBarcodeScannerViewController.html#/c:objc(cs)SBSDKBarcodeScannerViewController(py)shouldUseFinderFrame">shouldUseFinderFrame</a></code> is set to <code>YES</code>.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">UIEdgeInsets</span> <span class="n">capturingFrameMinimumInset</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">capturingFrameMinimumInset</span><span class="p">:</span> <span class="kt">UIEdgeInsets</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(py)previewBackgroundColor"></a>
-                    <a name="//apple_ref/objc/Property/previewBackgroundColor" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(py)previewBackgroundColor">previewBackgroundColor</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Background color of camera preview. Default is black. Can be nil.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">previewBackgroundColor</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">previewBackgroundColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(py)viewFinderBackgroundColor"></a>
-                    <a name="//apple_ref/objc/Property/viewFinderBackgroundColor" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(py)viewFinderBackgroundColor">viewFinderBackgroundColor</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Background color of the view finder. Default is white with 0.66 alpha. Must not be nil.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">viewFinderBackgroundColor</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">viewFinderBackgroundColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(py)viewFinderLineColor"></a>
-                    <a name="//apple_ref/objc/Property/viewFinderLineColor" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(py)viewFinderLineColor">viewFinderLineColor</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Line color of the view finder. Default is nil, which draws no border line for the view finder.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">viewFinderLineColor</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">viewFinderLineColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(py)viewFinderLineWidth"></a>
-                    <a name="//apple_ref/objc/Property/viewFinderLineWidth" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(py)viewFinderLineWidth">viewFinderLineWidth</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Line width of the view finder. Default is 2.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">CGFloat</span> <span class="n">viewFinderLineWidth</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">viewFinderLineWidth</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(py)flashLightEnabled"></a>
-                    <a name="//apple_ref/objc/Property/flashLightEnabled" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(py)flashLightEnabled">flashLightEnabled</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Set to YES to toggle on the video light. Defaults to NO.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">flashLightEnabled</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">flashLightEnabled</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(im)init"></a>
-                    <a name="//apple_ref/objc/Method/-init" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(im)init">-init</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Not available.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="n">init</span><span class="p">;</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(cm)new"></a>
-                    <a name="//apple_ref/objc/Method/+new" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(cm)new">+new</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Not available.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="n">new</span><span class="p">;</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScannerViewController(im)initWithParentViewController:parentView:"></a>
-                    <a name="//apple_ref/objc/Method/-initWithParentViewController:parentView:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScannerViewController(im)initWithParentViewController:parentView:">-initWithParentViewController:parentView:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Designated initializer. Installs the receiver as child view controller onto the parent view controllers
-view using its entire bounds area.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithParentViewController</span><span class="p">:</span>
-                             <span class="p">(</span><span class="n">nonnull</span> <span class="n">UIViewController</span> <span class="o">*</span><span class="p">)</span><span class="nv">parentViewController</span>
-                                           <span class="nf">parentView</span><span class="p">:</span>
-                                               <span class="p">(</span><span class="n">nullable</span> <span class="n">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nv">containerView</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">?(</span><span class="nv">parentViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="n">parentView</span> <span class="nv">containerView</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="k">for</span> <span class="nv">feature</span><span class="p">:</span> <span class="n">dooFeature</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1009,18 +704,421 @@ view using its entire bounds area.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>parentViewController</em>
+                                <em>feature</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The view controller the newly created instance is embedded into.
-If parentViewController conforms to SBSDKBarcodeScannerViewControllerDelegate, it is automatically set as delegate.</p>
+                                  <p>The feature you want to use the camera for. Relevant features are Document Detection,
+Payform Detection and QR Codes.</p>
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Newly created and configured instance.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKCameraSession(im)initForFeature:withPreset:"></a>
+                    <a name="//apple_ref/objc/Method/-initForFeature:withPreset:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(im)initForFeature:withPreset:">-initForFeature:withPreset:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Extended initializer of the class. Does not start the capture session.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">initForFeature</span><span class="p">:(</span><span class="n">dooFeature</span><span class="p">)</span><span class="nv">feature</span>
+                             <span class="nf">withPreset</span><span class="p">:(</span><span class="n">AVCaptureSessionPreset</span> <span class="n">_Nonnull</span><span class="p">)</span><span class="nv">preset</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">?(</span><span class="k">for</span> <span class="nv">feature</span><span class="p">:</span> <span class="n">dooFeature</span><span class="p">,</span> <span class="n">withPreset</span> <span class="nv">preset</span><span class="p">:</span> <span class="kt">AVCaptureSession</span><span class="o">.</span><span class="kt">Preset</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>feature</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The feature you want to use the camera for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>preset</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The camera session preset the receiver wants to use.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Newly created and configured instance or nil, if preset is not supported or setup failed.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKCameraSession(im)startSession"></a>
+                    <a name="//apple_ref/objc/Method/-startSession" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(im)startSession">-startSession</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Starts the camera capture session. Does nothing if the session is already running.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">startSession</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">start</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKCameraSession(im)stopSession"></a>
+                    <a name="//apple_ref/objc/Method/-stopSession" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(im)stopSession">-stopSession</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Stops the camera capture session. Does nothing if the session is already stopped.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">stopSession</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">stop</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKCameraSession(im)isSessionRunning"></a>
+                    <a name="//apple_ref/objc/Method/-isSessionRunning" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(im)isSessionRunning">-isSessionRunning</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns YES if the camera session has already been started, NO otherwise.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="n">isSessionRunning</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">isSessionRunning</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKCameraSession(im)pauseDetection"></a>
+                    <a name="//apple_ref/objc/Method/-pauseDetection" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(im)pauseDetection">-pauseDetection</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Pauses the detection of documents and QR codes.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">pauseDetection</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">pauseDetection</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKCameraSession(im)resumeDetection"></a>
+                    <a name="//apple_ref/objc/Method/-resumeDetection" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(im)resumeDetection">-resumeDetection</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Resumes the detection of documents and QR codes.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">resumeDetection</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">resumeDetection</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKCameraSession(im)isDetectionPaused"></a>
+                    <a name="//apple_ref/objc/Method/-isDetectionPaused" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(im)isDetectionPaused">-isDetectionPaused</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns YES, if detection is paused, NO otherwise.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="n">isDetectionPaused</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">isDetectionPaused</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKCameraSession(im)captureStillImageWithCompletionHandler:"></a>
+                    <a name="//apple_ref/objc/Method/-captureStillImageWithCompletionHandler:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(im)captureStillImageWithCompletionHandler:">-captureStillImageWithCompletionHandler:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Captures a still image asynchronously and passes the CMSampleBufferRef and if needed an error to the
+completion handler. The CMSampleBufferRef can be converted to any image format/object like UIImage.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">captureStillImageWithCompletionHandler</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">nullable</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">CMSampleBufferRef</span> <span class="n">_Nullable</span><span class="p">,</span>
+                       <span class="n">NSError</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">))</span><span class="n">completion</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">captureStillImage</span><span class="p">(</span><span class="n">completionHandler</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">((</span><span class="kt">CMSampleBuffer</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The completion handler that is called when the still image has been captured.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKCameraSession(im)captureJPEGStillImageWithCompletionHandler:"></a>
+                    <a name="//apple_ref/objc/Method/-captureJPEGStillImageWithCompletionHandler:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(im)captureJPEGStillImageWithCompletionHandler:">-captureJPEGStillImageWithCompletionHandler:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Captures a still image asynchronously and passes the JPEG image data as NSData and if needed an error to the
+completion handler.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">captureJPEGStillImageWithCompletionHandler</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">nullable</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">NSData</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">))</span><span class="nv">completion</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">captureJPEGStillImage</span><span class="p">(</span><span class="n">completionHandler</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">((</span><span class="kt">Data</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The completion handler that is called when the still image has been captured.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKCameraSession(im)isCameraAdjusting"></a>
+                    <a name="//apple_ref/objc/Method/-isCameraAdjusting" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKCameraSession(im)isCameraAdjusting">-isCameraAdjusting</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns YES, if the camera is currently adjusting autofocus, exposure or white balance, NO otherwise.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="n">isCameraAdjusting</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">isCameraAdjusting</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
