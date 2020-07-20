@@ -7,13 +7,13 @@
 <meta name="generator" content="Jekyll v4.0.0" />
 <meta property="og:title" content="Scanbot SDK React Native Module" />
 <meta property="og:locale" content="en_US" />
-<link rel="canonical" href="http://localhost:4000/documentation/react-native/" />
-<meta property="og:url" content="http://localhost:4000/documentation/react-native/" />
+<link rel="canonical" href="https://scanbotsdk.github.io/documentation/react-native/" />
+<meta property="og:url" content="https://scanbotsdk.github.io/documentation/react-native/" />
 <meta property="og:site_name" content="Scanbot SDK React Native Module" />
 <script type="application/ld+json">
-{"headline":"Scanbot SDK React Native Module","@type":"WebSite","url":"http://localhost:4000/documentation/react-native/","name":"Scanbot SDK React Native Module","@context":"https://schema.org"}</script>
+{"@type":"WebSite","url":"https://scanbotsdk.github.io/documentation/react-native/","name":"Scanbot SDK React Native Module","headline":"Scanbot SDK React Native Module","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/documentation/react-native/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/documentation/react-native/feed.xml" title="Scanbot SDK React Native Module" /></head>
+<link rel="stylesheet" href="/documentation/react-native/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://scanbotsdk.github.io/documentation/react-native/feed.xml" title="Scanbot SDK React Native Module" /></head>
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><a class="site-title" rel="author" href="/documentation/react-native/">Scanbot SDK React Native Module</a><nav class="site-nav">
@@ -234,8 +234,11 @@ your app has enough heap allocated to avoid <code class="highlighter-rouge">OutO
 the iOS integration can be done only via <a href="https://cocoapods.org/">CocoaPods</a>.</p>
 
 <p>In your <code class="highlighter-rouge">ios/Podfile</code> add the “RNScanbotSDK” pod:</p>
-
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod 'RNScanbotSDK', :podspec =&gt; '../node_modules/react-native-scanbot-sdk/react-native-scanbot-sdk.podspec'
+</code></pre></div></div>
+
+<p>As of <code class="highlighter-rouge">ScanbotSDK v4.1.0</code>, the .podspec has been renamed:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod 'RNScanbotSDK', :podspec =&gt; '../node_modules/react-native-scanbot-sdk/RNScanbotSDK.podspec'
 </code></pre></div></div>
 
 <p>The pod <code class="highlighter-rouge">RNScanbotSDK</code> defines a dependency to the pod <code class="highlighter-rouge">ScanbotSDK</code> which is the native Scanbot SDK iOS Framework.</p>
@@ -354,7 +357,10 @@ As value describe why your app wants to access the device’s camera.</li>
     <span class="na">loggingEnabled</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// Consider switching logging OFF in production builds for security and performance reasons!</span>
     <span class="na">storageImageFormat</span><span class="p">:</span> <span class="dl">'</span><span class="s1">JPG</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// Optional image format - JPG or PNG. Default is JPG.</span>
     <span class="na">storageImageQuality</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="c1">// Optional image JPG quality. Default is 80.</span>
-    <span class="na">storageBaseDirectory</span><span class="p">:</span> <span class="nx">myCustomStoragePath</span><span class="p">()</span> <span class="c1">// Optional custom storage path.</span>
+    <span class="na">storageBaseDirectory</span><span class="p">:</span> <span class="nx">myCustomStoragePath</span><span class="p">(),</span> <span class="c1">// Optional custom storage path.</span>
+    <span class="c1">// The new and improved ML-based document detection is available from </span>
+    <span class="c1">// ScanbotSDK react-native 4.1.0 and requires iOS 11.2:</span>
+    <span class="na">documentDetectorMode</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ML_BASED</span><span class="dl">'</span>
   <span class="p">};</span>
   <span class="k">try</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ScanbotSDK</span><span class="p">.</span><span class="nx">initializeSDK</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
@@ -1748,6 +1754,7 @@ It allows you to create and distribute dedicated and smaller APKs via <strong>Pl
       <li>New and improved Barcode Scanner. Support for multiple barcode scanning.</li>
       <li>Introduced <code class="highlighter-rouge">getLicenseInfo()</code> API method to get more information about your license</li>
       <li>Barcode detection on still (imported) images: <code class="highlighter-rouge">detectBarcodesOnImage()</code></li>
+      <li>ML-Based document detection: <code class="highlighter-rouge">documentDetectorMode: 'ML_BASED'</code></li>
     </ul>
   </li>
   <li>🚀 Improvements:
