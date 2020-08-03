@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://scanbotsdk.github.io/documentation/cordova/" />
 <meta property="og:site_name" content="Scanbot SDK Cordova Plugin" />
 <script type="application/ld+json">
-{"headline":"Scanbot SDK Cordova Plugin","@type":"WebSite","url":"https://scanbotsdk.github.io/documentation/cordova/","name":"Scanbot SDK Cordova Plugin","@context":"https://schema.org"}</script>
+{"url":"https://scanbotsdk.github.io/documentation/cordova/","headline":"Scanbot SDK Cordova Plugin","name":"Scanbot SDK Cordova Plugin","@type":"WebSite","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/documentation/cordova/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://scanbotsdk.github.io/documentation/cordova/feed.xml" title="Scanbot SDK Cordova Plugin" /></head>
 <body><header class="site-header" role="banner">
@@ -289,6 +289,7 @@ By default an empty string value will be added. You can change this value in the
       <li><a href="#module_ScanbotSdk.UI.startDocumentScanner">.startDocumentScanner(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.UI.startCroppingScreen">.startCroppingScreen(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.UI.startMrzScanner">.startMrzScanner(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSDK.UI.startEHICScanner">.startEHICScanner(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.UI.startBarcodeScanner">.startBarcodeScanner(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
     </ul>
   </li>
@@ -405,13 +406,13 @@ of the Scanbot SDK plugin will terminate your app.</p>
 
 <h4 id="trial-license">Trial License</h4>
 <p>The Scanbot SDK will run without a license for one minute per session!
-To get an unrestricted “no-strings-attached” 30 day trial license, please submit the <a href="https://scanbot.io/sdk/trial.html">Trial License Form</a> on our website.</p>
+To get an unrestricted “no-strings-attached” 30 day trial license, please submit the <a href="https://scanbot.io/en/sdk/demo/trial">Trial License Form</a> on our website.</p>
 
 <p>Please kindly note that a trial license can only be used in a <strong>development and staging environment</strong>. 
 You are <strong>not allowed to publish</strong> your app to the App Store, Play Store or any 3rd party Android App Store with a trial license.</p>
 
 <h4 id="purchase-a-production-license">Purchase a Production License</h4>
-<p>You can check and purchase the Scanbot SDK licenses here: <a href="https://scanbot.io/sdk.html">https://scanbot.io/sdk.html</a>.</p>
+<p>You can check and purchase the Scanbot SDK licenses here: <a href="https://scanbot.io/sdk">https://scanbot.io/sdk</a>.</p>
 
 <h4 id="app-identifier">App Identifier</h4>
 <p>Every app has a unique identifier, also known as <strong>“Bundle Identifier”</strong> on iOS or <strong>“Application ID”</strong> on Android. 
@@ -942,7 +943,7 @@ If <code class="highlighter-rouge">null</code> is passed, this property is effec
 <span class="p">};</span>
 </code></pre></div></div>
 
-<p><a name="module_ScanbotSdkUi.startCroppingScreen"></a></p>
+<p><a name="module_ScanbotSdk.UI.startCroppingScreen"></a></p>
 <h3 id="cropping-ui">Cropping UI</h3>
 <h4 id="scanbotsdkuistartcroppingscreensuccesscallback-errorcallback-options">ScanbotSdk.UI.startCroppingScreen(successCallback, errorCallback, options)</h4>
 
@@ -1053,7 +1054,7 @@ It uses the edge detection algorithm of the Scanbot SDK and containts some smart
 <span class="p">};</span>
 </code></pre></div></div>
 
-<p><a name="module_ScanbotSdkUi.startBarcodeScanner"></a></p>
+<p><a name="module_ScanbotSdk.UI.startBarcodeScanner"></a></p>
 <h3 id="barcode-and-qr-code-scanning-ui">Barcode and QR Code Scanning UI</h3>
 <h4 id="scanbotsdkuistartbarcodescannersuccesscallback-errorcallback-options">ScanbotSdk.UI.startBarcodeScanner(successCallback, errorCallback, options)</h4>
 
@@ -1173,7 +1174,7 @@ barcode/QR code (e.g. <code class="highlighter-rouge">CODE_128</code>, <code cla
 <span class="p">};</span>
 </code></pre></div></div>
 
-<p><a name="module_ScanbotSdkUi.startMrzScanner"></a></p>
+<p><a name="module_ScanbotSdk.UI.startMrzScanner"></a></p>
 <h3 id="machine-readable-zone-mrz-scanner">Machine Readable Zone (MRZ) Scanner</h3>
 
 <p>The MRZ Scanner is able to scan and decode the <a href="https://en.wikipedia.org/wiki/Machine-readable_passport">MRZ</a> 
@@ -1286,6 +1287,123 @@ data on an ID card or passport.</p>
 <span class="p">}</span>
 </code></pre></div></div>
 
+<p><a name="module_ScanbotSDK.UI.startEHICScanner"></a></p>
+<h3 id="european-health-insurance-card-scanner-ehic-scanner">European Health Insurance Card Scanner (EHIC Scanner)</h3>
+
+<p>Opens a Scanner for European Health Insurance Cards</p>
+
+<p><img src="./assets/images/ehic.png" alt="alt" title="EHIC scanner screenshot" /></p>
+
+<h5 id="callbacks-6">Callbacks:</h5>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">result.status</code> - <code class="highlighter-rouge">'OK'</code> if some EHIC data was detected, <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation (tapped on the “cancel” button).</li>
+  <li><code class="highlighter-rouge">result.fields</code> - an array of MRZ fields. Each field is an object with the following properties:
+    <ul>
+      <li><code class="highlighter-rouge">field.type</code> - the field type</li>
+      <li><code class="highlighter-rouge">field.value</code> - the value of the field</li>
+      <li><code class="highlighter-rouge">field.confidence</code> - confidence in the accuracy of <code class="highlighter-rouge">value</code></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">error.status</code> - <code class="highlighter-rouge">'ERROR'</code> in all error cases.</li>
+  <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
+</ul>
+
+<h5 id="options-5">Options:</h5>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kr">interface</span> <span class="nx">HealthInsuranceCardScannerConfiguration</span>
+<span class="p">{</span>
+    <span class="cm">/**
+     * Allowed orientations for automatic interface rotations. *
+     */</span>
+    <span class="nl">allowedInterfaceOrientations</span><span class="p">?:</span> <span class="nx">UIInterfaceOrientationMask</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the flash button when flash is on.
+     */</span>
+    <span class="nl">bottomButtonsActiveColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the flash button when flash is off.
+     */</span>
+    <span class="nl">bottomButtonsInactiveColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Background color of the detection overlay.
+     */</span>
+    <span class="nl">cameraOverlayColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Whether the cancel button is hidden or not.
+     */</span>
+    <span class="nl">cancelButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed on the cancel button.
+     */</span>
+    <span class="nl">cancelButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * The receivers delegate.
+     */</span>
+    <span class="nl">delegate</span><span class="p">?:</span> <span class="nx">any</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed when health insurance card was not found.
+     */</span>
+    <span class="nl">detectionStatusFailedDetectionText</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed when health insurance card was found but not recognized.
+     */</span>
+    <span class="nl">detectionStatusFailedValidationText</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed when health insurance card was found and recognized.
+     */</span>
+    <span class="nl">detectionStatusSuccessText</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the detection overlay.
+     */</span>
+    <span class="nl">finderLineColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Width of finder frame border. Default is 2.
+     */</span>
+    <span class="nl">finderLineWidth</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed as description.
+     */</span>
+    <span class="nl">finderTextHint</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the description label.
+     */</span>
+    <span class="nl">finderTextHintColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed on the flash button.
+     */</span>
+    <span class="nl">flashButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Whether flash is toggled on or off.
+     */</span>
+    <span class="nl">flashEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * Enables or disables the machine readable zones detection.
+     */</span>
+    <span class="nl">recognitionEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * Background color of the top bar.
+     */</span>
+    <span class="nl">topBarBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the cancel button.
+     */</span>
+    <span class="nl">topBarButtonsColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * The type of health insurance card validation.
+     */</span>
+    <span class="nl">validationType</span><span class="p">?:</span> <span class="nx">HealthInsuranceCardValidationType</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 <h3 id="page-operations">Page operations</h3>
 
 <p><a name="module_ScanbotSdk.createPage"></a></p>
@@ -1293,7 +1411,7 @@ data on an ID card or passport.</p>
 
 <p>Creates a <a href="#pageObject">page</a> from an image (presumably the image of an uncropped document).</p>
 
-<h5 id="callbacks-6">Callbacks:</h5>
+<h5 id="callbacks-7">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1309,7 +1427,7 @@ data on an ID card or passport.</p>
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-5">Options:</h5>
+<h5 id="options-6">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">originalImageFileUri</span><span class="p">:</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span>
 <span class="p">};</span>
@@ -1324,7 +1442,7 @@ data on an ID card or passport.</p>
 
 <p>Replaces the document image of a page. The passed image file will be copied into the internal page file storage.</p>
 
-<h5 id="callbacks-7">Callbacks:</h5>
+<h5 id="callbacks-8">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1340,7 +1458,7 @@ data on an ID card or passport.</p>
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-6">Options:</h5>
+<h5 id="options-7">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">page</span><span class="p">:</span> <span class="p">...,</span>
   <span class="na">imageUri</span><span class="p">:</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span>
@@ -1357,7 +1475,7 @@ data on an ID card or passport.</p>
 
 <p>Runs document detection on the original image of the given page. The detection status, polygon and cropped document image are returned as a new page object in the success callback.</p>
 
-<h5 id="callbacks-8">Callbacks:</h5>
+<h5 id="callbacks-9">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1373,7 +1491,7 @@ data on an ID card or passport.</p>
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-7">Options:</h5>
+<h5 id="options-8">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">page</span><span class="p">:</span> <span class="p">...</span>
 <span class="p">};</span>
@@ -1388,45 +1506,12 @@ data on an ID card or passport.</p>
 
 <p>Applies a filter on the <em>unfiltered</em> document image of a page.</p>
 
-<h5 id="callbacks-9">Callbacks:</h5>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="highlighter-rouge">result.page</code> is the page object with the filtered result image.</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="highlighter-rouge">error.status</code> - <code class="highlighter-rouge">'ERROR'</code> in all error cases.</li>
-  <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
-</ul>
-
-<h5 id="options-8">Options:</h5>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">page</span><span class="p">:</span> <span class="p">...,</span>
-  <span class="na">imageFilter</span><span class="p">:</span> <span class="nx">ImageFilter</span><span class="p">,</span>
-<span class="p">};</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="highlighter-rouge">options.page</code> - the page to filter.</li>
-  <li><code class="highlighter-rouge">options.imageFilter</code> - the <a href="#imageFilter">image filter</a> to apply. The special value <code class="highlighter-rouge">'NONE'</code> will remove any previously applied filter from the document image.</li>
-</ul>
-
-<p><a name="module_ScanbotSdk.getFilteredDocumentPreviewUri"></a></p>
-<h4 id="scanbotsdkgetfiltereddocumentpreviewurisuccesscallback-errorcallback-options"><code class="highlighter-rouge">ScanbotSdk.getFilteredDocumentPreviewUri(successCallback, errorCallback, options)</code></h4>
-
-<p>Creates a preview image of a filter applied onto the document of a page. Does not modify the document image of the passed page.</p>
-
 <h5 id="callbacks-10">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">result.imageFileUri</code> - file URI of the preview image of the filtered document.</li>
+  <li><code class="highlighter-rouge">result.page</code> is the page object with the filtered result image.</li>
 </ul>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
@@ -1445,6 +1530,39 @@ data on an ID card or passport.</p>
 </code></pre></div></div>
 
 <ul>
+  <li><code class="highlighter-rouge">options.page</code> - the page to filter.</li>
+  <li><code class="highlighter-rouge">options.imageFilter</code> - the <a href="#imageFilter">image filter</a> to apply. The special value <code class="highlighter-rouge">'NONE'</code> will remove any previously applied filter from the document image.</li>
+</ul>
+
+<p><a name="module_ScanbotSdk.getFilteredDocumentPreviewUri"></a></p>
+<h4 id="scanbotsdkgetfiltereddocumentpreviewurisuccesscallback-errorcallback-options"><code class="highlighter-rouge">ScanbotSdk.getFilteredDocumentPreviewUri(successCallback, errorCallback, options)</code></h4>
+
+<p>Creates a preview image of a filter applied onto the document of a page. Does not modify the document image of the passed page.</p>
+
+<h5 id="callbacks-11">Callbacks:</h5>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">result.imageFileUri</code> - file URI of the preview image of the filtered document.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">error.status</code> - <code class="highlighter-rouge">'ERROR'</code> in all error cases.</li>
+  <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
+</ul>
+
+<h5 id="options-10">Options:</h5>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">page</span><span class="p">:</span> <span class="p">...,</span>
+  <span class="na">imageFilter</span><span class="p">:</span> <span class="nx">ImageFilter</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<ul>
   <li><code class="highlighter-rouge">options.page</code> - the page for which to create a filtered document preview.</li>
   <li><code class="highlighter-rouge">options.imageFilter</code> - the <a href="#imageFilter">image filter</a> to apply. The special value <code class="highlighter-rouge">'NONE'</code> will remove any previously applied filter from the document image.</li>
 </ul>
@@ -1454,7 +1572,7 @@ data on an ID card or passport.</p>
 
 <p>Rotates a page counter-clockwise in increments of 90 degrees.</p>
 
-<h5 id="callbacks-11">Callbacks:</h5>
+<h5 id="callbacks-12">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1470,7 +1588,7 @@ data on an ID card or passport.</p>
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-10">Options:</h5>
+<h5 id="options-11">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">page</span><span class="p">:</span> <span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">times</span><span class="p">:</span> <span class="nx">number</span>
@@ -1488,7 +1606,7 @@ data on an ID card or passport.</p>
 <p>Removes a page with all its files (original image, document image, thumbnails, filtered images, etc) from the internal file storage.
 This method <strong>does not</strong> remove any export files (PDF, TIFF) which were generated based on this page object.</p>
 
-<h5 id="callbacks-12">Callbacks:</h5>
+<h5 id="callbacks-13">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1517,7 +1635,7 @@ on success the cropped and perspective corrected image as a new file as well as 
 If there was no document detected the result enum provides the exact reason (noisy background, too dark, etc).
 The input image file will not be modified.</p>
 
-<h5 id="callbacks-13">Callbacks:</h5>
+<h5 id="callbacks-14">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1536,7 +1654,7 @@ Maybe <code class="highlighter-rouge">null</code> if detection was not successfu
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-11">Options:</h5>
+<h5 id="options-12">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">imageFileUri</span><span class="p">:</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">quality</span><span class="p">:</span> <span class="mi">80</span>
@@ -1555,7 +1673,7 @@ Maybe <code class="highlighter-rouge">null</code> if detection was not successfu
 <p>Rotates an image by given degrees value. As input a file URI of the image must be passed. 
 The output image will be a new file. The input image file will not be modified.</p>
 
-<h5 id="callbacks-14">Callbacks:</h5>
+<h5 id="callbacks-15">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1571,7 +1689,7 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-12">Options:</h5>
+<h5 id="options-13">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">imageFileUri</span><span class="p">:</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span>
@@ -1592,7 +1710,7 @@ The output image will be a new file. The input image file will not be modified.<
 <p>Applies filter on an image. As input a file URI of the image must be passed. 
 The output image will be a new file. The input image file will not be modified.</p>
 
-<h5 id="callbacks-15">Callbacks:</h5>
+<h5 id="callbacks-16">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1608,7 +1726,7 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-13">Options:</h5>
+<h5 id="options-14">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">imageFileUri</span><span class="p">:</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">imageFilter</span><span class="p">:</span> <span class="dl">'</span><span class="s1">BINARIZED</span><span class="dl">'</span><span class="p">,</span>
@@ -1628,7 +1746,7 @@ The output image will be a new file. The input image file will not be modified.<
 
 <p>The Scanbot SDK renders given images into a PDF document and stores it as a file. For each image a separate page is generated.</p>
 
-<h5 id="callbacks-16">Callbacks:</h5>
+<h5 id="callbacks-17">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1644,7 +1762,7 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-14">Options:</h5>
+<h5 id="options-15">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">],</span>
   <span class="na">pageSize</span><span class="p">:</span> <span class="dl">'</span><span class="s1">FIXED_A4</span><span class="dl">'</span>
@@ -1662,7 +1780,7 @@ The output image will be a new file. The input image file will not be modified.<
 
 <p>The Scanbot SDK renders the given images into a multi-page TIFF file and stores it as a file. For each image a separate page is generated.</p>
 
-<h5 id="callbacks-17">Callbacks:</h5>
+<h5 id="callbacks-18">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1678,7 +1796,7 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-15">Options:</h5>
+<h5 id="options-16">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">],</span>
   <span class="na">oneBitEncoded</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -1838,7 +1956,7 @@ in the <code class="highlighter-rouge">languageDataPath</code> directory which c
 
 <p>Use this function to get Scanbot SDK OCR properties of the current App installation.</p>
 
-<h5 id="callbacks-18">Callbacks:</h5>
+<h5 id="callbacks-19">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1856,7 +1974,7 @@ The Scanbot SDK uses the <code class="highlighter-rouge">languageDataPath</code>
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-16">Options:</h5>
+<h5 id="options-17">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{};</span>
 </code></pre></div></div>
 
@@ -1868,7 +1986,7 @@ The Scanbot SDK uses the <code class="highlighter-rouge">languageDataPath</code>
 <p>This function takes an array of images and performs Optical Character Recognition on each of the images.
 As result the recognized text can be returned as plain text or a composed PDF file containing selectable and searchable text.</p>
 
-<h5 id="callbacks-19">Callbacks:</h5>
+<h5 id="callbacks-20">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1886,7 +2004,7 @@ As result the recognized text can be returned as plain text or a composed PDF fi
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-17">Options:</h5>
+<h5 id="options-18">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">],</span>
   <span class="na">languages</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">en</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">de</span><span class="dl">'</span><span class="p">],</span>
@@ -2011,7 +2129,7 @@ Please use the <a href="#module_ScanbotSdk.getOcrConfigs">getOcrConfigs</a> func
 <p>By calling this function <strong>all</strong> output files generated by the native Scanbot SDKs or by this Plugin will be deleted, 
 including the image files of all scanned or imported <code class="highlighter-rouge">Page</code> objects, all produced PDF files, TIFF files, etc.</p>
 
-<h5 id="callbacks-20">Callbacks:</h5>
+<h5 id="callbacks-21">Callbacks:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span>
 </code></pre></div></div>
 <ul>
@@ -2178,7 +2296,7 @@ For instance, if a point has the coordinates (0.5, 0.5), it means that it is loc
 <p><a name="html5Camera"></a></p>
 <h3 id="html-camera">HTML Camera</h3>
 
-<p>As of <code class="highlighter-rouge">4.1.0-beta</code>, Scanbot SDK Cordova Plugin features HTML-camera-based Barcode detection. 
+<p>As of <code class="highlighter-rouge">4.1.0</code>, Scanbot SDK Cordova Plugin features HTML-camera-based Barcode detection. 
 You can now style your barcode detector with CSS.</p>
 
 <p>Create a container view (no specific <code class="highlighter-rouge">id</code> is required):</p>
@@ -2214,6 +2332,11 @@ camera.startBarcodeDetector(formats, async result =&gt; {
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>camera.stopBarcodeDetector();
 </code></pre></div></div>
 
+<p>When navigating out of the camera page, properly dispose the camera (canvas + video + overlay) element
+in order to avoid memory leaks and unhandled exceptions:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>this.camera.dispose();
+</code></pre></div></div>
+
 <p>While the Camera stream is not dependent on ScanbotSDK License being valid,
 barcode detection is, so don’t forget to check for license validity:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const info = await ScanbotSdk.getLicenseInfo();
@@ -2224,10 +2347,51 @@ if (!info.info.isLicenseValid) {
 }
 </code></pre></div></div>
 
-<h4 id="roadmap">Roadmap</h4>
-<ul>
-  <li>This feature is currently Android-only, iOS will be supported in the future</li>
-</ul>
+<h4 id="viewfinder">Viewfinder</h4>
+<p>In order to increase performance, and give the camera view a better look-and-feel, 
+you can also add a smaller viewfinder with an overlay to the camera element:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>this.camera.addViewFinder(configuration);
+</code></pre></div></div>
+
+<p>The viewfinder can by styled via the <code class="highlighter-rouge">configuration</code> parameter. It accepts the following properties:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export class ScanbotHTMLFinderConfiguration {
+    /**
+     * Background color of the finder overlay. 'gray' color is not allowed.
+     * Defaults to black
+     */
+    backgroundColor?: string;
+    /**
+     * Border style of the finder view
+     * Defaults to 'solid 2px white'
+     */
+    border?: string;
+    /**
+     * Corner radius of the finder view, in pixels.
+     * Defaults to 10
+     */
+    borderRadius?: number;
+    /**
+     * Relative top margin of the finder frame, in pixels.
+     * Size and position defaults to centered square 66% of the size of ScanbotHTMLCamera
+     */
+    marginTop?: number;
+    /**
+     * Relative left margin of the finder frame, in pixels.
+     * Size and position defaults to centered square 66% of the size of ScanbotHTMLCamera
+     */
+    marginLeft?: number;
+    /**
+     * Relative width of the finder frame, in pixels.
+     * Size and position defaults to centered square 66% of the size of ScanbotHTMLCamera
+     */
+    width?: number;
+    /**
+     * Relative height of the finder frame, in pixels.
+     * Size and position defaults to centered square 66% of the size of ScanbotHTMLCamera
+     */
+    height?: number;
+}
+</code></pre></div></div>
 
 <p><a name="productionApps"></a></p>
 <h2 id="building-production-apps">Building Production Apps</h2>
@@ -2294,7 +2458,40 @@ It allows you to create and distribute dedicated and smaller APKs <strong>via Pl
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release History</h2>
 
-<h4 id="version-410-20-july-2020">Version 4.1.0 (20 July 2020):</h4>
+<h4 id="version-420-3-aug-2020">Version 4.2.0 (3 Aug 2020):</h4>
+
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>A new scanner UI component for the European Health Insurance Cards (EHIC)! 
+See the new API function <a href="#module_ScanbotSDK.UI.startEHICScanner">startEHICScanner</a></li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Android: HTML5 Camera for barcode detection:
+        <ul>
+          <li>Added ViewFinder</li>
+          <li>Added a new function <code class="highlighter-rouge">dispose</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>iOS: Fixed an installation issue when downloading the iOS SDK framework</li>
+      <li>Android: <code class="highlighter-rouge">topBarBackgroundColor</code> now also affects the status bar in all UI components (Document Scanner UI, Cropping UI, etc)</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded the native Scanbot Android SDK to v1.71.0 (see the <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">changelog</a>)</li>
+      <li>Upgraded the native Scanbot iOS SDK to v1.9.19 (see the <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">changelog</a>)</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="version-410-20-jul-2020">Version 4.1.0 (20 Jul 2020):</h4>
 
 <ul>
   <li>🎉 New:
@@ -2353,7 +2550,7 @@ and <code class="highlighter-rouge">cordova-plugin-androidx-adapter</code></li>
       <li>Function <code class="highlighter-rouge">isLicenseValid()</code> was replaced by <code class="highlighter-rouge">getLicenseInfo()</code>.
 See <a href="#module_ScanbotSdk.getLicenseInfo">getLicenseInfo()</a> for more details.</li>
       <li>The result of the Barcode Scanner UI now contains an array of detected barcodes - <code class="highlighter-rouge">result.barcodes[n]</code>.
-See <a href="#module_ScanbotSdkUi.startBarcodeScanner">startBarcodeScanner()</a> for more details.</li>
+See <a href="#module_ScanbotSdk.UI.startBarcodeScanner">startBarcodeScanner()</a> for more details.</li>
     </ul>
   </li>
   <li>🚙 Under the hood:
@@ -2711,7 +2908,7 @@ Please note that only the <strong>new created</strong> image files will contain 
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-Open Source libraries used in the Scanbot SDK for Android version 1.60.0:
+Open Source libraries used in the Scanbot SDK for Android version 1.71.0:
 
 
 Apache Commons Codec
@@ -2874,7 +3071,7 @@ limitations under the License.
 
 Kotlin Standard Library
 
-Version 1.3.50
+Version 1.3.70
 (https://github.com/JetBrains/kotlin)
 
 Copyright 2010-2018 JetBrains s.r.o.
@@ -2908,27 +3105,23 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
+google-gson
+Version 2.8.5
+(https://github.com/google/gson/blob/gson-parent-2.8.5/LICENSE)
 
-Moshi Kotlin
-Moshi Adapters
-
-Version 1.8.0
-(https://github.com/square/moshi)
-
-Copyright 2015 Square, Inc.
+Copyright 2008 Google Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-http://www.apache.org/licenses/LICENSE-2.0
+    http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
 
 
 Dagger
@@ -3381,7 +3574,7 @@ limitations under the License.
 
 Tesseract-ocr
 
-Version 4.00
+Version 4.1
 (https://github.com/tesseract-ocr/tesseract)
 Tesseract, maintained by Google
 Copyright 2011 Google Inc. All Rights Reserved.
@@ -3408,7 +3601,7 @@ limitations under the License.
 
 
 
-Open Source libraries used in the Scanbot SDK for iOS version 1.9.11:
+Open Source libraries used in the Scanbot SDK for iOS version 1.9.19:
 
 
 BOOST C++ Libraries version 1.68
@@ -3502,7 +3695,7 @@ Neither the names of the copyright holders nor the names of the contributors may
 This software is provided by the copyright holders and contributors “as is” and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall copyright holders or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.
 
 
-OpenSSL 1.0.2q
+OpenSSL 1.1.1g
 Copyright @ 1998-2011 The OpenSSL Project. All rights reserved. (https://www.openssl.org)
 This library is distributed under the terms of the following license: https://github.com/openssl/openssl/blob/master/LICENSE
 
@@ -3528,7 +3721,7 @@ THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND ANY EXPRESS OR IMPLIED WAR
 The licence and distribution terms for any publically available version or derivative of this code cannot be changed. i.e. this code cannot simply be copied and put under another distribution licence [including the GNU Public Licence.]
 
 
-Tesseract 4.0.0
+Tesseract 4.1.0
 Tesseract, maintained by Google (http://code.google.com/p/tesseract-ocr/),
 is distributed under the Apache 2.0 license (http://www.apache.org/licenses/LICENSE-2.0).
 
@@ -3575,7 +3768,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
-TensorFlow 2.0.0
+TensorFlow 2.2.0
 Copyright 2017 The TensorFlow Authors. All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
