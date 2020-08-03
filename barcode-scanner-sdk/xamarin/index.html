@@ -172,6 +172,16 @@ Do that for both your iOS and Android projects.
 Also, <code class="highlighter-rouge">ScanbotBarcodeSDK.Xamarin.Forms</code> must be installed in the portable app project 
 (if one exists - not necessary if you’re using a shared project).</p>
 
+<p>Force registration of native dependencies. 
+Add the following lines to your <code class="highlighter-rouge">MainActivity</code> and <code class="highlighter-rouge">AppDelegate</code>, respectively:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ScanbotBarcodeSDK.Forms.Droid.DependencyManager.Register();
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ScanbotBarcodeSDK.Forms.iOS.DependencyManager.Register();
+</code></pre>
+</div>
 <h4 id="android-settings">Android Settings</h4>
 
 <p><strong>Enable Multi-Dex</strong></p>
@@ -252,7 +262,7 @@ Play Store or any 3rd party Android App Store with a trial license.</p>
 <p>The Scanbot Barcode Scanner SDK must be initialized before usage. Make sure to run the initialization as early as possible.
 We recommend to implement the initialization in the <code class="highlighter-rouge">Application</code> class of the Android and Forms app, and in the <code class="highlighter-rouge">AppDelegate</code> class of the iOS app.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#bc081fa9-164d-4f21-884d-6ff1c030331b'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#6e662d35-0d42-4ccc-a456-76139fdc186c'}">
 
 	<li class="uk-active"><a href="#">Xamarin.Droid</a></li>
 
@@ -262,7 +272,7 @@ We recommend to implement the initialization in the <code class="highlighter-rou
 
 </ul>
 
-<ul id="bc081fa9-164d-4f21-884d-6ff1c030331b" class="uk-switcher uk-margin">
+<ul id="6e662d35-0d42-4ccc-a456-76139fdc186c" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">IO.Scanbot.Sdk.Barcode_scanner</span><span class="p">;;</span>
@@ -350,7 +360,7 @@ using our <a href="#ClassicalUIComponents">Classical UI Component</a> (not avail
 
 <h5 id="rtu-ui-example">RTU UI Example:</h5>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#2bee13cc-ef35-45d5-9bd5-f9405b077cc4'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#8f838b0f-059d-4d1a-84a9-726280466c4a'}">
 
 	<li class="uk-active"><a href="#">Xamarin.Droid</a></li>
 
@@ -360,7 +370,7 @@ using our <a href="#ClassicalUIComponents">Classical UI Component</a> (not avail
 
 </ul>
 
-<ul id="2bee13cc-ef35-45d5-9bd5-f9405b077cc4" class="uk-switcher uk-margin">
+<ul id="8f838b0f-059d-4d1a-84a9-726280466c4a" class="uk-switcher uk-margin">
 
 	<li>
 <p>Launching the Barcode Scanner:</p>
@@ -450,7 +460,7 @@ and extended in your custom screens.</p>
 
 <h5 id="classical-ui-example">Classical UI Example:</h5>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#614891b5-a263-4c9f-9bff-621f482ce57b'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#4605f2d1-d1ca-4a46-8aec-68af021d552b'}">
 
 	<li class="uk-active"><a href="#">Xamarin.Droid</a></li>
 
@@ -458,7 +468,7 @@ and extended in your custom screens.</p>
 
 </ul>
 
-<ul id="614891b5-a263-4c9f-9bff-621f482ce57b" class="uk-switcher uk-margin">
+<ul id="4605f2d1-d1ca-4a46-8aec-68af021d552b" class="uk-switcher uk-margin">
 
 	<li>
 <p>Implementing custom Activity that holds <code class="highlighter-rouge">ScanbotCameraView</code>:</p>
@@ -644,7 +654,7 @@ and extended in your custom screens.</p>
 
 <p>Out of these, you can also filter which formats you wish to accept or not.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#a7bfc2f4-1a15-46c6-9011-10367f003223'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#3d509c38-5ba3-46c5-9b4a-79a920fad63b'}">
 
 	<li class="uk-active"><a href="#">Xamarin.Droid</a></li>
 
@@ -654,7 +664,7 @@ and extended in your custom screens.</p>
 
 </ul>
 
-<ul id="a7bfc2f4-1a15-46c6-9011-10367f003223" class="uk-switcher uk-margin">
+<ul id="3d509c38-5ba3-46c5-9b4a-79a920fad63b" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">configuration</span><span class="p">.</span><span class="nf">SetBarcodeFormatsFilter</span><span class="p">(</span><span class="k">new</span> <span class="n">BarcodeFormat</span><span class="p">[]</span>
@@ -692,7 +702,7 @@ and extended in your custom screens.</p>
 
 <p>Not only can you scan barcodes, the SDK also offers the option to detect barcodes on an existing still image (e.g. JPG file from Photo Library).</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#92cf7985-1b89-498c-96dc-b54826e17879'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#768c61ba-418e-4392-a255-70a2152f9622'}">
 
 	<li class="uk-active"><a href="#">Xamarin.Droid</a></li>
 
@@ -702,7 +712,7 @@ and extended in your custom screens.</p>
 
 </ul>
 
-<ul id="92cf7985-1b89-498c-96dc-b54826e17879" class="uk-switcher uk-margin">
+<ul id="768c61ba-418e-4392-a255-70a2152f9622" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">sdk</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ScanbotBarcodeScannerSDK</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
@@ -732,6 +742,14 @@ and extended in your custom screens.</p>
 <h3 id="release-history-and-changelog">Release History and Changelog</h3>
 
 <h4 id="scanbotbarcodesdkxamarin">ScanbotBarcodeSDK.Xamarin</h4>
+
+<h5 id="version-101-03-aug-2020">Version 1.0.1 (03 Aug 2020):</h5>
+
+<ul>
+  <li>Android: Added relevant <code class="highlighter-rouge">Xamarin.Android.Support</code> libraries as dependencies</li>
+  <li>iOS: updated native SDK to <code class="highlighter-rouge">1.5.1</code></li>
+</ul>
+
 <h5 id="version-100-03-mar-2020">Version 1.0.0 (03 Mar 2020):</h5>
 
 <ul>
@@ -739,6 +757,12 @@ and extended in your custom screens.</p>
 </ul>
 
 <h4 id="scanbotbarcodesdkxamarinforms">ScanbotBarcodeSDK.Xamarin.Forms</h4>
+
+<h5 id="version-101-03-august-2020">Version 1.0.1 (03 August 2020):</h5>
+
+<ul>
+  <li>See the release notes of ScanbotBarcodeSDk.Xamarin</li>
+</ul>
 
 <h5 id="version-100-03-mar-2020-1">Version 1.0.0 (03 Mar 2020):</h5>
 
