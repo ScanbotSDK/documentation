@@ -4,14 +4,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Scanbot SDK React Native Module</title>
-<meta name="generator" content="Jekyll v4.0.0" />
+<meta name="generator" content="Jekyll v4.0.1" />
 <meta property="og:title" content="Scanbot SDK React Native Module" />
 <meta property="og:locale" content="en_US" />
 <link rel="canonical" href="https://scanbotsdk.github.io/documentation/react-native/" />
 <meta property="og:url" content="https://scanbotsdk.github.io/documentation/react-native/" />
 <meta property="og:site_name" content="Scanbot SDK React Native Module" />
 <script type="application/ld+json">
-{"@type":"WebSite","url":"https://scanbotsdk.github.io/documentation/react-native/","name":"Scanbot SDK React Native Module","headline":"Scanbot SDK React Native Module","@context":"https://schema.org"}</script>
+{"url":"https://scanbotsdk.github.io/documentation/react-native/","headline":"Scanbot SDK React Native Module","name":"Scanbot SDK React Native Module","@type":"WebSite","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/documentation/react-native/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://scanbotsdk.github.io/documentation/react-native/feed.xml" title="Scanbot SDK React Native Module" /></head>
 <body><header class="site-header" role="banner">
@@ -75,7 +75,7 @@ For more details visit our website <a href="https://scanbot.io/sdk.html">https:/
   <li>Node.js, npm</li>
   <li>For Android apps:
     <ul>
-      <li>Android SDK (API Level 16+), Platforms and Developer Tools</li>
+      <li>Android SDK (API Level 21+), Platforms and Developer Tools</li>
     </ul>
   </li>
   <li>For iOS apps:
@@ -93,7 +93,7 @@ For more details visit our website <a href="https://scanbot.io/sdk.html">https:/
 
 <h4 id="mobile-platforms">Mobile Platforms</h4>
 <ul>
-  <li>Android 4.1 (API Level 16) and higher</li>
+  <li>Android 5.0 (API Level 21) and higher</li>
   <li>iOS 9 and higher</li>
 </ul>
 
@@ -249,11 +249,16 @@ you have to add the corresponding additional bundles by specifying them by follo
   <li><code class="highlighter-rouge">OCR</code>: for the default OCR data bundle <code class="highlighter-rouge">ScanbotSDKOCRData.bundle</code> 
 containing default language files for DE and EN</li>
   <li><code class="highlighter-rouge">MRZ</code>: for the MRZ Scanner data bundle <code class="highlighter-rouge">ScanbotSDKMRZData.bundle</code></li>
+  <li><code class="highlighter-rouge">MLDETECT</code>: For ML-based Document detection</li>
   <li><code class="highlighter-rouge">ALL</code>: for all available bundles (default, currently OCR + MRZ)</li>
 </ul>
 
 <p>Example for <code class="highlighter-rouge">MRZ</code> subspecs/bundle:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod 'RNScanbotSDK', :podspec =&gt; '../node_modules/react-native-scanbot-sdk/react-native-scanbot-sdk.podspec', :subspecs =&gt; ['MRZ']
+</code></pre></div></div>
+
+<p>As of <code class="highlighter-rouge">ScanbotSDK v4.1.0</code>, the .podspec has been renamed:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod 'RNScanbotSDK', :podspec =&gt; '../node_modules/react-native-scanbot-sdk/RNScanbotSDK.podspec', :subspecs =&gt; ['MRZ']
 </code></pre></div></div>
 
 <p><em>NOTE!</em></p>
@@ -264,7 +269,7 @@ You do not need to manually modify your <code class="highlighter-rouge">Podfile<
 
 <p>Run:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd ios/
-$ pod install
+$ pod install --repo-update
 </code></pre></div></div>
 
 <p>That’s it, no manual linking required anymore! Just open 
@@ -327,6 +332,7 @@ As value describe why your app wants to access the device’s camera.</li>
       <li><a href="#module_ScanbotSDK.UI.startDocumentScanner">.startDocumentScanner</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.UI.startCroppingScreen">.startCroppingScreen</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.UI.startMrzScanner">.startMrzScanner</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSDK.UI.startEHICScanner">.startEHICScanner</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.UI.startBarcodeScanner">.startBarcodeScanner</a> - <code class="highlighter-rouge">function</code></li>
     </ul>
   </li>
@@ -586,14 +592,14 @@ by this RN SDK Module (scanned and imported images, export files like PDF, TIFF,
 ‘page’ as a data model for the scanning and cropping activities. A <code class="highlighter-rouge">Page</code> object has the following fields:</p>
 
 <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Page</span> <span class="p">{</span>
-    <span class="nl">pageId</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">pageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="nl">polygon</span><span class="p">:</span> <span class="nx">Point</span><span class="p">[];</span>
     <span class="nl">detectionResult</span><span class="p">:</span> <span class="nx">DetectionStatus</span><span class="p">;</span>
 
-    <span class="nl">originalImageFileUri</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
-    <span class="nl">documentImageFileUri</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-    <span class="nl">originalPreviewImageFileUri</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
-    <span class="nl">documentPreviewImageFileUri</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">originalImageFileUri</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">documentImageFileUri</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">originalPreviewImageFileUri</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">documentPreviewImageFileUri</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -645,12 +651,12 @@ and <code class="highlighter-rouge">status</code> is <code class="highlighter-ro
     * The minimum score in percent (0 - 100) of the perspective distortion to accept a detected document.
     * Default is 75.0.
     */</span>
-    <span class="nl">acceptedAngleScore</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
+    <span class="nl">acceptedAngleScore</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span>
     <span class="cm">/**
     * The minimum document width or height in percent (0 - 100) of the screen size to accept a detected document.
     * Default is 80.0.
     */</span>
-    <span class="nx">acceptedSizeScore</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
+    <span class="nx">acceptedSizeScore</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span>
     <span class="cm">/**
     * Controls whether the auto-snapping toggle button is hidden or not.
     */</span>
@@ -658,7 +664,7 @@ and <code class="highlighter-rouge">status</code> is <code class="highlighter-ro
     <span class="cm">/**
     * Title of the auto-snapping toggle button.
     */</span>
-    <span class="nx">autoSnappingButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">autoSnappingButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * When auto-snapping is enabled the document scanner will take a photo automatically
     * when a document is detected, conditions are good and the auto-snapping time-out elapses. In this
@@ -670,20 +676,20 @@ and <code class="highlighter-rouge">status</code> is <code class="highlighter-ro
     * A value of 1.0 triggers automatic capturing immediately, a value of 0.0 delays the automatic by 3 seconds.
     * The default value is 0.66 (1 second).
     */</span>
-    <span class="nx">autoSnappingSensitivity</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
+    <span class="nx">autoSnappingSensitivity</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span>
     <span class="cm">/**
     * The background color of the bottom shutter-bar.
     */</span>
-    <span class="nx">bottomBarBackgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">bottomBarBackgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * The color of the title of all buttons in the bottom shutter-bar (Cancel button, etc.),
     * as well as the camera permission prompt button.
     */</span>
-    <span class="nx">bottomBarButtonsColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">bottomBarButtonsColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * The color of the camera background (relevant only when the camera preview mode is CameraPreviewMode.FIT_IN).
     */</span>
-    <span class="nx">cameraBackgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">cameraBackgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Preview mode of the camera: Fit-In or Fill-In.
     * Optional, default is Fit-In.
@@ -692,18 +698,18 @@ and <code class="highlighter-rouge">status</code> is <code class="highlighter-ro
     <span class="cm">/**
     * Title of the cancel button.
     */</span>
-    <span class="nx">cancelButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">cancelButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Title of the button that opens the screen where the user can allow
     * the usage of the camera by the app.
     */</span>
-    <span class="nx">enableCameraButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">enableCameraButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Text that will be displayed when the app
     * is not allowed to use the camera, prompting the user
     * to enable the usage of the camera.
     */</span>
-    <span class="nx">enableCameraExplanationText</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">enableCameraExplanationText</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Controls whether the flash toggle button is hidden or not.
     */</span>
@@ -711,7 +717,7 @@ and <code class="highlighter-rouge">status</code> is <code class="highlighter-ro
     <span class="cm">/**
     * Title of the flash toggle button.
     */</span>
-    <span class="nx">flashButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">flashButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Controls whether the flash should be initially enabled.
     * The default value is FALSE.
@@ -729,7 +735,7 @@ and <code class="highlighter-rouge">status</code> is <code class="highlighter-ro
     * When the factor is less than 1, resulting images will be made smaller by that factor.
     * By default the scale is 1.
     */</span>
-    <span class="nx">imageScale</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
+    <span class="nx">imageScale</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span>
     <span class="cm">/**
     * Controls whether the multi-page toggle button is hidden or not.
     */</span>
@@ -737,7 +743,7 @@ and <code class="highlighter-rouge">status</code> is <code class="highlighter-ro
     <span class="cm">/**
     * Title of the multi-page mode toggle button.
     */</span>
-    <span class="nx">multiPageButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">multiPageButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Controls multi-page mode. When enabled, the user can take multiple document photos before
     * closing the screen by tapping the page counter button. When disabled, the screen will be
@@ -755,96 +761,96 @@ and <code class="highlighter-rouge">status</code> is <code class="highlighter-ro
     * The button's title has the format "%d Pages", where %d shows the number of images captured up to now and the
     * suffix "Pages" is set using this method.
     */</span>
-    <span class="nx">pageCounterButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">pageCounterButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * The background color of the detected document outline when the document's angle, size or aspect ratio
     * is not yet sufficiently good.
     * (All net.doo.snap.lib.detector.DetectionResult with OK_BUT_XXX).
     */</span>
-    <span class="nx">polygonBackgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">polygonBackgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * The background color of the detected document outline when we are ready to snap OK.
     */</span>
-    <span class="nx">polygonBackgroundColorOK</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">polygonBackgroundColorOK</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * The color of the detected document outline when the document's angle, size or aspect ratio
     * is not yet sufficiently good.
     * (All detection statuses in net.doo.snap.lib.detector.DetectionResult that have the OK_BUT_XXX prefix).
     */</span>
-    <span class="nx">polygonColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">polygonColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * The color of the detected document outline when we are ready to snap OK.
     */</span>
-    <span class="nx">polygonColorOK</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">polygonColorOK</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Width of the detected document outline.
     */</span>
-    <span class="nx">polygonLineWidth</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
+    <span class="nx">polygonLineWidth</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span>
     <span class="cm">/**
     * The foreground color of the shutter button in auto-snapping mode.
     */</span>
-    <span class="nx">shutterButtonAutoInnerColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">shutterButtonAutoInnerColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * The background color of the shutter button in auto-snapping mode.
     */</span>
-    <span class="nx">shutterButtonAutoOuterColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
-    <span class="nx">shutterButtonIndicatorColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">shutterButtonAutoOuterColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nx">shutterButtonIndicatorColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * The foreground color of the shutter button in manual mode.
     */</span>
-    <span class="nx">shutterButtonManualInnerColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">shutterButtonManualInnerColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * The background color of the shutter button in manual mode.
     */</span>
-    <span class="nx">shutterButtonManualOuterColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">shutterButtonManualOuterColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Text hint that will be shown when the current detection status is OK_BUT_BAD_ANGLES
     */</span>
-    <span class="nx">textHintBadAngles</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">textHintBadAngles</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Text hint that will be shown when the current detection status is OK_BUT_BAD_ASPECT_RATIO
     */</span>
-    <span class="nx">textHintBadAspectRatio</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">textHintBadAspectRatio</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Text hint that will be shown when the current detection status is ERROR_NOTHING_DETECTED
     */</span>
-    <span class="nx">textHintNothingDetected</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">textHintNothingDetected</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Text hint that will be shown when the current detection status is OK
     */</span>
-    <span class="nx">textHintOK</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">textHintOK</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Text hint that will be shown when the current detection status is ERROR_TOO_DARK
     */</span>
-    <span class="nx">textHintTooDark</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">textHintTooDark</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Text hint that will be shown when the current detection status is ERROR_TOO_NOISY
     */</span>
-    <span class="nx">textHintTooNoisy</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">textHintTooNoisy</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Text hint that will be shown when the current detection status is OK_BUT_TOO_SMALL
     */</span>
-    <span class="nx">textHintTooSmall</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">textHintTooSmall</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * The background color of the top toolbar.
     */</span>
-    <span class="nx">topBarBackgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">topBarBackgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * The color of all active toggle buttons in the toolbar.
     */</span>
-    <span class="nx">topBarButtonsActiveColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">topBarButtonsActiveColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * The color of all inactive toggle buttons in the toolbar.
     */</span>
-    <span class="nx">topBarButtonsInactiveColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">topBarButtonsInactiveColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * The background color of the user guidance hints.
     */</span>
-    <span class="nx">userGuidanceBackgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">userGuidanceBackgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * The text color of the user guidance hints.
     */</span>
-    <span class="nx">userGuidanceTextColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">userGuidanceTextColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
      * Limits the maximum size of the document image. If width or height are zero, 
      * this property is effectively ignored.
@@ -867,12 +873,12 @@ and <code class="highlighter-rouge">status</code> is <code class="highlighter-ro
      * The text being displayed on the user-guidance label, when the scanners energy saver is activated. 
      * iOS only.
      */</span>
-    <span class="nx">textHintEnergySavingActive</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">textHintEnergySavingActive</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
      * Maximum number of pages to scan. Ignored when set to null, or when `multiPageEnabled` is FALSE. 
      * Default value is null.
      */</span>
-    <span class="nx">maxNumberOfPages</span><span class="p">?:</span> <span class="nx">number</span><span class="p">,</span>
+    <span class="nx">maxNumberOfPages</span><span class="p">?:</span> <span class="kr">number</span><span class="p">,</span>
 <span class="p">};</span>
 </code></pre></div></div>
 
@@ -904,49 +910,49 @@ or <a href="#module_ScanbotSdk.createPage">createPage()</a>.</p>
     <span class="cm">/**
     * Background color of the main screen.
     */</span>
-    <span class="na">backgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="na">backgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Background color of the bottom toolbar.
     */</span>
-    <span class="na">bottomBarBackgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="na">bottomBarBackgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Color of the titles of all buttons in the bottom toolbar (Rotate button).
     */</span>
-    <span class="na">bottomBarButtonsColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="na">bottomBarButtonsColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Title of the cancel button.
     */</span>
-    <span class="na">cancelButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="na">cancelButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Title of the Done button.
     */</span>
-    <span class="na">doneButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="na">doneButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Default color of the cropping outline.
     */</span>
-    <span class="na">polygonColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="na">polygonColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Outline color of magnetically snapped edges.
     */</span>
-    <span class="na">polygonColorMagnetic</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="na">polygonColorMagnetic</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Width of the cropping outline.
     */</span>
-    <span class="na">polygonLineWidth</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
+    <span class="na">polygonLineWidth</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span>
     <span class="cm">/**
     * Title of the Rotate button.
     */</span>
-    <span class="na">rotateButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
-    <span class="na">titleColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="na">rotateButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="na">titleColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Background color of the top toolbar.
     */</span>
-    <span class="na">topBarBackgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="na">topBarBackgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
     <span class="cm">/**
     * Color of the titles of all buttons in the top toolbar (Cancel and Done buttons).
     */</span>
-    <span class="na">topBarButtonsColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
-    <span class="na">topBarTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="na">topBarButtonsColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="na">topBarTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -980,15 +986,15 @@ that act as a detection filter. By default all supported formats will be detecte
     <span class="cm">/**
      * Foreground color of the flash button when flash is on.
      */</span>
-    <span class="nl">bottomButtonsActiveColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">bottomButtonsActiveColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
      * Foreground color of the flash button when flash is off.
      */</span>
-    <span class="nl">bottomButtonsInactiveColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">bottomButtonsInactiveColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
      * Background color of the detection overlay.
      */</span>
-    <span class="nl">cameraOverlayColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">cameraOverlayColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
      * Whether the cancel button is hidden or not.
      */</span>
@@ -996,41 +1002,41 @@ that act as a detection filter. By default all supported formats will be detecte
     <span class="cm">/**
      * String being displayed on the cancel button.
      */</span>
-    <span class="nl">cancelButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">cancelButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
      * Relative height of finder frame. Together with finderWidth it defines the aspect ratio, 
      * which is used to build actual finder frame. Default is 1.
      * For example if finderWidth and finderHeight both equals 1 - it will make a square frame, 
      * which is good for QR capturing.
      */</span>
-    <span class="nl">finderHeight</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="nl">finderHeight</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
     <span class="cm">/**
      * Foreground color of the detection overlay.
      */</span>
-    <span class="nl">finderLineColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">finderLineColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
      * Width of finder frame border. Default is 2.
      */</span>
-    <span class="nl">finderLineWidth</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="nl">finderLineWidth</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
     <span class="cm">/**
      * String being displayed as description.
      */</span>
-    <span class="nl">finderTextHint</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">finderTextHint</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
      * Foreground color of the description label.
      */</span>
-    <span class="nl">finderTextHintColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">finderTextHintColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
      * Relative width of finder frame. Together with finderHeight it defines the aspect ratio, 
      * which is used to build actual finder frame. Default is 1.
      * For example if finderWidth and finderHeight both equals 1 - it will make a square frame, 
      * which is good for QR capturing.
      */</span>
-    <span class="nl">finderWidth</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="nl">finderWidth</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
     <span class="cm">/**
      * String being displayed on the flash button.
      */</span>
-    <span class="nl">flashButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">flashButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
      * Whether flash is toggled on or off.
      */</span>
@@ -1042,11 +1048,11 @@ that act as a detection filter. By default all supported formats will be detecte
     <span class="cm">/**
      * Background color of the top bar.
      */</span>
-    <span class="nl">topBarBackgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">topBarBackgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
      * Foreground color of the cancel button.
      */</span>
-    <span class="nl">topBarButtonsColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">topBarButtonsColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
      * Accepted barcode formats
      */</span>
@@ -1081,52 +1087,52 @@ otherwise the detection process will fail. All other settings are optional.</p>
 
 <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kr">interface</span> <span class="nx">MrzScannerConfiguration</span>
 <span class="p">{</span>
-    <span class="nl">bottomButtonsActiveColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-    <span class="nl">bottomButtonsInactiveColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">bottomButtonsActiveColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">bottomButtonsInactiveColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Background color outside of the finder window.
     */</span>
-    <span class="nl">cameraOverlayColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">cameraOverlayColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Title of the cancel button.
     */</span>
-    <span class="nl">cancelButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">cancelButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Title of the button that opens the screen where the user can allow
     * the usage of the camera by the app.
     */</span>
-    <span class="nl">enableCameraButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">enableCameraButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Text that will be displayed when the app
     * is not allowed to use the camera, prompting the user
     * to enable the usage of the camera.
     */</span>
-    <span class="nl">enableCameraExplanationText</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">enableCameraExplanationText</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Height of the finder window in pixels.
     */</span>
-    <span class="nl">finderHeight</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="nl">finderHeight</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
     <span class="cm">/**
     * Color of the finder window's outline.
     */</span>
-    <span class="nl">finderLineColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">finderLineColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Thickness of the finder window's outline.
     */</span>
-    <span class="nl">finderLineWidth</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="nl">finderLineWidth</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
     <span class="cm">/**
     * Text hint shown under the finder window.
     */</span>
-    <span class="nl">finderTextHint</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">finderTextHint</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Color of the text hint under the finder window.
     */</span>
-    <span class="nl">finderTextHintColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">finderTextHintColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Width of the finder window in pixels.
     */</span>
-    <span class="nl">finderWidth</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
-    <span class="nl">flashButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">finderWidth</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">flashButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Controls whether the flash should be initially enabled.
     * The default value is FALSE.
@@ -1145,13 +1151,121 @@ otherwise the detection process will fail. All other settings are optional.</p>
     <span class="cm">/**
     * Background color of the top toolbar.
     */</span>
-    <span class="nl">topBarBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">topBarBackgroundColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Color of the titles of all buttons in the top toolbar.
     */</span>
-    <span class="nl">topBarButtonsColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">topBarButtonsColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
+
+<p><a name="module_ScanbotSDK.UI.startEHICScanner"></a></p>
+<h3 id="european-health-insurance-card-scanner-ehic-scanner">European Health Insurance Card Scanner (EHIC Scanner)</h3>
+<h4 id="scanbotsdkuistartehicscannerconfiguration-healthinsurancecardscannerconfiguration"><code class="highlighter-rouge">ScanbotSdk.UI.startEHICScanner(configuration: HealthInsuranceCardScannerConfiguration)</code></h4>
+
+<p>Opens a Scanner for European Health Insurance Cards</p>
+
+<p><img src="./assets/images/ehic.png" alt="alt" title="EHIC scanner screenshot" /></p>
+
+<h5 id="options-4">Options:</h5>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kr">interface</span> <span class="nx">HealthInsuranceCardScannerConfiguration</span>
+<span class="p">{</span>
+    <span class="cm">/**
+     * Allowed orientations for automatic interface rotations. *
+     */</span>
+    <span class="nl">allowedInterfaceOrientations</span><span class="p">?:</span> <span class="nx">UIInterfaceOrientationMask</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the flash button when flash is on.
+     */</span>
+    <span class="nl">bottomButtonsActiveColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the flash button when flash is off.
+     */</span>
+    <span class="nl">bottomButtonsInactiveColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Background color of the detection overlay.
+     */</span>
+    <span class="nl">cameraOverlayColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Whether the cancel button is hidden or not.
+     */</span>
+    <span class="nl">cancelButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed on the cancel button.
+     */</span>
+    <span class="nl">cancelButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * The receivers delegate.
+     */</span>
+    <span class="nl">delegate</span><span class="p">?:</span> <span class="kr">any</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed when health insurance card was not found.
+     */</span>
+    <span class="nl">detectionStatusFailedDetectionText</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed when health insurance card was found but not recognized.
+     */</span>
+    <span class="nl">detectionStatusFailedValidationText</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed when health insurance card was found and recognized.
+     */</span>
+    <span class="nl">detectionStatusSuccessText</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the detection overlay.
+     */</span>
+    <span class="nl">finderLineColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Width of finder frame border. Default is 2.
+     */</span>
+    <span class="nl">finderLineWidth</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed as description.
+     */</span>
+    <span class="nl">finderTextHint</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the description label.
+     */</span>
+    <span class="nl">finderTextHintColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed on the flash button.
+     */</span>
+    <span class="nl">flashButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Whether flash is toggled on or off.
+     */</span>
+    <span class="nl">flashEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * Enables or disables the machine readable zones detection.
+     */</span>
+    <span class="nl">recognitionEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * Background color of the top bar.
+     */</span>
+    <span class="nl">topBarBackgroundColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the cancel button.
+     */</span>
+    <span class="nl">topBarButtonsColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * The type of health insurance card validation.
+     */</span>
+    <span class="nl">validationType</span><span class="p">?:</span> <span class="nx">HealthInsuranceCardValidationType</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="returns-3">Returns</h4>
+<p>The promise resolves to an object with the following properties:</p>
+<ul>
+  <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> if the user modified the , <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation.</li>
+  <li><code class="highlighter-rouge">fields</code> - an array of MRZ fields. Each field is an object with the following properties:
+    <ul>
+      <li><code class="highlighter-rouge">field.type</code> - the field type</li>
+      <li><code class="highlighter-rouge">field.value</code> - the value of the field.</li>
+      <li><code class="highlighter-rouge">field.confidence</code> - confidence in the accuracy of <code class="highlighter-rouge">value</code></li>
+    </ul>
+  </li>
+</ul>
 
 <h3 id="page-operations">Page Operations</h3>
 
@@ -1160,7 +1274,7 @@ otherwise the detection process will fail. All other settings are optional.</p>
 
 <p>Creates a <a href="#page_object">page</a> from an image (presumably the image of an uncropped document).</p>
 
-<h4 id="returns-3">Returns</h4>
+<h4 id="returns-4">Returns</h4>
 <p>The promise resolves to a page object. As the page hasn’t been cropped yet, 
 the <code class="highlighter-rouge">documentImageFileUri</code> and <code class="highlighter-rouge">documentPreviewImageFileUri</code> properties will be empty.</p>
 
@@ -1174,7 +1288,7 @@ the <code class="highlighter-rouge">documentImageFileUri</code> and <code class=
   <li><code class="highlighter-rouge">imageUri</code> - the URI of an image file with which to overwrite the page’s document image.</li>
 </ul>
 
-<h4 id="returns-4">Returns</h4>
+<h4 id="returns-5">Returns</h4>
 <p>The promise resolves to a page object with the replaced document image.</p>
 
 <p><a name="module_ScanbotSDK.detectDocumentOnPage"></a></p>
@@ -1206,7 +1320,7 @@ Does not modify the document image of the passed page.</p>
 The special value <code class="highlighter-rouge">'NONE'</code> will remove any previously applied filter from the document image.</li>
 </ul>
 
-<h4 id="returns-5">Returns</h4>
+<h4 id="returns-6">Returns</h4>
 <p>A file URI with the preview image of the filtered document page.</p>
 
 <p><a name="module_ScanbotSDK.rotatePage"></a></p>
@@ -1240,7 +1354,7 @@ perspective corrected image as a new file as well as the detected <a href="#poly
 If there was no document detected the result enum provides the exact reason (noisy background, too dark, etc).
 The input image file will not be modified.</p>
 
-<h4 id="returns-6">Returns</h4>
+<h4 id="returns-7">Returns</h4>
 
 <p>Returns object with the following fields</p>
 <ul>
@@ -1258,7 +1372,7 @@ Maybe <code class="highlighter-rouge">null</code> if detection was not successfu
 <p>Rotates an image by given degrees value. As input a file URI of the image must be passed. 
 The output image will be a new file. The input image file will not be modified.</p>
 
-<h4 id="returns-7">Returns</h4>
+<h4 id="returns-8">Returns</h4>
 <p>Promise returning the <a href="#fileHandling">file URI</a> of the rotated result image.</p>
 
 <p><a name="module_ScanbotSDK.applyImageFilter"></a></p>
@@ -1273,7 +1387,7 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">filter</code> - <a href="#imageFilter">ImageFilter</a> string value.</li>
 </ul>
 
-<h4 id="returns-8">Returns</h4>
+<h4 id="returns-9">Returns</h4>
 <p>File URI to the rotated image file.</p>
 
 <p><a name="module_ScanbotSDK.createPDF"></a></p>
@@ -1288,7 +1402,7 @@ For each image a separate page is generated.</p>
   <li><code class="highlighter-rouge">pageSize</code> - <a href="#pdfPageSize">PDFPageSize</a> enum value to specify the output page size.</li>
 </ul>
 
-<h4 id="returns-9">Returns</h4>
+<h4 id="returns-10">Returns</h4>
 <p>Returns an object with the following properties:</p>
 
 <ul>
@@ -1309,16 +1423,43 @@ For each image a separate page is generated.</p>
       <li><code class="highlighter-rouge">oneBitEncoded</code> - if true, the input images will be binarized 
 and the output TIFF file will be saved with one bit per pixel. 
 If false, the input images will be stored as-is. The default value is false.</li>
+      <li><code class="highlighter-rouge">dpi</code> - Optional integer value for Dots Per Inches. The default value is <code class="highlighter-rouge">200</code> dpi.</li>
+      <li><code class="highlighter-rouge">compression</code> - Optional <a href="#tiffCompressionTypes">TIFF compression type</a>. 
+The default value depends on the <code class="highlighter-rouge">oneBitEncoded</code> flag.
+<code class="highlighter-rouge">CCITT_T6</code> (CCITT Fax 4) is the default value for <strong>binarized</strong> (<code class="highlighter-rouge">oneBitEncoded=true</code>) images. 
+For <strong>color</strong> images (<code class="highlighter-rouge">oneBitEncoded=false</code>) the default value is <code class="highlighter-rouge">ADOBE_DEFLATE</code> (ZIP).</li>
     </ul>
   </li>
 </ul>
 
-<h4 id="returns-10">Returns</h4>
+<h4 id="returns-11">Returns</h4>
 <p>Returns an object with the following properties:</p>
 
 <ul>
   <li><code class="highlighter-rouge">tiffFileUri</code> - file URI with the path to the created TIFF file</li>
 </ul>
+
+<p><a name="tiffCompressionTypes"></a></p>
+<h4 id="tiff-compression-types">TIFF Compression Types</h4>
+
+<p>Following TIFF compression types are supported:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">NONE</code> : No compression.</li>
+  <li><code class="highlighter-rouge">CCITT_T6</code> : “CCITT Fax 4” compression type. Most common and recommended type for binarized (1-bit) black and white images to get achieve small TIFF file size.</li>
+  <li><code class="highlighter-rouge">ADOBE_DEFLATE</code> : “ZIP” compression type. Most common type for color images.</li>
+  <li><code class="highlighter-rouge">CCITTRLE</code></li>
+  <li><code class="highlighter-rouge">CCITTFAX3</code></li>
+  <li><code class="highlighter-rouge">CCITT_T4</code></li>
+  <li><code class="highlighter-rouge">CCITTFAX4</code></li>
+  <li><code class="highlighter-rouge">CCITTRLEW</code></li>
+  <li><code class="highlighter-rouge">LZW</code></li>
+  <li><code class="highlighter-rouge">PACKBITS</code></li>
+  <li><code class="highlighter-rouge">DEFLATE</code></li>
+</ul>
+
+<p>⚠️ <strong>Please note</strong> that the following compression types are only compatible for <strong>binarized</strong> images (1-bit encoded black &amp; white images):
+<code class="highlighter-rouge">CCITTRLE</code>, <code class="highlighter-rouge">CCITTFAX3</code>, <code class="highlighter-rouge">CCITT_T4</code>, <code class="highlighter-rouge">CCITTFAX4</code>, <code class="highlighter-rouge">CCITT_T6</code>, <code class="highlighter-rouge">CCITTRLEW</code>.</p>
 
 <p><a name="ocr"></a></p>
 <h3 id="ocr---optical-character-recognition">OCR - Optical Character Recognition</h3>
@@ -1465,7 +1606,7 @@ that desired languages are installed.</li>
   </li>
 </ul>
 
-<h4 id="returns-11">Returns</h4>
+<h4 id="returns-12">Returns</h4>
 <p>The promise resolves to an object with the following properties:</p>
 
 <ul>
@@ -1579,7 +1720,7 @@ that desired languages are installed.</li>
 
 <p>Use this function to get Scanbot SDK OCR properties of the current App installation.</p>
 
-<h4 id="returns-12">Returns</h4>
+<h4 id="returns-13">Returns</h4>
 <p>Returns an object with the following properties:</p>
 
 <ul>
@@ -1745,6 +1886,37 @@ It allows you to create and distribute dedicated and smaller APKs via <strong>Pl
 
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release History</h3>
+
+<h4 id="version-420-5-aug-2020">Version 4.2.0 (5 Aug 2020)</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>A new scanner UI component for the European Health Insurance Cards (EHIC)! 
+See the new API function <a href="#module_ScanbotSDK.UI.startEHICScanner">startEHICScanner</a></li>
+      <li>Added support for <a href="#tiffCompressionTypes">TIFF compression types</a> and for defining custom DPI value as TIFF meta data. 
+See the new options <code class="highlighter-rouge">compression</code> and <code class="highlighter-rouge">dpi</code> of the <a href="#module_ScanbotSDK.writeTIFF">writeTIFF()</a> method.</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Improved shared asset copy script with proper error handling and different pathing options</li>
+      <li>Android: Increased resolution of the preview images</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Android: <code class="highlighter-rouge">topBarBackgroundColor</code> now also affects the status bar in all UI components (Document Scanner UI, Cropping UI, etc)</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded the native Scanbot Android SDK to v1.71.0 (see the 
+<a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">changelog</a>)</li>
+      <li>Upgraded the native Scanbot iOS SDK to v1.9.19 (see the 
+<a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">changelog</a>)</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="version-410-20-jul-2020">Version 4.1.0 (20 Jul 2020)</h4>
 
@@ -2043,7 +2215,8 @@ Creates a grayscaled 8-bit image with mostly black or white pixels.</li>
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-Open Source libraries used in the Scanbot SDK for Android version 1.70.1:
+Open Source libraries used in the Scanbot SDK for Android version 1.71.0:
+
 
 Apache Commons Codec
 
@@ -2735,7 +2908,7 @@ limitations under the License.
 
 
 
-Open Source libraries used in the Scanbot SDK for iOS version 1.9.15:
+Open Source libraries used in the Scanbot SDK for iOS version 1.9.19:
 
 
 BOOST C++ Libraries version 1.68
@@ -2829,7 +3002,7 @@ Neither the names of the copyright holders nor the names of the contributors may
 This software is provided by the copyright holders and contributors “as is” and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall copyright holders or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.
 
 
-OpenSSL 1.0.2q
+OpenSSL 1.1.1g
 Copyright @ 1998-2011 The OpenSSL Project. All rights reserved. (https://www.openssl.org)
 This library is distributed under the terms of the following license: https://github.com/openssl/openssl/blob/master/LICENSE
 
@@ -2902,7 +3075,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
-TensorFlow 2.0.0
+TensorFlow 2.2.0
 Copyright 2017 The TensorFlow Authors. All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
