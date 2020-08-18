@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SBSDKAspectRatio Class Reference</title>
+    <title>SBSDKUIBarcodesBatchScannerMapping Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/objc/Class/SBSDKAspectRatio" class="dashAnchor"></a>
+    <a name="//apple_ref/objc/Protocol/SBSDKUIBarcodesBatchScannerMapping" class="dashAnchor"></a>
 
-    <a title="SBSDKAspectRatio Class Reference"></a>
+    <a title="SBSDKUIBarcodesBatchScannerMapping Protocol Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">ScanbotBarcodeScannerSDK for iOS Reference</a>
       <img class="carat" src="../img/carat.png" />
-      SBSDKAspectRatio Class Reference
+      SBSDKUIBarcodesBatchScannerMapping Protocol Reference
     </p>
 
     <div class="content-wrapper">
@@ -385,14 +385,14 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>SBSDKAspectRatio</h1>
+            <h1>SBSDKUIBarcodesBatchScannerMapping</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">SBSDKAspectRatio</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+                  <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SBSDKUIBarcodesBatchScannerMapping</span></code></pre>
 
                 </div>
               </div>
-            <p>A class that describes an aspect ratio for a documents page. *</p>
+            <p>Protocol for &lsquo;SBSDKUIBarcodesBatchScannerViewController&rsquo; barcode results mapping.</p>
 
           </div>
         </section>
@@ -404,9 +404,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKAspectRatio(py)width"></a>
-                    <a name="//apple_ref/objc/Property/width" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKAspectRatio(py)width">width</a>
+                    <a name="/c:objc(pl)SBSDKUIBarcodesBatchScannerMapping(im)loadMappedDataForBarcode:completion:"></a>
+                    <a name="//apple_ref/objc/Method/-loadMappedDataForBarcode:completion:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SBSDKUIBarcodesBatchScannerMapping(im)loadMappedDataForBarcode:completion:">-loadMappedDataForBarcode:completion:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -414,115 +414,22 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The width of the documents page. Unit independant. *</p>
+                        <p>Method in which you should load and return information about barcode. The info is returned in block, so async loading is possible.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">)</span> <span class="kt">double</span> <span class="n">width</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">loadMappedDataForBarcode</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">barcode</span>
+                      <span class="nf">completion</span><span class="p">:</span>
+                          <span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">_Nullable</span><span class="p">)(</span>
+                              <span class="n"><a href="../Classes/SBSDKUIBarcodeMappedData.html">SBSDKUIBarcodeMappedData</a></span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">))</span><span class="n">completion</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">width</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKAspectRatio(py)height"></a>
-                    <a name="//apple_ref/objc/Property/height" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKAspectRatio(py)height">height</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The height of the documents page. Unit independant. *</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">)</span> <span class="kt">double</span> <span class="n">height</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">height</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKAspectRatio(py)ratio"></a>
-                    <a name="//apple_ref/objc/Property/ratio" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKAspectRatio(py)ratio">ratio</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The aspect ratio of the receiver expressed as a double value of width divided by height. *</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">)</span> <span class="kt">double</span> <span class="n">ratio</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">ratio</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKAspectRatio(im)initWithWidth:andHeight:"></a>
-                    <a name="//apple_ref/objc/Method/-initWithWidth:andHeight:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKAspectRatio(im)initWithWidth:andHeight:">-initWithWidth:andHeight:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Designated initializer.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithWidth</span><span class="p">:(</span><span class="kt">double</span><span class="p">)</span><span class="nv">width</span> <span class="nf">andHeight</span><span class="p">:(</span><span class="kt">double</span><span class="p">)</span><span class="nv">height</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="n">andHeight</span> <span class="nv">height</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">loadMappedData</span><span class="p">(</span><span class="n">forBarcode</span> <span class="nv">barcode</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">((</span><span class="kt"><a href="../Classes/SBSDKUIBarcodeMappedData.html">SBSDKUIBarcodeMappedData</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -533,89 +440,29 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>width</em>
+                                <em>barcode</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The width of the documents page.</p>
+                                  <p>Barcode, for which the info should be returned.</p>
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td>
                                 <code>
-                                <em>height</em>
+                                <em>completion</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The height of the documents page.</p>
+                                  <p>Block, where you should return mapped info about barcode.</p>
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKAspectRatio(im)inverted"></a>
-                    <a name="//apple_ref/objc/Method/-inverted" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKAspectRatio(im)inverted">-inverted</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Returns an inverted copy of the receiver. Inverted here means that width and height are swapped and therefore
-the resulting aspect ratio is the reciproke of the receivers aspect ratio.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="n">inverted</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">inverted</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKAspectRatio(im)init"></a>
-                    <a name="//apple_ref/objc/Method/-init" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKAspectRatio(im)init">-init</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Not available.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="n">init</span><span class="p">;</span></code></pre>
-
-                        </div>
                       </div>
                     </section>
                   </div>
