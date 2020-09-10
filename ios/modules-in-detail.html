@@ -117,6 +117,9 @@
                 <a class="nav-group-task-link" href="Classes/SBSDKBaseAdjustableFilter.html">SBSDKBaseAdjustableFilter</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SBSDKBaseCameraViewController.html">SBSDKBaseCameraViewController</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKBlurrinessEstimator.html">SBSDKBlurrinessEstimator</a>
               </li>
               <li class="nav-group-task">
@@ -208,6 +211,21 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKFrameLimiter.html">SBSDKFrameLimiter</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SBSDKGenericTextLineRecognizer.html">SBSDKGenericTextLineRecognizer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SBSDKGenericTextLineRecognizerConfiguration.html">SBSDKGenericTextLineRecognizerConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SBSDKGenericTextLineRecognizerResult.html">SBSDKGenericTextLineRecognizerResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SBSDKGenericTextLineRecognizerResultWordBox.html">SBSDKGenericTextLineRecognizerResultWordBox</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SBSDKGenericTextLineRecognizerViewController.html">SBSDKGenericTextLineRecognizerViewController</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKHealthInsuranceCardField.html">SBSDKHealthInsuranceCardField</a>
@@ -966,6 +984,9 @@
                 <a class="nav-group-task-link" href="Protocols/SBSDKFinderLayerDelegate.html">SBSDKFinderLayerDelegate</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/SBSDKGenericTextLineRecognizerViewControllerDelegate.html">SBSDKGenericTextLineRecognizerViewControllerDelegate</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Protocols/SBSDKIDCardScannerViewControllerDelegate.html">SBSDKIDCardScannerViewControllerDelegate</a>
               </li>
               <li class="nav-group-task">
@@ -1041,6 +1062,12 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Type%20Definitions.html#/c:SBSDKProgress.h@T@SBSDKProgessUpdateHandler">SBSDKProgessUpdateHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Type%20Definitions.html#/c:SBSDKGenericTextLineRecognizerConfiguration.h@T@SBSDKTextLineRecognizerTextSanitizerBlock">SBSDKTextLineRecognizerTextSanitizerBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Type%20Definitions.html#/c:SBSDKGenericTextLineRecognizerConfiguration.h@T@SBSDKTextLineRecognizerValidationBlock">SBSDKTextLineRecognizerValidationBlock</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Type%20Definitions.html#/c:SBSDKUIScanDocumentPageWorkflowStep.h@T@SBSDKUIScanPagePostProcessingHandler">SBSDKUIScanPagePostProcessingHandler</a>
@@ -1610,14 +1637,14 @@ See our <a href="https://github.com/doo/scanbot-sdk-example-ios/blob/master/Scan
 <h2 id='8-data-scanner' class='heading'>8. Data Scanner</h2>
 
 <p>The Scanbot SDK comes with separate scanners for many specific use cases. Use cases that are not covered by any of these specialized
-scanners you can tackle with the Data Scanner module. This modules main class is <code>SBSDKGenericTextLineRecognizer</code>.
-You can configure its behaviour using the <code>SBSDKGenericTextLineRecognizerConfiguration</code> class.</p>
+scanners you can tackle with the Data Scanner module. This modules main class is <code><a href="Classes/SBSDKGenericTextLineRecognizer.html">SBSDKGenericTextLineRecognizer</a></code>.
+You can configure its behaviour using the <code><a href="Classes/SBSDKGenericTextLineRecognizerConfiguration.html">SBSDKGenericTextLineRecognizerConfiguration</a></code> class.</p>
 
 <p>Within a user-defined rectangular area of interest in consecutive video frames the Data Scanner recognizes text (OCR). 
 A customizable block lets you clean up the raw string by filtering it against unwanted characters and OCR noise.<br>
 Additionally you can validate the result using pattern-matching or another block.</p>
 
-<p>The Data Scanner returns a <code>SBSDKGenericTextLineRecognizerResult</code> object when it recognized text.
+<p>The Data Scanner returns a <code><a href="Classes/SBSDKGenericTextLineRecognizerResult.html">SBSDKGenericTextLineRecognizerResult</a></code> object when it recognized text.
 This result contains the cleaned-up string as well as a boolean flag that tells you whether the validation was successful or not.  </p>
 
 <p>Use cases for the Data Scanner module are the recognition of single-line text like IBAN numbers, insurance numbers, dates and 
@@ -1626,7 +1653,7 @@ other textual data fields that can be easily validated resp. pattern-matched. </
 <p>How is the Data Scanner different to regular OCR? In short, it is more reliable and robust, with a higher confidence in text recognition
 because it accumulates the results of multiple video frames as well as your input from the raw text clean up block.</p>
 
-<p>To make the integration painless for you, Scanbot SDK provides a simple-to-use plugin-viewcontroller named <code>SBSDKGenericTextLineRecognizerViewController</code> 
+<p>To make the integration painless for you, Scanbot SDK provides a simple-to-use plugin-viewcontroller named <code><a href="Classes/SBSDKGenericTextLineRecognizerViewController.html">SBSDKGenericTextLineRecognizerViewController</a></code> 
 that takes over the camera handling, displays the area-of-interest and runs the Data Scanner. The scanners results are passed to a delegate.</p>
 
           </div>
