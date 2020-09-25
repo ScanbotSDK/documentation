@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Scanbot Web Document Scanner SDK</title>
+<meta name="generator" content="Jekyll v4.0.1" />
+<meta property="og:title" content="Scanbot Web Document Scanner SDK" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://scanbotsdk.github.io/documentation/web/" />
+<meta property="og:url" content="https://scanbotsdk.github.io/documentation/web/" />
+<meta property="og:site_name" content="Scanbot Web Document Scanner SDK" />
+<script type="application/ld+json">
+{"url":"https://scanbotsdk.github.io/documentation/web/","name":"Scanbot Web Document Scanner SDK","headline":"Scanbot Web Document Scanner SDK","@type":"WebSite","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/documentation/web/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://scanbotsdk.github.io/documentation/web/feed.xml" title="Scanbot Web Document Scanner SDK" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/documentation/web/">Scanbot Web Document Scanner SDK</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="scanbot-web-document-scanner-sdk">Scanbot Web Document Scanner SDK</h2>
+
+<p>This documentation is for the <strong>latest release</strong> version of
+ Scanbot Web Document Scanner SDK (<code class="highlighter-rouge">scanbot-web-sdk@1.x</code>).</p>
+
+<h3 id="requirements">Requirements</h3>
+
+<p>Since the Web SDK is based on WebAssembly, older browsers are unfortunately not supported. 
+WebAssembly as well as Scanbot Web Document Scanner SDK are supported as of the following versions:</p>
+<ul>
+  <li>Edge 16+</li>
+  <li>Firefox 53+</li>
+  <li>Chrome 57+</li>
+  <li>Safari 11+</li>
+</ul>
+
+<p>Moreover, Scanbot Web Document Scanner SDK is optimized for mobile browsers.
+The latest versions of the following mobile browsers are supported:</p>
+<ul>
+  <li>On Android: Chrome, Firefox, Samsung Internet, Edge</li>
+  <li>On iOS 11+: Safari only</li>
+</ul>
+
+<p>More information available <a href="https://caniuse.com/#search=webassembly">here</a>.</p>
+
+<p>Please note that Chrome and Firefox on iOS still use the iOS WebKit rendering engine. 
+<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=752458">getUserMedia is only available in Safari, not other browsers on 
+iOS</a>.
+This is subject to change, but as of writing this (Aug 2020), 
+on iOS only Safari is supported and no release date 
+for the feature on other browsers has been confirmed.</p>
+
+<h3 id="example-apps">Example Apps</h3>
+
+<p>Check out our React and plain JS example apps on GitHub:</p>
+
+<ul>
+  <li><a href="https://github.com/doo/scanbot-sdk-example-web">scanbot-sdk-example-web</a></li>
+</ul>
+
+<h3 id="adding-the-dependency">Adding the Dependency</h3>
+
+<p>Scanbot Web Document Scanner SDK is available as an <code class="highlighter-rouge">npm</code> <a href="https://www.npmjs.com/package/scanbot-web-sdk">package</a>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install scanbot-web-sdk --save
+</code></pre></div></div>
+
+<p>In webpack-based projects you can import the package like so:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import ScanbotSDK from 'scanbot-web-sdk/webpack'
+</code></pre></div></div>
+<p>This will ensure that the web worker and WebAssembly components are automatically copied over by webpack into the webpack output folder.</p>
+
+<p>If you want to manually handle those components, import the SDK without the <code class="highlighter-rouge">/webpack</code> suffix:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import ScanbotSDK from 'scanbot-web-sdk'
+</code></pre></div></div>
+<p>Then, make sure to copy the following files from the package to your web folder:</p>
+<ul>
+  <li><code class="highlighter-rouge">ScanbotSDK.Core.js</code></li>
+  <li><code class="highlighter-rouge">ScanbotSDK.Asm.wasm</code></li>
+</ul>
+
+<p>The npm package contains compiled javascript with typings under the <code class="highlighter-rouge">component</code>
+directory, so you can import it in your preferred typescript project,
+as well as the minified bundle (will even work with vanilla javascript) in the <code class="highlighter-rouge">bundle</code> directory.</p>
+
+<p>If you don’t use a bundler (webpack, etc.) in your project, you can put a <code class="highlighter-rouge">&lt;script src="ScanbotSDK.min.js"&gt;&lt;/script&gt;</code> tag
+in your <code class="highlighter-rouge">index.html</code>. The script puts the SDK entry point into a global variable named <code class="highlighter-rouge">ScanbotSDK</code>. Copy <code class="highlighter-rouge">ScanbotSDK.min.js</code>
+from the package’s <code class="highlighter-rouge">bundle</code> folder to your web folder.</p>
+
+<h3 id="initializing-the-sdk">Initializing the SDK</h3>
+
+<p>In order to run the Scanbot SDK plugin functionality within your production app, 
+you have to purchase and use a valid Scanbot SDK license.
+The SDK will run for one minute in trial mode without a license.</p>
+
+<p>Scanbot SDK must be initialized before use.
+If you wish to add a custom engine location, e.g. beta version 
+or a specific path to the web worker components,
+you can also specify the engine location:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const licenseKey = "";
+scanbotSDK = await ScanbotSDK.initialize({
+    licenseKey: licenseKey,
+    engine: "static/js/"
+});
+</code></pre></div></div>
+<p>Leave the license key empty to enter trial mode.</p>
+
+<p>The initializer also serves as the main entry point of the SDK, 
+meaning that the <code class="highlighter-rouge">scanbotSDK</code> object returned upon <code class="highlighter-rouge">initialize</code>
+serves as your entry point to use any other SDK features.</p>
+
+<h3 id="document-scanner">Document Scanner</h3>
+
+<h4 id="configuration--styling">Configuration &amp; Styling</h4>
+
+<p>In order to start the document scanner, we must first create a 
+<code class="highlighter-rouge">DocumentScannerConfiguration</code> object, or simply a dictionary in vanilla javascript, as follows.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const config = {
+    containerId: containerId,
+};
+</code></pre></div></div>
+<p>The only required property is the <code class="highlighter-rouge">containerId</code>, string, 
+that should match the container where you want the document scanner to pop up.</p>
+
+<p>The configuration object also accepts the following parameters (values displayed are defaults):</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>acceptedAngleScore: 75,
+acceptedSizeScore: 75,
+autoCaptureSensitivity: 0.66,
+autoCaptureEnabled: true,
+ignoreBadAspectRatio: true,
+</code></pre></div></div>
+
+<p>Additionally, you can also use the configuration object for react-like styling.
+It accepts the following parameters for document outline, hint text label and capture button color
+(values displayed are defaults):</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>style: {
+    outline: {
+        polygon: {
+            stroke: "yellow",
+            strokeWidth: "2px",
+            fill: "none"
+        },
+        label: {
+            position: "absolute",
+            top: "90%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            textAlign: "center",
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
+            color: "white",
+            borderRadius: "0.25em",
+            padding: "0.5em",
+            fontFamily: "sans-serif",
+            fontSize: "1em"
+        },
+        captureButton: {
+            color: "white"
+        }
+    }
+};
+</code></pre></div></div>
+<p>Note that if you wish to do your styling in css, and not in a reactive design pattern,
+you are more than welcome to.</p>
+
+<p>The defaults bundled with the SDK, that you are welcome to override, are as follows:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.scanbot-document-outline {
+    stroke: yellow;
+    stroke-width: 2px;
+    fill: none;
+}
+
+.scanbot-document-outline-ok {
+    stroke: green;
+}
+
+.scanbot-document-outline-visible {
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+}
+
+.scanbot-document-outline-hidden {
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+}
+
+.scanbot-document-hint-text {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 0.25em;
+    padding: 0.5em;
+    font-family: sans-serif;
+    font-size: 1em;
+}
+</code></pre></div></div>
+
+<p>The capture/shutter button can be repositioned by overriding the following css class:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.scanbot-shutter-button {
+    /* ... */
+}
+</code></pre></div></div>
+
+<p>Moreover, the hint texts can also be configured via the same configuration object
+(values displayed are defaults):</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>text: {
+    hint: {
+        OK: "Don't move. Capturing document...",
+        OK_SmallSize: 'Move closer',
+        OK_BadAngles: 'Turn your device to&lt;br&gt;have a more rectangular outline',
+        OK_BadAspectRatio: 'Wrong aspect ratio - rotate your device',
+        OK_OffCenter: 'Move to the center',
+        Error_NothingDetected: 'Searching for document...',
+        Error_Brightness: 'Poor light&lt;br&gt;Searching for document...',
+        Error_Noise: 'Noisy background&lt;br&gt;Searching for document...'
+    }
+};
+</code></pre></div></div>
+
+<p>The document scanner works at the maximum available camera resolution for the highest quality scans by default.
+You can further configure the camera video stream by specifying the <code class="highlighter-rouge">videoConstraints</code> property of
+the document scanner configuration. The video constraints are directly given to <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia">getUserMedia</a></p>
+
+<p>The default video constraints are as follows:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>videoConstraints: MediaTrackConstraints = {
+    facingMode: "environment",
+    resizeMode: "none",
+    width: { ideal: 3840 },
+    height: { ideal: 2160 }
+};
+</code></pre></div></div>
+
+<p>Call <code class="highlighter-rouge">documentScanner.dispose()</code> to stop the scanner and release all resources.</p>
+
+<h4 id="callbacks">Callbacks</h4>
+
+<p>To receive detection results define <code class="highlighter-rouge">onDocumentDetected</code> in the configuraiton:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>onDocumentDetected: result =&gt; {
+    console.log("Detected Document:", result);
+},
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">result</code> object contains the following properties:</p>
+<ul>
+  <li><code class="highlighter-rouge">detectionStatus</code> – contains the same keys as the the hint texts mentioned earlier</li>
+  <li><code class="highlighter-rouge">success</code> – boolean, whether detection was successful or not</li>
+  <li><code class="highlighter-rouge">cropped</code> – If <code class="highlighter-rouge">success</code>, contains the cropped document, base64</li>
+  <li><code class="highlighter-rouge">polygon</code> – The page’s cropping polygon as calculated by a document detection operation</li>
+</ul>
+
+<p>Note that this will be called every time a document is detected, 
+until you stop detection or dispose the camera.</p>
+
+<h4 id="creating-the-scanner">Creating the Scanner</h4>
+
+<p>After you’re done configuring the scanner, 
+simply refer back to your SDK object and create the scanner object as follows:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>documentScanner = await scanbotSDK.createDocumentScanner(config);
+</code></pre></div></div>
+
+<p>An exception is thrown if camera streaming is not supported or the user blocks the camera.</p>
+
+<h4 id="dispose">Dispose</h4>
+
+<p>Always dispose the document scanner after it is no longer needed.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>await documentScanner.dispose();
+</code></pre></div></div>
+
+<p><a name="releaseHistory"></a></p>
+<h2 id="release-history">Release History</h2>
+
+<h4 id="version-100-25-september-2020">Version 1.0.0 (25 September 2020)</h4>
+<ul>
+  <li>🎉 Initial release
+    <ul>
+      <li>Document Scanner with Auto-cropping</li>
+      <li>UI Components: User-guidance text, Detection polygon and Capture button</li>
+    </ul>
+  </li>
+</ul>
+
+<p><a name="librariesLicenses"></a></p>
+<h3 id="libraries-and-licenses">Libraries and Licenses</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Open Source libraries used in the Scanbot Web Document Scanner SDK:
+
+
+Classnames
+https://jedwatson.github.io/classnames/
+
+(The MIT License)
+
+Copyright (c) 2015 Jed Watson
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+----------------------------------------------------------------------------------------
+
+Preact
+https://github.com/preactjs/preact/blob/master/LICENSE
+
+The MIT License (MIT)
+
+Copyright (c) 2015-present Jason Miller
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+----------------------------------------------------------------------------------------
+
+OpenSSL
+
+https://github.com/openssl/openssl
+
+Copyright (c) 1998-2020 The OpenSSL Project.  All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3. All advertising materials mentioning features or use of this software must display the following acknowledgment:
+"This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit. (http://www.openssl.org/)"
+
+4. The names "OpenSSL Toolkit" and "OpenSSL Project" must not be used to endorse or promote products derived from this software without prior written permission. For written permission, please contact openssl-core@openssl.org.
+
+5. Products derived from this software may not be called "OpenSSL" nor may "OpenSSL" appear in their names without prior written permission of the OpenSSL Project.
+
+6. Redistributions of any form whatsoever must retain the following acknowledgment: "This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (http://www.openssl.org/)"
+
+THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE OpenSSL PROJECT OR
+ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+====================================================================
+
+This product includes cryptographic software written by Eric Young (eay@cryptsoft.com).
+This product includes software written by Tim Hudson (tjh@cryptsoft.com).
+
+Original SSLeay License
+-----------------------
+
+Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com)
+All rights reserved.
+
+This package is an SSL implementation written by Eric Young (eay@cryptsoft.com). The implementation was written so as to conform with Netscapes SSL.
+
+This library is free for commercial and non-commercial use as long as the following conditions are aheared to. The following conditions apply to all code found in this distribution, be it the RC4, RSA, lhash, DES, etc., code; not just the SSL code.  The SSL documentation included with this distribution is covered by the same copyright terms except that the holder is Tim Hudson (tjh@cryptsoft.com).
+
+Copyright remains Eric Young's, and as such any Copyright notices in the code are not to be removed. If this package is used in a product, Eric Young should be given attribution
+as the author of the parts of the library used. This can be in the form of a textual message at program startup or in documentation (online or textual) provided with the package.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the copyright notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3. All advertising materials mentioning features or use of this software must display the following acknowledgement:
+"This product includes cryptographic software written by Eric Young (eay@cryptsoft.com)"
+The word 'cryptographic' can be left out if the rouines from the library being used are not cryptographic related :-).
+4. If you include any Windows specific code (or a derivative thereof) from the apps directory (application code) you must include an acknowledgement:
+"This product includes software written by Tim Hudson (tjh@cryptsoft.com)"
+
+THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+The licence and distribution terms for any publically available version or derivative of this code cannot be changed.  i.e. this code cannot simply be copied and put under another distribution licence [including the GNU Public Licence.]
+
+ISC license used for completely new code in BoringSSL:
+
+Copyright (c) 2015, Google Inc.
+
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE. */
+
+Some files from Intel carry the following license
+
+Copyright (c) 2012, Intel Corporation
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+*  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+*  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+*  Neither the name of the Intel Corporation nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION ""AS IS"" AND ANY
+EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+----------------------------------------------------------------------------------------
+
+Filesystem.hpp
+
+(https://github.com/bin-build/filesystem)
+Copyright (c) 2015-2017, Wenzel Jakob
+Copyright (c) 2017, Josh Junon
+All rights reserved.
+This library is distributed under the terms of a BSD 2-Clause License (https://github.com/bin-build/filesystem/blob/master/LICENSE)
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+----------------------------------------------------------------------------------------
+
+JSON for Modern C++
+
+Version 3.1.0
+(https://github.com/nlohmann/json)
+Copyright (c) 2013-2018 Niels Lohmann &lt;http://nlohmann.me&gt;.
+This library is distributed under the terms of a MIT License (https://github.com/nlohmann/json/blob/develop/LICENSE.MIT)
+
+Permission is hereby  granted, free of charge, to any  person obtaining a copy of this software and associated  documentation files (the "Software"), to deal in the Software  without restriction, including without  limitation the rights to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell copies  of  the Software,  and  to  permit persons  to  whom  the Software  is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF MERCHANTABILITY, FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+----------------------------------------------------------------------------------------
+
+OpenCV
+
+Version 4.4.0
+(https://github.com/opencv/opencv)
+
+By downloading, copying, installing or using the software you agree to this license.
+If you do not agree to this license, do not download, install,
+copy or use the software.
+
+License Agreement
+For Open Source Computer Vision Library
+(3-clause BSD License)
+
+Copyright (C) 2000-2019, Intel Corporation, all rights reserved.
+Copyright (C) 2009-2011, Willow Garage Inc., all rights reserved.
+Copyright (C) 2009-2016, NVIDIA Corporation, all rights reserved.
+Copyright (C) 2010-2013, Advanced Micro Devices, Inc., all rights reserved.
+Copyright (C) 2015-2016, OpenCV Foundation, all rights reserved.
+Copyright (C) 2015-2016, Itseez Inc., all rights reserved.
+Third party copyrights are property of their respective owners.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+
+  * Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+
+  * Neither the names of the copyright holders nor the names of the contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+
+This software is provided by the copyright holders and contributors "as is" and
+any express or implied warranties, including, but not limited to, the implied
+warranties of merchantability and fitness for a particular purpose are disclaimed.
+In no event shall copyright holders or contributors be liable for any direct,
+indirect, incidental, special, exemplary, or consequential damages
+(including, but not limited to, procurement of substitute goods or services;
+loss of use, data, or profits; or business interruption) however caused
+and on any theory of liability, whether in contract, strict liability,
+or tort (including negligence or otherwise) arising in any way out of
+the use of this software, even if advised of the possibility of such damage.
+
+
+</code></pre></div></div>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/documentation/web/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Scanbot Web Document Scanner SDK</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Scanbot Web Document Scanner SDK</li><li><a class="u-email" href="mailto:sdk@scanbot.io">sdk@scanbot.io</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
