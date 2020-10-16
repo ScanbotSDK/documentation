@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://scanbotsdk.github.io/documentation/xamarin/xamarin.html" />
 <meta property="og:site_name" content="Scanbot SDK for Xamarin" />
 <script type="application/ld+json">
-{"headline":"Scanbot SDK for Xamarin","@type":"WebPage","url":"https://scanbotsdk.github.io/documentation/xamarin/xamarin.html","@context":"https://schema.org"}</script>
+{"headline":"Scanbot SDK for Xamarin","url":"https://scanbotsdk.github.io/documentation/xamarin/xamarin.html","@type":"WebPage","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/documentation/xamarin/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://scanbotsdk.github.io/documentation/xamarin/feed.xml" title="Scanbot SDK for Xamarin" /></head>
 <body><header class="site-header" role="banner">
@@ -147,7 +147,7 @@ The design and behavior of these RTU UI Components are based on our long years o
   <li>Document Scanner - <code class="highlighter-rouge">DocumentScannerActivity</code></li>
   <li>Cropping - <code class="highlighter-rouge">CroppingActivity</code></li>
   <li>MRZ Scanner - <code class="highlighter-rouge">MRZScannerActivity</code></li>
-  <li>Barcode and QR-Code Scanner - <code class="highlighter-rouge">BarcodeScannerActivity</code></li>
+  <li>Barcode and QR-Code Scanner - <code class="highlighter-rouge">BarcodeScannerActivity</code> &amp; <code class="highlighter-rouge">BatchBarcodeScannerActivity</code></li>
 </ul>
 
 <p>iOS:</p>
@@ -155,7 +155,7 @@ The design and behavior of these RTU UI Components are based on our long years o
   <li>Document Scanner - <code class="highlighter-rouge">SBSDKUIDocumentScannerViewController</code></li>
   <li>Cropping - <code class="highlighter-rouge">SBSDKUICroppingViewController</code></li>
   <li>MRZ Scanner - <code class="highlighter-rouge">SBSDKUIMRZScannerViewController</code></li>
-  <li>Barcode and QR-Code Scanner - <code class="highlighter-rouge">SBSDKUIBarcodeScannerViewController</code></li>
+  <li>Barcode and QR-Code Scanner - <code class="highlighter-rouge">SBSDKUIBarcodeScannerViewController</code> &amp; <code class="highlighter-rouge">SBSDKUIBarcodesBatchScannerViewController</code></li>
 </ul>
 
 <p>For more details please see the corresponding API docs of the classes as well as our example app.</p>
@@ -451,7 +451,36 @@ iOS/Resources/ScanbotSDKOCRData.bundle/osd.traineddata  // required special data
 </code></pre></div></div>
 <p>See the API reference of the <a href="https://scanbotsdk.github.io/documentation/ios/Classes/SBSDKOCRResult.html">SBSDKOCRResult</a> class for more details.</p>
 
+<p><a name="BlurrinessEstimator"></a></p>
+<h4 id="estimating-image-blurriness">Estimating Image Blurriness</h4>
+
+<h5 id="ios-1">iOS</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var blur = new SBSDKBlurrinessEstimator().EstimateImageBlurriness(image);
+</code></pre></div></div>
+
+<h5 id="droid">Droid</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var estimator = new IO.Scanbot.Sdk.ScanbotSDK(this).BlurEstimator();
+var = estimator.EstimateInBitmap(bitmap, 0);
+</code></pre></div></div>
+
+<p>Less is sharper, more is blurred.</p>
+
+<p>In board terms, consider blur values as follows:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">0.0-0.3</code>: This image isn’t blurry at all</li>
+  <li><code class="highlighter-rouge">0.3-0.6</code>: Somewhat blurry, should be ok</li>
+  <li><code class="highlighter-rouge">0.6-1.0</code>: I’m skeptical of the usefulness of the image</li>
+</ul>
+
+<p>However, this isn’t that black and white. If a scanned document has a lot white background, 
+that will be considered a very blurred image. It is therefore best to use blur estimator 
+in conjunction with a finder view or on an already cropped document.</p>
+
 <h4 id="camera-ui-for-document-scanning">Camera UI for document scanning</h4>
+
 <p>The Scanbot SDK provides UI components for guided, automatic document scanning.
 These component classes handle all the camera and detection implementation details for you and can be used in your app.
 It is possible to customize the appearance and behavior of the guidance UI.</p>
@@ -459,7 +488,7 @@ It is possible to customize the appearance and behavior of the guidance UI.</p>
 <p>In the following examples we use the classes from the <strong>native SDK</strong> namespaces.
 Please make sure that you have defined the required permissions in your app.</p>
 
-<h5 id="ios-1"><strong>iOS</strong></h5>
+<h5 id="ios-2"><strong>iOS</strong></h5>
 <p>For your convenience the Scanbot SDK for iOS comes with the <code class="highlighter-rouge">SBSDKScannerViewController</code> class that handles all the document scanner implementations. You can customize the appearance and behavior of the guidance UI via controllers delegate.</p>
 
 <p>Example code:</p>
@@ -790,7 +819,7 @@ To further improve the user experience you might want to automatically take a ph
 
 <p>In the following examples we use the classes from the <strong>native SDK</strong> namespaces.</p>
 
-<h5 id="ios-2"><strong>iOS</strong></h5>
+<h5 id="ios-3"><strong>iOS</strong></h5>
 
 <p>Example code for a NavigationController:</p>
 
@@ -1024,7 +1053,49 @@ To further improve the user experience you might want to automatically take a ph
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history-and-changelog">Release History and Changelog</h3>
 
-<h4 id="scanbotsdkxamarin---version-203-9-september-2020">ScanbotSDK.Xamarin - Version 2.0.3 (9 September 2020)</h4>
+<h4 id="scanbotsdkxamarin---version-300-16-oct-2020">ScanbotSDK.Xamarin - Version 3.0.0 (16 Oct 2020)</h4>
+
+<ul>
+  <li>🎉 NEW:
+    <ul>
+      <li>Batch Barcode Scanner - new RTU UI Components to scan multiple barcodes in a row
+(<code class="highlighter-rouge">BatchBarcodeScannerActivity</code> for Android and <code class="highlighter-rouge">SBSDKUIBarcodesBatchScannerViewController</code> for iOS)</li>
+      <li><a href="#BlurrinessEstimator">Blurriness Estimator</a> - a new SDK feature to detect blurriness on still images.</li>
+      <li>Android: Migrated to <a href="https://developer.android.com/jetpack/androidx">AndroidX</a> libs</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Android: Some big improvements in the camera components as well as in the Document Scanner RTU UI that make 
+document scanning perform better and much smoother. Increased start-up time of the camera preview. 
+Faster saving of the snapped pages in the Document Scanner RTU UI. 
+Optimized performance of the image processing for simple operations (rotate, crop, resize).</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li>iOS: Various, please cf. the <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">Changelog</a> of the native Scanbot iOS SDK</li>
+      <li>iOS: Removed support for iOS 9 and iOS 10</li>
+      <li>Android: Various; please cf. the <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">Changelog</a> of the native Scanbot Android SDK</li>
+      <li>Android: Dropped legacy SupportLibs, built for AndroidX. To migrate your project please check out the 
+<a href="https://docs.microsoft.com/en-us/xamarin/android/platform/androidx">documentation</a> from Microsoft</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Android: Upgraded the native Scanbot Android SDK to <strong>v1.74.0</strong></li>
+      <li>iOS: Upgraded the native Scanbot iOS SDK to <strong>v1.11.2</strong></li>
+    </ul>
+  </li>
+  <li>👉 Please also see:
+    <ul>
+      <li>The <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">Changelog</a> of the native Scanbot Android SDK</li>
+      <li>The <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">Changelog</a> of the native Scanbot iOS SDK</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="scanbotsdkxamarin---version-203-9-sep-2020">ScanbotSDK.Xamarin - Version 2.0.3 (9 Sep 2020)</h4>
 
 <ul>
   <li>🐞 Bug fixes:
@@ -1034,7 +1105,7 @@ To further improve the user experience you might want to automatically take a ph
   </li>
 </ul>
 
-<h4 id="scanbotsdkxamarin---version-202-6-august-2020">ScanbotSDK.Xamarin - Version 2.0.2 (6 August 2020)</h4>
+<h4 id="scanbotsdkxamarin---version-202-6-aug-2020">ScanbotSDK.Xamarin - Version 2.0.2 (6 Aug 2020)</h4>
 
 <ul>
   <li>🐞 Bug fixes:
@@ -1044,7 +1115,7 @@ To further improve the user experience you might want to automatically take a ph
   </li>
 </ul>
 
-<h4 id="scanbotsdkxamarin---version-200-19-june-2020">ScanbotSDK.Xamarin - Version 2.0.0 (19 June 2020)</h4>
+<h4 id="scanbotsdkxamarin---version-200-19-jun-2020">ScanbotSDK.Xamarin - Version 2.0.0 (19 Jun 2020)</h4>
 
 <ul>
   <li>🎉 NEW:
@@ -1066,7 +1137,7 @@ To further improve the user experience you might want to automatically take a ph
   <li>🚙 Under the hood:
     <ul>
       <li>Android: Upgraded the native Scanbot Android SDK to <strong>v1.39.61</strong> (release notes correspond to <strong>1.61</strong>)</li>
-      <li>Android: Upgraded <code class="highlighter-rouge">minSdkVersion</code> to <strong>21</strong></li>
+      <li>Android: Dropped support for Android 4.x. Updated minimum Android API level to <strong>21</strong> (Android 5.0)</li>
       <li>Android: Removed deprecated <code class="highlighter-rouge">zxing</code> and <code class="highlighter-rouge">Playservices</code>, <code class="highlighter-rouge">Annotations</code>, <code class="highlighter-rouge">Android.Support.v4</code> dependencies</li>
       <li>Android: Replaced with <code class="highlighter-rouge">Naxam.Rx</code> with <code class="highlighter-rouge">Xamarin.Android.ReactiveX</code></li>
       <li>Android: Updated <code class="highlighter-rouge">Xamarin.Android.Support.v7</code> to <strong>28.0.0.3</strong></li>

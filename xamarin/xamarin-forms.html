@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://scanbotsdk.github.io/documentation/xamarin/xamarin-forms.html" />
 <meta property="og:site_name" content="Scanbot SDK for Xamarin" />
 <script type="application/ld+json">
-{"url":"https://scanbotsdk.github.io/documentation/xamarin/xamarin-forms.html","headline":"Scanbot SDK for Xamarin","@type":"WebPage","@context":"https://schema.org"}</script>
+{"headline":"Scanbot SDK for Xamarin","url":"https://scanbotsdk.github.io/documentation/xamarin/xamarin-forms.html","@type":"WebPage","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/documentation/xamarin/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://scanbotsdk.github.io/documentation/xamarin/feed.xml" title="Scanbot SDK for Xamarin" /></head>
 <body><header class="site-header" role="banner">
@@ -422,12 +422,46 @@ present an error message to the user if the validation fails and restart a step.
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history-and-changelog">Release History and Changelog</h3>
 
-<h4 id="scanbotsdkxamarinforms---version-203-09-sept-2020">ScanbotSDK.Xamarin.Forms - Version 2.0.3 (09 Sept 2020)</h4>
+<h4 id="scanbotsdkxamarin---version-300-16-oct-2020">ScanbotSDK.Xamarin - Version 3.0.0 (16 Oct 2020)</h4>
+
+<ul>
+  <li>🎉 NEW:
+    <ul>
+      <li>Android: Migrated to <a href="https://developer.android.com/jetpack/androidx">AndroidX</a> libs</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Android: Some big improvements in the Document Scanner UI that make document scanning perform better and much smoother. 
+Increased start-up time of the camera preview. Faster saving of the snapped pages. 
+Optimized performance of the image processing for simple operations (rotate, crop, resize).</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li>Android: Dropped legacy SupportLibs, built for AndroidX. To migrate your project please check out the 
+<a href="https://docs.microsoft.com/en-us/xamarin/android/platform/androidx">documentation</a> from Microsoft</li>
+      <li>iOS: Removed support for iOS 9 and iOS 10</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded <code class="highlighter-rouge">ScanbotSDK.Xamarin</code> to v3.0.0</li>
+    </ul>
+  </li>
+  <li>👉 Please also see:
+    <ul>
+      <li>The <a href="/documentation/xamarin/xamarin.html#releaseHistory">Changelog</a> of <code class="highlighter-rouge">ScanbotSDK.Xamarin</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="scanbotsdkxamarinforms---version-203-09-sep-2020">ScanbotSDK.Xamarin.Forms - Version 2.0.3 (09 Sep 2020)</h4>
 
 <ul>
   <li>🐞 Bug fixes:
     <ul>
-      <li>Fixed issue where <code class="highlighter-rouge">CroppingActivity</code> polygon could still be modified after <code class="highlighter-rouge">Done</code> click</li>
+      <li>Android: Fixed issue where the polygon in the Cropping UI could still be modified after <code class="highlighter-rouge">Done</code> click</li>
     </ul>
   </li>
   <li>🚙 Under the hood:
@@ -442,7 +476,7 @@ present an error message to the user if the validation fails and restart a step.
   </li>
 </ul>
 
-<h4 id="scanbotsdkxamarinforms---version-202-03-sept-2020">ScanbotSDK.Xamarin.Forms - Version 2.0.2 (03 Sept 2020)</h4>
+<h4 id="scanbotsdkxamarinforms---version-202-03-sep-2020">ScanbotSDK.Xamarin.Forms - Version 2.0.2 (03 Sep 2020)</h4>
 
 <ul>
   <li>🐞 Bug fixes:
@@ -462,7 +496,7 @@ present an error message to the user if the validation fails and restart a step.
   </li>
 </ul>
 
-<h4 id="scanbotsdkxamarinforms---version-200-19-june-2020">ScanbotSDK.Xamarin.Forms - Version 2.0.0 (19 June 2020)</h4>
+<h4 id="scanbotsdkxamarinforms---version-200-19-jun-2020">ScanbotSDK.Xamarin.Forms - Version 2.0.0 (19 Jun 2020)</h4>
 
 <ul>
   <li>🎉 NEW:
@@ -486,6 +520,7 @@ present an error message to the user if the validation fails and restart a step.
       <li>Removed <code class="highlighter-rouge">BarcodeFormat.AllFormats</code>. If you want all barcode formats to be recognized, do not specify any formats</li>
       <li>Renamed <code class="highlighter-rouge">SBSDKBarcodeImageGenerationType</code> to <code class="highlighter-rouge">BarcodeImageGenerationType</code></li>
       <li>Android: Updated internal dependency <code class="highlighter-rouge">Xamarin.Forms</code> to <strong>4.5.0</strong></li>
+      <li>Android: Dropped support for Android 4.x. Updated minimum Android API level to <strong>21</strong> (Android 5.0)</li>
     </ul>
   </li>
   <li>👉 Please also see:
