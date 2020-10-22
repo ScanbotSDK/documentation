@@ -46,11 +46,12 @@ Scanbot SDK React Native Module (<code class="highlighter-rouge">react-native-sc
 <h3 id="introduction">Introduction</h3>
 <p>The Scanbot SDK brings scanning and document creation capabilities to your mobile apps.
 It contains various modules that are part of different license packages.
-For more details visit our <a href="https://scanbot.io/en/sdk/scanner-sdk/document-scanner-sdk#packages">website</a></p>
+For more details visit our <a href="https://scanbot.io">website</a></p>
 
 <p>This module provides implementations of Scanbot SDK for iOS and Android.</p>
 
-<p>Following <strong><a href="https://scanbot.io/sdk.html#packages">Package I + II</a></strong> functionality is covered by this module:</p>
+<p>Following <strong><a href="https://scanbot.io/en/sdk/scanner-sdk/document-scanner-sdk#packages">Package I + II</a></strong> functionality 
+is covered by this module:</p>
 
 <p><strong>Package I</strong></p>
 <ul>
@@ -66,6 +67,12 @@ For more details visit our <a href="https://scanbot.io/en/sdk/scanner-sdk/docume
 <ul>
   <li>OCR</li>
   <li>MRZ Scanning</li>
+</ul>
+
+<p><strong>Package III</strong></p>
+<ul>
+  <li>ID Card Scanning</li>
+  <li>EHIC Scanning (European Health Insurance Card Scanner)</li>
 </ul>
 
 <h3 id="requirements">Requirements</h3>
@@ -94,7 +101,7 @@ For more details visit our <a href="https://scanbot.io/en/sdk/scanner-sdk/docume
 <h4 id="mobile-platforms">Mobile Platforms</h4>
 <ul>
   <li>Android 5.0 (API Level 21) and higher</li>
-  <li>iOS 9 and higher</li>
+  <li>iOS 11 and higher</li>
 </ul>
 
 <p>Please note:</p>
@@ -110,7 +117,7 @@ For more details visit our <a href="https://scanbot.io/en/sdk/scanner-sdk/docume
   <li>Supported CPUs and Architectures:
     <ul>
       <li>Android: <code class="highlighter-rouge">armeabi-v7, arm64-v8a, x86, x86_64</code></li>
-      <li>iOS: <code class="highlighter-rouge">arm64, armv7, x86_64, i386</code></li>
+      <li>iOS: <code class="highlighter-rouge">arm64</code> for physical devices and <code class="highlighter-rouge">x86_64</code> for simulators</li>
     </ul>
   </li>
 </ul>
@@ -324,7 +331,7 @@ As value describe why your app wants to access the device’s camera.</li>
       <li><a href="#module_ScanbotSDK.getFilteredDocumentPreviewUri">.getFilteredDocumentPreviewUri</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.rotatePage">.rotatePage</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.removePage">.removePage</a> - <code class="highlighter-rouge">function</code></li>
-      <li><a href="#module_ScanbotSdk.estimateBlur">.estimateBlur(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.estimateBlur">.estimateBlur</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.cleanup">.cleanup</a> - <code class="highlighter-rouge">function</code></li>
     </ul>
   </li>
@@ -335,8 +342,8 @@ As value describe why your app wants to access the device’s camera.</li>
       <li><a href="#module_ScanbotSDK.UI.startMrzScanner">.startMrzScanner</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.UI.startEHICScanner">.startEHICScanner</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSDK.UI.startBarcodeScanner">.startBarcodeScanner</a> - <code class="highlighter-rouge">function</code></li>
-      <li><a href="#module_ScanbotSdk.UI.startBatchBarcodeScanner">.startBatchBarcodeScanner(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
-      <li><a href="#module_ScanbotSdk.UI.startIdCardScanner">.startIdCardScanner(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.UI.startBatchBarcodeScanner">.startBatchBarcodeScanner</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.UI.startIdCardScanner">.startIdCardScanner</a> - <code class="highlighter-rouge">function</code></li>
     </ul>
   </li>
   <li><strong>Constants</strong>
@@ -416,14 +423,14 @@ of the Scanbot SDK will terminate your app.</p>
 <h4 id="trial-license">Trial License</h4>
 <p>The Scanbot SDK will run without a license for one minute per session!
 To get an unrestricted “no-strings-attached” 30 day trial license, please submit the 
-<a href="https://scanbot.io/sdk/trial.html">Trial License Form</a> on our website.</p>
+<a href="https://scanbot.io/en/sdk/demo/trial">Trial License Form</a> on our website.</p>
 
 <p>Please kindly note that a trial license can only be used in a <strong>development and staging environment</strong>. 
 You are <strong>not allowed to publish</strong> your app to the App Store, 
 Play Store or any 3rd party Android App Store with a trial license.</p>
 
 <h4 id="purchase-a-production-license">Purchase a Production License</h4>
-<p>You can check and purchase the Scanbot SDK licenses <a href="https://scanbot.io/en/sdk/scanner-sdk/document-scanner-sdk">here</a>.</p>
+<p>In order to purchase a Scanbot SDK license please reach out to our sales experts via <a href="mailto:sdk@scanbot.io">sdk@scanbot.io</a>.</p>
 
 <h4 id="app-identifier">App Identifier</h4>
 <p>Every app has a unique identifier (sometimes also known as “bundle identifier” or “application ID”). 
@@ -497,11 +504,11 @@ you should disable any usage of the Scanbot SDK functions or UI components in yo
 
 <h4 id="scanbotsdkgetlicenseinfo-promiselicenseinfo"><code class="highlighter-rouge">ScanbotSDK.getLicenseInfo(): Promise&lt;LicenseInfo&gt;</code></h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export interface LicenseInfo {
-    isLicenseValid: boolean;
-    licenseStatus: LicenseStatus;
-    licenseExpirationDate?: number;
-}
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kr">interface</span> <span class="nx">LicenseInfo</span> <span class="p">{</span>
+    <span class="nl">isLicenseValid</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="nl">licenseStatus</span><span class="p">:</span> <span class="nx">LicenseStatus</span><span class="p">;</span>
+    <span class="nl">licenseExpirationDate</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <h5 id="example-code-for-checking-the-license-status">Example code for checking the license status:</h5>
@@ -646,7 +653,7 @@ and <code class="highlighter-rouge">status</code> is <code class="highlighter-ro
 </ul>
 
 <h5 id="options">Options:</h5>
-<p>All UI configuration options are optional.</p>
+<p>All configuration options are optional.</p>
 
 <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">DocumentScannerConfiguration</span> <span class="p">{</span>
     <span class="cm">/**
@@ -906,55 +913,85 @@ and contains some smart UI elements like magnetic lines and a magnifier.</p>
 created using the <a href="#module_ScanbotSdk.UI.startDocumentScanner">Document Scanner</a> 
 or <a href="#module_ScanbotSdk.createPage">createPage()</a>.</p>
 
-<p>All UI configuration settings are optional.</p>
+<p>All configuration settings are optional.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kr">interface</span> <span class="nx">CroppingScreenConfiguration</span>
+<span class="p">{</span>
+    <span class="cm">/**
+     * String being displayed as a hint. Empty by default.
+     */</span>
+    <span class="nl">hintTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Text color of the hint title.
+     */</span>
+    <span class="nl">hintTitleColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Background color of the main screen.
     */</span>
-    <span class="na">backgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nl">backgroundColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Background color of the bottom toolbar.
     */</span>
-    <span class="na">bottomBarBackgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nl">bottomBarBackgroundColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Color of the titles of all buttons in the bottom toolbar (Rotate button).
     */</span>
-    <span class="na">bottomBarButtonsColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nl">bottomBarButtonsColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Title of the cancel button.
     */</span>
-    <span class="na">cancelButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nl">cancelButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Title of the Done button.
     */</span>
-    <span class="na">doneButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nl">doneButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Default color of the cropping outline.
     */</span>
-    <span class="na">polygonColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nl">polygonColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Outline color of magnetically snapped edges.
     */</span>
-    <span class="na">polygonColorMagnetic</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nl">polygonColorMagnetic</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Width of the cropping outline.
     */</span>
-    <span class="na">polygonLineWidth</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="nl">polygonLineWidth</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
     <span class="cm">/**
     * Title of the Rotate button.
     */</span>
-    <span class="na">rotateButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-    <span class="na">titleColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nl">rotateButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">titleColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Background color of the top toolbar.
     */</span>
-    <span class="na">topBarBackgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nl">topBarBackgroundColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
     * Color of the titles of all buttons in the top toolbar (Cancel and Done buttons).
     */</span>
-    <span class="na">topBarButtonsColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-    <span class="na">topBarTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nl">topBarButtonsColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">topBarTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Title of the Detect button.
+     */</span>
+    <span class="nl">detectButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Title of the Reset button.
+     */</span>
+    <span class="nl">resetButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Controls whether the Rotate button is hidden or not.
+     */</span>
+    <span class="nl">rotateButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * Controls whether the Detect/Reset button is hidden or not.
+     */</span>
+    <span class="nl">detectResetButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * UI orientation lock mode: PORTRAIT, LANDSCAPE, etc.
+     * By default the UI is not locked.
+     */</span>
+    <span class="nl">orientationLockMode</span><span class="p">?:</span> <span class="nx">UIOrientationMode</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -1064,164 +1101,152 @@ that act as a detection filter. By default all supported formats will be detecte
 
 <p><a name="module_ScanbotSdk.UI.startBatchBarcodeScanner"></a></p>
 <h3 id="batch-barcode-and-qr-code-scanning-ui">Batch Barcode and QR Code Scanning UI</h3>
-<h4 id="scanbotsdkuistartbatchbarcodescannersuccesscallback-errorcallback-options">ScanbotSdk.UI.startBatchBarcodeScanner(successCallback, errorCallback, options)</h4>
+<h4 id="scanbotsdkuistartbatchbarcodescannerconfiguration-batchbarcodescannerconfiguration-promise">ScanbotSdk.UI.startBatchBarcodeScanner(configuration: BatchBarcodeScannerConfiguration): Promise</h4>
 
 <p>Opens a Scanning UI to scan multiple barcodes and QR-codes in a row.</p>
 
-<h4 id="callbacks">Callbacks:</h4>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
-</code></pre></div></div>
+<h4 id="result-1">Result:</h4>
+<p>The promise resolves to a result object with the following properties:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">result.status</code> - <code class="highlighter-rouge">'OK'</code> if a barcode was detected, <code class="highlighter-rouge">'CANCELED'</code> 
-if the user canceled the operation (tapped on the “cancel” button).</li>
-  <li><code class="highlighter-rouge">result.barcodes[]</code> - Array of detected barcode. If no barcodes were detected, the array will be empty or null.</li>
+  <li><code class="highlighter-rouge">result.status</code> - <code class="highlighter-rouge">'OK'</code> If there is at least one barcode in the result list available, 
+<code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation (tapped on the “cancel” button).</li>
+  <li><code class="highlighter-rouge">result.barcodes[]</code> - Array of scanned barcodes/QR codes.</li>
   <li><code class="highlighter-rouge">result.barcodes[n].type</code> - <a href="#barcodeFormat">Format</a> of detected 
 barcode/QR code (e.g. <code class="highlighter-rouge">CODE_128</code>, <code class="highlighter-rouge">EAN_13</code>, <code class="highlighter-rouge">QR_CODE</code>, etc).</li>
   <li><code class="highlighter-rouge">result.barcodes[n].text</code> - Text value of detected and decoded barcode/QR code.</li>
-  <li><code class="highlighter-rouge">result.imageFileUri</code> - Optional file URI of the captured camera image.</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="highlighter-rouge">error.status</code> - <code class="highlighter-rouge">'ERROR'</code> in all error cases.</li>
-  <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
 <h4 id="options-3">Options:</h4>
-<p>All settings are optional.</p>
+<p>All configuration options are optional.</p>
 
 <p><code class="highlighter-rouge">uiConfigs.barcodeFormats</code> is an optional array of <a href="#barcodeFormat">barcode formats</a> 
 that act as a detection filter. By default all supported formats will be detected.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
- * Allowed orientations for automatic interface rotations. *
- */</span>
-<span class="nx">allowedInterfaceOrientations</span><span class="p">?:</span> <span class="nx">UIInterfaceOrientationMask</span><span class="p">;</span>
-<span class="cm">/**
- * String used for displaying amount of scanned barcodes. Use %d for number formatting symbol.
- */</span>
-<span class="nx">barcodesCountText</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Text color of the barcodes count label.
- */</span>
-<span class="nx">barcodesCountTextColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Background color of the detection overlay.
- */</span>
-<span class="nx">cameraOverlayColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Whether the cancel button is hidden or not.
- */</span>
-<span class="nx">cancelButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
-<span class="cm">/**
- * String being displayed on the cancel button.
- */</span>
-<span class="nx">cancelButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * String being displayed on the clear button.
- */</span>
-<span class="nx">clearButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * String being displayed on the delete button.
- */</span>
-<span class="nx">deleteButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Foreground color of the top bar buttons on the details screen.
- */</span>
-<span class="nx">detailsActionColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Background color of the details screen.
- */</span>
-<span class="nx">detailsBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Text color in the details barcodes list. Also affects image background, separator and progress spinner.
- */</span>
-<span class="nx">detailsPrimaryColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * String used to show process of fetching mapped data for barcodes.
- */</span>
-<span class="nx">fetchingStateText</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Aspect ratio of finder frame (width \ height), which is used to build actual finder frame.
- * Default is 1 - it is a square frame, which is good for QR capturing.
- */</span>
-<span class="nx">finderAspectRatio</span><span class="p">?:</span> <span class="nx">FinderAspectRatio</span><span class="p">;</span>
-<span class="cm">/**
- * Foreground color of the detection overlay.
- */</span>
-<span class="nx">finderLineColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Width of finder frame border. Default is 2.
- */</span>
-<span class="nx">finderLineWidth</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
-<span class="cm">/**
- * String being displayed as description.
- */</span>
-<span class="nx">finderTextHint</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Foreground color of the description label.
- */</span>
-<span class="nx">finderTextHintColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Whether flash is toggled on or off.
- */</span>
-<span class="nx">flashEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
-<span class="cm">/**
- * String to show that no barcodes were scanned yet.
- */</span>
-<span class="nx">noBarcodesTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Enables or disables the barcode detection.
- */</span>
-<span class="nx">recognitionEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
-<span class="cm">/**
- * String being displayed on the submit button.
- */</span>
-<span class="nx">submitButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Whether scanner screen should make a sound on successful barcode or MRZ detection.
- */</span>
-<span class="nx">successBeepEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
-<span class="cm">/**
- * Background color of the top bar.
- */</span>
-<span class="nx">topBarBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Foreground color of the top bar buttons on the scanning screen.
- */</span>
-<span class="nx">topBarButtonsColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Foreground color of the flash button when flash is off.
- */</span>
-<span class="nx">topBarButtonsInactiveColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Accepted barcode formats
- */</span>
-<span class="nx">barcodeFormats</span><span class="p">?:</span> <span class="nx">BarcodeFormat</span><span class="p">[];</span>
-<span class="cm">/**
- * Specifies the way of barcode images generation or disables this generation at all.
- * Use, if you want to receive a full sized image with barcodes. Defaults to NONE.
- */</span>
-<span class="nx">barcodeImageGenerationType</span><span class="p">?:</span> <span class="nx">BarcodeImageGenerationType</span><span class="p">;</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kr">interface</span> <span class="nx">BatchBarcodeScannerConfiguration</span>
+<span class="p">{</span>
+    <span class="cm">/**
+     * Allowed orientations for automatic interface rotations. *
+     */</span>
+    <span class="nl">allowedInterfaceOrientations</span><span class="p">?:</span> <span class="nx">UIInterfaceOrientationMask</span><span class="p">;</span>
+    <span class="cm">/**
+     * String used for displaying amount of scanned barcodes. Use %d for number formatting symbol.
+     */</span>
+    <span class="nl">barcodesCountText</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Text color of the barcodes count label.
+     */</span>
+    <span class="nl">barcodesCountTextColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Background color of the detection overlay.
+     */</span>
+    <span class="nl">cameraOverlayColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Whether the cancel button is hidden or not.
+     */</span>
+    <span class="nl">cancelButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed on the cancel button.
+     */</span>
+    <span class="nl">cancelButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed on the clear button.
+     */</span>
+    <span class="nl">clearButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed on the delete button.
+     */</span>
+    <span class="nl">deleteButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the top bar buttons on the details screen.
+     */</span>
+    <span class="nl">detailsActionColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Background color of the details screen.
+     */</span>
+    <span class="nl">detailsBackgroundColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Text color in the details barcodes list. Also affects image background, separator and progress spinner.
+     */</span>
+    <span class="nl">detailsPrimaryColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String used to show process of fetching mapped data for barcodes.
+     */</span>
+    <span class="nl">fetchingStateText</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Aspect ratio of finder frame (width \ height), which is used to build actual finder frame.
+     * Default is 1 - it is a square frame, which is good for QR capturing.
+     */</span>
+    <span class="nl">finderAspectRatio</span><span class="p">?:</span> <span class="nx">FinderAspectRatio</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the detection overlay.
+     */</span>
+    <span class="nl">finderLineColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Width of finder frame border. Default is 2.
+     */</span>
+    <span class="nl">finderLineWidth</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed as description.
+     */</span>
+    <span class="nl">finderTextHint</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the description label.
+     */</span>
+    <span class="nl">finderTextHintColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Whether flash is toggled on or off.
+     */</span>
+    <span class="nl">flashEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * String to show that no barcodes were scanned yet.
+     */</span>
+    <span class="nl">noBarcodesTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Enables or disables the barcode detection.
+     */</span>
+    <span class="nl">recognitionEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed on the submit button.
+     */</span>
+    <span class="nl">submitButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Whether scanner screen should make a sound on successful barcode or MRZ detection.
+     */</span>
+    <span class="nl">successBeepEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * Background color of the top bar.
+     */</span>
+    <span class="nl">topBarBackgroundColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the top bar buttons on the scanning screen.
+     */</span>
+    <span class="nl">topBarButtonsColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the flash button when flash is off.
+     */</span>
+    <span class="nl">topBarButtonsInactiveColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Accepted barcode formats
+     */</span>
+    <span class="nl">barcodeFormats</span><span class="p">?:</span> <span class="nx">BarcodeFormat</span><span class="p">[];</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <p><a name="module_ScanbotSdk.UI.startIdCardScanner"></a></p>
-<h3 id="id-card-scanning-ui">Id-Card Scanning UI</h3>
-<h4 id="scanbotsdkuistartidcardscannersuccesscallback-errorcallback-options">ScanbotSdk.UI.startIdCardScanner(successCallback, errorCallback, options)</h4>
+<h3 id="id-card-scanning-ui">ID Card Scanning UI</h3>
+<h4 id="scanbotsdkuistartidcardscannerconfiguration-idcardscannerconfiguration-promise">ScanbotSdk.UI.startIdCardScanner(configuration: IdCardScannerConfiguration): Promise</h4>
 
-<p>Opens a Scanning UI to scan Id-Cards.</p>
+<p>Opens a Scanning UI to scan ID Cards. The scanner detects and recognizes ID cards or passports on video frames 
+and extracts the data fields, like names, dates, photo, signature and machine readable zones (MRZ).</p>
 
-<h4 id="callbacks-1">Callbacks:</h4>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">successCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
-</code></pre></div></div>
+<p>Note: This feature is currently limited to German ID cards and passports.</p>
 
-<p>Each Id-Card scanning result contains the following properties:</p>
+<h4 id="result-2">Result:</h4>
+<p>The promise resolves to a result object with the following properties:</p>
 <ul>
-  <li><code class="highlighter-rouge">result.status</code> - <code class="highlighter-rouge">'OK'</code> if a barcode was detected, <code class="highlighter-rouge">'CANCELED'</code> 
-if the user canceled the operation (tapped on the “cancel” button).</li>
+  <li><code class="highlighter-rouge">result.status</code> - <code class="highlighter-rouge">'OK'</code> if detection was successful. 
+<code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation (tapped on the “cancel” button).</li>
   <li><code class="highlighter-rouge">result.id</code></li>
   <li><code class="highlighter-rouge">result.surname</code></li>
   <li><code class="highlighter-rouge">result.givenNames</code></li>
@@ -1250,16 +1275,8 @@ if the user canceled the operation (tapped on the “cancel” button).</li>
   <li><code class="highlighter-rouge">result.passportType</code></li>
 </ul>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">errorCallback</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="highlighter-rouge">error.status</code> - <code class="highlighter-rouge">'ERROR'</code> in all error cases.</li>
-  <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
-</ul>
-
 <h4 id="options-4">Options:</h4>
-<p>All settings are optional.</p>
+<p>All configuration options are optional.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
  * Allowed orientations for automatic interface rotations. *
@@ -1268,15 +1285,15 @@ if the user canceled the operation (tapped on the “cancel” button).</li>
 <span class="cm">/**
  * Background color of the detection overlay.
  */</span>
-<span class="nx">cameraOverlayColor</span><span class="s2">`
-/**
+<span class="nx">cameraOverlayColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="cm">/**
  * Whether the cancel button is hidden or not.
- */
-cancelButtonHidden?: boolean;
-/**
+ */</span>
+<span class="nx">cancelButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+<span class="cm">/**
  * String being displayed on the cancel button.
- */
-cancelButtonTitle`</span>
+ */</span>
+<span class="nx">cancelButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
 <span class="cm">/**
  * String being displayed on the clear button.
  */</span>
@@ -1807,7 +1824,7 @@ The output image will be a new file. The input image file will not be modified.<
 
 <p><a name="module_ScanbotSdk.estimateBlur"></a></p>
 <h3 id="estimate-blur">Estimate Blur</h3>
-<h4 id="scanbotsdkestimateblursuccesscallback-errorcallback-options"><code class="highlighter-rouge">ScanbotSdk.estimateBlur(successCallback, errorCallback, options)</code></h4>
+<h4 id="scanbotsdkestimatebluroptions-imagefileuri-string-promise"><code class="highlighter-rouge">ScanbotSdk.estimateBlur(options: {imageFileUri: string}): Promise</code></h4>
 
 <p>Estimates image blurriness. Less is sharper, more is blurred.</p>
 
@@ -1828,7 +1845,7 @@ in conjunction with a finder view or on an already cropped document.</p>
 };
 </code></pre></div></div>
 
-<h4 id="result-1">Result</h4>
+<h4 id="result-3">Result</h4>
 
 <ul>
   <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> or <code class="highlighter-rouge">'ERROR'</code> in all error cases.</li>
@@ -1912,7 +1929,7 @@ For <strong>color</strong> images (<code class="highlighter-rouge">oneBitEncoded
 
 <p>The Scanbot SDK RN Module provides a simple and convenient API 
 to run Optical Character Recognition (OCR) on images.
-The OCR feature is a part of the Scanbot SDK <strong><a href="https://scanbot.io/sdk.html#packages">Package II</a></strong>. 
+The OCR feature is a part of the Scanbot SDK <strong><a href="https://scanbot.io/en/sdk/scanner-sdk/document-scanner-sdk#packages">Package II</a></strong>. 
 It is based on the <em>Tesseract OCR Engine</em> with some modifications and enhancements.</p>
 
 <h4 id="preconditions-to-achieve-a-good-ocr-result">Preconditions to achieve a good OCR result</h4>
