@@ -46,11 +46,12 @@ of the Scanbot SDK Cordova Plugin (<code class="highlighter-rouge">cordova-plugi
 <h3 id="introduction">Introduction</h3>
 <p>The Scanbot SDK brings scanning and document creation capabilities to your mobile apps.
 It contains modules which are individually licensable as license packages.
-For more details visit our website <a href="https://scanbot.io/sdk">https://scanbot.io/sdk</a></p>
+For more details visit our website <a href="https://scanbot.io">https://scanbot.io</a></p>
 
 <p>This Cordova plugin provides implementations of Scanbot SDK for iOS and Android.</p>
 
-<p>Following <strong><a href="https://scanbot.io/sdk.html">Package 0 + I + II</a></strong> functionality is covered by this plugin:</p>
+<p>Following <strong><a href="https://scanbot.io/en/sdk/scanner-sdk/document-scanner-sdk#packages">Package 0 + I + II + III</a></strong> 
+functionality is covered by this plugin:</p>
 
 <p><strong>Package 0</strong></p>
 <ul>
@@ -71,6 +72,11 @@ For more details visit our website <a href="https://scanbot.io/sdk">https://scan
 <ul>
   <li>OCR</li>
   <li>MRZ Scanning</li>
+</ul>
+
+<p><strong>Package III</strong></p>
+<ul>
+  <li>EHIC Scanning (European Health Insurance Card Scanner)</li>
 </ul>
 
 <h3 id="requirements">Requirements</h3>
@@ -424,7 +430,7 @@ To get an unrestricted “no-strings-attached” 30 day trial license, please su
 You are <strong>not allowed to publish</strong> your app to the App Store, Play Store or any 3rd party Android App Store with a trial license.</p>
 
 <h4 id="purchase-a-production-license">Purchase a Production License</h4>
-<p>You can check and purchase the Scanbot SDK licenses here: <a href="https://scanbot.io/sdk">https://scanbot.io/sdk</a>.</p>
+<p>In order to purchase a Scanbot SDK license please reach out to our sales experts via <a href="mailto:sdk@scanbot.io">sdk@scanbot.io</a>.</p>
 
 <h4 id="app-identifier">App Identifier</h4>
 <p>Every app has a unique identifier, also known as <strong>“Bundle Identifier”</strong> on iOS or <strong>“Application ID”</strong> on Android. 
@@ -851,9 +857,9 @@ If multi-page mode is not enabled and <code class="highlighter-rouge">result.sta
     */</span>
     <span class="na">multiPageEnabled</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
     <span class="cm">/**
-    * Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.
-    * By default the camera orientation is not locked.
-    */</span>
+     * Orientation lock mode of the UI, the camera preview, and the output images.
+     * By default the orientation is not locked.
+     */</span>
     <span class="na">orientationLockMode</span><span class="p">:</span> <span class="nx">CameraOrientationMode</span><span class="p">,</span>
     <span class="cm">/**
     * Title suffix of the button that finishes the document scanning when multi-page scanning is enabled.
@@ -1454,8 +1460,8 @@ otherwise the detection process will fail. All other settings are optional.</p>
     */</span>
     <span class="na">flashEnabled</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
     <span class="cm">/**
-    * Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.
-    * By default the camera orientation is not locked.
+    * Orientation lock mode of the UI and the camera preview.
+    * By default the orientation is not locked.
     */</span>
     <span class="na">orientationLockMode</span><span class="p">:</span> <span class="nx">CameraOrientationMode</span><span class="p">,</span>
     <span class="cm">/**
@@ -2070,7 +2076,7 @@ For <strong>color</strong> images (<code class="highlighter-rouge">oneBitEncoded
 <h3 id="ocr---optical-character-recognition">OCR - Optical Character Recognition</h3>
 
 <p>The Scanbot SDK Plugin provides a simple and convenient API to run Optical Character Recognition (OCR) on images.
-The OCR feature is a part of the Scanbot SDK <strong><a href="https://scanbot.io/sdk.html#packages">Package II</a></strong>. 
+The OCR feature is a part of the Scanbot SDK <strong><a href="https://scanbot.io/en/sdk/scanner-sdk/document-scanner-sdk#packages">Package II</a></strong>. 
 It is based on the <em>Tesseract OCR Engine</em> with some modifications and enhancements.</p>
 
 <h4 id="preconditions-to-achieve-a-good-ocr-result">Preconditions to achieve a good OCR result</h4>
@@ -2686,6 +2692,22 @@ It allows you to create and distribute dedicated and smaller APKs <strong>via Pl
 
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release History</h2>
+
+<h4 id="version-431-26-oct-2020">Version 4.3.1 (26 Oct 2020):</h4>
+<ul>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Barcode Scanner and EHIC Scanner: fixed the ability to lock the UI to certain orientation modes</li>
+      <li>Removed unused config property <code class="highlighter-rouge">barcodeImageGenerationType</code> from <code class="highlighter-rouge">BatchBarcodeScannerConfiguration</code></li>
+    </ul>
+  </li>
+  <li>⚠️ API Breaking Changes:
+    <ul>
+      <li>Replaced config property <code class="highlighter-rouge">allowedInterfaceOrientations</code> by <code class="highlighter-rouge">orientationLockMode</code> in <code class="highlighter-rouge">BarcodeScannerConfiguration</code>, 
+<code class="highlighter-rouge">BatchBarcodeScannerConfiguration</code>, <code class="highlighter-rouge">HealthInsuranceCardScannerConfiguration</code></li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="version-430-13-oct-2020">Version 4.3.0 (13 Oct 2020):</h4>
 <ul>
