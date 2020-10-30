@@ -67,15 +67,15 @@ For more details visit our website <a href="https://scanbot.io/sdk">https://scan
 
 <ul>
   <li><a href="https://flutter.dev">flutter sdk 1.9.1+</a></li>
-  <li>For Android apps: Android SDK (API Level 16+), Platforms and Developer Tools</li>
+  <li>For Android apps: Android SDK (API Level 21+), Platforms and Developer Tools</li>
   <li>For iOS apps: Mac OS with latest Xcode and Command Line Tools</li>
 </ul>
 
 <h4 id="mobile-platforms">Mobile Platforms</h4>
 
 <ul>
-  <li>Android 4.1 (API Level 16) and higher</li>
-  <li>iOS 9 and higher</li>
+  <li>Android 5.0 (API Level 21) and higher</li>
+  <li>iOS 11 and higher</li>
 </ul>
 
 <p>Please note:</p>
@@ -93,7 +93,7 @@ For more details visit our website <a href="https://scanbot.io/sdk">https://scan
   <li>Supported CPUs and Architectures:
     <ul>
       <li>Android: <code class="highlighter-rouge">armeabi-v7, arm64-v8a, x86, x86_64</code></li>
-      <li>iOS: <code class="highlighter-rouge">arm64, armv7, x86_64, i386</code></li>
+      <li>iOS: <code class="highlighter-rouge">arm64</code>, <code class="highlighter-rouge">x86_64</code></li>
     </ul>
   </li>
 </ul>
@@ -125,7 +125,7 @@ You can simply add it as dependency to your App.</p>
 <p>Add the <code class="highlighter-rouge">scanbot_sdk</code> plugin to your <code class="highlighter-rouge">pubspec.yaml</code> file as <code class="highlighter-rouge">dependencies</code>:</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">dependencies</span><span class="pi">:</span>
-  <span class="na">scanbot_sdk</span><span class="pi">:</span> <span class="s">^1.0.0</span>  <span class="c1"># use the latest sdk version</span>
+  <span class="na">scanbot_sdk</span><span class="pi">:</span> <span class="s">^2.0.0</span>  <span class="c1"># see the latest sdk version</span>
 </code></pre></div></div>
 
 <p>Use the flutter CLI (or your IDE) to fetch and install the packages:</p>
@@ -139,10 +139,10 @@ You can simply add it as dependency to your App.</p>
 <p>In the top-level <code class="highlighter-rouge">android/build.gradle</code> file:</p>
 
 <ul>
-  <li>Update kotlin version to at least <code class="highlighter-rouge">1.3.41</code> or higher. Typically defined via <code class="highlighter-rouge">ext.kotlin_version</code> variable:
+  <li>Update kotlin version to at least <code class="highlighter-rouge">1.4.0</code> or higher. Typically defined via <code class="highlighter-rouge">ext.kotlin_version</code> variable:
     <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">...</span>
   <span class="n">buildscript</span> <span class="o">{</span>
-      <span class="n">ext</span><span class="o">.</span><span class="na">kotlin_version</span> <span class="o">=</span> <span class="s1">'1.3.41'</span>
+      <span class="n">ext</span><span class="o">.</span><span class="na">kotlin_version</span> <span class="o">=</span> <span class="s1">'1.4.0'</span>
       <span class="o">...</span>
   <span class="o">}</span>
 </code></pre></div>    </div>
@@ -182,9 +182,11 @@ You can simply add it as dependency to your App.</p>
 <ul>
   <li>
     <p>Add the <code class="highlighter-rouge">largeHeap</code> flag:
-Since your application will work with high-resolution images it is strongly recommended to add the attribute <code class="highlighter-rouge">android:largeHeap="true"</code> 
+Since your application will work with high-resolution images it is 
+strongly recommended to add the attribute <code class="highlighter-rouge">android:largeHeap="true"</code> 
 in the <code class="highlighter-rouge">&lt;application&gt;</code> element of your <code class="highlighter-rouge">AndroidManifest.xml</code> file, especially for Android &lt;= 7.x. 
-Processing hi-res images is a memory intensive task and this property will ensure your app has enough heap allocated to avoid <code class="highlighter-rouge">OutOfMemoryError</code> exceptions.</p>
+Processing hi-res images is a memory intensive task and this property will ensure 
+your app has enough heap allocated to avoid <code class="highlighter-rouge">OutOfMemoryError</code> exceptions.</p>
   </li>
   <li>
     <p>Add the <code class="highlighter-rouge">CAMERA</code> permission:</p>
@@ -199,7 +201,7 @@ Processing hi-res images is a memory intensive task and this property will ensur
 
 <p>Make sure you have specified a global <code class="highlighter-rouge">platform</code> version in the <code class="highlighter-rouge">ios/Podfile</code> file, like:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>platform :ios, '9.0'
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>platform :ios, '11.0'
 </code></pre></div></div>
 
 <p>Then run:</p>
@@ -209,7 +211,8 @@ $ pod install
 
 <p>In your <code class="highlighter-rouge">Info.plist</code> file add the required <code class="highlighter-rouge">NSCameraUsageDescription</code> property:</p>
 
-<p><code class="highlighter-rouge">NSCameraUsageDescription</code> - <em>“Privacy - Camera Usage Description”</em>. As value describe why your app wants to access the camera.</p>
+<p><code class="highlighter-rouge">NSCameraUsageDescription</code> - <em>“Privacy - Camera Usage Description”</em>. 
+As value describe why your app wants to access the camera.</p>
 
 <p>Please note that without this property the app will crash on camera access!</p>
 
@@ -217,10 +220,12 @@ $ pod install
 
 <ul>
   <li>
-    <p><strong><code class="highlighter-rouge">ScanbotSdk</code></strong> - This module provides the Scanbot SDK functionality for image operations (e.g. filter, PDF creation, etc.)</p>
+    <p><strong><code class="highlighter-rouge">ScanbotSdk</code></strong> - This module provides the Scanbot SDK functionality 
+for image operations (e.g. filter, PDF creation, etc.)</p>
   </li>
   <li>
-    <p><strong><code class="highlighter-rouge">ScanbotSdkUi</code></strong> - Provides the UI functionality like Document Scanner UI, Cropping UI, Barcode Scanner UI, MRZ Scanner UI and EHIC Scanner UI.</p>
+    <p><strong><code class="highlighter-rouge">ScanbotSdkUi</code></strong> - Provides the UI functionality like Document Scanner UI, 
+Cropping UI, Barcode Scanner UI, MRZ Scanner UI and EHIC Scanner UI.</p>
   </li>
 </ul>
 
@@ -249,7 +254,7 @@ $ pod install
     <ul>
       <li><a href="#module_ScanbotSdkUi.startDocumentScanner">.startDocumentScanner(config)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdkUi.startCroppingScreen">.startCroppingScreen(config)</a> - <code class="highlighter-rouge">function</code></li>
-      <li><a href="#module_ScanbotSdkUi.startBarcodeScanner">.startBarcodeScanner((config)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdkUi.startBarcodeScanner">.startBarcodeScanner(config)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdkUi.startMrzScanner">.startMrzScanner(config)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdkUi.startEhicScanner">.startEhicScanner(config)</a> - <code class="highlighter-rouge">function</code></li>
     </ul>
@@ -262,9 +267,9 @@ $ pod install
 <h3 id="initialize-sdk">Initialize SDK</h3>
 <h4 id="scanbotsdkinitscanbotsdkconfig">ScanbotSdk.initScanbotSdk(config)</h4>
 
-<p>The Scanbot SDK must be initialized before usage. Make sure to call the initialization after entering the main widget creation.</p>
+<p>ScanbotSDK must be initialized before usage!</p>
 
-<p>Following configuration options can be passed on initialization:</p>
+<p>The following configuration options can be passed on initialization:</p>
 
 <h5 id="options">Options:</h5>
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="n">config</span> <span class="o">=</span> <span class="n">ScanbotSdkConfig</span><span class="o">(</span>
@@ -273,6 +278,10 @@ $ pod install
   <span class="nl">imageFormat:</span> <span class="n">ImageFormat</span><span class="o">.</span><span class="na">JPG</span><span class="o">,</span>
   <span class="nl">imageQuality:</span> <span class="mi">80</span><span class="o">,</span>
   <span class="nl">storageBaseDirectory:</span> <span class="s">"file:///some/optional/custom-storage-dir/"</span><span class="o">,</span>
+  <span class="nl">documentDetectorMode:</span> <span class="n">DocumentDetectorMode</span><span class="o">.</span><span class="na">ML_BASED</span><span class="o">,</span>
+  <span class="nl">licenseErrorHandler:</span> <span class="o">(</span><span class="n">status</span><span class="o">,</span> <span class="n">feature</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">print</span><span class="o">(</span><span class="s">"status: </span><span class="si">$status</span><span class="s">, feature </span><span class="si">$feature</span><span class="s">"</span><span class="o">);</span>
+  <span class="o">},</span>
 <span class="o">);</span>
 
 <span class="n">ScanbotSdk</span><span class="o">.</span><span class="na">initScanbotSdk</span><span class="o">(</span><span class="n">config</span><span class="o">);</span>
@@ -283,7 +292,16 @@ $ pod install
   <li><code class="highlighter-rouge">loggingEnabled</code>: Optional <a href="#logging">logging</a> flag.</li>
   <li><code class="highlighter-rouge">imageFormat</code>: Optional <a href="#imageFormat">image format</a> value.</li>
   <li><code class="highlighter-rouge">imageQuality</code>: Optional <a href="#imageQuality">image quality</a> value.</li>
-  <li><code class="highlighter-rouge">storageBaseDirectory</code>: Optional directory as file URI to overwrite the default <a href="#storage">storage directory</a> of the Scanbot SDK.</li>
+  <li><code class="highlighter-rouge">storageBaseDirectory</code>: Optional directory as file URI to overwrite 
+the default <a href="#storage">storage directory</a> of the Scanbot SDK.</li>
+  <li><code class="highlighter-rouge">documentDetectorMode</code>: Optional document detector mode.
+    <ul>
+      <li><code class="highlighter-rouge">DocumentDetectorMode.EDGE_BASED</code> - default implementation, based on classical edge detection approach</li>
+      <li><code class="highlighter-rouge">DocumentDetectorMode.ML_BASED</code> - new Machine Learning based approach (requires iOS 11.2+)</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">licenseErrorHandler</code> : Callback function to get info about problems 
+with license key or concrete feature that is not available for usage</li>
 </ul>
 
 <p>Example code for initialization:</p>
@@ -318,25 +336,33 @@ $ pod install
 
 <p><a name="licenseKey"></a></p>
 <h4 id="license-key">License Key</h4>
-<p>In order to run the Scanbot SDK plugin functionality within your production app you have to purchase and use a valid Scanbot SDK license.</p>
+<p>In order to run the Scanbot SDK plugin functionality within your production app, 
+you have to purchase and use a valid Scanbot SDK license.</p>
 
-<p>Each license key is valid only for a given app bundle identifier. The license also defines which modules you are allowed to use. 
-The usage of unlicensed modules will log an error to the console and terminate the app. If your license has expired any calls 
+<p>Each license key is valid only for a given app bundle identifier. 
+The license also defines which modules you are allowed to use. 
+The usage of unlicensed modules will log an error to the console and terminate the app. 
+If your license has expired any calls 
 of the Scanbot SDK plugin will terminate your app.</p>
 
 <h4 id="trial-license">Trial License</h4>
 <p>The Scanbot SDK will run without a license for one minute per session!
-To get an unrestricted “no-strings-attached” 30 day trial license, please submit the <a href="https://scanbot.io/sdk/trial.html">Trial License Form</a> on our website.</p>
+To get an unrestricted “no-strings-attached” 30 day trial license, 
+please submit the <a href="https://scanbot.io/sdk/trial.html">Trial License Form</a> on our website.</p>
 
 <p>Please kindly note that a trial license can only be used in a <strong>development and staging environment</strong>. 
-You are <strong>not allowed to publish</strong> your app to the App Store, Play Store or any 3rd party Android App Store with a trial license.</p>
+You are <strong>not allowed to publish</strong> your app to the App Store, Play Store 
+or any 3rd party Android App Store with a trial license.</p>
 
 <h4 id="purchase-a-production-license">Purchase a Production License</h4>
-<p>You can check and purchase the Scanbot SDK licenses here: <a href="https://scanbot.io/sdk.html">https://scanbot.io/sdk.html</a>.</p>
+<p>You can check and purchase the Scanbot SDK licenses here: 
+<a href="https://scanbot.io/sdk.html">https://scanbot.io/sdk.html</a>.</p>
 
 <h4 id="app-identifier">App Identifier</h4>
-<p>Every app has a unique identifier (sometimes also known as “bundle identifier” or “application ID”). Your license will be bound to this identifier.
-To request a trial license or purchase a production license you have to provide us the bundle identifier of your app.</p>
+<p>Every app has a unique identifier (sometimes also known as “bundle identifier” or “application ID”). 
+Your license will be bound to this identifier.
+To request a trial license or purchase a production license, 
+you have to provide us the bundle identifier of your app.</p>
 
 <p><strong>For Android:</strong> Please find it as <code class="highlighter-rouge">applicationId</code> in the app-level <code class="highlighter-rouge">build.gradle</code> file of your android project:</p>
 
@@ -360,18 +386,22 @@ To request a trial license or purchase a production license you have to provide 
 </code></pre></div></div>
 
 <p>On Android logs are printed into <em>LogCat</em> as well as saved on the device.
-The easiest way to check the log outputs on Android is to use the <a href="https://developer.android.com/studio/command-line/adb.html">Android Debug Bridge (adb)</a>. 
+The easiest way to check the log outputs on Android is to use the 
+<a href="https://developer.android.com/studio/command-line/adb.html">Android Debug Bridge (adb)</a>. 
 (e.g. <code class="highlighter-rouge">$ adb -s &lt;DEVICE_ID&gt; shell "logcat"</code>)</p>
 
 <p>On iOS all logs are printed to the console. Please use Xcode to check the log outputs. 
 There will be no log files created by the Scanbot SDK plugin.</p>
 
-<p><strong>Please note:</strong> While it may be useful for development, <strong>consider switching logging OFF in production builds</strong> for security and performance reasons!</p>
+<p><strong>Please note:</strong> While it may be useful for development, 
+<strong>consider switching logging OFF in production builds</strong> for security and performance reasons!</p>
 
 <p><a name="imageQuality"></a></p>
 <h4 id="image-quality--compression">Image Quality / Compression</h4>
-<p>The <code class="highlighter-rouge">initializeSdk</code> function can take some optional parameters that specify the image storage format and compression for generated <code class="highlighter-rouge">Page</code> images. 
-<code class="highlighter-rouge">Page</code> images are all images created by the Ready-To-Use UI Components (like Document Scanner, Cropping UI, etc), as well as all image manipulation functions 
+<p>The <code class="highlighter-rouge">initializeSdk</code> function can take some optional parameters that specify 
+the image storage format and compression for generated <code class="highlighter-rouge">Page</code> images. 
+<code class="highlighter-rouge">Page</code> images are all images created by the Ready-To-Use UI Components 
+(like Document Scanner, Cropping UI, etc), as well as all image manipulation functions 
 working with <code class="highlighter-rouge">Page</code> objects as input (like <code class="highlighter-rouge">applyImageFilterOnPage</code>, <code class="highlighter-rouge">detectDocumentOnPage</code>, etc).</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="n">config</span> <span class="o">=</span> <span class="n">ScanbotSdkConfig</span><span class="o">(</span>
@@ -384,20 +414,24 @@ working with <code class="highlighter-rouge">Page</code> objects as input (like 
 
 <ul>
   <li><code class="highlighter-rouge">imageQuality </code> - defines the quality factor of JPEG images. The value must be between 1 and 100, 
-where 100 means maximum quality and largest file size. The default value is 80 which is a good compromise between image file size and document legibility.</li>
+where 100 means maximum quality and largest file size. 
+The default value is 80 which is a good compromise between image file size and document legibility.</li>
   <li><code class="highlighter-rouge">imageFormat </code> - either <code class="highlighter-rouge">JPG</code> or <code class="highlighter-rouge">PNG</code>. The default value is <code class="highlighter-rouge">JPG</code>.</li>
 </ul>
 
 <h3 id="updating-license-key-in-production-apps">Updating License Key in Production Apps</h3>
-<p>To renew an expired license or extend a valid license with new Scanbot SDK features, you will have to update your app in the App Store or Play Store. 
+<p>To renew an expired license or extend a valid license with new Scanbot SDK features, 
+you will have to update your app in the App Store or Play Store. 
 The expiration date and the feature list of a license are an encrypted data part of the license key string. 
 Which means a renewal or extension of a license will cause a new license key string to be generated.</p>
 
 <p><a name="module_ScanbotSdk.getLicenseStatus"></a></p>
 <h3 id="license-check-in-production-apps">License Check in Production Apps</h3>
 <p>If your Scanbot SDK license has expired, any call of the Scanbot SDK API will terminate your app or result in an error. 
-To prevent this you should always check for license expiration during the runtime by calling the method <code class="highlighter-rouge">ScanbotSdk.getLicenseStatus()</code>.
-If the result of await returns <code class="highlighter-rouge">result.isLicenseValid == false</code>, you should disable any usage of the Scanbot SDK functions or UI components in your app.</p>
+To prevent this, you should always check for license expiration 
+during the runtime by calling the method <code class="highlighter-rouge">ScanbotSdk.getLicenseStatus()</code>.
+If the result of await returns <code class="highlighter-rouge">result.isLicenseValid == false</code>, 
+you should disable any usage of the Scanbot SDK functions or UI components in your app.</p>
 
 <p>We highly recommend to implement a suitable handling of this case in your app!</p>
 
@@ -417,7 +451,8 @@ If the result of await returns <code class="highlighter-rouge">result.isLicenseV
 <ul>
   <li><code class="highlighter-rouge">result.isLicenseValid</code> - Contains a boolean status value of the license.
 <code class="highlighter-rouge">true</code> means the Scanbot SDK license is valid and all features can be used normally. 
-<code class="highlighter-rouge">false</code> means the license is <strong>not valid</strong> and any call of the Scanbot SDK API will terminate your app or result in an error.</li>
+<code class="highlighter-rouge">false</code> means the license is <strong>not valid</strong> and any call of the Scanbot SDK API 
+will terminate your app or result in an error.</li>
 </ul>
 
 <p><a name="storage"></a></p>
@@ -437,7 +472,8 @@ No permissions are required for your app to read or write files in this director
 
 <h4 id="customize-storage-location">Customize Storage Location</h4>
 
-<p>It is strongly recommended to use the default storage location. However, you can overwrite the storage directory on initialization of the Plugin.
+<p>It is strongly recommended to use the default storage location. 
+However, you can overwrite the storage directory on initialization of the Plugin.
 The <code class="highlighter-rouge">initializeSdk</code> method can take an optional parameter <code class="highlighter-rouge">storageBaseDirectory</code> to set a custom storage location.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Directory</span> <span class="n">storageDirectory</span><span class="o">;</span>
@@ -458,7 +494,8 @@ The <code class="highlighter-rouge">initializeSdk</code> method can take an opti
 <span class="n">await</span> <span class="n">ScanbotSdk</span><span class="o">.</span><span class="na">initScanbotSdk</span><span class="o">(</span><span class="n">config</span><span class="o">);</span>
 </code></pre></div></div>
 
-<p>The value of the <code class="highlighter-rouge">storageBaseDirectory</code> must be a file URL (<code class="highlighter-rouge">'file:///...</code>) pointing to a valid platform-specific file system path. 
+<p>The value of the <code class="highlighter-rouge">storageBaseDirectory</code> must be a file URL (<code class="highlighter-rouge">'file:///...</code>) 
+pointing to a valid platform-specific file system path. 
 If this directory does not exist yet, the Plugin will try to create it.
 To work with the file system we recommend the Flutter Plugin <a href="https://pub.dev/packages/path_provider">path_provider</a></p>
 
@@ -479,15 +516,16 @@ To work with the file system we recommend the Flutter Plugin <a href="https://pu
 
 <h4 id="storage-cleanup">Storage Cleanup</h4>
 
-<p>There is <strong>no automatic</strong> file clean mechanism in this Plugin, because only your App can decide when is the perfect time 
-to remove the files produced by this Plugin (images, PDFs, etc).</p>
+<p>There is <strong>no automatic</strong> file clean mechanism in this Plugin, because only your App can decide 
+when is the perfect time to remove the files produced by this Plugin (images, PDFs, etc).</p>
 
-<p>To avoid storage space issues caused by too many produced image files it is strongly recommended to implement a suitable 
-cleanup functionality based on the requirements of your app. 
+<p>To avoid storage space issues caused by too many produced image files, 
+it is strongly recommended to implement a suitable cleanup functionality based on the requirements of your app. 
 This Plugin provides the following helper methods to keep the storage clean:</p>
 <ul>
   <li><a href="#module_ScanbotSdk.deletePage">deletePage</a> method to delete a certain <code class="highlighter-rouge">Page</code> object with all its files.</li>
-  <li><a href="#module_ScanbotSdk.cleanupStorage">cleanupStorage</a> method to remove <strong>all</strong> generated files by this Plugin (scanned and imported images, export files like PDF, TIFF, etc).</li>
+  <li><a href="#module_ScanbotSdk.cleanupStorage">cleanupStorage</a> method to remove <strong>all</strong> generated files 
+by this Plugin (scanned and imported images, export files like PDF, TIFF, etc).</li>
 </ul>
 
 <h2 id="ready-to-use-ui-screen-components">Ready-To-Use UI Screen Components</h2>
@@ -499,7 +537,8 @@ This Plugin provides the following helper methods to keep the storage clean:</p>
 <h3 id="pages">Pages</h3>
 
 <p>The Scanbot SDK Plugin provides so-called Ready-to-Use UI (RTU UI) screen components for document scanning and cropping. 
-Both components use the notion of a ‘page’ as a data model for the scanning and cropping activities. An page object has the following fields:</p>
+Both components use the notion of a ‘page’ as a data model for the scanning and cropping activities. 
+A page object has the following fields:</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Page</span> <span class="o">(</span>
   <span class="kt">String</span> <span class="n">pageId</span><span class="o">;</span>
@@ -518,8 +557,11 @@ Both components use the notion of a ‘page’ as a data model for the scanning 
 
 <ul>
   <li><code class="highlighter-rouge">pageId</code> - an unique, random string (UUID) identifying the page in the internal page file storage</li>
-  <li><code class="highlighter-rouge">polygon</code> - the page’s cropping <a href="#polygon">polygon</a> as calculated by a document detection operation or as set by the cropping UI. Modifying the polygon will change the polygon as shown in the cropping UI but will not automatically re-crop the original image.</li>
-  <li><code class="highlighter-rouge">detectionStatus </code> - the <a href="#detectionStatus">detection status</a> of the document detection operation that produced the page (either the document scanner or <code class="highlighter-rouge">detectDocument()</code>).</li>
+  <li><code class="highlighter-rouge">polygon</code> - the page’s cropping <a href="#polygon">polygon</a> as calculated by a document detection operation 
+or as set by the cropping UI. Modifying the polygon will change the polygon as shown in the cropping UI 
+but will not automatically re-crop the original image.</li>
+  <li><code class="highlighter-rouge">detectionStatus </code> - the <a href="#detectionStatus">detection status</a> of the document detection operation 
+that produced the page (either the document scanner or <code class="highlighter-rouge">detectDocument()</code>).</li>
   <li><code class="highlighter-rouge">filter</code> - the <a href="#imageFilterType">image filter type</a> which was applied on the document image of this page.</li>
   <li><code class="highlighter-rouge">documentImageSizeLimit</code> - limits the maximum resolution (width, height) of the document image. 
 If <code class="highlighter-rouge">null</code> is passed, this property is effectively ignored. If specified, <code class="highlighter-rouge">width</code> and <code class="highlighter-rouge">height</code> must be &gt; 0.</li>
@@ -529,9 +571,10 @@ If <code class="highlighter-rouge">null</code> is passed, this property is effec
   <li><code class="highlighter-rouge">documentPreviewImageFileUri</code> - file URI of a screen-sized preview of the document image</li>
 </ul>
 
-<p>Pages are stored in an internal page file storage, where the <code class="highlighter-rouge">pageId</code> serves as a name prefix for the stored image files. 
-Operations that modify pages work in-place. That is, for example, <code class="highlighter-rouge">rotatePageClockwise()</code> overwrites the page’s image 
-files with their rotated versions.</p>
+<p>Pages are stored in an internal page file storage, 
+where the <code class="highlighter-rouge">pageId</code> serves as a name prefix for the stored image files. 
+Operations that modify pages work in-place. 
+That is, for example, <code class="highlighter-rouge">rotatePageClockwise()</code> overwrites the page’s image files with their rotated versions.</p>
 
 <p><a name="module_ScanbotSdkUi.startDocumentScanner"></a></p>
 <h3 id="document-scanner">Document Scanner</h3>
@@ -744,7 +787,8 @@ If multi-page mode is not enabled and <code class="highlighter-rouge">result.sta
 <h4 id="scanbotsdkuistartcroppingscreenpageconfig">ScanbotSdkUi.startCroppingScreen(page,config)</h4>
 
 <p>The Cropping UI provides functionality for manual cropping and rotation of an image. 
-It uses the edge detection algorithm of the Scanbot SDK and contains some smart UI elements like magnetic lines and a magnifier.</p>
+It uses the edge detection algorithm of the Scanbot SDK 
+and contains some smart UI elements like magnetic lines and a magnifier.</p>
 
 <p><img src="./assets/images/cropping.jpg" alt="alt" title="Cropping screen screenshot" /></p>
 
@@ -770,8 +814,8 @@ It uses the edge detection algorithm of the Scanbot SDK and contains some smart 
 </ul>
 
 <h5 id="croppingscreenconfiguration">CroppingScreenConfiguration</h5>
-<p>The cropping UI requires a page object. A page object can be initially created using the <a href="#module_ScanbotSdkUi.startDocumentScanner">Document Scanner</a> 
-or <a href="#module_ScanbotSdk.createPage">createPage()</a>.</p>
+<p>The cropping UI requires a page object. A page object can be initially created using the 
+<a href="#module_ScanbotSdkUi.startDocumentScanner">Document Scanner</a> or <a href="#module_ScanbotSdk.createPage">createPage()</a>.</p>
 
 <p>All UI configuration settings are optional.</p>
 
@@ -849,19 +893,27 @@ or <a href="#module_ScanbotSdk.createPage">createPage()</a>.</p>
   <span class="o">...</span>
 <span class="o">);</span>
 <span class="kd">var</span> <span class="n">result</span> <span class="o">=</span> <span class="n">await</span> <span class="n">ScanbotSdkUi</span><span class="o">.</span><span class="na">startBarcodeScanner</span><span class="o">(</span><span class="n">config</span><span class="o">);</span>
-<span class="c1">// result.barcodeFormat ...</span>
+<span class="c1">// result.barcodeItems[n].barcodeFormat</span>
+<span class="c1">// result.barcodeItems[n].text</span>
+<span class="c1">// result.barcodeItems[n].formattedResult</span>
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">result.operationResult</code> -
+  <li><code class="highlighter-rouge">result.operationResult</code>:
     <ul>
       <li><code class="highlighter-rouge">SUCCESS</code> if a barcode was detected</li>
       <li><code class="highlighter-rouge">ERROR</code> if an error occurred</li>
       <li><code class="highlighter-rouge">CANCELED</code> if the user has canceled the operation (tapped on the “cancel” button)</li>
     </ul>
   </li>
-  <li><code class="highlighter-rouge">result.barcodeFormat</code> - <a href="#barcodeFormat">Format</a> of detected barcode/QR code (e.g. “CODE_128”, “EAN_13”, “QR_CODE”, etc).</li>
-  <li><code class="highlighter-rouge">result.text</code> - Raw text value of detected barcode/QR code.</li>
+  <li><code class="highlighter-rouge">barcodeItems[n]</code> - a list of detected barcodes/QR codes as <code class="highlighter-rouge">BarcodeItem</code>s:
+    <ul>
+      <li><code class="highlighter-rouge">item.barcodeFormat</code> - <a href="#barcodeFormat">Format</a> of detected barcode/QR code (e.g. “CODE_128”, “EAN_13”, “QR_CODE”, etc).</li>
+      <li><code class="highlighter-rouge">item.text</code> - Raw text value of detected barcode/QR code.</li>
+      <li><code class="highlighter-rouge">item.formattedResult</code> - Optional, formatted/parsed result. 
+See implementations of <a href="#barcodeFormattedResult"><code class="highlighter-rouge">BarcodeFormattedResult</code></a>.</li>
+    </ul>
+  </li>
 </ul>
 
 <h5 id="barcodescannerconfiguration">BarcodeScannerConfiguration</h5>
@@ -978,7 +1030,8 @@ By default all supported formats will be detected.</p>
 </ul>
 
 <h5 id="mrzscannerconfiguration">MrzScannerConfiguration</h5>
-<p>The finder window must have a width-to-height of 5, otherwise the detection process will fail. All other settings are optional.</p>
+<p>The finder window must have a width-to-height of 5, otherwise the detection process will fail. 
+All other settings are optional.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// Background color of the top toolbar.</span>
   <span class="n">Color</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
@@ -1148,14 +1201,15 @@ By default all supported formats will be detected.</p>
 <h5 id="options-1">Options:</h5>
 <ul>
   <li><code class="highlighter-rouge">originalImageFileUri</code> - the file URI of the original image to create a page and optionally run document detection on.</li>
-  <li><code class="highlighter-rouge">shouldDetectDocument</code> - flag to specify whether the auto document detection should be performed and the (cropped) DOCUMENT image should be created.</li>
+  <li><code class="highlighter-rouge">shouldDetectDocument</code> - flag to specify whether the auto document detection should 
+be performed and the (cropped) DOCUMENT image should be created.</li>
 </ul>
 
 <p><a name="module_ScanbotSdk.detectDocument"></a></p>
 <h4 id="scanbotsdkdetectdocumentpage">ScanbotSdk.detectDocument(page)</h4>
 
-<p>Runs document detection on the original image of the given page. The detection status, polygon and cropped document image 
-are returned as a new page object.</p>
+<p>Runs document detection on the original image of the given page. 
+The detection status, polygon and cropped document image are returned as a new page object.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="n">updatedPage</span> <span class="o">=</span> <span class="n">await</span> <span class="n">ScanbotSdk</span><span class="o">.</span><span class="na">detectDocument</span><span class="o">(</span><span class="n">page</span><span class="o">);</span>
 </code></pre></div></div>
@@ -1185,7 +1239,8 @@ The special value <code class="highlighter-rouge">NONE</code> will remove any pr
 
 <p>Creates a preview image file of the DOCUMENT image by given <a href="#imageFilter">image filter</a>.
 Please note that this method <strong>does not modify the actual hi-res DOCUMENT image</strong> of the passed <code class="highlighter-rouge">page</code> object.
-Use the <a href="#module_ScanbotSdk.applyImageFilter">applyImageFilter(page, filter)</a> method to finally apply an image filter on the hi-res DOCUMENT image of a page.</p>
+Use the <a href="#module_ScanbotSdk.applyImageFilter">applyImageFilter(page, filter)</a> method 
+to finally apply an image filter on the hi-res DOCUMENT image of a page.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="n">previewImageFileUri</span> <span class="o">=</span> <span class="n">await</span> <span class="n">ScanbotSdk</span><span class="o">.</span><span class="na">getFilteredDocumentPreviewUri</span><span class="o">(</span><span class="n">page</span><span class="o">,</span> <span class="n">ImageFilterType</span><span class="o">.</span><span class="na">BINARIZED</span><span class="o">);</span>
 <span class="c1">// use previewImageFileUri to display a preview/thumbnail image</span>
@@ -1215,7 +1270,8 @@ The special value <code class="highlighter-rouge">'NONE'</code> will remove any 
 <p><a name="module_ScanbotSdk.deletePage"></a></p>
 <h4 id="scanbotsdkdeletepagepage">ScanbotSdk.deletePage(page)</h4>
 
-<p>Removes a page with all its files (original image, document image, thumbnails, filtered images, etc) from the internal file storage.
+<p>Removes a page with all its files (original image, document image, thumbnails, filtered images, etc) 
+from the internal file storage.
 This method <strong>does not</strong> remove any export files (PDF, TIFF) which were generated based on this page object.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">await</span> <span class="n">ScanbotSdk</span><span class="o">.</span><span class="na">deletePage</span><span class="o">(</span><span class="n">page</span><span class="o">);</span>
@@ -1225,7 +1281,8 @@ This method <strong>does not</strong> remove any export files (PDF, TIFF) which 
 <h3 id="pdf-creation">PDF Creation</h3>
 <h4 id="scanbotsdkcreatepdfpages-options">ScanbotSdk.createPdf(pages, options)</h4>
 
-<p>The Scanbot SDK renders given page images into a multi-page PDF document and stores it as a file. For each DOCUMENT image a separate page is generated.</p>
+<p>The Scanbot SDK renders given page images into a multi-page PDF document and stores it as a file. 
+For each DOCUMENT image a separate page is generated.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Page</span><span class="o">&gt;</span> <span class="n">pages</span> <span class="o">=</span> <span class="o">...</span>
 <span class="kd">var</span> <span class="n">options</span> <span class="o">=</span> <span class="n">PdfRenderingOptions</span><span class="o">(</span><span class="n">PdfRenderSize</span><span class="o">.</span><span class="na">A4</span><span class="o">);</span>
@@ -1246,7 +1303,8 @@ This method <strong>does not</strong> remove any export files (PDF, TIFF) which 
 <h3 id="tiff-creation">TIFF Creation</h3>
 <h4 id="scanbotsdkcreatetiffpages-options">ScanbotSdk.createTiff(pages, options);</h4>
 
-<p>The Scanbot SDK renders the given page images into a multi-page TIFF file and stores it as a file. For each DOCUMENT image a separate page is generated.</p>
+<p>The Scanbot SDK renders the given page images into a multi-page TIFF file and stores it as a file. 
+For each DOCUMENT image a separate page is generated.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Page</span><span class="o">&gt;</span> <span class="n">pages</span> <span class="o">=</span> <span class="o">...</span>
 <span class="kd">var</span> <span class="n">options</span> <span class="o">=</span> <span class="n">TiffCreationOptions</span><span class="o">(</span><span class="nl">binarized:</span> <span class="kc">true</span><span class="o">,</span> <span class="nl">dpi:</span> <span class="mi">300</span><span class="o">,</span> <span class="nl">compression:</span> <span class="n">TiffCompression</span><span class="o">.</span><span class="na">CCITT_T6</span><span class="o">);</span>
@@ -1286,8 +1344,10 @@ TIFF image file. The resolution of the output TIFF images will stay the same as 
   <li><code class="highlighter-rouge">TiffCompression.ADOBE_DEFLATE</code></li>
 </ul>
 
-<p>⚠️️️ Please note that some compression types are only compatible for binarized images (1-bit encoded black &amp; white images)!
-See the list <code class="highlighter-rouge">PredefinedCompressionTypes.binarizedOnlyCompressionTypes()</code>.</p>
+<p>⚠️️️ Please note that some compression types are only compatible for binarized images 
+(1-bit encoded black &amp; white images)!</p>
+
+<p>See the list <code class="highlighter-rouge">PredefinedCompressionTypes.binarizedOnlyCompressionTypes()</code>.</p>
 
 <p><a name="ocr"></a></p>
 <h3 id="ocr---optical-character-recognition">OCR - Optical Character Recognition</h3>
@@ -1300,32 +1360,52 @@ It is based on the <em>Tesseract OCR Engine</em> with some modifications and enh
 
 <p><strong>Conditions while scanning</strong></p>
 
-<p>A perfect document for OCR is flat, straight, doesn’t show large shadows, folds, or any other objects that could distract it and is in the highest possible resolution. Our UI and algorithms do their best to help you meet these requirements. But as in photography, you can never fully get the image information back that was lost during the shot.</p>
+<p>A perfect document for OCR is flat, straight, doesn’t show large shadows, folds, 
+or any other objects that could distract it and is in the highest possible resolution. 
+Our UI and algorithms do their best to help you meet these requirements. 
+But as in photography, you can never fully get the image information back that was lost during the shot.</p>
 
 <p><strong>Languages</strong></p>
 
-<p>You can use multiple languages for OCR. But since the recognition of characters and words is a very complicated process, increasing the number of languages lowers the overall precision. With more languages, there are more results where the detected word could match. We suggest using as few languages as possible. Make sure that the language you’re trying to detect is supported by the SDK and added to the project.</p>
+<p>You can use multiple languages for OCR. 
+But since the recognition of characters and words is a very complicated process, 
+increasing the number of languages lowers the overall precision. With more languages, 
+there are more results where the detected word could match. 
+We suggest using as few languages as possible. Make sure that the language you’re trying to detect 
+is supported by the SDK and added to the project.</p>
 
 <p><strong>Size and position</strong></p>
 
-<p>Put the document on a flat surface. Take the photo from straight above in parallel to the document to make sure that the perspective correction doesn’t need to fix much. The document should fill out the camera frame while still showing all of the text that needs to be recognized. This results in more pixels for each character that needs to be detected and hence, more detail. Skewed pages decrease the recognition quality.</p>
+<p>Put the document on a flat surface. Take the photo from straight above in parallel to the document 
+to make sure that the perspective correction doesn’t need to fix much. 
+The document should fill out the camera frame while still showing all of the text that needs to be recognized. 
+This results in more pixels for each character that needs to be detected and hence, more detail. 
+Skewed pages decrease the recognition quality.</p>
 
 <p><strong>Light and shadows</strong></p>
 
-<p>More ambient light is always better. The camera takes the shot at a lower ISO value, which results in less grainy photos. You should make sure that there are no visible shadows. If you have large shadows, it’s better to take the shot at an angle instead. That’s why we also don’t recommend to use the flashlight. From this low distance, it creates a light spot at the center of the document, which decreases the quality.</p>
+<p>More ambient light is always better. The camera takes the shot at a lower ISO value, 
+which results in less grainy photos. You should make sure that there are no visible shadows. 
+If you have large shadows, it’s better to take the shot at an angle instead. 
+That’s why we also don’t recommend to use the flashlight. From this low distance, 
+it creates a light spot at the center of the document, which decreases the quality.</p>
 
 <p><strong>Focus</strong></p>
 
-<p>The document needs to be properly focused so that the characters are sharp and clear. The auto-focus of the camera works well if you meet the minimum required distance for the lens to be able to focus. Which usually starts at 5-10cm.</p>
+<p>The document needs to be properly focused so that the characters are sharp and clear. 
+The auto-focus of the camera works well if you meet the minimum required distance
+ for the lens to be able to focus. Which usually starts at 5-10cm.</p>
 
 <p><strong>Typefaces</strong></p>
 
-<p>The OCR trained data is optimized for common serif and sans-serif font types. Decorative or script fonts decrease the quality of the detection a lot.</p>
+<p>The OCR trained data is optimized for common serif and sans-serif font types. 
+Decorative or script fonts decrease the quality of the detection a lot.</p>
 
 <p><a name="ocrLanguages"></a></p>
 <h4 id="ocr-languages-and-data-files">OCR Languages and Data Files</h4>
 
-<p>The OCR engine supports a wide variety of languages. For each desired language a corresponding OCR training data file (<code class="highlighter-rouge">.traineddata</code>) must be provided. 
+<p>The OCR engine supports a wide variety of languages. 
+For each desired language a corresponding OCR training data file (<code class="highlighter-rouge">.traineddata</code>) must be provided. 
 Furthermore the special data file <code class="highlighter-rouge">osd.traineddata</code> is required (used for orientation and script detection).</p>
 
 <p>The Scanbot SDK plugin ships with no training data files by default to keep the plugin package small in size. 
@@ -1333,7 +1413,8 @@ You have to download and provide the desired language files in your app.</p>
 
 <h4 id="download-and-provide-ocr-language-files">Download and Provide OCR Language Files</h4>
 
-<p>You can find a list of all supported OCR languages and download links on this <a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files">Tesseract wiki page</a>.</p>
+<p>You can find a list of all supported OCR languages 
+and download links on <a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files">Tesseract’s Wiki page</a>.</p>
 
 <h4 id="download">Download</h4>
 
@@ -1356,7 +1437,8 @@ You have to download and provide the desired language files in your app.</p>
 
 <p>Alternatively, to keep the app package small, you can download and provide the language files in your app <strong>on run-time</strong>.
 Implement a suitable download functionality of the desired language files + <code class="highlighter-rouge">osd.traineddata</code> file and place them 
-in the <code class="highlighter-rouge">languageDataPath</code> directory which can be determined by the <a href="#module_ScanbotSdk.getOcrConfigs"><code class="highlighter-rouge">getOcrConfigs</code></a> method on run-time.</p>
+in the <code class="highlighter-rouge">languageDataPath</code> directory which can be determined by the 
+<a href="#module_ScanbotSdk.getOcrConfigs"><code class="highlighter-rouge">getOcrConfigs</code></a> method on run-time.</p>
 
 <h4 id="language-codes">Language Codes</h4>
 <p>The Tesseract language data files are identified by a <strong>3-letter</strong> language code. For example:</p>
@@ -1374,7 +1456,8 @@ in the <code class="highlighter-rouge">languageDataPath</code> directory which c
 </ul>
 
 <h5 id="example">Example:</h5>
-<p>If you want to perform OCR with languages English and German, you have to download and install the following data files:</p>
+<p>If you want to perform OCR with languages English and German, 
+you have to download and install the following data files:</p>
 <ul>
   <li><code class="highlighter-rouge">eng.traineddata</code> - language file for English</li>
   <li><code class="highlighter-rouge">deu.traineddata</code> - language file for German</li>
@@ -1396,7 +1479,8 @@ in the <code class="highlighter-rouge">languageDataPath</code> directory which c
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">result.languageDataPath</code> - Contains the absolute file URI of the directory where to place the <a href="#ocrLanguages">OCR training data files</a> <strong>on run-time</strong>.</li>
+  <li><code class="highlighter-rouge">result.languageDataPath</code> - Contains the absolute file URI of the directory 
+where to place the <a href="#ocrLanguages">OCR training data files</a> <strong>on run-time</strong>.</li>
   <li><code class="highlighter-rouge">result.installedLanguages</code> - Returns an array of current installed OCR languages (e.g. <code class="highlighter-rouge">["en", "fr"]</code>). 
 The Scanbot SDK uses the <code class="highlighter-rouge">languageDataPath</code> directory to determine current installed OCR languages.</li>
 </ul>
@@ -1405,7 +1489,8 @@ The Scanbot SDK uses the <code class="highlighter-rouge">languageDataPath</code>
 <h4 id="scanbotsdkperformocrpages-options">ScanbotSdk.performOcr(pages, options)</h4>
 
 <p>This function takes an array of pages and performs Optical Character Recognition on each DOCUMENT image of those pages.
-As result the recognized text can be returned as plain text or a composed PDF file containing selectable and searchable text.</p>
+As result the recognized text can be returned as plain text 
+or a composed PDF file containing selectable and searchable text.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Page</span><span class="o">&gt;</span> <span class="n">pages</span> <span class="o">=</span> <span class="o">...</span>
 <span class="kd">var</span> <span class="n">options</span> <span class="o">=</span> <span class="n">OcrOptions</span><span class="o">(</span><span class="nl">languages:</span> <span class="o">[</span><span class="s">"en"</span><span class="o">,</span> <span class="s">"de"</span><span class="o">],</span> <span class="nl">shouldGeneratePdf:</span> <span class="kc">true</span><span class="o">);</span>
@@ -1428,7 +1513,8 @@ You can get bounding boxes and values of recognized words, lines and paragraphs.
   <li><code class="highlighter-rouge">options.languages</code> - An array with OCR languages of the text to be recognized (e.g. <code class="highlighter-rouge">["en", "de"]</code>). 
 The number of languages has an impact on the performance - the more languages, the slower the recognition process.
 The OCR operation will fail with an error if some of the specified languages are missing.
-Please use the <a href="#module_ScanbotSdk.getOcrConfigs">getOcrConfigs</a> function to make sure that desired languages are installed.</li>
+Please use the <a href="#module_ScanbotSdk.getOcrConfigs">getOcrConfigs</a> 
+function to make sure that desired languages are installed.</li>
   <li><code class="highlighter-rouge">options.shouldGeneratePdf </code> - Whether to generate the PDF file or return plain text only.</li>
 </ul>
 
@@ -1446,7 +1532,8 @@ including the image files of all scanned or imported <code class="highlighter-ro
 <p><a name="fileHandling"></a></p>
 <h3 id="file--directory-handles">File &amp; Directory Handles</h3>
 
-<p>The Scanbot SDK plugin works with file URIs. That means all input and output files (images, PDFs, etc) as well as directories are identified by <strong>file URIs</strong>. 
+<p>The Scanbot SDK plugin works with file URIs. 
+That means all input and output files (images, PDFs, etc) as well as directories are identified by <strong>file URIs</strong>. 
 Please note that a file <strong>URI</strong> is not just a file <strong>path</strong> : <code class="highlighter-rouge">"file:///some/file/path/.."</code> vs. <code class="highlighter-rouge">"/some/file/path/.."</code></p>
 
 <p>Examples of valid file URIs:</p>
@@ -1558,22 +1645,36 @@ For instance, if a point has the coordinates (0.5, 0.5), it means that it is loc
 </code></pre></div></div>
 
 <h5 id="2d-barcodes-1">2D barcodes</h5>
-<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span> <span class="n">QR_CODE</span>
-<span class="o">-</span> <span class="n">DATA_MATRIX</span>
-<span class="o">-</span> <span class="n">AZTEC</span>
-<span class="o">-</span> <span class="n">PDF_417</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- QR_CODE
+- DATA_MATRIX
+- AZTEC
+- PDF_417
 </code></pre></div></div>
+
+<p><a name="barcodeFormattedResult"></a></p>
+<h3 id="barcodeformattedresult---barcode-data-parsers">BarcodeFormattedResult - Barcode Data Parsers</h3>
+<p>Following parsed barcode data results (implementations of the <code class="highlighter-rouge">BarcodeFormattedResult</code>) are currently supported:</p>
+
+<ul>
+  <li>AAMVA: Parse the <a href="https://www.aamva.org">AAMVA</a> data format from PDF-417 barcodes on US driver’s licenses - see <code class="highlighter-rouge">AAMVADocument</code>.</li>
+  <li>Boarding pass data from PDF-417 barcodes - see <code class="highlighter-rouge">BoardingPassDocument</code>.</li>
+  <li>Parser for German Medical Certificates (aka. Disability Certificate or AU-Bescheinigung) coded in a PDF-417 barcode - see <code class="highlighter-rouge">DisabilityCertificateDocument</code>.</li>
+  <li>Data from PDF-417 barcodes on ID Cards - see <code class="highlighter-rouge">IDCardPDF417Document</code>.</li>
+  <li>Parse and extract data from XML of Data Matrix barcodes on German Medical Plans (Medikationsplan). See <code class="highlighter-rouge">DEMedicalPlanDocument</code>.</li>
+  <li>Data parser of QR-Code values printed on SEPA pay forms - see <code class="highlighter-rouge">SEPADocument</code>.</li>
+  <li>vCard data from a QR-Code (e.g. on business cards) - see <code class="highlighter-rouge">VCardDocument</code>.</li>
+</ul>
 
 <h3 id="camera-orientation-mode">Camera Orientation Mode</h3>
 
 <p>Supported Camera Orientation modes:</p>
 
-<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span> <span class="n">NONE</span>
-<span class="o">-</span> <span class="n">PORTRAIT</span>
-<span class="o">-</span> <span class="n">PORTRAIT_UPSIDE_DOWN</span>
-<span class="o">-</span> <span class="n">LANDSCAPE_LEFT</span>
-<span class="o">-</span> <span class="n">LANDSCAPE_RIGHT</span>
-<span class="o">-</span> <span class="n">LANDSCAPE</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- NONE
+- PORTRAIT
+- PORTRAIT_UPSIDE_DOWN
+- LANDSCAPE_LEFT
+- LANDSCAPE_RIGHT
+- LANDSCAPE
 </code></pre></div></div>
 
 <p><a name="imageFormat"></a></p>
@@ -1581,29 +1682,35 @@ For instance, if a point has the coordinates (0.5, 0.5), it means that it is loc
 
 <p>Supported image formats:</p>
 
-<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span> <span class="n">JPG</span>
-<span class="o">-</span> <span class="n">PNG</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- JPG
+- PNG
 </code></pre></div></div>
 
 <p><a name="productionApps"></a></p>
 <h2 id="building-production-apps">Building Production Apps</h2>
 
 <h3 id="ios-2">iOS</h3>
-<p>The Scanbot SDK iOS Framework (included in this Flutter Plugin) contains the most used architectures (<code class="highlighter-rouge">arm64, armv7, x86_64, i386</code>). 
+<p>The Scanbot SDK iOS Framework (included in this Flutter Plugin) contains 64-bit architectures (<code class="highlighter-rouge">arm64, x86_64</code>). 
 So you can run it on all most used iOS devices as well as on simulators during the development phase.
-To be able to submit a production build to the <strong>App Store</strong> or a test build for <strong>TestFlight</strong> you have to remove (strip away) 
+To be able to submit a production build to the <strong>App Store</strong> 
+or a test build for <strong>TestFlight</strong> you have to remove (strip away) 
 the architectures <strong><code class="highlighter-rouge">x86_64</code></strong> and <strong><code class="highlighter-rouge">i386</code></strong> from the Scanbot SDK Framework.
 These architectures are only for <strong>simulators</strong> and not allowed to submit to iTunes Connect.</p>
 
 <h3 id="android-2">Android</h3>
-<p>The Scanbot Android SDK uses native libraries under the hood and supports following <a href="https://developer.android.com/ndk/guides/arch.html">ABIs</a>: 
+<p>The Scanbot Android SDK uses native libraries under the hood and supports following 
+<a href="https://developer.android.com/ndk/guides/arch.html">ABIs</a>: 
 <code class="highlighter-rouge">armeabi-v7a, arm64-v8a, x86 and x86_64</code>.</p>
 
-<p>By default the native libraries of <strong>all</strong> these architectures will be included in the app package (APK), which will result in a big APK file.
-Please consider to remove support for <code class="highlighter-rouge">x86</code> and <code class="highlighter-rouge">x86_64</code> architectures. In most cases both “x86” architectures can be removed for the 
-release (production) build, since they are only used on emulators and on some rare devices with the Intel Atom architecture.</p>
+<p>By default the native libraries of <strong>all</strong> these architectures 
+will be included in the app package (APK), which will result in a big APK file.
+Please consider to remove support for <code class="highlighter-rouge">x86</code> and <code class="highlighter-rouge">x86_64</code> architectures. 
+In most cases both “x86” architectures can be removed for the 
+release (production) build, since they are only used on emulators 
+and on some rare devices with the Intel Atom architecture.</p>
 
-<p>To exclude certain ABIs from the APK, use the <code class="highlighter-rouge">abiFilters</code> property in the <code class="highlighter-rouge">android/app/build.gradle</code> file of your project:</p>
+<p>To exclude certain ABIs from the APK, use the <code class="highlighter-rouge">abiFilters</code> property 
+in the <code class="highlighter-rouge">android/app/build.gradle</code> file of your project:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android {
   ...
@@ -1618,14 +1725,111 @@ release (production) build, since they are only used on emulators and on some ra
 }
 </code></pre></div></div>
 
-<p>In this example we defined <code class="highlighter-rouge">abiFilters</code> for <code class="highlighter-rouge">armeabi-v7a</code> and <code class="highlighter-rouge">arm64-v8a</code>, so <code class="highlighter-rouge">x86</code> and <code class="highlighter-rouge">x86_64</code> architectures will be <strong>excluded</strong>.</p>
+<p>In this example we defined <code class="highlighter-rouge">abiFilters</code> for <code class="highlighter-rouge">armeabi-v7a</code> and <code class="highlighter-rouge">arm64-v8a</code>, 
+so <code class="highlighter-rouge">x86</code> and <code class="highlighter-rouge">x86_64</code> architectures will be <strong>excluded</strong>.</p>
 
-<p>💡 However, if you need to support <strong>all</strong> architectures and to optimize the APK size in any case, we highly recommend to 
+<p>💡 However, if you need to support <strong>all</strong> architectures 
+and to optimize the APK size in any case, we highly recommend to 
 checkout the <a href="https://developer.android.com/platform/technology/app-bundle/"><strong>Android App Bundle</strong></a> approach. 
-It allows you to create and distribute dedicated and smaller APKs <strong>via PlayStore</strong> (basically it’s similar to the iOS App Store approach).</p>
+It allows you to create and distribute dedicated and smaller APKs <strong>via PlayStore</strong> 
+(basically it’s similar to the iOS App Store approach).</p>
 
 <p><a name="proguardRules"></a></p>
 <h4 id="proguard-rules-for-android">ProGuard rules for Android</h4>
+
+<p><strong>For the latest version:</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-ignorewarnings
+
+-keep public class io.scanbot.sdk.ui.** { *; }
+
+-keep public class io.scanbot.sap.SapManager { *; }
+
+-keeppackagenames io.scanbot.sdk.core.contourdetector.**
+-keep public class io.scanbot.sdk.core.contourdetector.**{ *; }
+-keeppackagenames io.scanbot.sdk.contourdetector.**
+-keep public class io.scanbot.sdk.contourdetector.**{ *; }
+
+-keeppackagenames com.googlecode.tesseract.android.**
+-keep public class com.googlecode.tesseract.android.**{ *; }
+
+-keeppackagenames io.scanbot.sdk.core.payformscanner.**
+-keep public class io.scanbot.sdk.core.payformscanner.**{ *; }
+-keeppackagenames io.scanbot.sdk.payformscanner.**
+-keep public class io.scanbot.sdk.payformscanner.**{ *; }
+
+-keeppackagenames io.scanbot.mrzscanner.**
+-keep public class io.scanbot.mrzscanner.**{ *; }
+-keeppackagenames io.scanbot.sdk.mrzscanner.**
+-keep public class io.scanbot.sdk.mrzscanner.**{ *; }
+
+-keeppackagenames io.scanbot.dcscanner.**
+-keep public class io.scanbot.dcscanner.**{ *; }
+-keeppackagenames io.scanbot.sdk.dcscanner.**
+-keep public class io.scanbot.sdk.dcscanner.**{ *; }
+
+-keeppackagenames io.scanbot.tiffwriter.**
+-keep public class io.scanbot.tiffwriter.**{ *; }
+
+-keeppackagenames io.scanbot.chequescanner.**
+-keep public class io.scanbot.chequescanner.**{ *; }
+-keeppackagenames io.scanbot.sdk.chequescanner.**
+-keep public class io.scanbot.sdk.chequescanner.**{ *; }
+
+-keeppackagenames io.scanbot.textorientation.**
+-keep public class io.scanbot.textorientation.**{ *; }
+-keeppackagenames io.scanbot.sdk.textorientation.**
+-keep public class io.scanbot.sdk.textorientation.**{ *; }
+
+-keeppackagenames io.scanbot.barcodescanner.**
+-keep public class io.scanbot.barcodescanner.**{ *; }
+-keeppackagenames io.scanbot.sdk.barcodescanner.**
+-keep public class io.scanbot.sdk.barcodescanner.**{ *; }
+
+-keeppackagenames io.scanbot.hicscanner.**
+-keep public class io.scanbot.hicscanner.**{ *; }
+-keeppackagenames io.scanbot.sdk.hicscanner.**
+-keep public class io.scanbot.sdk.hicscanner.**{ *; }
+
+-keeppackagenames io.scanbot.multipleobjectsscanner.**
+-keep public class io.scanbot.multipleobjectsscanner.**{ *; }
+-keeppackagenames io.scanbot.sdk.multipleobjects.**
+-keep public class io.scanbot.sdk.multipleobjects.**{ *; }
+
+-keeppackagenames io.scanbot.sdk.docprocessing.**
+-keep public class io.scanbot.sdk.docprocessing.**{ *; }
+
+-keeppackagenames io.scanbot.sdk.process.**
+-keep public class io.scanbot.sdk.process.**{ *; }
+
+# Gson
+# Gson uses generic type information stored in a class file when working with fields. Proguard
+# removes such information by default, so configure it to keep all of it.
+-keepattributes Signature
+
+# For using GSON @Expose annotation
+-keepattributes *Annotation*
+
+# Gson specific classes
+-dontwarn sun.misc.**
+
+-keep class com.google.gson.stream.** { *; }
+
+# Prevent proguard from stripping interface information from TypeAdapter, TypeAdapterFactory,
+# JsonSerializer, JsonDeserializer instances (so they can be used in @JsonAdapter)
+-keep class * implements com.google.gson.TypeAdapter
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+
+# Prevent R8 from leaving Data object members always null
+-keepclassmembers,allowobfuscation class * {
+  @com.google.gson.annotations.SerializedName &lt;fields&gt;;
+}
+
+</code></pre></div></div>
+
+<p><strong>For the version 1.1.3:</strong></p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-keep class io.flutter.view.**  { *; }
 -keep class io.flutter.**  { *; }
@@ -1734,6 +1938,41 @@ It allows you to create and distribute dedicated and smaller APKs <strong>via Pl
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history-and-changelog">Release History and Changelog</h2>
 
+<h4 id="version-200-30-oct-2020">Version 2.0.0 (30 Oct 2020)</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>A new Machine Learning based approach for document detection. 
+See the new <a href="#module_ScanbotSdk.initScanbotSdk">SDK initialization</a> parameter <code class="highlighter-rouge">documentDetectorMode</code>.</li>
+      <li>Barcode Scanner: Added barcode data parsers for several document types. See the new result field <code class="highlighter-rouge">BarcodeItem.formattedResult</code> 
+as well as the corresponding implementations of <a href="#barcodeFormattedResult"><code class="highlighter-rouge">BarcodeFormattedResult</code></a>.</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Android: Some big improvements in the Document Scanner UI that make document scanning perform better and much smoother. 
+Increased start-up time of the camera preview. Faster saving of the snapped pages. Optimized performance of the 
+image processing for simple operations (rotate, crop, resize).</li>
+      <li>Barcode Scanner: Multi-barcode scan support!</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking Changes:
+    <ul>
+      <li>Android: Migrated to <a href="https://github.com/flutter/flutter/wiki/Upgrading-pre-1.12-Android-projects">Android embedding v2</a></li>
+      <li>Android: Raised <code class="highlighter-rouge">minSdkVersion</code> to <code class="highlighter-rouge">21</code></li>
+      <li>iOS: Dropped support for iOS 9 and iOS 10!</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded the native Scanbot Android SDK to v1.74.0 
+(cf. <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">changelog</a>)</li>
+      <li>Upgraded the native Scanbot iOS SDK to v1.11.6 
+(cf. <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">changelog</a>)</li>
+    </ul>
+  </li>
+</ul>
+
 <h4 id="version-114-29-sep-2020">Version 1.1.4 (29 Sep 2020)</h4>
 <ul>
   <li>🚀 Improvements:
@@ -1796,12 +2035,18 @@ See the API docs of <code class="highlighter-rouge">OcrResult.pages</code> for m
   <li>🎉 First release.</li>
 </ul>
 
+<h4 id="version-110-16-apr-2020">Version 1.1.0 (16 Apr 2020):</h4>
+<ul>
+  <li>Add new license handler callback on sdk init</li>
+  <li>Improve sdk license status</li>
+</ul>
+
 <p><a name="librariesLicenses"></a></p>
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 
-Open Source libraries used in the Scanbot SDK Flutter Plugin version 1.1.4:
+Open Source libraries used in the Scanbot SDK Flutter Plugin version 2.0.0:
 
 json_serializable version 3.2.0 and json_annotation version 3.0.0
 (https://github.com/dart-lang/json_serializable/blob/master/LICENSE)
@@ -1850,7 +2095,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
-kotlin and kotlin-stdlib-jdk7 version 1.3.41
+kotlin and kotlin-stdlib-jdk7 version 1.3.72
 (https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt)
 /*
  * Copyright 2010-2018 JetBrains s.r.o.
@@ -1869,7 +2114,7 @@ kotlin and kotlin-stdlib-jdk7 version 1.3.41
  */
 
 
-kotlinx.coroutines version 1.3.2
+kotlinx.coroutines version 1.3.6
 (https://github.com/Kotlin/kotlinx.coroutines/blob/1.3.2/LICENSE.txt)
 Copyright 2016-2019 JetBrains s.r.o.
 
@@ -1894,49 +2139,405 @@ limitations under the License.
 
 
 
-Open Source libraries used in the Scanbot SDK for Android version 1.56.0:
+Open Source libraries used in the Scanbot SDK for Android version 1.74.0:
 
-Android PDF Writer version 1.0.8
+Apache Commons Codec
+
+Version 1.9
+(https://github.com/apache/commons-codec)
+
+Copyright (c) The Apache Software Foundation
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+CWAC-Camera
+
+Version 0.6.33
+(https://github.com/doo/cwac-camera)
+(https://github.com/commonsguy/cwac-camera/)
+
+Copyright © CommonsWare
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+Android PDF Writer
+
+Version 1.0.8
+(https://github.com/Turbo87/apwlibrary/)
+
 Copyright (c) 2010 - 2013, Javier Santo Domingo (j-a-s-d@coderesearchlabs.com).
 All rights reserved.
 
-Android PDF Writer (APW) is a simple Java library to generate simple PDF documents in Google's Android devices distributed under a 2-clause BSD license (https://github.com/Turbo87/apwlibrary/blob/master/doc/APW.pdf).
+Android PDF Writer (APW) is a simple Java library to generate simple PDF documents in
+Google's Android devices distributed under a 2-clause
+BSD license (https://github.com/Turbo87/apwlibrary/blob/master/doc/APW.pdf).
 
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
 
-Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+Redistributions of source code must retain the above copyright notice, this list of
+conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of
+conditions and the following disclaimer in the documentation and/or other materials
+provided with the distribution.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
+OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL
+THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
+TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-This software includes several classes from the Android Open Source Project Copyright 2010 The Android Open Source Project. Licensed under the Apache License, Version 2.0 (the License); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+This software includes several classes from the Android Open Source Project Copyright 2010
+The Android Open Source Project. Licensed under the Apache License, Version 2.0
+(the License); you may not use this file except in compliance with the License.
+You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
 
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+Unless required by applicable law or agreed to in writing, software distributed under the
+License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+either express or implied. See the License for the specific language governing
+permissions and limitations under the License.
 
-Animal Sniffer Annotations version 1.14
-This library is distributed under the terms of a MIT License
-(https://mvnrepository.com/artifact/org.codehaus.mojo/animal-sniffer-annotations/1.14)
 
-Permission is hereby  granted, free of charge, to any  person obtaining a copy of this software and associated  documentation files (the "Software"), to deal in the Software  without restriction, including without  limitation the rights to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell copies  of  the Software,  and  to  permit persons  to  whom  the Software  is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Apache Commons IO
 
-THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF MERCHANTABILITY, FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Version 2.4
+(https://github.com/apache/commons-io)
 
-BOOST C++ Libraries version 1.68
+Copyright (c) The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+Apache Commons Lang
+
+Version 2.6
+(https://github.com/apache/commons-lang)
+
+Copyright (c) The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+This product includes software from the Spring Framework,
+under the Apache License 2.0 (see: StringUtils.containsWhitespace())
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+JetBrains Java Annotations (Annotations for JVM-based languages)
+
+Version 13.0
+(https://github.com/JetBrains/java-annotations)
+
+Copyright 2000-2016 JetBrains s.r.o.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+Kotlin Standard Library
+
+Version 1.4
+(https://github.com/JetBrains/kotlin)
+
+Copyright 2010-2018 JetBrains s.r.o.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+Kotlin Standard Library JDK
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+google-gson
+Version 2.8.5
+(https://github.com/google/gson/blob/gson-parent-2.8.5/LICENSE)
+
+Copyright 2008 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+Dagger
+
+Version 2.16
+(https://github.com/google/dagger)
+
+Copyright 2012 The Dagger Authors
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+Dagger Compiler
+
+Copyright 2012 The Dagger Authors
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+RxJava
+
+Version 2.1.5
+(https://github.com/ReactiveX/RxJava)
+
+Copyright (c) 2016-present, RxJava Contributors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+RxAndroid
+
+Version 2.0.1
+(https://github.com/ReactiveX/RxAndroid)
+
+Copyright 2015 The RxAndroid authors
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+Nameof C++
+
+Version 0.8.3
+(https://github.com/Neargye/nameof)
+
+MIT License
+
+Copyright (c) 2016, 2018 - 2019 Daniil Goncharov
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+ZXing-C++, C++ port of ZXing
+
+(https://github.com/nu-book/zxing-cpp)
+
+Copyright 2016 Nu-book Inc.
+Copyright 2016 ZXing authors
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+TensorFlow 2.0.0
+Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+BOOST C++ Libraries
+
+Version 1.68
+(https://github.com/boostorg/boost)
+
 This library is distributed under the terms of the following license: https://www.boost.org/LICENSE_1_0.txt
 
 Boost Software License - Version 1.0 - August 17th, 2003
 
-Permission is hereby granted, free of charge, to any person or organization obtaining a copy of the software and accompanying documentation covered by this license (the "Software") to use, reproduce, display, distribute, execute, and transmit the Software, and to prepare derivative works of the Software, and to permit third-parties to whom the Software is furnished to do so, all subject to the following:
+Permission is hereby granted, free of charge, to any person or organization obtaining
+a copy of the software and accompanying documentation covered by this license
+(the "Software") to use, reproduce, display, distribute, execute, and transmit
+the Software, and to prepare derivative works of the Software, and to permit third-parties
+to whom the Software is furnished to do so, all subject to the following:
 
-The copyright notices in the Software and this entire statement, including the above license grant, this restriction and the following disclaimer, must be included in all copies of the Software, in whole or in part, and all derivative works of the Software, unless such copies or derivative
-works are solely in the form of machine-executable object code generated by a source language processor.
+The copyright notices in the Software and this entire statement, including the above
+license grant, this restriction and the following disclaimer, must be included in
+all copies of the Software, in whole or in part, and all derivative works of the
+Software, unless such copies or derivative
+works are solely in the form of machine-executable object code generated by a source
+language processor.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR ANYONE
+DISTRIBUTING THE SOFTWARE BE LIABLE FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
 
 BoringSSL
+
+https://github.com/google/boringssl
+
 Copyright (c) 1998-2011 The OpenSSL Project.  All rights reserved.
 Original SSLeay License. Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com). All rights reserved.
 Copyright (c) 2015, Google Inc.
@@ -1968,10 +2569,16 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
 PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE OpenSSL PROJECT OR
-ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ====================================================================
 
-This product includes cryptographic software written by Eric Young (eay@cryptsoft.com).  This product includes software written by Tim Hudson (tjh@cryptsoft.com).
+This product includes cryptographic software written by Eric Young (eay@cryptsoft.com).
+This product includes software written by Tim Hudson (tjh@cryptsoft.com).
 
 Original SSLeay License
 -----------------------
@@ -2011,7 +2618,7 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
 WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
 WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE. */
 
-Some files from Intel carry the following license:
+Some files from Intel carry the following license
 
 Copyright (c) 2012, Intel Corporation
 
@@ -2037,6 +2644,256 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+
+
+Filesystem.hpp
+
+(https://github.com/bin-build/filesystem)
+Copyright (c) 2015-2017, Wenzel Jakob
+Copyright (c) 2017, Josh Junon
+All rights reserved.
+This library is distributed under the terms of a BSD 2-Clause License (https://github.com/bin-build/filesystem/blob/master/LICENSE)
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+
+JSON for Modern C++
+
+Version 3.1.0
+(https://github.com/nlohmann/json)
+Copyright (c) 2013-2018 Niels Lohmann &lt;http://nlohmann.me&gt;.
+This library is distributed under the terms of a MIT License (https://github.com/nlohmann/json/blob/develop/LICENSE.MIT)
+
+Permission is hereby  granted, free of charge, to any  person obtaining a copy of this software and associated  documentation files (the "Software"), to deal in the Software  without restriction, including without  limitation the rights to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell copies  of  the Software,  and  to  permit persons  to  whom  the Software  is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF MERCHANTABILITY, FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+Leptonica
+
+Version 1.71
+(https://github.com/DanBloomberg/leptonica)
+/*====================================================================*
+ -  Copyright (C) 2001-2016 Leptonica.  All rights reserved.
+ -
+ -  Redistribution and use in source and binary forms, with or without
+ -  modification, are permitted provided that the following conditions
+ -  are met:
+ -  1. Redistributions of source code must retain the above copyright
+ -     notice, this list of conditions and the following disclaimer.
+ -  2. Redistributions in binary form must reproduce the above
+ -     copyright notice, this list of conditions and the following
+ -     disclaimer in the documentation and/or other materials
+ -     provided with the distribution.
+ -
+ -  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ -  ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ -  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ -  A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL ANY
+ -  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ -  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ -  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ -  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+ -  OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ -  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ -  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *====================================================================*/
+
+Copyright @ 2001-2015, Leptonica, (http://leptonica.org),
+is distributed under a Creative Commons Attribution 3.0 United States License (http://creativecommons.org/licenses/by/3.0/us/).
+
+
+
+LibTIFF - TIFF Library and Utilities
+
+Version 4.0.10
+(https://gitlab.com/libtiff/libtiff)
+Copyright (c) 1988-1997 Sam Leffler
+Copyright (c) 1991-1997 Silicon Graphics, Inc.
+This license is distributed under the terms of the following license: http://libtiff.maptools.org/misc.html.
+
+Permission to use, copy, modify, distribute, and sell this software and its documentation for any purpose is hereby granted without fee, provided that (i) the above copyright notices and this permission notice appear in all copies of the software and related documentation, and (ii) the names of Sam Leffler and Silicon Graphics may not be used in any advertising or publicity relating to the software without the specific, prior written permission of Sam Leffler and Silicon Graphics.
+
+THE SOFTWARE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND,
+EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY
+WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+
+IN NO EVENT SHALL SAM LEFFLER OR SILICON GRAPHICS BE LIABLE FOR
+ANY SPECIAL, INCIDENTAL, INDIRECT OR CONSEQUENTIAL DAMAGES OF ANY KIND,
+OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
+OF THIS SOFTWARE.
+
+
+
+OpenCV
+
+Version 4.4.0
+(https://github.com/opencv/opencv)
+
+By downloading, copying, installing or using the software you agree to this license.
+If you do not agree to this license, do not download, install,
+copy or use the software.
+
+License Agreement
+For Open Source Computer Vision Library
+(3-clause BSD License)
+
+Copyright (C) 2000-2019, Intel Corporation, all rights reserved.
+Copyright (C) 2009-2011, Willow Garage Inc., all rights reserved.
+Copyright (C) 2009-2016, NVIDIA Corporation, all rights reserved.
+Copyright (C) 2010-2013, Advanced Micro Devices, Inc., all rights reserved.
+Copyright (C) 2015-2016, OpenCV Foundation, all rights reserved.
+Copyright (C) 2015-2016, Itseez Inc., all rights reserved.
+Third party copyrights are property of their respective owners.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+
+  * Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+
+  * Neither the names of the copyright holders nor the names of the contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+
+This software is provided by the copyright holders and contributors "as is" and
+any express or implied warranties, including, but not limited to, the implied
+warranties of merchantability and fitness for a particular purpose are disclaimed.
+In no event shall copyright holders or contributors be liable for any direct,
+indirect, incidental, special, exemplary, or consequential damages
+(including, but not limited to, procurement of substitute goods or services;
+loss of use, data, or profits; or business interruption) however caused
+and on any theory of liability, whether in contract, strict liability,
+or tort (including negligence or otherwise) arising in any way out of
+the use of this software, even if advised of the possibility of such damage.
+
+
+
+Tess-two
+
+Copyright 2011 Robert Theis
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+Tesseract-ocr
+
+Version 4.1
+(https://github.com/tesseract-ocr/tesseract)
+Tesseract, maintained by Google
+Copyright 2011 Google Inc. All Rights Reserved.
+Copyright Tesseract authors
+
+NOTE: This software depends on other packages that may be licensed under different open source licenses.
+(https://github.com/tesseract-ocr/tesseract/blob/master/README.md#license)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+OpenJPEG
+
+Version 2.3.1
+(https://github.com/uclouvain/openjpeg)
+
+The copyright in this software is being made available under the 2-clauses
+BSD License, included below. This software may be subject to other third
+party and contributor rights, including patent rights, and no such rights
+are granted under this license.
+
+Copyright (c) 2002-2014, Universite catholique de Louvain (UCL), Belgium
+Copyright (c) 2002-2014, Professor Benoit Macq
+Copyright (c) 2003-2014, Antonin Descampe
+Copyright (c) 2003-2009, Francois-Olivier Devaux
+Copyright (c) 2005, Herve Drolon, FreeImage Team
+Copyright (c) 2002-2003, Yannick Verschueren
+Copyright (c) 2001-2003, David Janssens
+Copyright (c) 2011-2012, Centre National d'Etudes Spatiales (CNES), France
+Copyright (c) 2012, CS Systemes d'Information, France
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS `AS IS'
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+Open Source libraries used in the Scanbot SDK for iOS version 1.11.6:
+
+
+BOOST C++ Libraries version 1.68
+This library is distributed under the terms of the following license: https://www.boost.org/LICENSE_1_0.txt
+
+Boost Software License - Version 1.0 - August 17th, 2003
+
+Permission is hereby granted, free of charge, to any person or organization obtaining a copy of the software and accompanying documentation covered by this license (the "Software") to use, reproduce, display, distribute, execute, and transmit the Software, and to prepare derivative works of the Software, and to permit third-parties to whom the Software is furnished to do so, all subject to the following:
+
+The copyright notices in the Software and this entire statement, including the above license grant, this restriction and the following disclaimer, must be included in all copies of the Software, in whole or in part, and all derivative works of the Software, unless such copies or derivative
+works are solely in the form of machine-executable object code generated by a source language processor.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
 Filesystem.hpp
 Copyright (c) 2015-2017, Wenzel Jakob
 Copyright (c) 2017, Josh Junon
@@ -2050,27 +2907,6 @@ Redistributions in binary form must reproduce the above copyright notice, this l
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-Functional Java version 4.7
-Copyright (c) 2008-2011, Tony Morris, Runar Bjarnason, Tom Adams, Brad Clow, Ricky Clarkson, Jason Zaugg
-All rights reserved.
-This library is distributed under the terms of the following BSD 3-clause license (http://www.functionaljava.org/docs.html).
-
-BSD 3 license
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-The name of the author may not be used to endorse or promote products derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
-IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
-OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
-INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
-NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
-THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 JSON for Modern C++ version 3.1.0
 Copyright (c) 2013-2018 Niels Lohmann &lt;http://nlohmann.me&gt;.
@@ -2078,14 +2914,15 @@ This library is distributed under the terms of a MIT License (https://github.com
 
 Permission is hereby  granted, free of charge, to any  person obtaining a copy of this software and associated  documentation files (the "Software"), to deal in the Software  without restriction, including without  limitation the rights to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell copies  of  the Software,  and  to  permit persons  to  whom  the Software  is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF MERCHANTABILITY, FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 
 Leptonica 1.71
 Copyright @ 2001-2015, Leptonica, (http://leptonica.org),
 is distributed under a Creative Commons Attribution 3.0 United States License ( http://creativecommons.org/licenses/by/3.0/us/).
+
 
 LibTIFF - TIFF Library and Utilities v4.0.10
 Copyright (c) 1988-1997 Sam Leffler
@@ -2104,126 +2941,70 @@ OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
 WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
 OF THIS SOFTWARE.
 
-OpenCV 3.4.7
-Copyright © 2014, Itseez. All rights reserved.
+
+G8Tesseract
+Copyright @ 2014 Daniele Galiotto. https://github.com/gali8/Tesseract-OCR-iOS
+This library is distributed under the terms of a MIT License (https://github.com/gali8/Tesseract-OCR-iOS/blob/master/LICENSE.md).
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+OpenCV 4.4.0
 This library is distributed under the terms of a 3-clause BSD license: http://opencv.org/license.html.
 
-License Agreement
-For Open Source Computer Vision Library
-(3-clause BSD License)
+Copyright (C) 2000-2019, Intel Corporation, all rights reserved.
+Copyright (C) 2009-2011, Willow Garage Inc., all rights reserved.
+Copyright (C) 2009-2016, NVIDIA Corporation, all rights reserved.
+Copyright (C) 2010-2013, Advanced Micro Devices, Inc., all rights reserved.
+Copyright (C) 2015-2016, OpenCV Foundation, all rights reserved.
+Copyright (C) 2015-2016, Itseez Inc., all rights reserved.
+Copyright (C) 2019-2020, Xperience AI, all rights reserved.
+
+Third party copyrights are property of their respective owners.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
 Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 Neither the names of the copyright holders nor the names of the contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
 This software is provided by the copyright holders and contributors “as is” and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall copyright holders or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.
 
 
-Reactive Streams 1.0.1
-This library is distributed under the terms of a Creative Commons License version 1.0 which you can find here: http://creativecommons.org/publicdomain/zero/1.0/.
-(https://mvnrepository.com/artifact/org.reactivestreams/reactive-streams/1.0.1)
+OpenSSL 1.1.1g
+Copyright @ 1998-2011 The OpenSSL Project. All rights reserved. (https://www.openssl.org)
+This library is distributed under the terms of the following license: https://github.com/openssl/openssl/blob/master/LICENSE
 
-ZXing ("Zebra Crossing") barcode scanning library for Java, Android 3.3.0
-This library is distributed under the terms of the following Apache 2.0 style license: https://github.com/zxing/zxing/blob/master/LICENSE
+The OpenSSL toolkit stays under a double license, i.e. both the conditions of the OpenSSL License and the original SSLeay license apply to the toolkit. See below for the actual license texts.
 
-Licensed under the Apache License, Version 2.0 (the License); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (http://www.openssl.org).
 
-http://www.apache.org/licenses/LICENSE-2.0
+THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT ``AS IS'' AND ANY
+EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE OpenSSL PROJECT OR ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
-========================================================================
-jai-imageio
-========================================================================
-
-Copyright (c) 2005 Sun Microsystems, Inc.
-Copyright © 2010-2014 University of Manchester
-Copyright © 2010-2015 Stian Soiland-Reyes
-Copyright © 2015 Peter Hull
-All Rights Reserved.
+This product includes cryptographic software written by Eric Young (eay@cryptsoft.com).  This product includes software written by Tim Hudson (tjh@cryptsoft.com).
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+Redistributions of source code must retain the copyright notice, this list of conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+All advertising materials mentioning features or use of this software must display the following acknowledgement: "This product includes cryptographic software written by Eric Young (eay@cryptsoft.com)". The word 'cryptographic' can be left out if the rouines from the library being used are not cryptographic related :-).
+If you include any Windows specific code (or a derivative thereof) from the apps directory (application code) you must include an acknowledgement:  "This product includes software written by Tim Hudson (tjh@cryptsoft.com)"
 
-Redistribution of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-Redistribution in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+The licence and distribution terms for any publically available version or derivative of this code cannot be changed. i.e. this code cannot simply be copied and put under another distribution licence [including the GNU Public Licence.]
 
-Neither the name of Sun Microsystems, Inc. or the names of contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
-This software is provided "AS IS," without a warranty of any kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY EXCLUDED. SUN MIDROSYSTEMS, INC. ("SUN") AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS
-DERIVATIVES. IN NO EVENT WILL SUN OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE THIS SOFTWARE, EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
-
-You acknowledge that this software is not designed or intended for use in the design, construction, operation or maintenance of any nuclear facility.
-
-***ALL OF THE FOLLOWING LIBRARIES UNDER THIS SUBHEADING ARE DISTRIBUTED UNDER THE TERMS OF AN APACHE LICENSE VERSION 2.0:***
-
-Licensed under the Apache License, Version 2.0 (the License); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
-This software includes several classes from the Android Open Source Project distributed under the Apache License Version 2.0.
-Copyright (c) 2010 - present The Android Open Source Project.
-
-CWAC-Camera version 0.6.30
-Copyright © CommonsWare
-(https://github.com/commonsguy/cwac-camera/blob/master/LICENSE)
-
-Commons-codec version 1.9
-Copyright (c) The Apache Software Foundation
-(http://commons.apache.org/)
-
-Commons-io version 2.4
-Copyright (c) The Apache Software Foundation
-(http://commons.apache.org/)
-
-Commons-lang version 2.6
-Copyright (c) The Apache Software Foundation
-(http://commons.apache.org/)
-
-Dagger version 2.16
-Copyright 2012 The Dagger Authors
-(https://github.com/google/dagger/releases/tag/dagger-2.16)
-
-Error Prone Annotations version 2.0.18
-(https://mvnrepository.com/artifact/com.google.errorprone/error_prone_annotations/2.0.18)
-
-FindBugs JSR305 version 1.3.9
-(https://mvnrepository.com/artifact/com.google.code.findbugs/jsr305/1.3.9)
-
-Guava: Google Core Libraries For Java 23.0-android
-(https://mvnrepository.com/artifact/com.google.guava/guava/23.0-android)
-
-IntelliJ Annotations version 12.0
-Copyright (c) JetBrains
-(http://www.jetbrains.org/display/IJOS/Home;jsessionid=2C51561BC0A15118F82A976A95F6DEA8)
-
-J2ObjC Annotations version 1.1
-(https://mvnrepository.com/artifact/com.google.j2objc/j2objc-annotations/1.1)
-
-Kotlin Standard Library JDK 7
-(https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib-jdk7)
-
-Kotlin Standard Library version 1.2.50
-(https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib/1.2.50)
-
-Picasso version 2.5.2
-Copyright (c) 2013 Square, Inc.
-http://square.github.io/picasso/
-
-RxJava version 2.1.5
-Copyright (c) 2016-present, RxJava Contributors.
-(https://github.com/ReactiveX/RxJava)
-
-RxAndroid version 2.0.1
-Copyright (c) 2015 The RxAndroid authors
-(https://github.com/ReactiveX/RxAndroid)
-
-Tesseract 4.00
+Tesseract 4.1.0
 Tesseract, maintained by Google (http://code.google.com/p/tesseract-ocr/),
+is distributed under the Apache 2.0 license (http://www.apache.org/licenses/LICENSE-2.0).
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 
 Nameof C++ 0.8.3
@@ -2266,164 +3047,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
-
-
-------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-Open Source libraries used in the Scanbot SDK for iOS version 1.9.6:
-
-BOOST C++ Libraries version 1.68
-This library is distributed under the terms of the following license: https://www.boost.org/LICENSE_1_0.txt
-
-Boost Software License - Version 1.0 - August 17th, 2003
-
-Permission is hereby granted, free of charge, to any person or organization obtaining a copy of the software and accompanying documentation covered by this license (the "Software") to use, reproduce, display, distribute, execute, and transmit the Software, and to prepare derivative works of the Software, and to permit third-parties to whom the Software is furnished to do so, all subject to the following:
-
-The copyright notices in the Software and this entire statement, including the above license grant, this restriction and the following disclaimer, must be included in all copies of the Software, in whole or in part, and all derivative works of the Software, unless such copies or derivative
-works are solely in the form of machine-executable object code generated by a source language processor.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-Filesystem.hpp
-Copyright (c) 2015-2017, Wenzel Jakob
-Copyright (c) 2017, Josh Junon
-All rights reserved.
-This library is distributed under the terms of a BSD 2-Clause License (https://github.com/bin-build/filesystem/blob/master/LICENSE)
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-JSON for Modern C++ version 3.1.0
-Copyright (c) 2013-2018 Niels Lohmann &lt;http://nlohmann.me&gt;.
-This library is distributed under the terms of a MIT License (https://github.com/nlohmann/json/blob/develop/LICENSE.MIT)
-
-Permission is hereby  granted, free of charge, to any  person obtaining a copy of this software and associated  documentation files (the "Software"), to deal in the Software  without restriction, including without  limitation the rights to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell copies  of  the Software,  and  to  permit persons  to  whom  the Software  is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF MERCHANTABILITY, FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-Leptonica 1.71
-Copyright @ 2001-2015, Leptonica, (http://leptonica.org),
-is distributed under a Creative Commons Attribution 3.0 United States License ( http://creativecommons.org/licenses/by/3.0/us/).
-
-LibTIFF - TIFF Library and Utilities v4.0.10
-Copyright (c) 1988-1997 Sam Leffler
-Copyright (c) 1991-1997 Silicon Graphics, Inc.
-This license is distributed under the terms of the following license: http://libtiff.maptools.org/misc.html.
-
-Permission to use, copy, modify, distribute, and sell this software and its documentation for any purpose is hereby granted without fee, provided that (i) the above copyright notices and this permission notice appear in all copies of the software and related documentation, and (ii) the names of Sam Leffler and Silicon Graphics may not be used in any advertising or publicity relating to the software without the specific, prior written permission of Sam Leffler and Silicon Graphics.
-
-THE SOFTWARE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND,
-EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY
-WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
-
-IN NO EVENT SHALL SAM LEFFLER OR SILICON GRAPHICS BE LIABLE FOR
-ANY SPECIAL, INCIDENTAL, INDIRECT OR CONSEQUENTIAL DAMAGES OF ANY KIND,
-OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
-WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
-OF THIS SOFTWARE.
-
-G8Tesseract
-Copyright @ 2014 Daniele Galiotto. https://github.com/gali8/Tesseract-OCR-iOS
-This library is distributed under the terms of a MIT License (https://github.com/gali8/Tesseract-OCR-iOS/blob/master/LICENSE.md).
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-OpenCV 3.4.3
-Copyright © 2014, Itseez. All rights reserved.
-This library is distributed under the terms of a 3-clause BSD license: http://opencv.org/license.html.
-
-License Agreement
-For Open Source Computer Vision Library
-(3-clause BSD License)
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-Neither the names of the copyright holders nor the names of the contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
-This software is provided by the copyright holders and contributors “as is” and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall copyright holders or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.
-
-
-OpenSSL 1.0.2q
-Copyright @ 1998-2011 The OpenSSL Project. All rights reserved. (https://www.openssl.org)
-This library is distributed under the terms of the following license: https://github.com/openssl/openssl/blob/master/LICENSE
-
-The OpenSSL toolkit stays under a double license, i.e. both the conditions of the OpenSSL License and the original SSLeay license apply to the toolkit. See below for the actual license texts.
-
-This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (http://www.openssl.org).
-
-THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT ``AS IS'' AND ANY
-EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE OpenSSL PROJECT OR ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-This product includes cryptographic software written by Eric Young (eay@cryptsoft.com).  This product includes software written by Tim Hudson (tjh@cryptsoft.com).
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-Redistributions of source code must retain the copyright notice, this list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-All advertising materials mentioning features or use of this software must display the following acknowledgement: "This product includes cryptographic software written by Eric Young (eay@cryptsoft.com)". The word 'cryptographic' can be left out if the rouines from the library being used are not cryptographic related :-).
-If you include any Windows specific code (or a derivative thereof) from the apps directory (application code) you must include an acknowledgement:  "This product includes software written by Tim Hudson (tjh@cryptsoft.com)"
-
-THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-The licence and distribution terms for any publically available version or derivative of this code cannot be changed. i.e. this code cannot simply be copied and put under another distribution licence [including the GNU Public Licence.]
-
-
-Tesseract 4.0.0
-Tesseract, maintained by Google (http://code.google.com/p/tesseract-ocr/),
-is distributed under the Apache 2.0 license (http://www.apache.org/licenses/LICENSE-2.0).
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
-
-Nameof C++ 0.8.3
-Copyright (c) 2016, 2018 - 2019 Daniil Goncharov
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
-ZXing-C++
-C++ port of ZXing (https://github.com/nu-book/zxing-cpp)
-Copyright 2016 Nu-book Inc.
-Copyright 2016 ZXing authors
+TensorFlow 2.2.0
+Copyright 2017 The TensorFlow Authors. All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-http://www.apache.org/licenses/LICENSE-2.0
+    http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
