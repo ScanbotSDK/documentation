@@ -1053,12 +1053,40 @@ To further improve the user experience you might want to automatically take a ph
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history-and-changelog">Release History and Changelog</h3>
 
+<h4 id="scanbotsdkxamarin---version-310-4-nov-2020">ScanbotSDK.Xamarin - Version 3.1.0 (4 Nov 2020)</h4>
+
+<ul>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Improved barcode recognition for matrix codes (QR code and Data Matrix code)</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li>Android: The interface <code class="highlighter-rouge">IPictureCallback</code> was replaced by an abstract class <code class="highlighter-rouge">PictureCallback</code> 
+that implements the <code class="highlighter-rouge">IBasePictureCallback</code> interface. For adjustments see our <a href="https://github.com/doo/scanbot-sdk-example-xamarin">example app on GitHub</a>.</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Android: Upgraded the native Scanbot Android SDK to <strong>v1.75.1</strong></li>
+      <li>iOS: Upgraded the native Scanbot iOS SDK to <strong>v1.11.7</strong></li>
+    </ul>
+  </li>
+  <li>👉 Please also see:
+    <ul>
+      <li>The <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">Changelog</a> of the native Scanbot Android SDK</li>
+      <li>The <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">Changelog</a> of the native Scanbot iOS SDK</li>
+    </ul>
+  </li>
+</ul>
+
 <h4 id="scanbotsdkxamarin---version-300-16-oct-2020">ScanbotSDK.Xamarin - Version 3.0.0 (16 Oct 2020)</h4>
 
 <ul>
   <li>🎉 NEW:
     <ul>
-      <li>Batch Barcode Scanner - new RTU UI Components to scan multiple barcodes in a row
+      <li>Batch Barcode Scanner - a new RTU UI Component to scan multiple barcodes in a row
 (<code class="highlighter-rouge">BatchBarcodeScannerActivity</code> for Android and <code class="highlighter-rouge">SBSDKUIBarcodesBatchScannerViewController</code> for iOS)</li>
       <li><a href="#BlurrinessEstimator">Blurriness Estimator</a> - a new SDK feature to detect blurriness on still images.</li>
       <li>Android: Migrated to <a href="https://developer.android.com/jetpack/androidx">AndroidX</a> libs</li>
@@ -1066,10 +1094,14 @@ To further improve the user experience you might want to automatically take a ph
   </li>
   <li>🚀 Improvements:
     <ul>
-      <li>Android: Some big improvements in the camera components as well as in the Document Scanner RTU UI that make 
-document scanning perform better and much smoother. Increased start-up time of the camera preview. 
-Faster saving of the snapped pages in the Document Scanner RTU UI. 
-Optimized performance of the image processing for simple operations (rotate, crop, resize).</li>
+      <li>Android: Significant improvements in the camera components as well as in the Document Scanner RTU UI that make 
+document scanning perform better and much smoother:
+        <ul>
+          <li>Increased start-up time of the camera preview.</li>
+          <li>Faster saving of the snapped pages in the Document Scanner RTU UI.</li>
+          <li>Optimized performance of the image processing for simple operations (rotate, crop, resize).</li>
+        </ul>
+      </li>
     </ul>
   </li>
   <li>⚠️ Breaking changes:

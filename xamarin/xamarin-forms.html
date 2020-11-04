@@ -388,7 +388,7 @@ iOS/Resources/ScanbotSDKOCRData.bundle/osd.traineddata  // required special data
 <h4 id="detect-barcodes-from-still-image">Detect barcodes from still image</h4>
 
 <p>The Scanbot SDK detects barcodes from an existing image (ImageSource).</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>List&lt;Barcode&gt; result = await SBSDK.Operations.DetectBarcodesFrom(image);
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">List</span><span class="p">&lt;</span><span class="n">Barcode</span><span class="p">&gt;</span> <span class="n">result</span> <span class="p">=</span> <span class="k">await</span> <span class="n">SBSDK</span><span class="p">.</span><span class="n">Operations</span><span class="p">.</span><span class="nf">DetectBarcodesFrom</span><span class="p">(</span><span class="n">image</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><a name="Workflows"></a></p>
@@ -397,6 +397,8 @@ iOS/Resources/ScanbotSDKOCRData.bundle/osd.traineddata  // required special data
 MRZ recognition on an ID card image, for example. Workflow Steps can be run on a captured still image or a video frame,
 so a step can either be a live-detection or a still-image capturing step. You can validate each step result,
 present an error message to the user if the validation fails and restart a step.</p>
+
+<h4 id="usage-4">Usage</h4>
 
 <div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">workflow</span> <span class="p">=</span> <span class="n">SBSDK</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="nf">CreateWorkflow</span><span class="p">();</span>
 <span class="n">workflow</span><span class="p">.</span><span class="nf">AddScanBarcodeStep</span><span class="p">(</span>
@@ -419,10 +421,63 @@ present an error message to the user if the validation fails and restart a step.
 <span class="p">}</span>
 </code></pre></div></div>
 
+<p><a name="EstimateBlurriness"></a></p>
+<h3 id="estimate-blurriness">Estimate Blurriness</h3>
+
+<p>Estimates image blurriness. Less is sharper, more is blurred.</p>
+
+<h4 id="usage-5">Usage</h4>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">image</span> <span class="p">=</span> <span class="n">CurrentPage</span><span class="p">.</span><span class="n">Document</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">blur</span> <span class="p">=</span> <span class="k">await</span> <span class="n">SBSDK</span><span class="p">.</span><span class="n">Operations</span><span class="p">.</span><span class="nf">EstimateBlurriness</span><span class="p">(</span><span class="n">image</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>In broad terms, consider blur values as follows:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">0.0-0.3</code>: This image isn’t blurry at all</li>
+  <li><code class="highlighter-rouge">0.3-0.6</code>: Somewhat blurry, should be ok</li>
+  <li><code class="highlighter-rouge">0.6-1.0</code>: I’m skeptical of the usefulness of the image</li>
+</ul>
+
+<p>However, this isn’t that black and white. If a scanned document has a lot white background, that will be considered a very blurred image.</p>
+
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history-and-changelog">Release History and Changelog</h3>
 
-<h4 id="scanbotsdkxamarin---version-300-16-oct-2020">ScanbotSDK.Xamarin - Version 3.0.0 (16 Oct 2020)</h4>
+<h4 id="scanbotsdkxamarinforms---version-310-4-nov-2020">ScanbotSDK.Xamarin.Forms - Version 3.1.0 (4 Nov 2020)</h4>
+
+<ul>
+  <li>🎉 NEW:
+    <ul>
+      <li>Blur Estimator - a new API method to detect blurriness on still images. 
+See <a href="#EstimateBlurriness"><code class="highlighter-rouge">SBSDK.Operations.EstimateBlurriness(image)</code></a>.</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Improved barcode recognition for matrix codes (QR code and Data Matrix code)</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li>Android: The interface <code class="highlighter-rouge">IPictureCallback</code> was replaced by an abstract class <code class="highlighter-rouge">PictureCallback</code> 
+that implements the <code class="highlighter-rouge">IBasePictureCallback</code> interface. For adjustments see our <a href="https://github.com/doo/scanbot-sdk-example-xamarin">example app on GitHub</a>.</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded <code class="highlighter-rouge">ScanbotSDK.Xamarin</code> to v3.1.0</li>
+    </ul>
+  </li>
+  <li>👉 Please also see:
+    <ul>
+      <li>The <a href="/documentation/xamarin/xamarin.html#releaseHistory">Changelog</a> of <code class="highlighter-rouge">ScanbotSDK.Xamarin</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="scanbotsdkxamarinforms---version-300-16-oct-2020">ScanbotSDK.Xamarin.Forms - Version 3.0.0 (16 Oct 2020)</h4>
 
 <ul>
   <li>🎉 NEW:
