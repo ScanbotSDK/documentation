@@ -98,7 +98,7 @@ The Xamarin SDK provides bindings for Xamarin Native as well as a ready-to-use i
 <h4 id="mobile-platforms">Mobile Platforms</h4>
 <ul>
   <li>Android 5.0 (API Level 21) and higher</li>
-  <li>iOS 9 and higher</li>
+  <li>iOS 11 and higher</li>
 </ul>
 
 <h4 id="mobile-devices">Mobile Devices</h4>
@@ -107,7 +107,7 @@ The Xamarin SDK provides bindings for Xamarin Native as well as a ready-to-use i
   <li>Supported CPUs and Architectures:
     <ul>
       <li>Android: <code class="highlighter-rouge">armeabi-v7</code>, <code class="highlighter-rouge">arm64-v8a</code>, <code class="highlighter-rouge">x86</code>, <code class="highlighter-rouge">x86_64</code></li>
-      <li>iOS: <code class="highlighter-rouge">arm64</code>, <code class="highlighter-rouge">armv7</code>, <code class="highlighter-rouge">x86_64</code>, <code class="highlighter-rouge">i386</code></li>
+      <li>iOS: <code class="highlighter-rouge">arm64</code>, <code class="highlighter-rouge">x86_64</code></li>
     </ul>
   </li>
 </ul>
@@ -239,7 +239,7 @@ Play Store or any 3rd party Android App Store with a trial license.</p>
 <p>The Scanbot Barcode Scanner SDK must be initialized before usage. Make sure to run the initialization as early as possible.
 We recommend to implement the initialization in the <code class="highlighter-rouge">Application</code> class of the Android and Forms app, and in the <code class="highlighter-rouge">AppDelegate</code> class of the iOS app.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#536ff274-25fe-47fa-87cb-b31c6b904176'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#0e463457-7b22-4b4c-8b18-30ccc310bafb'}">
 
 	<li class="uk-active"><a href="#">Xamarin.Droid</a></li>
 
@@ -249,7 +249,7 @@ We recommend to implement the initialization in the <code class="highlighter-rou
 
 </ul>
 
-<ul id="536ff274-25fe-47fa-87cb-b31c6b904176" class="uk-switcher uk-margin">
+<ul id="0e463457-7b22-4b4c-8b18-30ccc310bafb" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">IO.Scanbot.Sdk.Barcode_scanner</span><span class="p">;;</span>
@@ -337,7 +337,7 @@ using our <a href="#ClassicalUIComponents">Classical UI Component</a> (not avail
 
 <h5 id="rtu-ui-example">RTU UI Example:</h5>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#fb3e414b-fbe9-433f-91df-3bdd2bea5954'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#33945574-7e42-428c-b9f4-47ad17af8100'}">
 
 	<li class="uk-active"><a href="#">Xamarin.Droid</a></li>
 
@@ -347,7 +347,7 @@ using our <a href="#ClassicalUIComponents">Classical UI Component</a> (not avail
 
 </ul>
 
-<ul id="fb3e414b-fbe9-433f-91df-3bdd2bea5954" class="uk-switcher uk-margin">
+<ul id="33945574-7e42-428c-b9f4-47ad17af8100" class="uk-switcher uk-margin">
 
 	<li>
 <p>Launching the Barcode Scanner:</p>
@@ -437,7 +437,7 @@ and extended in your custom screens.</p>
 
 <h5 id="classical-ui-example">Classical UI Example:</h5>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#c00ad9c3-f891-4fa7-a491-c3f3d4d2d324'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#e40cf878-5627-4748-a1a0-10c87d4cf3da'}">
 
 	<li class="uk-active"><a href="#">Xamarin.Droid</a></li>
 
@@ -445,7 +445,7 @@ and extended in your custom screens.</p>
 
 </ul>
 
-<ul id="c00ad9c3-f891-4fa7-a491-c3f3d4d2d324" class="uk-switcher uk-margin">
+<ul id="e40cf878-5627-4748-a1a0-10c87d4cf3da" class="uk-switcher uk-margin">
 
 	<li>
 <p>Implementing custom Activity that holds <code class="highlighter-rouge">ScanbotCameraView</code>:</p>
@@ -476,7 +476,7 @@ and extended in your custom screens.</p>
         
         <span class="kt">var</span> <span class="n">snappingcontroller</span> <span class="p">=</span> <span class="n">BarcodeAutoSnappingController</span><span class="p">.</span><span class="nf">Attach</span><span class="p">(</span><span class="n">cameraView</span><span class="p">,</span> <span class="n">handler</span><span class="p">);</span>
         <span class="n">snappingcontroller</span><span class="p">.</span><span class="nf">SetSensitivity</span><span class="p">(</span><span class="m">1f</span><span class="p">);</span>
-        <span class="n">cameraView</span><span class="p">.</span><span class="nf">AddPictureCallback</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+        <span class="n">cameraView</span><span class="p">.</span><span class="nf">AddPictureCallback</span><span class="p">(</span><span class="k">new</span> <span class="nf">PictureCallbackDelegate</span><span class="p">());</span>
     <span class="p">}</span>
 
     <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnResume</span><span class="p">()</span>
@@ -499,26 +499,6 @@ and extended in your custom screens.</p>
             <span class="n">cameraView</span><span class="p">.</span><span class="nf">ContinuousFocus</span><span class="p">();</span>
         <span class="p">},</span> <span class="m">300</span><span class="p">);</span>
     <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">void</span> <span class="nf">OnPictureTaken</span><span class="p">(</span><span class="kt">byte</span><span class="p">[]</span> <span class="n">p0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p1</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="kt">var</span> <span class="n">image</span> <span class="p">=</span> <span class="n">p0</span><span class="p">;</span>
-        <span class="kt">var</span> <span class="n">orientation</span> <span class="p">=</span> <span class="n">p1</span><span class="p">;</span>
-
-        <span class="kt">var</span> <span class="n">bitmap</span> <span class="p">=</span> <span class="n">BitmapFactory</span><span class="p">.</span><span class="nf">DecodeByteArray</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">orientation</span><span class="p">);</span>
-
-        <span class="kt">var</span> <span class="n">matrix</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Matrix</span><span class="p">();</span>
-        <span class="n">matrix</span><span class="p">.</span><span class="nf">SetRotate</span><span class="p">(</span><span class="n">orientation</span><span class="p">,</span> <span class="n">bitmap</span><span class="p">.</span><span class="n">Width</span> <span class="p">/</span> <span class="m">2</span><span class="p">,</span> <span class="n">bitmap</span><span class="p">.</span><span class="n">Height</span> <span class="p">/</span> <span class="m">2</span><span class="p">);</span>
-
-        <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Bitmap</span><span class="p">.</span><span class="nf">CreateBitmap</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">bitmap</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">bitmap</span><span class="p">.</span><span class="n">Height</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
-
-        <span class="n">resultView</span><span class="p">.</span><span class="nf">Post</span><span class="p">(</span><span class="k">delegate</span>
-        <span class="p">{</span>
-            <span class="n">resultView</span><span class="p">.</span><span class="nf">SetImageBitmap</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
-            <span class="n">cameraView</span><span class="p">.</span><span class="nf">ContinuousFocus</span><span class="p">();</span>
-            <span class="n">cameraView</span><span class="p">.</span><span class="nf">StartPreview</span><span class="p">();</span>
-        <span class="p">});</span>
-    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
 </div>
@@ -540,6 +520,20 @@ and extended in your custom screens.</p>
 <span class="p">}</span>
 </code></pre>
 </div>
+
+<p>Handling picture taken:</p>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">PictureCallbackDelegate</span> <span class="p">:</span> <span class="n">PictureCallback</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">EventHandler</span><span class="p">&lt;</span><span class="n">PictureCallbackEventArgs</span><span class="p">&gt;</span> <span class="n">OnPictureTakenHandler</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnPictureTaken</span><span class="p">(</span><span class="kt">byte</span><span class="p">[]</span> <span class="n">image</span><span class="p">,</span> <span class="kt">int</span> <span class="n">imageOrientation</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Picture taken, process result
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
 </li>
 
 	<li>
@@ -619,6 +613,7 @@ and extended in your custom screens.</p>
   <li><code class="highlighter-rouge">BarcodeFormat.Ean8</code></li>
   <li><code class="highlighter-rouge">BarcodeFormat.Ean13</code></li>
   <li><code class="highlighter-rouge">BarcodeFormat.Itf</code></li>
+  <li><code class="highlighter-rouge">BarcodeFormat.MsiPlessey</code></li>
 </ul>
 
 <h5 id="2d-barcodes-1">2D Barcodes</h5>
@@ -631,7 +626,7 @@ and extended in your custom screens.</p>
 
 <p>Out of these, you can also filter which formats you wish to accept or not.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#c0c05bed-7ac3-4537-b134-cd5a7a5be975'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#f031433c-d062-4437-9349-c9f3c5ed97f3'}">
 
 	<li class="uk-active"><a href="#">Xamarin.Droid</a></li>
 
@@ -641,7 +636,7 @@ and extended in your custom screens.</p>
 
 </ul>
 
-<ul id="c0c05bed-7ac3-4537-b134-cd5a7a5be975" class="uk-switcher uk-margin">
+<ul id="f031433c-d062-4437-9349-c9f3c5ed97f3" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">configuration</span><span class="p">.</span><span class="nf">SetBarcodeFormatsFilter</span><span class="p">(</span><span class="k">new</span> <span class="n">BarcodeFormat</span><span class="p">[]</span>
@@ -679,7 +674,7 @@ and extended in your custom screens.</p>
 
 <p>Not only can you scan barcodes, the SDK also offers the option to detect barcodes on an existing still image (e.g. JPG file from Photo Library).</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#84dd018c-f50c-4918-8b14-7b4148910169'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#96359810-50cf-4bad-8185-96aab60d9c49'}">
 
 	<li class="uk-active"><a href="#">Xamarin.Droid</a></li>
 
@@ -689,7 +684,7 @@ and extended in your custom screens.</p>
 
 </ul>
 
-<ul id="84dd018c-f50c-4918-8b14-7b4148910169" class="uk-switcher uk-margin">
+<ul id="96359810-50cf-4bad-8185-96aab60d9c49" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">sdk</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ScanbotBarcodeScannerSDK</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
@@ -718,7 +713,7 @@ and extended in your custom screens.</p>
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history-and-changelog">Release History and Changelog</h3>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#d03aeb2d-bf9a-40dc-9b39-ba7bd674b8ee'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#5ec91a1c-fec9-45ac-bf7d-79a14fdcfed8'}">
 
 	<li class="uk-active"><a href="#">ScanbotBarcodeSDK.Xamarin</a></li>
 
@@ -726,10 +721,39 @@ and extended in your custom screens.</p>
 
 </ul>
 
-<ul id="d03aeb2d-bf9a-40dc-9b39-ba7bd674b8ee" class="uk-switcher uk-margin">
+<ul id="5ec91a1c-fec9-45ac-bf7d-79a14fdcfed8" class="uk-switcher uk-margin">
 
 	<li>
 <h4 id="scanbotbarcodesdkxamarin">ScanbotBarcodeSDK.Xamarin</h4>
+
+<p><strong>Version 2.0.0 (18 Nov 2020):</strong></p>
+<ul>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Improved barcode recognition for matrix codes (QR code and Data Matrix code)</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li>Android: Dropped legacy SupportLibs, built for AndroidX. To migrate your project please check out the 
+<a href="https://docs.microsoft.com/en-us/xamarin/android/platform/androidx">documentation</a> from Microsoft</li>
+      <li>Android: The interface <code class="highlighter-rouge">IPictureCallback</code> was replaced by an abstract class <code class="highlighter-rouge">PictureCallback</code> 
+that implements the <code class="highlighter-rouge">IBasePictureCallback</code> interface. For adjustments see our 
+<a href="https://github.com/doo/scanbot-barcode-scanner-sdk-example-xamarin">example app on GitHub</a>.</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Android: Upgraded the native Scanbot Barcode Scanner SDK to <strong>v1.1.7</strong></li>
+    </ul>
+  </li>
+  <li>👉 Please also see:
+    <ul>
+      <li>The <a href="https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/android/">Changelog</a> 
+of the native Scanbot Barcode Scanner SDK for Android</li>
+    </ul>
+  </li>
+</ul>
 
 <p><strong>Version 1.1.0 (6 Nov 2020):</strong></p>
 <ul>
@@ -773,6 +797,16 @@ and extended in your custom screens.</p>
 
 	<li>
 <h4 id="scanbotbarcodesdkxamarinforms">ScanbotBarcodeSDK.Xamarin.Forms</h4>
+
+<p><strong>Version 2.0.0 (18 Nov 2020):</strong></p>
+<ul>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li>Android: Dropped legacy SupportLibs, built with and for AndroidX
+See the release notes of <code class="highlighter-rouge">ScanbotBarcodeSDK.Xamarin v2.0.0</code></li>
+    </ul>
+  </li>
+</ul>
 
 <p><strong>Version 1.1.0 (6 Nov 2020):</strong></p>
 <ul>
