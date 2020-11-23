@@ -298,6 +298,7 @@ You can change this value in the <code class="highlighter-rouge">config.xml</cod
       <li><a href="#module_ScanbotSdk.applyImageFilter">.applyImageFilter(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.rotateImage">.rotateImage(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.estimateBlur">.estimateBlur(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.refreshImageUris">.refreshImageUris(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.cleanup">.cleanup(successCallback, errorCallback)</a> - <code class="highlighter-rouge">function</code></li>
     </ul>
   </li>
@@ -668,26 +669,27 @@ The promisified methods of <code class="highlighter-rouge">ScanbotSdk.UI</code> 
 
 <h2 id="ready-to-use-ui">Ready-To-Use UI</h2>
 
-<h3 id="configuration">Configuration</h3>
-<p>Settings controlling color are expected to be passed as strings in the <code class="highlighter-rouge">'#RRGGBB'</code> format.</p>
+<p>The Scanbot SDK provides Ready-To-Use UI (RTU UI) screen components, like Document Scanner UI, Cropping UI, 
+Barcode Scanner UI, etc.</p>
 
 <p><a name="pageObject"></a></p>
-<h3 id="pages">Pages</h3>
+<h3 id="page-model">Page Model</h3>
 
-<p>The Scanbot SDK provides a ready-to-use UI for document scanning and cropping. 
-Both components use the notion of a ‘page’ as a data model for the scanning and cropping activities. 
-An page object has the following fields:</p>
+<p>All SDK components (UI and non-UI) which generate or modify scanned documents use the notion of a <code class="highlighter-rouge">Page</code> 
+as a data model.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">examplePage</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">pageId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">polygon</span><span class="p">:</span> <span class="p">[</span><span class="cm">/*points*/</span><span class="p">],</span>
-    <span class="na">detectionResult</span><span class="p">:</span> <span class="dl">'</span><span class="s1">OK</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">filter</span><span class="p">:</span> <span class="dl">'</span><span class="s1">NONE</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">documentImageSizeLimit</span><span class="p">:</span> <span class="cm">/* { width: number, height: number } */</span><span class="p">,</span>
-    <span class="na">originalImageFileUri</span><span class="p">:</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">documentImageFileUri</span><span class="p">:</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">originalPreviewImageFileUri</span><span class="p">:</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">documentPreviewImageFileUri</span><span class="p">:</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span>
+<p>A <code class="highlighter-rouge">Page</code> object represents a scanned document page and has the following fields:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Page</span> <span class="p">{</span>
+    <span class="nl">pageId</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">polygon</span><span class="p">:</span> <span class="nx">Point</span><span class="p">[];</span>
+    <span class="nl">detectionResult</span><span class="p">:</span> <span class="nx">DetectionStatus</span><span class="p">;</span>
+    <span class="nl">filter</span><span class="p">:</span> <span class="nx">ImageFilter</span><span class="p">;</span>
+    <span class="nl">documentImageSizeLimit</span><span class="p">?:</span> <span class="nx">Size</span><span class="p">;</span>
+    <span class="nl">originalImageFileUri</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">documentImageFileUri</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">originalPreviewImageFileUri</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">documentPreviewImageFileUri</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -701,7 +703,7 @@ but will not automatically re-crop the original image.</li>
 that produced the page (either the document scanner or <code class="highlighter-rouge">detectDocument()</code>).</li>
   <li><code class="highlighter-rouge">filter</code> - the <a href="#imageFilter">image filter</a> which was applied on the document image of this page.</li>
   <li><code class="highlighter-rouge">documentImageSizeLimit</code> - limits the maximum resolution (width, height) of the document image. 
-If <code class="highlighter-rouge">null</code> is passed, this property is effectively ignored. If specified, <code class="highlighter-rouge">width</code> and <code class="highlighter-rouge">height</code> must be &gt; 0.</li>
+ If <code class="highlighter-rouge">null</code> is passed, this property is effectively ignored. If specified, <code class="highlighter-rouge">width</code> and <code class="highlighter-rouge">height</code> must be &gt; 0.</li>
   <li><code class="highlighter-rouge">originalImageFileUri</code> - file URI of the original image</li>
   <li><code class="highlighter-rouge">documentImageFileUri</code> - file URI of the cropped document image (if document detection was successful)</li>
   <li><code class="highlighter-rouge">originalPreviewImageFileUri</code> - file URI of a screen-sized preview of the original image</li>
@@ -717,6 +719,56 @@ All URI properties of a page have a <code class="highlighter-rouge">?minihash=</
 with the hash of a portion of the image file. 
 Different images will almost always have a different hash and therefore a different URI, 
 which will force the WebView to reload the page’s images when changed.</p>
+
+<p><a name="persistencePageObject"></a></p>
+<h3 id="persistence-of-page-objects">Persistence of Page Objects</h3>
+<p>Scanbot SDK does <strong>not</strong> persist page objects, only the image files (.jpg or .png).
+The management of page objects and the persistence of the page metadata is left to the app.
+Depending on the use case, it may be necessary to persist the data of the page objects in the app 
+(e.g. as JSON in a local SQLite database). If this is the case, the following must be considered.</p>
+
+<p>The Page objects contain absolute paths to the image files:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">pageId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">60426F47-4119-48F8-ADA9-F7E60D583CB4</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">filter</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">NONE</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">detectionResult</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">OK</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">polygon</span><span class="dl">"</span><span class="p">:</span> <span class="p">[{</span><span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.17427248677248677</span><span class="p">,</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.1212797619047619</span><span class="p">},{</span><span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.8604497354497355</span><span class="p">,</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.13120039682539678</span><span class="p">},{</span><span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.8349867724867724</span><span class="p">,</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.9729662698412699</span><span class="p">},{</span><span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.12202380952380967</span><span class="p">,</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.9471726190476191</span><span class="p">}],</span>
+  <span class="dl">"</span><span class="s2">documentPreviewImageFileUri</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4_preview.jpg?minihash=a236a8ba5510cd0f4e88bd2045f52c4e</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">originalImageFileUri</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/originals/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg?minihash=4e9f0446421343eaaa1e415fdb446a12</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">originalPreviewImageFileUri</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/originals/60426F47-4119-48F8-ADA9-F7E60D583CB4_preview.jpg?minihash=da888cd42db07e52b15a6ada29a37b63</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">documentImageFileUri</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg?minihash=f9aab62cc37fec555abe94c83406a1b3</span><span class="dl">"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The page image files are stored in corresponding storage locations - also see the <a href="#storage">Storage</a> section.
+By default, the Scanbot SDK Android uses the internal files directory of the app, whereas the Scanbot SDK iOS uses 
+the <strong>“Application Support”</strong> folder. Those storage folders are secure and are not affected by an app update.</p>
+
+<p>However, on iOS, the <strong>absolute</strong> file path of the “Application Support” folder is not reliable.
+For each fresh install of an app, a new UUID is generated, in the following format:
+<code class="highlighter-rouge">/var/mobile/Containers/Data/Application/{UUID}</code>. That is where application data is stored.
+When updating the app, the uuid <strong>may</strong> change. For example:</p>
+
+<p>Before an app update:</p>
+
+<p><code class="highlighter-rouge">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg</code></p>
+
+<p>After the app update:</p>
+
+<p><code class="highlighter-rouge">file:///var/mobile/Containers/Data/Application/C9181555-252A-4665-892F-793008ED0EDD/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg</code></p>
+
+<p>Please note that the actual image files are still there, only the absolute file paths change.</p>
+
+<p>To get to the new absolute paths, the API method <code class="highlighter-rouge">refreshImageUris({pages: Page []})</code> has been introduced 
+in the plugin version 4.4.0. Please use this method to refresh all image file URIs from affected pages:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">refreshImageUris</span><span class="p">({</span><span class="na">pages</span><span class="p">:</span> <span class="nx">loadedPages</span><span class="p">});</span>
+<span class="kd">const</span> <span class="nx">refreshedPages</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">pages</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>It’s highly recommended using this method whenever you have to (re-)load JSON Page objects 
+from the database of your app, regardless of whether there was an app update or not.</p>
 
 <p><a name="module_ScanbotSdk.UI.startDocumentScanner"></a></p>
 <h3 id="document-scanner">Document Scanner</h3>
@@ -1966,11 +2018,28 @@ in conjunction with a finder view or on an already cropped document.</p>
 </code></pre></div></div>
 
 <h4 id="result">Result</h4>
-
 <ul>
   <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> or <code class="highlighter-rouge">'ERROR'</code> in all error cases.</li>
   <li><code class="highlighter-rouge">message</code> - Contains the error message as string.</li>
   <li><code class="highlighter-rouge">blur</code> - numeric blue value, as explained above</li>
+</ul>
+
+<p><a name="module_ScanbotSdk.refreshImageUris"></a></p>
+<h3 id="refresh-image-uris">Refresh Image URIs</h3>
+<h4 id="scanbotsdkrefreshimageurissuccesscallback-errorcallback-options"><code class="highlighter-rouge">ScanbotSdk.refreshImageUris(successCallback, errorCallback, options)</code></h4>
+
+<p>See the section <a href="#persistencePageObject">Persistence of Page Objects</a></p>
+
+<h4 id="options-17">Options</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">pages</span><span class="p">:</span> <span class="p">[</span><span class="nx">page1</span><span class="p">,</span> <span class="nx">page2</span><span class="p">,</span> <span class="p">...]</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h4 id="result-1">Result</h4>
+<ul>
+  <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> or <code class="highlighter-rouge">'ERROR'</code> in all error cases.</li>
+  <li><code class="highlighter-rouge">pages</code> - Pages with refreshed image file URIs.</li>
 </ul>
 
 <p><a name="module_ScanbotSdk.createPdf"></a></p>
@@ -1996,7 +2065,7 @@ For each image a separate page is generated.</p>
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-17">Options:</h5>
+<h5 id="options-18">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">],</span>
   <span class="na">pageSize</span><span class="p">:</span> <span class="dl">'</span><span class="s1">FIXED_A4</span><span class="dl">'</span>
@@ -2031,7 +2100,7 @@ For each image a separate page is generated.</p>
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-18">Options:</h5>
+<h5 id="options-19">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">],</span>
   <span class="na">oneBitEncoded</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -2209,7 +2278,7 @@ The Scanbot SDK uses the <code class="highlighter-rouge">languageDataPath</code>
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-19">Options:</h5>
+<h5 id="options-20">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{};</span>
 </code></pre></div></div>
 
@@ -2239,7 +2308,7 @@ As result the recognized text can be returned as plain text or a composed PDF fi
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-20">Options:</h5>
+<h5 id="options-21">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">],</span>
   <span class="na">languages</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">en</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">de</span><span class="dl">'</span><span class="p">],</span>
@@ -2660,7 +2729,7 @@ Add a new <code class="highlighter-rouge">Run Script Phase</code> and make sure 
 </code></pre></div></div>
 
 <p><strong>Script Input File</strong>:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$(SRCROOT)/../../plugins/cordova-plugin-scanbot-sdk/src/ios/Frameworks/dSYMs/ScanbotSDK.framework.dSYM
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$(SRCROOT)/../../plugins/cordova-plugin-scanbot-sdk/src/ios/Frameworks/ScanbotSDK.framework.dSYM
 </code></pre></div></div>
 
 <p><a href="./assets/images/cordova_xcode_build_phases_settings.png"><img src="./assets/images/cordova_xcode_build_phases_settings.png" alt="alt text" title="Xcode Build Phases settings" /></a></p>
@@ -2692,6 +2761,16 @@ It allows you to create and distribute dedicated and smaller APKs <strong>via Pl
 
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release History</h2>
+
+<h4 id="version-440-23-nov-2020">Version 4.4.0 (23 Nov 2020):</h4>
+<ul>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>iOS: Introduced a new API method <code class="highlighter-rouge">refreshImageUris(pages)</code> to fix image file paths after app updates.
+For more details please check out the section <a href="#persistencePageObject">Persistence of Page Objects</a>.</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="version-431-26-oct-2020">Version 4.3.1 (26 Oct 2020):</h4>
 <ul>
