@@ -93,6 +93,9 @@
                 <a class="nav-group-task-link" href="Classes/SBSDKAAMVADocumentSubfileField.html">SBSDKAAMVADocumentSubfileField</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SBSDKAESEncrypter.html">SBSDKAESEncrypter</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKAspectRatio.html">SBSDKAspectRatio</a>
               </li>
               <li class="nav-group-task">
@@ -207,6 +210,9 @@
                 <a class="nav-group-task-link" href="Classes/SBSDKDocumentDetectorResult.html">SBSDKDocumentDetectorResult</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SBSDKExceptionHandler.html">SBSDKExceptionHandler</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKFinderLayer.html">SBSDKFinderLayer</a>
               </li>
               <li class="nav-group-task">
@@ -280,9 +286,6 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKImageProcessor.html">SBSDKImageProcessor</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/SBSDKImageStorage.html">SBSDKImageStorage</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKIndexedImageStorage.html">SBSDKIndexedImageStorage</a>
@@ -707,6 +710,9 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/ScanbotSDK.html">ScanbotSDK</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/ScanbotSDKUI.html">ScanbotSDKUI</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -857,6 +863,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/SBSDKAAMVARecordFieldType.html">SBSDKAAMVARecordFieldType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/SBSDKAESEncrypterMode.html">SBSDKAESEncrypterMode</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/SBSDKBarcodeImageGenerationType.html">SBSDKBarcodeImageGenerationType</a>
@@ -1047,6 +1056,9 @@
                 <a class="nav-group-task-link" href="Protocols/SBSDKScannerViewControllerDelegate.html">SBSDKScannerViewControllerDelegate</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/SBSDKStorageCrypting.html">SBSDKStorageCrypting</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Protocols/SBSDKUIBarcodeScannerViewControllerDelegate.html">SBSDKUIBarcodeScannerViewControllerDelegate</a>
               </li>
               <li class="nav-group-task">
@@ -1153,6 +1165,33 @@
           <div class="section-content">
             
             <h1 id='release-history-and-changelog' class='heading'>Release History and Changelog</h1>
+<h3 id='version-1-12-0-26-nov-2020' class='heading'>Version 1.12.0 (26 Nov 2020):</h3>
+
+<ul>
+<li><p>🎉 New:</p>
+
+<ul>
+<li>Added (customizable) encryption/decryption to image stores; new classes: <code><a href="Classes/SBSDKAESEncrypter.html">SBSDKAESEncrypter</a></code>, <code><a href="Protocols/SBSDKStorageCrypting.html">SBSDKStorageCrypting</a></code>, <code><a href="Classes/ScanbotSDKUI.html">ScanbotSDKUI</a></code></li>
+<li>For SBSDKUI components you can enable encryption for stored images globally using the function <code>+ (void)setDefaultImageStoreEncrypter:(nullable id&lt;SBSDKStorageCrypting&gt;)encrypter</code> of <code><a href="Classes/ScanbotSDKUI.html">ScanbotSDKUI</a></code> class, this will encrypt all stored images in these components</li>
+<li>Classic SBSDK components use <code><a href="Classes/SBSDKKeyedImageStorage.html">SBSDKKeyedImageStorage</a></code> or <code><a href="Classes/SBSDKIndexedImageStorage.html">SBSDKIndexedImageStorage</a></code>, both got a new property named <code>encrypter</code>.</li>
+<li><code><a href="Classes/SBSDKAESEncrypter.html">SBSDKAESEncrypter</a></code> provides built-in support for AES128 and AES256 encryption, but you can create your own encrypter by implementing a class conforming to the protocol <code><a href="Protocols/SBSDKStorageCrypting.html">SBSDKStorageCrypting</a></code></li>
+<li>Added corner radius property <code>polygonCornerRadius</code> to document detection polygon layer in <code><a href="Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></code><br></li>
+<li>Added delegate method <code>scannerController:backgroundPolygonColorForDetectionStatus:</code> to <code><a href="Protocols/SBSDKScannerViewControllerDelegate.html">SBSDKScannerViewControllerDelegate</a></code></li>
+<li>Added ability to enable or disable crop and rotation functionality on <code><a href="Classes/SBSDKImageEditingViewController.html">SBSDKImageEditingViewController</a></code> and RTU UI</li>
+<li>Added ability to choose the binarization filter being used when storing TIFF files with <code><a href="Classes/SBSDKTIFFImageWriter.html">SBSDKTIFFImageWriter</a></code>, see <code>binarizationFilter</code> in <code><a href="Classes/SBSDKTIFFImageWriterParameters.html">SBSDKTIFFImageWriterParameters</a></code></li>
+</ul></li>
+<li><p>🚀 Improvements:</p>
+
+<ul>
+<li>Better recognition of rotated PDF417 codes</li>
+</ul></li>
+<li><p>⚠️ Breaking Changes:</p>
+
+<ul>
+<li>Removed <code>polygonAutoSnapProgressCornerRadius</code> from SBSDKScannerViewController because of obsolescence. Use <code>polygonCornerRadius</code> instead.</li>
+<li>Simplified <code><a href="Classes/SBSDKTIFFImageWriter.html">SBSDKTIFFImageWriter</a></code> API, a lot of functions have been removed because of duplication, the class now has only 2 functions left. Please refer to the documentation of this class.</li>
+</ul></li>
+</ul>
 <h3 id='version-1-11-9-19-nov-2020' class='heading'>Version 1.11.9 (19 Nov 2020):</h3>
 
 <ul>
@@ -1970,7 +2009,7 @@ See the <a href="modules-in-detail.html#ocr">OCR section</a> for more details.</
 <ul>
 <li>added <strong>Ready-To-Use UI</strong> components <code><a href="Classes/SBSDKUIDocumentScannerViewController.html">SBSDKUIDocumentScannerViewController</a></code>, <code><a href="Classes/SBSDKUICroppingViewController.html">SBSDKUICroppingViewController</a></code>, <code><a href="Classes/SBSDKUIMRZScannerViewController.html">SBSDKUIMRZScannerViewController</a></code>, <code><a href="Classes/SBSDKUIBarcodeScannerViewController.html">SBSDKUIBarcodeScannerViewController</a></code> - a set of easy to integrate and customize high-level UI components for the most common tasks in Scanbot SDK</li>
 <li>added  <code><a href="Classes/SBSDKCameraExposureSettings.html">SBSDKCameraExposureSettings</a></code> class to extract the current exposure metering parameters from the camera</li>
-<li>deprecated <code><a href="Classes/SBSDKImageStorage.html">SBSDKImageStorage</a></code></li>
+<li>deprecated <code>SBSDKImageStorage</code></li>
 <li>added <code><a href="Classes/SBSDKIndexedImageStorage.html">SBSDKIndexedImageStorage</a></code> and <code><a href="Classes/SBSDKKeyedImageStorage.html">SBSDKKeyedImageStorage</a></code> as replacements</li>
 <li>minor bug fixes</li>
 <li>dropped support for iOS 8</li>
@@ -2025,7 +2064,7 @@ See the <a href="modules-in-detail.html#ocr">OCR section</a> for more details.</
 <h3 id='version-1-5-4' class='heading'>Version 1.5.4:</h3>
 
 <ul>
-<li>fixed a bug with duplicated URLs in <code><a href="Classes/SBSDKImageStorage.html">SBSDKImageStorage</a></code></li>
+<li>fixed a bug with duplicated URLs in <code>SBSDKImageStorage</code></li>
 </ul>
 <h3 id='version-1-5-3' class='heading'>Version 1.5.3:</h3>
 
@@ -2220,7 +2259,7 @@ of the cropped image and let it be very close to the original documents aspect r
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2020-11-20)</p>
+      <p>&copy; 2020 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2020-11-26)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

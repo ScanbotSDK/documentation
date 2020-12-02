@@ -298,6 +298,7 @@ You can change this value in the <code class="highlighter-rouge">config.xml</cod
       <li><a href="#module_ScanbotSdk.applyImageFilter">.applyImageFilter(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.rotateImage">.rotateImage(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.estimateBlur">.estimateBlur(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.refreshImageUris">.refreshImageUris(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.cleanup">.cleanup(successCallback, errorCallback)</a> - <code class="highlighter-rouge">function</code></li>
     </ul>
   </li>
@@ -668,26 +669,27 @@ The promisified methods of <code class="highlighter-rouge">ScanbotSdk.UI</code> 
 
 <h2 id="ready-to-use-ui">Ready-To-Use UI</h2>
 
-<h3 id="configuration">Configuration</h3>
-<p>Settings controlling color are expected to be passed as strings in the <code class="highlighter-rouge">'#RRGGBB'</code> format.</p>
+<p>The Scanbot SDK provides Ready-To-Use UI (RTU UI) screen components, like Document Scanner UI, Cropping UI, 
+Barcode Scanner UI, etc.</p>
 
 <p><a name="pageObject"></a></p>
-<h3 id="pages">Pages</h3>
+<h3 id="page-model">Page Model</h3>
 
-<p>The Scanbot SDK provides a ready-to-use UI for document scanning and cropping. 
-Both components use the notion of a ‘page’ as a data model for the scanning and cropping activities. 
-An page object has the following fields:</p>
+<p>All SDK components (UI and non-UI) which generate or modify scanned documents use the notion of a <code class="highlighter-rouge">Page</code> 
+as a data model.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">examplePage</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">pageId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">polygon</span><span class="p">:</span> <span class="p">[</span><span class="cm">/*points*/</span><span class="p">],</span>
-    <span class="na">detectionResult</span><span class="p">:</span> <span class="dl">'</span><span class="s1">OK</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">filter</span><span class="p">:</span> <span class="dl">'</span><span class="s1">NONE</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">documentImageSizeLimit</span><span class="p">:</span> <span class="cm">/* { width: number, height: number } */</span><span class="p">,</span>
-    <span class="na">originalImageFileUri</span><span class="p">:</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">documentImageFileUri</span><span class="p">:</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">originalPreviewImageFileUri</span><span class="p">:</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">documentPreviewImageFileUri</span><span class="p">:</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span>
+<p>A <code class="highlighter-rouge">Page</code> object represents a scanned document page and has the following fields:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Page</span> <span class="p">{</span>
+    <span class="nl">pageId</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">polygon</span><span class="p">:</span> <span class="nx">Point</span><span class="p">[];</span>
+    <span class="nl">detectionResult</span><span class="p">:</span> <span class="nx">DetectionStatus</span><span class="p">;</span>
+    <span class="nl">filter</span><span class="p">:</span> <span class="nx">ImageFilter</span><span class="p">;</span>
+    <span class="nl">documentImageSizeLimit</span><span class="p">?:</span> <span class="nx">Size</span><span class="p">;</span>
+    <span class="nl">originalImageFileUri</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">documentImageFileUri</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">originalPreviewImageFileUri</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">documentPreviewImageFileUri</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -701,7 +703,7 @@ but will not automatically re-crop the original image.</li>
 that produced the page (either the document scanner or <code class="highlighter-rouge">detectDocument()</code>).</li>
   <li><code class="highlighter-rouge">filter</code> - the <a href="#imageFilter">image filter</a> which was applied on the document image of this page.</li>
   <li><code class="highlighter-rouge">documentImageSizeLimit</code> - limits the maximum resolution (width, height) of the document image. 
-If <code class="highlighter-rouge">null</code> is passed, this property is effectively ignored. If specified, <code class="highlighter-rouge">width</code> and <code class="highlighter-rouge">height</code> must be &gt; 0.</li>
+ If <code class="highlighter-rouge">null</code> is passed, this property is effectively ignored. If specified, <code class="highlighter-rouge">width</code> and <code class="highlighter-rouge">height</code> must be &gt; 0.</li>
   <li><code class="highlighter-rouge">originalImageFileUri</code> - file URI of the original image</li>
   <li><code class="highlighter-rouge">documentImageFileUri</code> - file URI of the cropped document image (if document detection was successful)</li>
   <li><code class="highlighter-rouge">originalPreviewImageFileUri</code> - file URI of a screen-sized preview of the original image</li>
@@ -717,6 +719,56 @@ All URI properties of a page have a <code class="highlighter-rouge">?minihash=</
 with the hash of a portion of the image file. 
 Different images will almost always have a different hash and therefore a different URI, 
 which will force the WebView to reload the page’s images when changed.</p>
+
+<p><a name="persistencePageObject"></a></p>
+<h3 id="persistence-of-page-objects">Persistence of Page Objects</h3>
+<p>Scanbot SDK does <strong>not</strong> persist page objects, only the image files (.jpg or .png).
+The management of page objects and the persistence of the page metadata is left to the app.
+Depending on the use case, it may be necessary to persist the data of the page objects in the app 
+(e.g. as JSON in a local SQLite database). If this is the case, the following must be considered.</p>
+
+<p>The Page objects contain absolute paths to the image files:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">pageId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">60426F47-4119-48F8-ADA9-F7E60D583CB4</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">filter</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">NONE</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">detectionResult</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">OK</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">polygon</span><span class="dl">"</span><span class="p">:</span> <span class="p">[{</span><span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.17427248677248677</span><span class="p">,</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.1212797619047619</span><span class="p">},{</span><span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.8604497354497355</span><span class="p">,</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.13120039682539678</span><span class="p">},{</span><span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.8349867724867724</span><span class="p">,</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.9729662698412699</span><span class="p">},{</span><span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.12202380952380967</span><span class="p">,</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.9471726190476191</span><span class="p">}],</span>
+  <span class="dl">"</span><span class="s2">documentPreviewImageFileUri</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4_preview.jpg?minihash=a236a8ba5510cd0f4e88bd2045f52c4e</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">originalImageFileUri</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/originals/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg?minihash=4e9f0446421343eaaa1e415fdb446a12</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">originalPreviewImageFileUri</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/originals/60426F47-4119-48F8-ADA9-F7E60D583CB4_preview.jpg?minihash=da888cd42db07e52b15a6ada29a37b63</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">documentImageFileUri</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg?minihash=f9aab62cc37fec555abe94c83406a1b3</span><span class="dl">"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The page image files are stored in corresponding storage locations - also see the <a href="#storage">Storage</a> section.
+By default, the Scanbot SDK Android uses the internal files directory of the app, whereas the Scanbot SDK iOS uses 
+the <strong>“Application Support”</strong> folder. Those storage folders are secure and are not affected by an app update.</p>
+
+<p>However, on iOS, the <strong>absolute</strong> file path of the “Application Support” folder is not reliable.
+For each fresh install of an app, a new UUID is generated, in the following format:
+<code class="highlighter-rouge">/var/mobile/Containers/Data/Application/{UUID}</code>. That is where application data is stored.
+When updating the app, the uuid <strong>may</strong> change. For example:</p>
+
+<p>Before an app update:</p>
+
+<p><code class="highlighter-rouge">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg</code></p>
+
+<p>After the app update:</p>
+
+<p><code class="highlighter-rouge">file:///var/mobile/Containers/Data/Application/C9181555-252A-4665-892F-793008ED0EDD/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg</code></p>
+
+<p>Please note that the actual image files are still there, only the absolute file paths change.</p>
+
+<p>To get to the new absolute paths, the API method <code class="highlighter-rouge">refreshImageUris({pages: Page []})</code> has been introduced 
+in the plugin version 4.4.0. Please use this method to refresh all image file URIs from affected pages:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">refreshImageUris</span><span class="p">({</span><span class="na">pages</span><span class="p">:</span> <span class="nx">loadedPages</span><span class="p">});</span>
+<span class="kd">const</span> <span class="nx">refreshedPages</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">pages</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>It’s highly recommended using this method whenever you have to (re-)load JSON Page objects 
+from the database of your app, regardless of whether there was an app update or not.</p>
 
 <p><a name="module_ScanbotSdk.UI.startDocumentScanner"></a></p>
 <h3 id="document-scanner">Document Scanner</h3>
@@ -750,239 +802,238 @@ If multi-page mode is not enabled and <code class="highlighter-rouge">result.sta
 <h5 id="options-1">Options:</h5>
 <p>All UI configuration options are optional.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">uiConfigs</span><span class="p">:</span> <span class="p">{</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">DocumentScannerConfiguration</span>
+<span class="p">{</span>
     <span class="cm">/**
-    * The minimum score in percent (0 - 100) of the perspective distortion to accept a detected document.
-    * Default is 75.0.
-    */</span>
-    <span class="na">acceptedAngleScore</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
+     * The minimum score in percent (0 - 100) of the perspective distortion to accept a detected document.
+     * Default is 75.0.
+     */</span>
+    <span class="nl">acceptedAngleScore</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
     <span class="cm">/**
-    * The minimum document width or height in percent (0 - 100) of the screen size to accept a detected document.
-    * Default is 80.0.
-    */</span>
-    <span class="na">acceptedSizeScore</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
+     * The minimum document width or height in percent (0 - 100) of the screen size to accept a detected document.
+     * Default is 80.0.
+     */</span>
+    <span class="nl">acceptedSizeScore</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
     <span class="cm">/**
-    * Controls whether the auto-snapping toggle button is hidden or not.
-    */</span>
-    <span class="na">autoSnappingButtonHidden</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+     * Controls whether the auto-snapping toggle button is hidden or not.
+     */</span>
+    <span class="nl">autoSnappingButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
     <span class="cm">/**
-    * Title of the auto-snapping toggle button.
-    */</span>
-    <span class="na">autoSnappingButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Title of the auto-snapping toggle button.
+     */</span>
+    <span class="nl">autoSnappingButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * When auto-snapping is enabled the document scanner will take a photo automatically
-    * when a document is detected, conditions are good and the auto-snapping time-out elapses. In this
-    * mode the user can still tap the shutter button to snap a document.
-    */</span>
-    <span class="na">autoSnappingEnabled</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+     * When auto-snapping is enabled the document scanner will take a photo automatically
+     * when a document is detected, conditions are good and the auto-snapping time-out elapses. In this
+     * mode the user can still tap the shutter button to snap a document.
+     */</span>
+    <span class="nl">autoSnappingEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
     <span class="cm">/**
-    * Controls the auto-snapping speed. Sensitivity must be within the 0..1 range.
-    * A value of 1.0 triggers automatic capturing immediately, a value of 0.0 delays the automatic by 3 seconds.
-    * The default value is 0.66 (1 second).
-    */</span>
-    <span class="na">autoSnappingSensitivity</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
+     * Controls the auto-snapping speed. Sensitivity must be within the 0..1 range.
+     * A value of 1.0 triggers automatic capturing immediately, a value of 0.0 delays the automatic by 3 seconds.
+     * The default value is 0.66 (1 second).
+     */</span>
+    <span class="nl">autoSnappingSensitivity</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
     <span class="cm">/**
-    * The background color of the bottom shutter-bar.
-    */</span>
-    <span class="na">bottomBarBackgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * The background color of the bottom shutter-bar.
+     */</span>
+    <span class="nl">bottomBarBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * The color of the title of all buttons in the bottom shutter-bar (Cancel button, etc.),
-    * as well as the camera permission prompt button.
-    */</span>
-    <span class="na">bottomBarButtonsColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * The color of the title of all buttons in the bottom shutter-bar (Cancel button, etc.),
+     * as well as the camera permission prompt button.
+     */</span>
+    <span class="nl">bottomBarButtonsColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * The color of the camera background (relevant only when the camera preview mode is CameraPreviewMode.FIT_IN).
-    */</span>
-    <span class="na">cameraBackgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * The color of the camera background (relevant only when the camera preview mode is CameraPreviewMode.FIT_IN).
+     */</span>
+    <span class="nl">cameraBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Preview mode of the camera: Fit-In or Fill-In.
-    * Optional, default is Fit-In.
-    */</span>
-    <span class="na">cameraPreviewMode</span><span class="p">:</span> <span class="nx">CameraPreviewMode</span><span class="p">,</span>
+     * Preview mode of the camera: Fit-In or Fill-In.
+     * Optional, default is Fit-In.
+     */</span>
+    <span class="nl">cameraPreviewMode</span><span class="p">?:</span> <span class="nx">CameraPreviewMode</span><span class="p">;</span>
     <span class="cm">/**
-    * Title of the cancel button.
-    */</span>
-    <span class="na">cancelButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Title of the cancel button.
+     */</span>
+    <span class="nl">cancelButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Title of the button that opens the screen where the user can allow
-    * the usage of the camera by the app.
-    */</span>
-    <span class="na">enableCameraButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Title of the button that opens the screen where the user can allow
+     * the usage of the camera by the app.
+     */</span>
+    <span class="nl">enableCameraButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Text that will be displayed when the app
-    * is not allowed to use the camera, prompting the user
-    * to enable the usage of the camera.
-    */</span>
-    <span class="na">enableCameraExplanationText</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Text that will be displayed when the app
+     * is not allowed to use the camera, prompting the user
+     * to enable the usage of the camera.
+     */</span>
+    <span class="nl">enableCameraExplanationText</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Controls whether the flash toggle button is hidden or not.
-    */</span>
-    <span class="na">flashButtonHidden</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+     * Controls whether the flash toggle button is hidden or not.
+     */</span>
+    <span class="nl">flashButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
     <span class="cm">/**
-    * Title of the flash toggle button.
-    */</span>
-    <span class="na">flashButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Title of the flash toggle button.
+     */</span>
+    <span class="nl">flashButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Controls whether the flash should be initially enabled.
-    * The default value is FALSE.
-    */</span>
-    <span class="na">flashEnabled</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
-    <span class="na">flashImageButtonHidden</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+     * Controls whether the flash should be initially enabled.
+     * The default value is FALSE.
+     */</span>
+    <span class="nl">flashEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="nl">flashImageButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
     <span class="cm">/**
-    * Sets whether to ignore the OK_BUT_BAD_ASPECT_RATIO detection status.
-    * By default BadAspectRatio is not ignored.
-    */</span>
-    <span class="na">ignoreBadAspectRatio</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+     * Sets whether to ignore the net.doo.snap.lib.detector.DetectionResult.OK_BUT_BAD_ASPECT_RATIO detection status.
+     * By default BadAspectRatio is not ignored.
+     */</span>
+    <span class="nl">ignoreBadAspectRatio</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
     <span class="cm">/**
-    * The image scaling factor. The factor must be within the 0..1 range.
-    * A factor of 1 means that the resulting images retain their original size.
-    * When the factor is less than 1, resulting images will be made smaller by that factor.
-    * By default the scale is 1.
-    */</span>
-    <span class="na">imageScale</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
+     * The image scaling factor. The factor must be within the 0..1 range.
+     * A factor of 1 means that the resulting images retain their original size.
+     * When the factor is less than 1, resulting images will be made smaller by that factor.
+     * By default the scale is 1.
+     */</span>
+    <span class="nl">imageScale</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
     <span class="cm">/**
-    * Controls whether the multi-page toggle button is hidden or not.
-    */</span>
-    <span class="na">multiPageButtonHidden</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+     * Controls whether the multi-page toggle button is hidden or not.
+     */</span>
+    <span class="nl">multiPageButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
     <span class="cm">/**
-    * Title of the multi-page mode toggle button.
-    */</span>
-    <span class="na">multiPageButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Title of the multi-page mode toggle button.
+     */</span>
+    <span class="nl">multiPageButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Controls multi-page mode. When enabled, the user can take multiple document photos before
-    * closing the screen by tapping the page counter button. When disabled, the screen will be
-    * closed immediately after the first document photo is made.
-    * The default value is FALSE.
-    */</span>
-    <span class="na">multiPageEnabled</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+     * Controls multi-page mode. When enabled, the user can take multiple document photos before
+     * closing the screen by tapping the page counter button. When disabled, the screen will be
+     * closed immediately after the first document photo is made.
+     * The default value is FALSE.
+     */</span>
+    <span class="nl">multiPageEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
     <span class="cm">/**
      * Orientation lock mode of the UI, the camera preview, and the output images.
      * By default the orientation is not locked.
      */</span>
-    <span class="na">orientationLockMode</span><span class="p">:</span> <span class="nx">CameraOrientationMode</span><span class="p">,</span>
+    <span class="nl">orientationLockMode</span><span class="p">?:</span> <span class="nx">CameraOrientationMode</span><span class="p">;</span>
     <span class="cm">/**
-    * Title suffix of the button that finishes the document scanning when multi-page scanning is enabled.
-    * The button's title has the format "# Pages", where # shows the number of images captured up to now and the
-    * suffix "Pages" is set using this method.
-    */</span>
-    <span class="na">pageCounterButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Title suffix of the button that finishes the document scanning when multi-page scanning is enabled.
+     * The button's title has the format "# Pages", where # shows the number of images captured up to now and the
+     * suffix "Pages" is set using this method.
+     */</span>
+    <span class="nl">pageCounterButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * The background color of the detected document outline when the document's angle, size or aspect ratio
-    * is not yet sufficiently good.
-    * (All net.doo.snap.lib.detector.DetectionResult with OK_BUT_XXX).
-    */</span>
-    <span class="na">polygonBackgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * The background color of the detected document outline when the document's angle, size or aspect ratio
+     * is not yet sufficiently good.
+     * (All net.doo.snap.lib.detector.DetectionResult with OK_BUT_XXX).
+     */</span>
+    <span class="nl">polygonBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * The background color of the detected document outline when we are ready to snap OK.
-    */</span>
-    <span class="na">polygonBackgroundColorOK</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * The background color of the detected document outline when we are ready to snap net.doo.snap.lib.detector.DetectionResult.OK.
+     */</span>
+    <span class="nl">polygonBackgroundColorOK</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * The color of the detected document outline when the document's angle, size or aspect ratio
-    * is not yet sufficiently good.
-    * (All detection statuses in net.doo.snap.lib.detector.DetectionResult that have the OK_BUT_XXX prefix).
-    */</span>
-    <span class="na">polygonColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * The color of the detected document outline when the document's angle, size or aspect ratio
+     * is not yet sufficiently good.
+     * (All detection statuses in net.doo.snap.lib.detector.DetectionResult that have the OK_BUT_XXX prefix).
+     */</span>
+    <span class="nl">polygonColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * The color of the detected document outline when we are ready to snap OK.
-    */</span>
-    <span class="na">polygonColorOK</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * The color of the detected document outline when we are ready to snap net.doo.snap.lib.detector.DetectionResult.OK.
+     */</span>
+    <span class="nl">polygonColorOK</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Width of the detected document outline.
-    */</span>
-    <span class="na">polygonLineWidth</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
+     * Width of the detected document outline.
+     */</span>
+    <span class="nl">polygonLineWidth</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
     <span class="cm">/**
-    * The foreground color of the shutter button in auto-snapping mode.
-    */</span>
-    <span class="na">shutterButtonAutoInnerColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * The foreground color of the shutter button in auto-snapping mode.
+     */</span>
+    <span class="nl">shutterButtonAutoInnerColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * The background color of the shutter button in auto-snapping mode.
-    */</span>
-    <span class="na">shutterButtonAutoOuterColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
-    <span class="na">shutterButtonIndicatorColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * The background color of the shutter button in auto-snapping mode.
+     */</span>
+    <span class="nl">shutterButtonAutoOuterColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">shutterButtonIndicatorColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * The foreground color of the shutter button in manual mode.
-    */</span>
-    <span class="na">shutterButtonManualInnerColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * The foreground color of the shutter button in manual mode.
+     */</span>
+    <span class="nl">shutterButtonManualInnerColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * The background color of the shutter button in manual mode.
-    */</span>
-    <span class="na">shutterButtonManualOuterColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * The background color of the shutter button in manual mode.
+     */</span>
+    <span class="nl">shutterButtonManualOuterColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Text hint that will be shown when the current detection status is OK_BUT_BAD_ANGLES
-    */</span>
-    <span class="na">textHintBadAngles</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Text hint that will be shown when the current detection status is net.doo.snap.lib.detector.DetectionResult.OK_BUT_BAD_ANGLES
+     */</span>
+    <span class="nl">textHintBadAngles</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Text hint that will be shown when the current detection status is OK_BUT_BAD_ASPECT_RATIO
-    */</span>
-    <span class="na">textHintBadAspectRatio</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Text hint that will be shown when the current detection status is net.doo.snap.lib.detector.DetectionResult.OK_BUT_BAD_ASPECT_RATIO
+     */</span>
+    <span class="nl">textHintBadAspectRatio</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Text hint that will be shown when the current detection status is ERROR_NOTHING_DETECTED
-    */</span>
-    <span class="na">textHintNothingDetected</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Text hint that will be shown when the current detection status is net.doo.snap.lib.detector.DetectionResult.ERROR_NOTHING_DETECTED
+     */</span>
+    <span class="nl">textHintNothingDetected</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Text hint that will be shown when the current detection status is OK
-    */</span>
-    <span class="na">textHintOK</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Text hint that will be shown when the current detection status is net.doo.snap.lib.detector.DetectionResult.OK
+     */</span>
+    <span class="nl">textHintOK</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Text hint that will be shown when the current detection status is ERROR_TOO_DARK
-    */</span>
-    <span class="na">textHintTooDark</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Text hint that will be shown when the current detection status is net.doo.snap.lib.detector.DetectionResult.ERROR_TOO_DARK
+     */</span>
+    <span class="nl">textHintTooDark</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Text hint that will be shown when the current detection status is ERROR_TOO_NOISY
-    */</span>
-    <span class="na">textHintTooNoisy</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Text hint that will be shown when the current detection status is net.doo.snap.lib.detector.DetectionResult.ERROR_TOO_NOISY
+     */</span>
+    <span class="nl">textHintTooNoisy</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Text hint that will be shown when the current detection status is OK_BUT_TOO_SMALL
-    */</span>
-    <span class="na">textHintTooSmall</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Text hint that will be shown when the current detection status is net.doo.snap.lib.detector.DetectionResult.OK_BUT_TOO_SMALL
+     */</span>
+    <span class="nl">textHintTooSmall</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * The background color of the top toolbar.
-    */</span>
-    <span class="na">topBarBackgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * The background color of the top toolbar.
+     */</span>
+    <span class="nl">topBarBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * The color of all active toggle buttons in the toolbar.
-    */</span>
-    <span class="na">topBarButtonsActiveColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * The color of all active toggle buttons in the toolbar.
+     */</span>
+    <span class="nl">topBarButtonsActiveColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * The color of all inactive toggle buttons in the toolbar.
-    */</span>
-    <span class="na">topBarButtonsInactiveColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * The color of all inactive toggle buttons in the toolbar.
+     */</span>
+    <span class="nl">topBarButtonsInactiveColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * The background color of the user guidance hints.
-    */</span>
-    <span class="na">userGuidanceBackgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * The background color of the user guidance hints.
+     */</span>
+    <span class="nl">userGuidanceBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * The text color of the user guidance hints.
-    */</span>
-    <span class="na">userGuidanceTextColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * The text color of the user guidance hints.
+     */</span>
+    <span class="nl">userGuidanceTextColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
      * Limits the maximum size of the document image. If width or height are zero, this property is effectively ignored.
-     * Where Size is 
-     * {
-     * width: number;
-     * height: number;
-     * }
      */</span>
-    <span class="na">documentImageSizeLimit</span><span class="p">:</span> <span class="nx">Size</span><span class="p">;</span>
+    <span class="nl">documentImageSizeLimit</span><span class="p">?:</span> <span class="nx">Size</span><span class="p">;</span>
     <span class="cm">/**
      * Hides the shutter button if set to TRUE. Shows it otherwise. Defaults to FALSE.
      * If set to TRUE, auto-snapping is enabled and the property autoSnappingEnabled of the behaviour configuration will
      * have no effect.
      * Also the auto-snapping button will be hidden.
      */</span>
-    <span class="nl">shutterButtonHidden</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">;</span>
-    <span class="cm">/** 
-     * The text being displayed on the user-guidance label, when the scanners energy saver is activated. 
+    <span class="nl">shutterButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * The text being displayed on the user-guidance label, when the scanners energy saver is activated.
      * iOS only.
      */</span>
-    <span class="nl">textHintEnergySavingActive</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">textHintEnergySavingActive</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
      * Maximum number of pages to scan. Ignored when set to null, or when `multiPageEnabled` is FALSE. Default value is null.
      */</span>
-    <span class="nx">maxNumberOfPages</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">};</span>
+    <span class="nl">maxNumberOfPages</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="cm">/**
+     * Controls whether buttons should use all capitals style, as defined by the Android Material Design. Defaults to TRUE.
+     * Android only.
+     */</span>
+    <span class="nl">useButtonsAllCaps</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <p><a name="module_ScanbotSdk.UI.startCroppingScreen"></a></p>
@@ -1019,84 +1070,95 @@ and contains some smart UI elements like magnetic lines and a magnifier.</p>
 
 <p>All UI configuration settings are optional.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">page</span><span class="p">:</span> <span class="p">{</span> <span class="cm">/* the page object to display in the UI */</span> <span class="p">},</span>
-  <span class="na">uiConfigs</span><span class="p">:</span> <span class="p">{</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">CroppingScreenConfiguration</span>
+<span class="p">{</span>
     <span class="cm">/**
-    * Background color of the main screen.
-    */</span>
-    <span class="na">backgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * String being displayed as a hint. Empty by default.
+     */</span>
+    <span class="nl">hintTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Background color of the bottom toolbar.
-    */</span>
-    <span class="na">bottomBarBackgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Text color of the hint title.
+     */</span>
+    <span class="nl">hintTitleColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Color of the titles of all buttons in the bottom toolbar (Rotate button).
-    */</span>
-    <span class="na">bottomBarButtonsColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Background color of the main screen.
+     */</span>
+    <span class="nl">backgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Title of the cancel button.
-    */</span>
-    <span class="na">cancelButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Background color of the bottom toolbar.
+     */</span>
+    <span class="nl">bottomBarBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Title of the Done button.
-    */</span>
-    <span class="na">doneButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Color of the titles of all buttons in the bottom toolbar (Rotate button).
+     */</span>
+    <span class="nl">bottomBarButtonsColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Default color of the cropping outline.
-    */</span>
-    <span class="na">polygonColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Title of the cancel button.
+     */</span>
+    <span class="nl">cancelButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Outline color of magnetically snapped edges.
-    */</span>
-    <span class="na">polygonColorMagnetic</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Title of the Done button.
+     */</span>
+    <span class="nl">doneButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Width of the cropping outline.
-    */</span>
-    <span class="na">polygonLineWidth</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
+     * Default color of the cropping outline.
+     */</span>
+    <span class="nl">polygonColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Title of the Rotate button.
-    */</span>
-    <span class="na">rotateButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Outline color of magnetically snapped edges.
+     */</span>
+    <span class="nl">polygonColorMagnetic</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Background color of the top toolbar.
-    */</span>
-    <span class="na">topBarBackgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Width of the cropping outline.
+     */</span>
+    <span class="nl">polygonLineWidth</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
     <span class="cm">/**
-    * Color of the titles of all buttons in the top toolbar (Cancel and Done buttons).
-    */</span>
-    <span class="na">topBarButtonsColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Title of the Rotate button.
+     */</span>
+    <span class="nl">rotateButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Background color of the top toolbar.
+     */</span>
+    <span class="nl">topBarBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Color of the titles of all buttons in the top toolbar (Cancel and Done buttons).
+     */</span>
+    <span class="nl">topBarButtonsColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
      * Title in the top bar (iOS only).
      */</span>
-    <span class="na">topBarTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nl">topBarTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
      * Color of the title in the top bar (iOS only).
      */</span>
-    <span class="na">titleColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nl">titleColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
      * Title of the Detect button.
      */</span>
-    <span class="na">detectButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nl">detectButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
      * Title of the Reset button.
      */</span>
-    <span class="na">resetButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nl">resetButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
      * Controls whether the Rotate button is hidden or not.
      */</span>
-    <span class="na">rotateButtonHidden</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+    <span class="nl">rotateButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
     <span class="cm">/**
      * Controls whether the Detect/Reset button is hidden or not.
      */</span>
-    <span class="na">detectResetButtonHidden</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+    <span class="nl">detectResetButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
     <span class="cm">/**
      * UI orientation lock mode: PORTRAIT, LANDSCAPE, etc.
      * By default the UI is not locked.
      */</span>
-    <span class="na">orientationLockMode</span><span class="p">:</span> <span class="nx">UIOrientationMode</span><span class="p">,</span>
-  <span class="p">}</span>
-<span class="p">};</span>
+    <span class="nl">orientationLockMode</span><span class="p">?:</span> <span class="nx">UIOrientationMode</span><span class="p">;</span>
+    <span class="cm">/**
+     * Controls whether buttons should use all capitals style, as defined by the Android Material Design. Defaults to TRUE.
+     * Android only.
+     */</span>
+    <span class="nl">useButtonsAllCaps</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <p><a name="module_ScanbotSdk.UI.startBarcodeScanner"></a></p>
@@ -1135,25 +1197,13 @@ barcode/QR code (e.g. <code class="highlighter-rouge">CODE_128</code>, <code cla
 <p><code class="highlighter-rouge">uiConfigs.barcodeFormats</code> is an optional array of <a href="#barcodeFormat">barcode formats</a> 
 that act as a detection filter. By default all supported formats will be detected.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">uiConfigs</span><span class="p">:</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">BarcodeScannerConfiguration</span>
+<span class="p">{</span>
     <span class="cm">/**
-     * Allowed orientations for automatic interface rotations. *
+     * Orientation lock mode of the UI and the camera preview.
+     * By default the orientation is not locked.
      */</span>
-    <span class="nx">allowedInterfaceOrientations</span><span class="p">?:</span> <span class="nx">UIInterfaceOrientationMask</span><span class="p">;</span>
-    <span class="cm">/**
-     * Specifies the way of barcode images generation or disables this generation at all.
-     * Use, if you want to receive a full sized image with barcodes. Defaults to NONE.
-     */</span>
-    <span class="nx">barcodeImageGenerationType</span><span class="p">?:</span> <span class="nx">BarcodeImageGenerationType</span><span class="p">;</span>
-    <span class="cm">/**
-     * Foreground color of the flash button when flash is on.
-     */</span>
-    <span class="nx">bottomButtonsActiveColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-    <span class="cm">/**
-     * Foreground color of the flash button when flash is off.
-     */</span>
-    <span class="nx">bottomButtonsInactiveColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nx">orientationLockMode</span><span class="p">?:</span> <span class="nx">CameraOrientationMode</span><span class="p">;</span>
     <span class="cm">/**
      * Background color of the detection overlay.
      */</span>
@@ -1167,10 +1217,10 @@ that act as a detection filter. By default all supported formats will be detecte
      */</span>
     <span class="nx">cancelButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-     * Relative height of finder frame. Together with finderWidth it defines the aspect ratio, which is used to build actual finder frame. Default is 1.
-     * For example if finderWidth and finderHeight both equals 1 - it will make a square frame, which is good for QR capturing.
+     * Aspect ratio of finder frame (width \ height), which is used to build actual finder frame.
+     * Default is 1 - it is a square frame, which is good for QR capturing.
      */</span>
-    <span class="nx">finderHeight</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="nx">finderAspectRatio</span><span class="p">?:</span> <span class="nx">FinderAspectRatio</span><span class="p">;</span>
     <span class="cm">/**
      * Foreground color of the detection overlay.
      */</span>
@@ -1188,10 +1238,9 @@ that act as a detection filter. By default all supported formats will be detecte
      */</span>
     <span class="nx">finderTextHintColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-     * Relative width of finder frame. Together with finderHeight it defines the aspect ratio, which is used to build actual finder frame. Default is 1.
-     * For example if finderWidth and finderHeight both equals 1 - it will make a square frame, which is good for QR capturing.
+     * Foreground color of the flash button when flash is off.
      */</span>
-    <span class="nx">finderWidth</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="nx">flashButtonInactiveColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
      * String being displayed on the flash button.
      */</span>
@@ -1209,15 +1258,24 @@ that act as a detection filter. By default all supported formats will be detecte
      */</span>
     <span class="nx">topBarBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-     * Foreground color of the cancel button.
+     * Foreground color of the cancel button and when flash button is on.
      */</span>
     <span class="nx">topBarButtonsColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
      * Accepted barcode formats
      */</span>
     <span class="nx">barcodeFormats</span><span class="p">?:</span> <span class="nx">BarcodeFormat</span><span class="p">[];</span>
-  <span class="p">}</span>
-<span class="p">};</span>
+    <span class="cm">/**
+     * Specifies the way of barcode images generation or disables this generation at all.
+     * Use, if you want to receive a full sized image with barcodes. Defaults to NONE.
+     */</span>
+    <span class="nx">barcodeImageGenerationType</span><span class="p">?:</span> <span class="nx">BarcodeImageGenerationType</span><span class="p">;</span>
+    <span class="cm">/**
+     * Controls whether buttons should use all capitals style, as defined by the Android Material Design. Defaults to TRUE.
+     * Android only.
+     */</span>
+    <span class="nx">useButtonsAllCaps</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <p><a name="module_ScanbotSdk.UI.startBatchBarcodeScanner"></a></p>
@@ -1254,116 +1312,120 @@ barcode/QR code (e.g. <code class="highlighter-rouge">CODE_128</code>, <code cla
 <p><code class="highlighter-rouge">uiConfigs.barcodeFormats</code> is an optional array of <a href="#barcodeFormat">barcode formats</a> 
 that act as a detection filter. By default all supported formats will be detected.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
- * Allowed orientations for automatic interface rotations. *
- */</span>
-<span class="nx">allowedInterfaceOrientations</span><span class="p">?:</span> <span class="nx">UIInterfaceOrientationMask</span><span class="p">;</span>
-<span class="cm">/**
- * String used for displaying amount of scanned barcodes. Use %d for number formatting symbol.
- */</span>
-<span class="nx">barcodesCountText</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Text color of the barcodes count label.
- */</span>
-<span class="nx">barcodesCountTextColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Background color of the detection overlay.
- */</span>
-<span class="nx">cameraOverlayColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Whether the cancel button is hidden or not.
- */</span>
-<span class="nx">cancelButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
-<span class="cm">/**
- * String being displayed on the cancel button.
- */</span>
-<span class="nx">cancelButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * String being displayed on the clear button.
- */</span>
-<span class="nx">clearButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * String being displayed on the delete button.
- */</span>
-<span class="nx">deleteButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Foreground color of the top bar buttons on the details screen.
- */</span>
-<span class="nx">detailsActionColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Background color of the details screen.
- */</span>
-<span class="nx">detailsBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Text color in the details barcodes list. Also affects image background, separator and progress spinner.
- */</span>
-<span class="nx">detailsPrimaryColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * String used to show process of fetching mapped data for barcodes.
- */</span>
-<span class="nx">fetchingStateText</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Aspect ratio of finder frame (width \ height), which is used to build actual finder frame.
- * Default is 1 - it is a square frame, which is good for QR capturing.
- */</span>
-<span class="nx">finderAspectRatio</span><span class="p">?:</span> <span class="nx">FinderAspectRatio</span><span class="p">;</span>
-<span class="cm">/**
- * Foreground color of the detection overlay.
- */</span>
-<span class="nx">finderLineColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Width of finder frame border. Default is 2.
- */</span>
-<span class="nx">finderLineWidth</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
-<span class="cm">/**
- * String being displayed as description.
- */</span>
-<span class="nx">finderTextHint</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Foreground color of the description label.
- */</span>
-<span class="nx">finderTextHintColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Whether flash is toggled on or off.
- */</span>
-<span class="nx">flashEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
-<span class="cm">/**
- * String to show that no barcodes were scanned yet.
- */</span>
-<span class="nx">noBarcodesTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Enables or disables the barcode detection.
- */</span>
-<span class="nx">recognitionEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
-<span class="cm">/**
- * String being displayed on the submit button.
- */</span>
-<span class="nx">submitButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Whether scanner screen should make a sound on successful barcode or MRZ detection.
- */</span>
-<span class="nx">successBeepEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
-<span class="cm">/**
- * Background color of the top bar.
- */</span>
-<span class="nx">topBarBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Foreground color of the top bar buttons on the scanning screen.
- */</span>
-<span class="nx">topBarButtonsColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Foreground color of the flash button when flash is off.
- */</span>
-<span class="nx">topBarButtonsInactiveColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Accepted barcode formats
- */</span>
-<span class="nx">barcodeFormats</span><span class="p">?:</span> <span class="nx">BarcodeFormat</span><span class="p">[];</span>
-<span class="cm">/**
- * Specifies the way of barcode images generation or disables this generation at all.
- * Use, if you want to receive a full sized image with barcodes. Defaults to NONE.
- */</span>
-<span class="nx">barcodeImageGenerationType</span><span class="p">?:</span> <span class="nx">BarcodeImageGenerationType</span><span class="p">;</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">BatchBarcodeScannerConfiguration</span>
+<span class="p">{</span>
+    <span class="cm">/**
+     * Orientation lock mode of the UI and the camera preview.
+     * By default the orientation is not locked.
+     */</span>
+    <span class="nl">orientationLockMode</span><span class="p">?:</span> <span class="nx">CameraOrientationMode</span><span class="p">;</span>
+    <span class="cm">/**
+     * String used for displaying amount of scanned barcodes. Use %d for number formatting symbol.
+     */</span>
+    <span class="nl">barcodesCountText</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Text color of the barcodes count label.
+     */</span>
+    <span class="nl">barcodesCountTextColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Background color of the detection overlay.
+     */</span>
+    <span class="nl">cameraOverlayColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Whether the cancel button is hidden or not.
+     */</span>
+    <span class="nl">cancelButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed on the cancel button.
+     */</span>
+    <span class="nl">cancelButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed on the clear button.
+     */</span>
+    <span class="nl">clearButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed on the delete button.
+     */</span>
+    <span class="nl">deleteButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the top bar buttons on the details screen.
+     */</span>
+    <span class="nl">detailsActionColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Background color of the details screen.
+     */</span>
+    <span class="nl">detailsBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Text color in the details barcodes list. Also affects image background, separator and progress spinner.
+     */</span>
+    <span class="nl">detailsPrimaryColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String used to show process of fetching mapped data for barcodes.
+     */</span>
+    <span class="nl">fetchingStateText</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Aspect ratio of finder frame (width \ height), which is used to build actual finder frame.
+     * Default is 1 - it is a square frame, which is good for QR capturing.
+     */</span>
+    <span class="nl">finderAspectRatio</span><span class="p">?:</span> <span class="nx">FinderAspectRatio</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the detection overlay.
+     */</span>
+    <span class="nl">finderLineColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Width of finder frame border. Default is 2.
+     */</span>
+    <span class="nl">finderLineWidth</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed as description.
+     */</span>
+    <span class="nl">finderTextHint</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the description label.
+     */</span>
+    <span class="nl">finderTextHintColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Whether flash is toggled on or off.
+     */</span>
+    <span class="nl">flashEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * String to show that no barcodes were scanned yet.
+     */</span>
+    <span class="nl">noBarcodesTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Enables or disables the barcode detection.
+     */</span>
+    <span class="nl">recognitionEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed on the submit button.
+     */</span>
+    <span class="nl">submitButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Whether scanner screen should make a sound on successful barcode or MRZ detection.
+     */</span>
+    <span class="nl">successBeepEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * Background color of the top bar.
+     */</span>
+    <span class="nl">topBarBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the top bar buttons on the scanning screen.
+     */</span>
+    <span class="nl">topBarButtonsColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the flash button when flash is off.
+     */</span>
+    <span class="nl">topBarButtonsInactiveColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Accepted barcode formats
+     */</span>
+    <span class="nl">barcodeFormats</span><span class="p">?:</span> <span class="nx">BarcodeFormat</span><span class="p">[];</span>
+    <span class="cm">/**
+     * Controls whether buttons should use all capitals style, as defined by the Android Material Design. Defaults to TRUE.
+     * Android only.
+     */</span>
+    <span class="nl">useButtonsAllCaps</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <p><a name="module_ScanbotSdk.UI.startMrzScanner"></a></p>
@@ -1406,78 +1468,82 @@ if the user canceled the operation (tapped on the “cancel” button).</li>
 <p>The finder window must have a width-to-height of 5, 
 otherwise the detection process will fail. All other settings are optional.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">uiConfigs</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">bottomButtonsActiveColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
-    <span class="na">bottomButtonsInactiveColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">MrzScannerConfiguration</span>
+<span class="p">{</span>
+    <span class="nl">bottomButtonsActiveColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">bottomButtonsInactiveColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Background color outside of the finder window.
-    */</span>
-    <span class="na">cameraOverlayColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Background color outside of the finder window.
+     */</span>
+    <span class="nl">cameraOverlayColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Title of the cancel button.
-    */</span>
-    <span class="na">cancelButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Title of the cancel button.
+     */</span>
+    <span class="nl">cancelButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Title of the button that opens the screen where the user can allow
-    * the usage of the camera by the app.
-    */</span>
-    <span class="na">enableCameraButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Title of the button that opens the screen where the user can allow
+     * the usage of the camera by the app.
+     */</span>
+    <span class="nl">enableCameraButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Text that will be displayed when the app
-    * is not allowed to use the camera, prompting the user
-    * to enable the usage of the camera.
-    */</span>
-    <span class="na">enableCameraExplanationText</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Text that will be displayed when the app
+     * is not allowed to use the camera, prompting the user
+     * to enable the usage of the camera.
+     */</span>
+    <span class="nl">enableCameraExplanationText</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Height of the finder window in pixels.
-    */</span>
-    <span class="na">finderHeight</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
+     * Height of the finder window in pixels.
+     */</span>
+    <span class="nl">finderHeight</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
     <span class="cm">/**
-    * Color of the finder window's outline.
-    */</span>
-    <span class="na">finderLineColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Color of the finder window's outline.
+     */</span>
+    <span class="nl">finderLineColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Thickness of the finder window's outline.
-    */</span>
-    <span class="na">finderLineWidth</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
+     * Thickness of the finder window's outline.
+     */</span>
+    <span class="nl">finderLineWidth</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
     <span class="cm">/**
-    * Text hint shown under the finder window.
-    */</span>
-    <span class="na">finderTextHint</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Text hint shown under the finder window.
+     */</span>
+    <span class="nl">finderTextHint</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Color of the text hint under the finder window.
-    */</span>
-    <span class="na">finderTextHintColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Color of the text hint under the finder window.
+     */</span>
+    <span class="nl">finderTextHintColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Width of the finder window in pixels.
-    */</span>
-    <span class="na">finderWidth</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
-    <span class="na">flashButtonTitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Width of the finder window in pixels.
+     */</span>
+    <span class="nl">finderWidth</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="nl">flashButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Controls whether the flash should be initially enabled.
-    * The default value is FALSE.
-    */</span>
-    <span class="na">flashEnabled</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+     * Controls whether the flash should be initially enabled.
+     * The default value is FALSE.
+     */</span>
+    <span class="nl">flashEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
     <span class="cm">/**
-    * Orientation lock mode of the UI and the camera preview.
-    * By default the orientation is not locked.
-    */</span>
-    <span class="na">orientationLockMode</span><span class="p">:</span> <span class="nx">CameraOrientationMode</span><span class="p">,</span>
+     * Orientation lock mode of the UI and the camera preview.
+     * By default the orientation is not locked.
+     */</span>
+    <span class="nl">orientationLockMode</span><span class="p">?:</span> <span class="nx">CameraOrientationMode</span><span class="p">;</span>
     <span class="cm">/**
-    * Controls whether to play a beep sound after a successful detection.
-    * Default value is TRUE.
-    */</span>
-    <span class="na">successBeepEnabled</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+     * Controls whether to play a beep sound after a successful detection.
+     * Default value is TRUE.
+     */</span>
+    <span class="nl">successBeepEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
     <span class="cm">/**
-    * Background color of the top toolbar.
-    */</span>
-    <span class="na">topBarBackgroundColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+     * Background color of the top toolbar.
+     */</span>
+    <span class="nl">topBarBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="cm">/**
-    * Color of the titles of all buttons in the top toolbar.
-    */</span>
-    <span class="na">topBarButtonsColor</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
-  <span class="p">}</span>
+     * Color of the titles of all buttons in the top toolbar.
+     */</span>
+    <span class="nl">topBarButtonsColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Controls whether buttons should use all capitals style, as defined by the Android Material Design. Defaults to TRUE.
+     * Android only.
+     */</span>
+    <span class="nl">useButtonsAllCaps</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -1515,12 +1581,13 @@ if the user canceled the operation (tapped on the “cancel” button).</li>
 
 <h5 id="options-6">Options:</h5>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kr">interface</span> <span class="nx">HealthInsuranceCardScannerConfiguration</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">HealthInsuranceCardScannerConfiguration</span>
 <span class="p">{</span>
     <span class="cm">/**
-     * Allowed orientations for automatic interface rotations. *
+     * Orientation lock mode of the UI and the camera preview.
+     * By default the orientation is not locked.
      */</span>
-    <span class="nl">allowedInterfaceOrientations</span><span class="p">?:</span> <span class="nx">UIInterfaceOrientationMask</span><span class="p">;</span>
+    <span class="nl">orientationLockMode</span><span class="p">?:</span> <span class="nx">CameraOrientationMode</span><span class="p">;</span>
     <span class="cm">/**
      * Foreground color of the flash button when flash is on.
      */</span>
@@ -1597,8 +1664,14 @@ if the user canceled the operation (tapped on the “cancel” button).</li>
      * The type of health insurance card validation.
      */</span>
     <span class="nl">validationType</span><span class="p">?:</span> <span class="nx">HealthInsuranceCardValidationType</span><span class="p">;</span>
+    <span class="cm">/**
+     * Controls whether buttons should use all capitals style, as defined by the Android Material Design. Defaults to TRUE.
+     * Android only.
+     */</span>
+    <span class="nl">useButtonsAllCaps</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
+
 <h3 id="page-operations">Page operations</h3>
 
 <p><a name="module_ScanbotSdk.createPage"></a></p>
@@ -1966,11 +2039,28 @@ in conjunction with a finder view or on an already cropped document.</p>
 </code></pre></div></div>
 
 <h4 id="result">Result</h4>
-
 <ul>
   <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> or <code class="highlighter-rouge">'ERROR'</code> in all error cases.</li>
   <li><code class="highlighter-rouge">message</code> - Contains the error message as string.</li>
   <li><code class="highlighter-rouge">blur</code> - numeric blue value, as explained above</li>
+</ul>
+
+<p><a name="module_ScanbotSdk.refreshImageUris"></a></p>
+<h3 id="refresh-image-uris">Refresh Image URIs</h3>
+<h4 id="scanbotsdkrefreshimageurissuccesscallback-errorcallback-options"><code class="highlighter-rouge">ScanbotSdk.refreshImageUris(successCallback, errorCallback, options)</code></h4>
+
+<p>See the section <a href="#persistencePageObject">Persistence of Page Objects</a></p>
+
+<h4 id="options-17">Options</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">pages</span><span class="p">:</span> <span class="p">[</span><span class="nx">page1</span><span class="p">,</span> <span class="nx">page2</span><span class="p">,</span> <span class="p">...]</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h4 id="result-1">Result</h4>
+<ul>
+  <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> or <code class="highlighter-rouge">'ERROR'</code> in all error cases.</li>
+  <li><code class="highlighter-rouge">pages</code> - Pages with refreshed image file URIs.</li>
 </ul>
 
 <p><a name="module_ScanbotSdk.createPdf"></a></p>
@@ -1996,7 +2086,7 @@ For each image a separate page is generated.</p>
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-17">Options:</h5>
+<h5 id="options-18">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">],</span>
   <span class="na">pageSize</span><span class="p">:</span> <span class="dl">'</span><span class="s1">FIXED_A4</span><span class="dl">'</span>
@@ -2031,7 +2121,7 @@ For each image a separate page is generated.</p>
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-18">Options:</h5>
+<h5 id="options-19">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">],</span>
   <span class="na">oneBitEncoded</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -2209,7 +2299,7 @@ The Scanbot SDK uses the <code class="highlighter-rouge">languageDataPath</code>
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-19">Options:</h5>
+<h5 id="options-20">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{};</span>
 </code></pre></div></div>
 
@@ -2239,7 +2329,7 @@ As result the recognized text can be returned as plain text or a composed PDF fi
   <li><code class="highlighter-rouge">error.message</code> - Contains the error message as string.</li>
 </ul>
 
-<h5 id="options-20">Options:</h5>
+<h5 id="options-21">Options:</h5>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file:///...</span><span class="dl">'</span><span class="p">],</span>
   <span class="na">languages</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">en</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">de</span><span class="dl">'</span><span class="p">],</span>
@@ -2692,6 +2782,39 @@ It allows you to create and distribute dedicated and smaller APKs <strong>via Pl
 
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release History</h2>
+
+<h4 id="version-450-25-nov-2020">Version 4.5.0 (25 Nov 2020):</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Android: Added a new optional config property <code class="highlighter-rouge">useButtonsAllCaps: boolean</code> for all RTU UI screens
+to control whether the buttons should use the all-capitals-style, as defined by the Android Material Design</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Improvements in the detection of barcodes, especially of the type PDF417</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded the native Scanbot Android SDK to v1.76.0 
+(cf. <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">changelog</a>)</li>
+      <li>Upgraded the native Scanbot iOS SDK to v1.11.9 
+(cf. <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">changelog</a>)</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="version-440-23-nov-2020">Version 4.4.0 (23 Nov 2020):</h4>
+<ul>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>iOS: Introduced a new API method <code class="highlighter-rouge">refreshImageUris(pages)</code> to fix image file paths after app updates.
+For more details please check out the section <a href="#persistencePageObject">Persistence of Page Objects</a>.</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="version-431-26-oct-2020">Version 4.3.1 (26 Oct 2020):</h4>
 <ul>
@@ -3216,7 +3339,7 @@ Please note that only the <strong>new created</strong> image files will contain 
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-Open Source libraries used in the Scanbot SDK for Android version 1.74.0:
+Open Source libraries used in the Scanbot SDK for Android version 1.76.0:
 
 Apache Commons Codec
 
@@ -3258,51 +3381,6 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
-
-
-Android PDF Writer
-
-Version 1.0.8
-(https://github.com/Turbo87/apwlibrary/)
-
-Copyright (c) 2010 - 2013, Javier Santo Domingo (j-a-s-d@coderesearchlabs.com).
-All rights reserved.
-
-Android PDF Writer (APW) is a simple Java library to generate simple PDF documents in
-Google's Android devices distributed under a 2-clause
-BSD license (https://github.com/Turbo87/apwlibrary/blob/master/doc/APW.pdf).
-
-Redistribution and use in source and binary forms, with or without modification,
-are permitted provided that the following conditions are met:
-
-Redistributions of source code must retain the above copyright notice, this list of
-conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this list of
-conditions and the following disclaimer in the documentation and/or other materials
-provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
-OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL
-THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
-OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
-TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-This software includes several classes from the Android Open Source Project Copyright 2010
-The Android Open Source Project. Licensed under the Apache License, Version 2.0
-(the License); you may not use this file except in compliance with the License.
-You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the
-License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
-either express or implied. See the License for the specific language governing
-permissions and limitations under the License.
-
-
 
 Apache Commons IO
 
@@ -3433,7 +3511,7 @@ limitations under the License.
 
 Dagger
 
-Version 2.16
+Version 2.25.2
 (https://github.com/google/dagger)
 
 Copyright 2012 The Dagger Authors
@@ -3953,7 +4031,7 @@ POSSIBILITY OF SUCH DAMAGE.
 
 
 
-Open Source libraries used in the Scanbot SDK for iOS version 1.11.2:
+Open Source libraries used in the Scanbot SDK for iOS version 1.11.9:
 
 
 BOOST C++ Libraries version 1.68
@@ -4002,18 +4080,18 @@ is distributed under a Creative Commons Attribution 3.0 United States License ( 
 LibTIFF - TIFF Library and Utilities v4.0.10
 Copyright (c) 1988-1997 Sam Leffler
 Copyright (c) 1991-1997 Silicon Graphics, Inc.
-This license is distributed under the terms of the following license: http://libtiff.maptools.org/misc.html. 
+This license is distributed under the terms of the following license: http://libtiff.maptools.org/misc.html.
 
 Permission to use, copy, modify, distribute, and sell this software and its documentation for any purpose is hereby granted without fee, provided that (i) the above copyright notices and this permission notice appear in all copies of the software and related documentation, and (ii) the names of Sam Leffler and Silicon Graphics may not be used in any advertising or publicity relating to the software without the specific, prior written permission of Sam Leffler and Silicon Graphics.
 
-THE SOFTWARE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND, 
-EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY 
-WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.  
+THE SOFTWARE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND,
+EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY
+WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
 
 IN NO EVENT SHALL SAM LEFFLER OR SILICON GRAPHICS BE LIABLE FOR
 ANY SPECIAL, INCIDENTAL, INDIRECT OR CONSEQUENTIAL DAMAGES OF ANY KIND,
 OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
-WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE 
+WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
 OF THIS SOFTWARE.
 
 
@@ -4051,7 +4129,7 @@ This software is provided by the copyright holders and contributors “as is” 
 
 OpenSSL 1.1.1g
 Copyright @ 1998-2011 The OpenSSL Project. All rights reserved. (https://www.openssl.org)
-This library is distributed under the terms of the following license: https://github.com/openssl/openssl/blob/master/LICENSE 
+This library is distributed under the terms of the following license: https://github.com/openssl/openssl/blob/master/LICENSE
 
 The OpenSSL toolkit stays under a double license, i.e. both the conditions of the OpenSSL License and the original SSLeay license apply to the toolkit. See below for the actual license texts.
 
@@ -4065,9 +4143,9 @@ PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE OpenSSL PROJECT OR ITS CONTRIBUTO
 This product includes cryptographic software written by Eric Young (eay@cryptsoft.com).  This product includes software written by Tim Hudson (tjh@cryptsoft.com).
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-Redistributions of source code must retain the copyright notice, this list of conditions and the following disclaimer. 
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. 
-All advertising materials mentioning features or use of this software must display the following acknowledgement: "This product includes cryptographic software written by Eric Young (eay@cryptsoft.com)". The word 'cryptographic' can be left out if the rouines from the library being used are not cryptographic related :-). 
+Redistributions of source code must retain the copyright notice, this list of conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+All advertising materials mentioning features or use of this software must display the following acknowledgement: "This product includes cryptographic software written by Eric Young (eay@cryptsoft.com)". The word 'cryptographic' can be left out if the rouines from the library being used are not cryptographic related :-).
 If you include any Windows specific code (or a derivative thereof) from the apps directory (application code) you must include an acknowledgement:  "This product includes software written by Tim Hudson (tjh@cryptsoft.com)"
 
 THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
@@ -4078,7 +4156,7 @@ The licence and distribution terms for any publically available version or deriv
 Tesseract 4.1.0
 Tesseract, maintained by Google (http://code.google.com/p/tesseract-ocr/),
 is distributed under the Apache 2.0 license (http://www.apache.org/licenses/LICENSE-2.0).
- 
+
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 
@@ -4136,7 +4214,6 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
 
 
 </code></pre></div></div>
