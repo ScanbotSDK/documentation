@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/android/" />
 <meta property="og:site_name" content="Scanbot Barcode Scanner SDK for Android" />
 <script type="application/ld+json">
-{"headline":"Scanbot Barcode Scanner SDK for Android","url":"https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/android/","name":"Scanbot Barcode Scanner SDK for Android","@type":"WebSite","@context":"https://schema.org"}</script>
+{"url":"https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/android/","headline":"Scanbot Barcode Scanner SDK for Android","name":"Scanbot Barcode Scanner SDK for Android","@type":"WebSite","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/documentation/barcode-scanner-sdk/android/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/android/feed.xml" title="Scanbot Barcode Scanner SDK for Android" /></head>
 <body><header class="site-header" role="banner">
@@ -519,6 +519,8 @@ e.g. JPG files from photo library or other sources.</p>
 
 <p>If you use ProGuard for your release builds, please add the following ProGuard rules for all Scanbot Barcode Scanner SDK Packages:</p>
 
+<p><strong>Since Scanbot Barcode Scanner SDK for Android version 1.1.7 consumer ProGuard rules are integrated into the library and automatically applied to customer’s modules.</strong></p>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-keep public class io.scanbot.sdk.ui.** { *; }
 
 -keep public class io.scanbot.sap.SapManager { *; }
@@ -554,7 +556,21 @@ e.g. JPG files from photo library or other sources.</p>
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history-and-changelog">Release History and Changelog</h3>
 
-<h3 id="version-120-23-nov-2020">Version 1.2.0 (23 Nov 2020)</h3>
+<h3 id="version-121-3-dec-2020">Version 1.2.1 (3 Dec 2020)</h3>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li><code class="highlighter-rouge">BarcodeScannerActivity</code> and <code class="highlighter-rouge">BatchBarcodeScannerActivity</code> now support a possibility to set a timeout via <code class="highlighter-rouge">setAutoCancelTimeout</code> method in seconds. You will get <code class="highlighter-rouge">CANCELLATION_REASON_TIMEOUT</code> = true as an extra for <code class="highlighter-rouge">RESULT_CANCELED</code> in activity result in that case</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Better recognition of rotated PDF417 codes</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="version-120-23-nov-2020">Version 1.2.0 (23 Nov 2020)</h4>
 <ul>
   <li>🚀 Improvements:
     <ul>
