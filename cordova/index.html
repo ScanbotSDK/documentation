@@ -1174,8 +1174,18 @@ and contains some smart UI elements like magnetic lines and a magnifier.</p>
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">result.status</code> - <code class="highlighter-rouge">'OK'</code> if a barcode was detected, <code class="highlighter-rouge">'CANCELED'</code> 
-if the user canceled the operation (tapped on the “cancel” button).</li>
+  <li><code class="highlighter-rouge">result.status</code> :
+    <ul>
+      <li><code class="highlighter-rouge">'OK'</code> If at least one barcode was detected.</li>
+      <li><code class="highlighter-rouge">'CANCELED'</code> If the user canceled the operation (tapped on the “cancel” button).</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">result.canceledDueToTimeout</code> - Optional boolean field. Available only in case of <code class="highlighter-rouge">status="CANCELED"</code>:
+    <ul>
+      <li><code class="highlighter-rouge">true</code> If the config value <code class="highlighter-rouge">autoCancelTimeout</code> was specified, AND the UI was auto-canceled due to timeout.</li>
+      <li><code class="highlighter-rouge">false</code> If the user closed the UI via the “cancel” button.</li>
+    </ul>
+  </li>
   <li><code class="highlighter-rouge">result.barcodes[]</code> - Array of detected barcode. If no barcodes were detected, the array will be empty or null.</li>
   <li><code class="highlighter-rouge">result.barcodes[n].type</code> - <a href="#barcodeFormat">Format</a> of detected 
 barcode/QR code (e.g. <code class="highlighter-rouge">CODE_128</code>, <code class="highlighter-rouge">EAN_13</code>, <code class="highlighter-rouge">QR_CODE</code>, etc).</li>
@@ -1275,6 +1285,11 @@ that act as a detection filter. By default all supported formats will be detecte
      * Android only.
      */</span>
     <span class="nx">useButtonsAllCaps</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * Time in seconds until the screen is automatically cancelled. Set to 0 to disable automatic cancellation.
+     * Defaults to 0 (disabled).
+     */</span>
+    <span class="nx">autoCancelTimeout</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -2783,6 +2798,36 @@ It allows you to create and distribute dedicated and smaller APKs <strong>via Pl
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release History</h2>
 
+<h4 id="version-460-4-dec-2020">Version 4.6.0 (4 Dec 2020):</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Added a new config property <code class="highlighter-rouge">autoCancelTimeout</code> for the Barcode Scanner UI.
+It provides the possibility to set a timeout value in seconds for auto-closing/cancellation of the Barcode Scanner UI.</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Improved barcode scanning. Better recognition of rotated and damaged PDF417 codes</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>iOS: Fixed an issue about Bitcode support when submitting an app to the App Store Connect 
+(error <em>“ITMS-90562: Invalid Bundle - Bitcode failed to compile”</em>)</li>
+      <li>Android: Fixed a bug with the size of generated PDF documents being too big</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded the native Scanbot Android SDK to v1.76.2 
+(cf. <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">changelog</a>)</li>
+      <li>Upgraded the native Scanbot iOS SDK to v1.12.1 
+(cf. <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">changelog</a>)</li>
+    </ul>
+  </li>
+</ul>
+
 <h4 id="version-450-25-nov-2020">Version 4.5.0 (25 Nov 2020):</h4>
 <ul>
   <li>🎉 New:
@@ -3339,7 +3384,7 @@ Please note that only the <strong>new created</strong> image files will contain 
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-Open Source libraries used in the Scanbot SDK for Android version 1.76.0:
+Open Source libraries used in the Scanbot SDK for Android version 1.76.2:
 
 Apache Commons Codec
 
@@ -3381,6 +3426,51 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+
+
+Android PDF Writer
+
+Version 1.0.8
+(https://github.com/Turbo87/apwlibrary/)
+
+Copyright (c) 2010 - 2013, Javier Santo Domingo (j-a-s-d@coderesearchlabs.com).
+All rights reserved.
+
+Android PDF Writer (APW) is a simple Java library to generate simple PDF documents in
+Google's Android devices distributed under a 2-clause
+BSD license (https://github.com/Turbo87/apwlibrary/blob/master/doc/APW.pdf).
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of
+conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of
+conditions and the following disclaimer in the documentation and/or other materials
+provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
+OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL
+THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
+TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+This software includes several classes from the Android Open Source Project Copyright 2010
+The Android Open Source Project. Licensed under the Apache License, Version 2.0
+(the License); you may not use this file except in compliance with the License.
+You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the
+License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+either express or implied. See the License for the specific language governing
+permissions and limitations under the License.
+
+
 
 Apache Commons IO
 
@@ -4031,7 +4121,7 @@ POSSIBILITY OF SUCH DAMAGE.
 
 
 
-Open Source libraries used in the Scanbot SDK for iOS version 1.11.9:
+Open Source libraries used in the Scanbot SDK for iOS version 1.12.1:
 
 
 BOOST C++ Libraries version 1.68
