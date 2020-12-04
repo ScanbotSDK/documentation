@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://scanbotsdk.github.io/documentation/react-native/" />
 <meta property="og:site_name" content="Scanbot SDK React Native Module" />
 <script type="application/ld+json">
-{"headline":"Scanbot SDK React Native Module","@type":"WebSite","url":"https://scanbotsdk.github.io/documentation/react-native/","name":"Scanbot SDK React Native Module","@context":"https://schema.org"}</script>
+{"url":"https://scanbotsdk.github.io/documentation/react-native/","headline":"Scanbot SDK React Native Module","name":"Scanbot SDK React Native Module","@type":"WebSite","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/documentation/react-native/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://scanbotsdk.github.io/documentation/react-native/feed.xml" title="Scanbot SDK React Native Module" /></head>
 <body><header class="site-header" role="banner">
@@ -635,6 +635,56 @@ appended to them with the hash of a portion of the image file. Different images
 will almost always have a different hash and therefore a different URI, 
 which will force the WebView to reload the page’s images when changed.</p>
 
+<p><a name="persistencePageObject"></a></p>
+<h3 id="persistence-of-page-objects">Persistence of Page Objects</h3>
+<p>Scanbot SDK does <strong>not</strong> persist page objects, only the image files (.jpg or .png).
+The management of page objects and the persistence of the page metadata is left to the app.
+Depending on the use case, it may be necessary to persist the data of the page objects in the app 
+(e.g. as JSON in a local SQLite database). If this is the case, the following must be considered.</p>
+
+<p>The Page objects contain absolute paths to the image files:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">pageId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">60426F47-4119-48F8-ADA9-F7E60D583CB4</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">filter</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">NONE</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">detectionResult</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">OK</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">polygon</span><span class="dl">"</span><span class="p">:</span> <span class="p">[{</span><span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.17427248677248677</span><span class="p">,</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.1212797619047619</span><span class="p">},{</span><span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.8604497354497355</span><span class="p">,</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.13120039682539678</span><span class="p">},{</span><span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.8349867724867724</span><span class="p">,</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.9729662698412699</span><span class="p">},{</span><span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.12202380952380967</span><span class="p">,</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.9471726190476191</span><span class="p">}],</span>
+  <span class="dl">"</span><span class="s2">documentPreviewImageFileUri</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4_preview.jpg?minihash=a236a8ba5510cd0f4e88bd2045f52c4e</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">originalImageFileUri</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/originals/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg?minihash=4e9f0446421343eaaa1e415fdb446a12</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">originalPreviewImageFileUri</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/originals/60426F47-4119-48F8-ADA9-F7E60D583CB4_preview.jpg?minihash=da888cd42db07e52b15a6ada29a37b63</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">documentImageFileUri</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg?minihash=f9aab62cc37fec555abe94c83406a1b3</span><span class="dl">"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The page image files are stored in corresponding storage locations - also see the <a href="#storage">Storage</a> section.
+By default, the Scanbot SDK Android uses the internal files directory of the app, whereas the Scanbot SDK iOS uses 
+the <strong>“Application Support”</strong> folder. Those storage folders are secure and are not affected by an app update.</p>
+
+<p>However, on iOS, the <strong>absolute</strong> file path of the “Application Support” folder is not reliable.
+For each fresh install of an app, a new UUID is generated, in the following format:
+<code class="highlighter-rouge">/var/mobile/Containers/Data/Application/{UUID}</code>. That is where application data is stored.
+When updating the app, the uuid <strong>may</strong> change. For example:</p>
+
+<p>Before an app update:</p>
+
+<p><code class="highlighter-rouge">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg</code></p>
+
+<p>After the app update:</p>
+
+<p><code class="highlighter-rouge">file:///var/mobile/Containers/Data/Application/C9181555-252A-4665-892F-793008ED0EDD/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg</code></p>
+
+<p>Please note that the actual image files are still there, only the absolute file paths change.</p>
+
+<p>To get to the new absolute paths, the API method <code class="highlighter-rouge">refreshImageUris({pages: Page []})</code> has been introduced 
+in the plugin version 4.4.0. Please use this method to refresh all image file URIs from affected pages:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ScanbotSDK</span><span class="p">.</span><span class="nx">refreshImageUris</span><span class="p">({</span><span class="na">pages</span><span class="p">:</span> <span class="nx">loadedPages</span><span class="p">});</span>
+<span class="kd">const</span> <span class="nx">refreshedPages</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">pages</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>It’s highly recommended using this method whenever you have to (re-)load JSON Page objects 
+from the database of your app, regardless of whether there was an app update or not.</p>
+
 <p><a name="module_ScanbotSDK.UI.startDocumentScanner"></a></p>
 <h3 id="document-scanner">Document Scanner</h3>
 <h4 id="scanbotsdkuistartdocumentscannerconfiguration-documentscannerconfiguration-promise"><code class="highlighter-rouge">ScanbotSdk.UI.startDocumentScanner(configuration: DocumentScannerConfiguration): Promise</code></h4>
@@ -888,7 +938,12 @@ and <code class="highlighter-rouge">status</code> is <code class="highlighter-ro
      * Default value is null.
      */</span>
     <span class="nx">maxNumberOfPages</span><span class="p">?:</span> <span class="kr">number</span><span class="p">,</span>
-<span class="p">};</span>
+    <span class="cm">/**
+     * Controls whether buttons should use all capitals style, as defined by the Android Material Design. Defaults to TRUE.
+     * Android only.
+     */</span>
+    <span class="nx">useButtonsAllCaps</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <p><a name="module_ScanbotSDK.UI.startCroppingScreen"></a></p>
@@ -992,6 +1047,11 @@ or <a href="#module_ScanbotSdk.createPage">createPage()</a>.</p>
      * By default the UI is not locked.
      */</span>
     <span class="nl">orientationLockMode</span><span class="p">?:</span> <span class="nx">UIOrientationMode</span><span class="p">;</span>
+    <span class="cm">/**
+     * Controls whether buttons should use all capitals style, as defined by the Android Material Design. Defaults to TRUE.
+     * Android only.
+     */</span>
+    <span class="nl">useButtonsAllCaps</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -1017,85 +1077,78 @@ or <a href="#module_ScanbotSdk.createPage">createPage()</a>.</p>
 <p><code class="highlighter-rouge">configuration.barcodeFormats</code> is an optional array of <a href="#barcodeFormat">barcode formats</a> 
 that act as a detection filter. By default all supported formats will be detected.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kr">interface</span> <span class="nx">BarcodeScannerConfiguration</span>
+<span class="p">{</span>
     <span class="cm">/**
      * Allowed orientations for automatic interface rotations. *
      */</span>
-    <span class="na">allowedInterfaceOrientations</span><span class="p">:</span> <span class="nx">UIInterfaceOrientationMask</span><span class="p">;</span>
-    <span class="cm">/**
-     * Foreground color of the flash button when flash is on.
-     */</span>
-    <span class="nl">bottomButtonsActiveColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
-    <span class="cm">/**
-     * Foreground color of the flash button when flash is off.
-     */</span>
-    <span class="nl">bottomButtonsInactiveColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">allowedInterfaceOrientations</span><span class="p">?:</span> <span class="nx">UIInterfaceOrientationMask</span><span class="p">;</span>
     <span class="cm">/**
      * Background color of the detection overlay.
      */</span>
-    <span class="nl">cameraOverlayColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">cameraOverlayColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
      * Whether the cancel button is hidden or not.
      */</span>
-    <span class="nl">cancelButtonHidden</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="nl">cancelButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
     <span class="cm">/**
      * String being displayed on the cancel button.
      */</span>
-    <span class="nl">cancelButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
-    <span class="cm">/**
-     * Relative height of finder frame. Together with finderWidth it defines the aspect ratio, 
-     * which is used to build actual finder frame. Default is 1.
-     * For example if finderWidth and finderHeight both equals 1 - it will make a square frame, 
-     * which is good for QR capturing.
-     */</span>
-    <span class="nl">finderHeight</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">cancelButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
      * Foreground color of the detection overlay.
      */</span>
-    <span class="nl">finderLineColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">finderLineColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
      * Width of finder frame border. Default is 2.
      */</span>
-    <span class="nl">finderLineWidth</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">finderLineWidth</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
     <span class="cm">/**
      * String being displayed as description.
      */</span>
-    <span class="nl">finderTextHint</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">finderTextHint</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
      * Foreground color of the description label.
      */</span>
-    <span class="nl">finderTextHintColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">finderTextHintColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
-     * Relative width of finder frame. Together with finderHeight it defines the aspect ratio, 
-     * which is used to build actual finder frame. Default is 1.
-     * For example if finderWidth and finderHeight both equals 1 - it will make a square frame, 
-     * which is good for QR capturing.
+     * Aspect ratio of finder frame (width \ height), which is used to build actual finder frame.
+     * Default is 1 - it is a square frame, which is good for QR capturing.
      */</span>
-    <span class="nl">finderWidth</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">finderAspectRatio</span><span class="p">?:</span> <span class="nx">FinderAspectRatio</span><span class="p">;</span>
     <span class="cm">/**
      * String being displayed on the flash button.
      */</span>
-    <span class="nl">flashButtonTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">flashButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the flash button when flash is off.
+     */</span>
+    <span class="nl">flashButtonInactiveColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
      * Whether flash is toggled on or off.
      */</span>
-    <span class="nl">flashEnabled</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="nl">flashEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
     <span class="cm">/**
      * Whether scanner screen should make a sound on successful barcode or MRZ detection.
      */</span>
-    <span class="nl">successBeepEnabled</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="nl">successBeepEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
     <span class="cm">/**
      * Background color of the top bar.
      */</span>
-    <span class="nl">topBarBackgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">topBarBackgroundColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
      * Foreground color of the cancel button.
      */</span>
-    <span class="nl">topBarButtonsColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">topBarButtonsColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
     <span class="cm">/**
      * Accepted barcode formats
      */</span>
-    <span class="nl">barcodeFormats</span><span class="p">:</span> <span class="nx">BarcodeFormat</span><span class="p">[];</span>
+    <span class="nl">barcodeFormats</span><span class="p">?:</span> <span class="nx">BarcodeFormat</span><span class="p">[];</span>
+    <span class="cm">/**
+     * Controls whether buttons should use all capitals style, as defined by the Android Material Design. Defaults to TRUE.
+     * Android only.
+     */</span>
+    <span class="nl">useButtonsAllCaps</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -1230,6 +1283,11 @@ that act as a detection filter. By default all supported formats will be detecte
      * Accepted barcode formats
      */</span>
     <span class="nl">barcodeFormats</span><span class="p">?:</span> <span class="nx">BarcodeFormat</span><span class="p">[];</span>
+    <span class="cm">/**
+     * Controls whether buttons should use all capitals style, as defined by the Android Material Design. Defaults to TRUE.
+     * Android only.
+     */</span>
+    <span class="nl">useButtonsAllCaps</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -1278,218 +1336,226 @@ and extracts the data fields, like names, dates, photo, signature and machine re
 <h4 id="options-4">Options:</h4>
 <p>All configuration options are optional.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
- * Allowed orientations for automatic interface rotations. *
- */</span>
-<span class="nx">allowedInterfaceOrientations</span><span class="p">?:</span> <span class="nx">UIInterfaceOrientationMask</span><span class="p">;</span>
-<span class="cm">/**
- * Background color of the detection overlay.
- */</span>
-<span class="nx">cameraOverlayColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Whether the cancel button is hidden or not.
- */</span>
-<span class="nx">cancelButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
-<span class="cm">/**
- * String being displayed on the cancel button.
- */</span>
-<span class="nx">cancelButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * String being displayed on the clear button.
- */</span>
-<span class="nx">clearButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * String that shows average confidence value of scanned card. Use %li as number formatting symbol.
- */</span>
-<span class="nx">confidenceValue</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Foreground color of the top bar buttons on the details screen.
- */</span>
-<span class="nx">detailsActionColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Background color of the details screen.
- */</span>
-<span class="nx">detailsBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Text color in the details list. Also affects image background and separator.
- */</span>
-<span class="nx">detailsPrimaryColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for address field in details screen.
- */</span>
-<span class="nx">fieldAddressTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for birth date field in details screen.
- */</span>
-<span class="nx">fieldBirthDateTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for birth place field in details screen.
- */</span>
-<span class="nx">fieldBirthPlaceTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Color of confidence value label background in details screen, when the field confidence level is high.
- */</span>
-<span class="nx">fieldConfidenceHighColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Color of confidence value label background  in details screen, when the field confidence level is low.
- */</span>
-<span class="nx">fieldConfidenceLowColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Color of confidence value label background  in details screen, when the field confidence level is moderate.
- */</span>
-<span class="nx">fieldConfidenceModerateColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Color of confidence value label text in details.
- */</span>
-<span class="nx">fieldConfidenceTextColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for country code field in details screen.
- */</span>
-<span class="nx">fieldCountryCodeTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for expiry date field in details screen.
- */</span>
-<span class="nx">fieldExpiryDateTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for eye color field in details screen.
- */</span>
-<span class="nx">fieldEyeColorTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for gender field in details screen.
- */</span>
-<span class="nx">fieldGenderTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for given names field in details screen.
- */</span>
-<span class="nx">fieldGivenNamesTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for height field in details screen.
- */</span>
-<span class="nx">fieldHeightTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for id field in details screen.
- */</span>
-<span class="nx">fieldIDTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for issuing date field in details screen.
- */</span>
-<span class="nx">fieldIssueDateTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for issuing authority  field in details screen.
- */</span>
-<span class="nx">fieldIssuingAuthorityTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for maiden name field in details screen.
- */</span>
-<span class="nx">fieldMaidenNameTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for machine readable zone field in details screen.
- */</span>
-<span class="nx">fieldMRZTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for nationality field in details screen.
- */</span>
-<span class="nx">fieldNationalityTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for passport type field in details screen.
- */</span>
-<span class="nx">fieldPassportTypeTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for photo field in details screen.
- */</span>
-<span class="nx">fieldPhotoTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for PIN field in details screen.
- */</span>
-<span class="nx">fieldPINTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for pseudonym field in details screen.
- */</span>
-<span class="nx">fieldPseudonymTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * String used for displaying amount of detected fields. Use %li for number formatting symbol.
- */</span>
-<span class="nx">fieldsCountText</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Text color of the fields count label.
- */</span>
-<span class="nx">fieldsCountTextColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for signature field in details screen.
- */</span>
-<span class="nx">fieldSignatureTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * A title for surname field in details screen.
- */</span>
-<span class="nx">fieldSurnameTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Foreground color of the detection overlay.
- */</span>
-<span class="nx">finderLineColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Width of finder frame border. Default is 2.
- */</span>
-<span class="nx">finderLineWidth</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
-<span class="cm">/**
- * Whether the torch light is toggled on or off.
- */</span>
-<span class="nx">flashEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
-<span class="cm">/**
- * A title to show image content.
- */</span>
-<span class="nx">imageTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * String that notifies that nothing was scanned yet.
- */</span>
-<span class="nx">noDataTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * String that asks user to scan back side of a card.
- */</span>
-<span class="nx">scanBackSideTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * String that asks user to scan front side of a card.
- */</span>
-<span class="nx">scanFrontSideTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * String that notifies that both sides of card are scanned.
- */</span>
-<span class="nx">scannedEverythingTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Defines, if photo image should be stored in internal storage (SBSDKUIIDCardStorage) on disk.
- */</span>
-<span class="nx">shouldSavePhotoImageInStorage</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
-<span class="cm">/**
- * Defines, if signature image should be stored in internal storage (SBSDKUIIDCardStorage) on disk.
- */</span>
-<span class="nx">shouldSaveSignatureImageInStorage</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
-<span class="cm">/**
- * String that asks user to start scanning a card.
- */</span>
-<span class="nx">startScanningTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * String being displayed on the submit button.
- */</span>
-<span class="nx">submitButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Color of tip background on scanning screen.
- */</span>
-<span class="nx">tipBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Color of tip text on scanning screen.
- */</span>
-<span class="nx">tipTextColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Background color of the top bar.
- */</span>
-<span class="nx">topBarBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Foreground color of the top bar buttons on the scanning screen.
- */</span>
-<span class="nx">topBarButtonsColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="cm">/**
- * Foreground color of the flash button when flash is off.
- */</span>
-<span class="nx">topBarButtonsInactiveColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kr">interface</span> <span class="nx">IdCardScannerConfiguration</span>
+<span class="p">{</span>
+    <span class="cm">/**
+     * Allowed orientations for automatic interface rotations. *
+     */</span>
+    <span class="nl">allowedInterfaceOrientations</span><span class="p">?:</span> <span class="nx">UIInterfaceOrientationMask</span><span class="p">;</span>
+    <span class="cm">/**
+     * Background color of the detection overlay.
+     */</span>
+    <span class="nl">cameraOverlayColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Whether the cancel button is hidden or not.
+     */</span>
+    <span class="nl">cancelButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed on the cancel button.
+     */</span>
+    <span class="nl">cancelButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed on the clear button.
+     */</span>
+    <span class="nl">clearButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String that shows average confidence value of scanned card. Use %li as number formatting symbol.
+     */</span>
+    <span class="nl">confidenceValue</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the top bar buttons on the details screen.
+     */</span>
+    <span class="nl">detailsActionColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Background color of the details screen.
+     */</span>
+    <span class="nl">detailsBackgroundColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Text color in the details list. Also affects image background and separator.
+     */</span>
+    <span class="nl">detailsPrimaryColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for address field in details screen.
+     */</span>
+    <span class="nl">fieldAddressTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for birth date field in details screen.
+     */</span>
+    <span class="nl">fieldBirthDateTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for birth place field in details screen.
+     */</span>
+    <span class="nl">fieldBirthPlaceTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Color of confidence value label background in details screen, when the field confidence level is high.
+     */</span>
+    <span class="nl">fieldConfidenceHighColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Color of confidence value label background  in details screen, when the field confidence level is low.
+     */</span>
+    <span class="nl">fieldConfidenceLowColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Color of confidence value label background  in details screen, when the field confidence level is moderate.
+     */</span>
+    <span class="nl">fieldConfidenceModerateColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Color of confidence value label text in details.
+     */</span>
+    <span class="nl">fieldConfidenceTextColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for country code field in details screen.
+     */</span>
+    <span class="nl">fieldCountryCodeTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for expiry date field in details screen.
+     */</span>
+    <span class="nl">fieldExpiryDateTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for eye color field in details screen.
+     */</span>
+    <span class="nl">fieldEyeColorTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for gender field in details screen.
+     */</span>
+    <span class="nl">fieldGenderTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for given names field in details screen.
+     */</span>
+    <span class="nl">fieldGivenNamesTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for height field in details screen.
+     */</span>
+    <span class="nl">fieldHeightTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for id field in details screen.
+     */</span>
+    <span class="nl">fieldIDTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for issuing date field in details screen.
+     */</span>
+    <span class="nl">fieldIssueDateTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for issuing authority  field in details screen.
+     */</span>
+    <span class="nl">fieldIssuingAuthorityTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for maiden name field in details screen.
+     */</span>
+    <span class="nl">fieldMaidenNameTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for machine readable zone field in details screen.
+     */</span>
+    <span class="nl">fieldMRZTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for nationality field in details screen.
+     */</span>
+    <span class="nl">fieldNationalityTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for passport type field in details screen.
+     */</span>
+    <span class="nl">fieldPassportTypeTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for photo field in details screen.
+     */</span>
+    <span class="nl">fieldPhotoTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for PIN field in details screen.
+     */</span>
+    <span class="nl">fieldPINTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for pseudonym field in details screen.
+     */</span>
+    <span class="nl">fieldPseudonymTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String used for displaying amount of detected fields. Use %li for number formatting symbol.
+     */</span>
+    <span class="nl">fieldsCountText</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Text color of the fields count label.
+     */</span>
+    <span class="nl">fieldsCountTextColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for signature field in details screen.
+     */</span>
+    <span class="nl">fieldSignatureTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title for surname field in details screen.
+     */</span>
+    <span class="nl">fieldSurnameTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the detection overlay.
+     */</span>
+    <span class="nl">finderLineColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Width of finder frame border. Default is 2.
+     */</span>
+    <span class="nl">finderLineWidth</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="cm">/**
+     * Whether the torch light is toggled on or off.
+     */</span>
+    <span class="nl">flashEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * A title to show image content.
+     */</span>
+    <span class="nl">imageTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String that notifies that nothing was scanned yet.
+     */</span>
+    <span class="nl">noDataTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String that asks user to scan back side of a card.
+     */</span>
+    <span class="nl">scanBackSideTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String that asks user to scan front side of a card.
+     */</span>
+    <span class="nl">scanFrontSideTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String that notifies that both sides of card are scanned.
+     */</span>
+    <span class="nl">scannedEverythingTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Defines, if photo image should be stored in internal storage (SBSDKUIIDCardStorage) on disk.
+     */</span>
+    <span class="nl">shouldSavePhotoImageInStorage</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * Defines, if signature image should be stored in internal storage (SBSDKUIIDCardStorage) on disk.
+     */</span>
+    <span class="nl">shouldSaveSignatureImageInStorage</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+     * String that asks user to start scanning a card.
+     */</span>
+    <span class="nl">startScanningTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * String being displayed on the submit button.
+     */</span>
+    <span class="nl">submitButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Color of tip background on scanning screen.
+     */</span>
+    <span class="nl">tipBackgroundColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Color of tip text on scanning screen.
+     */</span>
+    <span class="nl">tipTextColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Background color of the top bar.
+     */</span>
+    <span class="nl">topBarBackgroundColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the top bar buttons on the scanning screen.
+     */</span>
+    <span class="nl">topBarButtonsColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Foreground color of the flash button when flash is off.
+     */</span>
+    <span class="nl">topBarButtonsInactiveColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Controls whether buttons should use all capitals style, as defined by the Android Material Design. Defaults to TRUE.
+     * Android only.
+     */</span>
+    <span class="nl">useButtonsAllCaps</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <p><a name="module_ScanbotSDK.UI.startMrzScanner"></a></p>
@@ -1588,6 +1654,11 @@ otherwise the detection process will fail. All other settings are optional.</p>
     * Color of the titles of all buttons in the top toolbar.
     */</span>
     <span class="nl">topBarButtonsColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+     * Controls whether buttons should use all capitals style, as defined by the Android Material Design. Defaults to TRUE.
+     * Android only.
+     */</span>
+    <span class="nl">useButtonsAllCaps</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -1683,6 +1754,11 @@ otherwise the detection process will fail. All other settings are optional.</p>
      * The type of health insurance card validation.
      */</span>
     <span class="nl">validationType</span><span class="p">?:</span> <span class="nx">HealthInsuranceCardValidationType</span><span class="p">;</span>
+    <span class="cm">/**
+     * Controls whether buttons should use all capitals style, as defined by the Android Material Design. Defaults to TRUE.
+     * Android only.
+     */</span>
+    <span class="nl">useButtonsAllCaps</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -2290,17 +2366,24 @@ For instance, if a point has the coordinates (0.5, 0.5), it means that it is loc
 <h3 id="building-production-apps">Building Production Apps</h3>
 
 <h4 id="ios">iOS</h4>
-<p>The Scanbot SDK iOS Framework (included in this React Native npm package) contains the most used architectures (<code class="highlighter-rouge">arm64, armv7, x86_64, i386</code>). 
-So you can run it on all most used iOS devices as well as on simulators during the development phase. 
-To be able to submit a production build to the <strong>App Store</strong> or a test build for <strong>TestFlight</strong> you have to remove (strip away) 
-the architectures <strong><code class="highlighter-rouge">x86_64</code></strong> and <strong><code class="highlighter-rouge">i386</code></strong> from the Scanbot SDK Framework. These architectures are only for <strong>simulators</strong> and not allowed 
-to submit to iTunes Connect.</p>
+<p>The native Scanbot SDK iOS Framework (<code class="highlighter-rouge">ScanbotSDK.framework</code>) is installed as a CocoaPods dependency <code class="highlighter-rouge">ScanbotSDK</code>. 
+It contains the architectures <code class="highlighter-rouge">arm64</code> and <code class="highlighter-rouge">x86_64</code>. So you can run it on all most used iOS devices as well as 
+on simulators during the development phase. 
+To be able to submit a production build to <strong>App Store Connect</strong> (App Store / TestFlight) the architecture <strong><code class="highlighter-rouge">x86_64</code></strong> 
+must be removed (striped out) from the Scanbot SDK Framework. This architecture is only for <strong>simulators</strong> and not allowed 
+to submit to App Store Connect. In a <strong>CocoaPods</strong> powered project this is typically done by CocoaPods, 
+so <strong>no manual action required</strong> here.</p>
 
-<p>To do so, we provide a script <code class="highlighter-rouge">strip-SBSDK-Framework.sh</code> which is part of the <code class="highlighter-rouge">ScanbotSDK.framework</code> and can be easily integrated in the build process.
-This script removes the unnecessary architectures from the frameworks binary, code signs the framework and adds the crash symbols (dSYM) file to your apps archive.
-The final package size (IPA) of your app will then be significantly smaller than a debug version used during the development phase.</p>
+<p>However, if you get this error while uploading your app, the following manual configuration steps must be done to fix it:</p>
 
-<p>To add this script in your build process, you will need to open the Xcode workspace <code class="highlighter-rouge">.xcworkspace</code> and apply a few changes there:</p>
+<blockquote>
+  <p><em>ERROR ITMS-90087: “Unsupported Architectures. The executable for […].app/Frameworks/ScanbotSDK.framework contains unsupported architectures ‘[x86_64]’.”</em></p>
+</blockquote>
+
+<p>We provide a script <code class="highlighter-rouge">strip-SBSDK-Framework.sh</code> as a part of the <code class="highlighter-rouge">ScanbotSDK.framework</code> and it can be easily integrated 
+in the build process. This script removes the unnecessary architectures from the frameworks binary, 
+code signs the framework and adds the crash symbols (dSYM) file to your apps archive.
+To add this script in your build process, you will need to open the Xcode workspace <code class="highlighter-rouge">.xcworkspace</code> and apply a few changes there:</p>
 
 <ol>
   <li>Go to <code class="highlighter-rouge">TARGETS</code> settings and open the tab <code class="highlighter-rouge">Build Phases</code>.
@@ -2349,6 +2432,38 @@ It allows you to create and distribute dedicated and smaller APKs via <strong>Pl
 
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release History</h3>
+
+<h4 id="version-440-4-dec-2020">Version 4.4.0 (4 Dec 2020):</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Android: Added a new optional config property <code class="highlighter-rouge">useButtonsAllCaps: boolean</code> for all RTU UI screens
+to control whether the buttons should use the all-capitals-style, as defined by the Android Material Design</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Improvements in the detection of barcodes, especially of the type PDF417. 
+Better recognition of rotated and damaged PDF417 codes</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>iOS: Introduced a new API method <code class="highlighter-rouge">refreshImageUris(pages)</code> to fix image file paths after app updates.
+For more details please check out the section <a href="#persistencePageObject">Persistence of Page Objects</a>.</li>
+      <li>iOS: Fixed an issue about Bitcode support when submitting an app to the App Store Connect 
+(error <em>“ITMS-90562: Invalid Bundle - Bitcode failed to compile”</em>)</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded the native Scanbot Android SDK to v1.76.2 
+(cf. <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">changelog</a>)</li>
+      <li>Upgraded the native Scanbot iOS SDK to v1.12.1 
+(cf. <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">changelog</a>)</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="version-430-22-oct-2020">Version 4.3.0 (22 Oct 2020):</h4>
 <ul>
@@ -2728,7 +2843,7 @@ Creates a grayscaled 8-bit image with mostly black or white pixels.</li>
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-Open Source libraries used in the Scanbot SDK for Android version 1.74.0:
+Open Source libraries used in the Scanbot SDK for Android version 1.76.2:
 
 Apache Commons Codec
 
@@ -2945,7 +3060,7 @@ limitations under the License.
 
 Dagger
 
-Version 2.16
+Version 2.25.2
 (https://github.com/google/dagger)
 
 Copyright 2012 The Dagger Authors
@@ -3465,7 +3580,7 @@ POSSIBILITY OF SUCH DAMAGE.
 
 
 
-Open Source libraries used in the Scanbot SDK for iOS version 1.11.2:
+Open Source libraries used in the Scanbot SDK for iOS version 1.12.1:
 
 
 BOOST C++ Libraries version 1.68
@@ -3514,18 +3629,18 @@ is distributed under a Creative Commons Attribution 3.0 United States License ( 
 LibTIFF - TIFF Library and Utilities v4.0.10
 Copyright (c) 1988-1997 Sam Leffler
 Copyright (c) 1991-1997 Silicon Graphics, Inc.
-This license is distributed under the terms of the following license: http://libtiff.maptools.org/misc.html. 
+This license is distributed under the terms of the following license: http://libtiff.maptools.org/misc.html.
 
 Permission to use, copy, modify, distribute, and sell this software and its documentation for any purpose is hereby granted without fee, provided that (i) the above copyright notices and this permission notice appear in all copies of the software and related documentation, and (ii) the names of Sam Leffler and Silicon Graphics may not be used in any advertising or publicity relating to the software without the specific, prior written permission of Sam Leffler and Silicon Graphics.
 
-THE SOFTWARE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND, 
-EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY 
-WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.  
+THE SOFTWARE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND,
+EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY
+WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
 
 IN NO EVENT SHALL SAM LEFFLER OR SILICON GRAPHICS BE LIABLE FOR
 ANY SPECIAL, INCIDENTAL, INDIRECT OR CONSEQUENTIAL DAMAGES OF ANY KIND,
 OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
-WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE 
+WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
 OF THIS SOFTWARE.
 
 
@@ -3563,7 +3678,7 @@ This software is provided by the copyright holders and contributors “as is” 
 
 OpenSSL 1.1.1g
 Copyright @ 1998-2011 The OpenSSL Project. All rights reserved. (https://www.openssl.org)
-This library is distributed under the terms of the following license: https://github.com/openssl/openssl/blob/master/LICENSE 
+This library is distributed under the terms of the following license: https://github.com/openssl/openssl/blob/master/LICENSE
 
 The OpenSSL toolkit stays under a double license, i.e. both the conditions of the OpenSSL License and the original SSLeay license apply to the toolkit. See below for the actual license texts.
 
@@ -3577,9 +3692,9 @@ PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE OpenSSL PROJECT OR ITS CONTRIBUTO
 This product includes cryptographic software written by Eric Young (eay@cryptsoft.com).  This product includes software written by Tim Hudson (tjh@cryptsoft.com).
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-Redistributions of source code must retain the copyright notice, this list of conditions and the following disclaimer. 
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. 
-All advertising materials mentioning features or use of this software must display the following acknowledgement: "This product includes cryptographic software written by Eric Young (eay@cryptsoft.com)". The word 'cryptographic' can be left out if the rouines from the library being used are not cryptographic related :-). 
+Redistributions of source code must retain the copyright notice, this list of conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+All advertising materials mentioning features or use of this software must display the following acknowledgement: "This product includes cryptographic software written by Eric Young (eay@cryptsoft.com)". The word 'cryptographic' can be left out if the rouines from the library being used are not cryptographic related :-).
 If you include any Windows specific code (or a derivative thereof) from the apps directory (application code) you must include an acknowledgement:  "This product includes software written by Tim Hudson (tjh@cryptsoft.com)"
 
 THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
@@ -3590,7 +3705,7 @@ The licence and distribution terms for any publically available version or deriv
 Tesseract 4.1.0
 Tesseract, maintained by Google (http://code.google.com/p/tesseract-ocr/),
 is distributed under the Apache 2.0 license (http://www.apache.org/licenses/LICENSE-2.0).
- 
+
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 
@@ -3648,7 +3763,6 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
 
 
 </code></pre></div></div>
