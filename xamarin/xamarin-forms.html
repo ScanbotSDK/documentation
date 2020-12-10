@@ -112,6 +112,7 @@ to the <code class="highlighter-rouge">Application</code> attribute on the <code
 </ul>
 
 <p><a name="page_object"></a></p>
+
 <h3 id="pages">Pages</h3>
 
 <p>The Scanbot SDK provides a ready-to-use UI for document scanning and cropping. Both components use the notion of a ‘page’ as a data model for the scanning and cropping activities. A page is represented by <code class="highlighter-rouge">ScanbotSDK.Xamarin.Forms.IScannedPage</code>:</p>
@@ -218,6 +219,46 @@ to the <code class="highlighter-rouge">Application</code> attribute on the <code
     <span class="n">Task</span> <span class="nf">CleanUp</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div></div>
+
+<p><a name="persistencePageObject"></a></p>
+<h3 id="persistence-of-page-objects">Persistence of Page Objects</h3>
+<p>Scanbot SDK does <strong>not</strong> persist page objects, only the image files (.jpg or .png).
+The management of page objects and the persistence of the page metadata is left to the app.
+Depending on the use case, it may be necessary to persist the data of the page objects in the app 
+(e.g. as JSON in a local SQLite database). If this is the case, the following must be considered.</p>
+
+<p>The Page objects contain absolute paths to the image files, i.e. the <code class="highlighter-rouge">Document</code> image of a <code class="highlighter-rouge">ScannedPage</code> might be located at:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4_preview.jpg
+</code></pre></div></div>
+
+<p>The page image files are stored in corresponding storage locations.
+By default, the Scanbot SDK Android uses the <strong>internal files</strong> directory of the app, whereas the Scanbot SDK iOS uses 
+the <strong>“Application Support”</strong> folder. Those storage folders are secure and are not affected by an app update.</p>
+
+<p>However, on iOS, the <strong>absolute</strong> file path of the “Application Support” folder is not reliable.
+For each fresh install of an app, a new UUID is generated, in the following format:
+<code class="highlighter-rouge">/var/mobile/Containers/Data/Application/{UUID}</code>. That is where application data is stored.
+When updating the app, the uuid <strong>may</strong> change. For example:</p>
+
+<p>Before an app update:</p>
+
+<p><code class="highlighter-rouge">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg</code></p>
+
+<p>After the app update:</p>
+
+<p><code class="highlighter-rouge">file:///var/mobile/Containers/Data/Application/C9181555-252A-4665-892F-793008ED0EDD/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg</code></p>
+
+<p>Please note that the actual image files are still there, only the absolute file paths change.</p>
+
+<p>To get to the new absolute paths, the API method <code class="highlighter-rouge">RefreshImageUris(IEnumerable&lt;IScannedPage&gt;)</code> has been introduced in the ScanbotSDK.Xamarin.Forms SDK version 3.2.0. Please use this method to refresh all image file URIs from affected pages:</p>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">List</span><span class="p">&lt;</span><span class="n">IScannedPage</span><span class="p">&gt;</span> <span class="n">loadedPages</span> <span class="p">=</span> <span class="c1">// load pages from database </span>
+<span class="kt">var</span> <span class="n">refreshedPages</span> <span class="p">=</span> <span class="k">await</span> <span class="n">SBSDK</span><span class="p">.</span><span class="n">Operations</span><span class="p">.</span><span class="nf">RefreshImageUris</span><span class="p">(</span><span class="n">loadedPages</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>It’s highly recommended using this method whenever you have to (re-)load Page objects 
+from the database of your app, regardless of whether there was an app update or not.</p>
 
 <p><a name="LaunchDocumentScanner"></a></p>
 <h3 id="document-scanner">Document Scanner</h3>
@@ -440,10 +481,38 @@ present an error message to the user if the validation fails and restart a step.
   <li><code class="highlighter-rouge">0.6-1.0</code>: I’m skeptical of the usefulness of the image</li>
 </ul>
 
-<p>However, this isn’t that black and white. If a scanned document has a lot white background, that will be considered a very blurred image.</p>
+<p>However, this isn’t that black and white. 
+If a scanned document has a lot white background, that will be considered a very blurred image.</p>
 
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history-and-changelog">Release History and Changelog</h3>
+
+<h4 id="scanbotsdkxamarinforms---version-320-10-dec-2020">ScanbotSDK.Xamarin.Forms - Version 3.2.0 (10 Dec 2020)</h4>
+
+<ul>
+  <li>🎉 NEW:
+    <ul>
+      <li>iOS: Introduced a new API method <code class="highlighter-rouge">RefreshImageUris(pages)</code> to fix image file paths after app updates. 
+For more details please check out the section <a href="#persistencePageObject">Persistence of Page Objects</a>.</li>
+      <li>Introduced new API method <code class="highlighter-rouge">ReconstructPage</code> to re-create pages based on <code class="highlighter-rouge">pageId</code> and metadata</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Android: Fixed a bug with the size of generated PDF documents being too big</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded <code class="highlighter-rouge">ScanbotSDK.Xamarin</code> to v3.2.0</li>
+    </ul>
+  </li>
+  <li>👉 Please also see:
+    <ul>
+      <li>See the <a href="/documentation/xamarin/xamarin.html#releaseHistory">Changelog</a> of <code class="highlighter-rouge">ScanbotSDK.Xamarin v3.2.0</code></li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="scanbotsdkxamarinforms---version-313-13-nov-2020">ScanbotSDK.Xamarin.Forms - Version 3.1.3 (13 Nov 2020)</h4>
 
