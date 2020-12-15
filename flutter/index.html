@@ -125,7 +125,7 @@ You can simply add it as dependency to your App.</p>
 <p>Add the <code class="highlighter-rouge">scanbot_sdk</code> plugin to your <code class="highlighter-rouge">pubspec.yaml</code> file as <code class="highlighter-rouge">dependencies</code>:</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">dependencies</span><span class="pi">:</span>
-  <span class="na">scanbot_sdk</span><span class="pi">:</span> <span class="s">^2.0.0</span>  <span class="c1"># see the latest sdk version</span>
+  <span class="na">scanbot_sdk</span><span class="pi">:</span> <span class="s">^2.1.0</span>  <span class="c1"># see the latest sdk version</span>
 </code></pre></div></div>
 
 <p>Use the flutter CLI (or your IDE) to fetch and install the packages:</p>
@@ -206,7 +206,7 @@ your app has enough heap allocated to avoid <code class="highlighter-rouge">OutO
 
 <p>Then run:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd ios/
-$ pod install
+$ pod install --repo-update
 </code></pre></div></div>
 
 <p>In your <code class="highlighter-rouge">Info.plist</code> file add the required <code class="highlighter-rouge">NSCameraUsageDescription</code> property:</p>
@@ -247,6 +247,7 @@ Cropping UI, Barcode Scanner UI, MRZ Scanner UI and EHIC Scanner UI.</p>
       <li><a href="#module_ScanbotSdk.createTiff">.createTiff(pages, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.getOcrConfigs">.getOcrConfigs()</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.performOcr">.performOcr(pages, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.refreshImageUris">.refreshImageUris(pages)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.cleanupStorage">.cleanupStorage()</a> - <code class="highlighter-rouge">function</code></li>
     </ul>
   </li>
@@ -530,15 +531,16 @@ by this Plugin (scanned and imported images, export files like PDF, TIFF, etc).<
 
 <h2 id="ready-to-use-ui-screen-components">Ready-To-Use UI Screen Components</h2>
 
-<h3 id="configuration">Configuration</h3>
-<p>Settings controlling color are expected to be passed as strings in the <code class="highlighter-rouge">'#RRGGBB'</code> format.</p>
+<p>The Scanbot SDK provides Ready-To-Use UI (RTU UI) screen components, like Document Scanner UI, Cropping UI,
+Barcode Scanner UI, etc.</p>
 
 <p><a name="pageObject"></a></p>
-<h3 id="pages">Pages</h3>
+<h3 id="page-model">Page Model</h3>
 
-<p>The Scanbot SDK Plugin provides so-called Ready-to-Use UI (RTU UI) screen components for document scanning and cropping. 
-Both components use the notion of a ‘page’ as a data model for the scanning and cropping activities. 
-A page object has the following fields:</p>
+<p>All SDK components (UI and non-UI) which generate or modify scanned documents use the notion of a <code class="highlighter-rouge">Page</code>
+as a data model.</p>
+
+<p>A <code class="highlighter-rouge">Page</code> object represents a scanned document page and has the following fields:</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Page</span> <span class="o">(</span>
   <span class="kt">String</span> <span class="n">pageId</span><span class="o">;</span>
@@ -575,6 +577,57 @@ If <code class="highlighter-rouge">null</code> is passed, this property is effec
 where the <code class="highlighter-rouge">pageId</code> serves as a name prefix for the stored image files. 
 Operations that modify pages work in-place. 
 That is, for example, <code class="highlighter-rouge">rotatePageClockwise()</code> overwrites the page’s image files with their rotated versions.</p>
+
+<p><a name="persistencePageObject"></a></p>
+<h3 id="persistence-of-page-objects">Persistence of Page Objects</h3>
+<p>Scanbot SDK does <strong>not</strong> persist page objects, only the image files (.jpg or .png).
+The management of page objects and the persistence of the page metadata is left to the app.
+Depending on the use case, it may be necessary to persist the data of the page objects in the app
+(e.g. as JSON in a local SQLite database). If this is the case, the following must be considered.</p>
+
+<p>The Page objects contain absolute paths to the image files:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">pageId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">60426F47-4119-48F8-ADA9-F7E60D583CB4</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">filter</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">NONE</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">detectionResult</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">OK</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">polygon</span><span class="dl">"</span><span class="p">:</span> <span class="p">[{</span><span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.17427248677248677</span><span class="p">,</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.1212797619047619</span><span class="p">},{</span><span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.8604497354497355</span><span class="p">,</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.13120039682539678</span><span class="p">},{</span><span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.8349867724867724</span><span class="p">,</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.9729662698412699</span><span class="p">},{</span><span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.12202380952380967</span><span class="p">,</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.9471726190476191</span><span class="p">}],</span>
+  <span class="dl">"</span><span class="s2">documentPreviewImageFileUri</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4_preview.jpg?minihash=a236a8ba5510cd0f4e88bd2045f52c4e</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">originalImageFileUri</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/originals/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg?minihash=4e9f0446421343eaaa1e415fdb446a12</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">originalPreviewImageFileUri</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/originals/60426F47-4119-48F8-ADA9-F7E60D583CB4_preview.jpg?minihash=da888cd42db07e52b15a6ada29a37b63</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">documentImageFileUri</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg?minihash=f9aab62cc37fec555abe94c83406a1b3</span><span class="dl">"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The page image files are stored in corresponding storage locations - also see the <a href="#storage">Storage</a> section.
+By default, the Scanbot SDK Android uses the internal files directory of the app, whereas the Scanbot SDK iOS uses
+the <strong>“Application Support”</strong> folder. Those storage folders are secure and are not affected by an app update.</p>
+
+<p>However, on iOS, the <strong>absolute</strong> file path of the “Application Support” folder is not reliable.
+For each fresh install of an app, a new UUID is generated, in the following format:
+<code class="highlighter-rouge">/var/mobile/Containers/Data/Application/{UUID}</code>. That is where application data is stored.
+When updating the app, the uuid <strong>may</strong> change. For example:</p>
+
+<p>Before an app update:</p>
+
+<p><code class="highlighter-rouge">file:///var/mobile/Containers/Data/Application/54286F82-A8F7-4850-A684-8D3487726A4D/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg</code></p>
+
+<p>After the app update:</p>
+
+<p><code class="highlighter-rouge">file:///var/mobile/Containers/Data/Application/C9181555-252A-4665-892F-793008ED0EDD/Library/Application%20Support/net.doo.ScanbotSDK/SBSDK_ImageStorage_Default/PageFileStorage/JPEG/documents/60426F47-4119-48F8-ADA9-F7E60D583CB4.jpg</code></p>
+
+<p>Please note that the actual image files are still there, only the absolute file paths change.</p>
+
+<p>To get to the new absolute paths, the API method <a href="#module_ScanbotSdk.refreshImageUris"><code class="highlighter-rouge">refreshImageUris(pages)</code></a> 
+has been introduced in the plugin version 2.1.0. 
+Please use this method to refresh all image file URIs from affected pages:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Page</span><span class="o">&gt;</span> <span class="n">loadedPages</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">// load page objects from DB</span>
+<span class="kd">var</span> <span class="n">refreshedPages</span> <span class="o">=</span> <span class="n">await</span> <span class="n">ScanbotSdk</span><span class="o">.</span><span class="na">refreshImageUris</span><span class="o">(</span><span class="n">loadedPages</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>It’s highly recommended using this method whenever you have to (re-)load Page objects
+from the database of your app, regardless of whether there was an app update or not.</p>
 
 <p><a name="module_ScanbotSdkUi.startDocumentScanner"></a></p>
 <h3 id="document-scanner">Document Scanner</h3>
@@ -1518,6 +1571,14 @@ function to make sure that desired languages are installed.</li>
   <li><code class="highlighter-rouge">options.shouldGeneratePdf </code> - Whether to generate the PDF file or return plain text only.</li>
 </ul>
 
+<p><a name="module_ScanbotSdk.refreshImageUris"></a></p>
+<h3 id="refresh-image-uris">Refresh Image URIs</h3>
+<h4 id="scanbotsdkrefreshimageurispages">ScanbotSdk.refreshImageUris(pages)</h4>
+
+<p>API: <code class="highlighter-rouge">static Future&lt;List&lt;Page&gt;&gt; refreshImageUris(List&lt;Page&gt; pages) async</code></p>
+
+<p>See the section <a href="#persistencePageObject">Persistence of Page Objects</a></p>
+
 <p><a name="module_ScanbotSdk.cleanupStorage"></a></p>
 <h3 id="cleanup">Cleanup</h3>
 <h4 id="scanbotsdkcleanupstorage">ScanbotSdk.cleanupStorage()</h4>
@@ -1938,6 +1999,18 @@ It allows you to create and distribute dedicated and smaller APKs <strong>via Pl
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history-and-changelog">Release History and Changelog</h2>
 
+<h4 id="version-210-15-dec-2020">Version 2.1.0 (15 Dec 2020)</h4>
+<ul>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>iOS: Introduced a new API method <code class="highlighter-rouge">refreshImageUris(pages)</code> to fix image file paths 
+after app updates. For more details please check out the section 
+<a href="#persistencePageObject">Persistence of Page Objects</a>.</li>
+      <li>iOS: Fixed de-/serialization of the property <code class="highlighter-rouge">Page.detectionStatus</code>.</li>
+    </ul>
+  </li>
+</ul>
+
 <h4 id="version-201-28-nov-2020">Version 2.0.1 (28 Nov 2020)</h4>
 <ul>
   <li>🚀 Improvements:
@@ -2044,18 +2117,12 @@ See the API docs of <code class="highlighter-rouge">OcrResult.pages</code> for m
   <li>🎉 First release.</li>
 </ul>
 
-<h4 id="version-110-16-apr-2020">Version 1.1.0 (16 Apr 2020):</h4>
-<ul>
-  <li>Add new license handler callback on sdk init</li>
-  <li>Improve sdk license status</li>
-</ul>
-
 <p><a name="librariesLicenses"></a></p>
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 
-Open Source libraries used in the Scanbot SDK Flutter Plugin version 2.0.1:
+Open Source libraries used in the Scanbot SDK Flutter Plugin version 2.1.0:
 
 json_serializable version 3.2.0 and json_annotation version 3.0.0
 (https://github.com/dart-lang/json_serializable/blob/master/LICENSE)
