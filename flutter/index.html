@@ -1800,11 +1800,28 @@ It allows you to create and distribute dedicated and smaller APKs <strong>via Pl
 
 <p><strong>For the latest version:</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-ignorewarnings
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Default Flutter rules, should probably already be there
+-keep class io.flutter.view.** { *; }
+-keep class io.flutter.** { *; }
+-keep class io.flutter.plugins.** { *; }
+-dontwarn io.flutter.embedding.**
+-ignorewarnings
+-dontoptimize
 
--keep public class io.scanbot.sdk.ui.** { *; }
+# For the Scanbot SDK Flutter Plugin
+-keeppackagenames io.scanbot.sdk.flutter.**
+-keep public class io.scanbot.sdk.flutter.**{ *; }
 
--keep public class io.scanbot.sap.SapManager { *; }
+# For the native Scanbot SDK
+-ignorewarnings
+-keepclassmembers enum io.scanbot.sdk.**{ *; }
+-keeppackagenames io.scanbot.sdk.persistence.**
+-keep public class io.scanbot.sdk.persistence.**{ *; }
+
+-keeppackagenames io.scanbot.sdk.ui.**
+-keep public class io.scanbot.sdk.ui.**{ *; }
+
+-keep public class io.scanbot.sap.SapManager{ *; }
 
 -keeppackagenames io.scanbot.sdk.core.contourdetector.**
 -keep public class io.scanbot.sdk.core.contourdetector.**{ *; }
@@ -1842,10 +1859,8 @@ It allows you to create and distribute dedicated and smaller APKs <strong>via Pl
 -keeppackagenames io.scanbot.sdk.textorientation.**
 -keep public class io.scanbot.sdk.textorientation.**{ *; }
 
--keeppackagenames io.scanbot.barcodescanner.**
--keep public class io.scanbot.barcodescanner.**{ *; }
--keeppackagenames io.scanbot.sdk.barcodescanner.**
--keep public class io.scanbot.sdk.barcodescanner.**{ *; }
+-keeppackagenames io.scanbot.sdk.barcode.**
+-keep public class io.scanbot.sdk.barcode.**{ *; }
 
 -keeppackagenames io.scanbot.hicscanner.**
 -keep public class io.scanbot.hicscanner.**{ *; }
@@ -1874,7 +1889,7 @@ It allows you to create and distribute dedicated and smaller APKs <strong>via Pl
 # Gson specific classes
 -dontwarn sun.misc.**
 
--keep class com.google.gson.stream.** { *; }
+-keep class com.google.gson.stream.**{ *; }
 
 # Prevent proguard from stripping interface information from TypeAdapter, TypeAdapterFactory,
 # JsonSerializer, JsonDeserializer instances (so they can be used in @JsonAdapter)
