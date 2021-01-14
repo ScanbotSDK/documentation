@@ -2826,8 +2826,8 @@ please add the following rules:</p>
 -keeppackagenames io.scanbot.dcscanner.**
 -keep public class io.scanbot.dcscanner.**{ *; }
 
--keeppackagenames io.scanbot.tiffwriter.**
--keep public class io.scanbot.tiffwriter.**{ *; }
+-keeppackagenames io.scanbot.sdk.tiff.**
+-keep public class io.scanbot.sdk.tiff.**{ *; }
 
 -keeppackagenames io.scanbot.chequescanner.**
 -keep public class io.scanbot.chequescanner.**{ *; }
@@ -2884,6 +2884,33 @@ please add the following rules:</p>
 
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release History</h2>
+
+<h4 id="version-461-14-jan-2021">Version 4.6.1 (14 Jan 2021):</h4>
+<ul>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Improved detection of ITF and DataMatrix barcodes</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Android: The flash button on all UI screens is not shown anymore on devices without a flashlight</li>
+      <li>Android: Fixed not working live detection on some devices with non-standard camera frame resolution</li>
+      <li>Android: Several potential fixes and checks in the Barcode Scanner UI to avoid sporadic crashes</li>
+      <li>Android: Fixed the “double scan” (double beep tone) issue in the Barcode Scanner UI</li>
+      <li>Fixed a rare case of the QR-codes processing which might lead to crash</li>
+      <li>Fixed incorrect processing of the text part in DataMatrix barcodes with binary data</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded the native Scanbot Android SDK to v1.77.2
+(cf. <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">changelog</a>)</li>
+      <li>Upgraded the native Scanbot iOS SDK to v1.12.3
+(cf. <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">changelog</a>)</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="version-460-4-dec-2020">Version 4.6.0 (4 Dec 2020):</h4>
 <ul>
@@ -3471,7 +3498,7 @@ Please note that only the <strong>new created</strong> image files will contain 
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-Open Source libraries used in the Scanbot SDK for Android version 1.76.2:
+Open Source libraries used in the Scanbot SDK for Android version 1.77.2:
 
 Apache Commons Codec
 
@@ -3496,7 +3523,7 @@ limitations under the License.
 
 CWAC-Camera
 
-Version 0.6.33
+Version 0.6.40
 (https://github.com/doo/cwac-camera)
 (https://github.com/commonsguy/cwac-camera/)
 
@@ -4208,7 +4235,7 @@ POSSIBILITY OF SUCH DAMAGE.
 
 
 
-Open Source libraries used in the Scanbot SDK for iOS version 1.12.1:
+Open Source libraries used in the Scanbot SDK for iOS version 1.12.3:
 
 
 BOOST C++ Libraries version 1.68
