@@ -1212,14 +1212,13 @@ might contain information about why there was no polygon detected (too noisy bac
 </ul>
 
 <p>Example code for document detection on a video frame</p>
-<pre class="highlight plaintext"><code>- (void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer
-           videoOrientation:(AVCaptureVideoOrientation)orientation {
+<pre class="highlight plaintext"><code>- (void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer videoOrientation:(AVCaptureVideoOrientation)orientation {
 
     // Create an SBSDKDocumentDetector.
     // Note: Usually you store it in a property, for demo purposes we create a new one for each frame.
     SBSDKDocumentDetector *detector = [[SBSDKDocumentDetector alloc] init];
 
-    // Detect a documents outlines on the sample buffer
+    // Detect a document's outlines on the sample buffer
     SBSDKDocumentDetectorResult *result = [detector detectDocumentPolygonOnSampleBuffer:sampleBuffer
                                                                        visibleImageRect:CGRectZero
                                                                        smoothingEnabled:YES
@@ -1228,7 +1227,7 @@ might contain information about why there was no polygon detected (too noisy bac
     // If we have an acceptable polygon...
     if (result.status == SBSDKDocumentDetectionStatusOK &amp;&amp; result.polygon != nil) {
         // We take a still shot from the camera.
-        // Create an UIImage from the still shot sample buffer.
+        // Create a UIImage from the still shot sample buffer.
         // Warp the image into the polygon.
         [self.cameraSession captureStillImageWithCompletionHandler:^(CVPixelBufferRef pixelBuffer, NSError *error) {
             UIImage *image = [UIImage sbsdk_imageFromPixelBuffer:pixelBuffer];
@@ -1318,7 +1317,7 @@ it delivers the scanned (and perspective corrected, cropped document) images to 
 #pragma mark - SBSDKScannerViewControllerDelegate
 
 - (BOOL)scannerControllerShouldAnalyseVideoFrame:(SBSDKScannerViewController *)controller {
-    // We want to only process video frames when self is visible on screen and front most view controller
+    // We only want to process video frames when self is visible on screen and front most view controller
     return self.viewAppeared &amp;&amp; self.presentedViewController == nil;
 }
 
@@ -1337,7 +1336,7 @@ it delivers the scanned (and perspective corrected, cropped document) images to 
 - (void)scannerController:(SBSDKScannerViewController *)controller
          didDetectPolygon:(SBSDKPolygon *)polygon
                withStatus:(SBSDKDocumentDetectionStatus)status {
-    // Everytime the document detector finishes detection it calls this delegate method.
+    // Every time the document detector finishes detection it calls this delegate method.
 
 }
 
@@ -1352,11 +1351,11 @@ it delivers the scanned (and perspective corrected, cropped document) images to 
 - (UIColor *)scannerController:(SBSDKScannerViewController *)controller
 polygonColorForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
 
-    // If the detector has found an acceptable polygon we show it with green color
+    // If the detector has found an acceptable polygon we show it using a green color
     if (status == SBSDKDocumentDetectionStatusOK) {
         return [UIColor greenColor];
     }
-    // Otherwise red colored.
+    // Otherwise red color.
     return [UIColor redColor];
 }
 
@@ -1477,7 +1476,7 @@ SBSDKStorageLocation *imagesLocation = [[SBSDKStorageLocation alloc] initWithBas
 SBSDKIndexedImageStorage *imageStorage = [[SBSDKIndexedImageStorage alloc] initWithStorageLocation:imagesLocation];
 
 // Define the indices of the images in the image storage you want to render to the PDF, e.g. the first 3.
-// To include all images you can simply pass nil for the indexSet. The indexSet internally is validated.
+// To include all images you can simply pass nil for the indexSet. The indexSet is validated internally.
 // You dont need to take care if all indices are valid.
 NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 2)];
 
@@ -1636,8 +1635,7 @@ incoming frame synchronously in the video capture queue. When the detector retur
 recognizing part runs on the same full HD frame in the same video capture queue and returns the recognizers result.</p>
 
 <p>Example code on how to detect and recognize payforms in the video delegate </p>
-<pre class="highlight plaintext"><code>- (void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer
-           videoOrientation:(AVCaptureVideoOrientation)orientation {
+<pre class="highlight plaintext"><code>- (void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer videoOrientation:(AVCaptureVideoOrientation)orientation {
 
     // Create an SBSDKPayFormScanner.
     // Note: Usually you store it in a property, for demo purposes we create a new one for each frame.
@@ -1739,8 +1737,8 @@ NSURL *imagesDirectoryURL = [[SBSDKStorageLocation applicationDocumentsFolderURL
 SBSDKStorageLocation *storageLocation = [[SBSDKStorageLocation alloc] initWithBaseURL:imagesDirectoryURL];
 
 //Create encrypter with key and desired encryption mode
-SBSDKAESEncrypter *encrypter = [[SBSDKAESEncrypter alloc] initWithKey:@"password_example#42"
-                                                                 mode:SBSDKAESEncrypterModeAES256];
+SBSDKAESEncrypter *encrypter = [[SBSDKAESEncrypter alloc] initWithPassword:@"password_example#42"
+                                                                      mode:SBSDKAESEncrypterModeAES256];
 
 //Create indexed image storage using storage location, image file format and encrypter                         
 SBSDKIndexedImageStorage *imageStorage = [[SBSDKIndexedImageStorage alloc] initWithStorageLocation:storageLocation
@@ -1750,7 +1748,7 @@ SBSDKIndexedImageStorage *imageStorage = [[SBSDKIndexedImageStorage alloc] initW
 
 <p>Examples of some basic operations on Indexed Image storage:</p>
 <pre class="highlight plaintext"><code>//In this example image storage used as stored property
-//Note: How initiate indexed image storage described in example above
+//Note: How to initiate indexed image storage described in example above
 @property (strong, nonatomic) SBSDKIndexedImageStorage *imageStorage;
 
 //Create image
@@ -1814,6 +1812,164 @@ NSString *prefix = @"test";
 [self.imageStorage removeImagesForKeysMatchingPrefix:prefix];
 </code></pre>
 
+<p><a name="IDCardRecognizer"></a></p>
+<h2 id='10-id-card-recognizer' class='heading'>10. ID Card Recognizer</h2>
+
+<p>The ScanbotSDK provides a scanner for personal ID cards. Currently it is limited to german ID cards and passports.<br>
+It can detect and recognize ID cards on images or video frames and extract the data fields, like names, dates, photos, signatures and machine readable zones.</p>
+
+<p>Detection is a quick way to check if there is an ID card present on an image or video frame.
+Recognition is slower but additionally extracts the data fields from the ID card.</p>
+
+<p>The result of ID card detection and recognition represented via <code><a href="Classes/SBSDKIDCardRecognizerResult.html">SBSDKIDCardRecognizerResult</a></code>. 
+This class summarizes general information from ID card scan and individual data fields.</p>
+
+<p>Example of recognizing ID Card on sample buffer:</p>
+<pre class="highlight plaintext"><code>- (void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer videoOrientation:(AVCaptureVideoOrientation)orientation {
+    //Create an instance of ID card recognizer
+    SBSDKIDCardRecognizer *idCardRecognizer = [[SBSDKIDCardRecognizer alloc] init];
+
+    //Detect id card on the sample buffer
+    SBSDKIDCardRecognizerResult *detectionResult = [idCardRecognizer detectIDCardOnBuffer:sampleBuffer
+                                                                              orientation:orientation];
+    // Check if detection was successful
+    if (detectionResult) {
+        //Recognize ID card's fields on the sample buffer
+        SBSDKIDCardRecognizerResult *recognitionResult = [idCardRecognizer recognizeIDCardOnBuffer:sampleBuffer
+                                                                                       orientation:orientation];
+    }
+}
+</code></pre>
+
+<p>Example of handling <code><a href="Classes/SBSDKIDCardRecognizerResult.html">SBSDKIDCardRecognizerResult</a></code>:</p>
+<pre class="highlight plaintext"><code>//Creating dictionary with all the card fields and card type
+- (NSDictionary *)dictionaryFromIdCardRecognizerResult:(SBSDKIDCardRecognizerResult *)cardResult {
+    NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
+    result[@"IDCardType"] = [self textForType:cardResult.type];
+    for (SBSDKIDCardRecognizerResultField *field in cardResult.fields) {
+        if (field.text.length &gt; 0) {
+            result[[self fieldTypeTextForField:field]] = @{@"text": field.text,
+                                                               @"confidence": @(field.textConfidence)};
+        }
+    }
+    return [result copy];
+}
+
+//Creating string representation of the id card type
+- (NSString *)textForType:(SBSDKIDCardType)type {
+    switch (type) {
+        case SBSDKIDCardTypeBack_DE:
+            return @"Back Side DE";
+        case SBSDKIDCardTypeFront_DE:
+            return @"Front Side DE";
+        case SBSDKIDCardTypePassport_DE:
+            return @"Passport DE";
+        case SBSDKIDCardTypeUnknown:
+            return @"Unknown";
+    }
+}
+
+// Creating string representation of the field types
+- (NSString *)fieldTypeTextForField:(SBSDKIDCardRecognizerResultField *)field {
+    NSString *typeString = @"";
+    switch (field.type) {
+        case SBSDKIDCardFieldTypeInvalid:
+            typeString = @"Invalid";
+            break;
+        case SBSDKIDCardFieldTypeID:
+            typeString = @"ID";
+            break;
+        case SBSDKIDCardFieldTypeSurname:
+            typeString = @"Surname";
+            break;
+    //...
+    //Handle all the types in the same manner
+    }
+    return [NSString stringWithFormat:@"Field type: %@", typeString];
+}
+</code></pre>
+
+<p><a name="NFCPassportReader"></a></p>
+<h2 id='11-nfc-passport-reader' class='heading'>11. NFC Passport Reader</h2>
+
+<p>The Scanbot SDK provides Near Field Communication(NFC) scanner for reading data from passport&rsquo;s NFC chip.
+To use it you should follow these steps: </p>
+
+<ul>
+<li>device you launch your app on should have iOS 13 or higher</li>
+<li>your app needs to add &ldquo;Near Field Communication Tag Reading&rdquo;</li>
+<li>your app&rsquo;s info.plist needs to provide &ldquo;Privacy - NFC Scan Usage Description&rdquo;</li>
+<li>your app&rsquo;s info.plist needs to define the passport nfc application ID. 
+To do so add the following entry: &ldquo;com.apple.developer.nfc.readersession.iso7816.select-identifiers&rdquo; and as the first element add the passport application ID &ldquo;A0000002471001&rdquo;</li>
+</ul>
+
+<p>To check if NFC passport reading is available on the system you can call <code><a href="Classes/SBSDKNFCPassportReader.html">SBSDKNFCPassportReader</a></code>&lsquo;s class method <code>isPassportReadingAvailable</code>.</p>
+
+<p>Example of reading data from passport&rsquo;s NFC chip using <code><a href="Classes/SBSDKNFCPassportReader.html">SBSDKNFCPassportReader</a></code>:</p>
+<pre class="highlight plaintext"><code>@interface MyViewController &lt;SBSDKPassportReaderDelegate&gt;
+
+//Create progress view to show user scan processing
+@property (strong, nonatomic) IBOutlet UIProgressView *progressView;
+
+- (void)startNFCScanning {
+    if (@available(iOS 13, *)) {
+
+        //To create NFC reader instance you should provide passport number, birth date and expiration date.
+        //This data you can get from passport's MRZ using our Machine readable zone(MRZ) recognizer.
+        //For this example we will use default data
+        SBSDKNFCPassportReader *nfcReader = [[SBSDKNFCPassportReader alloc] initWithPassportNumber:@""
+                                                                                         birthDate:[NSDate date]
+                                                                                    expirationDate:[NSDate date]
+                                                                                    initialMessage:@"Hold your phone over the passport."
+                                                                                          delegate:self];
+        //Set the message being displayed on the NFC-scanning UI
+        [nfcReader setMessage:@"Authenticating with passport..."];
+    }
+}
+
+- (void)passportReaderDidConnect:(nonnull SBSDKNFCPassportReader *)reader {
+    [reader setMessage:@"Enumerating available data groups..."];
+
+    //Enumerate all available data group types on the passport's NFC chip and return them to the completion handler.
+    [reader enumerateDatagroups:^(NSArray&lt;SBSDKNFCDatagroupType *&gt;* types) {
+        [reader setMessage:@"Downloading data groups..."];
+
+        //Download and parse the specified data groups
+        [reader downloadDatagroupsOfType:types completion:^(NSArray&lt;SBSDKNFCDatagroup *&gt;* groups) {
+            [reader setMessage:@"Finished downloading data groups."];
+            if (groups.count &gt; 0) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    // Show result in a way you prefer
+                });
+            }
+        }];
+    }];
+}
+
+- (void)passportReader:(SBSDKNFCPassportReader *)reader didStartReadingGroup:(SBSDKNFCDatagroupType *)type {
+    [reader setMessage:[NSString stringWithFormat:@"Downloading data group %@...", type]];
+    self.progressView.progress = 0.0f;
+    self.progressView.hidden = NO;
+}
+
+- (void)passportReader:(SBSDKNFCPassportReader *)reader didProgressReadingGroup:(float)progress {
+    self.progressView.progress = progress;
+    self.progressView.hidden = NO;
+}
+
+- (void)passportReader:(SBSDKNFCPassportReader *)reader didFinishReadingGroup:(SBSDKNFCDatagroupType *)type {
+    [reader setMessage:[NSString stringWithFormat:@"Finished downloading data group %@...", type]];
+    self.progressView.progress = 1.0f;
+    self.progressView.hidden = YES;
+}
+
+- (void)passportReaderDidFinishSession:(SBSDKNFCPassportReader *)reader {
+    self.progressView.hidden = YES;
+}
+
+@end
+</code></pre>
+
           </div>
         </section>
 
@@ -1821,7 +1977,7 @@ NSString *prefix = @"test";
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2020-12-17)</p>
+      <p>&copy; 2021 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2021-01-29)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

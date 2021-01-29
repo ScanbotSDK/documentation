@@ -1443,6 +1443,157 @@ The result info dictionary contains values for the following keys:</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:objc(cs)SBSDKOpticalTextRecognizer(cm)recognizeText:copyImageStorage:indexSet:languageString:encrypter:pdfOutputURL:completion:"></a>
+                    <a name="//apple_ref/objc/Method/+recognizeText:copyImageStorage:indexSet:languageString:encrypter:pdfOutputURL:completion:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKOpticalTextRecognizer(cm)recognizeText:copyImageStorage:indexSet:languageString:encrypter:pdfOutputURL:completion:">+recognizeText:copyImageStorage:indexSet:languageString:encrypter:pdfOutputURL:completion:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asynchronously recognizes text on a set of images with the specified
+languages and calls the completion handler upon completion.
+If pdfOutputURL is a valid file URL a searchable PDF is created and written to the specified URL.
+A searchable PDF contains selectable and searchable text.</p>
+
+<ul>
+<li>SBSDKResultInfoImageStorageKey: the image storage as SBSDKImageStoring</li>
+<li>SBSDKResultInfoOCRResultsKey: the OCR  results as SBSDKOCRResult</li>
+<li><p>SBSDKResultInfoDestinationFileURLKey: the file URL of the output PDF</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/SBSDKProgress.html">SBSDKProgress</a></span> <span class="o">*</span><span class="p">)</span>
+       <span class="nf">recognizeText</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/SBSDKImageStoring.html">SBSDKImageStoring</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">storage</span>
+    <span class="nf">copyImageStorage</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">copyStorage</span>
+            <span class="nf">indexSet</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSIndexSet</span> <span class="o">*</span><span class="p">)</span><span class="nv">indices</span>
+      <span class="nf">languageString</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">languageString</span>
+           <span class="nf">encrypter</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/SBSDKStorageCrypting.html">SBSDKStorageCrypting</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">encrypter</span>
+        <span class="nf">pdfOutputURL</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">pdfOutputURL</span>
+          <span class="nf">completion</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Type%20Definitions.html#/c:SBSDKScanbotSDKConstants.h@T@SBSDKCompletionHandler">SBSDKCompletionHandler</a></span><span class="p">)</span><span class="nv">completionHandler</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">recognizeText</span><span class="p">(</span><span class="n">_</span> <span class="nv">storage</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SBSDKImageStoring.html">SBSDKImageStoring</a></span><span class="p">,</span> <span class="n">copyImageStorage</span> <span class="nv">copyStorage</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="n">indexSet</span> <span class="nv">indices</span><span class="p">:</span> <span class="kt">IndexSet</span><span class="p">?,</span> <span class="nv">languageString</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">encrypter</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SBSDKStorageCrypting.html">SBSDKStorageCrypting</a></span><span class="p">?,</span> <span class="nv">pdfOutputURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?,</span> <span class="n">completion</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt"><a href="../Type%20Definitions.html#/c:SBSDKScanbotSDKConstants.h@T@SBSDKCompletionHandler">SBSDKCompletionHandler</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKProgress.html">SBSDKProgress</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>storage</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The image storage containing the images to be recognized. Must not be nil, &amp; contains at least 1 image</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>copyStorage</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Whether the receiver should make a physical copy of the image storage for the operation or not.
+If set to NO, you must make sure that the image storage is not mutated while the operation is running.
+Setting YES makes a physical copy of the files in the storage, using up disk memory, but protecting it against mutation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>indices</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An NSIndexSet specifying the indices of the images in the image storage that you want to recognize.
+Pass nil if you want to select all images. Invalid indices are ignored.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>languageString</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A string of two-letter ISO 639-1 language codes, separated by &lsquo;+&rsquo;,
+the OCR engine should use for recognition. E.g. &ldquo;de+en&rdquo; (german and english) &ldquo;ar+he+ja&rdquo; (arabic, hebrew and japanese).
+If the string is invalid or nil the user preferred languages are used.
+Ignores white spaces, invalid languages and invalid characters.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>encrypter</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The encrypter used to encrypt the PDF file. If nil, no encryption is used.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pdfOutputURL</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>If not nil and a valid file URL a searchable PDF is rendered and saved to this URL.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The completionHandler that is being called upon completion of the operation.
+Called on main thread.
+The result info dictionary contains values for the following keys:</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An SBSDKProgress object that can be used to observe the operations progress and to cancel the operation.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:objc(cs)SBSDKOpticalTextRecognizer(cm)recognizeText:indexSet:languageString:pdfOutputURL:error:"></a>
                     <a name="//apple_ref/objc/Method/+recognizeText:indexSet:languageString:pdfOutputURL:error:" class="dashAnchor"></a>
                     <a class="token" href="#/c:objc(cs)SBSDKOpticalTextRecognizer(cm)recognizeText:indexSet:languageString:pdfOutputURL:error:">+recognizeText:indexSet:languageString:pdfOutputURL:error:</a>
@@ -1518,6 +1669,134 @@ Pass nil if you want to select all images. Invalid indices are ignored.</p>
 the OCR engine should use for recognition. E.g. &ldquo;de+en&rdquo; (german and english) &ldquo;ar+he+ja&rdquo; (arabic, hebrew and japanese).
 If the string is invalid or nil the user preferred languages are used.
 Ignores white spaces, invalid languages and invalid characters.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pdfOutputURL</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>If not nil and a valid file URL a searchable PDF is rendered and saved to this URL.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>outError</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A pointer to an NSError object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An SBSDKOCRResult containing the result of the text recognition. Nil if an error occurred.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKOpticalTextRecognizer(cm)recognizeText:indexSet:languageString:encrypter:pdfOutputURL:error:"></a>
+                    <a name="//apple_ref/objc/Method/+recognizeText:indexSet:languageString:encrypter:pdfOutputURL:error:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKOpticalTextRecognizer(cm)recognizeText:indexSet:languageString:encrypter:pdfOutputURL:error:">+recognizeText:indexSet:languageString:encrypter:pdfOutputURL:error:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Synchronously recognizes text on a set of images with the specified
+languages and calls the completion handler upon completion.
+If pdfOutputURL is a valid file URL a searchable PDF is created and written to the specified URL.
+A searchable PDF contains selectable and searchable text.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/SBSDKOCRResult.html">SBSDKOCRResult</a></span> <span class="o">*</span><span class="p">)</span>
+     <span class="nf">recognizeText</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/SBSDKImageStoring.html">SBSDKImageStoring</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">storage</span>
+          <span class="nf">indexSet</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSIndexSet</span> <span class="o">*</span><span class="p">)</span><span class="nv">indices</span>
+    <span class="nf">languageString</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">languageString</span>
+         <span class="nf">encrypter</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/SBSDKStorageCrypting.html">SBSDKStorageCrypting</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">encrypter</span>
+      <span class="nf">pdfOutputURL</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">pdfOutputURL</span>
+             <span class="nf">error</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">_Nullable</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">)</span><span class="nv">outError</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">recognizeText</span><span class="p">(</span><span class="n">_</span> <span class="nv">storage</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SBSDKImageStoring.html">SBSDKImageStoring</a></span><span class="p">,</span> <span class="n">indexSet</span> <span class="nv">indices</span><span class="p">:</span> <span class="kt">IndexSet</span><span class="p">?,</span> <span class="nv">languageString</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">encrypter</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SBSDKStorageCrypting.html">SBSDKStorageCrypting</a></span><span class="p">?,</span> <span class="nv">pdfOutputURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKOCRResult.html">SBSDKOCRResult</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>storage</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The image storage containing the images to be recognized. Must not be nil, &amp; contains at least 1 image</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>indices</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An NSIndexSet specifying the indices of the images in the image storage that you want to recognize.
+Pass nil if you want to select all images. Invalid indices are ignored.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>languageString</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A string of two-letter ISO 639-1 language codes, separated by &lsquo;+&rsquo;,
+the OCR engine should use for recognition. E.g. &ldquo;de+en&rdquo; (german and english) &ldquo;ar+he+ja&rdquo; (arabic, hebrew and japanese).
+If the string is invalid or nil the user preferred languages are used.
+Ignores white spaces, invalid languages and invalid characters.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>encrypter</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The encrypter used to encrypt the PDF file. If nil, no encryption is used.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1748,7 +2027,7 @@ The result info dictionary contains values for the following keys:</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2020-12-17)</p>
+      <p>&copy; 2021 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2021-01-29)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
