@@ -505,6 +505,81 @@ the <code class="highlighter-rouge">Activity</code> <strong>and</strong> the tak
 <span class="o">}</span>
 </code></pre></div></div>
 
+<h4 id="change-the-default-storage-directory">Change the default storage directory</h4>
+<p>It is strongly recommended to use the internal storage. However, you can overwrite the default storage directory of the Scanbot SDK on initialization.
+The <code class="highlighter-rouge">ScanbotBarcodeScannerSDKInitializer</code> class provides the method <code class="highlighter-rouge">sdkFilesDirectory(Application application, File sdkFilesDirectory)</code> which allows to change the default storage directory.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import io.scanbot.sdk.barcode_scanner.ScanbotBarcodeScannerSDKInitializer;
+
+// Example for using a sub-folder in the external(!) storage:
+File customStorageDir = new File(getExternalFilesDir(null), "my-custom-storage-dir");
+customStorageDir.mkdirs();
+
+new ScanbotBarcodeScannerSDKInitializer()
+        .sdkFilesDirectory(this, customStorageDir)
+        ...
+        .initialize(this)
+</code></pre></div></div>
+
+<p>⚠️ <strong>Warning:</strong> When overwriting the default storage location, make sure</p>
+
+<ul>
+  <li>you have implemented a suitable storage permissions request handling</li>
+  <li>the storage directory is available (e.g. unmounted SD card).</li>
+</ul>
+
+<h4 id="enable-the-page-storage-encryption">Enable the page storage encryption</h4>
+<p>By default an encryption for barcode images is disabled.</p>
+
+<p>Scanbot Barcode Scanner SDK provides the ability to encrypt all stored barcode images in the SDK app folder.</p>
+
+<p>To do that you have to follow the next steps:</p>
+<ol>
+  <li>Add Scanbot SDK Crypto Persistence library to your app dependencies</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>implementation("io.scanbot:sdk-crypto-persistence:VERSION")
+</code></pre></div></div>
+
+<ol>
+  <li>Enable files encryption in <code class="highlighter-rouge">ScanbotBarcodeScannerSDKInitializer</code></li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ScanbotBarcodeScannerSDKInitializer()
+        .useFileEncryption(true)
+        .initialize(this)
+</code></pre></div></div>
+
+<p>And that’s it!</p>
+
+<p>Default Encryptor implementation uses AndroidX Crypto solution under the hood.
+More info you can find here: https://developer.android.com/topic/security/data
+The files encryptor uses <code class="highlighter-rouge">AES256_GCM_HKDF_4KB</code> file encryption scheme. More info is here: https://developer.android.com/reference/kotlin/androidx/security/crypto/EncryptedFile.FileEncryptionScheme
+⚠️ <strong>Warning:</strong> there are few limitations of encryption libraries usage:</p>
+<ul>
+  <li><code class="highlighter-rouge">security-crypto</code> and <code class="highlighter-rouge">security-identity-credential</code> AndroidX libraries are still in development and have an Alpha version</li>
+  <li>Version 1.1.0-alpha02 of the Security library is supported on devices that run Android 7.0 (API level 24) and higher.</li>
+</ul>
+
+<p>Also, Scanbot SDK provides custom AES based encryption solution <code class="highlighter-rouge">io.scanbot.sdk.persistence.fileio.AESEncryptedFileIOProcessor</code>.
+To enable it you have to set it in SDK initializer in <code class="highlighter-rouge">useFileEncryption()</code> method:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.useFileEncryption(true, AESEncryptedImageFileIOProcessor("any_user_password", AESEncryptedFileIOProcessor.AESEncrypterMode.AES256))
+</code></pre></div></div>
+
+<p>⚠️ <strong>Warning:</strong> <code class="highlighter-rouge">AESEncryptedFileIOProcessor</code> doesn’t save the password in any secure storage between app sessions, so you have to implement this by yourself and reuse it for SDK initialization.</p>
+
+<p>Scanbot SDK allows to set up a completely custom encryption implementation.
+To do that you have to implement <code class="highlighter-rouge">io.scanbot.sdk.persistence.fileio.FileIOProcessor</code> interface and pass it to the <code class="highlighter-rouge">useFileEncryption(true, your_file_io_processor)</code> method.</p>
+
+<p>An instance of <code class="highlighter-rouge">FileIOProcessor</code> will be available during app session and user can use it to read and copy decrypted image files and <code class="highlighter-rouge">Bitmap</code>s.
+For example:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>val scanbotBarcodeScannerSDK = ScanbotBarcodeScannerSDK(context)
+val decryptedImageBitmap: Bitmap = scanbotBarcodeScannerSDK.fileIOProcessor().readImage(source: File, options: BitmapFactory.Options? = null)
+</code></pre></div></div>
+
 <h4 id="full-example-of-a-custom-activity">Full Example of a Custom Activity</h4>
 
 <p>As a final step, you have to connect the <code class="highlighter-rouge">ScanbotCameraView</code> with <code class="highlighter-rouge">BarcodeDetectorFrameHandler</code> and <code class="highlighter-rouge">BarcodeAutoSnappingController</code>.
@@ -556,7 +631,30 @@ e.g. JPG files from photo library or other sources.</p>
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history-and-changelog">Release History and Changelog</h3>
 
-<h3 id="version-131-12-jan-2021">Version 1.3.1 (12 Jan 2021)</h3>
+<h3 id="version-140-02-feb-2021">Version 1.4.0 (02 Feb 2021)</h3>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Implemented an encrypted storage for the barcode images</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Fix CameraX view bug with contour detector mirroring in the landscape for the front facing camera</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="version-132-15-jan-2021">Version 1.3.2 (15 Jan 2021)</h3>
+<ul>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Further fixes for the “double scan” issue with the RTU UI <code class="highlighter-rouge">BarcodeScannerActivity</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="version-131-12-jan-2021">Version 1.3.1 (12 Jan 2021)</h4>
 <ul>
   <li>🐞 Bug fixes:
     <ul>
