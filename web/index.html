@@ -41,7 +41,7 @@
     <h2 id="scanbot-web-document-scanner-sdk">Scanbot Web Document Scanner SDK</h2>
 
 <p>This documentation is for the <strong>latest release</strong> version of
- Scanbot Web Document Scanner SDK (<code class="highlighter-rouge">scanbot-web-sdk@1.x</code>).</p>
+ Scanbot Web Document Scanner SDK (<code class="highlighter-rouge">scanbot-web-sdk@2.x</code>).</p>
 
 <h3 id="requirements">Requirements</h3>
 
@@ -72,7 +72,7 @@ for the feature on other browsers has been confirmed.</p>
 
 <h3 id="example-apps">Example Apps</h3>
 
-<p>Check out our React and plain JS example apps on GitHub:</p>
+<p>Check out our Angular, React and plain JS example apps on GitHub:</p>
 
 <ul>
   <li><a href="https://github.com/doo/scanbot-sdk-example-web">scanbot-sdk-example-web</a></li>
@@ -98,8 +98,8 @@ for the feature on other browsers has been confirmed.</p>
   <li><code class="highlighter-rouge">ScanbotSDK.Asm.wasm</code></li>
 </ul>
 
-<p>The npm package contains compiled javascript with typings under the <code class="highlighter-rouge">component</code>
-directory, so you can import it in your preferred typescript project,
+<p>The npm package contains typings under the <code class="highlighter-rouge">@types</code> directory, 
+so you can import it in your preferred typescript project,
 as well as the minified bundle (will even work with vanilla javascript) in the <code class="highlighter-rouge">bundle</code> directory.</p>
 
 <p>If you don’t use a bundler (webpack, etc.) in your project, you can put a <code class="highlighter-rouge">&lt;script src="ScanbotSDK.min.js"&gt;&lt;/script&gt;</code> tag
@@ -117,127 +117,139 @@ If you wish to add a custom engine location, e.g. beta version
 or a specific path to the web worker components,
 you can also specify the engine location:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const licenseKey = "";
-scanbotSDK = await ScanbotSDK.initialize({
-    licenseKey: licenseKey,
-    engine: "static/js/"
-});
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myLicenseKey</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+<span class="nx">scanbotSDK</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ScanbotSDK</span><span class="p">.</span><span class="nx">initialize</span><span class="p">({</span>
+    <span class="na">licenseKey</span><span class="p">:</span> <span class="nx">myLicenseKey</span><span class="p">,</span>
+    <span class="c1">// optional engine path where ScanbotSDK.Core.js and ScanbotSDK.Asm.wasm are served</span>
+    <span class="na">engine</span><span class="p">:</span> <span class="dl">"</span><span class="s2">static/js/</span><span class="dl">"</span>
+<span class="p">});</span>
 </code></pre></div></div>
-<p>Leave the license key empty to enter trial mode.</p>
+
+<p>Leave the license key empty to enter the trial mode of one minute.</p>
+
+<p>Please contact our <a href="mailto:sdk@scanbot.io">sales team</a> to request a free 30-day SDK trial license key.</p>
 
 <p>The initializer also serves as the main entry point of the SDK, 
 meaning that the <code class="highlighter-rouge">scanbotSDK</code> object returned upon <code class="highlighter-rouge">initialize</code>
 serves as your entry point to use any other SDK features.</p>
 
-<h3 id="document-scanner">Document Scanner</h3>
+<h3 id="document-scanner-ui">Document Scanner UI</h3>
 
 <h4 id="configuration--styling">Configuration &amp; Styling</h4>
 
 <p>In order to start the document scanner, we must first create a 
 <code class="highlighter-rouge">DocumentScannerConfiguration</code> object, or simply a dictionary in vanilla javascript, as follows.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const config = {
-    containerId: containerId,
-};
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">containerId</span><span class="p">:</span> <span class="nx">containerId</span><span class="p">,</span>
+<span class="p">};</span>
 </code></pre></div></div>
+
 <p>The only required property is the <code class="highlighter-rouge">containerId</code>, string, 
 that should match the container where you want the document scanner to pop up.</p>
 
 <p>The configuration object also accepts the following parameters (values displayed are defaults):</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>acceptedAngleScore: 75,
-acceptedSizeScore: 75,
-autoCaptureSensitivity: 0.66,
-autoCaptureEnabled: true,
-ignoreBadAspectRatio: true,
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">acceptedAngleScore</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span>
+<span class="nx">acceptedSizeScore</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span>
+<span class="nx">autoCaptureSensitivity</span><span class="p">:</span> <span class="mf">0.66</span><span class="p">,</span>
+<span class="nx">autoCaptureEnabled</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="nx">ignoreBadAspectRatio</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
 </code></pre></div></div>
 
 <p>Additionally, you can also use the configuration object for react-like styling.
 It accepts the following parameters for document outline, hint text label and capture button color
 (values displayed are defaults):</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>style: {
-    outline: {
-        polygon: {
-            stroke: "yellow",
-            strokeWidth: "2px",
-            fill: "none"
-        },
-        label: {
-            position: "absolute",
-            top: "90%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            textAlign: "center",
-            backgroundColor: "rgba(0, 0, 0, 0.7)",
-            color: "white",
-            borderRadius: "0.25em",
-            padding: "0.5em",
-            fontFamily: "sans-serif",
-            fontSize: "1em"
-        },
-        captureButton: {
-            color: "white"
-        }
-    }
-};
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">style</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">outline</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">polygon</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">stroke</span><span class="p">:</span> <span class="dl">"</span><span class="s2">yellow</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">strokeWidth</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2px</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">fill</span><span class="p">:</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span>
+        <span class="p">},</span>
+        <span class="na">label</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">position</span><span class="p">:</span> <span class="dl">"</span><span class="s2">absolute</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">top</span><span class="p">:</span> <span class="dl">"</span><span class="s2">90%</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">left</span><span class="p">:</span> <span class="dl">"</span><span class="s2">50%</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">transform</span><span class="p">:</span> <span class="dl">"</span><span class="s2">translate(-50%, -50%)</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">textAlign</span><span class="p">:</span> <span class="dl">"</span><span class="s2">center</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">backgroundColor</span><span class="p">:</span> <span class="dl">"</span><span class="s2">rgba(0, 0, 0, 0.7)</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">color</span><span class="p">:</span> <span class="dl">"</span><span class="s2">white</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">borderRadius</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0.25em</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">padding</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0.5em</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">fontFamily</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sans-serif</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">fontSize</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1em</span><span class="dl">"</span>
+        <span class="p">},</span>
+        <span class="na">captureButton</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">color</span><span class="p">:</span> <span class="dl">"</span><span class="s2">white</span><span class="dl">"</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
 </code></pre></div></div>
+
 <p>Note that if you wish to do your styling in css, and not in a reactive design pattern,
 you are more than welcome to.</p>
 
 <p>The defaults bundled with the SDK, that you are welcome to override, are as follows:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.scanbot-document-outline {
-    stroke: yellow;
-    stroke-width: 2px;
-    fill: none;
-}
 
-.scanbot-document-outline-ok {
-    stroke: green;
-}
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.scanbot-document-outline</span> <span class="p">{</span>
+    <span class="py">stroke</span><span class="p">:</span> <span class="no">yellow</span><span class="p">;</span>
+    <span class="py">stroke-width</span><span class="p">:</span> <span class="m">2px</span><span class="p">;</span>
+    <span class="py">fill</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+<span class="p">}</span>
 
-.scanbot-document-outline-visible {
-    opacity: 1;
-    transition: opacity .3s ease-in-out;
-}
+<span class="nc">.scanbot-document-outline-ok</span> <span class="p">{</span>
+    <span class="py">stroke</span><span class="p">:</span> <span class="no">green</span><span class="p">;</span>
+<span class="p">}</span>
 
-.scanbot-document-outline-hidden {
-    opacity: 0;
-    transition: opacity .3s ease-in-out;
-}
+<span class="nc">.scanbot-document-outline-visible</span> <span class="p">{</span>
+    <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+    <span class="nl">transition</span><span class="p">:</span> <span class="n">opacity</span> <span class="m">.3s</span> <span class="n">ease-in-out</span><span class="p">;</span>
+<span class="p">}</span>
 
-.scanbot-document-hint-text {
-    position: absolute;
-    top: 90%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    border-radius: 0.25em;
-    padding: 0.5em;
-    font-family: sans-serif;
-    font-size: 1em;
-}
+<span class="nc">.scanbot-document-outline-hidden</span> <span class="p">{</span>
+    <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">transition</span><span class="p">:</span> <span class="n">opacity</span> <span class="m">.3s</span> <span class="n">ease-in-out</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.scanbot-document-hint-text</span> <span class="p">{</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+    <span class="nl">top</span><span class="p">:</span> <span class="m">90%</span><span class="p">;</span>
+    <span class="nl">left</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+    <span class="nl">transform</span><span class="p">:</span> <span class="n">translate</span><span class="p">(</span><span class="m">-50%</span><span class="p">,</span> <span class="m">-50%</span><span class="p">);</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0.7</span><span class="p">);</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">0.25em</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">0.5em</span><span class="p">;</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="nb">sans-serif</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">1em</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <p>The capture/shutter button can be repositioned by overriding the following css class:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.scanbot-shutter-button {
-    /* ... */
-}
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.scanbot-shutter-button</span> <span class="p">{</span>
+    <span class="c">/* ... */</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <p>Moreover, the hint texts can also be configured via the same configuration object
 (values displayed are defaults):</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>text: {
-    hint: {
-        OK: "Don't move. Capturing document...",
-        OK_SmallSize: 'Move closer',
-        OK_BadAngles: 'Turn your device to&lt;br&gt;have a more rectangular outline',
-        OK_BadAspectRatio: 'Wrong aspect ratio - rotate your device',
-        OK_OffCenter: 'Move to the center',
-        Error_NothingDetected: 'Searching for document...',
-        Error_Brightness: 'Poor light&lt;br&gt;Searching for document...',
-        Error_Noise: 'Noisy background&lt;br&gt;Searching for document...'
-    }
-};
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">text</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">hint</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">OK</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Don't move. Capturing document...</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">OK_SmallSize</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Move closer</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">OK_BadAngles</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Turn your device to&lt;br&gt;have a more rectangular outline</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">OK_BadAspectRatio</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Wrong aspect ratio - rotate your device</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">OK_OffCenter</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Move to the center</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">Error_NothingDetected</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Searching for document...</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">Error_Brightness</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Poor light&lt;br&gt;Searching for document...</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">Error_Noise</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Noisy background&lt;br&gt;Searching for document...</span><span class="dl">'</span>
+    <span class="p">}</span>
+<span class="p">};</span>
 </code></pre></div></div>
 
 <p>The document scanner works at the maximum available camera resolution for the highest quality scans by default.
@@ -245,29 +257,32 @@ You can further configure the camera video stream by specifying the <code class=
 the document scanner configuration. The video constraints are directly given to <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia">getUserMedia</a></p>
 
 <p>The default video constraints are as follows:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>videoConstraints: MediaTrackConstraints = {
-    facingMode: "environment",
-    resizeMode: "none",
-    width: { ideal: 3840 },
-    height: { ideal: 2160 }
-};
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">videoConstraints</span><span class="p">:</span> <span class="nx">MediaTrackConstraints</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">facingMode</span><span class="p">:</span> <span class="dl">"</span><span class="s2">environment</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">resizeMode</span><span class="p">:</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">width</span><span class="p">:</span> <span class="p">{</span> <span class="na">ideal</span><span class="p">:</span> <span class="mi">3840</span> <span class="p">},</span>
+    <span class="na">height</span><span class="p">:</span> <span class="p">{</span> <span class="na">ideal</span><span class="p">:</span> <span class="mi">2160</span> <span class="p">}</span>
+<span class="p">};</span>
 </code></pre></div></div>
 
 <p>Call <code class="highlighter-rouge">documentScanner.dispose()</code> to stop the scanner and release all resources.</p>
 
 <h4 id="callbacks">Callbacks</h4>
 
-<p>To receive detection results define <code class="highlighter-rouge">onDocumentDetected</code> in the configuraiton:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>onDocumentDetected: result =&gt; {
-    console.log("Detected Document:", result);
-},
+<p>To receive detection results define <code class="highlighter-rouge">onDocumentDetected</code> in the configuration:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">onDocumentDetected</span><span class="p">:</span> <span class="nx">result</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Detected Document:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+<span class="p">},</span>
 </code></pre></div></div>
 
 <p>The <code class="highlighter-rouge">result</code> object contains the following properties:</p>
 <ul>
   <li><code class="highlighter-rouge">detectionStatus</code> – contains the same keys as the the hint texts mentioned earlier</li>
   <li><code class="highlighter-rouge">success</code> – boolean, whether detection was successful or not</li>
-  <li><code class="highlighter-rouge">cropped</code> – If <code class="highlighter-rouge">success</code>, contains the cropped document, base64</li>
+  <li><code class="highlighter-rouge">original</code> – If <code class="highlighter-rouge">success</code>, contains the cropped document ArrayBuffer (<code class="highlighter-rouge">UInt8Array</code>)</li>
+  <li><code class="highlighter-rouge">cropped</code> – If <code class="highlighter-rouge">success</code>, contains the cropped document ArrayBuffer (<code class="highlighter-rouge">UInt8Array</code>)</li>
   <li><code class="highlighter-rouge">polygon</code> – The page’s cropping polygon as calculated by a document detection operation</li>
 </ul>
 
@@ -278,19 +293,219 @@ until you stop detection or dispose the camera.</p>
 
 <p>After you’re done configuring the scanner, 
 simply refer back to your SDK object and create the scanner object as follows:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>documentScanner = await scanbotSDK.createDocumentScanner(config);
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">documentScanner</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">scanbotSDK</span><span class="p">.</span><span class="nx">createDocumentScanner</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>An exception is thrown if camera streaming is not supported or the user blocks the camera.</p>
 
 <h4 id="dispose">Dispose</h4>
 
-<p>Always dispose the document scanner after it is no longer needed.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>await documentScanner.dispose();
+<p>Always dispose the document scanner after it is no longer needed</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">documentScanner</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>
 </code></pre></div></div>
+
+<h3 id="cropping-ui">Cropping UI</h3>
+
+<h4 id="configuration">Configuration</h4>
+
+<p>ScanbotSDK Cropping View takes a <code class="highlighter-rouge">CroppingViewConfiguration</code> parameter. It has the following format:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="c1">// Identifier (id-tag of html element) of the Croppign View parent element. Required</span>
+    <span class="nx">containerId</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+
+    <span class="c1">// Determines whether scroll (incl. bounce) should be disabled when cropping screen is active. Optional. True by default</span>
+    <span class="nx">disableScroll</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    
+    <span class="c1">// Optional document polygon parameter. </span>
+    <span class="c1">// If undefined, detection will be performed and, if a document is then found, a polygon will be applied.</span>
+    <span class="nx">polygon</span><span class="p">?:</span> <span class="nx">Polygon</span><span class="p">;</span>
+    
+    <span class="c1">// Image element to be cropped. Required. </span>
+    <span class="nl">image</span><span class="p">:</span> <span class="nb">Uint8Array</span><span class="p">;</span>
+    
+    <span class="c1">// Optional styling parameter. If left undefined, default styles will be applied</span>
+    <span class="nx">style</span><span class="p">?:</span> <span class="nx">CroppingViewStyle</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="styling">Styling</h4>
+
+<p>The styling options and default values of the Cropping View are the following:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="nx">padding</span><span class="p">?:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="nx">polygon</span><span class="p">?:</span> <span class="p">{</span>
+          <span class="nx">color</span><span class="p">?:</span> <span class="nx">string</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">#1ec31e</span><span class="dl">"</span><span class="p">;</span>
+          <span class="nx">width</span><span class="p">?:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+          <span class="nx">handles</span><span class="p">?:</span> <span class="p">{</span>                
+                <span class="nx">color</span><span class="p">?:</span> <span class="nx">string</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">white</span><span class="dl">"</span><span class="p">;</span>
+                <span class="nx">border</span><span class="p">?:</span> <span class="nx">string</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">1px solid lightgray</span><span class="dl">"</span><span class="p">;</span>
+                <span class="nx">size</span><span class="p">?:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span>
+          <span class="p">};</span>
+    <span class="p">};</span>
+    <span class="nx">magneticLines</span><span class="p">?:</span> <span class="p">{</span>
+        <span class="nx">disabled</span><span class="p">?:</span> <span class="nx">boolean</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="nx">color</span><span class="p">?:</span> <span class="nx">string</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">transparent</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Note that <code class="highlighter-rouge">magneticLines</code> style exists only because it is because it is somewhat of an experimental feature, 
+there’s room for improvement and optimization. See if it meets your requirements in its current form</p>
+
+<h4 id="creating-the-view">Creating the View</h4>
+
+<p>To open the cropping view, simply call the SDK function with the configuration object:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">croppingView</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">scanbotSDK</span><span class="p">.</span><span class="nx">openCroppingView</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>You should store the cropping view object in a globally accessible location,
+as additional cropping functions are functions of that object.</p>
+
+<h4 id="api">API</h4>
+
+<p>ScanbotSDK Cropping View classical component contains the following public functions:</p>
+
+<p>• <code class="highlighter-rouge">rotate(rotations: number): Promise&lt;void&gt;;</code></p>
+
+<p>The number of clockwise rotations you wish to apply to your image.</p>
+
+<p>• <code class="highlighter-rouge">detect(): Promise&lt;void&gt;;</code></p>
+
+<p>If you’re not happy with the detected polygon, you can re-detect and re-apply the polygon from the detected document</p>
+
+<p>• <code class="highlighter-rouge">apply(): Promise&lt;DetectionResult&gt;;</code></p>
+
+<p>If you are happy with the polygon and the rotations, apply the changes and receive your new detection detection result</p>
+
+<p>• <code class="highlighter-rouge">dispose(): void;</code></p>
+
+<p>Dispose the Cropping View element if you’re done.</p>
+
+<h3 id="image-filters">Image Filters</h3>
+
+<p>You can also apply filters to images. The <code class="highlighter-rouge">scanbotSDK</code> object contains the following function:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="nx">applyFilter</span><span class="p">(</span><span class="nx">imageBuffer</span><span class="p">:</span> <span class="nb">ArrayBuffer</span><span class="p">,</span> <span class="nx">filterType</span><span class="p">:</span> <span class="nx">ImageFilter</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nb">ArrayBuffer</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>So you can simply pass the image object from your <code class="highlighter-rouge">DetectionResult</code> to the filter function 
+and return the image with the filter.</p>
+
+<p><code class="highlighter-rouge">ArrayBuffer</code> in this context is equal to the <code class="highlighter-rouge">Uint8Array</code> image in your <code class="highlighter-rouge">DetectionResult</code> object.</p>
+
+<p>Scanbot WebSDK allows the following filter:</p>
+
+<ul>
+  <li>Binarization filters:
+    <ul>
+      <li>Binarized</li>
+      <li>OtsuBinarization</li>
+      <li>PureBinarized</li>
+      <li>LowLightBinarization</li>
+      <li>LowLightBinarization2</li>
+      <li>DeepBinarization</li>
+    </ul>
+  </li>
+  <li>Color filters:
+    <ul>
+      <li>Color</li>
+      <li>Gray</li>
+      <li>ColorDocument</li>
+      <li>BlackAndWhite</li>
+      <li>EdgeHighlight</li>
+      <li>Trinarization</li>
+      <li>LightMapNormalization</li>
+    </ul>
+  </li>
+</ul>
+
+<p>They are available under <code class="highlighter-rouge">BinarizationFilter</code> and <code class="highlighter-rouge">ColorFilter</code> enumerations, respectively.</p>
+
+<h3 id="pdf-generation">PDF Generation</h3>
+
+<p>ScanbotSDK also offers functionality for PDF generation. Create the appropriate generator as follows:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">options</span><span class="p">:</span> <span class="nx">PdfGenerationOptions</span> <span class="o">=</span> <span class="p">{</span><span class="na">standardPaperSize</span><span class="p">:</span> <span class="dl">"</span><span class="s2">A4</span><span class="dl">"</span><span class="p">,</span> <span class="na">landscape</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">dpi</span><span class="p">:</span> <span class="mi">100</span><span class="p">};</span>
+<span class="kd">const</span> <span class="nx">generator</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">scanbotSDK</span><span class="p">.</span><span class="nx">beginPdf</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>If a DPI is provided, then that value is used. 
+If the value is not given or that value is too small for the entire image to fit on the page, 
+then the smallest possible DPI value is chosen so that the entire image fits on the page.</p>
+
+<p>This API may not seem, at fast glance, very straightforward. However, in order to allow for memory optimization, 
+you can load an image from storage one at a time and add it to the generator:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">generator</span><span class="p">.</span><span class="nx">addPage</span><span class="p">(</span><span class="nx">image</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>When all images have been added, <code class="highlighter-rouge">complete</code> the transaction and receive the resulting byte array:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bytes</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">generator</span><span class="p">.</span><span class="nx">complete</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>As an example, you can force the download of the pages in the browser via:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="nx">saveBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">extension</span> <span class="o">=</span> <span class="nx">name</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">.</span><span class="dl">"</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+    <span class="nx">a</span><span class="p">.</span><span class="nx">style</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">display: none</span><span class="dl">"</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">blob</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Blob</span><span class="p">([</span><span class="nx">data</span><span class="p">],</span> <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="s2">`application/</span><span class="p">${</span><span class="nx">extension</span><span class="p">}</span><span class="s2">`</span><span class="p">});</span>
+    <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">blob</span><span class="p">);</span>
+    <span class="nx">a</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
+    <span class="nx">a</span><span class="p">.</span><span class="nx">download</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="nx">a</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">revokeObjectURL</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>And then call it as such:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">saveBytes</span><span class="p">(</span><span class="nx">bytes</span><span class="p">,</span> <span class="dl">"</span><span class="s2">generated.pdf</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Note: if the return type of the function is a <code class="highlighter-rouge">Promise</code>, it is asynchronous needs to be <code class="highlighter-rouge">await</code>ed</p>
 
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release History</h2>
+
+<h4 id="version-200-3-feb-2021">Version 2.0.0 (3 Feb 2021)</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Cropping UI – New components to implement UI for manual cropping of images</li>
+      <li>Image Filters – Scanned documents can now be optimized by applying image filters like binarization, grayscale, etc</li>
+      <li>PDF support – The ability to export scanned images as PDF</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Improved @types support for non-react projects</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking Changes:
+    <ul>
+      <li>Detection result images are now <code class="highlighter-rouge">Uint8Array</code>. Use <code class="highlighter-rouge">scanbotSDK.toDataUrl</code> to convert it to a displayable image</li>
+      <li>The <code class="highlighter-rouge">compontent</code> package no longer available in the Bundle SDK. Replaced by <code class="highlighter-rouge">@types</code>
+        <ul>
+          <li>Configuration objects moved from <code class="highlighter-rouge">model/</code> to <code class="highlighter-rouge">model/configuration/</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Updated OpenCV to version 4.5.0. OpenCV license has been changed from BSD to Apache 2</li>
+      <li>Added further 3rd-party libraries, see <code class="highlighter-rouge">Libraries.txt</code></li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="version-102-03-nov-2020">Version 1.0.2 (03 Nov 2020)</h4>
 <ul>
@@ -324,11 +539,12 @@ simply refer back to your SDK object and create the scanner object as follows:</
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-Open Source libraries used in the Scanbot Web Document Scanner SDK:
+Open Source libraries used in the Scanbot Web Document Scanner SDK
 
+----------------------------------------------------------------------------------------
 
 Classnames
-https://jedwatson.github.io/classnames/
+(https://jedwatson.github.io/classnames/)
 
 (The MIT License)
 
@@ -343,7 +559,7 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----------------------------------------------------------------------------------------
 
 Preact
-https://github.com/preactjs/preact/blob/master/LICENSE
+(https://github.com/preactjs/preact/)
 
 The MIT License (MIT)
 
@@ -370,8 +586,7 @@ SOFTWARE.
 ----------------------------------------------------------------------------------------
 
 OpenSSL
-
-https://github.com/openssl/openssl
+(https://github.com/openssl/openssl)
 
 Copyright (c) 1998-2020 The OpenSSL Project.  All rights reserved.
 
@@ -471,8 +686,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ----------------------------------------------------------------------------------------
 
 Filesystem.hpp
-
 (https://github.com/bin-build/filesystem)
+
 Copyright (c) 2015-2017, Wenzel Jakob
 Copyright (c) 2017, Josh Junon
 All rights reserved.
@@ -491,6 +706,7 @@ JSON for Modern C++
 
 Version 3.1.0
 (https://github.com/nlohmann/json)
+
 Copyright (c) 2013-2018 Niels Lohmann &lt;http://nlohmann.me&gt;.
 This library is distributed under the terms of a MIT License (https://github.com/nlohmann/json/blob/develop/LICENSE.MIT)
 
@@ -505,49 +721,207 @@ THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR I
 
 OpenCV
 
-Version 4.4.0
+Version 4.5.0
 (https://github.com/opencv/opencv)
 
-By downloading, copying, installing or using the software you agree to this license.
-If you do not agree to this license, do not download, install,
-copy or use the software.
-
-License Agreement
-For Open Source Computer Vision Library
-(3-clause BSD License)
-
-Copyright (C) 2000-2019, Intel Corporation, all rights reserved.
+Copyright (C) 2000-2020, Intel Corporation, all rights reserved.
 Copyright (C) 2009-2011, Willow Garage Inc., all rights reserved.
 Copyright (C) 2009-2016, NVIDIA Corporation, all rights reserved.
 Copyright (C) 2010-2013, Advanced Micro Devices, Inc., all rights reserved.
-Copyright (C) 2015-2016, OpenCV Foundation, all rights reserved.
-Copyright (C) 2015-2016, Itseez Inc., all rights reserved.
+Copyright (C) 2015-2020, OpenCV Foundation, all rights reserved.
+Copyright (C) 2008-2016, Itseez Inc., all rights reserved.
+Copyright (C) 2019-2020, Xperience AI, all rights reserved.
+Copyright (C) 2019-2020, Shenzhen Institute of Artificial Intelligence and
+                         Robotics for Society, all rights reserved.
+
 Third party copyrights are property of their respective owners.
 
-Redistribution and use in source and binary forms, with or without modification,
-are permitted provided that the following conditions are met:
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-  * Redistributions of source code must retain the above copyright notice,
-    this list of conditions and the following disclaimer.
+   http://www.apache.org/licenses/LICENSE-2.0
 
-  * Redistributions in binary form must reproduce the above copyright notice,
-    this list of conditions and the following disclaimer in the documentation
-    and/or other materials provided with the distribution.
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
-  * Neither the names of the copyright holders nor the names of the contributors
-    may be used to endorse or promote products derived from this software
-    without specific prior written permission.
+----------------------------------------------------------------------------------------
 
-This software is provided by the copyright holders and contributors "as is" and
-any express or implied warranties, including, but not limited to, the implied
-warranties of merchantability and fitness for a particular purpose are disclaimed.
-In no event shall copyright holders or contributors be liable for any direct,
-indirect, incidental, special, exemplary, or consequential damages
-(including, but not limited to, procurement of substitute goods or services;
-loss of use, data, or profits; or business interruption) however caused
-and on any theory of liability, whether in contract, strict liability,
-or tort (including negligence or otherwise) arising in any way out of
-the use of this software, even if advised of the possibility of such damage.
+Skia
+
+Version commit 47b4b19af2
+(https://github.com/google/skia)
+
+Copyright (c) 2011 Google Inc. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+  * Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+
+  * Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the
+    distribution.
+
+  * Neither the name of the copyright holder nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+----------------------------------------------------------------------------------------
+
+LibTIFF
+
+Version 4.1.0, based on included OpenCV version
+(https://github.com/opencv/opencv/tree/4.5.0/3rdparty/libtiff)
+
+Copyright (c) 1988-1997 Sam Leffler
+Copyright (c) 1991-1997 Silicon Graphics, Inc.
+
+Permission to use, copy, modify, distribute, and sell this software and
+its documentation for any purpose is hereby granted without fee, provided
+that (i) the above copyright notices and this permission notice appear in
+all copies of the software and related documentation, and (ii) the names of
+Sam Leffler and Silicon Graphics may not be used in any advertising or
+publicity relating to the software without the specific, prior written
+permission of Sam Leffler and Silicon Graphics.
+
+THE SOFTWARE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND,
+EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY
+WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+
+IN NO EVENT SHALL SAM LEFFLER OR SILICON GRAPHICS BE LIABLE FOR
+ANY SPECIAL, INCIDENTAL, INDIRECT OR CONSEQUENTIAL DAMAGES OF ANY KIND,
+OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF
+LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
+OF THIS SOFTWARE.
+
+----------------------------------------------------------------------------------------
+
+BOOST C++ Libraries
+
+Version 1.68
+(https://github.com/boostorg/boost)
+
+This library is distributed under the terms of the following license: https://www.boost.org/LICENSE_1_0.txt
+
+Boost Software License - Version 1.0 - August 17th, 2003
+
+Permission is hereby granted, free of charge, to any person or organization obtaining
+a copy of the software and accompanying documentation covered by this license
+(the "Software") to use, reproduce, display, distribute, execute, and transmit
+the Software, and to prepare derivative works of the Software, and to permit third-parties
+to whom the Software is furnished to do so, all subject to the following:
+
+The copyright notices in the Software and this entire statement, including the above
+license grant, this restriction and the following disclaimer, must be included in
+all copies of the Software, in whole or in part, and all derivative works of the
+Software, unless such copies or derivative
+works are solely in the form of machine-executable object code generated by a source
+language processor.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR ANYONE
+DISTRIBUTING THE SOFTWARE BE LIABLE FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+----------------------------------------------------------------------------------------
+
+libjpeg-turbo
+
+Version 2.0.5, based on included OpenCV version
+(https://github.com/opencv/opencv/tree/4.5.0/3rdparty/libjpeg-turbo)
+
+Copyright (C)2009-2019 D. R. Commander.  All Rights Reserved.
+Copyright (C)2015 Viktor Szathmáry.  All Rights Reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+- Redistributions of source code must retain the above copyright notice,
+  this list of conditions and the following disclaimer.
+- Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+- Neither the name of the libjpeg-turbo Project nor the names of its
+  contributors may be used to endorse or promote products derived from this
+  software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS",
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+----------------------------------------------------------------------------------------
+
+TensorFlow
+
+Version commit dc05a7a
+(https://github.com/tensorflow/tensorflow)
+
+Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+----------------------------------------------------------------------------------------
+
+ZXing-C++, C++ port of ZXing
+
+(https://github.com/nu-book/zxing-cpp)
+
+Copyright 2016 Nu-book Inc.
+Copyright 2016 ZXing authors
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+----------------------------------------------------------------------------------------
 
 
 </code></pre></div></div>
