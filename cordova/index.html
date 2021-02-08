@@ -72,11 +72,13 @@ functionality is covered by this plugin:</p>
 <ul>
   <li>OCR</li>
   <li>MRZ Scanning</li>
+  <li>Data Scanner (aka Generic Textline Scanner)</li>
 </ul>
 
 <p><strong>Package III</strong></p>
 <ul>
   <li>EHIC Scanning (European Health Insurance Card Scanner)</li>
+  <li>License Plate Scanner</li>
 </ul>
 
 <h3 id="requirements">Requirements</h3>
@@ -310,6 +312,8 @@ You can change this value in the <code class="highlighter-rouge">config.xml</cod
       <li><a href="#module_ScanbotSDK.UI.startEHICScanner">.startEHICScanner(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.UI.startBarcodeScanner">.startBarcodeScanner(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.UI.startBatchBarcodeScanner">.startBatchBarcodeScanner(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.UI.startDataScanner">.startDataScanner(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.UI.startLicensePlateScanner">.startLicensePlateScanner(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
     </ul>
   </li>
   <li><strong><code class="highlighter-rouge">ScanbotSdk</code> promise-based API</strong>
@@ -1687,7 +1691,346 @@ if the user canceled the operation (tapped on the “cancel” button).</li>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<h3 id="page-operations">Page operations</h3>
+<p><a name="dataScanner"></a>
+<a name="module_ScanbotSdk.UI.startDataScanner"></a></p>
+<h3 id="data-scanner-ui">Data Scanner UI</h3>
+<h4 id="scanbotsdkuistartdatascanner">ScanbotSdk.UI.startDataScanner()</h4>
+
+<p><img src="./assets/images/data_scanner.jpg" alt="alt text" title="Data Scanner screenshot" /></p>
+
+<p>The Data Scanner is a generic text recognizer and provides the ability to scan small text blocks
+with 1-2 lines in real-time. It is based on the OCR engine of Scanbot SDK.
+The UI contains a configurable finder (frame) with which the text to be scanned can be captured.</p>
+
+<p>Typical use cases for the Data Scanner are the recognition of single-line text modules like IBAN numbers,
+insurance numbers, phone numbers, dates, and other simple textual data fields.</p>
+
+<p>Furthermore, a special configuration of the Data Scanner allows scanning digits and characters from LC Dot-Matrix Displays.</p>
+
+<p><strong>Cordova API:</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">startDataScanner</span><span class="p">(</span><span class="nx">successCallback</span><span class="p">,</span> <span class="nx">errorCallback</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Promise-based API:</strong></p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">startDataScanner</span><span class="p">(</span><span class="nx">args</span><span class="p">?:</span> <span class="p">{</span><span class="nx">uiConfigs</span><span class="p">?:</span> <span class="nx">DataScannerConfiguration</span><span class="p">,</span> <span class="na">scannerStep</span><span class="p">:</span> <span class="nx">TextDataScannerStep</span><span class="p">}):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">DataScannerResult</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h4 id="options-and-config-parameters">Options and Config Parameters</h4>
+<ul>
+  <li><code class="highlighter-rouge">uiConfigs</code>: UI configs, like colors, text resources, etc. See the fields of <code class="highlighter-rouge">DataScannerConfiguration</code> below.</li>
+  <li><code class="highlighter-rouge">scannerStep</code>: Scanner configuration. See the fields of <code class="highlighter-rouge">TextDataScannerStep</code> below.</li>
+</ul>
+
+<h4 id="result-fields">Result Fields</h4>
+<ul>
+  <li><code class="highlighter-rouge">status</code>: <code class="highlighter-rouge">'OK'</code> if some text data was recognized, <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the scanner UI 
+(tapped on the “cancel” button)</li>
+  <li><code class="highlighter-rouge">dataResult</code>:
+    <ul>
+      <li><code class="highlighter-rouge">textValue</code>: scanned text value as <code class="highlighter-rouge">string</code></li>
+      <li><code class="highlighter-rouge">confidence</code>: OCR confidence value (0-1.0) in the accuracy of the recognized <code class="highlighter-rouge">textValue</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="examples">Examples</h4>
+
+<p><strong>Start a scanner for LC Dot-Matrix Displays:</strong></p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// define UI configs, like colors and text resources</span>
+<span class="kd">const</span> <span class="nx">uiConfigs</span><span class="p">:</span> <span class="nx">DataScannerConfiguration</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">cancelButtonTitle</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Cancel</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">finderLineColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#c8193c</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">flashEnabled</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="p">...</span>
+  <span class="c1">// see further configs</span>
+<span class="p">};</span>
+<span class="c1">// define the scanner configs</span>
+<span class="kd">const</span> <span class="nx">scannerStep</span><span class="p">:</span> <span class="nx">TextDataScannerStep</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">textFilterStrategy</span><span class="p">:</span> <span class="dl">'</span><span class="s1">LC_DOT_MATRIX_DISPLAY</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// enables a special recognizer for LC Dot-Matrix Displays</span>
+  <span class="na">guidanceText</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Place the LC display in the frame to scan it</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">...</span>
+  <span class="c1">// see further configs</span>
+<span class="p">};</span>
+<span class="c1">// start the scanner UI</span>
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">scanbotService</span><span class="p">.</span><span class="nx">SDK</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">startDataScanner</span><span class="p">({</span><span class="nx">uiConfigs</span><span class="p">,</span> <span class="nx">scannerStep</span><span class="p">});</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">OK</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// get the scanned caracters and digits as text value via </span>
+  <span class="c1">// result.dataResult.textValue ...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Start a scanner for an arbitrary text:</strong></p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// define UI configs, like colors and text resources</span>
+<span class="kd">const</span> <span class="nx">uiConfigs</span><span class="p">:</span> <span class="nx">DataScannerConfiguration</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">};</span>
+<span class="c1">// define the scanner configs</span>
+<span class="kd">const</span> <span class="nx">scannerStep</span><span class="p">:</span> <span class="nx">TextDataScannerStep</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">textFilterStrategy</span><span class="p">:</span> <span class="dl">'</span><span class="s1">DOCUMENT</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">guidanceText</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Place the text line in the frame to scan it</span><span class="dl">'</span><span class="p">,</span>
+  <span class="c1">// an optional pattern can be use to validate scanned text and get better OCR results</span>
+  <span class="c1">// '?' for any character, '#' for any digit, all other characters represent themselves.</span>
+  <span class="c1">//pattern: '',</span>
+  <span class="p">...</span>
+<span class="p">};</span>
+<span class="c1">// start the scanner UI</span>
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">scanbotService</span><span class="p">.</span><span class="nx">SDK</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">startDataScanner</span><span class="p">({</span><span class="nx">uiConfigs</span><span class="p">,</span> <span class="nx">scannerStep</span><span class="p">});</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">OK</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// get the scanned text value via </span>
+  <span class="c1">// result.dataResult.textValue ...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Full working code samples can be found in our example app on <a href="https://github.com/doo/scanbot-sdk-example-ionic">GitHub</a>.</p>
+
+<h4 id="definition-of-all-config-parameters">Definition of all Config Parameters</h4>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kr">interface</span> <span class="nx">DataScannerConfiguration</span> <span class="p">{</span>
+  <span class="cm">/**
+   * Background color of the top bar.
+   */</span>
+  <span class="nl">topBarBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="cm">/**
+   * Color of the top bar buttons.
+   */</span>
+  <span class="nl">topBarButtonsColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="cm">/**
+   * String being displayed on the cancel button.
+   */</span>
+  <span class="nl">cancelButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="cm">/**
+   * Color of the finder window's outline.
+   */</span>
+  <span class="nl">finderLineColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="cm">/**
+   * Thickness of the finder window's outline.
+   */</span>
+  <span class="nl">finderLineWidth</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+  <span class="cm">/**
+   * Color of the text hint under the finder window.
+   */</span>
+  <span class="nl">finderTextHintColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="cm">/**
+   * Should the flashlight be enabled on start?
+   */</span>
+  <span class="nl">flashEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+  <span class="cm">/**
+   * Controls whether buttons should use all capitals style, as defined by the Android Material Design. Defaults to TRUE.
+   * Android only.
+   */</span>
+  <span class="nl">useButtonsAllCaps</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+  <span class="cm">/**
+   * Title of the button that opens the screen where the user can allow
+   * the usage of the camera by the app.
+   */</span>
+  <span class="nl">enableCameraButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="cm">/**
+   * Text that will be displayed when the app
+   * is not allowed to use the camera, prompting the user
+   * to enable the usage of the camera.
+   */</span>
+  <span class="nl">enableCameraExplanationText</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="cm">/**
+   * Orientation lock mode of the UI and the camera preview.
+   * By default the orientation is not locked.
+   */</span>
+  <span class="nl">orientationLockMode</span><span class="p">?:</span> <span class="nx">CameraOrientationMode</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kr">interface</span> <span class="nx">TextDataScannerStep</span> <span class="p">{</span>
+  <span class="cm">/**
+   * User guidance hint text.
+   */</span>
+  <span class="nl">guidanceText</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="cm">/**
+   * Validation pattern to automatically validate recognized text.
+   * '?' = any character,
+   * '#' - any digit,
+   * all other characters represent themselves.
+   * An empty string or nil value will disable the validation pattern.
+   */</span>
+  <span class="nl">pattern</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="cm">/**
+   * If set to TRUE pattern validation also validates successfully if only a part of the whole recognized text matches
+   * the the validation pattern.
+   * If set to FALSE, the whole text must match the validation pattern.
+   * Applies to pattern validation only. Defaults to FALSE.
+   */</span>
+  <span class="nl">shouldMatchSubstring</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+  <span class="cm">/**
+   * The cameras zoom level preferred for this step. The actual zoom might be different from the preferred one
+   * to avoid clipping of finder area and maintain its aspect ratio and height;
+   */</span>
+  <span class="nl">preferredZoom</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+  <span class="cm">/**
+   * The aspect ratio of the view finder area.
+   */</span>
+  <span class="nl">aspectRatio</span><span class="p">?:</span> <span class="nx">FinderAspectRatio</span><span class="p">;</span>
+  <span class="cm">/**
+   * The preferred height of the finder for zoom scale 1.0 (unzoomed).
+   * The actual finder height might change to maintain aspect ratio and to not clip the screen.
+   * Defaults to 40 points.
+   */</span>
+  <span class="nl">unzoomedFinderHeight</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+  <span class="cm">/**
+   * A string (list) of accepted characters during text recognition. If empty or nil, all characters are accepted.
+   * Defaults to nil.
+   */</span>
+  <span class="nl">allowedSymbols</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="cm">/**
+   * Recognition strategy for the text.
+   */</span>
+  <span class="nl">textFilterStrategy</span><span class="p">?:</span> <span class="nx">TextFilterStrategy</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><a name="licensePlateScanner"></a>
+<a name="module_ScanbotSdk.UI.startLicensePlateScanner"></a></p>
+<h3 id="license-plate-scanner-ui">License Plate Scanner UI</h3>
+<h4 id="scanbotsdkuistartlicenseplatescanner">ScanbotSdk.UI.startLicensePlateScanner()</h4>
+
+<p><img src="./assets/images/license_plate_scanner.jpg" alt="alt text" title="License Plate Scanner screenshot" /></p>
+
+<p>The License Plate Scanner is a ready-to-use UI component for scanning license plates on cars in real-time.
+The recognition is based on the OCR engine and Machine Learning algorithms of Scanbot SDK.
+The scanner currently only supports European license plates.
+The UI contains a configurable finder (frame) that is used to capture the license plate.</p>
+
+<p><strong>Cordova API:</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">startLicensePlateScanner</span><span class="p">(</span><span class="nx">successCallback</span><span class="p">,</span> <span class="nx">errorCallback</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Promise-based API:</strong></p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">startLicensePlateScanner</span><span class="p">(</span><span class="nx">args</span><span class="p">?:</span> <span class="p">{</span><span class="nx">uiConfigs</span><span class="p">?:</span> <span class="nx">LicensePlateScannerConfiguration</span><span class="p">}):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">LicensePlateScannerResult</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h4 id="options-and-config-parameters-1">Options and Config Parameters</h4>
+<ul>
+  <li><code class="highlighter-rouge">uiConfigs</code>: UI configs, like colors and text resources as well as behavior and recognizer configs. 
+See the fields of <code class="highlighter-rouge">LicensePlateScannerConfiguration</code> below.</li>
+</ul>
+
+<p><strong>Detector Mode:</strong></p>
+
+<p>The scanner supports the following 2 modes for detection:</p>
+<ul>
+  <li><code class="highlighter-rouge">ML_BASED</code>: A new Machine Learning based approach to recognize license plates (aka v2). 
+Recommended mode, as the algorithm is continuously developed and improved.</li>
+  <li><code class="highlighter-rouge">CLASSIC</code>: Classic OCR based approach (aka v1).</li>
+</ul>
+
+<p>The mode can be set via configuration <code class="highlighter-rouge">detectorMode: 'ML_BASED'</code> or <code class="highlighter-rouge">detectorMode: 'CLASSIC'</code>.</p>
+
+<h4 id="result-fields-1">Result Fields</h4>
+<ul>
+  <li><code class="highlighter-rouge">status</code>: <code class="highlighter-rouge">'OK'</code> if some text data was recognized, <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the scanner UI
+(tapped on the “cancel” button)</li>
+  <li><code class="highlighter-rouge">licensePlateResult</code>:
+    <ul>
+      <li><code class="highlighter-rouge">countryCode</code>: Country ISO code (D, NL, BG, etc) if available on the left blue stripe of the plate</li>
+      <li><code class="highlighter-rouge">licensePlate</code>: The actual license plate value as text</li>
+      <li><code class="highlighter-rouge">ocrValue</code>: Unparsed, raw OCR value</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="example">Example</h4>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// define detector mode, UI configs like colors, text resources, etc</span>
+<span class="kd">const</span> <span class="nx">config</span><span class="p">:</span> <span class="nx">LicensePlateScannerConfiguration</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">detectorMode</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ML_BASED</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">guidanceText</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Place the whole license plate in the frame to scan it</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">topBarBackgroundColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#c8193c</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">topBarButtonsColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#ffffff</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">finderLineColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#c8193c</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">finderLineWidth</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="na">flashEnabled</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">orientationLockMode</span><span class="p">:</span> <span class="dl">'</span><span class="s1">PORTRAIT</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">...</span>
+  <span class="c1">// see further configs</span>
+<span class="p">};</span>
+<span class="c1">// start the scanner UI</span>
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">scanbotService</span><span class="p">.</span><span class="nx">SDK</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">startLicensePlateScanner</span><span class="p">({</span><span class="na">uiConfigs</span><span class="p">:</span> <span class="nx">config</span><span class="p">});</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">OK</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// get the scanned result via</span>
+  <span class="c1">// result.licensePlateResult.countryCode</span>
+  <span class="c1">// result.licensePlateResult.licensePlate</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Full working code samples can be found in our example app on <a href="https://github.com/doo/scanbot-sdk-example-ionic">GitHub</a>.</p>
+
+<h4 id="definition-of-all-config-parameters-1">Definition of all Config Parameters</h4>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kr">interface</span> <span class="nx">LicensePlateScannerConfiguration</span> <span class="p">{</span>
+  <span class="cm">/**
+   * Background color of the top bar.
+   */</span>
+  <span class="nl">topBarBackgroundColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="cm">/**
+   * Color of the top bar buttons.
+   */</span>
+  <span class="nl">topBarButtonsColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="cm">/**
+   * String being displayed on the cancel button.
+   */</span>
+  <span class="nl">cancelButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="cm">/**
+   * Color of the finder window's outline.
+   */</span>
+  <span class="nl">finderLineColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="cm">/**
+   * Thickness of the finder window's outline.
+   */</span>
+  <span class="nl">finderLineWidth</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+  <span class="cm">/**
+   * Color of the text hint under the finder window.
+   */</span>
+  <span class="nl">finderTextHintColor</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="cm">/**
+   * Should the flashlight be enabled on start?
+   */</span>
+  <span class="nl">flashEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+  <span class="cm">/**
+   * Controls whether buttons should use all capitals style, as defined by the Android Material Design. Defaults to TRUE.
+   * Android only.
+   */</span>
+  <span class="nl">useButtonsAllCaps</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+  <span class="cm">/**
+   * Title of the button that opens the screen where the user can allow
+   * the usage of the camera by the app.
+   */</span>
+  <span class="nl">enableCameraButtonTitle</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="cm">/**
+   * Text that will be displayed when the app
+   * is not allowed to use the camera, prompting the user
+   * to enable the usage of the camera.
+   */</span>
+  <span class="nl">enableCameraExplanationText</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="cm">/**
+   * Orientation lock mode of the UI and the camera preview.
+   * By default the orientation is not locked.
+   */</span>
+  <span class="nl">orientationLockMode</span><span class="p">?:</span> <span class="nx">CameraOrientationMode</span><span class="p">;</span>
+  <span class="cm">/**
+   * Detector mode, classic (OCR based) or ML (machine learning based) approach.
+   */</span>
+  <span class="nl">detectorMode</span><span class="p">?:</span> <span class="nx">LicensePlateDetectorMode</span><span class="p">;</span>
+  <span class="cm">/**
+   * User guidance hint text.
+   */</span>
+  <span class="nl">guidanceText</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="page-operations">Page Operations</h3>
 
 <p><a name="module_ScanbotSdk.createPage"></a></p>
 <h4 id="scanbotsdkcreatepagesuccesscallback-errorcallback-options"><code class="highlighter-rouge">ScanbotSdk.createPage(successCallback, errorCallback, options)</code></h4>
@@ -2280,7 +2623,7 @@ in the <code class="highlighter-rouge">languageDataPath</code> directory which c
   <li>etc.</li>
 </ul>
 
-<h5 id="example">Example:</h5>
+<h5 id="example-1">Example:</h5>
 <p>If you want to perform OCR with languages English and German, you have to download and install the following data files:</p>
 <ul>
   <li><code class="highlighter-rouge">eng.traineddata</code> - language file for English</li>
@@ -2884,6 +3227,22 @@ please add the following rules:</p>
 
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release History</h2>
+
+<h4 id="version-470-8-feb-2021">Version 4.7.0 (8 Feb 2021):</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Scanner UI component for scanning European license plates on cars, see <a href="#licensePlateScanner">License Plate Scanner</a></li>
+      <li>Generic Data Scanner UI component for text recognition, see <a href="#dataScanner">Data Scanner</a></li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Data Scanner 2.0: Improved the Scanbot Data Scanner components for text recognition 
+from European license plates and LC Dot-Matrix displays</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="version-462-21-jan-2021">Version 4.6.2 (21 Jan 2021):</h4>
 <ul>
