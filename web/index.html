@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://scanbotsdk.github.io/documentation/web/" />
 <meta property="og:site_name" content="Scanbot Web Document Scanner SDK" />
 <script type="application/ld+json">
-{"url":"https://scanbotsdk.github.io/documentation/web/","headline":"Scanbot Web Document Scanner SDK","name":"Scanbot Web Document Scanner SDK","@type":"WebSite","@context":"https://schema.org"}</script>
+{"url":"https://scanbotsdk.github.io/documentation/web/","name":"Scanbot Web Document Scanner SDK","headline":"Scanbot Web Document Scanner SDK","@type":"WebSite","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/documentation/web/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://scanbotsdk.github.io/documentation/web/feed.xml" title="Scanbot Web Document Scanner SDK" /></head>
 <body><header class="site-header" role="banner">
@@ -299,6 +299,25 @@ simply refer back to your SDK object and create the scanner object as follows:</
 
 <p>An exception is thrown if camera streaming is not supported or the user blocks the camera.</p>
 
+<h4 id="handling-automatic-capture">Handling Automatic Capture</h4>
+
+<p>If you wish to do image processing between document captures, or find the document scanner a wee bit too trigger-happy, 
+(which is plausible on high-end devices) there is the option to disable automatic capture on the fly.</p>
+
+<p>You can also use these calls create your own custom auto-capture on/off switch.</p>
+
+<p>Call to disable auto-capture:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">documentScanner</span><span class="p">.</span><span class="nx">disableAutoCapture</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>And when processing is complete, or the switch is flicked, re-enable it with the following command:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">documentScanner</span><span class="p">.</span><span class="nx">enableAutoCapture</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>To verify whether auto-capture is enabled or not, call:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">documentScanner</span><span class="p">.</span><span class="nx">isAutoCaptureEnabled</span><span class="p">();</span>
+</code></pre></div></div>
+
 <h4 id="dispose">Dispose</h4>
 
 <p>Always dispose the document scanner after it is no longer needed</p>
@@ -475,6 +494,20 @@ you can load an image from storage one at a time and add it to the generator:</p
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release History</h2>
 
+<h4 id="version-201-8-feb-2021">Version 2.0.1 (8 Feb 2021)</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Option to disable and enable auto-capture on the fly</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Improved <code class="highlighter-rouge">ImageFilter</code> @types support for advanced typescript configurations</li>
+    </ul>
+  </li>
+</ul>
+
 <h4 id="version-200-3-feb-2021">Version 2.0.0 (3 Feb 2021)</h4>
 <ul>
   <li>🎉 New:
@@ -492,7 +525,7 @@ you can load an image from storage one at a time and add it to the generator:</p
   <li>⚠️ Breaking Changes:
     <ul>
       <li>Detection result images are now <code class="highlighter-rouge">Uint8Array</code>. Use <code class="highlighter-rouge">scanbotSDK.toDataUrl</code> to convert it to a displayable image</li>
-      <li>The <code class="highlighter-rouge">compontent</code> package no longer available in the Bundle SDK. Replaced by <code class="highlighter-rouge">@types</code>
+      <li>The <code class="highlighter-rouge">component</code> package no longer available in the Bundle SDK. Replaced by <code class="highlighter-rouge">@types</code>
         <ul>
           <li>Configuration objects moved from <code class="highlighter-rouge">model/</code> to <code class="highlighter-rouge">model/configuration/</code></li>
         </ul>
