@@ -581,6 +581,130 @@ All config properties are optional.</p>
   <span class="c1">/// image uri will be returned in [BarcodeScanningResult.snappedImage] property</span>
   <span class="n">BarcodeImageGenerationType</span> <span class="n">barcodeImageGenerationType</span><span class="o">;</span>
 </code></pre></div></div>
+<h4 id="scanbotbarcodesdkstartbatchbarcodescannerbatchbarcodescannerconfiguration-config">ScanbotBarcodeSdk.startBatchBarcodeScanner(BatchBarcodeScannerConfiguration config)</h4>
+
+<p>Opens a Scanning UI for batch barcodes.</p>
+
+<p><img src="./assets/images/batch_barcode.jpeg" alt="alt" title="Barcode scanner screenshot" /></p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="n">config</span> <span class="o">=</span> <span class="n">BatchBarcodeScannerConfiguration</span><span class="o">(</span>
+  <span class="nl">barcodeFormats:</span> <span class="o">[</span><span class="n">BarcodeFormat</span><span class="o">.</span><span class="na">CODE_128</span><span class="o">,</span> <span class="n">BarcodeFormat</span><span class="o">.</span><span class="na">DATA_MATRIX</span><span class="o">],</span>
+  <span class="nl">topBarBackgroundColor:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">blueAccent</span><span class="o">,</span>
+  <span class="nl">finderTextHint:</span> <span class="s">"Please align a barcode in the frame to scan it."</span><span class="o">,</span>
+  <span class="nl">flashEnabled:</span> <span class="kc">true</span><span class="o">,</span>
+  <span class="o">...</span>
+<span class="o">);</span>
+<span class="kd">var</span> <span class="n">result</span> <span class="o">=</span> <span class="n">await</span> <span class="n">ScanbotBarcodeSdk</span><span class="o">.</span><span class="na">startBatchBarcodeScanner</span><span class="o">(</span><span class="n">config</span><span class="o">);</span>
+<span class="c1">// result.barcodeItems[n] ...</span>
+</code></pre></div></div>
+
+<p><strong>Result:</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">result.operationResult</code> - <code class="highlighter-rouge">SUCCESS</code> if a barcode was detected, <code class="highlighter-rouge">ERROR</code> if the user has canceled the operation (tapped on the “cancel” button).</li>
+  <li><code class="highlighter-rouge">result.barcodeItems</code> - List of recognized barcodes as items of <code class="highlighter-rouge">BarcodeItem</code> type.</li>
+</ul>
+
+<p><code class="highlighter-rouge">BarcodeItem</code> structure:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">BarcodeItem.barcodeFormat</code> - <a href="#barcodeFormat">Format</a> of detected barcode/QR code (e.g. “CODE_128”, “EAN_13”, “QR_CODE”, etc).</li>
+  <li><code class="highlighter-rouge">BarcodeItem.text</code> - Raw text value of detected barcode/QR code.</li>
+</ul>
+
+<h5 id="batchbarcodescannerconfiguration">BatchBarcodeScannerConfiguration</h5>
+<p>Use this configuration class to customize the UI and the behaviour of the Batch Barcodes Scanner UI.
+All config properties are optional.</p>
+
+<p><code class="highlighter-rouge">BatchBarcodeScannerConfiguration:</code></p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// Allows to change data representation for scanned list items</span>
+  <span class="n">BarcodeDataFormatter</span> <span class="n">barcodeFormatter</span><span class="o">;</span>
+
+  <span class="c1">/// Background color of the top toolbar.</span>
+  <span class="n">Color</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
+
+  <span class="c1">/// Color of the titles of all buttons in the top toolbar.</span>
+  <span class="n">Color</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
+
+  <span class="c1">/// Color buttons inactive color</span>
+  <span class="n">Color</span> <span class="n">topBarButtonsInactiveColor</span><span class="o">;</span>
+
+  <span class="c1">/// Color of barcodes count text</span>
+  <span class="n">Color</span> <span class="n">barcodesCountTextColor</span><span class="o">;</span>
+
+  <span class="c1">/// Color of barcodes details action</span>
+  <span class="n">Color</span> <span class="n">detailsActionColor</span><span class="o">;</span>
+
+  <span class="c1">/// Color of barcodes details background</span>
+  <span class="n">Color</span> <span class="n">detailsBackgroundColor</span><span class="o">;</span>
+
+  <span class="c1">/// Color of barcodes details background</span>
+  <span class="n">Color</span> <span class="n">detailsPrimaryColor</span><span class="o">;</span>
+
+  <span class="c1">/// Background color outside of the finder window.</span>
+  <span class="n">Color</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
+
+  <span class="c1">/// Color of the finder window's outline.</span>
+  <span class="n">Color</span> <span class="n">finderLineColor</span><span class="o">;</span>
+
+  <span class="c1">/// Color of the text hint under the finder window.</span>
+  <span class="n">Color</span> <span class="n">finderTextHintColor</span><span class="o">;</span>
+	
+  <span class="c1">///To hide cancel button or not.	</span>
+  <span class="kt">bool</span> <span class="n">cancelButtonHidden</span><span class="o">;</span>
+
+  <span class="c1">/// Title of the cancel button.</span>
+  <span class="kt">String</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
+
+  <span class="c1">/// Title of the button that opens the screen where the user can allow</span>
+  <span class="c1">/// the usage of the camera by the app.</span>
+  <span class="kt">String</span> <span class="n">enableCameraButtonTitle</span><span class="o">;</span>
+
+  <span class="c1">/// Text that will be displayed when the app</span>
+  <span class="c1">/// is not allowed to use the camera, prompting the user</span>
+  <span class="c1">/// to enable the usage of the camera.</span>
+  <span class="kt">String</span> <span class="n">enableCameraExplanationText</span><span class="o">;</span>
+
+  <span class="c1">/// Text hint shown under the finder window.</span>
+  <span class="kt">String</span> <span class="n">finderTextHint</span><span class="o">;</span>
+
+  <span class="c1">/// Text of submit button.</span>
+  <span class="kt">String</span> <span class="n">submitButtonTitle</span><span class="o">;</span>
+
+  <span class="c1">/// Text of clear button.</span>
+  <span class="kt">String</span> <span class="n">clearButtonTitle</span><span class="o">;</span>
+
+  <span class="c1">/// Text of count text.</span>
+  <span class="kt">String</span> <span class="n">barcodesCountText</span><span class="o">;</span>
+
+  <span class="c1">/// Text of fetch state text.</span>
+  <span class="kt">String</span> <span class="n">fetchingStateText</span><span class="o">;</span>
+
+  <span class="c1">/// Text when there no scanned barcodes yet.</span>
+  <span class="kt">String</span> <span class="n">noBarcodesTitle</span><span class="o">;</span>
+
+  <span class="c1">/// Aspect ratio of finder view.</span>
+  <span class="n">FinderAspectRatio</span> <span class="n">finderAspectRatio</span><span class="o">;</span>
+
+  <span class="c1">/// Thickness of the finder window's outline.</span>
+  <span class="kt">int</span> <span class="n">finderLineWidth</span><span class="o">;</span>
+
+  <span class="c1">/// Controls whether to play a beep sound after a successful detection.</span>
+  <span class="c1">/// Default value is TRUE.</span>
+  <span class="kt">bool</span> <span class="n">successBeepEnabled</span><span class="o">;</span>
+
+  <span class="c1">/// Controls whether the flash should be initially enabled.</span>
+  <span class="c1">/// The default value is FALSE.</span>
+  <span class="kt">bool</span> <span class="n">flashEnabled</span><span class="o">;</span>
+
+  <span class="c1">/// Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.</span>
+  <span class="c1">/// By default the camera orientation is not locked.</span>
+  <span class="n">CameraOrientationMode</span> <span class="n">orientationLockMode</span><span class="o">;</span>
+
+  <span class="c1">/// Format of barcode which  need to recognize</span>
+  <span class="n">List</span><span class="o">&lt;</span><span class="n">BarcodeFormat</span><span class="o">&gt;</span> <span class="n">barcodeFormats</span><span class="o">;</span>
+</code></pre></div></div>
 
 <p><a name="module_ScanbotBarcodeSdk.detectFromImageFile"></a></p>
 <h3 id="barcode-detection-from-still-images">Barcode Detection from Still Images</h3>
@@ -674,8 +798,53 @@ It allows you to create and distribute dedicated and smaller APKs <strong>via Pl
 <p>If you have ProGuard / R8 enabled for the <strong>release build</strong>, you will need to add the following rules 
 to cover the classes of this Flutter plugin as well as of the native Scanbot Barcode Scanner SDK for Android:</p>
 
+<p>version latest</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 -ignorewarnings
+
+-keep public class io.scanbot.sdk.ui.** { *; }
+
+-keeppackagenames io.scanbot.barcodescanner.**
+-keep public class io.scanbot.barcodescanner.**{ *; }
+
+-keep public class io.scanbot.sap.SapManager { *; }
+
+# JSR 305 annotations are for embedding nullability information.
+-dontwarn javax.annotation.**
+-dontwarn org.jetbrains.annotations.**
+
+# Gson
+# Gson uses generic type information stored in a class file when working with fields. Proguard
+# removes such information by default, so configure it to keep all of it.
+-keepattributes Signature
+
+# For using GSON @Expose annotation
+-keepattributes *Annotation*
+
+# Gson specific classes
+-dontwarn sun.misc.**
+-keep class com.google.gson.stream.** { *; }
+
+# Prevent proguard from stripping interface information from TypeAdapter, TypeAdapterFactory,
+# JsonSerializer, JsonDeserializer instances (so they can be used in @JsonAdapter)
+-keep class * implements com.google.gson.TypeAdapter
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+
+# Prevent R8 from leaving Data object members always null
+-keepclassmembers,allowobfuscation class * {
+  @com.google.gson.annotations.SerializedName &lt;fields&gt;;
+}
+
+-keeppackagenames io.scanbot.sdk.ui.**
+-keep public class io.scanbot.sdk.ui.**{ *; }
+
+-keeppackagenames io.scanbot.barcode.sdk.flutter.**
+-keep public class io.scanbot.barcode.sdk.flutter.**{ *; }
+</code></pre></div></div>
+<p>version 1.0.1</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-ignorewarnings
 -keep public class net.doo.snap.ui.** { *; }
 -keeppackagenames io.scanbot.barcodescanner.**
 -keep public class io.scanbot.barcodescanner.**{ *; }
@@ -754,9 +923,35 @@ to cover the classes of this Flutter plugin as well as of the native Scanbot Bar
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history-and-changelog">Release History and Changelog</h2>
 
+<h4 id="version-110-10-feb-2021">Version 1.1.0 (10 Feb 2021)</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Batch Barcode Scanner - a new RTU UI screen component to scan multiple barcodes in a row. See the new API function startBatchBarcodeScanner.</li>
+      <li>Added a new config property autoCancelTimeout for the Barcode Scanner UI. It provides the possibility to set a timeout value in seconds for auto-closing/cancellation of the Barcode Scanner UI.
+New result field BarcodeItem.rawBytes that contains the raw bytes from the scanned barcode</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking Changes:
+    <ul>
+      <li>Replaced <code class="highlighter-rouge">finderAspectRatio</code> parameter with <code class="highlighter-rouge">finderWidth</code> and <code class="highlighter-rouge">finderHeight</code> in <code class="highlighter-rouge">BarcodeScannerConfiguration</code></li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Updated the native Android Scanbot Barcode Scanner SDK to 1.3.2</li>
+      <li>Updated the native iOS Scanbot Barcode Scanner SDK to 1.8.4</li>
+    </ul>
+  </li>
+</ul>
+
 <h4 id="version-101-13-may-2020">Version 1.0.1 (13 May 2020)</h4>
 <ul>
-  <li>Improved <code class="highlighter-rouge">pubspec.yaml</code>, adjusted supported platforms.</li>
+  <li>🎉 New:
+    <ul>
+      <li>Improved <code class="highlighter-rouge">pubspec.yaml</code>, adjusted supported platforms.</li>
+    </ul>
+  </li>
 </ul>
 
 <h4 id="version-100-12-feb-2020">Version 1.0.0 (12 Feb 2020):</h4>
@@ -769,7 +964,7 @@ to cover the classes of this Flutter plugin as well as of the native Scanbot Bar
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 
-Open Source libraries used in the Scanbot Barcode Scanner SDK Flutter Plugin version 1.0.1:
+Open Source libraries used in the Scanbot Barcode Scanner SDK Flutter Plugin version 1.1.0:
 
 json_serializable version 3.2.0 and json_annotation version 3.0.0
 (https://github.com/dart-lang/json_serializable/blob/master/LICENSE)
@@ -801,7 +996,7 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-google-gson version 2.8.5
+google-gson version 2.8.6
 (https://github.com/google/gson/blob/gson-parent-2.8.5/LICENSE)
 Copyright 2008 Google Inc.
 
@@ -818,7 +1013,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
-kotlin and kotlin-stdlib-jdk7 version 1.3.61
+kotlin and kotlin-stdlib-jdk7 version 1.4.10
 (https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt)
 /*
  * Copyright 2010-2018 JetBrains s.r.o.
@@ -837,7 +1032,7 @@ kotlin and kotlin-stdlib-jdk7 version 1.3.61
  */
 
 
-kotlinx.coroutines version 1.3.2
+kotlinx.coroutines version 1.4.1
 (https://github.com/Kotlin/kotlinx.coroutines/blob/1.3.2/LICENSE.txt)
 Copyright 2016-2019 JetBrains s.r.o.
 
@@ -859,11 +1054,11 @@ limitations under the License.
 
 
 
-Open Source libraries used in the Scanbot Barcode Scanner SDK for Android version 1.0.1:
+Open Source libraries used in the Scanbot Barcode Scanner SDK for Android version 1.3.2:
 
 CWAC-Camera
 
-Version 0.6.33
+Version 0.6.40
 (https://github.com/doo/cwac-camera)
 (https://github.com/commonsguy/cwac-camera/)
 
@@ -930,7 +1125,7 @@ limitations under the License.
 
 Kotlin Standard Library
 
-Version 1.3.50
+Version 1.4
 (https://github.com/JetBrains/kotlin)
 
 Copyright 2010-2018 JetBrains s.r.o.
@@ -965,19 +1160,17 @@ limitations under the License.
 
 
 
-Moshi Kotlin
-Moshi Adapters
+google-gson
+Version 2.8.5
+(https://github.com/google/gson/blob/gson-parent-2.8.5/LICENSE)
 
-Version 1.8.0
-(https://github.com/square/moshi)
-
-Copyright 2015 Square, Inc.
+Copyright 2008 Google Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-http://www.apache.org/licenses/LICENSE-2.0
+    http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -989,7 +1182,7 @@ limitations under the License.
 
 Dagger
 
-Version 2.16
+Version 2.25.2
 (https://github.com/google/dagger)
 
 Copyright 2012 The Dagger Authors
@@ -1011,25 +1204,6 @@ limitations under the License.
 Dagger Compiler
 
 Copyright 2012 The Dagger Authors
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-
-
-Guava: Google Core Libraries For Java
-
-Version 23.0-android
-(https://github.com/google/guava)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -1138,13 +1312,14 @@ limitations under the License.
 
 
 
-TensorFlow
+TensorFlow 2.0.0
+Copyright 2017 The TensorFlow Authors. All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-http://www.apache.org/licenses/LICENSE-2.0
+    http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -1332,7 +1507,7 @@ THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR I
 
 OpenCV
 
-Version 3.4.7
+Version 4.4.0
 (https://github.com/opencv/opencv)
 
 By downloading, copying, installing or using the software you agree to this license.
@@ -1378,11 +1553,57 @@ the use of this software, even if advised of the possibility of such damage.
 
 
 
+OpenJPEG
+
+Version 2.3.1
+(https://github.com/uclouvain/openjpeg)
+
+The copyright in this software is being made available under the 2-clauses
+BSD License, included below. This software may be subject to other third
+party and contributor rights, including patent rights, and no such rights
+are granted under this license.
+
+Copyright (c) 2002-2014, Universite catholique de Louvain (UCL), Belgium
+Copyright (c) 2002-2014, Professor Benoit Macq
+Copyright (c) 2003-2014, Antonin Descampe
+Copyright (c) 2003-2009, Francois-Olivier Devaux
+Copyright (c) 2005, Herve Drolon, FreeImage Team
+Copyright (c) 2002-2003, Yannick Verschueren
+Copyright (c) 2001-2003, David Janssens
+Copyright (c) 2011-2012, Centre National d'Etudes Spatiales (CNES), France
+Copyright (c) 2012, CS Systemes d'Information, France
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS `AS IS'
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+
+
 ------------------------------------------------------------------------------------------------------------------------
 
 
 
-Open Source libraries used in the Scanbot Barcode Scanner SDK for iOS version 1.3.0:
+
+Open Source libraries used in the Scanbot Barcode Scanner SDK for iOS version 1.8.4:
 
 BOOST C++ Libraries version 1.68
 This library is distributed under the terms of the following license: https://www.boost.org/LICENSE_1_0.txt
@@ -1409,6 +1630,7 @@ Redistributions in binary form must reproduce the above copyright notice, this l
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+
 JSON for Modern C++ version 3.1.0
 Copyright (c) 2013-2018 Niels Lohmann &lt;http://nlohmann.me&gt;.
 This library is distributed under the terms of a MIT License (https://github.com/nlohmann/json/blob/develop/LICENSE.MIT)
@@ -1420,7 +1642,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF MERCHANTABILITY, FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-OpenCV 3.4.8
+OpenCV 4.4.0
 Copyright © 2014, Itseez. All rights reserved.
 This library is distributed under the terms of a 3-clause BSD license: http://opencv.org/license.html.
 
@@ -1437,7 +1659,12 @@ Neither the names of the copyright holders nor the names of the contributors may
 This software is provided by the copyright holders and contributors “as is” and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall copyright holders or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.
 
 
-OpenSSL 1.0.2q
+Leptonica 1.71
+Copyright @ 2001-2015, Leptonica, (http://leptonica.org),
+is distributed under a Creative Commons Attribution 3.0 United States License ( http://creativecommons.org/licenses/by/3.0/us/).
+
+
+OpenSSL 1.1.1g
 Copyright @ 1998-2011 The OpenSSL Project. All rights reserved. (https://www.openssl.org)
 This library is distributed under the terms of the following license: https://github.com/openssl/openssl/blob/master/LICENSE
 
@@ -1502,6 +1729,21 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
+
+TensorFlow 2.2.0
+Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 </code></pre></div></div>
 
