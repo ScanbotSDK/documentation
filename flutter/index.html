@@ -57,6 +57,7 @@ For more details visit our website <a href="https://scanbot.io/sdk">https://scan
   <li>PDF Creation</li>
   <li>TIFF Creation</li>
   <li>Barcode and QR Code Scanning</li>
+  <li>Batch Barcode and QR Code Scanning</li>
   <li>MRZ (Machine Readable Zones) Scanning</li>
   <li>EHIC (European Health Insuranse Card) Scanning</li>
 </ul>
@@ -249,6 +250,7 @@ Cropping UI, Barcode Scanner UI, MRZ Scanner UI and EHIC Scanner UI.</p>
       <li><a href="#module_ScanbotSdk.performOcr">.performOcr(pages, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.refreshImageUris">.refreshImageUris(pages)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.cleanupStorage">.cleanupStorage()</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.detectBarcodeFromImageFile">.detectBarcodeFromImageFile()</a> - <code class="highlighter-rouge">function</code></li>
     </ul>
   </li>
   <li><strong><code class="highlighter-rouge">ScanbotSdkUi</code></strong>
@@ -256,6 +258,7 @@ Cropping UI, Barcode Scanner UI, MRZ Scanner UI and EHIC Scanner UI.</p>
       <li><a href="#module_ScanbotSdkUi.startDocumentScanner">.startDocumentScanner(config)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdkUi.startCroppingScreen">.startCroppingScreen(config)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdkUi.startBarcodeScanner">.startBarcodeScanner(config)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdkUi.startBatchBarcodeScanner">.startBatchBarcodeScanner(config)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdkUi.startMrzScanner">.startMrzScanner(config)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdkUi.startEhicScanner">.startEhicScanner(config)</a> - <code class="highlighter-rouge">function</code></li>
     </ul>
@@ -293,7 +296,7 @@ Cropping UI, Barcode Scanner UI, MRZ Scanner UI and EHIC Scanner UI.</p>
   <li><code class="highlighter-rouge">loggingEnabled</code>: Optional <a href="#logging">logging</a> flag.</li>
   <li><code class="highlighter-rouge">imageFormat</code>: Optional <a href="#imageFormat">image format</a> value.</li>
   <li><code class="highlighter-rouge">imageQuality</code>: Optional <a href="#imageQuality">image quality</a> value.</li>
-  <li><code class="highlighter-rouge">storageBaseDirectory</code>: Optional directory as file URI to overwrite 
+  <li><code class="highlighter-rouge">storageBaseDirectory</code>: Optional directory as file URI to overwrite
 the default <a href="#storage">storage directory</a> of the Scanbot SDK.</li>
   <li><code class="highlighter-rouge">documentDetectorMode</code>: Optional document detector mode.
     <ul>
@@ -301,7 +304,7 @@ the default <a href="#storage">storage directory</a> of the Scanbot SDK.</li>
       <li><code class="highlighter-rouge">DocumentDetectorMode.ML_BASED</code> - new Machine Learning based approach (requires iOS 11.2+)</li>
     </ul>
   </li>
-  <li><code class="highlighter-rouge">licenseErrorHandler</code> : Callback function to get info about problems 
+  <li><code class="highlighter-rouge">licenseErrorHandler</code> : Callback function to get info about problems
 with license key or concrete feature that is not available for usage</li>
 </ul>
 
@@ -311,7 +314,7 @@ with license key or concrete feature that is not available for usage</li>
   <span class="nd">@override</span>
   <span class="n">_MyAppState</span> <span class="n">createState</span><span class="o">()</span> <span class="o">{</span>
       <span class="c1">// Please note: this is just an example license key string (it's not a valid license)</span>
-      <span class="kt">String</span> <span class="n">licenseKey</span> <span class="o">=</span> 
+      <span class="kt">String</span> <span class="n">licenseKey</span> <span class="o">=</span>
         <span class="s">"fXbN2PmyqEAZ+btdkSIS36TuX2j/EE5qxVNcZMXYErbLQ"</span> <span class="o">+</span>
         <span class="s">"3OBnE10aOQxYI8L4UKwHiZ63jthvoFwUevttctBk0wVJ7Z"</span> <span class="o">+</span>
         <span class="s">"+Psz3/Ry8w7pXvfpB1o+JrnzGGcfwBnRi/5raQ2THDeokR"</span> <span class="o">+</span>
@@ -337,32 +340,32 @@ with license key or concrete feature that is not available for usage</li>
 
 <p><a name="licenseKey"></a></p>
 <h4 id="license-key">License Key</h4>
-<p>In order to run the Scanbot SDK plugin functionality within your production app, 
+<p>In order to run the Scanbot SDK plugin functionality within your production app,
 you have to purchase and use a valid Scanbot SDK license.</p>
 
-<p>Each license key is valid only for a given app bundle identifier. 
-The license also defines which modules you are allowed to use. 
-The usage of unlicensed modules will log an error to the console and terminate the app. 
-If your license has expired any calls 
+<p>Each license key is valid only for a given app bundle identifier.
+The license also defines which modules you are allowed to use.
+The usage of unlicensed modules will log an error to the console and terminate the app.
+If your license has expired any calls
 of the Scanbot SDK plugin will terminate your app.</p>
 
 <h4 id="trial-license">Trial License</h4>
 <p>The Scanbot SDK will run without a license for one minute per session!
-To get an unrestricted “no-strings-attached” 30 day trial license, 
+To get an unrestricted “no-strings-attached” 30 day trial license,
 please submit the <a href="https://scanbot.io/sdk/trial.html">Trial License Form</a> on our website.</p>
 
-<p>Please kindly note that a trial license can only be used in a <strong>development and staging environment</strong>. 
-You are <strong>not allowed to publish</strong> your app to the App Store, Play Store 
+<p>Please kindly note that a trial license can only be used in a <strong>development and staging environment</strong>.
+You are <strong>not allowed to publish</strong> your app to the App Store, Play Store
 or any 3rd party Android App Store with a trial license.</p>
 
 <h4 id="purchase-a-production-license">Purchase a Production License</h4>
-<p>You can check and purchase the Scanbot SDK licenses here: 
+<p>You can check and purchase the Scanbot SDK licenses here:
 <a href="https://scanbot.io/sdk.html">https://scanbot.io/sdk.html</a>.</p>
 
 <h4 id="app-identifier">App Identifier</h4>
-<p>Every app has a unique identifier (sometimes also known as “bundle identifier” or “application ID”). 
+<p>Every app has a unique identifier (sometimes also known as “bundle identifier” or “application ID”).
 Your license will be bound to this identifier.
-To request a trial license or purchase a production license, 
+To request a trial license or purchase a production license,
 you have to provide us the bundle identifier of your app.</p>
 
 <p><strong>For Android:</strong> Please find it as <code class="highlighter-rouge">applicationId</code> in the app-level <code class="highlighter-rouge">build.gradle</code> file of your android project:</p>
@@ -387,22 +390,22 @@ you have to provide us the bundle identifier of your app.</p>
 </code></pre></div></div>
 
 <p>On Android logs are printed into <em>LogCat</em> as well as saved on the device.
-The easiest way to check the log outputs on Android is to use the 
-<a href="https://developer.android.com/studio/command-line/adb.html">Android Debug Bridge (adb)</a>. 
+The easiest way to check the log outputs on Android is to use the
+<a href="https://developer.android.com/studio/command-line/adb.html">Android Debug Bridge (adb)</a>.
 (e.g. <code class="highlighter-rouge">$ adb -s &lt;DEVICE_ID&gt; shell "logcat"</code>)</p>
 
-<p>On iOS all logs are printed to the console. Please use Xcode to check the log outputs. 
+<p>On iOS all logs are printed to the console. Please use Xcode to check the log outputs.
 There will be no log files created by the Scanbot SDK plugin.</p>
 
-<p><strong>Please note:</strong> While it may be useful for development, 
+<p><strong>Please note:</strong> While it may be useful for development,
 <strong>consider switching logging OFF in production builds</strong> for security and performance reasons!</p>
 
 <p><a name="imageQuality"></a></p>
 <h4 id="image-quality--compression">Image Quality / Compression</h4>
-<p>The <code class="highlighter-rouge">initializeSdk</code> function can take some optional parameters that specify 
-the image storage format and compression for generated <code class="highlighter-rouge">Page</code> images. 
-<code class="highlighter-rouge">Page</code> images are all images created by the Ready-To-Use UI Components 
-(like Document Scanner, Cropping UI, etc), as well as all image manipulation functions 
+<p>The <code class="highlighter-rouge">initializeSdk</code> function can take some optional parameters that specify
+the image storage format and compression for generated <code class="highlighter-rouge">Page</code> images.
+<code class="highlighter-rouge">Page</code> images are all images created by the Ready-To-Use UI Components
+(like Document Scanner, Cropping UI, etc), as well as all image manipulation functions
 working with <code class="highlighter-rouge">Page</code> objects as input (like <code class="highlighter-rouge">applyImageFilterOnPage</code>, <code class="highlighter-rouge">detectDocumentOnPage</code>, etc).</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="n">config</span> <span class="o">=</span> <span class="n">ScanbotSdkConfig</span><span class="o">(</span>
@@ -414,24 +417,24 @@ working with <code class="highlighter-rouge">Page</code> objects as input (like 
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">imageQuality </code> - defines the quality factor of JPEG images. The value must be between 1 and 100, 
-where 100 means maximum quality and largest file size. 
+  <li><code class="highlighter-rouge">imageQuality </code> - defines the quality factor of JPEG images. The value must be between 1 and 100,
+where 100 means maximum quality and largest file size.
 The default value is 80 which is a good compromise between image file size and document legibility.</li>
   <li><code class="highlighter-rouge">imageFormat </code> - either <code class="highlighter-rouge">JPG</code> or <code class="highlighter-rouge">PNG</code>. The default value is <code class="highlighter-rouge">JPG</code>.</li>
 </ul>
 
 <h3 id="updating-license-key-in-production-apps">Updating License Key in Production Apps</h3>
-<p>To renew an expired license or extend a valid license with new Scanbot SDK features, 
-you will have to update your app in the App Store or Play Store. 
-The expiration date and the feature list of a license are an encrypted data part of the license key string. 
+<p>To renew an expired license or extend a valid license with new Scanbot SDK features,
+you will have to update your app in the App Store or Play Store.
+The expiration date and the feature list of a license are an encrypted data part of the license key string.
 Which means a renewal or extension of a license will cause a new license key string to be generated.</p>
 
 <p><a name="module_ScanbotSdk.getLicenseStatus"></a></p>
 <h3 id="license-check-in-production-apps">License Check in Production Apps</h3>
-<p>If your Scanbot SDK license has expired, any call of the Scanbot SDK API will terminate your app or result in an error. 
-To prevent this, you should always check for license expiration 
+<p>If your Scanbot SDK license has expired, any call of the Scanbot SDK API will terminate your app or result in an error.
+To prevent this, you should always check for license expiration
 during the runtime by calling the method <code class="highlighter-rouge">ScanbotSdk.getLicenseStatus()</code>.
-If the result of await returns <code class="highlighter-rouge">result.isLicenseValid == false</code>, 
+If the result of await returns <code class="highlighter-rouge">result.isLicenseValid == false</code>,
 you should disable any usage of the Scanbot SDK functions or UI components in your app.</p>
 
 <p>We highly recommend to implement a suitable handling of this case in your app!</p>
@@ -451,14 +454,14 @@ you should disable any usage of the Scanbot SDK functions or UI components in yo
 
 <ul>
   <li><code class="highlighter-rouge">result.isLicenseValid</code> - Contains a boolean status value of the license.
-<code class="highlighter-rouge">true</code> means the Scanbot SDK license is valid and all features can be used normally. 
-<code class="highlighter-rouge">false</code> means the license is <strong>not valid</strong> and any call of the Scanbot SDK API 
+<code class="highlighter-rouge">true</code> means the Scanbot SDK license is valid and all features can be used normally.
+<code class="highlighter-rouge">false</code> means the license is <strong>not valid</strong> and any call of the Scanbot SDK API
 will terminate your app or result in an error.</li>
 </ul>
 
 <p><a name="storage"></a></p>
 <h3 id="storage">Storage</h3>
-<p>By default the native Scanbot SDKs as well as the Plugin itself use the internal and secure 
+<p>By default the native Scanbot SDKs as well as the Plugin itself use the internal and secure
 storage locations for all produced files (JPG, PNG, PDF, TIFF, etc).</p>
 
 <ul>
@@ -473,7 +476,7 @@ No permissions are required for your app to read or write files in this director
 
 <h4 id="customize-storage-location">Customize Storage Location</h4>
 
-<p>It is strongly recommended to use the default storage location. 
+<p>It is strongly recommended to use the default storage location.
 However, you can overwrite the storage directory on initialization of the Plugin.
 The <code class="highlighter-rouge">initializeSdk</code> method can take an optional parameter <code class="highlighter-rouge">storageBaseDirectory</code> to set a custom storage location.</p>
 
@@ -485,7 +488,7 @@ The <code class="highlighter-rouge">initializeSdk</code> method can take an opti
   <span class="n">storageDirectory</span> <span class="o">=</span> <span class="n">await</span> <span class="n">getApplicationDocumentsDirectory</span><span class="o">();</span>
 <span class="o">}</span>
 
-<span class="c1">// Please note: getExternalStorageDirectory() and getApplicationDocumentsDirectory() </span>
+<span class="c1">// Please note: getExternalStorageDirectory() and getApplicationDocumentsDirectory()</span>
 <span class="c1">// are provided via 3rd-party plugins like "path_provider".</span>
 
 <span class="kd">var</span> <span class="n">config</span> <span class="o">=</span> <span class="n">ScanbotSdkConfig</span><span class="o">(</span>
@@ -495,8 +498,8 @@ The <code class="highlighter-rouge">initializeSdk</code> method can take an opti
 <span class="n">await</span> <span class="n">ScanbotSdk</span><span class="o">.</span><span class="na">initScanbotSdk</span><span class="o">(</span><span class="n">config</span><span class="o">);</span>
 </code></pre></div></div>
 
-<p>The value of the <code class="highlighter-rouge">storageBaseDirectory</code> must be a file URL (<code class="highlighter-rouge">'file:///...</code>) 
-pointing to a valid platform-specific file system path. 
+<p>The value of the <code class="highlighter-rouge">storageBaseDirectory</code> must be a file URL (<code class="highlighter-rouge">'file:///...</code>)
+pointing to a valid platform-specific file system path.
 If this directory does not exist yet, the Plugin will try to create it.
 To work with the file system we recommend the Flutter Plugin <a href="https://pub.dev/packages/path_provider">path_provider</a></p>
 
@@ -517,15 +520,15 @@ To work with the file system we recommend the Flutter Plugin <a href="https://pu
 
 <h4 id="storage-cleanup">Storage Cleanup</h4>
 
-<p>There is <strong>no automatic</strong> file clean mechanism in this Plugin, because only your App can decide 
+<p>There is <strong>no automatic</strong> file clean mechanism in this Plugin, because only your App can decide
 when is the perfect time to remove the files produced by this Plugin (images, PDFs, etc).</p>
 
-<p>To avoid storage space issues caused by too many produced image files, 
-it is strongly recommended to implement a suitable cleanup functionality based on the requirements of your app. 
+<p>To avoid storage space issues caused by too many produced image files,
+it is strongly recommended to implement a suitable cleanup functionality based on the requirements of your app.
 This Plugin provides the following helper methods to keep the storage clean:</p>
 <ul>
   <li><a href="#module_ScanbotSdk.deletePage">deletePage</a> method to delete a certain <code class="highlighter-rouge">Page</code> object with all its files.</li>
-  <li><a href="#module_ScanbotSdk.cleanupStorage">cleanupStorage</a> method to remove <strong>all</strong> generated files 
+  <li><a href="#module_ScanbotSdk.cleanupStorage">cleanupStorage</a> method to remove <strong>all</strong> generated files
 by this Plugin (scanned and imported images, export files like PDF, TIFF, etc).</li>
 </ul>
 
@@ -559,13 +562,13 @@ as a data model.</p>
 
 <ul>
   <li><code class="highlighter-rouge">pageId</code> - an unique, random string (UUID) identifying the page in the internal page file storage</li>
-  <li><code class="highlighter-rouge">polygon</code> - the page’s cropping <a href="#polygon">polygon</a> as calculated by a document detection operation 
-or as set by the cropping UI. Modifying the polygon will change the polygon as shown in the cropping UI 
+  <li><code class="highlighter-rouge">polygon</code> - the page’s cropping <a href="#polygon">polygon</a> as calculated by a document detection operation
+or as set by the cropping UI. Modifying the polygon will change the polygon as shown in the cropping UI
 but will not automatically re-crop the original image.</li>
-  <li><code class="highlighter-rouge">detectionStatus </code> - the <a href="#detectionStatus">detection status</a> of the document detection operation 
+  <li><code class="highlighter-rouge">detectionStatus </code> - the <a href="#detectionStatus">detection status</a> of the document detection operation
 that produced the page (either the document scanner or <code class="highlighter-rouge">detectDocument()</code>).</li>
   <li><code class="highlighter-rouge">filter</code> - the <a href="#imageFilterType">image filter type</a> which was applied on the document image of this page.</li>
-  <li><code class="highlighter-rouge">documentImageSizeLimit</code> - limits the maximum resolution (width, height) of the document image. 
+  <li><code class="highlighter-rouge">documentImageSizeLimit</code> - limits the maximum resolution (width, height) of the document image.
 If <code class="highlighter-rouge">null</code> is passed, this property is effectively ignored. If specified, <code class="highlighter-rouge">width</code> and <code class="highlighter-rouge">height</code> must be &gt; 0.</li>
   <li><code class="highlighter-rouge">originalImageFileUri</code> - file URI of the original image</li>
   <li><code class="highlighter-rouge">documentImageFileUri</code> - file URI of the cropped document image (if document detection was successful)</li>
@@ -573,9 +576,9 @@ If <code class="highlighter-rouge">null</code> is passed, this property is effec
   <li><code class="highlighter-rouge">documentPreviewImageFileUri</code> - file URI of a screen-sized preview of the document image</li>
 </ul>
 
-<p>Pages are stored in an internal page file storage, 
-where the <code class="highlighter-rouge">pageId</code> serves as a name prefix for the stored image files. 
-Operations that modify pages work in-place. 
+<p>Pages are stored in an internal page file storage,
+where the <code class="highlighter-rouge">pageId</code> serves as a name prefix for the stored image files.
+Operations that modify pages work in-place.
 That is, for example, <code class="highlighter-rouge">rotatePageClockwise()</code> overwrites the page’s image files with their rotated versions.</p>
 
 <p><a name="persistencePageObject"></a></p>
@@ -618,8 +621,8 @@ When updating the app, the uuid <strong>may</strong> change. For example:</p>
 
 <p>Please note that the actual image files are still there, only the absolute file paths change.</p>
 
-<p>To get to the new absolute paths, the API method <a href="#module_ScanbotSdk.refreshImageUris"><code class="highlighter-rouge">refreshImageUris(pages)</code></a> 
-has been introduced in the plugin version 2.1.0. 
+<p>To get to the new absolute paths, the API method <a href="#module_ScanbotSdk.refreshImageUris"><code class="highlighter-rouge">refreshImageUris(pages)</code></a>
+has been introduced in the plugin version 2.1.0.
 Please use this method to refresh all image file URIs from affected pages:</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Page</span><span class="o">&gt;</span> <span class="n">loadedPages</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">// load page objects from DB</span>
@@ -659,8 +662,8 @@ from the database of your app, regardless of whether there was an app update or 
       <li><code class="highlighter-rouge">CANCELED</code> if the user canceled the request</li>
     </ul>
   </li>
-  <li><code class="highlighter-rouge">result.pages</code> - an array of <a href="#pageObject">pages</a>. 
-If multi-page mode is enabled, this array may contain more than one page. 
+  <li><code class="highlighter-rouge">result.pages</code> - an array of <a href="#pageObject">pages</a>.
+If multi-page mode is enabled, this array may contain more than one page.
 If multi-page mode is not enabled and <code class="highlighter-rouge">result.status</code> is <code class="highlighter-rouge">SUCCESS</code>, this array contains one object.</li>
 </ul>
 
@@ -729,7 +732,7 @@ If multi-page mode is not enabled and <code class="highlighter-rouge">result.sta
   <span class="kt">bool</span> <span class="n">flashButtonHidden</span><span class="o">;</span>
 
   <span class="c1">/// Hides the shutter button if set to TRUE. Shows it otherwise. Defaults to FALSE.</span>
-  <span class="c1">/// If set to TRUE, auto-snapping is enabled and the property autoSnappingEnabled of the behaviour configuration will</span>
+  <span class="c1">/// If set to TRUE, auto-snapping is enabled and the property autoSnappingEnabled of the behavior configuration will</span>
   <span class="c1">/// have no effect.</span>
   <span class="c1">/// Also the auto-snapping button will be hidden.</span>
   <span class="kt">bool</span> <span class="n">shutterButtonHidden</span><span class="o">;</span>
@@ -839,8 +842,8 @@ If multi-page mode is not enabled and <code class="highlighter-rouge">result.sta
 <h3 id="cropping-ui">Cropping UI</h3>
 <h4 id="scanbotsdkuistartcroppingscreenpageconfig">ScanbotSdkUi.startCroppingScreen(page,config)</h4>
 
-<p>The Cropping UI provides functionality for manual cropping and rotation of an image. 
-It uses the edge detection algorithm of the Scanbot SDK 
+<p>The Cropping UI provides functionality for manual cropping and rotation of an image.
+It uses the edge detection algorithm of the Scanbot SDK
 and contains some smart UI elements like magnetic lines and a magnifier.</p>
 
 <p><img src="./assets/images/cropping.jpg" alt="alt" title="Cropping screen screenshot" /></p>
@@ -867,7 +870,7 @@ and contains some smart UI elements like magnetic lines and a magnifier.</p>
 </ul>
 
 <h5 id="croppingscreenconfiguration">CroppingScreenConfiguration</h5>
-<p>The cropping UI requires a page object. A page object can be initially created using the 
+<p>The cropping UI requires a page object. A page object can be initially created using the
 <a href="#module_ScanbotSdkUi.startDocumentScanner">Document Scanner</a> or <a href="#module_ScanbotSdk.createPage">createPage()</a>.</p>
 
 <p>All UI configuration settings are optional.</p>
@@ -963,7 +966,8 @@ and contains some smart UI elements like magnetic lines and a magnifier.</p>
     <ul>
       <li><code class="highlighter-rouge">item.barcodeFormat</code> - <a href="#barcodeFormat">Format</a> of detected barcode/QR code (e.g. “CODE_128”, “EAN_13”, “QR_CODE”, etc).</li>
       <li><code class="highlighter-rouge">item.text</code> - Raw text value of detected barcode/QR code.</li>
-      <li><code class="highlighter-rouge">item.formattedResult</code> - Optional, formatted/parsed result. 
+      <li><code class="highlighter-rouge">item.rawBytes</code> - Raw bytes of detected barcode/QR code.</li>
+      <li><code class="highlighter-rouge">item.formattedResult</code> - Optional, formatted/parsed result.
 See implementations of <a href="#barcodeFormattedResult"><code class="highlighter-rouge">BarcodeFormattedResult</code></a>.</li>
     </ul>
   </li>
@@ -974,7 +978,7 @@ See implementations of <a href="#barcodeFormattedResult"><code class="highlighte
 
 <ul>
   <li>
-    <p><code class="highlighter-rouge">barcodeFormats</code> is an optional array of <a href="#barcodeFormat">barcode formats</a> that act as a detection filter. 
+    <p><code class="highlighter-rouge">barcodeFormats</code> is an optional array of <a href="#barcodeFormat">barcode formats</a> that act as a detection filter.
 By default all supported formats will be detected.</p>
   </li>
   <li>
@@ -988,7 +992,7 @@ By default all supported formats will be detected.</p>
   <span class="c1">/// Color of the titles of all buttons in the top toolbar.</span>
   <span class="n">Color</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
 
-  <span class="c1">/// Background color outside of the finder window.</span>
+  <span class="c1">/// Background color outsidef the finder window.</span>
   <span class="n">Color</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the finder window's outline.</span>
@@ -1022,11 +1026,8 @@ By default all supported formats will be detected.</p>
 
   <span class="kt">String</span> <span class="n">flashButtonTitle</span><span class="o">;</span>
 
-  <span class="c1">/// Height of the finder window in pixels.</span>
-  <span class="kt">int</span> <span class="n">finderHeight</span><span class="o">;</span>
-
-  <span class="c1">/// Width of the finder window in pixels.</span>
-  <span class="kt">int</span> <span class="n">finderWidth</span><span class="o">;</span>
+  <span class="c1">/// Aspect ratio of finder view.</span>
+  <span class="n">FinderAspectRatio</span> <span class="n">finderAspectRatio</span><span class="o">;</span>
 
   <span class="c1">/// Thickness of the finder window's outline.</span>
   <span class="kt">int</span> <span class="n">finderLineWidth</span><span class="o">;</span>
@@ -1044,7 +1045,138 @@ By default all supported formats will be detected.</p>
 
   <span class="n">CameraOrientationMode</span> <span class="n">orientationLockMode</span><span class="o">;</span>
 
-  <span class="c1">/// Format of barcode which  need to recognize</span>
+  <span class="c1">/// Format of barcode which  need to be recognized</span>
+  <span class="n">List</span><span class="o">&lt;</span><span class="n">BarcodeFormat</span><span class="o">&gt;</span> <span class="n">barcodeFormats</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p><a name="module_ScanbotSdkUi.startBatchBarcodeScanner"></a></p>
+<h4 id="scanbotsdkstartbatchbarcodescannerconfig">ScanbotSdk.startBatchBarcodeScanner(config)</h4>
+
+<p>Opens a scanning UI for scanning and collecting multiple barcodes.</p>
+
+<p><img src="./assets/images/batch_barcode_scanner.jpg" alt="alt" title="Batch Barcode scanner screenshot" /></p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="n">config</span> <span class="o">=</span> <span class="n">BatchBarcodeScannerConfiguration</span><span class="o">(</span>
+  <span class="nl">barcodeFormats:</span> <span class="o">[</span><span class="n">BarcodeFormat</span><span class="o">.</span><span class="na">CODE_128</span><span class="o">,</span> <span class="n">BarcodeFormat</span><span class="o">.</span><span class="na">DATA_MATRIX</span><span class="o">],</span>
+  <span class="nl">topBarBackgroundColor:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">blueAccent</span><span class="o">,</span>
+  <span class="nl">finderTextHint:</span> <span class="s">"Please align a barcode in the frame to scan it."</span><span class="o">,</span>
+  <span class="nl">flashEnabled:</span> <span class="kc">true</span><span class="o">,</span>
+  <span class="o">...</span>
+<span class="o">);</span>
+<span class="kd">var</span> <span class="n">result</span> <span class="o">=</span> <span class="n">await</span> <span class="n">ScanbotSdk</span><span class="o">.</span><span class="na">startBatchBarcodeScanner</span><span class="o">(</span><span class="n">config</span><span class="o">);</span>
+<span class="c1">// result.barcodeItems[n] ...</span>
+</code></pre></div></div>
+
+<p><strong>Result:</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">result.operationResult</code> - <code class="highlighter-rouge">SUCCESS</code> if a barcode was detected, <code class="highlighter-rouge">ERROR</code> if the user has canceled the operation (tapped on the “cancel” button).</li>
+  <li><code class="highlighter-rouge">result.barcodeItems</code> - List of recognized barcodes as items of <code class="highlighter-rouge">BarcodeItem</code> type.</li>
+</ul>
+
+<p><code class="highlighter-rouge">BarcodeItem</code> structure:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">barcodeFormat</code> - <a href="#barcodeFormat">Format</a> of detected barcode/QR code (e.g. “CODE_128”, “EAN_13”, “QR_CODE”, etc).</li>
+  <li><code class="highlighter-rouge">text</code> - Raw text value of detected barcode/QR code.</li>
+  <li><code class="highlighter-rouge">rawBytes</code> - Raw bytes of detected barcode/QR code.</li>
+  <li><code class="highlighter-rouge">formattedResult</code> - Optional, formatted/parsed result.
+See implementations of <a href="#barcodeFormattedResult"><code class="highlighter-rouge">BarcodeFormattedResult</code></a>.</li>
+</ul>
+
+<h5 id="batchbarcodescannerconfiguration">BatchBarcodeScannerConfiguration</h5>
+<p>Use this configuration class to customize the UI and the behavior of the Batch Barcodes Scanner UI.
+All config properties are optional.</p>
+
+<p><code class="highlighter-rouge">BatchBarcodeScannerConfiguration:</code></p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// Change data representation for scanned list items</span>
+  <span class="n">BarcodeDataFormatter</span> <span class="n">barcodeFormatter</span><span class="o">;</span>
+
+  <span class="c1">/// Background color of the top toolbar.</span>
+  <span class="n">Color</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
+
+  <span class="c1">/// Color of the titles of all buttons in the top toolbar.</span>
+  <span class="n">Color</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
+
+  <span class="c1">/// Color of the titles of all inactive buttons in the top toolbar.</span>
+
+
+  <span class="n">Color</span> <span class="n">topBarButtonsInactiveColor</span><span class="o">;</span>
+
+  <span class="c1">/// Color of barcodes count text</span>
+  <span class="n">Color</span> <span class="n">barcodesCountTextColor</span><span class="o">;</span>
+
+  <span class="c1">/// Color of barcodes details action</span>
+  <span class="n">Color</span> <span class="n">detailsActionColor</span><span class="o">;</span>
+
+  <span class="c1">/// Color of barcodes details background</span>
+  <span class="n">Color</span> <span class="n">detailsBackgroundColor</span><span class="o">;</span>
+
+  <span class="c1">/// Color of barcodes details background</span>
+  <span class="n">Color</span> <span class="n">detailsPrimaryColor</span><span class="o">;</span>
+
+  <span class="c1">/// Background color outsidef the finder window.</span>
+  <span class="n">Color</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
+
+  <span class="c1">/// Color of the finder window's outline.</span>
+  <span class="n">Color</span> <span class="n">finderLineColor</span><span class="o">;</span>
+
+  <span class="c1">/// Color of the text hint under the finder window.</span>
+  <span class="n">Color</span> <span class="n">finderTextHintColor</span><span class="o">;</span>
+
+  <span class="c1">///To hide cancel button or not.</span>
+  <span class="kt">bool</span> <span class="n">cancelButtonHidden</span><span class="o">;</span>
+
+  <span class="c1">/// Title of the cancel button.</span>
+  <span class="kt">String</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
+
+  <span class="c1">/// Title of the button that opens the screen where the user can allow</span>
+  <span class="c1">/// the usage of the camera by the app.</span>
+  <span class="kt">String</span> <span class="n">enableCameraButtonTitle</span><span class="o">;</span>
+
+  <span class="c1">/// Text that will be displayed when the app</span>
+  <span class="c1">/// is not allowed to use the camera, prompting the user</span>
+  <span class="c1">/// to enable the usage of the camera.</span>
+  <span class="kt">String</span> <span class="n">enableCameraExplanationText</span><span class="o">;</span>
+
+  <span class="c1">/// Text hint shown under the finder window.</span>
+  <span class="kt">String</span> <span class="n">finderTextHint</span><span class="o">;</span>
+
+  <span class="c1">/// Text of submit button.</span>
+  <span class="kt">String</span> <span class="n">submitButtonTitle</span><span class="o">;</span>
+
+  <span class="c1">/// Text of clear button.</span>
+  <span class="kt">String</span> <span class="n">clearButtonTitle</span><span class="o">;</span>
+
+  <span class="c1">/// Text of count text.</span>
+  <span class="kt">String</span> <span class="n">barcodesCountText</span><span class="o">;</span>
+
+  <span class="c1">/// Text of fetch state text.</span>
+  <span class="kt">String</span> <span class="n">fetchingStateText</span><span class="o">;</span>
+
+  <span class="c1">/// Text when there are  no scanned barcodes yet.</span>
+  <span class="kt">String</span> <span class="n">noBarcodesTitle</span><span class="o">;</span>
+
+  <span class="c1">/// Aspect ratio of finder view.</span>
+  <span class="n">FinderAspectRatio</span> <span class="n">finderAspectRatio</span><span class="o">;</span>
+
+  <span class="c1">/// Thickness of the finder window's outline.</span>
+  <span class="kt">int</span> <span class="n">finderLineWidth</span><span class="o">;</span>
+
+  <span class="c1">/// Controls whether to play a beep sound after a successful detection.</span>
+  <span class="c1">/// Default value is TRUE.</span>
+  <span class="kt">bool</span> <span class="n">successBeepEnabled</span><span class="o">;</span>
+
+  <span class="c1">/// Controls whether the flash should be initially enabled.</span>
+  <span class="c1">/// The default value is FALSE.</span>
+  <span class="kt">bool</span> <span class="n">flashEnabled</span><span class="o">;</span>
+
+  <span class="c1">/// Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.</span>
+  <span class="c1">/// By default the camera orientation is not locked.</span>
+  <span class="n">CameraOrientationMode</span> <span class="n">orientationLockMode</span><span class="o">;</span>
+
+  <span class="c1">/// Format of barcode which  need to be recognized</span>
   <span class="n">List</span><span class="o">&lt;</span><span class="n">BarcodeFormat</span><span class="o">&gt;</span> <span class="n">barcodeFormats</span><span class="o">;</span>
 </code></pre></div></div>
 
@@ -1083,7 +1215,7 @@ By default all supported formats will be detected.</p>
 </ul>
 
 <h5 id="mrzscannerconfiguration">MrzScannerConfiguration</h5>
-<p>The finder window must have a width-to-height of 5, otherwise the detection process will fail. 
+<p>The finder window must have a width-to-height of 5, otherwise the detection process will fail.
 All other settings are optional.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// Background color of the top toolbar.</span>
@@ -1092,7 +1224,7 @@ All other settings are optional.</p>
   <span class="c1">/// Color of the titles of all buttons in the top toolbar.</span>
   <span class="n">Color</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
 
-  <span class="c1">/// Background color outside of the finder window.</span>
+  <span class="c1">/// Background color outsidef the finder window.</span>
   <span class="n">Color</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the finder window's outline.</span>
@@ -1100,9 +1232,9 @@ All other settings are optional.</p>
 
   <span class="c1">/// Color of the text hint under the finder window.</span>
   <span class="n">Color</span> <span class="n">finderTextHintColor</span><span class="o">;</span>
-  
+
   <span class="n">Color</span> <span class="n">bottomButtonsActiveColor</span><span class="o">;</span>
-  
+
   <span class="n">Color</span> <span class="n">bottomButtonsInactiveColor</span><span class="o">;</span>
 
   <span class="c1">/// Title of the cancel button.</span>
@@ -1120,11 +1252,8 @@ All other settings are optional.</p>
   <span class="c1">/// Text hint shown under the finder window.</span>
   <span class="kt">String</span> <span class="n">finderTextHint</span><span class="o">;</span>
 
-  <span class="c1">/// Height of the finder window in pixels.</span>
-  <span class="kt">int</span> <span class="n">finderHeight</span><span class="o">;</span>
-
-  <span class="c1">/// Width of the finder window in pixels.</span>
-  <span class="kt">int</span> <span class="n">finderWidth</span><span class="o">;</span>
+  <span class="c1">/// Aspect ratio of finder view.</span>
+  <span class="n">FinderAspectRatio</span> <span class="n">finderAspectRatio</span><span class="o">;</span>
 
   <span class="c1">/// Thickness of the finder window's outline.</span>
   <span class="kt">int</span> <span class="n">finderLineWidth</span><span class="o">;</span>
@@ -1136,7 +1265,7 @@ All other settings are optional.</p>
   <span class="c1">/// Controls whether the flash should be initially enabled.</span>
   <span class="c1">/// The default value is FALSE.</span>
   <span class="kt">bool</span> <span class="n">flashEnabled</span><span class="o">;</span>
-  
+
   <span class="kt">String</span> <span class="n">flashButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.</span>
@@ -1189,7 +1318,7 @@ All other settings are optional.</p>
   <span class="c1">/// Color of the titles of all buttons in the top toolbar.</span>
   <span class="n">Color</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
 
-  <span class="c1">/// Background color outside of the finder window.</span>
+  <span class="c1">/// Background color outsidef the finder window.</span>
   <span class="n">Color</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the finder window's outline.</span>
@@ -1254,14 +1383,14 @@ All other settings are optional.</p>
 <h5 id="options-1">Options:</h5>
 <ul>
   <li><code class="highlighter-rouge">originalImageFileUri</code> - the file URI of the original image to create a page and optionally run document detection on.</li>
-  <li><code class="highlighter-rouge">shouldDetectDocument</code> - flag to specify whether the auto document detection should 
+  <li><code class="highlighter-rouge">shouldDetectDocument</code> - flag to specify whether the auto document detection should
 be performed and the (cropped) DOCUMENT image should be created.</li>
 </ul>
 
 <p><a name="module_ScanbotSdk.detectDocument"></a></p>
 <h4 id="scanbotsdkdetectdocumentpage">ScanbotSdk.detectDocument(page)</h4>
 
-<p>Runs document detection on the original image of the given page. 
+<p>Runs document detection on the original image of the given page.
 The detection status, polygon and cropped document image are returned as a new page object.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="n">updatedPage</span> <span class="o">=</span> <span class="n">await</span> <span class="n">ScanbotSdk</span><span class="o">.</span><span class="na">detectDocument</span><span class="o">(</span><span class="n">page</span><span class="o">);</span>
@@ -1283,7 +1412,7 @@ The detection status, polygon and cropped document image are returned as a new p
 <h5 id="options-3">Options:</h5>
 <ul>
   <li><code class="highlighter-rouge">page</code> - a valid page object with a DOCUMENT image.</li>
-  <li><code class="highlighter-rouge">filter</code> - the <a href="#imageFilter">image filter</a> to apply. 
+  <li><code class="highlighter-rouge">filter</code> - the <a href="#imageFilter">image filter</a> to apply.
 The special value <code class="highlighter-rouge">NONE</code> will remove any previously applied filter from the document image.</li>
 </ul>
 
@@ -1292,7 +1421,7 @@ The special value <code class="highlighter-rouge">NONE</code> will remove any pr
 
 <p>Creates a preview image file of the DOCUMENT image by given <a href="#imageFilter">image filter</a>.
 Please note that this method <strong>does not modify the actual hi-res DOCUMENT image</strong> of the passed <code class="highlighter-rouge">page</code> object.
-Use the <a href="#module_ScanbotSdk.applyImageFilter">applyImageFilter(page, filter)</a> method 
+Use the <a href="#module_ScanbotSdk.applyImageFilter">applyImageFilter(page, filter)</a> method
 to finally apply an image filter on the hi-res DOCUMENT image of a page.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="n">previewImageFileUri</span> <span class="o">=</span> <span class="n">await</span> <span class="n">ScanbotSdk</span><span class="o">.</span><span class="na">getFilteredDocumentPreviewUri</span><span class="o">(</span><span class="n">page</span><span class="o">,</span> <span class="n">ImageFilterType</span><span class="o">.</span><span class="na">BINARIZED</span><span class="o">);</span>
@@ -1302,7 +1431,7 @@ to finally apply an image filter on the hi-res DOCUMENT image of a page.</p>
 <h5 id="options-4">Options:</h5>
 <ul>
   <li><code class="highlighter-rouge">page</code> - the page for which to create a filtered document preview.</li>
-  <li><code class="highlighter-rouge">filter</code> - the <a href="#imageFilter">image filter</a> to apply on the preview image. 
+  <li><code class="highlighter-rouge">filter</code> - the <a href="#imageFilter">image filter</a> to apply on the preview image.
 The special value <code class="highlighter-rouge">'NONE'</code> will remove any previously applied filter from the document image.</li>
 </ul>
 
@@ -1323,7 +1452,7 @@ The special value <code class="highlighter-rouge">'NONE'</code> will remove any 
 <p><a name="module_ScanbotSdk.deletePage"></a></p>
 <h4 id="scanbotsdkdeletepagepage">ScanbotSdk.deletePage(page)</h4>
 
-<p>Removes a page with all its files (original image, document image, thumbnails, filtered images, etc) 
+<p>Removes a page with all its files (original image, document image, thumbnails, filtered images, etc)
 from the internal file storage.
 This method <strong>does not</strong> remove any export files (PDF, TIFF) which were generated based on this page object.</p>
 
@@ -1334,7 +1463,7 @@ This method <strong>does not</strong> remove any export files (PDF, TIFF) which 
 <h3 id="pdf-creation">PDF Creation</h3>
 <h4 id="scanbotsdkcreatepdfpages-options">ScanbotSdk.createPdf(pages, options)</h4>
 
-<p>The Scanbot SDK renders given page images into a multi-page PDF document and stores it as a file. 
+<p>The Scanbot SDK renders given page images into a multi-page PDF document and stores it as a file.
 For each DOCUMENT image a separate page is generated.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Page</span><span class="o">&gt;</span> <span class="n">pages</span> <span class="o">=</span> <span class="o">...</span>
@@ -1356,7 +1485,7 @@ For each DOCUMENT image a separate page is generated.</p>
 <h3 id="tiff-creation">TIFF Creation</h3>
 <h4 id="scanbotsdkcreatetiffpages-options">ScanbotSdk.createTiff(pages, options);</h4>
 
-<p>The Scanbot SDK renders the given page images into a multi-page TIFF file and stores it as a file. 
+<p>The Scanbot SDK renders the given page images into a multi-page TIFF file and stores it as a file.
 For each DOCUMENT image a separate page is generated.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Page</span><span class="o">&gt;</span> <span class="n">pages</span> <span class="o">=</span> <span class="o">...</span>
@@ -1373,8 +1502,8 @@ For each DOCUMENT image a separate page is generated.</p>
       <li><code class="highlighter-rouge">binarized</code> : Optional boolean flag to create binarized (one bit encoded) black-and-white images.
 If <code class="highlighter-rouge">true</code>, the input images will be binarized and the output TIFF file will be saved with one bit per pixel.
 If <code class="highlighter-rouge">false</code>, the input images will be stored as-is. The default value is true.</li>
-      <li><code class="highlighter-rouge">dpi</code> : Dots Per Inches as optional integer value. The default value is 200 dpi. 
-Please note that the DPI value is just meta data. It does <strong>not</strong> affect the quality or the resolution of the 
+      <li><code class="highlighter-rouge">dpi</code> : Dots Per Inches as optional integer value. The default value is 200 dpi.
+Please note that the DPI value is just meta data. It does <strong>not</strong> affect the quality or the resolution of the
 TIFF image file. The resolution of the output TIFF images will stay the same as of the input images.</li>
       <li><code class="highlighter-rouge">compression</code> : Optional TIFF compression type. Default value is <code class="highlighter-rouge">LZW</code>. See supported types below.</li>
     </ul>
@@ -1397,7 +1526,7 @@ TIFF image file. The resolution of the output TIFF images will stay the same as 
   <li><code class="highlighter-rouge">TiffCompression.ADOBE_DEFLATE</code></li>
 </ul>
 
-<p>⚠️️️ Please note that some compression types are only compatible for binarized images 
+<p>⚠️️️ Please note that some compression types are only compatible for binarized images
 (1-bit encoded black &amp; white images)!</p>
 
 <p>See the list <code class="highlighter-rouge">PredefinedCompressionTypes.binarizedOnlyCompressionTypes()</code>.</p>
@@ -1406,67 +1535,67 @@ TIFF image file. The resolution of the output TIFF images will stay the same as 
 <h3 id="ocr---optical-character-recognition">OCR - Optical Character Recognition</h3>
 
 <p>The Scanbot SDK Plugin provides a simple and convenient API to run Optical Character Recognition (OCR) on images.
-The OCR feature is a part of the Scanbot SDK <strong><a href="https://scanbot.io/sdk.html#packages">Package II</a></strong>. 
+The OCR feature is a part of the Scanbot SDK <strong><a href="https://scanbot.io/sdk.html#packages">Package II</a></strong>.
 It is based on the <em>Tesseract OCR Engine</em> with some modifications and enhancements.</p>
 
 <h4 id="preconditions-to-achieve-a-good-ocr-result">Preconditions to achieve a good OCR result</h4>
 
 <p><strong>Conditions while scanning</strong></p>
 
-<p>A perfect document for OCR is flat, straight, doesn’t show large shadows, folds, 
-or any other objects that could distract it and is in the highest possible resolution. 
-Our UI and algorithms do their best to help you meet these requirements. 
+<p>A perfect document for OCR is flat, straight, doesn’t show large shadows, folds,
+or any other objects that could distract it and is in the highest possible resolution.
+Our UI and algorithms do their best to help you meet these requirements.
 But as in photography, you can never fully get the image information back that was lost during the shot.</p>
 
 <p><strong>Languages</strong></p>
 
-<p>You can use multiple languages for OCR. 
-But since the recognition of characters and words is a very complicated process, 
-increasing the number of languages lowers the overall precision. With more languages, 
-there are more results where the detected word could match. 
-We suggest using as few languages as possible. Make sure that the language you’re trying to detect 
+<p>You can use multiple languages for OCR.
+But since the recognition of characters and words is a very complicated process,
+increasing the number of languages lowers the overall precision. With more languages,
+there are more results where the detected word could match.
+We suggest using as few languages as possible. Make sure that the language you’re trying to detect
 is supported by the SDK and added to the project.</p>
 
 <p><strong>Size and position</strong></p>
 
-<p>Put the document on a flat surface. Take the photo from straight above in parallel to the document 
-to make sure that the perspective correction doesn’t need to fix much. 
-The document should fill out the camera frame while still showing all of the text that needs to be recognized. 
-This results in more pixels for each character that needs to be detected and hence, more detail. 
+<p>Put the document on a flat surface. Take the photo from straight above in parallel to the document
+to make sure that the perspective correction doesn’t need to fix much.
+The document should fill out the camera frame while still showing all of the text that needs to be recognized.
+This results in more pixels for each character that needs to be detected and hence, more detail.
 Skewed pages decrease the recognition quality.</p>
 
 <p><strong>Light and shadows</strong></p>
 
-<p>More ambient light is always better. The camera takes the shot at a lower ISO value, 
-which results in less grainy photos. You should make sure that there are no visible shadows. 
-If you have large shadows, it’s better to take the shot at an angle instead. 
-That’s why we also don’t recommend to use the flashlight. From this low distance, 
+<p>More ambient light is always better. The camera takes the shot at a lower ISO value,
+which results in less grainy photos. You should make sure that there are no visible shadows.
+If you have large shadows, it’s better to take the shot at an angle instead.
+That’s why we also don’t recommend to use the flashlight. From this low distance,
 it creates a light spot at the center of the document, which decreases the quality.</p>
 
 <p><strong>Focus</strong></p>
 
-<p>The document needs to be properly focused so that the characters are sharp and clear. 
+<p>The document needs to be properly focused so that the characters are sharp and clear.
 The auto-focus of the camera works well if you meet the minimum required distance
  for the lens to be able to focus. Which usually starts at 5-10cm.</p>
 
 <p><strong>Typefaces</strong></p>
 
-<p>The OCR trained data is optimized for common serif and sans-serif font types. 
+<p>The OCR trained data is optimized for common serif and sans-serif font types.
 Decorative or script fonts decrease the quality of the detection a lot.</p>
 
 <p><a name="ocrLanguages"></a></p>
 <h4 id="ocr-languages-and-data-files">OCR Languages and Data Files</h4>
 
-<p>The OCR engine supports a wide variety of languages. 
-For each desired language a corresponding OCR training data file (<code class="highlighter-rouge">.traineddata</code>) must be provided. 
+<p>The OCR engine supports a wide variety of languages.
+For each desired language a corresponding OCR training data file (<code class="highlighter-rouge">.traineddata</code>) must be provided.
 Furthermore the special data file <code class="highlighter-rouge">osd.traineddata</code> is required (used for orientation and script detection).</p>
 
-<p>The Scanbot SDK plugin ships with no training data files by default to keep the plugin package small in size. 
+<p>The Scanbot SDK plugin ships with no training data files by default to keep the plugin package small in size.
 You have to download and provide the desired language files in your app.</p>
 
 <h4 id="download-and-provide-ocr-language-files">Download and Provide OCR Language Files</h4>
 
-<p>You can find a list of all supported OCR languages 
+<p>You can find a list of all supported OCR languages
 and download links on <a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files">Tesseract’s Wiki page</a>.</p>
 
 <h4 id="download">Download</h4>
@@ -1489,8 +1618,8 @@ and download links on <a href="https://github.com/tesseract-ocr/tesseract/wiki/D
 <p><strong>Option 2 - Provide the Language Files On-Demand:</strong></p>
 
 <p>Alternatively, to keep the app package small, you can download and provide the language files in your app <strong>on run-time</strong>.
-Implement a suitable download functionality of the desired language files + <code class="highlighter-rouge">osd.traineddata</code> file and place them 
-in the <code class="highlighter-rouge">languageDataPath</code> directory which can be determined by the 
+Implement a suitable download functionality of the desired language files + <code class="highlighter-rouge">osd.traineddata</code> file and place them
+in the <code class="highlighter-rouge">languageDataPath</code> directory which can be determined by the
 <a href="#module_ScanbotSdk.getOcrConfigs"><code class="highlighter-rouge">getOcrConfigs</code></a> method on run-time.</p>
 
 <h4 id="language-codes">Language Codes</h4>
@@ -1509,7 +1638,7 @@ in the <code class="highlighter-rouge">languageDataPath</code> directory which c
 </ul>
 
 <h5 id="example">Example:</h5>
-<p>If you want to perform OCR with languages English and German, 
+<p>If you want to perform OCR with languages English and German,
 you have to download and install the following data files:</p>
 <ul>
   <li><code class="highlighter-rouge">eng.traineddata</code> - language file for English</li>
@@ -1532,9 +1661,9 @@ you have to download and install the following data files:</p>
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">result.languageDataPath</code> - Contains the absolute file URI of the directory 
+  <li><code class="highlighter-rouge">result.languageDataPath</code> - Contains the absolute file URI of the directory
 where to place the <a href="#ocrLanguages">OCR training data files</a> <strong>on run-time</strong>.</li>
-  <li><code class="highlighter-rouge">result.installedLanguages</code> - Returns an array of current installed OCR languages (e.g. <code class="highlighter-rouge">["en", "fr"]</code>). 
+  <li><code class="highlighter-rouge">result.installedLanguages</code> - Returns an array of current installed OCR languages (e.g. <code class="highlighter-rouge">["en", "fr"]</code>).
 The Scanbot SDK uses the <code class="highlighter-rouge">languageDataPath</code> directory to determine current installed OCR languages.</li>
 </ul>
 
@@ -1542,7 +1671,7 @@ The Scanbot SDK uses the <code class="highlighter-rouge">languageDataPath</code>
 <h4 id="scanbotsdkperformocrpages-options">ScanbotSdk.performOcr(pages, options)</h4>
 
 <p>This function takes an array of pages and performs Optical Character Recognition on each DOCUMENT image of those pages.
-As result the recognized text can be returned as plain text 
+As result the recognized text can be returned as plain text
 or a composed PDF file containing selectable and searchable text.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Page</span><span class="o">&gt;</span> <span class="n">pages</span> <span class="o">=</span> <span class="o">...</span>
@@ -1563,12 +1692,34 @@ You can get bounding boxes and values of recognized words, lines and paragraphs.
 
 <ul>
   <li><code class="highlighter-rouge">pages</code> - An array with valid <a href="#pageObject">Page</a> objects. Each <code class="highlighter-rouge">page</code> object should contain a cropped DOCUMENT image.</li>
-  <li><code class="highlighter-rouge">options.languages</code> - An array with OCR languages of the text to be recognized (e.g. <code class="highlighter-rouge">["en", "de"]</code>). 
+  <li><code class="highlighter-rouge">options.languages</code> - An array with OCR languages of the text to be recognized (e.g. <code class="highlighter-rouge">["en", "de"]</code>).
 The number of languages has an impact on the performance - the more languages, the slower the recognition process.
 The OCR operation will fail with an error if some of the specified languages are missing.
-Please use the <a href="#module_ScanbotSdk.getOcrConfigs">getOcrConfigs</a> 
+Please use the <a href="#module_ScanbotSdk.getOcrConfigs">getOcrConfigs</a>
 function to make sure that desired languages are installed.</li>
   <li><code class="highlighter-rouge">options.shouldGeneratePdf </code> - Whether to generate the PDF file or return plain text only.</li>
+</ul>
+
+<p><a name="module_ScanbotSdk.detectBarcodeFromImageFile"></a></p>
+<h3 id="barcode-detection-from-still-images">Barcode Detection from Still Images</h3>
+<h4 id="scanbotsdkdetectbarcodefromimagefileuri-file-list-barcodeformats-bool-enablehighsensitivitymode">ScanbotSdk.detectBarcodeFromImageFile(Uri file, List<BarcodeFormat> barcodeFormats, bool enableHighSensitivityMode)</BarcodeFormat></h4>
+<p>This method provides the functionality of detecting barcodes from a still image, e.g. a JPG image from Photo Library or other source.
+The image must be passed as file URI.</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">Uri file</code> - A valid file URI of the image (e.g. <code class="highlighter-rouge">file:///some/path/image-with-barcodes.jpg</code>).
+Supported image formats are JPG and PNG. Please make sure your app has the read permission to access this file.</li>
+  <li><code class="highlighter-rouge">List&lt;BarcodeFormat&gt; barcodeFormats</code> - Optional list of <a href="#barcodeFormat">barcode formats</a> to recognize.</li>
+  <li><code class="highlighter-rouge">bool enableHighSensitivityMode</code> - Boolean flag for a high sensitivity mode that makes barcode recognition more accurate.
+Enabling could increase detection time on large images.</li>
+</ul>
+
+<p><strong>Result:</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">result.barcodeItems</code> - List of recognized barcodes as items of <code class="highlighter-rouge">BarcodeItem</code> type.</li>
 </ul>
 
 <p><a name="module_ScanbotSdk.refreshImageUris"></a></p>
@@ -1583,7 +1734,7 @@ function to make sure that desired languages are installed.</li>
 <h3 id="cleanup">Cleanup</h3>
 <h4 id="scanbotsdkcleanupstorage">ScanbotSdk.cleanupStorage()</h4>
 
-<p>By calling this function <strong>all</strong> output files generated by the native Scanbot SDKs or by this Plugin will be deleted, 
+<p>By calling this function <strong>all</strong> output files generated by the native Scanbot SDKs or by this Plugin will be deleted,
 including the image files of all scanned or imported <code class="highlighter-rouge">Page</code> objects, all produced PDF files, TIFF files, etc.</p>
 
 <h5 id="call-1">Call:</h5>
@@ -1593,8 +1744,8 @@ including the image files of all scanned or imported <code class="highlighter-ro
 <p><a name="fileHandling"></a></p>
 <h3 id="file--directory-handles">File &amp; Directory Handles</h3>
 
-<p>The Scanbot SDK plugin works with file URIs. 
-That means all input and output files (images, PDFs, etc) as well as directories are identified by <strong>file URIs</strong>. 
+<p>The Scanbot SDK plugin works with file URIs.
+That means all input and output files (images, PDFs, etc) as well as directories are identified by <strong>file URIs</strong>.
 Please note that a file <strong>URI</strong> is not just a file <strong>path</strong> : <code class="highlighter-rouge">"file:///some/file/path/.."</code> vs. <code class="highlighter-rouge">"/some/file/path/.."</code></p>
 
 <p>Examples of valid file URIs:</p>
@@ -1657,7 +1808,7 @@ Please note that a file <strong>URI</strong> is not just a file <strong>path</st
 <p><a name="polygon"></a></p>
 <h3 id="polygon">Polygon</h3>
 
-<p>The Scanbot SDK polygon is a list with 4 float points (one for each corner). 
+<p>The Scanbot SDK polygon is a list with 4 float points (one for each corner).
 Each point has coordinates in range [0..1], representing position relative to image size.
 For instance, if a point has the coordinates (0.5, 0.5), it means that it is located exactly in the center of the image.</p>
 
@@ -1751,26 +1902,26 @@ For instance, if a point has the coordinates (0.5, 0.5), it means that it is loc
 <h2 id="building-production-apps">Building Production Apps</h2>
 
 <h3 id="ios-2">iOS</h3>
-<p>The Scanbot SDK iOS Framework (included in this Flutter Plugin) contains 64-bit architectures (<code class="highlighter-rouge">arm64, x86_64</code>). 
+<p>The Scanbot SDK iOS Framework (included in this Flutter Plugin) contains 64-bit architectures (<code class="highlighter-rouge">arm64, x86_64</code>).
 So you can run it on all most used iOS devices as well as on simulators during the development phase.
-To be able to submit a production build to the <strong>App Store</strong> 
-or a test build for <strong>TestFlight</strong> you have to remove (strip away) 
+To be able to submit a production build to the <strong>App Store</strong>
+or a test build for <strong>TestFlight</strong> you have to remove (strip away)
 the architectures <strong><code class="highlighter-rouge">x86_64</code></strong> and <strong><code class="highlighter-rouge">i386</code></strong> from the Scanbot SDK Framework.
 These architectures are only for <strong>simulators</strong> and not allowed to submit to iTunes Connect.</p>
 
 <h3 id="android-2">Android</h3>
-<p>The Scanbot Android SDK uses native libraries under the hood and supports following 
-<a href="https://developer.android.com/ndk/guides/arch.html">ABIs</a>: 
+<p>The Scanbot Android SDK uses native libraries under the hood and supports following
+<a href="https://developer.android.com/ndk/guides/arch.html">ABIs</a>:
 <code class="highlighter-rouge">armeabi-v7a, arm64-v8a, x86 and x86_64</code>.</p>
 
-<p>By default the native libraries of <strong>all</strong> these architectures 
+<p>By default the native libraries of <strong>all</strong> these architectures
 will be included in the app package (APK), which will result in a big APK file.
-Please consider to remove support for <code class="highlighter-rouge">x86</code> and <code class="highlighter-rouge">x86_64</code> architectures. 
-In most cases both “x86” architectures can be removed for the 
-release (production) build, since they are only used on emulators 
+Please consider to remove support for <code class="highlighter-rouge">x86</code> and <code class="highlighter-rouge">x86_64</code> architectures.
+In most cases both “x86” architectures can be removed for the
+release (production) build, since they are only used on emulators
 and on some rare devices with the Intel Atom architecture.</p>
 
-<p>To exclude certain ABIs from the APK, use the <code class="highlighter-rouge">abiFilters</code> property 
+<p>To exclude certain ABIs from the APK, use the <code class="highlighter-rouge">abiFilters</code> property
 in the <code class="highlighter-rouge">android/app/build.gradle</code> file of your project:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android {
@@ -1786,13 +1937,13 @@ in the <code class="highlighter-rouge">android/app/build.gradle</code> file of y
 }
 </code></pre></div></div>
 
-<p>In this example we defined <code class="highlighter-rouge">abiFilters</code> for <code class="highlighter-rouge">armeabi-v7a</code> and <code class="highlighter-rouge">arm64-v8a</code>, 
+<p>In this example we defined <code class="highlighter-rouge">abiFilters</code> for <code class="highlighter-rouge">armeabi-v7a</code> and <code class="highlighter-rouge">arm64-v8a</code>,
 so <code class="highlighter-rouge">x86</code> and <code class="highlighter-rouge">x86_64</code> architectures will be <strong>excluded</strong>.</p>
 
-<p>💡 However, if you need to support <strong>all</strong> architectures 
-and to optimize the APK size in any case, we highly recommend to 
-checkout the <a href="https://developer.android.com/platform/technology/app-bundle/"><strong>Android App Bundle</strong></a> approach. 
-It allows you to create and distribute dedicated and smaller APKs <strong>via PlayStore</strong> 
+<p>💡 However, if you need to support <strong>all</strong> architectures
+and to optimize the APK size in any case, we highly recommend to
+checkout the <a href="https://developer.android.com/platform/technology/app-bundle/"><strong>Android App Bundle</strong></a> approach.
+It allows you to create and distribute dedicated and smaller APKs <strong>via PlayStore</strong>
 (basically it’s similar to the iOS App Store approach).</p>
 
 <p><a name="proguardRules"></a></p>
@@ -1902,6 +2053,15 @@ It allows you to create and distribute dedicated and smaller APKs <strong>via Pl
 -keepclassmembers,allowobfuscation class * {
   @com.google.gson.annotations.SerializedName &lt;fields&gt;;
 }
+
+##---------------End: proguard configuration for Gson  ----------
+
+
+-keeppackagenames io.scanbot.sdk.flutter.**
+-keep public class io.scanbot.sdk.flutter.** { *; }
+-keeppackagenames io.scanbot.sdk.ui.**
+-keep public class io.scanbot.sdk.ui.**{ *; }
+
 
 </code></pre></div></div>
 
@@ -2014,12 +2174,38 @@ It allows you to create and distribute dedicated and smaller APKs <strong>via Pl
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history-and-changelog">Release History and Changelog</h2>
 
+<h3 id="version-220-12-feb-2021">Version 2.2.0 (12 Feb 2021)</h3>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Batch Barcode Scanner - a new RTU UI screen component to scan multiple barcodes in a row. 
+See the new API function <code class="highlighter-rouge">startBatchBarcodeScanner</code>.</li>
+      <li>Added barcode detection from still images, see <code class="highlighter-rouge">detectBarcodeFromImageFile</code>.</li>
+      <li>New result field <code class="highlighter-rouge">BarcodeItem.rawBytes</code> that contains the raw bytes from the scanned barcode.</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking Changes:
+    <ul>
+      <li>Replaced <code class="highlighter-rouge">finderAspectRatio</code> parameter with <code class="highlighter-rouge">finderWidth</code> and <code class="highlighter-rouge">finderHeight</code> 
+in <code class="highlighter-rouge">BarcodeScannerConfiguration</code> and <code class="highlighter-rouge">MrzScannerConfiguration</code>.</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Updated the native Android Scanbot SDK to 1.77.2
+(cf. <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">changelog</a>)</li>
+      <li>Updated the native iOS Scanbot SDK to 1.13.0
+(cf. <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">changelog</a>)</li>
+    </ul>
+  </li>
+</ul>
+
 <h4 id="version-210-15-dec-2020">Version 2.1.0 (15 Dec 2020)</h4>
 <ul>
   <li>🐞 Bug fixes:
     <ul>
-      <li>iOS: Introduced a new API method <code class="highlighter-rouge">refreshImageUris(pages)</code> to fix image file paths 
-after app updates. For more details please check out the section 
+      <li>iOS: Introduced a new API method <code class="highlighter-rouge">refreshImageUris(pages)</code> to fix image file paths
+after app updates. For more details please check out the section
 <a href="#persistencePageObject">Persistence of Page Objects</a>.</li>
       <li>iOS: Fixed de-/serialization of the property <code class="highlighter-rouge">Page.detectionStatus</code>.</li>
     </ul>
@@ -2137,7 +2323,7 @@ See the API docs of <code class="highlighter-rouge">OcrResult.pages</code> for m
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 
-Open Source libraries used in the Scanbot SDK Flutter Plugin version 2.1.0:
+Open Source libraries used in the Scanbot SDK Flutter Plugin version 2.2.0:
 
 json_serializable version 3.2.0 and json_annotation version 3.0.0
 (https://github.com/dart-lang/json_serializable/blob/master/LICENSE)
@@ -2186,7 +2372,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
-kotlin and kotlin-stdlib-jdk7 version 1.3.72
+kotlin and kotlin-stdlib-jdk7 version 1.4.20
 (https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt)
 /*
  * Copyright 2010-2018 JetBrains s.r.o.
@@ -2205,7 +2391,7 @@ kotlin and kotlin-stdlib-jdk7 version 1.3.72
  */
 
 
-kotlinx.coroutines version 1.3.6
+kotlinx.coroutines version 1.4.1
 (https://github.com/Kotlin/kotlinx.coroutines/blob/1.3.2/LICENSE.txt)
 Copyright 2016-2019 JetBrains s.r.o.
 
@@ -2255,7 +2441,7 @@ limitations under the License.
 
 CWAC-Camera
 
-Version 0.6.33
+Version 0.6.40
 (https://github.com/doo/cwac-camera)
 (https://github.com/commonsguy/cwac-camera/)
 
@@ -2447,7 +2633,7 @@ limitations under the License.
 
 Dagger
 
-Version 2.16
+Version 2.25.2
 (https://github.com/google/dagger)
 
 Copyright 2012 The Dagger Authors
@@ -2969,7 +3155,7 @@ POSSIBILITY OF SUCH DAMAGE.
 
 
 
-Open Source libraries used in the Scanbot SDK for iOS version 1.11.6:
+Open Source libraries used in the Scanbot SDK for iOS version 1.13.0:
 
 
 BOOST C++ Libraries version 1.68
@@ -3152,7 +3338,6 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
 
 </code></pre></div></div>
 
