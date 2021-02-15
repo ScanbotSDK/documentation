@@ -1132,7 +1132,7 @@ or <a href="#module_ScanbotSdk.createPage">createPage()</a>.</p>
 <h4 id="returns-1">Returns</h4>
 <p>The promise resolves to an object with the following properties:</p>
 <ul>
-  <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> if the user modified the , <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation.</li>
+  <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> if a barcode was scanned, <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the scanner UI.</li>
   <li><code class="highlighter-rouge">format</code> - <a href="#barcodeFormat">Format</a> of detected barcode/QR code (e.g. <code class="highlighter-rouge">CODE_128</code>, <code class="highlighter-rouge">EAN_13</code>, <code class="highlighter-rouge">QR_CODE</code>, etc).</li>
   <li><code class="highlighter-rouge">value</code> - Text value of detected barcode/QR code.</li>
 </ul>
@@ -1635,7 +1635,7 @@ and extracts the data fields, like names, dates, photo, signature and machine re
 <h4 id="returns-2">Returns</h4>
 <p>The promise resolves to an object with the following properties:</p>
 <ul>
-  <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> if the user modified the , <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation.</li>
+  <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> if MRZ data was scanned, <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the scanner UI.</li>
   <li><code class="highlighter-rouge">fields</code> - an array of MRZ fields. Each field is an object with the following properties:
     <ul>
       <li><code class="highlighter-rouge">field.name</code> - the field type</li>
@@ -1831,12 +1831,127 @@ otherwise the detection process will fail. All other settings are optional.</p>
 <h4 id="returns-3">Returns</h4>
 <p>The promise resolves to an object with the following properties:</p>
 <ul>
-  <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> if the user modified the , <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the operation.</li>
-  <li><code class="highlighter-rouge">fields</code> - an array of MRZ fields. Each field is an object with the following properties:
+  <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> if EHIC data was scanned, <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the scanner UI.</li>
+  <li><code class="highlighter-rouge">fields</code> - an array of EHIC data fields. Each field is an object with the following properties:
     <ul>
       <li><code class="highlighter-rouge">field.type</code> - the field type</li>
       <li><code class="highlighter-rouge">field.value</code> - the value of the field.</li>
       <li><code class="highlighter-rouge">field.confidence</code> - confidence in the accuracy of <code class="highlighter-rouge">value</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p><a name="module_ScanbotSdk.UI.startNFCPassportReader"></a></p>
+<h3 id="nfc-passport-reader">NFC Passport Reader</h3>
+<h4 id="scanbotsdkuistartnfcpassportreaderconfiguration-nfcpassportreaderconfiguration"><code class="highlighter-rouge">ScanbotSdk.UI.startNFCPassportReader(configuration: NFCPassportReaderConfiguration)</code></h4>
+
+<p>Opens a scanner and reader UI for passport’s NFC chip</p>
+
+<p><img src="./assets/images/nfc-scanner-1.jpg" alt="alt" title="NFC scanner screenshot" />
+<img src="./assets/images/nfc-scanner-2.jpg" alt="alt" title="NFC scanner screenshot" /></p>
+
+<h5 id="options-7">Options:</h5>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kr">interface</span> <span class="nx">NFCPassportReaderConfiguration</span> <span class="p">{</span>
+    <span class="cm">/**
+    * Allowed orientations for automatic interface rotations. *
+    */</span>
+    <span class="nl">allowedInterfaceOrientations</span><span class="p">?:</span> <span class="nx">UIInterfaceOrientationMask</span><span class="p">;</span>
+    <span class="cm">/**
+    * A title for the error, when NFC reader failed to perform authentication.
+    */</span>
+    <span class="nl">authenticationErrorTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Background color of the detection overlay.
+    */</span>
+    <span class="nl">cameraOverlayColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Whether the cancel button is hidden or not.
+    */</span>
+    <span class="nl">cancelButtonHidden</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+    * String being displayed on the cancel button.
+    */</span>
+    <span class="nl">cancelButtonTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * A title for the error, when NFC reader failed to download the data.
+    */</span>
+    <span class="nl">downloadErrorTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * A hint that notifies about downloading datagroups.
+    */</span>
+    <span class="nl">downloadingDataTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Foreground color of the detection overlay.
+    */</span>
+    <span class="nl">finderLineColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Width of inner finder frame border. Default is 2.
+    */</span>
+    <span class="nl">finderLineWidth</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="cm">/**
+    * String being displayed as description.
+    */</span>
+    <span class="nl">finderTextHint</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Foreground color of the description label.
+    */</span>
+    <span class="nl">finderTextHintColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Whether flash is toggled on or off.
+    */</span>
+    <span class="nl">flashEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+    * String being displayed as a hint to hold device over the NFC chip.
+    */</span>
+    <span class="nl">holdOverTheChipTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * A title for the state when there is no NFC chip installed on the device, or it is not available.
+    */</span>
+    <span class="nl">noChipErrorTitle</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * The owner's photo image URL. Storage for this URL can be controlled with SBSDKUINFCPassportReaderStorage.
+    */</span>
+    <span class="nl">photoImageURL</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Color of the progress bar.
+    */</span>
+    <span class="nl">progressBarColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Defines, if photo image should be stored in internal storage (SBSDKUINFCPassportReaderStorage) on disk.
+    */</span>
+    <span class="nl">shouldSavePhotoImageInStorage</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+    * Whether scanner screen should make a sound on successful MRZ detection.
+    */</span>
+    <span class="nl">successBeepEnabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="cm">/**
+    * Background color of the top bar.
+    */</span>
+    <span class="nl">topBarBackgroundColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Foreground color of the cancel button and selected flash button.
+    */</span>
+    <span class="nl">topBarButtonsColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="cm">/**
+    * Foreground color of the flash button when the flash is off.
+    */</span>
+    <span class="nl">topBarButtonsInactiveColor</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="returns-4">Returns</h4>
+<p>The promise resolves to an object with the following properties:</p>
+<ul>
+  <li><code class="highlighter-rouge">status</code> - <code class="highlighter-rouge">'OK'</code> if NFC data was read, <code class="highlighter-rouge">'CANCELED'</code> if the user canceled the scanner UI.</li>
+  <li><code class="highlighter-rouge">passportResult</code> - a dictionary of NFC fields. Each field is an object with the following properties:
+    <ul>
+      <li><code class="highlighter-rouge">datagroupDG1</code> - Data group 1 or DG1. Contains general information about the passport and its holder.
+-<code class="highlighter-rouge">key</code> - The key of the element in the passports data group.
+-<code class="highlighter-rouge">value</code> - The value of the element in the passports data group.</li>
+      <li><code class="highlighter-rouge">datagroupDG2</code> - Data group 2 or DG2. Contains visual biometric data of the passports holder.
+-<code class="highlighter-rouge">key</code> - The key of the element in the passports data group.
+-<code class="highlighter-rouge">value</code> - The value of the element in the passports data group.</li>
     </ul>
   </li>
 </ul>
@@ -1848,7 +1963,7 @@ otherwise the detection process will fail. All other settings are optional.</p>
 
 <p>Creates a <a href="#page_object">page</a> from an image (presumably the image of an uncropped document).</p>
 
-<h4 id="returns-4">Returns</h4>
+<h4 id="returns-5">Returns</h4>
 <p>The promise resolves to a page object. As the page hasn’t been cropped yet, 
 the <code class="highlighter-rouge">documentImageFileUri</code> and <code class="highlighter-rouge">documentPreviewImageFileUri</code> properties will be empty.</p>
 
@@ -1862,7 +1977,7 @@ the <code class="highlighter-rouge">documentImageFileUri</code> and <code class=
   <li><code class="highlighter-rouge">imageUri</code> - the URI of an image file with which to overwrite the page’s document image.</li>
 </ul>
 
-<h4 id="returns-5">Returns</h4>
+<h4 id="returns-6">Returns</h4>
 <p>The promise resolves to a page object with the replaced document image.</p>
 
 <p><a name="module_ScanbotSDK.detectDocumentOnPage"></a></p>
@@ -1894,7 +2009,7 @@ Does not modify the document image of the passed page.</p>
 The special value <code class="highlighter-rouge">'NONE'</code> will remove any previously applied filter from the document image.</li>
 </ul>
 
-<h4 id="returns-6">Returns</h4>
+<h4 id="returns-7">Returns</h4>
 <p>A file URI with the preview image of the filtered document page.</p>
 
 <p><a name="module_ScanbotSDK.rotatePage"></a></p>
@@ -1928,7 +2043,7 @@ perspective corrected image as a new file as well as the detected <a href="#poly
 If there was no document detected the result enum provides the exact reason (noisy background, too dark, etc).
 The input image file will not be modified.</p>
 
-<h4 id="returns-7">Returns</h4>
+<h4 id="returns-8">Returns</h4>
 
 <p>Returns object with the following fields</p>
 <ul>
@@ -1946,7 +2061,7 @@ Maybe <code class="highlighter-rouge">null</code> if detection was not successfu
 <p>Rotates an image by given degrees value. As input a file URI of the image must be passed. 
 The output image will be a new file. The input image file will not be modified.</p>
 
-<h4 id="returns-8">Returns</h4>
+<h4 id="returns-9">Returns</h4>
 <p>Promise returning the <a href="#fileHandling">file URI</a> of the rotated result image.</p>
 
 <p><a name="module_ScanbotSDK.applyImageFilter"></a></p>
@@ -1961,7 +2076,7 @@ The output image will be a new file. The input image file will not be modified.<
   <li><code class="highlighter-rouge">filter</code> - <a href="#imageFilter">ImageFilter</a> string value.</li>
 </ul>
 
-<h4 id="returns-9">Returns</h4>
+<h4 id="returns-10">Returns</h4>
 <p>File URI to the rotated image file.</p>
 
 <p><a name="module_ScanbotSdk.estimateBlur"></a></p>
@@ -1981,7 +2096,7 @@ The output image will be a new file. The input image file will not be modified.<
 that will be considered a very blurred image. It is therefore best to use blur estimator 
 in conjunction with a finder view or on an already cropped document.</p>
 
-<h4 id="options-7">Options</h4>
+<h4 id="options-8">Options</h4>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var options = {
   imageFileUri: 'file:///...',
 };
@@ -2007,7 +2122,7 @@ For each image a separate page is generated.</p>
   <li><code class="highlighter-rouge">pageSize</code> - <a href="#pdfPageSize">PDFPageSize</a> enum value to specify the output page size.</li>
 </ul>
 
-<h4 id="returns-10">Returns</h4>
+<h4 id="returns-11">Returns</h4>
 <p>Returns an object with the following properties:</p>
 
 <ul>
@@ -2037,7 +2152,7 @@ For <strong>color</strong> images (<code class="highlighter-rouge">oneBitEncoded
   </li>
 </ul>
 
-<h4 id="returns-11">Returns</h4>
+<h4 id="returns-12">Returns</h4>
 <p>Returns an object with the following properties:</p>
 
 <ul>
@@ -2211,7 +2326,7 @@ that desired languages are installed.</li>
   </li>
 </ul>
 
-<h4 id="returns-12">Returns</h4>
+<h4 id="returns-13">Returns</h4>
 <p>The promise resolves to an object with the following properties:</p>
 
 <ul>
@@ -2325,7 +2440,7 @@ that desired languages are installed.</li>
 
 <p>Use this function to get Scanbot SDK OCR properties of the current App installation.</p>
 
-<h4 id="returns-13">Returns</h4>
+<h4 id="returns-14">Returns</h4>
 <p>Returns an object with the following properties:</p>
 
 <ul>
@@ -2585,6 +2700,16 @@ please add the following rules:</p>
 
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release History</h3>
+
+<h4 id="version-460-15-feb-2021">Version 4.6.0 (15 Feb 2021):</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Added NFC passport reader - a new UI component to read data from passport’s NFC chip. 
+See the new API function <a href="#module_ScanbotSdk.UI.startNFCPassportReader">startNFCPassportReader</a></li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="version-450-2-feb-2021">Version 4.5.0 (2 Feb 2021):</h4>
 <ul>
