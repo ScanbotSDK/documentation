@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://scanbotsdk.github.io/documentation/web/" />
 <meta property="og:site_name" content="Scanbot Web Document Scanner SDK" />
 <script type="application/ld+json">
-{"url":"https://scanbotsdk.github.io/documentation/web/","name":"Scanbot Web Document Scanner SDK","headline":"Scanbot Web Document Scanner SDK","@type":"WebSite","@context":"https://schema.org"}</script>
+{"url":"https://scanbotsdk.github.io/documentation/web/","headline":"Scanbot Web Document Scanner SDK","name":"Scanbot Web Document Scanner SDK","@type":"WebSite","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/documentation/web/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://scanbotsdk.github.io/documentation/web/feed.xml" title="Scanbot Web Document Scanner SDK" /></head>
 <body><header class="site-header" role="banner">
@@ -345,6 +345,9 @@ simply refer back to your SDK object and create the scanner object as follows:</
     <span class="c1">// Image element to be cropped. Required. </span>
     <span class="nl">image</span><span class="p">:</span> <span class="nb">Uint8Array</span><span class="p">;</span>
     
+    <span class="c1">// Initial rotations of the original image. Default is 0</span>
+    <span class="nx">rotations</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+
     <span class="c1">// Optional styling parameter. If left undefined, default styles will be applied</span>
     <span class="nx">style</span><span class="p">?:</span> <span class="nx">CroppingViewStyle</span><span class="p">;</span>
 <span class="p">}</span>
@@ -397,7 +400,17 @@ as additional cropping functions are functions of that object.</p>
 
 <p>If you’re not happy with the detected polygon, you can re-detect and re-apply the polygon from the detected document</p>
 
-<p>• <code class="highlighter-rouge">apply(): Promise&lt;DetectionResult&gt;;</code></p>
+<p>• <code class="highlighter-rouge">apply(): Promise&lt;CroppingResult&gt;;</code></p>
+
+<p>The contents of cropping result are as follows:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// The cropped and rotated image
+image: Uint8Array;
+// The cropped polygon
+polygon: Polygon;
+// Number of clockwise rotations applied
+rotations: number
+</code></pre></div></div>
 
 <p>If you are happy with the polygon and the rotations, apply the changes and receive your new detection detection result</p>
 
@@ -443,21 +456,43 @@ and return the image with the filter.</p>
   </li>
 </ul>
 
-<p>They are available under <code class="highlighter-rouge">BinarizationFilter</code> and <code class="highlighter-rouge">ColorFilter</code> enumerations, respectively.</p>
+<p>They are available under <code class="highlighter-rouge">BinarizationFilter</code> and <code class="highlighter-rouge">ColorFilter</code> types, respectively.</p>
 
-<h3 id="pdf-generation">PDF Generation</h3>
+<h3 id="pdf--tiff-generation">PDF &amp; TIFF Generation</h3>
 
-<p>ScanbotSDK also offers functionality for PDF generation. Create the appropriate generator as follows:</p>
+<p>ScanbotSDK also offers functionality for PDF &amp; TIFF generation. 
+Create the appropriate generator as follows:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">options</span><span class="p">:</span> <span class="nx">PdfGenerationOptions</span> <span class="o">=</span> <span class="p">{</span><span class="na">standardPaperSize</span><span class="p">:</span> <span class="dl">"</span><span class="s2">A4</span><span class="dl">"</span><span class="p">,</span> <span class="na">landscape</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">dpi</span><span class="p">:</span> <span class="mi">100</span><span class="p">};</span>
 <span class="kd">const</span> <span class="nx">generator</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">scanbotSDK</span><span class="p">.</span><span class="nx">beginPdf</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>If a DPI is provided, then that value is used. 
-If the value is not given or that value is too small for the entire image to fit on the page, 
-then the smallest possible DPI value is chosen so that the entire image fits on the page.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">options</span><span class="p">:</span> <span class="nx">TiffGenerationOptions</span> <span class="o">=</span> <span class="p">{</span><span class="na">binarizationFilter</span><span class="p">:</span> <span class="dl">"</span><span class="s2">deepBinarization</span><span class="dl">"</span><span class="p">,</span> <span class="na">dpi</span><span class="p">:</span> <span class="mi">123</span><span class="p">};</span>
+<span class="kd">const</span> <span class="nx">generator</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">scanbotSDK</span><span class="p">.</span><span class="nx">beginTiff</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+</code></pre></div></div>
 
-<p>This API may not seem, at fast glance, very straightforward. However, in order to allow for memory optimization, 
+<h4 id="options">Options</h4>
+<ul>
+  <li>Paper size calculation:
+    <ul>
+      <li>If a standard paper size is given, that paper size is used,</li>
+      <li>Otherwise, if both <code class="highlighter-rouge">paperWidthInches</code> and <code class="highlighter-rouge">paperHeightInches</code> is set, those values are used</li>
+      <li>Otherwise, the paper size is calculated to fit the input image exactly at the given DPI. 
+  If no DPI value is given, a default DPI of 72 is used.</li>
+    </ul>
+  </li>
+  <li>DPI calculation:
+    <ul>
+      <li>If a DPI is provided, then that value is used.</li>
+      <li>If the value is not given or that value is too small for the entire image to fit on the page, 
+then the smallest possible DPI value is chosen so that the entire image fits on the page.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="adding-pages">Adding pages</h4>
+
+<p>In order to allow for memory optimization, 
 you can load an image from storage one at a time and add it to the generator:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">generator</span><span class="p">.</span><span class="nx">addPage</span><span class="p">(</span><span class="nx">image</span><span class="p">);</span>
@@ -468,7 +503,7 @@ you can load an image from storage one at a time and add it to the generator:</p
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bytes</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">generator</span><span class="p">.</span><span class="nx">complete</span><span class="p">();</span>
 </code></pre></div></div>
 
-<p>As an example, you can force the download of the pages in the browser via:</p>
+<p>As an example, you can force the pdf download of the pages in the browser via:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="nx">saveBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">extension</span> <span class="o">=</span> <span class="nx">name</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">.</span><span class="dl">"</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span>
@@ -493,6 +528,32 @@ you can load an image from storage one at a time and add it to the generator:</p
 
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release History</h2>
+
+<h4 id="version-202-16-feb-2021">Version 2.0.2 (16 Feb 2021)</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>TIFF support – The ability to export scanned images as binarized TIFF</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>All typing imports now available from the <code class="highlighter-rouge">@types</code> root package</li>
+      <li><code class="highlighter-rouge">CroppingViewConfiguration</code> now features a <code class="highlighter-rouge">rotations</code> property.
+The <code class="highlighter-rouge">rotations</code> property is also contained in <code class="highlighter-rouge">CroppingResult</code> after applying the crop</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Respect existing <code class="highlighter-rouge">rotation</code> state when re-applying detection</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking Changes:
+    <ul>
+      <li>Moved <code class="highlighter-rouge">PdfGeneration(Options)</code> and <code class="highlighter-rouge">TiffGenerator(Options)</code> to the <code class="highlighter-rouge">service</code> package</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="version-201-8-feb-2021">Version 2.0.1 (8 Feb 2021)</h4>
 <ul>
