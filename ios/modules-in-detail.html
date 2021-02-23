@@ -76,6 +76,12 @@
                 <a class="nav-group-task-link" href="Categories/UIImage%28SBSDK%29.html">UIImage(SBSDK)</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Categories/UIImage%28SBSDKFiltersAndWarping%29.html">UIImage(SBSDKFiltersAndWarping)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Categories/UIImage%28SBSDKMetricsAnalysis%29.html">UIImage(SBSDKMetricsAnalysis)</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Categories/UIViewController%28SBSDK%29.html">UIViewController(SBSDK)</a>
               </li>
             </ul>
@@ -103,6 +109,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKBarCodeScannerDocumentFormat.html">SBSDKBarCodeScannerDocumentFormat</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SBSDKBarcodeDocumentType.html">SBSDKBarcodeDocumentType</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKBarcodeScanner.html">SBSDKBarcodeScanner</a>
@@ -444,6 +453,12 @@
                 <a class="nav-group-task-link" href="Classes/SBSDKStorageLocation.html">SBSDKStorageLocation</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SBSDKSwissQRCodeDocumentField.html">SBSDKSwissQRCodeDocumentField</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SBSDKSwissQRCodeDocumentFormat.html">SBSDKSwissQRCodeDocumentFormat</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKTIFFImageWriter.html">SBSDKTIFFImageWriter</a>
               </li>
               <li class="nav-group-task">
@@ -719,6 +734,30 @@
             <a class="nav-group-name-link" href="Constants.html">Constants</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Constants.html#/c:@SBSDKBarcodeDocumentTypeAAMVA">SBSDKBarcodeDocumentTypeAAMVA</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Constants.html#/c:@SBSDKBarcodeDocumentTypeBoardingPass">SBSDKBarcodeDocumentTypeBoardingPass</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Constants.html#/c:@SBSDKBarcodeDocumentTypeDisabilityCertificate">SBSDKBarcodeDocumentTypeDisabilityCertificate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Constants.html#/c:@SBSDKBarcodeDocumentTypeIDCardPDF417">SBSDKBarcodeDocumentTypeIDCardPDF417</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Constants.html#/c:@SBSDKBarcodeDocumentTypeMedicalPlan">SBSDKBarcodeDocumentTypeMedicalPlan</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Constants.html#/c:@SBSDKBarcodeDocumentTypeSEPA">SBSDKBarcodeDocumentTypeSEPA</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Constants.html#/c:@SBSDKBarcodeDocumentTypeSwissQR">SBSDKBarcodeDocumentTypeSwissQR</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Constants.html#/c:@SBSDKBarcodeDocumentTypeVCard">SBSDKBarcodeDocumentTypeVCard</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Constants.html#/c:@SBSDKBarcodeTypeAztec">SBSDKBarcodeTypeAztec</a>
               </li>
               <li class="nav-group-task">
@@ -988,6 +1027,12 @@
                 <a class="nav-group-task-link" href="Enums/SBSDKShutterMode.html">SBSDKShutterMode</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/SBSDKSwissQRCodeFieldType.html">SBSDKSwissQRCodeFieldType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/SBSDKSwissQRCodeVersion.html">SBSDKSwissQRCodeVersion</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/SBSDKTIFFImageWriterCompressionOptions.html">SBSDKTIFFImageWriterCompressionOptions</a>
               </li>
               <li class="nav-group-task">
@@ -1211,7 +1256,9 @@ might contain information about why there was no polygon detected (too noisy bac
 <li><code><a href="Classes/SBSDKPolygonLayer.html">SBSDKPolygonLayer</a></code></li>
 </ul>
 
-<p>Example code for document detection on a video frame</p>
+<p>Example code for document detection on a video frame:</p>
+
+<p>Objective-C:</p>
 <pre class="highlight plaintext"><code>- (void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer videoOrientation:(AVCaptureVideoOrientation)orientation {
 
     // Create an SBSDKDocumentDetector.
@@ -1237,6 +1284,32 @@ might contain information about why there was no polygon detected (too noisy bac
 }
 </code></pre>
 
+<p>Swift:</p>
+<pre class="highlight plaintext"><code>func processSampleBuffer(_ sampleBuffer: CMSampleBuffer, videoOrientation orientation: AVCaptureVideoOrientation) {
+
+    // Create an SBSDKDocumentDetector.
+    // Note: Usually you store it in a property, for demo purposes we create a new one for each frame.
+    let detector = SBSDKDocumentDetector()
+
+    // Detect a document's outlines on the sample buffer
+    let result = detector.detectDocumentPolygon(on: sampleBuffer,
+                                                visibleImageRect: .zero,
+                                                smoothingEnabled: true,
+                                                useLiveDetectionParameters: true)
+    // If we have an acceptable polygon...
+    if let polygon = result.polygon, result.status == SBSDKDocumentDetectionStatusOK {
+        // We take a still shot from the camera.
+        // Create a UIImage from the still shot sample buffer.
+        // Warp the image into the polygon.
+        self.cameraSession.captureStillImage { pixelBuffer, error in
+            if let pixelBuffer = pixelBuffer {
+                let image = UIImage.sbsdk_image(from: pixelBuffer)?.sbsdk_imageWarped(by: polygon, imageScale: 1.0)
+            }
+        }
+    }
+}
+</code></pre>
+
 <p><a name="documentScanning"></a></p>
 <h2 id='2-user-interface-for-guided-automatic-document-scanning' class='heading'>2. User Interface for guided, automatic Document Scanning</h2>
 
@@ -1254,6 +1327,8 @@ it delivers the scanned (and perspective corrected, cropped document) images to 
 <p>See <code><a href="Protocols/SBSDKScannerViewControllerDelegate.html">SBSDKScannerViewControllerDelegate</a></code> for customization of UI and behavior.</p>
 
 <p>Example code</p>
+
+<p>Objective-C:</p>
 <pre class="highlight plaintext"><code>#import "SBSDKScanbotSDK.h"
 
 @interface DemoViewController : UIViewController
@@ -1289,14 +1364,14 @@ it delivers the scanned (and perspective corrected, cropped document) images to 
     self.scannerViewController.imageScale = 1.0f;
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.viewAppeared = NO;
-}
-
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.viewAppeared = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.viewAppeared = NO;
 }
 
 - (BOOL)shouldAutorotate {
@@ -1342,7 +1417,6 @@ it delivers the scanned (and perspective corrected, cropped document) images to 
 
 - (UIView *)scannerController:(SBSDKScannerViewController *)controller
        viewForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
-
     // Here we can return a custom view that we want to use to visualize the latest detection status.
     // We return nil for now to use the standard label.
     return nil;
@@ -1350,7 +1424,6 @@ it delivers the scanned (and perspective corrected, cropped document) images to 
 
 - (UIColor *)scannerController:(SBSDKScannerViewController *)controller
 polygonColorForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
-
     // If the detector has found an acceptable polygon we show it using a green color
     if (status == SBSDKDocumentDetectionStatusOK) {
         return [UIColor greenColor];
@@ -1360,6 +1433,101 @@ polygonColorForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
 }
 
 @end
+</code></pre>
+
+<p>Swift:</p>
+<pre class="highlight plaintext"><code>class DemoViewController: SBSDKBaseCameraViewController {
+
+    var imageStorage: SBSDKIndexedImageStorage?
+    var scannerViewController: SBSDKScannerViewController?
+    var isViewAppeared: Bool?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Create an image storage to save the captured document images to
+        let imagesURL = SBSDKStorageLocation.applicationDocumentsFolderURL().appendingPathComponent("Images")
+        let imagesLocation = SBSDKStorageLocation(baseURL: imagesURL)
+        self.imageStorage = SBSDKIndexedImageStorage(storageLocation: imagesLocation)
+
+        // Create the SBSDKScannerViewController.
+        // We want it to be embedded into self.
+        // As we do not want automatic image storage we pass nil here for the image storage.
+        self.scannerViewController = SBSDKScannerViewController(parentViewController: self, imageStorage: nil)
+
+        // Set the delegate to self.
+        self.scannerViewController?.delegate = self
+
+        // We want unscaled images in full 5 or 8 MPixel size.
+        self.scannerViewController?.imageScale = 1.0
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.isViewAppeared = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.isViewAppeared = false
+    }
+
+    override var shouldAutorotate: Bool {
+        // No autorotations.
+        return false
+    }
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        // Only portrait.
+        return .portrait
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        // White statusbar.
+        return .lightContent
+    }
+}
+
+extension DemoViewController: SBSDKScannerViewControllerDelegate {
+    func scannerControllerShouldAnalyseVideoFrame(_ controller: SBSDKScannerViewController) -&gt; Bool {
+        // We only want to process video frames when self is visible on screen and front most view controller
+        return self.isViewAppeared == true &amp;&amp; self.presentedViewController == nil
+    }
+
+    func scannerController(_ controller: SBSDKScannerViewController, didCaptureDocumentImage documentImage: UIImage) {
+        // Here we get the perspective corrected and cropped document image after the shutter was (auto)released.
+        // We store it into our image storage.
+        self.imageStorage?.add(documentImage)
+    }
+
+    func scannerController(_ controller: SBSDKScannerViewController, didCapture image: UIImage) {
+        // Here we get the full image from the camera. We could run another manual detection here or use the latest
+        // detected polygon from the video stream to process the image with.
+    }
+
+    func scannerController(_ controller: SBSDKScannerViewController,
+                           didDetect polygon: SBSDKPolygon?,
+                           with status: SBSDKDocumentDetectionStatus) {
+        // Every time the document detector finishes detection it calls this delegate method.
+    }
+
+    func scannerController(_ controller: SBSDKScannerViewController,
+                           viewFor status: SBSDKDocumentDetectionStatus) -&gt; UIView? {
+        // Here we can return a custom view that we want to use to visualize the latest detection status.
+        // We return nil for now to use the standard label.
+        return nil
+    }
+
+    func scannerController(_ controller: SBSDKScannerViewController,
+                           polygonColorFor status: SBSDKDocumentDetectionStatus) -&gt; UIColor {
+        // If the detector has found an acceptable polygon we show it using a green color
+        if status == SBSDKDocumentDetectionStatusOK {
+            return .green
+        }
+        // Otherwise red color.
+        return .red
+    }
+}
 </code></pre>
 
 <p>See <code><a href="Protocols/SBSDKScannerViewControllerDelegate.html">SBSDKScannerViewControllerDelegate</a></code> for details.</p>
@@ -1393,6 +1561,8 @@ The operations completion handlers are called in main thread.</p>
 observe the progress of the operation but also it can be used to cancel the operation via the <code>-(void)cancel</code> method.</p>
 
 <p>Example code for custom asynchronous image filter</p>
+
+<p>Objective-C:</p>
 <pre class="highlight plaintext"><code>// Specify the file URL for the input image
 NSURL *inputImageURL = [NSURL URLWithString:@"..."];
 
@@ -1420,7 +1590,31 @@ SBSDKProgress *progress = [SBSDKImageProcessor customFilterImage:inputImageURL
 }];
 </code></pre>
 
+<p>Swift:</p>
+<pre class="highlight plaintext"><code>// Specify the file URL for the input image
+guard let inputImageURL = URL(string: "...") else { return }
+
+// Specify the file URL the output image is written to. Set to nil, if you don't want to save the output image
+let outputImageURL = URL(string: "...")
+
+// Create the image processing closure
+let processingHandler: SBSDKImageProcessingHandler = { sourceImage, outError in
+    // Apply a color filter to the input image,
+    let filteredImage = sourceImage.sbsdk_imageFiltered(by: SBSDKImageFilterTypeColor)
+
+    // and return the filtered image.
+    return filteredImage
+}
+let progress = SBSDKImageProcessor.customFilterImage(inputImageURL,
+                                                     processingBlock: processingHandler,
+                                                     outputImageURL: outputImageURL) { isFinished, error, resultInfo in
+    let outputImage = resultInfo?[SBSDKResultInfoDestinationImageKey] as? UIImage
+}
+</code></pre>
+
 <p>Example code for detecting and applying a polygon to an image</p>
+
+<p>Objective-C:</p>
 <pre class="highlight plaintext"><code>// Specify the input image URL.
 NSURL *inputImageURL = [NSURL URLWithString:@"..."];
 
@@ -1447,9 +1641,46 @@ if (result.status == SBSDKDocumentDetectionStatusOK &amp;&amp; result.polygon !=
                     outputImageURL:outputImageURL
                         completion:^(BOOL finished, NSError *error, NSDictionary *resultInfo) {
         if (finished &amp;&amp; !error) {
-            UIImage *outputImage = resultInfo[SBSDKResultInfoDestinationImageKey];
+            let outputImage = resultInfo?[SBSDKResultInfoDestinationImageKey] as? UIImage
         }
     }];
+} else {
+    // No acceptable polygon found.
+}
+</code></pre>
+
+<p>Swift:</p>
+<pre class="highlight plaintext"><code>// Specify the file URL for the input image
+guard let inputImageURL = URL(string: "...") else { return }
+
+// Load image from the specified path
+guard let inputImage = UIImage(contentsOfFile: inputImageURL.path) else { return }
+
+// Specify the file URL the output image is written to. Set to nil, if you don't want to save the output image
+let outputImageURL = URL(string: "...")
+
+// Create a document detector.
+let detector = SBSDKDocumentDetector()
+
+// Let the document detector run on our input image.
+let result = detector.detectDocumentPolygon(on: inputImage,
+                                            visibleImageRect: .zero,
+                                            smoothingEnabled: false,
+                                            useLiveDetectionParameters: false)
+
+// Check the result.
+if result.status == SBSDKDocumentDetectionStatusOK, let polygon = result.polygon {
+
+    // If the result is an acceptable polygon, we warp the image into the polygon asynchronously.
+    // When warping is done we check the result and on success we pick up the output image.
+    // Then do whatever you want with the warped image.
+    SBSDKImageProcessor.warpImage(inputImageURL,
+                                  polygon: polygon,
+                                  outputImageURL: outputImageURL) { isFinished, error, resultInfo in
+        if isFinished &amp;&amp; error == nil {
+            let outputImage = resultInfo?[SBSDKResultInfoDestinationImageKey] as? UIImage
+        }
+    }
 } else {
     // No acceptable polygon found.
 }
@@ -1462,13 +1693,21 @@ if (result.status == SBSDKDocumentDetectionStatusOK &amp;&amp; result.polygon !=
 For each image a page is generated. The generated pages have sizes that correspond to DIN A4, US Letter or Custom.
 As the images are embedded unscaled the resolution for each page depends on its image.
 When rendering into a DIN A4 or US Letter format the orientation of the page; landscape or portrait; is derived from
-the images aspect ratio. </p>
+the image&rsquo;s aspect ratio.</p>
+
+<p>PDFs can be encrypted using <code><a href="Classes/SBSDKAESEncrypter.html">SBSDKAESEncrypter</a></code> or your custom written encryption classes.
+The PDF&rsquo;s data is encrypted in memory before it is written to disk. To decrpyt the PDF you need to run proper decryption in your backend or clients.</p>
+
+<p>NOTE: The ScanbotSDK does not lock the PDF with the password, but rather encrypts the actual file. This provides the best level of protection. 
+To decrypt the PDF file you can use the <code>key</code> property of <code><a href="Classes/SBSDKAESEncrypter.html">SBSDKAESEncrypter</a></code> or generate the key yourself using <code>salt</code>, <code>password</code> and <code>iterations</code>. </p>
 
 <p>See <code><a href="Enums/SBSDKPDFRendererPageSize.html">SBSDKPDFRendererPageSize</a></code> for further information.</p>
 
 <p>The operations completion handler is called in main thread.</p>
 
 <p>Example code for creating a standard PDF from an image storage</p>
+
+<p>Objective-C:</p>
 <pre class="highlight plaintext"><code>// Create an image storage to save the captured document images to
 NSURL *imagesURL = [[SBSDKStorageLocation applicationDocumentsFolderURL]
                        URLByAppendingPathComponent:@"Images"];
@@ -1477,11 +1716,15 @@ SBSDKIndexedImageStorage *imageStorage = [[SBSDKIndexedImageStorage alloc] initW
 
 // Define the indices of the images in the image storage you want to render to the PDF, e.g. the first 3.
 // To include all images you can simply pass nil for the indexSet. The indexSet is validated internally.
-// You dont need to take care if all indices are valid.
+// You don't need to take care if all indices are valid.
 NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 2)];
 
 // Specify the file URL where the PDF will be saved to. Nil here makes no sense.
 NSURL *outputPDFURL = @"outputPDF";
+
+// In case you want to encrypt your PDF file, create encrypter using a password and an encryption mode.
+SBSDKAESEncrypter *encrypter = [[SBSDKAESEncrypter alloc] initWithPassword:@"password_example#42"
+                                                                      mode:SBSDKAESEncrypterModeAES256];     
 
 // Enqueue the operation and store the SBSDKProgress to watch the progress or cancel the operation.
 // After completion the PDF is stored at the URL specified in outputPDFURL.
@@ -1492,6 +1735,7 @@ SBSDKProgress *progress =
                     copyImageStorage:YES
                             indexSet:indexSet
                         withPageSize:SBSDKPDFRendererPageSizeAutoLocale
+                           encrypter:encrypter
                               output:outputPDFURL
                    completionHandler:^(BOOL finished, NSError *error, NSDictionary *resultInfo) {
     if (finished &amp;&amp; error != nil) {
@@ -1499,6 +1743,40 @@ SBSDKProgress *progress =
         NSURL *completedPDFURL = resultInfo[SBSDKResultInfoDestinationFileURLKey];
     }
 }];
+</code></pre>
+
+<p>Swift:</p>
+<pre class="highlight plaintext"><code>// Create an image storage to save the captured document images to
+let imagesURL = SBSDKStorageLocation.applicationDocumentsFolderURL().appendingPathComponent("Images")
+let imagesLocation = SBSDKStorageLocation.init(baseURL: imagesURL)
+guard let imageStorage = SBSDKIndexedImageStorage(storageLocation: imagesLocation) else { return }
+
+// Define the indices of the images in the image storage you want to render to the PDF, e.g. the first 3.
+// To include all images you can simply pass nil for the indexSet. The indexSet is validated internally.
+// You don't need to take care if all indices are valid.
+let indexSet = IndexSet(integersIn: 0...2)
+
+// Specify the file URL where the PDF will be saved to. Nil here makes no sense.
+guard let outputPDFURL = URL(string: "outputPDF") else { return }
+
+// In case you want to encrypt your PDF file, create encrypter using a password and an encryption mode.
+let encrypter = SBSDKAESEncrypter(password: "password_example#42", mode: .AES256)
+
+// Enqueue the operation and store the SBSDKProgress to watch the progress or cancel the operation.
+// After completion the PDF is stored at the URL specified in outputPDFURL.
+// You can also extract the image store and the PDF URL from the resultInfo.
+let progress = SBSDKPDFRenderer.renderImageStorage(imageStorage,
+                                                   copyImageStorage: true,
+                                                   indexSet: indexSet,
+                                                   with: .autoLocale,
+                                                   encrypter: encrypter,
+                                                   output: outputPDFURL) { isFinished, error, resultInfo in
+    if isFinished &amp;&amp; error == nil {
+        let completedImageStore = resultInfo?[SBSDKResultInfoImageStorageKey] as? SBSDKIndexedImageStorage
+        let completedPDFURL = resultInfo?[SBSDKResultInfoDestinationFileURLKey] as? URL
+
+    }
+}
 </code></pre>
 
 <p><a name="ocr"></a></p>
@@ -1567,6 +1845,8 @@ about the found text, where the text was found (boundingBox) and what kind of te
 <p>The operations completion handlers are called in main thread.</p>
 
 <p>Example code for performing a page layout analysis:</p>
+
+<p>Objective-C:</p>
 <pre class="highlight plaintext"><code>// The file URL of the image we want to analyse.
 NSURL *imageURL = [NSURL URLWithString:@"..."];
 
@@ -1588,7 +1868,25 @@ SBSDKProgress *progress =
 }];
 </code></pre>
 
+<p>Swift:</p>
+<pre class="highlight plaintext"><code>// The file URL of the image we want to analyse.
+guard let imageURL = URL(string: "...") else { return }
+
+// Start the page layout analysis and store the returned SBSDKProgress object. This object can be used to cancel
+// the operation or to observe the progress. See NSProgress.
+// In completion check if we finished without error and extract the analyzer result from the resultInfo dictionary.
+let progress = SBSDKOpticalTextRecognizer.analyseImagePageLayout(imageURL) { isFinished, error, resultInfo in
+    if isFinished &amp;&amp; error == nil {
+        if let result = resultInfo?[SBSDKResultInfoPageAnalyzerResultsKey] as? SBSDKPageAnalyzerResult {
+            // Now we can work with the result.
+        }
+    }
+}
+</code></pre>
+
 <p>Example code for performing text recognition on an image:</p>
+
+<p>Objective-C:</p>
 <pre class="highlight plaintext"><code>// The file URL of the image we want to analyse.
 NSURL *imageURL = [NSURL URLWithString:@"..."];
 
@@ -1617,6 +1915,25 @@ SBSDKProgress *progress =
 }];
 </code></pre>
 
+<p>Swift:</p>
+<pre class="highlight plaintext"><code>// The file URL of the image we want to analyse.
+guard let imageURL = URL(string: "...") else { return }
+
+// Enqueue the text recognition operation.
+// We limit detection to the center area of the image leaving margins of 25% on each side.
+// Only use english language to be recognized.
+// The returned SBSDKProgress object can be used to cancel the operation or observer the progress.
+// Upon completion we extract the result from the resultsDictionary and log the whole recognized text.
+// The we enumerate all words and log them to the console together with their confidence values and bounding boxes.
+let progress = SBSDKOpticalTextRecognizer.recognizeText(imageURL,
+                                                        rectangle: CGRect(x: 0.25, y: 0.25, width: 0.5, height: 0.5),
+                                                        languageString: "eng") { isFinished, error, resultInfo in
+    if let result = resultInfo?[SBSDKResultInfoOCRResultsKey] as? SBSDKOCRResult {
+        // Now we can work with the result.
+    }
+}
+</code></pre>
+
 <p><a name="payformRecognition"></a></p>
 <h2 id='6-payform-recognition' class='heading'>6. Payform Recognition</h2>
 
@@ -1634,7 +1951,9 @@ text extraction and fills the fields.</p>
 incoming frame synchronously in the video capture queue. When the detector returns a positive result the 
 recognizing part runs on the same full HD frame in the same video capture queue and returns the recognizers result.</p>
 
-<p>Example code on how to detect and recognize payforms in the video delegate </p>
+<p>Example code on how to detect and recognize payforms in the video delegate</p>
+
+<p>Objective-C:</p>
 <pre class="highlight plaintext"><code>- (void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer videoOrientation:(AVCaptureVideoOrientation)orientation {
 
     // Create an SBSDKPayFormScanner.
@@ -1650,6 +1969,25 @@ recognizing part runs on the same full HD frame in the same video capture queue 
         dispatch_async(dispatch_get_main_queue(), ^{
             // Present the recognition results alert on main thread.
         });
+    }
+}
+</code></pre>
+
+<p>Swift:</p>
+<pre class="highlight plaintext"><code>func processSampleBuffer(_ sampleBuffer: CMSampleBuffer, videoOrientation orientation: AVCaptureVideoOrientation) {
+
+    // Create an SBSDKPayFormScanner.
+    // Note: Usually you store it in a property, for demo purposes we create a new one for each frame.
+    let scanner = SBSDKPayFormScanner()
+
+    // Recognize a bank transfer form in the sample buffer.
+    let recognitionResult = scanner.recognize(from: sampleBuffer, orientation: orientation)
+
+    // If we have successfuly recognized payform
+    if recognitionResult?.recognitionSuccessful == true {
+        DispatchQueue.main.async {
+            // Present the recognition results alert on main thread.
+        }
     }
 }
 </code></pre>
@@ -1729,6 +2067,8 @@ If these algorithms do not meet your requirements you can create your own encryp
 <p>For easier access to device&rsquo;s file system ScanbotSDK provides convenient helper class <code><a href="Classes/SBSDKStorageLocation.html">SBSDKStorageLocation</a></code>.</p>
 
 <p>Example of creating indexed image storage using <code><a href="Classes/SBSDKStorageLocation.html">SBSDKStorageLocation</a></code> and built-in AES256 encrypter:</p>
+
+<p>Objective-C:</p>
 <pre class="highlight plaintext"><code>//Create Url to directory where you plan to store images
 NSURL *imagesDirectoryURL = [[SBSDKStorageLocation applicationDocumentsFolderURL]
                                 URLByAppendingPathComponent:@"Images"];
@@ -1736,7 +2076,7 @@ NSURL *imagesDirectoryURL = [[SBSDKStorageLocation applicationDocumentsFolderURL
 // Create storage location using Url to images directory          
 SBSDKStorageLocation *storageLocation = [[SBSDKStorageLocation alloc] initWithBaseURL:imagesDirectoryURL];
 
-//Create encrypter with key and desired encryption mode
+//Create encrypter with password and desired encryption mode
 SBSDKAESEncrypter *encrypter = [[SBSDKAESEncrypter alloc] initWithPassword:@"password_example#42"
                                                                       mode:SBSDKAESEncrypterModeAES256];
 
@@ -1746,10 +2086,27 @@ SBSDKIndexedImageStorage *imageStorage = [[SBSDKIndexedImageStorage alloc] initW
                                                                                      withEncrypter:encrypter];
 </code></pre>
 
+<p>Swift:</p>
+<pre class="highlight plaintext"><code>//Create Url to directory where you plan to store images
+let imagesDirectoryURL = SBSDKStorageLocation.applicationDocumentsFolderURL().appendingPathComponent("Images")
+
+// Create storage location using Url to images directory
+let storageLocation = SBSDKStorageLocation.init(baseURL: imagesDirectoryURL)
+
+//Create encrypter with password and desired encryption mode
+let encrypter = SBSDKAESEncrypter(password: "password_example#42", mode: .AES256)
+
+//Create indexed image storage using storage location, image file format and encrypter 
+let imageStorage = SBSDKIndexedImageStorage(storageLocation: storageLocation,
+                                            fileFormat: .JPEG,
+                                            withEncrypter: encrypter)
+</code></pre>
+
 <p>Examples of some basic operations on Indexed Image storage:</p>
-<pre class="highlight plaintext"><code>//In this example image storage used as stored property
-//Note: How to initiate indexed image storage described in example above
-@property (strong, nonatomic) SBSDKIndexedImageStorage *imageStorage;
+
+<p>Objective-C:</p>
+<pre class="highlight plaintext"><code>//In the example we are using temporary image storage
+SBSDKIndexedImageStorage *imageStorage = [SBSDKIndexedImageStorage temporaryStorage];
 
 //Create image
 UIImage *image = [UIImage imageNamed:@"testImage"];
@@ -1758,36 +2115,66 @@ UIImage *image = [UIImage imageNamed:@"testImage"];
 NSInteger index = 0;
 
 //Get image at index
-UIImage *storedImage = [self.imageStorage imageAtIndex:index];
+UIImage *storedImage = [imageStorage imageAtIndex:index];
 
 //Add image to storage
-BOOL isAdded = [self.imageStorage addImage:image];
+BOOL isAdded = [imageStorage addImage:image];
 
 //Insert image at index
-BOOL isInserted = [self.imageStorage insertImage:image atIndex:index];
+BOOL isInserted = [imageStorage insertImage:image atIndex:index];
 
 //Remove image at index
-[self.imageStorage removeImageAtIndex:index];
+[imageStorage removeImageAtIndex:index];
 
 //Move image from index to index
-
 //Create new index to move image to
 NSInteger newIndex = 1;
-
-BOOL isMoved = [self.imageStorage moveImageFromIndex:index toIndex:newIndex];
+BOOL isMoved = [imageStorage moveImageFromIndex:index toIndex:newIndex];
 
 //Replace image at index with another image
-
 //Create image to replace stored one
 UIImage *newImage = [UIImage imageNamed:@"newTestImage"];
+BOOL isReplaced = [imageStorage replaceImageAtIndex:index withImage:newImage];
+</code></pre>
 
-BOOL isReplaced = [self.imageStorage replaceImageAtIndex:index withImage:newImage];
+<p>Swift:</p>
+<pre class="highlight plaintext"><code>//In the example we are using temporary image storage
+guard let imageStorage = SBSDKIndexedImageStorage.temporary() else { return }
+
+//Create image
+guard let image = UIImage(named: "testImage") else { return }
+
+//Create index
+let index: UInt = 0
+
+//Get image at index
+let storedImage = imageStorage.image(at: index)
+
+//Add image to storage
+let isAdded = imageStorage.add(image)
+
+//Insert image at index
+let isInserted = imageStorage.insert(image, at: index)
+
+//Remove image at index
+imageStorage.removeImage(at: index)
+
+//Move image from index to index
+//Create new index to move image to
+let newIndex: UInt = 1
+let isMoved = imageStorage.moveImage(from: index, to: newIndex)
+
+//Replace image at index with another image
+//Create image to replace stored one
+guard let newImage = UIImage(named: "newTestImage") else { return }
+let isReplaced = imageStorage.replaceImage(at: index, with: newImage)
 </code></pre>
 
 <p>Examples of some basic operations on Keyed Image storage:</p>
-<pre class="highlight plaintext"><code>//In this example image storage used as stored property
-//Note: How initiate keyed image storage described in example above
-@property (strong, nonatomic) SBSDKKeyedImageStorage *imageStorage;
+
+<p>Objective-C:</p>
+<pre class="highlight plaintext"><code>//Create image storage using storage location, in example we are using temporary location
+SBSDKKeyedImageStorage *imageStorage = [[SBSDKKeyedImageStorage alloc] initWithStorageLocation:[SBSDKStorageLocation temporaryLocation]];
 
 //Create image
 UIImage *image = [UIImage imageNamed:@"testImage"];
@@ -1796,20 +2183,43 @@ UIImage *image = [UIImage imageNamed:@"testImage"];
 NSString *key = @"testKey";
 
 //Set image for key
-[self.imageStorage setImage:image forKey:key];
+[imageStorage setImage:image forKey:key];
 
 //Get image for key
-UIImage *storedImage = [self.imageStorage imageForKey:key];
+UIImage *storedImage = [imageStorage imageForKey:key];
 
 //Remove image for key
-[self.imageStorage removeImageForKey:key];
+[imageStorage removeImageForKey:key];
 
 //Remove images for keys matching prefix
-
 //Create prefix
 NSString *prefix = @"test";
+[imageStorage removeImagesForKeysMatchingPrefix:prefix];
+</code></pre>
 
-[self.imageStorage removeImagesForKeysMatchingPrefix:prefix];
+<p>Swift:</p>
+<pre class="highlight plaintext"><code>//Create image storage using storage location, in example we are using temporary location
+let imageStorage = SBSDKKeyedImageStorage()
+
+//Create image
+guard let image = UIImage(named: "testImage") else { return }
+
+//Create key
+let key = "testKey"
+
+//Set image for key
+imageStorage.setImage(image, forKey: key)
+
+//Get image for key
+let storedImage = imageStorage.image(forKey: key)
+
+//Remove image for key
+imageStorage.removeImage(forKey: key)
+
+//Remove images for keys matching prefix
+//Create prefix
+let prefix = "test"
+imageStorage.removeImagesForKeys(matchingPrefix: prefix)
 </code></pre>
 
 <p><a name="IDCardRecognizer"></a></p>
@@ -1825,6 +2235,8 @@ Recognition is slower but additionally extracts the data fields from the ID card
 This class summarizes general information from ID card scan and individual data fields.</p>
 
 <p>Example of recognizing ID Card on sample buffer:</p>
+
+<p>Objective-C:</p>
 <pre class="highlight plaintext"><code>- (void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer videoOrientation:(AVCaptureVideoOrientation)orientation {
     //Create an instance of ID card recognizer
     SBSDKIDCardRecognizer *idCardRecognizer = [[SBSDKIDCardRecognizer alloc] init];
@@ -1841,7 +2253,23 @@ This class summarizes general information from ID card scan and individual data 
 }
 </code></pre>
 
+<p>Swift:</p>
+<pre class="highlight plaintext"><code>func processSampleBuffer(_ sampleBuffer: CMSampleBuffer, videoOrientation orientation: AVCaptureVideoOrientation) {
+    //Create an instance of ID card recognizer
+    let idCardRecognizer = SBSDKIDCardRecognizer()
+
+    //Detect id card on the sample buffer
+    // Check if detection was successful
+    if let detectionResult = idCardRecognizer.detectIDCard(on: sampleBuffer, orientation: orientation) {
+        //Recognize ID card's fields on the sample buffer
+        let recognitionResult = idCardRecognizer.recognizeIDCard(on: sampleBuffer, orientation: orientation)
+    } 
+}
+</code></pre>
+
 <p>Example of handling <code><a href="Classes/SBSDKIDCardRecognizerResult.html">SBSDKIDCardRecognizerResult</a></code>:</p>
+
+<p>Objective-C:</p>
 <pre class="highlight plaintext"><code>//Creating dictionary with all the card fields and card type
 - (NSDictionary *)dictionaryFromIdCardRecognizerResult:(SBSDKIDCardRecognizerResult *)cardResult {
     NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
@@ -1889,6 +2317,49 @@ This class summarizes general information from ID card scan and individual data 
 }
 </code></pre>
 
+<p>Swift:</p>
+<pre class="highlight plaintext"><code>func dictionaryFromIdCardRecognizerResult(_ cardResult: SBSDKIDCardRecognizerResult) -&gt; [String: Any] {
+    var result = [String: Any]()
+        result["IDCardType"] = textForType(cardResult.type)
+    for field in cardResult.fields {
+        if !field.text.isEmpty {
+            result[fieldTypeTextForField(field)] = ["text": field.text,
+                                                    "confidence": field.textConfidence]
+        }
+    }
+    return result
+}
+
+//Creating string representation of the id card type
+func textForType(_ type: SBSDKIDCardType) -&gt; String {
+    switch type {
+    case .unknown:
+        return "Unknown"
+    case .back_DE:
+        return "Back Side DE"
+    case .front_DE:
+        return "Front Side DE"
+    case .passport_DE:
+        return "Passport DE"
+    }
+}
+
+// Creating string representation of the field types
+func fieldTypeTextForField(_ field: SBSDKIDCardRecognizerResultField) -&gt; String {
+    var typeString = ""
+    switch field.type {
+    case .invalid:
+        typeString = "Invalid"
+    case .ID:
+        typeString = "ID"
+    case .surname:
+        typeString = "Surname"
+    //...
+    //Handle all the types in the same manner
+    return "Field type \(typeString)"
+}
+</code></pre>
+
 <p><a name="NFCPassportReader"></a></p>
 <h2 id='11-nfc-passport-reader' class='heading'>11. NFC Passport Reader</h2>
 
@@ -1906,6 +2377,8 @@ To do so add the following entry: &ldquo;com.apple.developer.nfc.readersession.i
 <p>To check if NFC passport reading is available on the system you can call <code><a href="Classes/SBSDKNFCPassportReader.html">SBSDKNFCPassportReader</a></code>&lsquo;s class method <code>isPassportReadingAvailable</code>.</p>
 
 <p>Example of reading data from passport&rsquo;s NFC chip using <code><a href="Classes/SBSDKNFCPassportReader.html">SBSDKNFCPassportReader</a></code>:</p>
+
+<p>Objective-C:</p>
 <pre class="highlight plaintext"><code>@interface MyViewController &lt;SBSDKPassportReaderDelegate&gt;
 
 //Create progress view to show user scan processing
@@ -1970,6 +2443,70 @@ To do so add the following entry: &ldquo;com.apple.developer.nfc.readersession.i
 @end
 </code></pre>
 
+<p>Swift:</p>
+<pre class="highlight plaintext"><code>class MyViewController: UIViewController {
+
+    //Create progress view to show user scan processing
+    @IBOutlet var progressView: UIProgressView?
+
+    func startScanning() {
+        if #available(iOS 13, *) {
+            //To create NFC reader instance you should provide passport number, birth date and expiration date.
+            //This data you can get from passport's MRZ using our Machine readable zone(MRZ) recognizer.
+            //For this example we will use default data
+            let nfcReader = SBSDKNFCPassportReader(passportNumber: "",
+                                                   birthDate: Date(),
+                                                   expirationDate: Date(),
+                                                   initialMessage: "Hold your phone over the passport.",
+                                                   delegate: self)
+            nfcReader.setMessage("Authenticating with passport...")
+        }
+    }
+}
+
+extension MyViewController: SBSDKPassportReaderDelegate {
+    func passportReaderDidConnect(_ reader: SBSDKNFCPassportReader) {
+        reader.setMessage("Enumerating available data groups...")
+
+        //Enumerate all available data group types on the passport's NFC chip and return them to the completion handler.
+        reader.enumerateDatagroups { types in
+            reader.setMessage("Downloading data groups...")
+
+            //Download and parse the specified data groups
+            reader.downloadDatagroups(ofType: types) { groups in
+                reader.setMessage("Finished downloading data groups.")
+                if !groups.isEmpty {
+                    DispatchQueue.main.async {
+                        // Show result in a way you prefer
+                    }
+                }
+            }
+        }
+    }
+
+    func passportReader(_ reader: SBSDKNFCPassportReader, didStartReadingGroup type: String) {
+        reader.setMessage("Downloading data group \(type)...")
+        self.progressView?.progress = 0.0
+        self.progressView?.isHidden = false
+    }
+
+    func passportReader(_ reader: SBSDKNFCPassportReader, didProgressReadingGroup progress: Float) {
+        self.progressView?.progress = progress
+        self.progressView?.isHidden = false
+    }
+
+    func passportReader(_ reader: SBSDKNFCPassportReader, didFinishReadingGroup type: String) {
+        reader.setMessage("Finished downloading data group \(type)...")
+        self.progressView?.progress = 1.0
+        self.progressView?.isHidden = true
+    }
+
+    func passportReaderDidFinishSession(_ reader: SBSDKNFCPassportReader) {
+        self.progressView?.isHidden = true
+    }
+}
+</code></pre>
+
           </div>
         </section>
 
@@ -1977,7 +2514,7 @@ To do so add the following entry: &ldquo;com.apple.developer.nfc.readersession.i
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2021 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2021-01-29)</p>
+      <p>&copy; 2021 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2021-02-23)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
