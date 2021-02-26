@@ -301,6 +301,7 @@ You can change this value in the <code class="highlighter-rouge">config.xml</cod
       <li><a href="#module_ScanbotSdk.rotateImage">.rotateImage(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.estimateBlur">.estimateBlur(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.refreshImageUris">.refreshImageUris(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdk.storageEncryption">.getImageData(successCallback, errorCallback, options)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdk.cleanup">.cleanup(successCallback, errorCallback)</a> - <code class="highlighter-rouge">function</code></li>
     </ul>
   </li>
@@ -613,6 +614,70 @@ This Plugin provides the following helper methods to keep the storage clean:</p>
   <li><a href="#module_ScanbotSdk.cleanup">cleanup</a> method to remove <strong>all</strong> generated files by this Plugin 
 (scanned and imported images, barcode images, export files like PDF, TIFF, JSON, etc).</li>
 </ul>
+
+<p><a name="module_ScanbotSdk.storageEncryption"></a></p>
+<h4 id="storage-encryption">Storage Encryption</h4>
+
+<p>Scanbot SDK provides the ability to store the generated image files (JPG, PNG) and PDF files encrypted.
+This feature provides an additional level of security to the default secure storage locations of the native SDKs.</p>
+
+<p>By default the file encryption is disabled. To enable it you have to pass the following config parameters on SDK initialization:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">fileEncryptionPassword</code>: A secure password or passphrase to derive the AES key for encryption/decryption.</li>
+  <li><code class="highlighter-rouge">fileEncryptionMode</code>: Encryption mode, <code class="highlighter-rouge">AES128</code> or <code class="highlighter-rouge">AES256</code> (default and recommended).</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">options</span><span class="p">:</span> <span class="nx">InitializationOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">fileEncryptionPassword</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SomeSecretPa$$w0rdForFileEncryption</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">fileEncryptionMode</span><span class="p">:</span> <span class="dl">'</span><span class="s1">AES256</span><span class="dl">'</span>
+<span class="p">};</span>
+<span class="k">await</span> <span class="nx">ScanbotSDK</span><span class="p">.</span><span class="nx">initializeSDK</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>By activating storage encryption the native Scanbot SDKs will use the builtin
+<a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES 128 or AES 256 encryption</a>.
+All generated image files (JPG, PNG) including the preview image files, as well as the exported PDF files will
+be encrypted in memory and stored as encrypted data files on the flash storage of the device.</p>
+
+<p>The Scanbot SDK derives the AES key from the given password, an internal <em>salt</em> value, and the internal number of <em>iterations</em>
+using the <a href="https://en.wikipedia.org/wiki/PBKDF2">PBKDF2</a> function.</p>
+
+<p>When applying image operations like cropping, rotation or image filters, the Scanbot SDK will decrypt the image file in memory,
+apply the changes, encrypt and store it again.</p>
+
+<h4 id="handle-encrypted-images">Handle Encrypted Images</h4>
+
+<p><strong>Display Encrypted Images</strong></p>
+
+<p>If file encryption is enabled you will <strong>not</strong> be able to display preview images via file URIs (e.g. <code class="highlighter-rouge">page.documentPreviewImageFileUri</code>).
+Instead, you have to load the decrypted data of a preview image and use it for displaying an image.
+In order to do that there is the API function <code class="highlighter-rouge">getImageData(imageFileUri: string)</code>:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// use the low-res image "documentPreviewImageFileUri" for the preview:</span>
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ScanbotSDK</span><span class="p">.</span><span class="nx">getImageData</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">documentPreviewImageFileUri</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">decryptedImageDataAsBase64</span> <span class="o">=</span> <span class="s2">`data:image/jpeg;base64,</span><span class="p">${</span><span class="nx">result</span><span class="p">.</span><span class="nx">base64ImageData</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="o">&lt;</span><span class="nx">img</span> <span class="p">[</span><span class="nx">src</span><span class="p">]</span><span class="o">=</span><span class="dl">"</span><span class="s2">decryptedImageDataAsBase64</span><span class="dl">"</span> <span class="o">/&gt;</span>
+</code></pre></div></div>
+
+<p>👉 For a full implementation see our <a href="https://github.com/doo/scanbot-sdk-example-ionic">example app</a>.</p>
+
+<p><strong>Upload Encrypted Images</strong></p>
+
+<p>To upload an image you have the following options:</p>
+
+<p>1) Use the encrypted image file to upload to your server and decrypt it in the backend.
+   Please contact our team to get support on how to generate the corresponding AES key and decrypt images on your backend.</p>
+
+<p>2) Or alternatively, get the decrypted image data as Base64 on the mobile device by using the
+   <code class="highlighter-rouge">getImageData(imageFileUri: string)</code> function and use this data for the upload process:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// use the final hi-res image "imageFileUri" for the upload process:</span>
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ScanbotSdk</span><span class="p">.</span><span class="nx">getImageData</span><span class="p">({</span><span class="na">imageFileUri</span><span class="p">:</span> <span class="nx">path</span><span class="p">});</span>
+<span class="kd">const</span> <span class="nx">decryptedImageDataAsBase64</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">base64ImageData</span><span class="p">;</span>
+<span class="nx">yourCustomUploadFunction</span><span class="p">(</span><span class="nx">decryptedImageDataAsBase64</span><span class="p">);</span>
+</code></pre></div></div>
 
 <p><a name="promisify"></a></p>
 <h3 id="promise-based-api">Promise-based API</h3>
@@ -3227,6 +3292,20 @@ please add the following rules:</p>
 
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release History</h2>
+
+<h4 id="version-480-26-feb-2021">Version 4.8.0 (26 Feb 2021):</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Encryption of image and PDF files. For more details please check out the section <a href="#module_ScanbotSdk.storageEncryption">Storage Encryption</a>.</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking Changes:
+    <ul>
+      <li>The structured OCR result data is now returned as a JSON data field <code class="highlighter-rouge">jsonData</code> instead of a JSON file (<code class="highlighter-rouge">jsonFileUri</code>)</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="version-470-8-feb-2021">Version 4.7.0 (8 Feb 2021):</h4>
 <ul>
