@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://scanbotsdk.github.io/documentation/web/" />
 <meta property="og:site_name" content="Scanbot Web Document Scanner SDK" />
 <script type="application/ld+json">
-{"url":"https://scanbotsdk.github.io/documentation/web/","headline":"Scanbot Web Document Scanner SDK","name":"Scanbot Web Document Scanner SDK","@type":"WebSite","@context":"https://schema.org"}</script>
+{"url":"https://scanbotsdk.github.io/documentation/web/","name":"Scanbot Web Document Scanner SDK","@type":"WebSite","headline":"Scanbot Web Document Scanner SDK","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/documentation/web/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://scanbotsdk.github.io/documentation/web/feed.xml" title="Scanbot Web Document Scanner SDK" /></head>
 <body><header class="site-header" role="banner">
@@ -46,7 +46,7 @@
 <h3 id="requirements">Requirements</h3>
 
 <p>Since the Web SDK is based on WebAssembly, older browsers are unfortunately not supported. 
-WebAssembly as well as Scanbot Web Document Scanner SDK are supported as of the following versions:</p>
+WebAssembly, as well as Scanbot Web Document Scanner SDK, are supported as of the following versions:</p>
 <ul>
   <li>Edge 16+</li>
   <li>Firefox 53+</li>
@@ -108,7 +108,7 @@ from the package’s <code class="highlighter-rouge">bundle</code> folder to you
 
 <h3 id="initializing-the-sdk">Initializing the SDK</h3>
 
-<p>In order to run the Scanbot SDK plugin functionality within your production app, 
+<p>To run the Scanbot SDK plugin functionality within your production app, 
 you have to purchase and use a valid Scanbot SDK license.
 The SDK will run for one minute in trial mode without a license.</p>
 
@@ -137,7 +137,7 @@ serves as your entry point to use any other SDK features.</p>
 
 <h4 id="configuration--styling">Configuration &amp; Styling</h4>
 
-<p>In order to start the document scanner, we must first create a 
+<p>To start the document scanner, we must first create a 
 <code class="highlighter-rouge">DocumentScannerConfiguration</code> object, or simply a dictionary in vanilla javascript, as follows.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
@@ -279,7 +279,7 @@ the document scanner configuration. The video constraints are directly given to 
 
 <p>The <code class="highlighter-rouge">result</code> object contains the following properties:</p>
 <ul>
-  <li><code class="highlighter-rouge">detectionStatus</code> – contains the same keys as the the hint texts mentioned earlier</li>
+  <li><code class="highlighter-rouge">detectionStatus</code> – contains the same keys as the hint texts mentioned earlier</li>
   <li><code class="highlighter-rouge">success</code> – boolean, whether detection was successful or not</li>
   <li><code class="highlighter-rouge">original</code> – If <code class="highlighter-rouge">success</code>, contains the cropped document ArrayBuffer (<code class="highlighter-rouge">UInt8Array</code>)</li>
   <li><code class="highlighter-rouge">cropped</code> – If <code class="highlighter-rouge">success</code>, contains the cropped document ArrayBuffer (<code class="highlighter-rouge">UInt8Array</code>)</li>
@@ -304,7 +304,7 @@ simply refer back to your SDK object and create the scanner object as follows:</
 <p>If you wish to do image processing between document captures, or find the document scanner a wee bit too trigger-happy, 
 (which is plausible on high-end devices) there is the option to disable automatic capture on the fly.</p>
 
-<p>You can also use these calls create your own custom auto-capture on/off switch.</p>
+<p>You can also use these calls to create your own custom auto-capture on/off switch.</p>
 
 <p>Call to disable auto-capture:</p>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">documentScanner</span><span class="p">.</span><span class="nx">disableAutoCapture</span><span class="p">();</span>
@@ -325,9 +325,126 @@ simply refer back to your SDK object and create the scanner object as follows:</
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">documentScanner</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>
 </code></pre></div></div>
 
-<h3 id="cropping-ui">Cropping UI</h3>
+<h3 id="barcode-scanner-ui">Barcode Scanner UI</h3>
+
+<p>Scanbot WebSDK also features the option to scan and detect various barcodes.</p>
+
+<p>The currently accepted formats are:</p>
+
+<p><strong>1D Barcodes</strong></p>
+<ul>
+  <li>Code 39</li>
+  <li>Code 93</li>
+  <li>Code 128</li>
+  <li>Codabar</li>
+  <li>UPC-E</li>
+  <li>ITF</li>
+  <li>EAN-8</li>
+  <li>EAN-13</li>
+  <li>UPC-A</li>
+</ul>
+
+<p><strong>2D Barcodes</strong></p>
+<ul>
+  <li>QR-Code</li>
+  <li>Aztec</li>
+  <li>PDF-417</li>
+  <li>Data Matrix</li>
+</ul>
 
 <h4 id="configuration">Configuration</h4>
+
+<p>ScanbotSDK Barcode Scanner takes an instance of <code class="highlighter-rouge">BarcodeScannerConfiguration</code> as its argument.
+This is your main object for configuration options, styling and receiving the results.</p>
+
+<p><code class="highlighter-rouge">BarcodeScannerConfiguration</code> and <code class="highlighter-rouge">DocumentScannerConfiguration</code> share their base properties:</p>
+<ul>
+  <li><code class="highlighter-rouge">containerId</code> – The <code class="highlighter-rouge">id</code> of the containing HTML element where the Barcode Scanner will be initialized. Required</li>
+  <li><code class="highlighter-rouge">videoConstraints</code> – When you wish to manipulate video quality. Optional, defaults to <code class="highlighter-rouge">3840x2160</code></li>
+  <li><code class="highlighter-rouge">onError</code> – Callback when something went wrong. Optional</li>
+</ul>
+
+<p>Additionally, ScanbotSDK Barcode Scanner has the following configurable options:</p>
+<ul>
+  <li><code class="highlighter-rouge">captureDelay</code> – The delay between receiving detection results. In milliseconds. Optional, defaults to 1000</li>
+  <li><code class="highlighter-rouge">onBarcodesDetected</code> – Your callback for receiving detection results. Required</li>
+</ul>
+
+<p>The result of <code class="highlighter-rouge">onBarcodesDetected</code> is a <code class="highlighter-rouge">BarcodeResult</code> object that contains the following properties:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>barcodes: Barcode[];
+</code></pre></div></div>
+
+<p>The list will always contain at least one element. No empty result is returned.</p>
+
+<p>A barcode item contains the following properties:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">format: BarcodeFormat</code> – The <code class="highlighter-rouge">type</code> of barcode. One of the types listed in the previous paragraph</li>
+  <li><code class="highlighter-rouge">text: string</code> – The data contained in the barcode</li>
+  <li><code class="highlighter-rouge">rawBytes: Uint8Array</code> – The same data contained in the barcode. 
+Can be disregarded in most scenarios, useful when the result is binary data, not a string.</li>
+</ul>
+
+<h4 id="styling">Styling</h4>
+
+<p>ScanbotSDK Barcode Scanner has the following style options and their default values:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>style?: {
+    window: {
+        width: string = "260px";
+        height: string = "200px";
+        borderColor: string = "white";
+    },
+    text: {
+        color: string = "white";
+        size: string = "0.9em";
+        weight: number = 300;
+    },
+    backgroundColor: string = "rgba(0, 0, 0, 0.7)";
+}
+</code></pre></div></div>
+
+<p>To change a specific style, simply assign it another value, e.g:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>configuration.style.window.borderColor: "pink"
+</code></pre></div></div>
+
+<p>The Barcode Scanner Finder overlay also has configurable text properties:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>text?: any = {
+    hint: "Please align the code in the frame above to scan it"
+};
+</code></pre></div></div>
+
+<h4 id="opening-the-scanner">Opening the Scanner</h4>
+
+<p>To open the Barcode Scanner, simply call the relevant SDK function with the configuration object:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">scanner</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">scanbotSDK</span><span class="p">.</span><span class="nx">createBarcodeScanner</span><span class="p">(</span><span class="nx">configuration</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>You should store the barcode scanner object in a globally accessible location,
+as additional barcode scanner actions are functions of that object.</p>
+
+<h4 id="api">API</h4>
+
+<p>To handle barcode results (avoid duplicate scans etc), 
+ScanbotSDK offers the following convenient methods to pause and resume detection 
+while you’re processing the data on your side:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resumeDetection(): void;
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pauseDetection(): void;
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>isDetectionPaused(): boolean;
+</code></pre></div></div>
+
+<p>As with the Document Scanner, the Barcode Scanner should also be properly disposed 
+when you’ve detected and processed the relevant barcodes:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dispose(): void;
+</code></pre></div></div>
+
+<h3 id="cropping-ui">Cropping UI</h3>
+
+<h4 id="configuration-1">Configuration</h4>
 
 <p>ScanbotSDK Cropping View takes a <code class="highlighter-rouge">CroppingViewConfiguration</code> parameter. It has the following format:</p>
 
@@ -335,7 +452,7 @@ simply refer back to your SDK object and create the scanner object as follows:</
     <span class="c1">// Identifier (id-tag of html element) of the Croppign View parent element. Required</span>
     <span class="nx">containerId</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
 
-    <span class="c1">// Determines whether scroll (incl. bounce) should be disabled when cropping screen is active. Optional. True by default</span>
+    <span class="c1">// Determines whether scroll (incl. bounce) should be disabled when the cropping screen is active. Optional. True by default</span>
     <span class="nx">disableScroll</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
     
     <span class="c1">// Optional document polygon parameter. </span>
@@ -353,7 +470,7 @@ simply refer back to your SDK object and create the scanner object as follows:</
 <span class="p">}</span>
 </code></pre></div></div>
 
-<h4 id="styling">Styling</h4>
+<h4 id="styling-1">Styling</h4>
 
 <p>The styling options and default values of the Cropping View are the following:</p>
 
@@ -375,7 +492,7 @@ simply refer back to your SDK object and create the scanner object as follows:</
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Note that <code class="highlighter-rouge">magneticLines</code> style exists only because it is because it is somewhat of an experimental feature, 
+<p>Note that <code class="highlighter-rouge">magneticLines</code> style exists only because it is somewhat of an experimental feature, 
 there’s room for improvement and optimization. See if it meets your requirements in its current form</p>
 
 <h4 id="creating-the-view">Creating the View</h4>
@@ -388,7 +505,7 @@ there’s room for improvement and optimization. See if it meets your requiremen
 <p>You should store the cropping view object in a globally accessible location,
 as additional cropping functions are functions of that object.</p>
 
-<h4 id="api">API</h4>
+<h4 id="api-1">API</h4>
 
 <p>ScanbotSDK Cropping View classical component contains the following public functions:</p>
 
@@ -402,7 +519,7 @@ as additional cropping functions are functions of that object.</p>
 
 <p>• <code class="highlighter-rouge">apply(): Promise&lt;CroppingResult&gt;;</code></p>
 
-<p>The contents of cropping result are as follows:</p>
+<p>The contents of the cropping result are as follows:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// The cropped and rotated image
 image: Uint8Array;
@@ -412,7 +529,7 @@ polygon: Polygon;
 rotations: number
 </code></pre></div></div>
 
-<p>If you are happy with the polygon and the rotations, apply the changes and receive your new detection detection result</p>
+<p>If you are happy with the polygon and the rotations, apply the changes and receive your new detection result</p>
 
 <p>• <code class="highlighter-rouge">dispose(): void;</code></p>
 
@@ -524,10 +641,49 @@ you can load an image from storage one at a time and add it to the generator:</p
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">saveBytes</span><span class="p">(</span><span class="nx">bytes</span><span class="p">,</span> <span class="dl">"</span><span class="s2">generated.pdf</span><span class="dl">"</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>Note: if the return type of the function is a <code class="highlighter-rouge">Promise</code>, it is asynchronous needs to be <code class="highlighter-rouge">await</code>ed</p>
+<h3 id="utilities">Utilities</h3>
+
+<p>In addition to numerous view and image processing functions, 
+ScanbotSDK also features various utility functions.</p>
+
+<p>Please note that utilities are available after initialization, under the instance returned by <code class="highlighter-rouge">initialize</code>, 
+therefore, if ScanbotSDK initialization fails, utilities are not available either.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">isCameraSupported()</code> –
+Checks whether the browser or device supports camera access. 
+Please note that this functionality is specifically located under <code class="highlighter-rouge">utils</code> because 
+ScanbotSDK cannot guarantee the reliability of this functionality. 
+Browsers and their functions are, by design, not backward compatible or future-proof. 
+In niche situations (browsers, devices) it is bound to produce false positives.
+Other SDK features (import image, apply a filter, etc. are still available even if the camera is not)</li>
+  <li><code class="highlighter-rouge">flash()</code> – Simple flash animation that 
+you can call in the detection callback to add a bit of flare to your application</li>
+</ul>
 
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release History</h2>
+
+<h4 id="version-210-3-mar-2021">Version 2.1.0 (3 Mar 2021)</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Barcode Scanner – Scanner view to scan various barcodes</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Fixed issue where camera component was not properly disposed</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking Changes:
+    <ul>
+      <li>Moved <code class="highlighter-rouge">Polygon</code> object to <code class="highlighter-rouge">utils/dto/polygon</code> package</li>
+      <li>Moved <code class="highlighter-rouge">DetectionStatus</code> to <code class="highlighter-rouge">model/document/detection-status</code> package</li>
+      <li>Renamed and moved <code class="highlighter-rouge">model/response/detection-result</code> to <code class="highlighter-rouge">model/document/document-detection-result</code></li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="version-202-16-feb-2021">Version 2.0.2 (16 Feb 2021)</h4>
 <ul>
