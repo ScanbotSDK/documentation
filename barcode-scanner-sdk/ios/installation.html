@@ -70,6 +70,9 @@
             <a class="nav-group-name-link" href="Categories.html">Categories</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Categories/UIView%28SBSDK%29.html">UIView(SBSDK)</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Categories/UIViewController%28SBSDK%29.html">UIViewController(SBSDK)</a>
               </li>
             </ul>
@@ -94,6 +97,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKBarCodeScannerDocumentFormat.html">SBSDKBarCodeScannerDocumentFormat</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SBSDKBarcodeAdditionalParameters.html">SBSDKBarcodeAdditionalParameters</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKBarcodeDocumentType.html">SBSDKBarcodeDocumentType</a>
@@ -444,11 +450,16 @@
 <p>The Scanbot Barcode Scanner SDK is delivered as an embedded framework, containing all iOS supported 32 and 64 bit simulator and device
 architectures, bitcode and crash symbols. It can be used with Objective-C as well as with Swift.</p>
 
-<p>The Barcode SDK is available as a CocoaPod or as an embeddable framework for downloading <a href="https://scanbot.io/sdk.html">here</a></p>
+<p>Please find the Scanbot Barcode Scanner SDK downloads below.</p>
+
+<p>Standard framework for iOS: <a href="https://download.scanbot.io/barcode-scanner-sdk/ios/scanbot-ios-barcode-scanner-sdk%7BSDK_DOWNLOAD_VERSION%7D.zip">Download</a></p>
+
+<p>XCFramework for iOS: <a href="https://download.scanbot.io/barcode-scanner-sdk/ios/xcframeworks/scanbot-ios-barcode-scanner-sdk-xcframework-%7BSDK_DOWNLOAD_VERSION%7D.zip">Download</a></p>
 
 <ul>
 <li><a href="#install-cocoapods"><strong>Guide to install with CocoaPods</strong></a></li>
 <li><a href="#install-embeddable-framework"><strong>Guide to install as Embeddable Framework</strong></a></li>
+<li><a href="#install-embeddable-xcframework"><strong>How to install as an XCFramework with Xcode 11 or later</strong></a></li>
 </ul>
 
 <p>Note: The SDK also contains a little script that prepares the framework and your application when archiving for App Store
@@ -472,7 +483,7 @@ It integrates deeply into your Xcode project and manages the third-party compone
 </code></pre>
 
 <p>Your <code>Podfile</code> should now read as follows:</p>
-<pre class="highlight plaintext"><code>platform :ios, '9.0'
+<pre class="highlight plaintext"><code>platform :ios, '11.0'
 
 target 'My Awesome App' do
   ...
@@ -493,7 +504,7 @@ end
 <p><a name='install-embeddable-framework'></a></p>
 <h2 id='installation-as-an-embeddable-framework' class='heading'>Installation as an embeddable framework</h2>
 
-<p>Alternatively, you can install the Scanbot Barcode Scanner SDK manually as an embeddable framework.
+<p>Also, you can install the Scanbot Barcode Scanner SDK manually as an embeddable framework.
 Download it from our <a href="https://scanbot.io/sdk.html">website</a> and apply the following steps:</p>
 
 <ul>
@@ -534,6 +545,33 @@ Download it from our <a href="https://scanbot.io/sdk.html">website</a> and apply
 <p>Script input file:</p>
 <pre class="highlight plaintext"><code>$(SRCROOT)/./ScanbotBarcodeScannerSDK/dSYMs/ScanbotBarcodeScannerSDK.framework.dSYM
 </code></pre>
+
+<p><a name='install-embeddable-xcframework'></a></p>
+<h2 id='installation-as-an-embeddable-xcframework-xcode-11-only' class='heading'>Installation as an embeddable XCFramework (XCode 11+ only)</h2>
+
+<p>Installing the Scanbot Barcode Scanner SDK embedded XCFramework is similar to using the framework, except for the strip script which is not needed with XCFrameworks.
+<a href="#step-by-step-xc">Check out our step-by-step guide.</a></p>
+
+<ul>
+<li>1. Copy ScanbotBarcodeScannerSDK folder into your app&rsquo;s project folder</li>
+<li>2. Open your app project in Xcode</li>
+<li>3. Select your app&rsquo;s build target and drag the XCFramework into it</li>
+</ul>
+
+<p><a name='step-by-step-xc'></a></p>
+<h3 id='3-1-step-by-step-xcframework-installation-guide' class='heading'>3.1. Step-by-step XCFramework installation guide</h3>
+
+<p><strong>Step 1</strong>
+<img src="./Images/Install7.gif" alt="Copy ScanbotBarcodeScannerSDK folder into your apps project folder">
+Copy the downloaded ScanbotBarcodeScannerSDK folder into your app&rsquo;s project folder.</p>
+
+<p><strong>Step 2</strong>
+<img src="./Images/Install8.gif" alt="Open your app project in Xcode">
+Open your app project in Xcode.</p>
+
+<p><strong>Step 3</strong>
+<img src="./Images/Install9.gif" alt="Drag the XCFramework into your project.">
+Navigate into the ScanbotBarcodeScannerSDK folder and drag ScanbotBarcodeScannerSDK.xcframework into your project&rsquo;s &lsquo;Frameworks, Libraries and Embedded Content&rsquo; section.</p>
 <h2 id='import' class='heading'>Import</h2>
 
 <p>Now you should be able to import the framework&rsquo;s umbrella header in your source code and start using it.  </p>
@@ -553,7 +591,7 @@ Download it from our <a href="https://scanbot.io/sdk.html">website</a> and apply
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2021 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2021-03-11)</p>
+      <p>&copy; 2021 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2021-03-26)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.12.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
