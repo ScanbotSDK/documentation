@@ -84,6 +84,7 @@ super fast integration time and customizable colors and texts to match your bran
   <li>Parse and extract data from XML of Data Matrix barcodes on Medical Plans (German Medikationsplan).</li>
   <li>Data parser of QR-Code values printed on SEPA pay forms. See SEPADocument.</li>
   <li>vCard data from a QR-Code (e.g. on business cards). See VCardDocument.</li>
+  <li>Swiss QR data from a QR-Code. See SwissQRDocument.</li>
 </ul>
 
 <p><a name="requirements"></a></p>
@@ -339,7 +340,7 @@ Add it as a dependency to your project:</p>
 <span class="n">barcodeCameraConfiguration</span><span class="p">.</span><span class="nf">setBarcodeFormatsFilter</span><span class="p">(</span><span class="o">..</span><span class="p">.)</span>
 <span class="c1">// set further config properties ...</span>
 
-<span class="c1">// Create an Intent for the BarcodeScannerActivity with the configuaration and start it:</span>
+<span class="c1">// Create an Intent for the BarcodeScannerActivity with the configuration and start it:</span>
 <span class="kd">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="nc">BarcodeScannerActivity</span><span class="p">.</span><span class="nf">newIntent</span><span class="p">(</span><span class="k">this</span><span class="nd">@MainActivity</span><span class="p">,</span> <span class="n">barcodeCameraConfiguration</span><span class="p">)</span>
 <span class="nf">startActivityForResult</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="nc">MY_BARCODE_UI_REQUEST_CODE</span><span class="p">)</span>
 </code></pre></div></div>
@@ -377,8 +378,7 @@ to implement the most common tasks in Scanbot Barcode Scanner SDK.</p>
 
 <h4 id="integration-of-classical-sdk-components">Integration of Classical SDK Components</h4>
 
-<p>Use the classes <code class="highlighter-rouge">ScanbotCameraView</code>, <code class="highlighter-rouge">BarcodeDetectorFrameHandler</code>, <code class="highlighter-rouge">ScanbotBarcodeDetector</code>, and <code class="highlighter-rouge">BarcodeAutoSnappingController</code>
-to build a custom scanner UI for Barcode and QR-Code scanning.</p>
+<p>Use the classes <code class="highlighter-rouge">ScanbotCameraView</code>, <code class="highlighter-rouge">BarcodeDetectorFrameHandler</code>, <code class="highlighter-rouge">ScanbotBarcodeDetector</code>, <code class="highlighter-rouge">BarcodeScannerConfig</code> and <code class="highlighter-rouge">BarcodeAutoSnappingController</code> to build a custom scanner UI for Barcode and QR-Code scanning.</p>
 
 <h4 id="scanbotcameraview">ScanbotCameraView</h4>
 
@@ -630,7 +630,44 @@ e.g. JPG files from the photo library or other sources.</p>
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history-and-changelog">Release History and Changelog</h3>
 
-<h3 id="version-151-10-mar-2021">Version 1.5.1 (10 Mar 2021)</h3>
+<h3 id="version-160-29-mar-2021">Version 1.6.0 (29 Mar 2021)</h3>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Now it is possible to set <code class="highlighter-rouge">ScanbotBarcodeDetector</code> to scan only the given types of <code class="highlighter-rouge">BarcodeDocumentFormat</code> and filter out others automatically</li>
+      <li>Added <code class="highlighter-rouge">minimumTextLength</code>, <code class="highlighter-rouge">maximumTextLength</code>, <code class="highlighter-rouge">minimum1DQuietZoneSize</code> params for <code class="highlighter-rouge">ScanbotBarcodeDetector</code> as <code class="highlighter-rouge">BarcodeScannerAdditionalConfig</code> entity.</li>
+      <li>Added new method <code class="highlighter-rouge">setBarcodeScannerAdditionalConfiguration</code> for RTU <code class="highlighter-rouge">BarcodeScannerConfiguration</code> to set the <code class="highlighter-rouge">minimumTextLength</code>, <code class="highlighter-rouge">maximumTextLength</code>, <code class="highlighter-rouge">minimum1DQuietZoneSize</code> params.</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Wrapped general JVM exceptions with specific Scanbot SDK alternatives to enhance crash report readability.</li>
+      <li>Optimized memory consumption of <code class="highlighter-rouge">BarcodeDetector</code></li>
+      <li><code class="highlighter-rouge">scanbot-sdk-crypto-persistence</code> library supports min API 21+</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Fixed calculation of the visible rectangle for <code class="highlighter-rouge">CameraView</code>. It solves problems related to the scanning of documents which have borders close to the side of the screen</li>
+      <li>Fixed multiple simultaneous detection results on a single ITF barcode</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li><strong>IMPORTANT!</strong> Classical component <code class="highlighter-rouge">ScanbotBarcodeDetector</code> is no longer a singleton! You should get your instance from SDK, configure it and use it as needed. Calling <code class="highlighter-rouge">ScanbotSDK(this).barcodeDetector()</code> elsewhere will return a new instance of this component with default config. Refer to <a href="https://github.com/doo/scanbot-sdk-example-android/blob/master/classical-components-demo/barcode-scanner/src/main/java/io/scanbot/example/ui/BarcodeScannerActivity.kt">example implementation</a>.</li>
+      <li>Removed a set of methods from <code class="highlighter-rouge">ScanbotBarcodeDetector</code> and <code class="highlighter-rouge">BarcodeDetectorFrameHandler</code> - code should be updated to use new <code class="highlighter-rouge">setConfig</code> and <code class="highlighter-rouge">modifyConfig</code> methods and <code class="highlighter-rouge">BarcodeScannerConfig</code> entity.</li>
+      <li><code class="highlighter-rouge">CheckableTextView</code> was removed from the SDK. Consider the usage of <code class="highlighter-rouge">CheckedTextView</code> from Android SDK instead</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Updated AndroidX Security Crypto library to the version <code class="highlighter-rouge">1.1.0-alpha03</code></li>
+      <li>Removed AndroidX <code class="highlighter-rouge">security-identity-credential</code> library from dependencies</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="version-151-10-mar-2021">Version 1.5.1 (10 Mar 2021)</h4>
 <ul>
   <li>⚠️ Breaking changes:
     <ul>
@@ -639,7 +676,7 @@ e.g. JPG files from the photo library or other sources.</p>
   </li>
 </ul>
 
-<h3 id="version-150-22-feb-2021">Version 1.5.0 (22 Feb 2021)</h3>
+<h4 id="version-150-22-feb-2021">Version 1.5.0 (22 Feb 2021)</h4>
 <ul>
   <li>🎉 New:
     <ul>
