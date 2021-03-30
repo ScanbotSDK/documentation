@@ -586,14 +586,14 @@ as a data model.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Page</span> <span class="o">(</span>
   <span class="kt">String</span> <span class="n">pageId</span><span class="o">;</span>
-  <span class="n">List</span><span class="o">&lt;</span><span class="n">PolygonPoint</span><span class="o">&gt;</span> <span class="n">polygon</span><span class="o">;</span>
-  <span class="n">DetectionStatus</span> <span class="n">detectionStatus</span><span class="o">;</span>
-  <span class="n">ImageFilterType</span> <span class="n">filter</span><span class="o">;</span>
-  <span class="n">Size</span> <span class="n">documentImageSizeLimit</span><span class="o">;</span>
-  <span class="n">Uri</span> <span class="n">originalImageFileUri</span><span class="o">;</span>
-  <span class="n">Uri</span> <span class="n">documentImageFileUri</span><span class="o">;</span>
-  <span class="n">Uri</span> <span class="n">originalPreviewImageFileUri</span><span class="o">;</span>
-  <span class="n">Uri</span> <span class="n">documentPreviewImageFileUri</span><span class="o">;</span>
+  <span class="n">List</span><span class="o">&lt;</span><span class="n">PolygonPoint</span><span class="o">&gt;?</span> <span class="n">polygon</span><span class="o">;</span>
+  <span class="n">DetectionStatus</span><span class="o">?</span> <span class="n">detectionStatus</span><span class="o">;</span>
+  <span class="n">ImageFilterType</span><span class="o">?</span> <span class="n">filter</span><span class="o">;</span>
+  <span class="n">Size</span><span class="o">?</span> <span class="n">documentImageSizeLimit</span><span class="o">;</span>
+  <span class="n">Uri</span><span class="o">?</span> <span class="n">originalImageFileUri</span><span class="o">;</span>
+  <span class="n">Uri</span><span class="o">?</span> <span class="n">documentImageFileUri</span><span class="o">;</span>
+  <span class="n">Uri</span><span class="o">?</span> <span class="n">originalPreviewImageFileUri</span><span class="o">;</span>
+  <span class="n">Uri</span><span class="o">?</span> <span class="n">documentPreviewImageFileUri</span><span class="o">;</span>
 <span class="o">)</span>
 </code></pre></div></div>
 
@@ -710,179 +710,179 @@ If multi-page mode is not enabled and <code class="highlighter-rouge">result.sta
 <p>All UI configuration options are optional.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// The background color of the top toolbar.</span>
-  <span class="n">Color</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
 
   <span class="c1">/// The color of all inactive toggle buttons in the toolbar.</span>
-  <span class="n">Color</span> <span class="n">topBarButtonsInactiveColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsInactiveColor</span><span class="o">;</span>
 
   <span class="c1">/// The color of all active toggle buttons in the toolbar.</span>
-  <span class="n">Color</span> <span class="n">topBarButtonsActiveColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsActiveColor</span><span class="o">;</span>
 
   <span class="c1">/// The color of the camera background (relevant only when the camera preview mode is CameraPreviewMode.FIT_IN).</span>
-  <span class="n">Color</span> <span class="n">cameraBackgroundColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">cameraBackgroundColor</span><span class="o">;</span>
 
   <span class="c1">/// The background color of the user guidance hints.</span>
-  <span class="n">Color</span> <span class="n">userGuidanceBackgroundColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">userGuidanceBackgroundColor</span><span class="o">;</span>
 
   <span class="c1">/// The text color of the user guidance hints.</span>
-  <span class="n">Color</span> <span class="n">userGuidanceTextColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">userGuidanceTextColor</span><span class="o">;</span>
 
   <span class="c1">/// The background color of the bottom shutter-bar.</span>
-  <span class="n">Color</span> <span class="n">bottomBarBackgroundColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">bottomBarBackgroundColor</span><span class="o">;</span>
 
   <span class="c1">/// The color of the title of all buttons in the bottom shutter-bar (Cancel button, etc.),</span>
   <span class="c1">/// as well as the camera permission prompt button.</span>
-  <span class="n">Color</span> <span class="n">bottomBarButtonsColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">bottomBarButtonsColor</span><span class="o">;</span>
 
   <span class="c1">/// The foreground color of the shutter button in auto-snapping mode.</span>
-  <span class="n">Color</span> <span class="n">shutterButtonAutoInnerColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">shutterButtonAutoInnerColor</span><span class="o">;</span>
 
   <span class="c1">/// The background color of the shutter button in auto-snapping mode.</span>
-  <span class="n">Color</span> <span class="n">shutterButtonAutoOuterColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">shutterButtonAutoOuterColor</span><span class="o">;</span>
 
   <span class="c1">/// The background color of the shutter button in manual mode.</span>
-  <span class="n">Color</span> <span class="n">shutterButtonManualOuterColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">shutterButtonManualOuterColor</span><span class="o">;</span>
 
   <span class="c1">/// The foreground color of the shutter button in manual mode.</span>
-  <span class="n">Color</span> <span class="n">shutterButtonManualInnerColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">shutterButtonManualInnerColor</span><span class="o">;</span>
 
   <span class="c1">/// The color of the detected document outline when the document's angle, size or aspect ratio</span>
   <span class="c1">/// is not yet optimal.</span>
   <span class="c1">/// (All detection statuses .DetectionStatus that have the OK_BUT_XXX prefix).</span>
-  <span class="n">Color</span> <span class="n">polygonColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">polygonColor</span><span class="o">;</span>
 
   <span class="c1">/// The color of the detected document outline when we are ready to snap DetectionStatus.OK.</span>
-  <span class="n">Color</span> <span class="n">polygonColorOK</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">polygonColorOK</span><span class="o">;</span>
 
   <span class="c1">/// The background color of the detected document outline when the document's angle, size or aspect ratio</span>
   <span class="c1">/// is not yet optimal.</span>
   <span class="c1">/// (All DetectionResult with OK_BUT_XXX).</span>
-  <span class="n">Color</span> <span class="n">polygonBackgroundColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">polygonBackgroundColor</span><span class="o">;</span>
 
   <span class="c1">/// The background color of the detected document outline when we are ready to snap DetectionStatus.OK.</span>
-  <span class="n">Color</span> <span class="n">polygonBackgroundColorOK</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">polygonBackgroundColorOK</span><span class="o">;</span>
 
-  <span class="n">Color</span> <span class="n">shutterButtonIndicatorColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">shutterButtonIndicatorColor</span><span class="o">;</span>
 
   <span class="c1">/// Controls whether the multi-page toggle button is hidden or not.</span>
-  <span class="kt">bool</span> <span class="n">multiPageButtonHidden</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">multiPageButtonHidden</span><span class="o">;</span>
 
   <span class="c1">/// Controls whether the flash toggle button is hidden or not.</span>
-  <span class="kt">bool</span> <span class="n">flashButtonHidden</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">flashButtonHidden</span><span class="o">;</span>
 
   <span class="c1">/// Hides the shutter button if set to TRUE. Defaults to FALSE.</span>
   <span class="c1">/// If set to TRUE, auto-snapping is enabled and the property autoSnappingEnabled of the behavior configuration will</span>
   <span class="c1">/// have no effect.</span>
   <span class="c1">/// The auto-snapping button will also be hidden.</span>
-  <span class="kt">bool</span> <span class="n">shutterButtonHidden</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">shutterButtonHidden</span><span class="o">;</span>
 
   <span class="c1">/// Controls whether the auto-snapping toggle button is hidden or not.</span>
-  <span class="kt">bool</span> <span class="n">autoSnappingButtonHidden</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">autoSnappingButtonHidden</span><span class="o">;</span>
 
-  <span class="kt">bool</span> <span class="n">cancelButtonHidden</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">cancelButtonHidden</span><span class="o">;</span>
 
   <span class="c1">/// Width of the detected document outline.</span>
-  <span class="kt">int</span> <span class="n">polygonLineWidth</span><span class="o">;</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">polygonLineWidth</span><span class="o">;</span>
 
   <span class="c1">/// Max number of pages permitted to scan;</span>
-  <span class="kt">int</span> <span class="n">maxNumberOfPages</span><span class="o">;</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">maxNumberOfPages</span><span class="o">;</span>
 
   <span class="c1">/// The minimum score in percent (0 - 100) of the perspective distortion to accept a detected document.</span>
   <span class="c1">/// Default is 75.0.</span>
-  <span class="kt">double</span> <span class="n">acceptedAngleScore</span><span class="o">;</span>
+  <span class="kt">double</span><span class="o">?</span> <span class="n">acceptedAngleScore</span><span class="o">;</span>
 
   <span class="c1">/// The minimum document width or height in percent (0 - 100) of the screen size to accept a detected document.</span>
   <span class="c1">/// Default is 80.0.</span>
-  <span class="kt">double</span> <span class="n">acceptedSizeScore</span><span class="o">;</span>
+  <span class="kt">double</span><span class="o">?</span> <span class="n">acceptedSizeScore</span><span class="o">;</span>
 
   <span class="c1">/// Controls the auto-snapping speed. Sensitivity must be within the 0..1 range.</span>
   <span class="c1">/// A value of 1.0 triggers automatic capturing immediately, a value of 0.0 delays the automatic by 3 seconds.</span>
   <span class="c1">/// The default value is 0.66 (2 seconds).</span>
-  <span class="kt">double</span> <span class="n">autoSnappingSensitivity</span><span class="o">;</span>
+  <span class="kt">double</span><span class="o">?</span> <span class="n">autoSnappingSensitivity</span><span class="o">;</span>
 
   <span class="c1">/// Limits the maximum size of the document image. If width or height are zero, this property is effectively ignored.</span>
-  <span class="n">Size</span> <span class="n">documentImageSizeLimit</span><span class="o">;</span>
+  <span class="n">Size</span><span class="o">?</span> <span class="n">documentImageSizeLimit</span><span class="o">;</span>
 
   <span class="c1">/// Preview mode of the camera: Fit-In or Fill-In.</span>
   <span class="c1">/// Optional, default is Fit-In.</span>
-  <span class="n">CameraPreviewMode</span> <span class="n">cameraPreviewMode</span><span class="o">;</span>
+  <span class="n">CameraPreviewMode</span><span class="o">?</span> <span class="n">cameraPreviewMode</span><span class="o">;</span>
 
   <span class="c1">/// Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.</span>
   <span class="c1">/// By default the camera orientation is not locked.</span>
-  <span class="n">CameraOrientationMode</span> <span class="n">orientationLockMode</span><span class="o">;</span>
+  <span class="n">CameraOrientationMode</span><span class="o">?</span> <span class="n">orientationLockMode</span><span class="o">;</span>
 
   <span class="c1">/// Sets whether to ignore the DetectionResult.OK_BUT_BAD_ASPECT_RATIO detection status.</span>
   <span class="c1">/// By default BadAspectRatio is not ignored.</span>
-  <span class="kt">bool</span> <span class="n">ignoreBadAspectRatio</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">ignoreBadAspectRatio</span><span class="o">;</span>
 
   <span class="c1">/// Controls whether the flash should be initially enabled.</span>
   <span class="c1">/// The default value is FALSE.</span>
-  <span class="kt">bool</span> <span class="n">flashEnabled</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">flashEnabled</span><span class="o">;</span>
 
   <span class="c1">/// Controls multi-page mode. When enabled, the user can take multiple document photos before</span>
   <span class="c1">/// closing the screen by tapping the page counter button. When disabled, the screen will be</span>
   <span class="c1">/// closed immediately after the first document photo is taken.</span>
   <span class="c1">/// The default value is FALSE.</span>
-  <span class="kt">bool</span> <span class="n">multiPageEnabled</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">multiPageEnabled</span><span class="o">;</span>
 
   <span class="c1">/// When auto-snapping is enabled the document scanner will take a photo automatically</span>
   <span class="c1">/// when a document is detected, conditions are good and the auto-snapping time-out elapses. In this</span>
   <span class="c1">/// mode the user can still tap the shutter button to snap a document.</span>
-  <span class="kt">bool</span> <span class="n">autoSnappingEnabled</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">autoSnappingEnabled</span><span class="o">;</span>
 
-  <span class="kt">String</span> <span class="n">multiPageButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">multiPageButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Title of the cancel button.</span>
-  <span class="kt">String</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Title of the flash toggle button.</span>
-  <span class="kt">String</span> <span class="n">flashButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">flashButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Title of the auto-snapping toggle button.</span>
-  <span class="kt">String</span> <span class="n">autoSnappingButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">autoSnappingButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Title suffix of the button that finishes the document scanning when multi-page scanning is enabled.</span>
   <span class="c1">/// The button's title has the format "# Pages", where # shows the number of images captured thus far and the</span>
   <span class="c1">/// suffix "Pages" is set using this method.</span>
-  <span class="kt">String</span> <span class="n">pageCounterButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">pageCounterButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// The text being displayed on the user-guidance label when the scanner's energy saver is activated.</span>
   <span class="c1">/// iOS only.</span>
-  <span class="kt">String</span> <span class="n">textHintEnergySavingActive</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintEnergySavingActive</span><span class="o">;</span>
 
   <span class="c1">/// Text hint that will be shown when the current detection status is DetectionStatus.ERROR_NOTHING_DETECTED</span>
-  <span class="kt">String</span> <span class="n">textHintNothingDetected</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintNothingDetected</span><span class="o">;</span>
 
   <span class="c1">/// Text hint that will be shown when the current detection status is DetectionStatus.ERROR_TOO_NOISY</span>
-  <span class="kt">String</span> <span class="n">textHintTooNoisy</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintTooNoisy</span><span class="o">;</span>
 
   <span class="c1">/// Text hint that will be shown when the current detection status is DetectionStatus.ERROR_TOO_DARK</span>
-  <span class="kt">String</span> <span class="n">textHintTooDark</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintTooDark</span><span class="o">;</span>
 
   <span class="c1">/// Text hint that will be shown when the current detection status is DetectionStatus.OK_BUT_BAD_ANGLES</span>
-  <span class="kt">String</span> <span class="n">textHintBadAngles</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintBadAngles</span><span class="o">;</span>
 
   <span class="c1">/// Text hint that will be shown when the current detection status is OK_BUT_BAD_ASPECT_RATIO</span>
-  <span class="kt">String</span> <span class="n">textHintBadAspectRatio</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintBadAspectRatio</span><span class="o">;</span>
 
   <span class="c1">/// Text hint that will be shown when the current detection status is DetectionStatus.OK_BUT_TOO_SMALL</span>
-  <span class="kt">String</span> <span class="n">textHintTooSmall</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintTooSmall</span><span class="o">;</span>
 
   <span class="c1">/// The background color of the top toolbar.</span>
-  <span class="kt">String</span> <span class="n">textHintOffCenter</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintOffCenter</span><span class="o">;</span>
 
   <span class="c1">/// Text hint that will be shown when the current detection status is DetectionStatus.OK</span>
-  <span class="kt">String</span> <span class="n">textHintOK</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintOK</span><span class="o">;</span>
 
-  <span class="kt">String</span> <span class="n">cameraUnavailableExplanationText</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">cameraUnavailableExplanationText</span><span class="o">;</span>
 
   <span class="c1">/// Title of the button that opens the screen where the user can allow</span>
   <span class="c1">/// the usage of the camera by the app.</span>
-  <span class="kt">String</span> <span class="n">enableCameraButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Text that will be displayed when the app is not allowed to use the camera,</span>
   <span class="c1">/// prompting the user to enable the usage of the camera.</span>
-  <span class="kt">String</span> <span class="n">enableCameraExplanationText</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraExplanationText</span><span class="o">;</span>
 </code></pre></div></div>
 
 <p><a name="module_ScanbotSdkUi.startCroppingScreen"></a></p>
@@ -923,60 +923,59 @@ and contains some smart UI elements like magnetic lines and a magnifier.</p>
 <p>All UI configuration settings are optional.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// Background color of the main screen.</span>
-  <span class="n">Color</span> <span class="n">backgroundColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">backgroundColor</span><span class="o">;</span>
 
   <span class="c1">/// Background color of the bottom toolbar.</span>
-  <span class="n">Color</span> <span class="n">bottomBarBackgroundColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">bottomBarBackgroundColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the titles of all buttons in the bottom toolbar (Rotate button).</span>
-  <span class="n">Color</span> <span class="n">bottomBarButtonsColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">bottomBarButtonsColor</span><span class="o">;</span>
 
   <span class="c1">/// Title of the cancel button.</span>
-  <span class="kt">String</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Title of the Done button.</span>
-  <span class="kt">String</span> <span class="n">doneButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">doneButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Default color of the cropping outline.</span>
-  <span class="n">Color</span> <span class="n">polygonColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">polygonColor</span><span class="o">;</span>
 
   <span class="c1">/// Outline color of magnetically snapped edges.</span>
-  <span class="n">Color</span> <span class="n">polygonColorMagnetic</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">polygonColorMagnetic</span><span class="o">;</span>
 
   <span class="c1">/// Width of the cropping outline.</span>
   <span class="kt">int</span> <span class="n">polygonLineWidth</span><span class="o">;</span>
 
   <span class="c1">/// Title of the Rotate button.</span>
-  <span class="kt">String</span> <span class="n">rotateButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">rotateButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Background color of the top toolbar.</span>
-  <span class="n">Color</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the titles of all buttons in the top toolbar (Cancel and Done buttons).</span>
-  <span class="n">Color</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
 
   <span class="c1">/// Title in the top bar (iOS only).</span>
-  <span class="kt">String</span> <span class="n">topBarTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">topBarTitle</span><span class="o">;</span>
 
   <span class="c1">/// Color of the title in the top bar (iOS only).</span>
-  <span class="n">Color</span> <span class="n">titleColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">titleColor</span><span class="o">;</span>
 
   <span class="c1">/// Title of the Detect button.</span>
-  <span class="kt">String</span> <span class="n">detectButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">detectButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Title of the Reset button.</span>
-  <span class="kt">String</span> <span class="n">resetButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">resetButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Controls whether the Rotate button is hidden or not.</span>
-  <span class="kt">bool</span> <span class="n">rotateButtonHidden</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">rotateButtonHidden</span><span class="o">;</span>
 
   <span class="c1">/// Controls whether the Detect/Reset button is hidden or not.</span>
-  <span class="kt">bool</span> <span class="n">detectResetButtonHidden</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">detectResetButtonHidden</span><span class="o">;</span>
 
-  <span class="n">Page</span> <span class="n">page</span><span class="o">;</span>
   <span class="c1">/// UI orientation lock mode: PORTRAIT, LANDSCAPE, etc.</span>
   <span class="c1">/// By default the UI is not locked.</span>
-  <span class="n">CameraOrientationMode</span> <span class="n">orientationLockMode</span><span class="o">;</span>
+  <span class="n">CameraOrientationMode</span><span class="o">?</span> <span class="n">orientationLockMode</span><span class="o">;</span>
 </code></pre></div></div>
 
 <p><a name="module_ScanbotSdkUi.startBarcodeScanner"></a></p>
@@ -1034,66 +1033,65 @@ By default all supported formats will be detected.</p>
 </ul>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// Background color of the top toolbar.</span>
-  <span class="n">Color</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the titles of all buttons in the top toolbar.</span>
-  <span class="n">Color</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
 
   <span class="c1">/// Background color outside the finder window.</span>
-  <span class="n">Color</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the finder window's outline.</span>
-  <span class="n">Color</span> <span class="n">finderLineColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">finderLineColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the text hint under the finder window.</span>
-  <span class="n">Color</span> <span class="n">finderTextHintColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">finderTextHintColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of active buttons on bottom bar</span>
-  <span class="n">Color</span> <span class="n">bottomButtonsActiveColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">bottomButtonsActiveColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of inactive buttons on bottom bar</span>
-  <span class="n">Color</span> <span class="n">bottomButtonsInactiveColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">bottomButtonsInactiveColor</span><span class="o">;</span>
 
-  <span class="kt">bool</span> <span class="n">cancelButtonHidden</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">cancelButtonHidden</span><span class="o">;</span>
 
   <span class="c1">/// Title of the cancel button.</span>
-  <span class="kt">String</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Title of the button that opens the screen where the user can allow</span>
   <span class="c1">/// the usage of the camera by the app.</span>
-  <span class="kt">String</span> <span class="n">enableCameraButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Text that will be displayed when the app</span>
   <span class="c1">/// is not allowed to use the camera, prompting the user</span>
   <span class="c1">/// to enable the usage of the camera.</span>
-  <span class="kt">String</span> <span class="n">enableCameraExplanationText</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraExplanationText</span><span class="o">;</span>
 
   <span class="c1">/// Text hint shown under the finder window.</span>
-  <span class="kt">String</span> <span class="n">finderTextHint</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">finderTextHint</span><span class="o">;</span>
 
-  <span class="kt">String</span> <span class="n">flashButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">flashButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Aspect ratio of finder view.</span>
-  <span class="n">FinderAspectRatio</span> <span class="n">finderAspectRatio</span><span class="o">;</span>
+  <span class="n">FinderAspectRatio</span><span class="o">?</span> <span class="n">finderAspectRatio</span><span class="o">;</span>
 
   <span class="c1">/// Thickness of the finder window's outline.</span>
-  <span class="kt">int</span> <span class="n">finderLineWidth</span><span class="o">;</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">finderLineWidth</span><span class="o">;</span>
 
   <span class="c1">/// Controls whether to play a beep sound after a successful detection.</span>
   <span class="c1">/// Default value is TRUE.</span>
-  <span class="kt">bool</span> <span class="n">successBeepEnabled</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">successBeepEnabled</span><span class="o">;</span>
 
   <span class="c1">/// Controls whether the flash should be initially enabled.</span>
   <span class="c1">/// The default value is FALSE.</span>
-  <span class="kt">bool</span> <span class="n">flashEnabled</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">flashEnabled</span><span class="o">;</span>
 
   <span class="c1">/// Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.</span>
   <span class="c1">/// By default the camera orientation is not locked.</span>
-
-  <span class="n">CameraOrientationMode</span> <span class="n">orientationLockMode</span><span class="o">;</span>
+  <span class="n">CameraOrientationMode</span><span class="o">?</span> <span class="n">orientationLockMode</span><span class="o">;</span>
 
   <span class="c1">/// Barcode formats which need to be recognized.</span>
-  <span class="n">List</span><span class="o">&lt;</span><span class="n">BarcodeFormat</span><span class="o">&gt;</span> <span class="n">barcodeFormats</span><span class="o">;</span>
+  <span class="n">List</span><span class="o">&lt;</span><span class="n">BarcodeFormat</span><span class="o">&gt;?</span> <span class="n">barcodeFormats</span><span class="o">;</span>
 </code></pre></div></div>
 
 <p><a name="module_ScanbotSdkUi.startBatchBarcodeScanner"></a></p>
@@ -1138,91 +1136,91 @@ All config properties are optional.</p>
 <p><code class="highlighter-rouge">BatchBarcodeScannerConfiguration:</code></p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// Change data representation for scanned list items.</span>
-  <span class="n">BarcodeDataFormatter</span> <span class="n">barcodeFormatter</span><span class="o">;</span>
+  <span class="n">BarcodeDataFormatter</span><span class="o">?</span> <span class="n">barcodeFormatter</span><span class="o">;</span>
 
   <span class="c1">/// Background color of the top toolbar.</span>
-  <span class="n">Color</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the titles of all buttons in the top toolbar.</span>
-  <span class="n">Color</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the titles of all inactive buttons in the top toolbar.</span>
-  <span class="n">Color</span> <span class="n">topBarButtonsInactiveColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsInactiveColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of barcodes count text.</span>
-  <span class="n">Color</span> <span class="n">barcodesCountTextColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">barcodesCountTextColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of barcodes details action.</span>
-  <span class="n">Color</span> <span class="n">detailsActionColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">detailsActionColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of barcodes details background.</span>
-  <span class="n">Color</span> <span class="n">detailsBackgroundColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">detailsBackgroundColor</span><span class="o">;</span>
 
   <span class="c1">/// Primary color for barcodes details.</span>
-  <span class="n">Color</span> <span class="n">detailsPrimaryColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">detailsPrimaryColor</span><span class="o">;</span>
 
   <span class="c1">/// Background color outside the finder window.</span>
-  <span class="n">Color</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the finder window's outline.</span>
-  <span class="n">Color</span> <span class="n">finderLineColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">finderLineColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the text hint under the finder window.</span>
-  <span class="n">Color</span> <span class="n">finderTextHintColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">finderTextHintColor</span><span class="o">;</span>
 
   <span class="c1">/// To hide cancel button or not.</span>
-  <span class="kt">bool</span> <span class="n">cancelButtonHidden</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">cancelButtonHidden</span><span class="o">;</span>
 
   <span class="c1">/// Title of the cancel button.</span>
-  <span class="kt">String</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Title of the button that opens the screen where the user can allow</span>
   <span class="c1">/// the usage of the camera by the app.</span>
-  <span class="kt">String</span> <span class="n">enableCameraButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Text that will be displayed when the app</span>
   <span class="c1">/// is not allowed to use the camera, prompting the user</span>
   <span class="c1">/// to enable the usage of the camera.</span>
-  <span class="kt">String</span> <span class="n">enableCameraExplanationText</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraExplanationText</span><span class="o">;</span>
 
   <span class="c1">/// Text hint shown under the finder window.</span>
-  <span class="kt">String</span> <span class="n">finderTextHint</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">finderTextHint</span><span class="o">;</span>
 
   <span class="c1">/// Text of submit button.</span>
-  <span class="kt">String</span> <span class="n">submitButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">submitButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Text of clear button.</span>
-  <span class="kt">String</span> <span class="n">clearButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">clearButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Text of count text.</span>
-  <span class="kt">String</span> <span class="n">barcodesCountText</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">barcodesCountText</span><span class="o">;</span>
 
   <span class="c1">/// Text of fetch state text.</span>
-  <span class="kt">String</span> <span class="n">fetchingStateText</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">fetchingStateText</span><span class="o">;</span>
 
   <span class="c1">/// Text when there are no scanned barcodes yet.</span>
-  <span class="kt">String</span> <span class="n">noBarcodesTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">noBarcodesTitle</span><span class="o">;</span>
 
   <span class="c1">/// Aspect ratio of finder view.</span>
-  <span class="n">FinderAspectRatio</span> <span class="n">finderAspectRatio</span><span class="o">;</span>
+  <span class="n">FinderAspectRatio</span><span class="o">?</span> <span class="n">finderAspectRatio</span><span class="o">;</span>
 
   <span class="c1">/// Thickness of the finder window's outline.</span>
-  <span class="kt">int</span> <span class="n">finderLineWidth</span><span class="o">;</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">finderLineWidth</span><span class="o">;</span>
 
   <span class="c1">/// Controls whether to play a beep sound after a successful detection.</span>
   <span class="c1">/// Default value is TRUE.</span>
-  <span class="kt">bool</span> <span class="n">successBeepEnabled</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">successBeepEnabled</span><span class="o">;</span>
 
   <span class="c1">/// Controls whether the flash should be initially enabled.</span>
   <span class="c1">/// The default value is FALSE.</span>
-  <span class="kt">bool</span> <span class="n">flashEnabled</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">flashEnabled</span><span class="o">;</span>
 
   <span class="c1">/// Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.</span>
   <span class="c1">/// By default the camera orientation is not locked.</span>
-  <span class="n">CameraOrientationMode</span> <span class="n">orientationLockMode</span><span class="o">;</span>
+  <span class="n">CameraOrientationMode</span><span class="o">?</span> <span class="n">orientationLockMode</span><span class="o">;</span>
 
   <span class="c1">/// Barcode formats which need to be recognized.</span>
-  <span class="n">List</span><span class="o">&lt;</span><span class="n">BarcodeFormat</span><span class="o">&gt;</span> <span class="n">barcodeFormats</span><span class="o">;</span>
+  <span class="n">List</span><span class="o">&lt;</span><span class="n">BarcodeFormat</span><span class="o">&gt;?</span> <span class="n">barcodeFormats</span><span class="o">;</span>
 </code></pre></div></div>
 
 <p><a name="module_ScanbotSdkUi.startMrzScanner"></a></p>
@@ -1264,60 +1262,60 @@ All config properties are optional.</p>
 All other settings are optional.</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// Background color of the top toolbar.</span>
-  <span class="n">Color</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the titles of all buttons in the top toolbar.</span>
-  <span class="n">Color</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
 
   <span class="c1">/// Background color outside the finder window.</span>
-  <span class="n">Color</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the finder window's outline.</span>
-  <span class="n">Color</span> <span class="n">finderLineColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">finderLineColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the text hint under the finder window.</span>
-  <span class="n">Color</span> <span class="n">finderTextHintColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">finderTextHintColor</span><span class="o">;</span>
 
-  <span class="n">Color</span> <span class="n">bottomButtonsActiveColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">bottomButtonsActiveColor</span><span class="o">;</span>
 
-  <span class="n">Color</span> <span class="n">bottomButtonsInactiveColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">bottomButtonsInactiveColor</span><span class="o">;</span>
 
   <span class="c1">/// Title of the cancel button.</span>
-  <span class="kt">String</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Title of the button that opens the screen where the user can allow</span>
   <span class="c1">/// the usage of the camera by the app.</span>
-  <span class="kt">String</span> <span class="n">enableCameraButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Text that will be displayed when the app</span>
   <span class="c1">/// is not allowed to use the camera, prompting the user</span>
   <span class="c1">/// to enable the usage of the camera.</span>
-  <span class="kt">String</span> <span class="n">enableCameraExplanationText</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraExplanationText</span><span class="o">;</span>
 
   <span class="c1">/// Text hint shown under the finder window.</span>
-  <span class="kt">String</span> <span class="n">finderTextHint</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">finderTextHint</span><span class="o">;</span>
 
   <span class="c1">/// Aspect ratio of finder view.</span>
-  <span class="n">FinderAspectRatio</span> <span class="n">finderAspectRatio</span><span class="o">;</span>
+  <span class="n">FinderAspectRatio</span><span class="o">?</span> <span class="n">finderAspectRatio</span><span class="o">;</span>
 
   <span class="c1">/// Thickness of the finder window's outline.</span>
-  <span class="kt">int</span> <span class="n">finderLineWidth</span><span class="o">;</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">finderLineWidth</span><span class="o">;</span>
 
   <span class="c1">/// Controls whether to play a beep sound after a successful detection.</span>
   <span class="c1">/// Default value is TRUE.</span>
-  <span class="kt">bool</span> <span class="n">successBeepEnabled</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">successBeepEnabled</span><span class="o">;</span>
 
   <span class="c1">/// Controls whether the flash should be initially enabled.</span>
   <span class="c1">/// The default value is FALSE.</span>
-  <span class="kt">bool</span> <span class="n">flashEnabled</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">flashEnabled</span><span class="o">;</span>
 
-  <span class="kt">String</span> <span class="n">flashButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">flashButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.</span>
   <span class="c1">/// By default the camera orientation is not locked.</span>
-  <span class="n">CameraOrientationMode</span> <span class="n">orientationLockMode</span><span class="o">;</span>
+  <span class="n">CameraOrientationMode</span><span class="o">?</span> <span class="n">orientationLockMode</span><span class="o">;</span>
 
-  <span class="kt">bool</span> <span class="n">cancelButtonHidden</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">cancelButtonHidden</span><span class="o">;</span>
 </code></pre></div></div>
 
 <p><a name="module_ScanbotSdkUi.startEhicScanner"></a></p>
@@ -1358,59 +1356,59 @@ All other settings are optional.</p>
 <h5 id="healthinsurancescannerconfiguration">HealthInsuranceScannerConfiguration</h5>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// Background color of the top toolbar.</span>
-  <span class="n">Color</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the titles of all buttons in the top toolbar.</span>
-  <span class="n">Color</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
 
   <span class="c1">/// Background color outside the finder window.</span>
-  <span class="n">Color</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the finder window's outline.</span>
-  <span class="n">Color</span> <span class="n">finderLineColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">finderLineColor</span><span class="o">;</span>
 
   <span class="c1">/// Color of the text hint under the finder window.</span>
-  <span class="n">Color</span> <span class="n">finderTextHintColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">finderTextHintColor</span><span class="o">;</span>
 
-  <span class="n">Color</span> <span class="n">bottomButtonsActiveColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">bottomButtonsActiveColor</span><span class="o">;</span>
 
-  <span class="n">Color</span> <span class="n">bottomButtonsInactiveColor</span><span class="o">;</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">bottomButtonsInactiveColor</span><span class="o">;</span>
 
-  <span class="kt">bool</span> <span class="n">cancelButtonHidden</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">cancelButtonHidden</span><span class="o">;</span>
 
   <span class="c1">/// Title of the cancel button.</span>
-  <span class="kt">String</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
 
-  <span class="kt">String</span> <span class="n">detectionStatusFailedDetectionText</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">detectionStatusFailedDetectionText</span><span class="o">;</span>
 
-  <span class="kt">String</span> <span class="n">detectionStatusFailedValidationText</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">detectionStatusFailedValidationText</span><span class="o">;</span>
 
-  <span class="kt">String</span> <span class="n">detectionStatusSuccessText</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">detectionStatusSuccessText</span><span class="o">;</span>
 
   <span class="c1">/// Title of the button that opens the screen where the user can allow</span>
   <span class="c1">/// the usage of the camera by the app.</span>
-  <span class="kt">String</span> <span class="n">enableCameraButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Text that will be displayed when the app</span>
   <span class="c1">/// is not allowed to use the camera, prompting the user</span>
   <span class="c1">/// to enable the usage of the camera.</span>
-  <span class="kt">String</span> <span class="n">enableCameraExplanationText</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraExplanationText</span><span class="o">;</span>
 
   <span class="c1">/// Text hint shown under the finder window.</span>
-  <span class="kt">String</span> <span class="n">finderTextHint</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">finderTextHint</span><span class="o">;</span>
 
-  <span class="kt">String</span> <span class="n">flashButtonTitle</span><span class="o">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">flashButtonTitle</span><span class="o">;</span>
 
   <span class="c1">/// Thickness of the finder window's outline.</span>
-  <span class="kt">int</span> <span class="n">finderLineWidth</span><span class="o">;</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">finderLineWidth</span><span class="o">;</span>
 
   <span class="c1">/// Controls whether the flash should be initially enabled.</span>
   <span class="c1">/// The default value is FALSE.</span>
-  <span class="kt">bool</span> <span class="n">flashEnabled</span><span class="o">;</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">flashEnabled</span><span class="o">;</span>
 
   <span class="c1">/// Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.</span>
   <span class="c1">/// By default the camera orientation is not locked.</span>
-  <span class="n">CameraOrientationMode</span> <span class="n">orientationLockMode</span><span class="o">;</span>
+  <span class="n">CameraOrientationMode</span><span class="o">?</span> <span class="n">orientationLockMode</span><span class="o">;</span>
 </code></pre></div></div>
 
 <h3 id="page-operations">Page Operations</h3>
@@ -2266,7 +2264,22 @@ It allows you to create and distribute dedicated, smaller APKs via the <strong>P
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history-and-changelog">Release History and Changelog</h2>
 
-<h3 id="version-230-11-mar-2021">Version 2.3.0 (11 Mar 2021)</h3>
+<h3 id="240-30-mar-2021">2.4.0 (30 Mar 2021)</h3>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Add null safety support for the SDK.</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking Changes:
+    <ul>
+      <li>Due to null safety support update please follow compilation issues and warnings from ‘flutter analyze’ command</li>
+      <li>Updated minimum dart sdk to <code class="highlighter-rouge">2.12.0-0</code> and flutter to <code class="highlighter-rouge">2.0.1</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="230-11-mar-2021">2.3.0 (11 Mar 2021)</h3>
 <ul>
   <li>🎉 New:
     <ul>
@@ -2464,11 +2477,11 @@ See the API docs of <code class="highlighter-rouge">OcrResult.pages</code> for m
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 
-Open Source libraries used in the Scanbot SDK Flutter Plugin version 2.3.0:
+Open Source libraries used in the Scanbot SDK Flutter Plugin version 2.4.0:
 //-------------------------------------------------------------
 json_serializable 
 
-version 3.2.0
+version 4.0.3
 (https://github.com/dart-lang/json_serializable/blob/master/LICENSE)
 Copyright 2017, the Dart project authors. All rights reserved.
 Redistribution and use in source and binary forms, with or without
@@ -2501,7 +2514,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //-------------------------------------------------------------
 json_annotation 
 
-version 3.1.1
+version 4.0.0
 (https://github.com/dart-lang/json_serializable/blob/master/LICENSE)
 Copyright 2017, the Dart project authors. All rights reserved.
 Redistribution and use in source and binary forms, with or without
@@ -2533,9 +2546,74 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //-------------------------------------------------------------
 logging
 
-version 0.11.4
+version 1.0.0
 
 Copyright 2013, the Dart project authors. All rights reserved.
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials provided
+      with the distribution.
+    * Neither the name of Google Inc. nor the names of its
+      contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+//-------------------------------------------------------------
+pedantic
+
+version 1.11.0
+
+Copyright 2017, the Dart project authors. All rights reserved.
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials provided
+      with the distribution.
+    * Neither the name of Google Inc. nor the names of its
+      contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+//-------------------------------------------------------------
+build_runner
+
+version 1.12.1
+
+Copyright 2016, the Dart project authors. All rights reserved.
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
 met:
