@@ -45,7 +45,7 @@
 <p><a name="initializeSdk"></a></p>
 <h4 id="initialize-sdk">Initialize SDK</h4>
 <p>The Scanbot SDK must be initialized before usage. Make sure to run the initialization as early as possible.
-We recommend to implement the initialization in the <code class="highlighter-rouge">Application</code> class of the Android app, and in the <code class="highlighter-rouge">AppDelegate</code> class of the iOS app.</p>
+We recommend implementing the initialization in the <code class="highlighter-rouge">Application</code> class of the Android app, and in the <code class="highlighter-rouge">AppDelegate</code> class of the iOS app.</p>
 
 <h5 id="android"><strong>Android</strong></h5>
 <p>Add the following code to your <code class="highlighter-rouge">Application</code> class:</p>
@@ -188,7 +188,7 @@ to the <code class="highlighter-rouge">Application</code> attribute on the <code
     <span class="n">Task</span><span class="p">&lt;</span><span class="n">ImageSource</span><span class="p">&gt;</span> <span class="nf">RotateImageAsync</span><span class="p">(</span><span class="n">ImageSource</span> <span class="n">image</span><span class="p">,</span> <span class="kt">double</span> <span class="n">degrees</span><span class="p">,</span> <span class="n">ResultOptions</span> <span class="n">resultOptions</span> <span class="p">=</span> <span class="k">null</span><span class="p">);</span>
 
     <span class="c1">/// Creates a PDF file out of one or more ImageSource objects. All images must be instances of FileImageSource.</span>
-    <span class="c1">/// Those are images created with ImageSource.FromFile and images stored as files by the SDK</span>
+    <span class="c1">/// These are images created with ImageSource.FromFile and images stored as files by the SDK</span>
     <span class="c1">/// (which is the default behavior, corresponds to ResultStorage.File).</span>
     <span class="c1">///</span>
     <span class="c1">/// The generated file will be deleted when calling CleanUp. If you want to keep the file, move it to a folder that you have control over.</span>
@@ -209,7 +209,7 @@ to the <code class="highlighter-rouge">Application</code> attribute on the <code
     <span class="c1">/// Performs OCR on an image.</span>
     <span class="n">Task</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nf">PerformOcrAsync</span><span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">ImageSource</span><span class="p">&gt;</span> <span class="n">images</span><span class="p">,</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">languages</span><span class="p">,</span> <span class="kt">string</span> <span class="n">pdfOutputPath</span> <span class="p">=</span> <span class="k">null</span><span class="p">);</span>
 
-    <span class="c1">/// Creates a ScannedPage object from an ImageSource. Used when you need to pass an ImageSource to CroppingPage</span>
+    <span class="c1">/// Creates a ScannedPage object from an ImageSource. Used when you need to pass an ImageSource to CroppingPage.</span>
     <span class="n">Task</span><span class="p">&lt;</span><span class="n">IScannedPage</span><span class="p">&gt;</span> <span class="nf">CreateScannedPageAsync</span><span class="p">(</span><span class="n">ImageSource</span> <span class="n">source</span><span class="p">);</span>
 
     <span class="c1">/// Returns all scanned pages currently in persistent storage.</span>
@@ -220,11 +220,50 @@ to the <code class="highlighter-rouge">Application</code> attribute on the <code
 <span class="p">}</span>
 </code></pre></div></div>
 
+<p><a name="storageEncryption"></a></p>
+<h4 id="storage-encryption">Storage Encryption</h4>
+
+<p>Scanbot SDK provides the ability to store the generated image files (JPG, PNG) and PDF files encrypted.
+This feature provides an additional level of security to the default secure storage locations of the native SDKs.</p>
+
+<p>By default the file encryption is disabled. If you wish to enable encryption, 
+you have to pass the following config parameters on SDK initialization:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>new SBSDKConfiguration
+{
+    Encryption = new SBSDKEncryption
+    {
+        Mode = EncryptionMode.AES256,
+        Password = "SomeSecretPa$$w0rdForFileEncryption"
+    }
+};
+</code></pre></div></div>
+
+<p>By activating the storage encryption the native Scanbot SDKs will use the builtin 
+<a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES 128 or AES 256 encryption</a>.
+All generated image files (JPG, PNG) including the preview image files, as well as the exported PDF files will 
+be encrypted in memory and stored as encrypted data files on the flash storage of the device.</p>
+
+<p>The Scanbot SDK derives the AES key from the given password, 
+an internal <em>salt</em> value, and the internal number of <em>iterations</em> 
+using the <a href="https://en.wikipedia.org/wiki/PBKDF2">PBKDF2</a> function.</p>
+
+<p>When applying image operations like cropping, rotation or image filters, 
+Scanbot SDK will decrypt the image file in memory, apply the changes, encrypt and store it again.</p>
+
+<p>If encryption is enabled, <code class="highlighter-rouge">IScannedPage</code> properties <code class="highlighter-rouge">Document</code>, <code class="highlighter-rouge">Original</code>, 
+<code class="highlighter-rouge">DocumentPreview</code>, <code class="highlighter-rouge">OriginalPreview</code> and <code class="highlighter-rouge">AvailablePreview</code> will be encrypted.</p>
+
+<p>You should still pass these images to all ScanbotSDK functions, as they deal with encryption internally,
+and the paths to files are valid, however, you cannot display encrypted <code class="highlighter-rouge">ImageSource</code> objects.</p>
+
+<p>You need to use the <code class="highlighter-rouge">await DecryptedOriginal()</code> or <code class="highlighter-rouge">await DecryptedDocument()</code> 
+methods of <code class="highlighter-rouge">IScannedPage</code> to display images in your app.</p>
+
 <p><a name="persistencePageObject"></a></p>
 <h3 id="persistence-of-page-objects">Persistence of Page Objects</h3>
 <p>Scanbot SDK does <strong>not</strong> persist page objects, only the image files (.jpg or .png).
 The management of page objects and the persistence of the page metadata is left to the app.
-Depending on the use case, it may be necessary to persist the data of the page objects in the app 
+Depending on the use case, it may be necessary to persist the data of the page objects in the app
 (e.g. as JSON in a local SQLite database). If this is the case, the following must be considered.</p>
 
 <p>The Page objects contain absolute paths to the image files, i.e. the <code class="highlighter-rouge">Document</code> image of a <code class="highlighter-rouge">ScannedPage</code> might be located at:</p>
@@ -233,7 +272,7 @@ Depending on the use case, it may be necessary to persist the data of the page o
 </code></pre></div></div>
 
 <p>The page image files are stored in corresponding storage locations.
-By default, the Scanbot SDK Android uses the <strong>internal files</strong> directory of the app, whereas the Scanbot SDK iOS uses 
+By default, the Scanbot SDK Android uses the <strong>internal files</strong> directory of the app, whereas the Scanbot SDK iOS uses
 the <strong>“Application Support”</strong> folder. Those storage folders are secure and are not affected by an app update.</p>
 
 <p>However, on iOS, the <strong>absolute</strong> file path of the “Application Support” folder is not reliable.
@@ -253,11 +292,11 @@ When updating the app, the uuid <strong>may</strong> change. For example:</p>
 
 <p>To get to the new absolute paths, the API method <code class="highlighter-rouge">RefreshImageUris(IEnumerable&lt;IScannedPage&gt;)</code> has been introduced in the ScanbotSDK.Xamarin.Forms SDK version 3.2.0. Please use this method to refresh all image file URIs from affected pages:</p>
 
-<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">List</span><span class="p">&lt;</span><span class="n">IScannedPage</span><span class="p">&gt;</span> <span class="n">loadedPages</span> <span class="p">=</span> <span class="c1">// load pages from database </span>
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">List</span><span class="p">&lt;</span><span class="n">IScannedPage</span><span class="p">&gt;</span> <span class="n">loadedPages</span> <span class="p">=</span> <span class="c1">// load pages from database</span>
 <span class="kt">var</span> <span class="n">refreshedPages</span> <span class="p">=</span> <span class="k">await</span> <span class="n">SBSDK</span><span class="p">.</span><span class="n">Operations</span><span class="p">.</span><span class="nf">RefreshImageUris</span><span class="p">(</span><span class="n">loadedPages</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>It’s highly recommended using this method whenever you have to (re-)load Page objects 
+<p>It is highly recommended to use this method whenever you have to (re-)load Page objects
 from the database of your app, regardless of whether there was an app update or not.</p>
 
 <p><a name="LaunchDocumentScanner"></a></p>
@@ -281,7 +320,7 @@ from the database of your app, regardless of whether there was an app update or 
 <p><a name="LaunchCroppingScreen"></a></p>
 <h3 id="cropping-ui">Cropping UI</h3>
 
-<p>Launches the Cropping UI on the given page. A page object can be initially created using the Document Scanner ot <code class="highlighter-rouge">SBSDK.Operations.CreateScannedPageAsync()</code>.</p>
+<p>Launches the Cropping UI on the given page. A page object can be initially created using the Document Scanner or <code class="highlighter-rouge">SBSDK.Operations.CreateScannedPageAsync()</code>.</p>
 
 <p><a href="https://github.com/doo/scanbot-sdk-example-xamarin-forms/blob/master/Scanbot.SDK.Example.Forms/Pages/ImageDetailPage.cs#L43">Show in example app</a></p>
 
@@ -337,43 +376,43 @@ from the database of your app, regardless of whether there was an app update or 
 
 <p><a name="OCR"></a></p>
 <h3 id="ocr---optical-character-recognition">OCR - Optical Character Recognition</h3>
-<p>The Scanbot SDK provides a simple and convenient APIs to run Optical Character Recognition (OCR) on images.</p>
+<p>The Scanbot SDK provides simple and convenient APIs to run Optical Character Recognition (OCR) on images.</p>
 
 <p>As result you can get:</p>
 <ul>
   <li>a searchable PDF document with the recognized text layer (aka. sandwiched PDF document)</li>
   <li>recognized text as plain text</li>
   <li>bounding boxes of all recognized paragraphs, lines and words</li>
-  <li>text results and confidence values for each bounding box.</li>
+  <li>text results and confidence values for each bounding box</li>
 </ul>
 
-<p>The Scanbot OCR feature is based on the Tesseract OCR engine with some modifications and enhancements. The OCR engine supports a wide variety of languages. For each desired language a corresponding OCR training data file (<code class="highlighter-rouge">.traineddata</code>) must be provided. Furthermore the special data file <code class="highlighter-rouge">osd.traineddata</code> is required (used for orientation and script detection). The Scanbot SDK package contains no language data files to keep the SDK small in size. You have to download and include the desired language files in your app.</p>
+<p>The Scanbot OCR feature is based on the Tesseract OCR engine with some modifications and enhancements. The OCR engine supports a wide variety of languages. For each desired language a corresponding OCR training data file (<code class="highlighter-rouge">.traineddata</code>) must be provided. Furthermore, the special data file <code class="highlighter-rouge">osd.traineddata</code> is required (used for orientation and script detection). The Scanbot SDK package contains no language data files to keep the SDK small in size. You have to download and include the desired language files in your app.</p>
 
 <h4 id="preconditions-to-achieve-a-good-ocr-result">Preconditions to achieve a good OCR result</h4>
 
 <p><strong>Conditions while scanning</strong></p>
 
-<p>A perfect document for OCR is flat, straight, doesn’t show large shadows, folds, or any other objects that could distract it and is in the highest possible resolution. Our UI and algorithms do their best to help you meet these requirements. But as in photography, you can never fully get the image information back that was lost during the shot.</p>
+<p>A perfect document for OCR is flat, straight, in the highest possible resolution and does not contain large shadows, folds, or any other objects that could distract the recognizer. Our UI and algorithms do their best to help you meet these requirements. But as in photography, you can never fully get the image information back that was lost during the shot.</p>
 
 <p><strong>Languages</strong></p>
 
-<p>You can use multiple languages for OCR. But since the recognition of characters and words is a very complicated process, increasing the number of languages lowers the overall precision. With more languages, there are more results where the detected word could match. We suggest using as few languages as possible. Make sure that the language you’re trying to detect is supported by the SDK and added to the project.</p>
+<p>You can use multiple languages for OCR. But since the recognition of characters and words is a very complicated process, increasing the number of languages lowers the overall precision. With more languages, there are more results where the detected word could match. We suggest using as few languages as possible. Make sure that the language you are trying to detect is supported by the SDK and added to the project.</p>
 
 <p><strong>Size and position</strong></p>
 
-<p>Put the document on a flat surface. Take the photo from straight above in parallel to the document to make sure that the perspective correction doesn’t need to fix much. The document should fill out the camera frame while still showing all of the text that needs to be recognized. This results in more pixels for each character that needs to be detected and hence, more detail. Skewed pages decrease the recognition quality.</p>
+<p>Put the document on a flat surface. Take the photo from straight above in parallel to the document to make sure that the perspective correction does not need to be applied much. The document should fill most of the camera frame while still showing all of the text that needs to be recognized. This results in more pixels for each character that needs to be detected and hence, more detail. Skewed pages decrease the recognition quality.</p>
 
 <p><strong>Light and shadows</strong></p>
 
-<p>More ambient light is always better. The camera takes the shot at a lower ISO value, which results in less grainy photos. You should make sure that there are no visible shadows. If you have large shadows, it’s better to take the shot at an angle instead. That’s why we also don’t recommend to use the flashlight. From this low distance, it creates a light spot at the center of the document, which decreases the quality.</p>
+<p>More ambient light is always better. The camera takes the shot at a lower ISO value, which results in less grainy photos. You should make sure that there are no visible shadows. If you have large shadows, it is better to take the shot at an angle instead. We also do not recommend using the flashlight - from this low distance it creates a light spot at the center of the document which decreases the recognition quality.</p>
 
 <p><strong>Focus</strong></p>
 
-<p>The document needs to be properly focused so that the characters are sharp and clear. The auto-focus of the camera works well if you meet the minimum required distance for the lens to be able to focus. Which usually starts at 5-10cm.</p>
+<p>The document needs to be properly focused so that the characters are sharp and clear. The autofocus of the camera works well if you meet the minimum required distance for the lens to be able to focus. This usually starts at 5-10cm.</p>
 
 <p><strong>Typefaces</strong></p>
 
-<p>The OCR trained data is optimized for common serif and sans-serif font types. Decorative or script fonts decrease the quality of the detection a lot.</p>
+<p>The OCR trained data is optimized for common serif and sans-serif font types. Decorative or script fonts drastically decrease the quality of recognition.</p>
 
 <h4 id="download-and-provide-ocr-language-files">Download and Provide OCR Language Files</h4>
 <p>You can find a list of all supported OCR languages and download links on this <a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files">Tesseract wiki page</a>.</p>
@@ -476,16 +515,42 @@ present an error message to the user if the validation fails and restart a step.
 <p>In broad terms, consider blur values as follows:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">0.0-0.3</code>: This image isn’t blurry at all</li>
-  <li><code class="highlighter-rouge">0.3-0.6</code>: Somewhat blurry, should be ok</li>
-  <li><code class="highlighter-rouge">0.6-1.0</code>: I’m skeptical of the usefulness of the image</li>
+  <li><code class="highlighter-rouge">0.0-0.3</code>: This image is not blurry at all</li>
+  <li><code class="highlighter-rouge">0.3-0.6</code>: Somewhat blurry, should be okay</li>
+  <li><code class="highlighter-rouge">0.6-1.0</code>: I am skeptical of the usefulness of the image</li>
 </ul>
 
-<p>However, this isn’t that black and white. 
-If a scanned document has a lot white background, that will be considered a very blurred image.</p>
+<p>However, this is not as easy as it seems.
+If a scanned document has a predominantly white background, it will be considered a very blurred image.</p>
 
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history-and-changelog">Release History and Changelog</h3>
+
+<h4 id="scanbotsdkxamarinforms---version-330-9-apr-2021">ScanbotSDK.Xamarin.Forms - Version 3.3.0 (9 Apr 2021)</h4>
+<ul>
+  <li>🎉 NEW:
+    <ul>
+      <li><code class="highlighter-rouge">HintTitle</code> and <code class="highlighter-rouge">HintTitleColor</code> parameters for Cropping View</li>
+      <li>Storage Encryption! For more details please check out the section <a href="#storageEncryption">“Storage Encryption”</a></li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>iOS: Tweaked link of CFunctions: Linker Behavior can now be set to “Don’t Link”</li>
+      <li>Polygon is now properly rotated as well when rotating an image</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li>Removed MSI Plessey Barcode format</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded <code class="highlighter-rouge">ScanbotSDK.Xamarin</code> to v3.3.0</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="scanbotsdkxamarinforms---version-322-24-mar-2021">ScanbotSDK.Xamarin.Forms - Version 3.2.2 (24 Mar 2021)</h4>
 <ul>
@@ -520,7 +585,7 @@ If a scanned document has a lot white background, that will be considered a very
 <ul>
   <li>🎉 NEW:
     <ul>
-      <li>iOS: Introduced a new API method <code class="highlighter-rouge">RefreshImageUris(pages)</code> to fix image file paths after app updates. 
+      <li>iOS: Introduced a new API method <code class="highlighter-rouge">RefreshImageUris(pages)</code> to fix image file paths after app updates.
 For more details please check out the section <a href="#persistencePageObject">Persistence of Page Objects</a>.</li>
       <li>Introduced new API method <code class="highlighter-rouge">ReconstructPage</code> to re-create pages based on <code class="highlighter-rouge">pageId</code> and metadata</li>
     </ul>
@@ -565,7 +630,7 @@ For more details please check out the section <a href="#persistencePageObject">P
 <ul>
   <li>🎉 NEW:
     <ul>
-      <li>Blur Estimator - a new API method to detect blurriness on still images. 
+      <li>Blur Estimator - a new API method to detect blurriness on still images.
 See <a href="#EstimateBlurriness"><code class="highlighter-rouge">SBSDK.Operations.EstimateBlurriness(image)</code></a>.</li>
     </ul>
   </li>
@@ -576,7 +641,7 @@ See <a href="#EstimateBlurriness"><code class="highlighter-rouge">SBSDK.Operatio
   </li>
   <li>⚠️ Breaking changes:
     <ul>
-      <li>Android: The interface <code class="highlighter-rouge">IPictureCallback</code> was replaced by an abstract class <code class="highlighter-rouge">PictureCallback</code> 
+      <li>Android: The interface <code class="highlighter-rouge">IPictureCallback</code> was replaced by an abstract class <code class="highlighter-rouge">PictureCallback</code>
 that implements the <code class="highlighter-rouge">IBasePictureCallback</code> interface. For adjustments see our <a href="https://github.com/doo/scanbot-sdk-example-xamarin">example app on GitHub</a>.</li>
     </ul>
   </li>
@@ -602,14 +667,14 @@ that implements the <code class="highlighter-rouge">IBasePictureCallback</code> 
   </li>
   <li>🚀 Improvements:
     <ul>
-      <li>Android: Some big improvements in the Document Scanner UI that make document scanning perform better and much smoother. 
-Increased start-up time of the camera preview. Faster saving of the snapped pages. 
+      <li>Android: Some big improvements in the Document Scanner UI that make document scanning perform better and much smoother.
+Increased start-up time of the camera preview. Faster saving of the snapped pages.
 Optimized performance of the image processing for simple operations (rotate, crop, resize).</li>
     </ul>
   </li>
   <li>⚠️ Breaking changes:
     <ul>
-      <li>Android: Dropped legacy SupportLibs, built for AndroidX. To migrate your project please check out the 
+      <li>Android: Dropped legacy SupportLibs, built for AndroidX. To migrate your project please check out the
 <a href="https://docs.microsoft.com/en-us/xamarin/android/platform/androidx">documentation</a> from Microsoft</li>
       <li>iOS: Removed support for iOS 9 and iOS 10</li>
     </ul>
@@ -723,12 +788,12 @@ Optimized performance of the image processing for simple operations (rotate, cro
         <ul>
           <li>Improved detection and extraction of 1D and 2D barcodes, especially Data Matrix and PDF 417 codes</li>
           <li>Support for multiple barcode detection</li>
-          <li>Out-of-the-box parsers, like German Medical Plans (Medikationsplan) based on Data Matrix, 
+          <li>Out-of-the-box parsers, like German Medical Plans (Medikationsplan) based on Data Matrix,
 ID Cards or US Driver Licenses (AAMVA format) both based on PDF 417.</li>
         </ul>
       </li>
-      <li>Recognizer for the European Health Insurance Cards (EHIC). 
-  Provides live detection and data extraction of all fields on the back of the card. 
+      <li>Recognizer for the European Health Insurance Cards (EHIC).
+  Provides live detection and data extraction of all fields on the back of the card.
   Available as the Ready-To-Use UI Component class <code class="highlighter-rouge">SBSDK.UI.LaunchHealthInsuranceCardScannerAsync</code></li>
       <li>Black &amp; white image filter: <code class="highlighter-rouge">ImageFilterType.LowLightBinarization2</code></li>
       <li>Disability Certificate Recognizer – Recognition of new fields: <code class="highlighter-rouge">Intention</code>, <code class="highlighter-rouge">InsuredPersonType</code></li>
@@ -756,7 +821,7 @@ ID Cards or US Driver Licenses (AAMVA format) both based on PDF 417.</li>
 <ul>
   <li>🐞 Bug fixes:
     <ul>
-      <li>iOS: Fixed modal dialog style of the Document Scanner UI, Cropping UI, Barcode Scanner UI, MRZ Scanner UI 
+      <li>iOS: Fixed modal dialog style of the Document Scanner UI, Cropping UI, Barcode Scanner UI, MRZ Scanner UI
 and all Workflows UIs on iOS 13. All UI screens are opened in full-screen mode again.</li>
     </ul>
   </li>
@@ -766,7 +831,7 @@ and all Workflows UIs on iOS 13. All UI screens are opened in full-screen mode a
 <ul>
   <li>🐞 Bug fixes:
     <ul>
-      <li>Android: Workaround for a <a href="https://github.com/xamarin/xamarin-android/issues/3426">Mono issue on Android</a> with 
+      <li>Android: Workaround for a <a href="https://github.com/xamarin/xamarin-android/issues/3426">Mono issue on Android</a> with
 file operations like <code class="highlighter-rouge">File.Move()</code>, which are used in the ScanbotSDK.Xamarin.Forms methods <code class="highlighter-rouge">CreatePdfAsync(..)</code> and <code class="highlighter-rouge">PerformOcrAsync(..)</code>.</li>
     </ul>
   </li>
@@ -854,7 +919,15 @@ file operations like <code class="highlighter-rouge">File.Move()</code>, which a
   </li>
   <li>⚠️ Breaking changes:
     <ul>
-      <li>Android: <strong>Internal Storage</strong> - All components of the ScanbotSDK.Xamarin.Forms now use the internal storage by default, which is more secure and do not require storage permission prompts. Please note: In case your app is using the storage for scanned <code class="highlighter-rouge">Page</code>s as permanent storage, make sure to implement a suitable migration. E.g. move the archived <code class="highlighter-rouge">Page</code> images from the old external storage folder to the new internal storage. Or alternatively overwrite the storage to the external folder again. The <code class="highlighter-rouge">SBSDKInitializer</code> allows to overwrite the <code class="highlighter-rouge">StorageBaseDirectory</code> via configuration: <code class="highlighter-rouge">SBSDKInitializer.Initialize(app, licenseKey, new SBSDKConfiguration { StorageBaseDirectory = MyCustomStorageBaseDirectory });</code>. Also see our example app <a href="https://github.com/doo/scanbot-sdk-example-xamarin-forms">scanbot-sdk-example-xamarin-forms</a>.</li>
+      <li>Android: <strong>Internal Storage</strong> - All components of ScanbotSDK.Xamarin.Forms now use the internal storage by default, 
+which is more secure and do not require storage permission prompts. 
+Please note: In case your app is using the storage for scanned <code class="highlighter-rouge">Page</code>s as permanent storage, 
+make sure to implement a suitable migration. E.g. move the archived <code class="highlighter-rouge">Page</code> images from the 
+old external storage folder to the new internal storage. 
+Or alternatively overwrite the storage to the external folder again. 
+<code class="highlighter-rouge">SBSDKInitializer</code> allows to overwrite the <code class="highlighter-rouge">StorageBaseDirectory</code> via configuration: 
+<code class="highlighter-rouge">SBSDKInitializer.Initialize(app, licenseKey, new SBSDKConfiguration { StorageBaseDirectory = MyCustomStorageBaseDirectory });</code>. 
+Also see our example app <a href="https://github.com/doo/scanbot-sdk-example-xamarin-forms">scanbot-sdk-example-xamarin-forms</a>.</li>
     </ul>
   </li>
   <li>🚙 Under the hood:

@@ -40,7 +40,7 @@
   <div class="post-content">
     <h2 id="integration-with-xamarinandroid-and-xamarinios">Integration with Xamarin.Android and Xamarin.iOS</h2>
 
-<p>The NuGet package <a href="https://www.nuget.org/packages/ScanbotSDK.Xamarin">ScanbotSDK.Xamarin</a> is an universal package for Android and iOS.
+<p>The NuGet package <a href="https://www.nuget.org/packages/ScanbotSDK.Xamarin">ScanbotSDK.Xamarin</a> is a universal package for Android and iOS.
 It contains the Xamarin Bindings for the <strong>Native Scanbot SDKs</strong> for Android and iOS and the <strong>Wrappers</strong>.</p>
 
 <h4 id="namespaces">Namespaces</h4>
@@ -52,7 +52,7 @@ It contains the Xamarin Bindings for the <strong>Native Scanbot SDKs</strong> fo
   <li>Namespace for iOS: <code class="highlighter-rouge">ScanbotSDK.Xamarin.iOS</code></li>
 </ul>
 
-<p>The idea of the Scanbot SDK Xamarin Wrapper is to provide an unified and convenient API for iOS and Android.
+<p>The idea of the Scanbot SDK Xamarin Wrapper is to provide a unified and convenient API for iOS and Android.
 However, since not all Native SDK functionalities are available in the Wrapper namespace, you can use and call them as needed directly from the native namespaces.</p>
 
 <p>Currently the following <strong><a href="https://scanbot.io/en/sdk/scanner-sdk/document-scanner-sdk#packages">Package II</a></strong> functionalities are available for the Xamarin Wrapper classes:</p>
@@ -86,7 +86,7 @@ However, since not all Native SDK functionalities are available in the Wrapper n
 <p><a name="initializeSdk"></a></p>
 <h4 id="initialize-sdk">Initialize SDK</h4>
 <p>The Scanbot SDK must be initialized before usage. Make sure to run the initialization as early as possible.
-We recommend to implement the initialization in the <code class="highlighter-rouge">Application</code> class of the Android app, and in the <code class="highlighter-rouge">AppDelegate</code> class of the iOS app.</p>
+We recommend implementing the initialization in the <code class="highlighter-rouge">Application</code> class of the Android app, and in the <code class="highlighter-rouge">AppDelegate</code> class of the iOS app.</p>
 
 <p>In the following examples we will use the convenient wrapper class <code class="highlighter-rouge">SBSDK</code>.</p>
 
@@ -132,15 +132,85 @@ to the <code class="highlighter-rouge">Application</code> attribute on the <code
 <span class="p">}</span>
 </code></pre></div></div>
 
+<p><a name="storageEncryption"></a></p>
+<h4 id="storage-encryption">Storage Encryption</h4>
+
+<p>Scanbot SDK provides the ability to store the generated image files (JPG, PNG) and PDF files encrypted.
+This feature provides an additional level of security to the default secure storage locations of the native SDKs.</p>
+
+<p>By default the file encryption is disabled. If you use ScanbotSDK wrapper, 
+you have to pass the following config parameters on SDK initialization:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>new SBSDKConfiguration
+{
+    Encryption = new SBSDKEncryption
+    {
+        Mode = EncryptionMode.AES256,
+        Password = "SomeSecretPa$$w0rdForFileEncryption"
+    }
+};
+</code></pre></div></div>
+
+<p>You can also use the native bindings to enable encryption. For Android:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var initializer = new IO.Scanbot.Sdk.ScanbotSDKInitializer();
+var processor = new AESEncryptedFileIOProcessor(
+    "SomeSecretPa$$w0rdForFileEncryption",
+    AESEncryptedFileIOProcessor.AESEncrypterMode.Aes256
+);
+initializer.UseFileEncryption(true, processor);
+</code></pre></div></div>
+
+<p>Or for iOS, you should first implement <code class="highlighter-rouge">SBSDKStorageCrypting</code> interface:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class FormsEncryption : SBSDKStorageCrypting
+{
+    private string password;
+    private EncryptionMode mode;
+    SBSDKAESEncrypter Encrypter { get =&gt; new SBSDKAESEncrypter(password, mode.ToNative()); }
+
+    public SBSDKEncrypter(SBSDKEncryption encryption)
+    {
+        password = encryption.Password;
+        mode = encryption.Mode;
+    }
+
+    public override NSData DecryptData(NSData data)
+    {
+        return Encrypter.EncryptData(data);
+    }
+
+    public override NSData EncryptData(NSData data)
+    {
+        return Encrypter.DecryptData(data);
+    }
+}
+</code></pre></div></div>
+
+<p>And then set an instance of that as the default encrypter:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ScanbotSDKUI.DefaultImageStoreEncrypter = encryption;
+ScanbotSDKUI.DefaultPDFEncrypter = encryption;
+</code></pre></div></div>
+
+<p>By activating the storage encryption the native Scanbot SDKs will use the builtin 
+<a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES 128 or AES 256 encryption</a>.
+All generated image files (JPG, PNG) including the preview image files, as well as the exported PDF files will 
+be encrypted in memory and stored as encrypted data files on the flash storage of the device.</p>
+
+<p>The Scanbot SDK derives the AES key from the given password, 
+an internal <em>salt</em> value, and the internal number of <em>iterations</em> 
+using the <a href="https://en.wikipedia.org/wiki/PBKDF2">PBKDF2</a> function.</p>
+
+<p>When applying image operations like cropping, rotation or image filters, 
+Scanbot SDK will decrypt the image file in memory, apply the changes, encrypt and store it again.</p>
+
 <h3 id="scanbot-sdk-ui-components">Scanbot SDK UI Components</h3>
 
 <p><a name="RTUUIComponents"></a></p>
 <h4 id="rtu-ui-components">RTU UI Components</h4>
 <p>The Ready-To-Use UI (RTU UI) is a set of easy to integrate and customize high-level UI components
 (View Controllers for iOS and Activities for Android) for the most common tasks in Scanbot SDK.
-The design and behavior of these RTU UI Components are based on our long years of experience as well as the feedback from our SDK customers.</p>
+The design and behavior of these RTU UI Components are based on our many years of experience as well as the feedback from our SDK customers.</p>
 
-<p>Following RTU UI Components and classes are currently provided:</p>
+<p>The following RTU UI Components and classes are currently provided:</p>
 
 <p>Android:</p>
 <ul>
@@ -162,12 +232,12 @@ The design and behavior of these RTU UI Components are based on our long years o
 
 <p><strong>Customization of RTU UI:</strong></p>
 
-<p>The main idea of the RTU UI is to provide a simple-to-integrate and simple-to-customize screen components.
+<p>The main idea of the RTU UI is to provide simple-to-integrate and simple-to-customize screen components.
 Due to this idea there are some limitations with the possibilities of customization:</p>
 
 <ul>
   <li>UI: All colors and text resources (localization)</li>
-  <li>Behavior: Enable or disable features like Multi-Page Scanning, Auto Snapping, Torch Light</li>
+  <li>Behavior: Enable or disable features like Multi-Page Scanning, Auto Snapping, Flashlight</li>
 </ul>
 
 <p>If you need more customization options you have to implement custom screens (View Controllers for iOS and Activities for Android)
@@ -184,7 +254,7 @@ You can combine Document Scanning with QR code detection or MRZ recognition on a
 Workflow Steps can be run on a captured still image or a video frame, so a step can either be a live-detection or
 a still-image capturing step. You can validate each step result, present an error message to the user if the validation fails and restart a step.</p>
 
-<p>Following predefined Workflow Step classes are provided:</p>
+<p>The following predefined Workflow Step classes are provided:</p>
 
 <p>Android:</p>
 <ul>
@@ -225,8 +295,8 @@ and extended in your custom screens.</p>
 
 <p><a name="DetectDocument"></a></p>
 <h4 id="document-detection">Document Detection</h4>
-<p>The Scanbot SDK uses digital image processing algorithms to find rectangular, document like, polygons in a digital image.
-As input an <code class="highlighter-rouge">UIImage</code> on iOS or <code class="highlighter-rouge">Bitmap</code> on Android are accepted.</p>
+<p>The Scanbot SDK uses digital image processing algorithms to find rectangular, document like polygons in a digital image.
+As input a <code class="highlighter-rouge">UIImage</code> on iOS or <code class="highlighter-rouge">Bitmap</code> on Android are accepted.</p>
 
 <div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Bitmap</span> <span class="n">image</span> <span class="p">=</span> <span class="p">...;</span> <span class="c1">// on Android</span>
 <span class="n">UIImage</span> <span class="n">image</span> <span class="p">=</span> <span class="p">...;</span> <span class="c1">// on iOS</span>
@@ -243,9 +313,9 @@ As input an <code class="highlighter-rouge">UIImage</code> on iOS or <code class
 
 <p>The result is an object of type <code class="highlighter-rouge">DocumentDetectionResult</code> which contains the detection status and on success the warped and cropped document image as well as the detected polygon.
 If there was no document detected the status enum provides the reason (noisy background, too dark, etc).
-The polygon is a list with 4 float points (one for each corner). Each point has coordinates in range [0..1], representing position relative to image size. For instance, if a point has the coordinates (0.5, 0.5), it means that it is located exactly in the center of the image.</p>
+The polygon is a list with 4 float points (one for each corner). Each point has coordinates in the range [0..1], representing a position relative to the image size. For instance, if a point has the coordinates (0.5, 0.5), it means that it is located exactly in the center of the image.</p>
 
-<p>Alternatively, you can pass an <code class="highlighter-rouge">Uri</code> on Android or <code class="highlighter-rouge">NSUrl</code> on iOS of the source image.</p>
+<p>Alternatively, you can pass a <code class="highlighter-rouge">Uri</code> on Android or <code class="highlighter-rouge">NSUrl</code> on iOS of the source image.</p>
 
 <p>On Android:</p>
 
@@ -272,20 +342,20 @@ Supported image filters:</p>
 <ul>
   <li><code class="highlighter-rouge">ImageFilter.ColorEnhanced</code> - Optimizes colors, contrast and brightness.</li>
   <li><code class="highlighter-rouge">ImageFilter.Grayscale</code> - Grayscale filter</li>
-  <li><code class="highlighter-rouge">ImageFilter.Binarized</code> - Standard binarization filter with contrast optimization. Creates a grayscaled 8-bit image with mostly black or white pixels.</li>
-  <li><code class="highlighter-rouge">ImageFilter.ColorDocument</code> - MagicColor filter. Fixes white-balance and cleans up the background.</li>
+  <li><code class="highlighter-rouge">ImageFilter.Binarized</code> - Standard binarization filter with contrast optimization. Creates an 8-bit grayscale image with mostly black or white pixels.</li>
+  <li><code class="highlighter-rouge">ImageFilter.ColorDocument</code> - MagicColor filter. Fixes white balance and cleans up the background.</li>
   <li><code class="highlighter-rouge">ImageFilter.PureBinarized</code> - A filter for binarizing an image. Creates an image with pixel values set to either pure black or pure white.</li>
   <li><code class="highlighter-rouge">ImageFilter.BackgroundClean</code> - Cleans up the background and tries to preserve photos within the image.</li>
-  <li><code class="highlighter-rouge">ImageFilter.BlackAndWhite</code> - Black and white filter with background cleaning. Creates a grayscaled 8-bit image with mostly black or white pixels.</li>
+  <li><code class="highlighter-rouge">ImageFilter.BlackAndWhite</code> - Black and white filter with background cleaning. Creates an 8-bit grayscale image with mostly black or white pixels.</li>
   <li><code class="highlighter-rouge">ImageFilter.OtsuBinarization</code> - A filter for black and white conversion using OTSU binarization.</li>
-  <li><code class="highlighter-rouge">ImageFilter.DeepBinarization</code> - A filter for black and white conversion primary used for low-contrast documents.</li>
-  <li><code class="highlighter-rouge">ImageFilter.EdgeHighlight</code> - A filter that enhances edges in low-contrast documents.</li>
-  <li><code class="highlighter-rouge">ImageFilter.LowLightBinarization</code> - A binarization filter primarily intended for use on low-contrast documents with hard shadows.</li>
+  <li><code class="highlighter-rouge">ImageFilter.DeepBinarization</code> - A filter for black and white conversion primary used for low contrast documents.</li>
+  <li><code class="highlighter-rouge">ImageFilter.EdgeHighlight</code> - A filter that enhances edges in low contrast documents.</li>
+  <li><code class="highlighter-rouge">ImageFilter.LowLightBinarization</code> - A binarization filter primarily intended for use on low contrast documents with hard shadows.</li>
 </ul>
 
 <p><a name="CreatePDF"></a></p>
 <h4 id="pdf-creation">PDF Creation</h4>
-<p>The Scanbot SDK renders images into a PDF document and stores it as given target file. 
+<p>The Scanbot SDK renders images into a PDF document and stores it as a given target file.
 For each image a separate page is generated.</p>
 
 <p>Example code for Android:</p>
@@ -303,14 +373,14 @@ For each image a separate page is generated.</p>
 </code></pre></div></div>
 
 <p><a name="PDFPageSize"></a>
-Following PDF page sizes are supported:</p>
+The following PDF page sizes are supported:</p>
 <ul>
-  <li><code class="highlighter-rouge">PDFPageSize.A4</code> - The page has the aspect ratio of the image, but is fitted into A4 size. Whether portrait or landscape depends on the images aspect ratio.</li>
-  <li><code class="highlighter-rouge">PDFPageSize.FixedA4</code> - The page has A4 size. The image is fitted and centered within the page. Whether portrait or landscape depends on the images aspect ratio.</li>
-  <li><code class="highlighter-rouge">PDFPageSize.USLetter</code> - The page has the aspect ratio of the image, but is fitted into US letter size. Whether portrait or landscape depends on the images aspect ratio.</li>
-  <li><code class="highlighter-rouge">PDFPageSize.FixedUsLetter</code> - The page has US letter size. The image is fitted and centered within the page. Whether portrait or landscape depends on the images aspect ratio.</li>
-  <li><code class="highlighter-rouge">PDFPageSize.Auto</code> - For each page the best matching format (A4 or US letter) is used. Whether portrait or landscape depends on the images aspect ratio.</li>
-  <li><code class="highlighter-rouge">PDFPageSize.AutoLocale</code> - Each page of the result PDF will be of US letter or A4 size depending on the current locale. Whether portrait or landscape depends on the images aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.A4</code> - The page has the aspect ratio of the image, but is fitted within A4 size. Portrait or landscape orientation is determined by the image’s aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.FixedA4</code> - The page is A4 in size. The image is fitted and centered within the page. Portrait or landscape orientation is determined by the image’s aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.USLetter</code> - The page has the aspect ratio of the image, but is fitted within US letter size. Portrait or landscape orientation is determined by the image’s aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.FixedUsLetter</code> - The page is US letter in size. The image is fitted and centered within the page. Portrait or landscape orientation is determined by the image’s aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.Auto</code> - For each page the best matching format (A4 or US letter) is used. Portrait or landscape orientation is determined by the image’s aspect ratio.</li>
+  <li><code class="highlighter-rouge">PDFPageSize.AutoLocale</code> - Each page of the result PDF will be of US letter or A4 size depending on the current locale. Portrait or landscape orientation is determined by the image’s aspect ratio.</li>
   <li><code class="highlighter-rouge">PDFPageSize.FromImage</code> - Each page is as large as its image at 72 dpi.</li>
 </ul>
 
@@ -332,66 +402,48 @@ SBSDKBarcodeScannerResult[] result = scanner.DetectBarCodesOnImage(image);
 
 <p><a name="OCR"></a></p>
 <h4 id="ocr---optical-character-recognition">OCR - Optical Character Recognition</h4>
-<p>The Scanbot SDK provides a simple and convenient APIs to run Optical Character Recognition (OCR) on images.</p>
+<p>The Scanbot SDK provide simple and convenient APIs to run Optical Character Recognition (OCR) on images.</p>
 
 <p>As result you can get:</p>
 <ul>
   <li>a searchable PDF document with the recognized text layer (aka. sandwiched PDF document)</li>
-  <li>recognized text as plain text</li>
-  <li>bounding boxes of all recognized paragraphs, lines and words</li>
+  <li>recognized text as plain text,</li>
+  <li>bounding boxes of all recognized paragraphs, lines and words,</li>
   <li>text results and confidence values for each bounding box.</li>
 </ul>
 
-<p>The Scanbot OCR feature is based on the Tesseract OCR engine with some modifications and enhancements. 
-The OCR engine supports a wide variety of languages. 
-For each desired language a corresponding OCR training data file (<code class="highlighter-rouge">.traineddata</code>) must be provided. 
-Furthermore the special data file <code class="highlighter-rouge">osd.traineddata</code> is required (used for orientation and script detection). 
-The Scanbot SDK package contains no language data files to keep the SDK small in size. 
+<p>The Scanbot OCR feature is based on the Tesseract OCR engine with some modifications and enhancements.
+The OCR engine supports a wide variety of languages.
+For each desired language a corresponding OCR training data file (<code class="highlighter-rouge">.traineddata</code>) must be provided.
+Furthermore, the special data file <code class="highlighter-rouge">osd.traineddata</code> is required (used for orientation and script detection).
+The Scanbot SDK package contains no language data files to keep the SDK small in size.
 You have to download and include the desired language files in your app.</p>
 
 <h4 id="preconditions-to-achieve-a-good-ocr-result">Preconditions to achieve a good OCR result</h4>
 
 <p><strong>Conditions while scanning</strong></p>
 
-<p>A perfect document for OCR is flat, straight, doesn’t show large shadows, folds, 
-or any other objects that could distract it and is in the highest possible resolution. 
-Our UI and algorithms do their best to help you meet these requirements. 
-But as in photography, you can never fully get the image information back that was lost during the shot.</p>
+<p>A perfect document for OCR is flat, straight, in the highest possible resolution and does not contain large shadows, folds, or any other objects that could distract the recognizer. Our UI and algorithms do their best to help you meet these requirements. But as in photography, you can never fully get the image information back that was lost during the shot.</p>
 
 <p><strong>Languages</strong></p>
 
-<p>You can use multiple languages for OCR. But since the recognition of characters 
-and words is a very complicated process, increasing the number of languages lowers the overall precision. 
-With more languages, there are more results where the detected word could match. 
-We suggest using as few languages as possible. 
-Make sure that the language you’re trying to detect is supported by the SDK and added to the project.</p>
+<p>You can use multiple languages for OCR. But since the recognition of characters and words is a very complicated process, increasing the number of languages lowers the overall precision. With more languages, there are more results where the detected word could match. We suggest using as few languages as possible. Make sure that the language you are trying to detect is supported by the SDK and added to the project.</p>
 
 <p><strong>Size and position</strong></p>
 
-<p>Put the document on a flat surface. Take the photo from straight above in parallel to the document 
-to make sure that the perspective correction doesn’t need to fix much. 
-The document should fill out the camera frame while still showing all of the text that needs to be recognized. 
-This results in more pixels for each character that needs to be detected and hence, more detail. 
-Skewed pages decrease the recognition quality.</p>
+<p>Put the document on a flat surface. Take the photo from straight above in parallel to the document to make sure that the perspective correction does not need to be applied much. The document should fill most of the camera frame while still showing all of the text that needs to be recognized. This results in more pixels for each character that needs to be detected and hence, more detail. Skewed pages decrease the recognition quality.</p>
 
 <p><strong>Light and shadows</strong></p>
 
-<p>More ambient light is always better. The camera takes the shot at a lower ISO value, which results in less grainy photos. 
-You should make sure that there are no visible shadows. 
-If you have large shadows, it’s better to take the shot at an angle instead. 
-That’s why we also don’t recommend to use the flashlight. 
-From this low distance, it creates a light spot at the center of the document, which decreases the quality.</p>
+<p>More ambient light is always better. The camera takes the shot at a lower ISO value, which results in less grainy photos. You should make sure that there are no visible shadows. If you have large shadows, it is better to take the shot at an angle instead. We also do not recommend using the flashlight - from this low distance it creates a light spot at the center of the document which decreases the recognition quality.</p>
 
 <p><strong>Focus</strong></p>
 
-<p>The document needs to be properly focused so that the characters are sharp and clear. 
-The auto-focus of the camera works well if you meet the minimum required distance 
-for the lens to be able to focus. Which usually starts at 5-10cm.</p>
+<p>The document needs to be properly focused so that the characters are sharp and clear. The autofocus of the camera works well if you meet the minimum required distance for the lens to be able to focus. This usually starts at 5-10cm.</p>
 
 <p><strong>Typefaces</strong></p>
 
-<p>The OCR trained data is optimized for common serif and sans-serif font types. 
-Decorative or script fonts decrease the quality of the detection a lot.</p>
+<p>The OCR trained data is optimized for common serif and sans-serif font types. Decorative or script fonts drastically decrease the quality of the recognition.</p>
 
 <h4 id="download-and-provide-ocr-language-files">Download and Provide OCR Language Files</h4>
 <p>You can find a list of all supported OCR languages and download links on this <a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files">Tesseract wiki page</a>.</p>
@@ -470,14 +522,13 @@ var = estimator.EstimateInBitmap(bitmap, 0);
 <p>In board terms, consider blur values as follows:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">0.0-0.3</code>: This image isn’t blurry at all</li>
-  <li><code class="highlighter-rouge">0.3-0.6</code>: Somewhat blurry, should be ok</li>
-  <li><code class="highlighter-rouge">0.6-1.0</code>: I’m skeptical of the usefulness of the image</li>
+  <li><code class="highlighter-rouge">0.0-0.3</code>: This image is not blurry at all</li>
+  <li><code class="highlighter-rouge">0.3-0.6</code>: Somewhat blurry, should be okay</li>
+  <li><code class="highlighter-rouge">0.6-1.0</code>: I am skeptical of the usefulness of the image</li>
 </ul>
 
-<p>However, this isn’t that black and white. If a scanned document has a lot white background, 
-that will be considered a very blurred image. It is therefore best to use blur estimator 
-in conjunction with a finder view or on an already cropped document.</p>
+<p>However, this is not as easy as it seems.
+If a scanned document has a predominantly white background, it will be considered a very blurred image. It is therefore best to use blur estimator in conjunction with a finder view or on an already cropped document.</p>
 
 <h4 id="camera-ui-for-document-scanning">Camera UI for document scanning</h4>
 
@@ -489,7 +540,7 @@ It is possible to customize the appearance and behavior of the guidance UI.</p>
 Please make sure that you have defined the required permissions in your app.</p>
 
 <h5 id="ios-2"><strong>iOS</strong></h5>
-<p>For your convenience the Scanbot SDK for iOS comes with the <code class="highlighter-rouge">SBSDKScannerViewController</code> class that handles all the document scanner implementations. You can customize the appearance and behavior of the guidance UI via controllers delegate.</p>
+<p>For your convenience, the Scanbot SDK for iOS comes with the <code class="highlighter-rouge">SBSDKScannerViewController</code> class that handles all the document scanner implementations. You can customize the appearance and behavior of the guidance UI via controllers delegate.</p>
 
 <p>Example code:</p>
 
@@ -576,7 +627,7 @@ Please make sure that you have defined the required permissions in your app.</p>
   <span class="p">[</span><span class="nf">Export</span><span class="p">(</span><span class="s">"scannerController:didDetectPolygon:withStatus:"</span><span class="p">)]</span>
   <span class="k">public</span> <span class="k">void</span> <span class="nf">ScannerControllerDidDetectPolygonWithStatus</span><span class="p">(</span><span class="n">SBSDKScannerViewController</span> <span class="n">controller</span><span class="p">,</span> <span class="n">SBSDKPolygon</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">SBSDKDocumentDetectionStatus</span> <span class="n">status</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="c1">// Everytime the document detector finishes detection it calls this delegate method.</span>
+    <span class="c1">// Every time the document detector finishes detection it calls this delegate method.</span>
   <span class="p">}</span>
 
   <span class="p">[</span><span class="nf">Export</span><span class="p">(</span><span class="s">"scannerController:viewForDetectionStatus:"</span><span class="p">)]</span>
@@ -590,11 +641,11 @@ Please make sure that you have defined the required permissions in your app.</p>
   <span class="p">[</span><span class="nf">Export</span><span class="p">(</span><span class="s">"scannerController:polygonColorForDetectionStatus:"</span><span class="p">)]</span>
   <span class="k">public</span> <span class="n">UIColor</span> <span class="nf">ScannerControllerPolygonColorForDetectionStatus</span><span class="p">(</span><span class="n">SBSDKScannerViewController</span> <span class="n">controller</span><span class="p">,</span> <span class="n">SBSDKDocumentDetectionStatus</span> <span class="n">status</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="c1">// If the detector has found an acceptable polygon we show it with green color</span>
+    <span class="c1">// If the detector has found an acceptable polygon we show it in green</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="p">==</span> <span class="n">SBSDKDocumentDetectionStatus</span><span class="p">.</span><span class="n">Ok</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">return</span> <span class="n">UIColor</span><span class="p">.</span><span class="n">Green</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="c1">// Otherwise red colored</span>
+    <span class="c1">// Otherwise red</span>
     <span class="k">return</span> <span class="n">UIColor</span><span class="p">.</span><span class="n">Red</span><span class="p">;</span>
   <span class="p">}</span>
 
@@ -602,7 +653,7 @@ Please make sure that you have defined the required permissions in your app.</p>
   <span class="k">public</span> <span class="kt">string</span> <span class="nf">ScannerControllerLocalizedTextForDetectionStatus</span><span class="p">(</span><span class="n">SBSDKScannerViewController</span> <span class="n">controller</span><span class="p">,</span> <span class="n">SBSDKDocumentDetectionStatus</span> <span class="n">status</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="c1">// Here you can return a localized text depending on the detection status.</span>
-    <span class="c1">// If not implemented english standard strings are applied.</span>
+    <span class="c1">// If not implemented, English standard strings are applied.</span>
     <span class="k">switch</span> <span class="p">(</span><span class="n">status</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">case</span> <span class="n">SBSDKDocumentDetectionStatus</span><span class="p">.</span><span class="n">Ok</span><span class="p">:</span>
         <span class="k">return</span> <span class="s">"OK, don't move"</span><span class="p">;</span>
@@ -618,13 +669,13 @@ Please make sure that you have defined the required permissions in your app.</p>
 </code></pre></div></div>
 
 <h5 id="android-1"><strong>Android</strong></h5>
-<p>The Android camera API might seem to be very tricky and far from being developer-friendly. To help you skip the same issues which we encountered while developing Scanbot we created <code class="highlighter-rouge">ScanbotCameraView</code>. You can use it in your apps <code class="highlighter-rouge">Activity</code> or <code class="highlighter-rouge">Fragment</code>.
+<p>The Android camera API might seem to be very tricky and far from being developer-friendly. To help you skip the same issues which we encountered while developing Scanbot we created <code class="highlighter-rouge">ScanbotCameraView</code>. You can use it in your app’s <code class="highlighter-rouge">Activity</code> or <code class="highlighter-rouge">Fragment</code>.
 <code class="highlighter-rouge">ScanbotCameraView</code> has a method <code class="highlighter-rouge">getPreviewBuffer()</code> which allows you to register for preview frames from the camera.
-While you can implement your own smart features Scanbot SDK comes with built-in <code class="highlighter-rouge">ContourDetectorFrameHandler</code> which performs contour detection (document detection) and outputs results to listeners.
-To draw detected contours the Scanbot SDK provides the class <code class="highlighter-rouge">PolygonView</code>.
+While you can implement your own smart features, Scanbot SDK comes with the built-in <code class="highlighter-rouge">ContourDetectorFrameHandler</code> which performs contour detection (document detection) and outputs results to listeners.
+To draw detected contours, the Scanbot SDK provides the class <code class="highlighter-rouge">PolygonView</code>.
 To further improve the user experience you might want to automatically take a photo when a document is detected and conditions are good - we call this Autosnapping. For this purpose we have the <code class="highlighter-rouge">AutoSnappingController</code> class.</p>
 
-<p>The following example shows the use of all modules.</p>
+<p>The following example demonstrates the use of all modules.</p>
 
 <p>Example layout for a Scanner Camera Activity <code class="highlighter-rouge">MyCameraView.axml</code></p>
 
@@ -761,7 +812,7 @@ To further improve the user experience you might want to automatically take a ph
 
   <span class="k">public</span> <span class="kt">bool</span> <span class="nf">HandleResult</span><span class="p">(</span><span class="n">ContourDetectorFrameHandler</span><span class="p">.</span><span class="n">DetectedFrame</span> <span class="n">result</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="c1">// Here you are continiously notified about contour detection results.</span>
+    <span class="c1">// Here you are continuously notified about contour detection results.</span>
     <span class="c1">// For example, you can set a localized text for user guidance depending on the detection status.</span>
 
     <span class="kt">var</span> <span class="n">color</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">Red</span><span class="p">;</span>
@@ -815,7 +866,7 @@ To further improve the user experience you might want to automatically take a ph
 </code></pre></div></div>
 
 <h4 id="cropping-ui">Cropping UI</h4>
-<p>The Scanbot SDK provides some smart elements like magnetic lines or magnifier to build an UI for manual cropping of images.</p>
+<p>The Scanbot SDK provides some smart elements like magnetic lines or magnifier to build a UI for manual cropping of images.</p>
 
 <p>In the following examples we use the classes from the <strong>native SDK</strong> namespaces.</p>
 
@@ -871,14 +922,14 @@ To further improve the user experience you might want to automatically take a ph
   <span class="p">[</span><span class="nf">Export</span><span class="p">(</span><span class="s">"cancelButtonImageForCropViewController:"</span><span class="p">)]</span>
   <span class="k">public</span> <span class="n">UIImage</span> <span class="nf">CancelButtonImageForCropViewController</span><span class="p">(</span><span class="n">SBSDKCropViewController</span> <span class="n">cropViewController</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="c1">// here you can return custom image icon for the "cancel" button in the NavigationBar</span>
+    <span class="c1">// here you can return a custom image icon for the "cancel" button in the NavigationBar</span>
     <span class="k">return</span> <span class="n">UIImage</span><span class="p">.</span><span class="nf">FromBundle</span><span class="p">(</span><span class="s">"my_close_icon"</span><span class="p">);</span>
   <span class="p">}</span>
 
   <span class="p">[</span><span class="nf">Export</span><span class="p">(</span><span class="s">"applyButtonImageForCropViewController:"</span><span class="p">)]</span>
   <span class="k">public</span> <span class="n">UIImage</span> <span class="nf">ApplyButtonImageForCropViewController</span><span class="p">(</span><span class="n">SBSDKCropViewController</span> <span class="n">cropViewController</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="c1">// here you can return custom image icon for the "save/apply" button in the NavigationBar</span>
+    <span class="c1">// here you can return a custom image icon for the "save/apply" button in the NavigationBar</span>
     <span class="k">return</span> <span class="n">UIImage</span><span class="p">.</span><span class="nf">FromBundle</span><span class="p">(</span><span class="s">"my_apply_icon"</span><span class="p">);</span>
   <span class="p">}</span>
 
@@ -982,13 +1033,13 @@ To further improve the user experience you might want to automatically take a ph
       <span class="k">try</span> <span class="p">{</span>
         <span class="n">image</span> <span class="p">=</span> <span class="p">...;</span> <span class="c1">// get/load your original source image</span>
 
-        <span class="c1">// it's recommended to use a resized (thumbnail) image for the ImageView and ContourDetector:</span>
-        <span class="n">Bitmap</span> <span class="n">thumbBitmap</span> <span class="p">=</span> <span class="p">...;</span> <span class="c1">// scale down your image to a suitable size</span>
+        <span class="c1">// it is recommended to use a resized (thumbnail) image for the ImageView and ContourDetector:</span>
+        <span class="n">Bitmap</span> <span class="n">thumbBitmap</span> <span class="p">=</span> <span class="p">...;</span> <span class="c1">// scale your image down to a suitable size</span>
 
         <span class="nf">RunOnUiThread</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
           <span class="c1">// important: first set the image and then the detected polygon and lines!</span>
           <span class="n">editPolygonImageView</span><span class="p">.</span><span class="nf">SetImageBitmap</span><span class="p">(</span><span class="n">thumbBitmap</span><span class="p">);</span>
-          <span class="c1">// set up the MagnifierView every time when editPolygonImageView is set with a new image.</span>
+          <span class="c1">// set up the MagnifierView every time editPolygonImageView is set with a new image.</span>
           <span class="n">scanbotMagnifierView</span><span class="p">.</span><span class="nf">SetupMagnifier</span><span class="p">(</span><span class="n">editPolygonImageView</span><span class="p">);</span>
         <span class="p">});</span>
 
@@ -1042,18 +1093,52 @@ To further improve the user experience you might want to automatically take a ph
 <h4 id="documentdetectionstatus-enum">DocumentDetectionStatus enum:</h4>
 <ul>
   <li><code class="highlighter-rouge">Ok</code> - Document detection was successful. The detected contour looks like a valid document.</li>
-  <li><code class="highlighter-rouge">OkButTooSmall</code> - Document was detected, but it doesn’t fill the whole area in the camera viewport. The quality can be improved by moving camera closer to the document.</li>
-  <li><code class="highlighter-rouge">OkButBadAngles</code> - Document was detected, but the perspective is wrong (camera is tilted relatively to the document). Quality can be improved by holding the camera directly over the document.</li>
-  <li><code class="highlighter-rouge">OkButBadAspectRatio</code> - Document was detected, but it has a wrong rotation relatively to the camera sensor. Quality can be improved by rotating camera by 90 degrees.</li>
-  <li><code class="highlighter-rouge">ErrorTooDark</code> - Document was not found, most likely because of bad lightning conditions.</li>
-  <li><code class="highlighter-rouge">ErrorTooNoisy</code> - Document was not found, most likely because there is too much background noise (maybe too many other objects on the table, or background texture is not monotonic).</li>
-  <li><code class="highlighter-rouge">ErrorNothingDetected</code> - Document was not found. Probably it is not in the viewport. Usually it does not make sense to show any information to the user at this point.</li>
+  <li><code class="highlighter-rouge">OkButTooSmall</code> - Document was detected, but it does not fill the desired area in the camera viewport. The quality can be improved by moving the camera closer to the document.</li>
+  <li><code class="highlighter-rouge">OkButBadAngles</code> - Document was detected, but the perspective is wrong (camera is tilted relative to the document). Quality can be improved by holding the camera directly over the document.</li>
+  <li><code class="highlighter-rouge">OkButBadAspectRatio</code> - Document was detected, but it has a wrong rotation relative to the camera sensor. Quality can be improved by rotating the camera 90 degrees.</li>
+  <li><code class="highlighter-rouge">ErrorTooDark</code> - Document was not found, most likely because of bad lighting conditions.</li>
+  <li><code class="highlighter-rouge">ErrorTooNoisy</code> - Document was not found, most likely because there is too much background noise (maybe too many other objects on the table, or the background texture is not monotonic).</li>
+  <li><code class="highlighter-rouge">ErrorNothingDetected</code> - Document was not found. It is probably not in the viewport. Usually, it does not make sense to show any information to the user at this point.</li>
 </ul>
 
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history-and-changelog">Release History and Changelog</h3>
 
-<h4 id="scanbotsdkxamarin---version-322-24-mar-2021">ScanbotSDK.Xamarin - Version 3.2.2 (24 Mar 2021)</h4>
+<h4 id="scanbotsdkxamarinforms---version-330-9-apr-2021">ScanbotSDK.Xamarin.Forms - Version 3.3.0 (9 Apr 2021)</h4>
+<ul>
+  <li>🎉 NEW:
+    <ul>
+      <li>Storage Encryption! For more details please check out the section <a href="#storageEncryption">“Storage Encryption”</a></li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>iOS: Tweaked link of CFunctions: Linker Behavior can now be set to “Don’t Link”</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li>Removed MSI Plessey Barcode format</li>
+      <li>Deprecated SDK-level processing of imported image urls – Load the image before running document detection</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Android: Upgraded the native Scanbot Android SDK to <strong>v1.81.0</strong></li>
+      <li>iOS: Upgraded the native Scanbot iOS SDK to <strong>v1.15.0</strong></li>
+    </ul>
+  </li>
+  <li>👉 Please also see:
+    <ul>
+      <li>The <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">Changelog</a>
+ of the native Scanbot Android SDK</li>
+      <li>The <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">Changelog</a>
+ of the native Scanbot iOS SDK</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="scanbotsdkxamarinforms---version-322-24-mar-2021">ScanbotSDK.Xamarin.Forms - Version 3.2.2 (24 Mar 2021)</h4>
 <ul>
   <li>🐞 Bug fixes:
     <ul>
@@ -1092,7 +1177,7 @@ To further improve the user experience you might want to automatically take a ph
   <li>⚠️ Breaking changes:
     <ul>
       <li>iOS: Added support for image file encryption. ScannerViewController constructors now require an <code class="highlighter-rouge">SBSDKStorageCrypting</code> parameter.
-Pass <code class="highlighter-rouge">null</code> to continue existing behavior, or checkout the <a href="https://scanbotsdk.github.io/documentation/ios/">native iOS SDK documentation</a> 
+Pass <code class="highlighter-rouge">null</code> to continue existing behavior, or checkout the <a href="https://scanbotsdk.github.io/documentation/ios/">native iOS SDK documentation</a>
 on how to implement the encryption.</li>
     </ul>
   </li>
@@ -1150,8 +1235,8 @@ on how to implement the encryption.</li>
           <li>Fixed a license problem in <code class="highlighter-rouge">SBSDKUIWorkflowScannerViewController</code></li>
           <li>Fixed a deadlock in <code class="highlighter-rouge">SBSDKUIBarcodesBatchScannerViewController</code></li>
           <li>Fixed a potential memory leak with <code class="highlighter-rouge">SBSDKUIBarcodesBatchScannerViewController</code></li>
-          <li>The delegate function of <code class="highlighter-rouge">SBSDKUIBarcodeBatchStorageDelegate</code> 
-<code class="highlighter-rouge">- (void)barcodeBatchStorage:(SBSDKUIBarcodeBatchStorage *)storage didUpdateBarcode:(SBSDKUIBarcodeMappedResult *)barcode atIndex:(NSInteger)index;</code> 
+          <li>The delegate function of <code class="highlighter-rouge">SBSDKUIBarcodeBatchStorageDelegate</code>
+<code class="highlighter-rouge">- (void)barcodeBatchStorage:(SBSDKUIBarcodeBatchStorage *)storage didUpdateBarcode:(SBSDKUIBarcodeMappedResult *)barcode atIndex:(NSInteger)index;</code>
 is now called on the main queue</li>
         </ul>
       </li>
@@ -1179,7 +1264,7 @@ is now called on the main queue</li>
   </li>
   <li>⚠️ Breaking changes:
     <ul>
-      <li>Android: The interface <code class="highlighter-rouge">IPictureCallback</code> was replaced by an abstract class <code class="highlighter-rouge">PictureCallback</code> 
+      <li>Android: The interface <code class="highlighter-rouge">IPictureCallback</code> was replaced by an abstract class <code class="highlighter-rouge">PictureCallback</code>
 that implements the <code class="highlighter-rouge">IBasePictureCallback</code> interface. For adjustments see our <a href="https://github.com/doo/scanbot-sdk-example-xamarin">example app on GitHub</a>.</li>
     </ul>
   </li>
@@ -1210,7 +1295,7 @@ that implements the <code class="highlighter-rouge">IBasePictureCallback</code> 
   </li>
   <li>🚀 Improvements:
     <ul>
-      <li>Android: Significant improvements in the camera components as well as in the Document Scanner RTU UI that make 
+      <li>Android: Significant improvements in the camera components as well as in the Document Scanner RTU UI that make
 document scanning perform better and much smoother:
         <ul>
           <li>Increased start-up time of the camera preview.</li>
@@ -1225,7 +1310,7 @@ document scanning perform better and much smoother:
       <li>iOS: Various, please cf. the <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">Changelog</a> of the native Scanbot iOS SDK</li>
       <li>iOS: Removed support for iOS 9 and iOS 10</li>
       <li>Android: Various; please cf. the <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">Changelog</a> of the native Scanbot Android SDK</li>
-      <li>Android: Dropped legacy SupportLibs, built for AndroidX. To migrate your project please check out the 
+      <li>Android: Dropped legacy SupportLibs, built for AndroidX. To migrate your project please check out the
 <a href="https://docs.microsoft.com/en-us/xamarin/android/platform/androidx">documentation</a> from Microsoft</li>
     </ul>
   </li>
@@ -1285,7 +1370,7 @@ document scanning perform better and much smoother:
       <li>iOS:
         <ul>
           <li>Major: Renamed <code class="highlighter-rouge">SBSDKPageAspectRatio</code> to <code class="highlighter-rouge">SBSDKAspectRatio</code></li>
-          <li>This also resulted in various parameter changes, please see the 
+          <li>This also resulted in various parameter changes, please see the
 <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">breaking changes section of iOS SDK 1.9.14</a></li>
         </ul>
       </li>
@@ -1394,7 +1479,7 @@ document scanning perform better and much smoother:
 <ul>
   <li>🐞 Bug fixes:
     <ul>
-      <li>Android: Workaround for a <a href="https://github.com/xamarin/xamarin-android/issues/3426">Mono issue on Android</a> with 
+      <li>Android: Workaround for a <a href="https://github.com/xamarin/xamarin-android/issues/3426">Mono issue on Android</a> with
 file operations like <code class="highlighter-rouge">File.Move()</code>, which are used in the ScanbotSDK.Xamarin methods <code class="highlighter-rouge">CreatePDF(..)</code> and <code class="highlighter-rouge">PerformOCR(..)</code>.</li>
     </ul>
   </li>
