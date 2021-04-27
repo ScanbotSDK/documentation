@@ -2,7 +2,7 @@
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Scanbot Web Document Scanner SDK</title>
 <meta name="generator" content="Jekyll v4.0.1" />
 <meta property="og:title" content="Scanbot Web Document Scanner SDK" />
@@ -10,8 +10,10 @@
 <link rel="canonical" href="https://scanbotsdk.github.io/documentation/web/" />
 <meta property="og:url" content="https://scanbotsdk.github.io/documentation/web/" />
 <meta property="og:site_name" content="Scanbot Web Document Scanner SDK" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Scanbot Web Document Scanner SDK" />
 <script type="application/ld+json">
-{"url":"https://scanbotsdk.github.io/documentation/web/","name":"Scanbot Web Document Scanner SDK","@type":"WebSite","headline":"Scanbot Web Document Scanner SDK","@context":"https://schema.org"}</script>
+{"headline":"Scanbot Web Document Scanner SDK","url":"https://scanbotsdk.github.io/documentation/web/","@type":"WebSite","name":"Scanbot Web Document Scanner SDK","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/documentation/web/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://scanbotsdk.github.io/documentation/web/feed.xml" title="Scanbot Web Document Scanner SDK" /></head>
 <body><header class="site-header" role="banner">
@@ -45,7 +47,7 @@
 
 <h3 id="requirements">Requirements</h3>
 
-<p>Since the Web SDK is based on WebAssembly, older browsers are unfortunately not supported. 
+<p>Since the Web SDK is based on WebAssembly, older browsers are unfortunately not supported.
 WebAssembly, as well as Scanbot Web Document Scanner SDK, are supported as of the following versions:</p>
 <ul>
   <li>Edge 16+</li>
@@ -57,18 +59,19 @@ WebAssembly, as well as Scanbot Web Document Scanner SDK, are supported as of th
 <p>Moreover, Scanbot Web Document Scanner SDK is optimized for mobile browsers.
 The latest versions of the following mobile browsers are supported:</p>
 <ul>
-  <li>On Android: Chrome, Firefox, Edge</li>
-  <li>On iOS 11+: Safari only</li>
+  <li><em>Android</em>: Chrome, Firefox, Edge</li>
+  <li><em>iOS 11.0+</em>: Safari (Chrome and Firefox as of iOS <em>14.4</em>)</li>
 </ul>
 
 <p>More information available <a href="https://caniuse.com/#search=webassembly">here</a>.</p>
 
-<p>Please note that Chrome and Firefox on iOS still use the iOS WebKit rendering engine. 
-<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=752458">getUserMedia is only available in Safari, not other browsers on 
-iOS</a>.
-This is subject to change, but as of writing this (Aug 2020), 
-on iOS only Safari is supported and no release date 
-for the feature on other browsers has been confirmed.</p>
+<p>Please note that Chrome and Firefox on iOS use iOS WebKit rendering engine, 
+and camera access was not supported until iOS 14.4. This was a restriction by Apple.</p>
+
+<ul>
+  <li>Reference: <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=752458">getUserMedia is only available in Safari, not other browsers on
+iOS</a>.</li>
+</ul>
 
 <h3 id="example-apps">Example Apps</h3>
 
@@ -98,22 +101,22 @@ for the feature on other browsers has been confirmed.</p>
   <li><code class="highlighter-rouge">ScanbotSDK.Asm.wasm</code></li>
 </ul>
 
-<p>The npm package contains typings under the <code class="highlighter-rouge">@types</code> directory, 
+<p>The npm package contains typings under the <code class="highlighter-rouge">@types</code> directory,
 so you can import it in your preferred typescript project,
 as well as the minified bundle (will even work with vanilla javascript) in the <code class="highlighter-rouge">bundle</code> directory.</p>
 
-<p>If you don’t use a bundler (webpack, etc.) in your project, you can put a <code class="highlighter-rouge">&lt;script src="ScanbotSDK.min.js"&gt;&lt;/script&gt;</code> tag
+<p>If you do not use a bundler (webpack, etc.) in your project, you can put a <code class="highlighter-rouge">&lt;script src="ScanbotSDK.min.js"&gt;&lt;/script&gt;</code> tag
 in your <code class="highlighter-rouge">index.html</code>. The script puts the SDK entry point into a global variable named <code class="highlighter-rouge">ScanbotSDK</code>. Copy <code class="highlighter-rouge">ScanbotSDK.min.js</code>
 from the package’s <code class="highlighter-rouge">bundle</code> folder to your web folder.</p>
 
 <h3 id="initializing-the-sdk">Initializing the SDK</h3>
 
-<p>To run the Scanbot SDK plugin functionality within your production app, 
+<p>To run the Scanbot SDK plugin functionality within your production app,
 you have to purchase and use a valid Scanbot SDK license.
 The SDK will run for one minute in trial mode without a license.</p>
 
 <p>Scanbot SDK must be initialized before use.
-If you wish to add a custom engine location, e.g. beta version 
+If you wish to add a custom engine location, e.g. beta version
 or a specific path to the web worker components,
 you can also specify the engine location:</p>
 
@@ -129,7 +132,7 @@ you can also specify the engine location:</p>
 
 <p>Please contact our <a href="mailto:sdk@scanbot.io">sales team</a> to request a free 30-day SDK trial license key.</p>
 
-<p>The initializer also serves as the main entry point of the SDK, 
+<p>The initializer also serves as the main entry point of the SDK,
 meaning that the <code class="highlighter-rouge">scanbotSDK</code> object returned upon <code class="highlighter-rouge">initialize</code>
 serves as your entry point to use any other SDK features.</p>
 
@@ -137,7 +140,7 @@ serves as your entry point to use any other SDK features.</p>
 
 <h4 id="configuration--styling">Configuration &amp; Styling</h4>
 
-<p>To start the document scanner, we must first create a 
+<p>To start the document scanner, we must first create a
 <code class="highlighter-rouge">DocumentScannerConfiguration</code> object, or simply a dictionary in vanilla javascript, as follows.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
@@ -145,16 +148,24 @@ serves as your entry point to use any other SDK features.</p>
 <span class="p">};</span>
 </code></pre></div></div>
 
-<p>The only required property is the <code class="highlighter-rouge">containerId</code>, string, 
+<p>The only required property is the <code class="highlighter-rouge">containerId</code>, string,
 that should match the container where you want the document scanner to pop up.</p>
+
+<p><code class="highlighter-rouge">DocumentScannerConfiguration</code> and <code class="highlighter-rouge">BarcodeScannerConfiguration</code> share their base properties:</p>
+<ul>
+  <li><code class="highlighter-rouge">containerId</code> – The <code class="highlighter-rouge">id</code> of the containing HTML element where the Barcode Scanner will be initialized. Required</li>
+  <li><code class="highlighter-rouge">videoConstraints</code> – When you wish to manipulate video quality. Optional, defaults to <code class="highlighter-rouge">3840x2160</code></li>
+  <li><code class="highlighter-rouge">mirrored</code> - Whether the screen should be mirrored. Useful when using a user-facing camera. <code class="highlighter-rouge">false</code> by default</li>
+  <li><code class="highlighter-rouge">onError</code> – Callback when something went wrong. Optional</li>
+</ul>
 
 <p>The configuration object also accepts the following parameters (values displayed are defaults):</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">acceptedAngleScore</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span>
-<span class="nx">acceptedSizeScore</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span>
-<span class="nx">autoCaptureSensitivity</span><span class="p">:</span> <span class="mf">0.66</span><span class="p">,</span>
-<span class="nx">autoCaptureEnabled</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-<span class="nx">ignoreBadAspectRatio</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>acceptedAngleScore: 75,
+acceptedSizeScore: 75,
+autoCaptureSensitivity: 0.66,
+autoCaptureEnabled: true,
+ignoreBadAspectRatio: true,
 </code></pre></div></div>
 
 <p>Additionally, you can also use the configuration object for react-like styling.
@@ -238,35 +249,42 @@ you are more than welcome to.</p>
 <p>Moreover, the hint texts can also be configured via the same configuration object
 (values displayed are defaults):</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">text</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nl">hint</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">OK</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Don't move. Capturing document...</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">OK_SmallSize</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Move closer</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">OK_BadAngles</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Turn your device to&lt;br&gt;have a more rectangular outline</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">OK_BadAspectRatio</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Wrong aspect ratio - rotate your device</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">OK_OffCenter</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Move to the center</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">Error_NothingDetected</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Searching for document...</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">Error_Brightness</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Poor light&lt;br&gt;Searching for document...</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">Error_Noise</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Noisy background&lt;br&gt;Searching for document...</span><span class="dl">'</span>
-    <span class="p">}</span>
-<span class="p">};</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>text: {
+    hint: {
+        OK: "Don't move. Capturing document...",
+        OK_SmallSize: 'Move closer',
+        OK_BadAngles: 'Turn your device to&lt;br&gt;have a more rectangular outline',
+        OK_BadAspectRatio: 'Wrong aspect ratio - rotate your device',
+        OK_OffCenter: 'Move to the center',
+        Error_NothingDetected: 'Searching for document...',
+        Error_Brightness: 'Poor light&lt;br&gt;Searching for document...',
+        Error_Noise: 'Noisy background&lt;br&gt;Searching for document...'
+    }
+};
 </code></pre></div></div>
 
 <p>The document scanner works at the maximum available camera resolution for the highest quality scans by default.
 You can further configure the camera video stream by specifying the <code class="highlighter-rouge">videoConstraints</code> property of
-the document scanner configuration. The video constraints are directly given to <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia">getUserMedia</a></p>
+the document scanner configuration. Most video constraints are directly given to <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia">getUserMedia</a>*</p>
 
 <p>The default video constraints are as follows:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">videoConstraints</span><span class="p">:</span> <span class="nx">MediaTrackConstraints</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">facingMode</span><span class="p">:</span> <span class="dl">"</span><span class="s2">environment</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">resizeMode</span><span class="p">:</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">width</span><span class="p">:</span> <span class="p">{</span> <span class="na">ideal</span><span class="p">:</span> <span class="mi">3840</span> <span class="p">},</span>
-    <span class="na">height</span><span class="p">:</span> <span class="p">{</span> <span class="na">ideal</span><span class="p">:</span> <span class="mi">2160</span> <span class="p">}</span>
-<span class="p">};</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>videoConstraints: MediaTrackConstraints = {
+    facingMode: "environment",
+    resizeMode: "none",
+    width: { ideal: 3840 },
+    height: { ideal: 2160 },
+    experimental: {
+        focusMode: "continous",
+        focusDistance: 0
+    },
+};
 </code></pre></div></div>
 
-<p>Call <code class="highlighter-rouge">documentScanner.dispose()</code> to stop the scanner and release all resources.</p>
+<p>*Everything except <code class="highlighter-rouge">experimental</code> is passed directly to the <code class="highlighter-rouge">getUserMedia</code>, 
+because they are advanced constraints, will not work on all and require special application.
+All advanced constraints, however, are passed the stream in the same fashion. 
+You can add additional <a href="https://developer.mozilla.org/en-US/docs/Web/API/Media_Streams_API/Constraints#advanced_constraints">advanced constraints</a>.</p>
 
 <h4 id="callbacks">Callbacks</h4>
 
@@ -274,7 +292,7 @@ the document scanner configuration. The video constraints are directly given to 
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">onDocumentDetected</span><span class="p">:</span> <span class="nx">result</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Detected Document:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-<span class="p">},</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <p>The <code class="highlighter-rouge">result</code> object contains the following properties:</p>
@@ -286,12 +304,12 @@ the document scanner configuration. The video constraints are directly given to 
   <li><code class="highlighter-rouge">polygon</code> – The page’s cropping polygon as calculated by a document detection operation</li>
 </ul>
 
-<p>Note that this will be called every time a document is detected, 
-until you stop detection or dispose the camera.</p>
+<p>Note that this will be called every time a document is detected,
+until you stop detection or dispose of the camera.</p>
 
 <h4 id="creating-the-scanner">Creating the Scanner</h4>
 
-<p>After you’re done configuring the scanner, 
+<p>After you are done configuring the scanner,
 simply refer back to your SDK object and create the scanner object as follows:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">documentScanner</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">scanbotSDK</span><span class="p">.</span><span class="nx">createDocumentScanner</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
@@ -301,7 +319,7 @@ simply refer back to your SDK object and create the scanner object as follows:</
 
 <h4 id="handling-automatic-capture">Handling Automatic Capture</h4>
 
-<p>If you wish to do image processing between document captures, or find the document scanner a wee bit too trigger-happy, 
+<p>If you wish to do image processing between document captures, or find the document scanner a wee bit too trigger-happy,
 (which is plausible on high-end devices) there is the option to disable automatic capture on the fly.</p>
 
 <p>You can also use these calls to create your own custom auto-capture on/off switch.</p>
@@ -318,9 +336,9 @@ simply refer back to your SDK object and create the scanner object as follows:</
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">documentScanner</span><span class="p">.</span><span class="nx">isAutoCaptureEnabled</span><span class="p">();</span>
 </code></pre></div></div>
 
-<h4 id="dispose">Dispose</h4>
+<h4 id="disposal">Disposal</h4>
 
-<p>Always dispose the document scanner after it is no longer needed</p>
+<p>Always dispose of the document scanner after it is no longer needed</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">documentScanner</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>
 </code></pre></div></div>
@@ -361,6 +379,7 @@ This is your main object for configuration options, styling and receiving the re
 <ul>
   <li><code class="highlighter-rouge">containerId</code> – The <code class="highlighter-rouge">id</code> of the containing HTML element where the Barcode Scanner will be initialized. Required</li>
   <li><code class="highlighter-rouge">videoConstraints</code> – When you wish to manipulate video quality. Optional, defaults to <code class="highlighter-rouge">3840x2160</code></li>
+  <li><code class="highlighter-rouge">mirrored</code> - Whether the screen should be mirrored. Useful when using a user-facing camera. <code class="highlighter-rouge">false</code> by default</li>
   <li><code class="highlighter-rouge">onError</code> – Callback when something went wrong. Optional</li>
 </ul>
 
@@ -382,7 +401,7 @@ This is your main object for configuration options, styling and receiving the re
 <ul>
   <li><code class="highlighter-rouge">format: BarcodeFormat</code> – The <code class="highlighter-rouge">type</code> of barcode. One of the types listed in the previous paragraph</li>
   <li><code class="highlighter-rouge">text: string</code> – The data contained in the barcode</li>
-  <li><code class="highlighter-rouge">rawBytes: Uint8Array</code> – The same data contained in the barcode. 
+  <li><code class="highlighter-rouge">rawBytes: Uint8Array</code> – The same data contained in the barcode.
 Can be disregarded in most scenarios, useful when the result is binary data, not a string.</li>
 </ul>
 
@@ -426,9 +445,9 @@ as additional barcode scanner actions are functions of that object.</p>
 
 <h4 id="api">API</h4>
 
-<p>To handle barcode results (avoid duplicate scans etc), 
-ScanbotSDK offers the following convenient methods to pause and resume detection 
-while you’re processing the data on your side:</p>
+<p>To handle barcode results (avoid duplicate scans etc),
+ScanbotSDK offers the following convenient methods to pause and resume detection
+while you are processing the data on your side:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resumeDetection(): void;
 </code></pre></div></div>
@@ -437,8 +456,8 @@ while you’re processing the data on your side:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>isDetectionPaused(): boolean;
 </code></pre></div></div>
 
-<p>As with the Document Scanner, the Barcode Scanner should also be properly disposed 
-when you’ve detected and processed the relevant barcodes:</p>
+<p>As with the Document Scanner, the Barcode Scanner should also be properly disposed of
+when you have detected and processed the relevant barcodes:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dispose(): void;
 </code></pre></div></div>
 
@@ -448,52 +467,61 @@ when you’ve detected and processed the relevant barcodes:</p>
 
 <p>ScanbotSDK Cropping View takes a <code class="highlighter-rouge">CroppingViewConfiguration</code> parameter. It has the following format:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
-    <span class="c1">// Identifier (id-tag of html element) of the Croppign View parent element. Required</span>
-    <span class="nx">containerId</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Identifier (id-tag of html element) of the Cropping View parent element. Required
+containerId?: string;
 
-    <span class="c1">// Determines whether scroll (incl. bounce) should be disabled when the cropping screen is active. Optional. True by default</span>
-    <span class="nx">disableScroll</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
-    
-    <span class="c1">// Optional document polygon parameter. </span>
-    <span class="c1">// If undefined, detection will be performed and, if a document is then found, a polygon will be applied.</span>
-    <span class="nx">polygon</span><span class="p">?:</span> <span class="nx">Polygon</span><span class="p">;</span>
-    
-    <span class="c1">// Image element to be cropped. Required. </span>
-    <span class="nl">image</span><span class="p">:</span> <span class="nb">Uint8Array</span><span class="p">;</span>
-    
-    <span class="c1">// Initial rotations of the original image. Default is 0</span>
-    <span class="nx">rotations</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+// Determines whether scroll (incl. bounce) should be disabled when the cropping screen is active. Optional. True by default
+disableScroll?: boolean;
 
-    <span class="c1">// Optional styling parameter. If left undefined, default styles will be applied</span>
-    <span class="nx">style</span><span class="p">?:</span> <span class="nx">CroppingViewStyle</span><span class="p">;</span>
-<span class="p">}</span>
+// Optional document polygon parameter.
+// If undefined, detection will be performed and, if a document is then found, a polygon will be applied.
+polygon?: Polygon;
+
+// Image element to be cropped. Required.
+image: Uint8Array;
+
+// Initial rotations of the original image. Default is 0
+rotations?: number;
+
+// Optional styling parameter. If left undefined, default styles will be applied
+style?: CroppingViewStyle;
 </code></pre></div></div>
 
 <h4 id="styling-1">Styling</h4>
 
 <p>The styling options and default values of the Cropping View are the following:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
-    <span class="nx">padding</span><span class="p">?:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-    <span class="nx">polygon</span><span class="p">?:</span> <span class="p">{</span>
-          <span class="nx">color</span><span class="p">?:</span> <span class="nx">string</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">#1ec31e</span><span class="dl">"</span><span class="p">;</span>
-          <span class="nx">width</span><span class="p">?:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-          <span class="nx">handles</span><span class="p">?:</span> <span class="p">{</span>                
-                <span class="nx">color</span><span class="p">?:</span> <span class="nx">string</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">white</span><span class="dl">"</span><span class="p">;</span>
-                <span class="nx">border</span><span class="p">?:</span> <span class="nx">string</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">1px solid lightgray</span><span class="dl">"</span><span class="p">;</span>
-                <span class="nx">size</span><span class="p">?:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span>
-          <span class="p">};</span>
-    <span class="p">};</span>
-    <span class="nx">magneticLines</span><span class="p">?:</span> <span class="p">{</span>
-        <span class="nx">disabled</span><span class="p">?:</span> <span class="nx">boolean</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-        <span class="nx">color</span><span class="p">?:</span> <span class="nx">string</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">transparent</span><span class="dl">"</span><span class="p">;</span>
-    <span class="p">};</span>
-<span class="p">}</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>padding?: number = 10;
+polygon?: {
+      color?: string = "#1ec31e",
+      width?: number = 4,
+      handles?: {                
+            color?: string = "white",
+            border?: string = "1px solid lightgray",
+            size?: number = 14
+      }
+};
+magneticLines?: {
+    disabled?: boolean = false,
+    color?: string = "transparent"
+};
+magnifier?: {
+    margin?: number = 15,
+    size?: number = 100,
+    zoom?: number = 1.5,
+    border?: {
+        width?: number = 2,
+        color?: string = "white"
+    },
+    crosshair?: {
+        size?: number = 20,
+        color?: string = "white"
+    }
+};   
 </code></pre></div></div>
 
-<p>Note that <code class="highlighter-rouge">magneticLines</code> style exists only because it is somewhat of an experimental feature, 
-there’s room for improvement and optimization. See if it meets your requirements in its current form</p>
+<p>Note that <code class="highlighter-rouge">magneticLines</code> style exists only because it is somewhat of an experimental feature,
+there is room for improvement and optimization. See if it meets your requirements in its current form</p>
 
 <h4 id="creating-the-view">Creating the View</h4>
 
@@ -515,7 +543,7 @@ as additional cropping functions are functions of that object.</p>
 
 <p>• <code class="highlighter-rouge">detect(): Promise&lt;void&gt;;</code></p>
 
-<p>If you’re not happy with the detected polygon, you can re-detect and re-apply the polygon from the detected document</p>
+<p>If you are not happy with the detected polygon, you can re-detect and re-apply the polygon from the detected document</p>
 
 <p>• <code class="highlighter-rouge">apply(): Promise&lt;CroppingResult&gt;;</code></p>
 
@@ -533,7 +561,7 @@ rotations: number
 
 <p>• <code class="highlighter-rouge">dispose(): void;</code></p>
 
-<p>Dispose the Cropping View element if you’re done.</p>
+<p>Dispose of the Cropping View element if you are done.</p>
 
 <h3 id="image-filters">Image Filters</h3>
 
@@ -542,12 +570,12 @@ rotations: number
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="nx">applyFilter</span><span class="p">(</span><span class="nx">imageBuffer</span><span class="p">:</span> <span class="nb">ArrayBuffer</span><span class="p">,</span> <span class="nx">filterType</span><span class="p">:</span> <span class="nx">ImageFilter</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nb">ArrayBuffer</span><span class="o">&gt;</span>
 </code></pre></div></div>
 
-<p>So you can simply pass the image object from your <code class="highlighter-rouge">DetectionResult</code> to the filter function 
+<p>So you can simply pass the image object from your <code class="highlighter-rouge">DetectionResult</code> to the filter function
 and return the image with the filter.</p>
 
 <p><code class="highlighter-rouge">ArrayBuffer</code> in this context is equal to the <code class="highlighter-rouge">Uint8Array</code> image in your <code class="highlighter-rouge">DetectionResult</code> object.</p>
 
-<p>Scanbot WebSDK allows the following filter:</p>
+<p>Scanbot WebSDK allows the following filters:</p>
 
 <ul>
   <li>Binarization filters:
@@ -577,7 +605,7 @@ and return the image with the filter.</p>
 
 <h3 id="pdf--tiff-generation">PDF &amp; TIFF Generation</h3>
 
-<p>ScanbotSDK also offers functionality for PDF &amp; TIFF generation. 
+<p>ScanbotSDK also offers functionality for PDF &amp; TIFF generation.
 Create the appropriate generator as follows:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">options</span><span class="p">:</span> <span class="nx">PdfGenerationOptions</span> <span class="o">=</span> <span class="p">{</span><span class="na">standardPaperSize</span><span class="p">:</span> <span class="dl">"</span><span class="s2">A4</span><span class="dl">"</span><span class="p">,</span> <span class="na">landscape</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">dpi</span><span class="p">:</span> <span class="mi">100</span><span class="p">};</span>
@@ -594,14 +622,14 @@ Create the appropriate generator as follows:</p>
     <ul>
       <li>If a standard paper size is given, that paper size is used,</li>
       <li>Otherwise, if both <code class="highlighter-rouge">paperWidthInches</code> and <code class="highlighter-rouge">paperHeightInches</code> is set, those values are used</li>
-      <li>Otherwise, the paper size is calculated to fit the input image exactly at the given DPI. 
+      <li>Otherwise, the paper size is calculated to fit the input image exactly at the given DPI.
   If no DPI value is given, a default DPI of 72 is used.</li>
     </ul>
   </li>
   <li>DPI calculation:
     <ul>
       <li>If a DPI is provided, then that value is used.</li>
-      <li>If the value is not given or that value is too small for the entire image to fit on the page, 
+      <li>If the value is not given or that value is too small for the entire image to fit on the page,
 then the smallest possible DPI value is chosen so that the entire image fits on the page.</li>
     </ul>
   </li>
@@ -609,7 +637,7 @@ then the smallest possible DPI value is chosen so that the entire image fits on 
 
 <h4 id="adding-pages">Adding pages</h4>
 
-<p>In order to allow for memory optimization, 
+<p>In order to allow for memory optimization,
 you can load an image from storage one at a time and add it to the generator:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">generator</span><span class="p">.</span><span class="nx">addPage</span><span class="p">(</span><span class="nx">image</span><span class="p">);</span>
@@ -641,28 +669,81 @@ you can load an image from storage one at a time and add it to the generator:</p
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">saveBytes</span><span class="p">(</span><span class="nx">bytes</span><span class="p">,</span> <span class="dl">"</span><span class="s2">generated.pdf</span><span class="dl">"</span><span class="p">);</span>
 </code></pre></div></div>
 
+<p><a name="module_ScanbotSdk.errorHandling"></a></p>
+<h3 id="handling-errors">Handling Errors</h3>
+
+<p>There are various reasons why opening a scanning screen might fail: 
+unsupported browser, permission was denied, camera does not exist etc.</p>
+
+<p>ScanbotSDK tries to attempt to handle these cases as best as possible, however, 
+as hardware access API in the browser is not backwards compatible or future-proof,
+this is an ongoing challenge. In order to prevent false positives, we keep error handling to a minimum.</p>
+
+<p>If the user has denied camera permission, the promise for creating a scanner (<code class="highlighter-rouge">createDocumentScanner</code>, 
+<code class="highlighter-rouge">createBarcodeScanner</code> etc.), will be rejected with <code class="highlighter-rouge">NotAllowedError</code> (thrown by the browser, API is subject to change).</p>
+
+<p>If it is an unsupported browser (specifically, <code class="highlighter-rouge">mediaDevices</code> are not available), the promise will be rejected 
+with <code class="highlighter-rouge">UnsupportedError</code>. This is thrown by ScanbotSDK and any changes to it will be documented.</p>
+
+<p>Promise rejections means you should try and catch staring the scanners, e.g:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> try {
+    documentScanner = await scanbotSDK.createDocumentScanner(config);
+} catch (e) {
+    // Handle cases where scanner could not be opened
+}
+</code></pre></div></div>
+
+<p>There is no internal and continuous check for invalid or expired license. 
+You should always check this yourself via <code class="highlighter-rouge">await scanbotSDK.getLicenseInfo()</code>.</p>
+
 <h3 id="utilities">Utilities</h3>
 
-<p>In addition to numerous view and image processing functions, 
+<p>In addition to numerous view and image processing functions,
 ScanbotSDK also features various utility functions.</p>
 
-<p>Please note that utilities are available after initialization, under the instance returned by <code class="highlighter-rouge">initialize</code>, 
+<p>Please note that utilities are available after initialization, under the instance returned by <code class="highlighter-rouge">initialize</code>,
 therefore, if ScanbotSDK initialization fails, utilities are not available either.</p>
 
 <ul>
   <li><code class="highlighter-rouge">isCameraSupported()</code> –
-Checks whether the browser or device supports camera access. 
-Please note that this functionality is specifically located under <code class="highlighter-rouge">utils</code> because 
-ScanbotSDK cannot guarantee the reliability of this functionality. 
-Browsers and their functions are, by design, not backward compatible or future-proof. 
+Checks whether the browser or device supports camera access.
+Please note that this functionality is specifically located under <code class="highlighter-rouge">utils</code> because
+ScanbotSDK cannot guarantee the reliability of this functionality.
+Browsers and their functions are, by design, not backward compatible or future-proof.
 In niche situations (browsers, devices) it is bound to produce false positives.
 Other SDK features (import image, apply a filter, etc. are still available even if the camera is not)</li>
-  <li><code class="highlighter-rouge">flash()</code> – Simple flash animation that 
+  <li><code class="highlighter-rouge">flash()</code> – Simple flash animation that
 you can call in the detection callback to add a bit of flare to your application</li>
 </ul>
 
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release History</h2>
+
+<h4 id="version-220-21-apr-2021">Version 2.2.0 (21 Apr 2021)</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Magnifier View for Cropping View</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Exposed <code class="highlighter-rouge">videoConstraints</code> to Scanner Configuration, allowing to set <code class="highlighter-rouge">facingMode</code> and advanced options</li>
+      <li>Added source <code class="highlighter-rouge">ImageData</code> object to Barcode Scanner Result (<code class="highlighter-rouge">ImageData</code> object extracted from canvas)</li>
+      <li>Added <code class="highlighter-rouge">mirrored</code> option to Scanner Configuration (<code class="highlighter-rouge">false</code> by default)</li>
+      <li>Remove partially-supported <code class="highlighter-rouge">MSI_PLESSEY</code> barcode format</li>
+      <li>Improved how Scanbot Web SDK handles access errors. 
+<a href="#module_ScanbotSdk.errorHandling">See Error Handling Section</a></li>
+      <li>Added option to add <code class="highlighter-rouge">experimental</code> or <code class="highlighter-rouge">advanced</code> constraints via scanner configuration.</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Barcode Finder Window custom positioning fix</li>
+      <li>Fixed auto-focus issue on certain android devices</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="version-210-3-mar-2021">Version 2.1.0 (3 Mar 2021)</h4>
 <ul>
@@ -673,7 +754,7 @@ you can call in the detection callback to add a bit of flare to your application
   </li>
   <li>🐞 Bug fixes:
     <ul>
-      <li>Fixed issue where camera component was not properly disposed</li>
+      <li>Fixed issue where camera component was not properly disposed of</li>
     </ul>
   </li>
   <li>⚠️ Breaking Changes:
@@ -742,7 +823,7 @@ The <code class="highlighter-rouge">rotations</code> property is also contained 
   <li>⚠️ Breaking Changes:
     <ul>
       <li>Detection result images are now <code class="highlighter-rouge">Uint8Array</code>. Use <code class="highlighter-rouge">scanbotSDK.toDataUrl</code> to convert it to a displayable image</li>
-      <li>The <code class="highlighter-rouge">component</code> package no longer available in the Bundle SDK. Replaced by <code class="highlighter-rouge">@types</code>
+      <li>The <code class="highlighter-rouge">component</code> package is no longer available in the Bundle SDK. Replaced by <code class="highlighter-rouge">@types</code>
         <ul>
           <li>Configuration objects moved from <code class="highlighter-rouge">model/</code> to <code class="highlighter-rouge">model/configuration/</code></li>
         </ul>
