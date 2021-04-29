@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/android/" />
 <meta property="og:site_name" content="Scanbot Barcode Scanner SDK for Android" />
 <script type="application/ld+json">
-{"url":"https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/android/","name":"Scanbot Barcode Scanner SDK for Android","@type":"WebSite","headline":"Scanbot Barcode Scanner SDK for Android","@context":"https://schema.org"}</script>
+{"url":"https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/android/","headline":"Scanbot Barcode Scanner SDK for Android","name":"Scanbot Barcode Scanner SDK for Android","@type":"WebSite","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/documentation/barcode-scanner-sdk/android/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/android/feed.xml" title="Scanbot Barcode Scanner SDK for Android" /></head>
 <body><header class="site-header" role="banner">
@@ -357,6 +357,10 @@ Add it as a dependency to your project:</p>
 <span class="p">}</span>
 </code></pre></div></div>
 
+<h4 id="additional-rtu-barcode-scanning-parameters">Additional RTU barcode scanning parameters</h4>
+
+<p>Please see chapter <a href="#additional-configuration">Additional configuration</a> below to see some additional parameters description.</p>
+
 <h4 id="full-example-of-the-rtu-ui-activity">Full Example of the RTU UI Activity</h4>
 
 <p>Please see this full example implementation in our demo:</p>
@@ -387,7 +391,7 @@ To help you avoid the same issues which we have encountered while developing Sca
 
 <p>Add it to your layout, which is as simple as:</p>
 
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;io.scanbot.sdk.camera.ScanbotCameraView</span>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;io.scanbot.sdk.camera.ScanbotCameraView</span>
         <span class="na">android:id=</span><span class="s">"@+id/camera"</span>
         <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
         <span class="na">android:layout_height=</span><span class="s">"match_parent"</span> <span class="nt">/&gt;</span>
@@ -539,14 +543,14 @@ new ScanbotBarcodeScannerSDKInitializer()
   <li>Add the Scanbot SDK Crypto Persistence library to your app dependencies</li>
 </ol>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>implementation("io.scanbot:sdk-crypto-persistence:VERSION")
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">implementation</span><span class="o">(</span><span class="s2">"io.scanbot:sdk-crypto-persistence:VERSION"</span><span class="o">)</span>
 </code></pre></div></div>
 
 <ol>
   <li>Enable file encryption in <code class="highlighter-rouge">ScanbotBarcodeScannerSDKInitializer</code></li>
 </ol>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ScanbotBarcodeScannerSDKInitializer()
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    ScanbotBarcodeScannerSDKInitializer()
         .useFileEncryption(true)
         .initialize(this)
 </code></pre></div></div>
@@ -578,6 +582,48 @@ For example:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>val scanbotBarcodeScannerSDK = ScanbotBarcodeScannerSDK(context)
 val decryptedImageBitmap: Bitmap = scanbotBarcodeScannerSDK.fileIOProcessor().readImage(source: File, options: BitmapFactory.Options? = null)
 </code></pre></div></div>
+
+<h4 id="additional-configuration">Additional configuration</h4>
+
+<p>Some peculiar use-cases require special handling. For example, we can configure <code class="highlighter-rouge">ScanbotBarcodeDetector</code> to scan only barcodes of expected lengths. This might reduce false scans. Such parameters work only for enumerated types of barcodes and, usually, you don’t need to modify their default values.</p>
+
+<p>You can specify these parameters via <code class="highlighter-rouge">BarcodeScannerAdditionalConfig</code> entity as a part of <code class="highlighter-rouge">BarcodeScannerConfig</code>:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">barcodeDetector</span> <span class="p">=</span> <span class="nc">ScanbotBarcodeScannerSDK</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nf">barcodeDetector</span><span class="p">()</span>
+<span class="kd">val</span> <span class="py">additionalConfig</span> <span class="p">=</span> <span class="nc">BarcodeScannerAdditionalConfig</span><span class="p">(</span>
+    <span class="n">minimumTextLength</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span>
+    <span class="n">maximumTextLength</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span>
+    <span class="n">minimum1DQuietZoneSize</span> <span class="p">=</span> <span class="m">10</span><span class="p">,</span>
+    <span class="n">gs1DecodingEnabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kd">val</span> <span class="py">config</span> <span class="p">=</span> <span class="nc">BarcodeScannerConfig</span><span class="p">(</span>
+	<span class="n">additionalConfig</span> <span class="p">=</span> <span class="n">additionalConfig</span><span class="p">,</span>
+	<span class="c1">// modify other parameters</span>
+	<span class="p">)</span>
+<span class="n">barcodeDetector</span><span class="p">.</span><span class="nf">setConfig</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Alternatively, you can utilize methods <code class="highlighter-rouge">modifyConfig</code> and <code class="highlighter-rouge">modifyAdditionalConfig</code> to only edit some of parameters:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">barcodeDetector</span><span class="p">.</span><span class="nf">modifyConfig</span> <span class="p">{</span>
+    <span class="nf">modifyAdditionalConfig</span> <span class="p">{</span>
+        <span class="nf">setMinimumTextLength</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+        <span class="nf">setMaximumTextLength</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+        <span class="nf">setMinimum1DQuietZoneSize</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+        <span class="nf">setGs1DecodingEnabled</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+    <span class="p">}</span>
+	<span class="c1">// modify other parameters</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Parameters, currently available in <code class="highlighter-rouge">BarcodeScannerAdditionalConfig</code> are:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">minimumTextLength</code>: minimum required text length of the detected barcode. The default value is 0 (the setting is turned off). Currently works for ITF barcodes only!</li>
+  <li><code class="highlighter-rouge">maximumTextLength</code>: maximum text length of the detected barcode. Setting to zero removes the limit. The default value is 0 (the setting is turned off). Currently works for ITF barcodes only!</li>
+  <li><code class="highlighter-rouge">minimum1DQuietZoneSize</code>: minimum required quiet zone on the barcode. Measured in modules (the size of a minimal bar on the barcode). The default value is 10. Currently works for ITF barcodes only!</li>
+  <li><code class="highlighter-rouge">gs1DecodingEnabled</code>: when set to <code class="highlighter-rouge">true</code>, the scanner assumes that the barcode can be a GS1 barcode. Turn it off, if you don’t want to see decoded FNC1 characters (“]C1” and ASCII char 29). The default is <code class="highlighter-rouge">true</code>. Currently works for CODE128 barcodes only!</li>
+</ul>
 
 <h4 id="full-example-of-a-custom-activity">Full Example of a Custom Activity</h4>
 
@@ -965,27 +1011,6 @@ Copyright (c) The Apache Software Foundation
 
 This product includes software developed at
 The Apache Software Foundation (http://www.apache.org/).
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-
-
-JetBrains Java Annotations (Annotations for JVM-based languages)
-
-Version 13.0
-(https://github.com/JetBrains/java-annotations)
-
-Copyright 2000-2016 JetBrains s.r.o.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
