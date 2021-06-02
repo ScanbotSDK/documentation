@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://scanbotsdk.github.io/documentation/flutter/" />
 <meta property="og:site_name" content="Scanbot SDK Flutter Plugin" />
 <script type="application/ld+json">
-{"url":"https://scanbotsdk.github.io/documentation/flutter/","name":"Scanbot SDK Flutter Plugin","headline":"Scanbot SDK Flutter Plugin","@type":"WebSite","@context":"https://schema.org"}</script>
+{"url":"https://scanbotsdk.github.io/documentation/flutter/","headline":"Scanbot SDK Flutter Plugin","name":"Scanbot SDK Flutter Plugin","@type":"WebSite","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/documentation/flutter/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://scanbotsdk.github.io/documentation/flutter/feed.xml" title="Scanbot SDK Flutter Plugin" /></head>
 <body><header class="site-header" role="banner">
@@ -60,6 +60,7 @@ For more details visit our website <a href="https://scanbot.io/sdk">https://scan
   <li>Batch Barcode and QR Code Scanning</li>
   <li>MRZ (Machine Readable Zones) Scanning</li>
   <li>EHIC (European Health Insurance Card) Scanning</li>
+  <li>NFC passport reading</li>
 </ul>
 
 <h3 id="requirements">Requirements</h3>
@@ -267,6 +268,8 @@ Cropping UI, Barcode Scanner UI, MRZ Scanner UI and EHIC Scanner UI.</p>
       <li><a href="#module_ScanbotSdkUi.startBatchBarcodeScanner">.startBatchBarcodeScanner(config)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdkUi.startMrzScanner">.startMrzScanner(config)</a> - <code class="highlighter-rouge">function</code></li>
       <li><a href="#module_ScanbotSdkUi.startEhicScanner">.startEhicScanner(config)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdkUi.startLicensePlateScanner">.startLicensePlateScanner(config)</a> - <code class="highlighter-rouge">function</code></li>
+      <li><a href="#module_ScanbotSdkUi.startNfcPassportReader">.startNfcPassportReader(config)</a> - <code class="highlighter-rouge">function</code></li>
     </ul>
   </li>
 </ul>
@@ -709,180 +712,189 @@ If multi-page mode is not enabled and <code class="highlighter-rouge">result.sta
 <h5 id="documentscannerconfiguration">DocumentScannerConfiguration</h5>
 <p>All UI configuration options are optional.</p>
 
-<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// The background color of the top toolbar.</span>
-  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
-
-  <span class="c1">/// The color of all inactive toggle buttons in the toolbar.</span>
-  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsInactiveColor</span><span class="o">;</span>
-
-  <span class="c1">/// The color of all active toggle buttons in the toolbar.</span>
-  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsActiveColor</span><span class="o">;</span>
-
-  <span class="c1">/// The color of the camera background (relevant only when the camera preview mode is CameraPreviewMode.FIT_IN).</span>
-  <span class="n">Color</span><span class="o">?</span> <span class="n">cameraBackgroundColor</span><span class="o">;</span>
-
-  <span class="c1">/// The background color of the user guidance hints.</span>
-  <span class="n">Color</span><span class="o">?</span> <span class="n">userGuidanceBackgroundColor</span><span class="o">;</span>
-
-  <span class="c1">/// The text color of the user guidance hints.</span>
-  <span class="n">Color</span><span class="o">?</span> <span class="n">userGuidanceTextColor</span><span class="o">;</span>
-
-  <span class="c1">/// The background color of the bottom shutter-bar.</span>
-  <span class="n">Color</span><span class="o">?</span> <span class="n">bottomBarBackgroundColor</span><span class="o">;</span>
-
-  <span class="c1">/// The color of the title of all buttons in the bottom shutter-bar (Cancel button, etc.),</span>
-  <span class="c1">/// as well as the camera permission prompt button.</span>
-  <span class="n">Color</span><span class="o">?</span> <span class="n">bottomBarButtonsColor</span><span class="o">;</span>
-
-  <span class="c1">/// The foreground color of the shutter button in auto-snapping mode.</span>
-  <span class="n">Color</span><span class="o">?</span> <span class="n">shutterButtonAutoInnerColor</span><span class="o">;</span>
-
-  <span class="c1">/// The background color of the shutter button in auto-snapping mode.</span>
-  <span class="n">Color</span><span class="o">?</span> <span class="n">shutterButtonAutoOuterColor</span><span class="o">;</span>
-
-  <span class="c1">/// The background color of the shutter button in manual mode.</span>
-  <span class="n">Color</span><span class="o">?</span> <span class="n">shutterButtonManualOuterColor</span><span class="o">;</span>
-
-  <span class="c1">/// The foreground color of the shutter button in manual mode.</span>
-  <span class="n">Color</span><span class="o">?</span> <span class="n">shutterButtonManualInnerColor</span><span class="o">;</span>
-
-  <span class="c1">/// The color of the detected document outline when the document's angle, size or aspect ratio</span>
-  <span class="c1">/// is not yet optimal.</span>
-  <span class="c1">/// (All detection statuses .DetectionStatus that have the OK_BUT_XXX prefix).</span>
-  <span class="n">Color</span><span class="o">?</span> <span class="n">polygonColor</span><span class="o">;</span>
-
-  <span class="c1">/// The color of the detected document outline when we are ready to snap DetectionStatus.OK.</span>
-  <span class="n">Color</span><span class="o">?</span> <span class="n">polygonColorOK</span><span class="o">;</span>
-
-  <span class="c1">/// The background color of the detected document outline when the document's angle, size or aspect ratio</span>
-  <span class="c1">/// is not yet optimal.</span>
-  <span class="c1">/// (All DetectionResult with OK_BUT_XXX).</span>
-  <span class="n">Color</span><span class="o">?</span> <span class="n">polygonBackgroundColor</span><span class="o">;</span>
-
-  <span class="c1">/// The background color of the detected document outline when we are ready to snap DetectionStatus.OK.</span>
-  <span class="n">Color</span><span class="o">?</span> <span class="n">polygonBackgroundColorOK</span><span class="o">;</span>
-
-  <span class="n">Color</span><span class="o">?</span> <span class="n">shutterButtonIndicatorColor</span><span class="o">;</span>
-
-  <span class="c1">/// Controls whether the multi-page toggle button is hidden or not.</span>
-  <span class="kt">bool</span><span class="o">?</span> <span class="n">multiPageButtonHidden</span><span class="o">;</span>
-
-  <span class="c1">/// Controls whether the flash toggle button is hidden or not.</span>
-  <span class="kt">bool</span><span class="o">?</span> <span class="n">flashButtonHidden</span><span class="o">;</span>
-
-  <span class="c1">/// Hides the shutter button if set to TRUE. Defaults to FALSE.</span>
-  <span class="c1">/// If set to TRUE, auto-snapping is enabled and the property autoSnappingEnabled of the behavior configuration will</span>
-  <span class="c1">/// have no effect.</span>
-  <span class="c1">/// The auto-snapping button will also be hidden.</span>
-  <span class="kt">bool</span><span class="o">?</span> <span class="n">shutterButtonHidden</span><span class="o">;</span>
-
-  <span class="c1">/// Controls whether the auto-snapping toggle button is hidden or not.</span>
-  <span class="kt">bool</span><span class="o">?</span> <span class="n">autoSnappingButtonHidden</span><span class="o">;</span>
-
-  <span class="kt">bool</span><span class="o">?</span> <span class="n">cancelButtonHidden</span><span class="o">;</span>
-
-  <span class="c1">/// Width of the detected document outline.</span>
-  <span class="kt">int</span><span class="o">?</span> <span class="n">polygonLineWidth</span><span class="o">;</span>
-
-  <span class="c1">/// Max number of pages permitted to scan;</span>
-  <span class="kt">int</span><span class="o">?</span> <span class="n">maxNumberOfPages</span><span class="o">;</span>
-
-  <span class="c1">/// The minimum score in percent (0 - 100) of the perspective distortion to accept a detected document.</span>
-  <span class="c1">/// Default is 75.0.</span>
-  <span class="kt">double</span><span class="o">?</span> <span class="n">acceptedAngleScore</span><span class="o">;</span>
-
-  <span class="c1">/// The minimum document width or height in percent (0 - 100) of the screen size to accept a detected document.</span>
-  <span class="c1">/// Default is 80.0.</span>
-  <span class="kt">double</span><span class="o">?</span> <span class="n">acceptedSizeScore</span><span class="o">;</span>
-
-  <span class="c1">/// Controls the auto-snapping speed. Sensitivity must be within the 0..1 range.</span>
-  <span class="c1">/// A value of 1.0 triggers automatic capturing immediately, a value of 0.0 delays the automatic by 3 seconds.</span>
-  <span class="c1">/// The default value is 0.66 (2 seconds).</span>
-  <span class="kt">double</span><span class="o">?</span> <span class="n">autoSnappingSensitivity</span><span class="o">;</span>
-
-  <span class="c1">/// Limits the maximum size of the document image. If width or height are zero, this property is effectively ignored.</span>
-  <span class="n">Size</span><span class="o">?</span> <span class="n">documentImageSizeLimit</span><span class="o">;</span>
-
-  <span class="c1">/// Preview mode of the camera: Fit-In or Fill-In.</span>
-  <span class="c1">/// Optional, default is Fit-In.</span>
-  <span class="n">CameraPreviewMode</span><span class="o">?</span> <span class="n">cameraPreviewMode</span><span class="o">;</span>
-
-  <span class="c1">/// Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.</span>
-  <span class="c1">/// By default the camera orientation is not locked.</span>
-  <span class="n">CameraOrientationMode</span><span class="o">?</span> <span class="n">orientationLockMode</span><span class="o">;</span>
-
-  <span class="c1">/// Sets whether to ignore the DetectionResult.OK_BUT_BAD_ASPECT_RATIO detection status.</span>
-  <span class="c1">/// By default BadAspectRatio is not ignored.</span>
-  <span class="kt">bool</span><span class="o">?</span> <span class="n">ignoreBadAspectRatio</span><span class="o">;</span>
-
-  <span class="c1">/// Controls whether the flash should be initially enabled.</span>
-  <span class="c1">/// The default value is FALSE.</span>
-  <span class="kt">bool</span><span class="o">?</span> <span class="n">flashEnabled</span><span class="o">;</span>
-
-  <span class="c1">/// Controls multi-page mode. When enabled, the user can take multiple document photos before</span>
-  <span class="c1">/// closing the screen by tapping the page counter button. When disabled, the screen will be</span>
-  <span class="c1">/// closed immediately after the first document photo is taken.</span>
-  <span class="c1">/// The default value is FALSE.</span>
-  <span class="kt">bool</span><span class="o">?</span> <span class="n">multiPageEnabled</span><span class="o">;</span>
-
-  <span class="c1">/// When auto-snapping is enabled the document scanner will take a photo automatically</span>
-  <span class="c1">/// when a document is detected, conditions are good and the auto-snapping time-out elapses. In this</span>
-  <span class="c1">/// mode the user can still tap the shutter button to snap a document.</span>
-  <span class="kt">bool</span><span class="o">?</span> <span class="n">autoSnappingEnabled</span><span class="o">;</span>
-
-  <span class="kt">String</span><span class="o">?</span> <span class="n">multiPageButtonTitle</span><span class="o">;</span>
-
-  <span class="c1">/// Title of the cancel button.</span>
-  <span class="kt">String</span><span class="o">?</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
-
-  <span class="c1">/// Title of the flash toggle button.</span>
-  <span class="kt">String</span><span class="o">?</span> <span class="n">flashButtonTitle</span><span class="o">;</span>
-
-  <span class="c1">/// Title of the auto-snapping toggle button.</span>
-  <span class="kt">String</span><span class="o">?</span> <span class="n">autoSnappingButtonTitle</span><span class="o">;</span>
-
-  <span class="c1">/// Title suffix of the button that finishes the document scanning when multi-page scanning is enabled.</span>
-  <span class="c1">/// The button's title has the format "# Pages", where # shows the number of images captured thus far and the</span>
-  <span class="c1">/// suffix "Pages" is set using this method.</span>
-  <span class="kt">String</span><span class="o">?</span> <span class="n">pageCounterButtonTitle</span><span class="o">;</span>
-
-  <span class="c1">/// The text being displayed on the user-guidance label when the scanner's energy saver is activated.</span>
-  <span class="c1">/// iOS only.</span>
-  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintEnergySavingActive</span><span class="o">;</span>
-
-  <span class="c1">/// Text hint that will be shown when the current detection status is DetectionStatus.ERROR_NOTHING_DETECTED</span>
-  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintNothingDetected</span><span class="o">;</span>
-
-  <span class="c1">/// Text hint that will be shown when the current detection status is DetectionStatus.ERROR_TOO_NOISY</span>
-  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintTooNoisy</span><span class="o">;</span>
-
-  <span class="c1">/// Text hint that will be shown when the current detection status is DetectionStatus.ERROR_TOO_DARK</span>
-  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintTooDark</span><span class="o">;</span>
-
-  <span class="c1">/// Text hint that will be shown when the current detection status is DetectionStatus.OK_BUT_BAD_ANGLES</span>
-  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintBadAngles</span><span class="o">;</span>
-
-  <span class="c1">/// Text hint that will be shown when the current detection status is OK_BUT_BAD_ASPECT_RATIO</span>
-  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintBadAspectRatio</span><span class="o">;</span>
-
-  <span class="c1">/// Text hint that will be shown when the current detection status is DetectionStatus.OK_BUT_TOO_SMALL</span>
-  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintTooSmall</span><span class="o">;</span>
-
-  <span class="c1">/// The background color of the top toolbar.</span>
-  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintOffCenter</span><span class="o">;</span>
-
-  <span class="c1">/// Text hint that will be shown when the current detection status is DetectionStatus.OK</span>
-  <span class="kt">String</span><span class="o">?</span> <span class="n">textHintOK</span><span class="o">;</span>
-
-  <span class="kt">String</span><span class="o">?</span> <span class="n">cameraUnavailableExplanationText</span><span class="o">;</span>
-
-  <span class="c1">/// Title of the button that opens the screen where the user can allow</span>
-  <span class="c1">/// the usage of the camera by the app.</span>
-  <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraButtonTitle</span><span class="o">;</span>
-
-  <span class="c1">/// Text that will be displayed when the app is not allowed to use the camera,</span>
-  <span class="c1">/// prompting the user to enable the usage of the camera.</span>
-  <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraExplanationText</span><span class="o">;</span>
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">Color</span><span class="o">?</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
+ 
+   <span class="c1">/// The color of all inactive toggle buttons in the toolbar.</span>
+   <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsInactiveColor</span><span class="o">;</span>
+ 
+   <span class="c1">/// The color of all active toggle buttons in the toolbar.</span>
+   <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsActiveColor</span><span class="o">;</span>
+ 
+   <span class="c1">/// The color of the camera background (relevant only when the camera preview mode is CameraPreviewMode.FIT_IN).</span>
+   <span class="n">Color</span><span class="o">?</span> <span class="n">cameraBackgroundColor</span><span class="o">;</span>
+ 
+   <span class="c1">/// The background color of the user guidance hints.</span>
+   <span class="n">Color</span><span class="o">?</span> <span class="n">userGuidanceBackgroundColor</span><span class="o">;</span>
+ 
+   <span class="c1">/// The text color of the user guidance hints.</span>
+   <span class="n">Color</span><span class="o">?</span> <span class="n">userGuidanceTextColor</span><span class="o">;</span>
+ 
+   <span class="c1">/// The background color of the bottom shutter-bar.</span>
+   <span class="n">Color</span><span class="o">?</span> <span class="n">bottomBarBackgroundColor</span><span class="o">;</span>
+ 
+   <span class="c1">/// The color of the title of all buttons in the bottom shutter-bar (Cancel button, etc.),</span>
+   <span class="c1">/// as well as the camera permission prompt button.</span>
+   <span class="n">Color</span><span class="o">?</span> <span class="n">bottomBarButtonsColor</span><span class="o">;</span>
+ 
+   <span class="c1">/// The foreground color of the shutter button in auto-snapping mode.</span>
+   <span class="n">Color</span><span class="o">?</span> <span class="n">shutterButtonAutoInnerColor</span><span class="o">;</span>
+ 
+   <span class="c1">/// The background color of the shutter button in auto-snapping mode.</span>
+   <span class="n">Color</span><span class="o">?</span> <span class="n">shutterButtonAutoOuterColor</span><span class="o">;</span>
+ 
+   <span class="c1">/// The background color of the shutter button in manual mode.</span>
+   <span class="n">Color</span><span class="o">?</span> <span class="n">shutterButtonManualOuterColor</span><span class="o">;</span>
+ 
+   <span class="c1">/// The foreground color of the shutter button in manual mode.</span>
+   <span class="n">Color</span><span class="o">?</span> <span class="n">shutterButtonManualInnerColor</span><span class="o">;</span>
+ 
+   <span class="c1">/// The color of the detected document outline when the document's angle, size or aspect ratio</span>
+   <span class="c1">/// is not yet acceptable</span>
+   <span class="c1">/// (All detection statuses in net.doo.snap.lib.detector.DetectionResult that have the OK_BUT_XXX prefix).</span>
+   <span class="n">Color</span><span class="o">?</span> <span class="n">polygonColor</span><span class="o">;</span>
+ 
+   <span class="c1">/// The color of the detected document outline when we are ready to snap net.doo.snap.lib.detector.DetectionResult.OK.</span>
+   <span class="n">Color</span><span class="o">?</span> <span class="n">polygonColorOK</span><span class="o">;</span>
+ 
+   <span class="c1">/// The background color of the detected document outline when the document's angle, size or aspect ratio</span>
+   <span class="c1">/// is not yet acceptable</span>
+   <span class="c1">/// (All net.doo.snap.lib.detector.DetectionResult with OK_BUT_XXX).</span>
+   <span class="n">Color</span><span class="o">?</span> <span class="n">polygonBackgroundColor</span><span class="o">;</span>
+ 
+   <span class="c1">/// The background color of the detected document outline when we are ready to snap net.doo.snap.lib.detector.DetectionResult.OK.</span>
+   <span class="n">Color</span><span class="o">?</span> <span class="n">polygonBackgroundColorOK</span><span class="o">;</span>
+ 
+   <span class="n">Color</span><span class="o">?</span> <span class="n">shutterButtonIndicatorColor</span><span class="o">;</span>
+ 
+   <span class="c1">/// Controls whether the multi-page toggle button is hidden or not.</span>
+   <span class="kt">bool</span><span class="o">?</span> <span class="n">multiPageButtonHidden</span><span class="o">;</span>
+ 
+   <span class="c1">/// Controls whether the flash toggle button is hidden or not.</span>
+   <span class="kt">bool</span><span class="o">?</span> <span class="n">flashButtonHidden</span><span class="o">;</span>
+ 
+   <span class="c1">/// Hides the shutter button if set to TRUE. Shows it otherwise. Defaults to FALSE.</span>
+   <span class="c1">/// If set to TRUE, auto-snapping is enabled and the property autoSnappingEnabled of the behaviour configuration will</span>
+   <span class="c1">/// have no effect.</span>
+   <span class="c1">/// Also, the auto-snapping button will be hidden.</span>
+   <span class="kt">bool</span><span class="o">?</span> <span class="n">shutterButtonHidden</span><span class="o">;</span>
+ 
+   <span class="c1">/// Controls whether the auto-snapping toggle button is hidden or not.</span>
+   <span class="kt">bool</span><span class="o">?</span> <span class="n">autoSnappingButtonHidden</span><span class="o">;</span>
+ 
+   <span class="kt">bool</span><span class="o">?</span> <span class="n">cancelButtonHidden</span><span class="o">;</span>
+ 
+   <span class="c1">/// Width of the detected document outline.</span>
+   <span class="kt">int</span><span class="o">?</span> <span class="n">polygonLineWidth</span><span class="o">;</span>
+ 
+   <span class="c1">/// Max number of pages available to scan;</span>
+   <span class="kt">int</span><span class="o">?</span> <span class="n">maxNumberOfPages</span><span class="o">;</span>
+ 
+   <span class="c1">/// The minimum score in percent (0 - 100) of the perspective distortion to accept a detected document.</span>
+   <span class="c1">/// Default is 75.0.</span>
+   <span class="kt">double</span><span class="o">?</span> <span class="n">acceptedAngleScore</span><span class="o">;</span>
+ 
+   <span class="c1">/// The minimum document width or height in percent (0 - 100) of the screen size to accept a detected document.</span>
+   <span class="c1">/// Default is 80.0.</span>
+   <span class="kt">double</span><span class="o">?</span> <span class="n">acceptedSizeScore</span><span class="o">;</span>
+ 
+   <span class="c1">/// Controls the auto-snapping speed. Sensitivity must be within the 0..1 range.</span>
+   <span class="c1">/// A value of 1.0 triggers automatic capturing immediately, a value of 0.0 delays the automatic capturing by 3 seconds.</span>
+   <span class="c1">/// The default value is 0.66 (2 seconds)</span>
+   <span class="kt">double</span><span class="o">?</span> <span class="n">autoSnappingSensitivity</span><span class="o">;</span>
+ 
+   <span class="c1">/// Limits the maximum size of the document image. If width or height are zero, this property is effectively ignored.</span>
+   <span class="n">prefix0</span><span class="o">.</span><span class="na">Size</span><span class="o">?</span> <span class="n">documentImageSizeLimit</span><span class="o">;</span>
+ 
+   <span class="c1">/// Preview mode of the camera: Fit-In or Fill-In.</span>
+   <span class="c1">/// Optional, default is Fit-In.</span>
+   <span class="n">CameraPreviewMode</span><span class="o">?</span> <span class="n">cameraPreviewMode</span><span class="o">;</span>
+ 
+   <span class="c1">/// Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.</span>
+   <span class="c1">/// By default the camera orientation is not locked.</span>
+   <span class="n">CameraOrientationMode</span><span class="o">?</span> <span class="n">orientationLockMode</span><span class="o">;</span>
+ 
+   <span class="c1">/// Sets whether to ignore the net.doo.snap.lib.detector.DetectionResult.OK_BUT_BAD_ASPECT_RATIO detection status.</span>
+   <span class="c1">/// By default BadAspectRatio is not ignored.</span>
+   <span class="kt">bool</span><span class="o">?</span> <span class="n">ignoreBadAspectRatio</span><span class="o">;</span>
+ 
+   <span class="c1">/// Controls whether the flash should be initially enabled.</span>
+   <span class="c1">/// The default value is FALSE.</span>
+   <span class="kt">bool</span><span class="o">?</span> <span class="n">flashEnabled</span><span class="o">;</span>
+ 
+   <span class="c1">/// Controls multi-page mode. When enabled, the user can take multiple document photos before</span>
+   <span class="c1">/// closing the screen by tapping the page counter button. When disabled, the screen will be</span>
+   <span class="c1">/// closed immediately after the first document photo is made.</span>
+   <span class="c1">/// The default value is FALSE.</span>
+   <span class="kt">bool</span><span class="o">?</span> <span class="n">multiPageEnabled</span><span class="o">;</span>
+ 
+   <span class="c1">/// When auto-snapping is enabled the document scanner will take a photo automatically</span>
+   <span class="c1">/// when a document is detected, conditions are good and the auto-snapping time-out elapses. In this</span>
+   <span class="c1">/// mode the user can still tap the shutter button to snap a document.</span>
+   <span class="kt">bool</span><span class="o">?</span> <span class="n">autoSnappingEnabled</span><span class="o">;</span>
+ 
+   <span class="kt">String</span><span class="o">?</span> <span class="n">multiPageButtonTitle</span><span class="o">;</span>
+ 
+   <span class="c1">/// Title of the cancel button.</span>
+   <span class="kt">String</span><span class="o">?</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
+ 
+   <span class="c1">/// Title of the flash toggle button.</span>
+   <span class="kt">String</span><span class="o">?</span> <span class="n">flashButtonTitle</span><span class="o">;</span>
+ 
+   <span class="c1">/// Title of the auto-snapping toggle button.</span>
+   <span class="kt">String</span><span class="o">?</span> <span class="n">autoSnappingButtonTitle</span><span class="o">;</span>
+ 
+   <span class="c1">/// Title suffix of the button that finishes the document scanning when multi-page scanning is enabled.</span>
+   <span class="c1">/// The button's title has the format "# Pages", where # shows the number of images captured up to now and the</span>
+   <span class="c1">/// suffix "Pages" is set using this method.</span>
+   <span class="kt">String</span><span class="o">?</span> <span class="n">pageCounterButtonTitle</span><span class="o">;</span>
+ 
+   <span class="c1">/// The text being displayed on the user-guidance label</span>
+   <span class="c1">/// when the scanner's energy saver is activated.</span>
+   <span class="c1">/// iOS only.</span>
+   <span class="kt">String</span><span class="o">?</span> <span class="n">textHintEnergySavingActive</span><span class="o">;</span>
+ 
+   <span class="c1">/// Text hint that will be shown when the current detection status</span>
+   <span class="c1">/// is net.doo.snap.lib.detector.DetectionResult.ERROR_NOTHING_DETECTED</span>
+   <span class="kt">String</span><span class="o">?</span> <span class="n">textHintNothingDetected</span><span class="o">;</span>
+ 
+   <span class="c1">/// Text hint that will be shown when the current detection status</span>
+   <span class="c1">/// is net.doo.snap.lib.detector.DetectionResult.ERROR_TOO_NOISY</span>
+   <span class="kt">String</span><span class="o">?</span> <span class="n">textHintTooNoisy</span><span class="o">;</span>
+ 
+   <span class="c1">/// Text hint that will be shown when the current detection status</span>
+   <span class="c1">/// is net.doo.snap.lib.detector.DetectionResult.ERROR_TOO_DARK</span>
+   <span class="kt">String</span><span class="o">?</span> <span class="n">textHintTooDark</span><span class="o">;</span>
+ 
+   <span class="c1">/// Text hint that will be shown when the current detection status</span>
+   <span class="c1">/// is net.doo.snap.lib.detector.DetectionResult.OK_BUT_BAD_ANGLES</span>
+   <span class="kt">String</span><span class="o">?</span> <span class="n">textHintBadAngles</span><span class="o">;</span>
+ 
+   <span class="c1">/// Text hint that will be shown when the current detection status</span>
+   <span class="c1">/// is net.doo.snap.lib.detector.DetectionResult.OK_BUT_BAD_ASPECT_RATIO</span>
+   <span class="kt">String</span><span class="o">?</span> <span class="n">textHintBadAspectRatio</span><span class="o">;</span>
+ 
+   <span class="c1">/// Text hint that will be shown when the current detection status</span>
+   <span class="c1">/// is net.doo.snap.lib.detector.DetectionResult.OK_BUT_TOO_SMALL</span>
+   <span class="kt">String</span><span class="o">?</span> <span class="n">textHintTooSmall</span><span class="o">;</span>
+ 
+   <span class="c1">/// The background color of the top toolbar.</span>
+   <span class="kt">String</span><span class="o">?</span> <span class="n">textHintOffCenter</span><span class="o">;</span>
+ 
+   <span class="c1">/// Text hint that will be shown when the current detection</span>
+   <span class="c1">/// status is net.doo.snap.lib.detector.DetectionResult.OK</span>
+   <span class="kt">String</span><span class="o">?</span> <span class="n">textHintOK</span><span class="o">;</span>
+ 
+   <span class="c1">/// String being displayed on the label describing that app is in split mode</span>
+   <span class="c1">/// and needs to go fullscreen to work with camera. (iOS-only)</span>
+   <span class="kt">String</span><span class="o">?</span> <span class="n">cameraUnavailableExplanationText</span><span class="o">;</span>
+ 
+   <span class="c1">/// Title of the button that opens the screen where the user can allow</span>
+   <span class="c1">/// the usage of the camera by the app.</span>
+   <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraButtonTitle</span><span class="o">;</span>
+ 
+   <span class="c1">/// Text that will be displayed when the app is not allowed to use the camera,</span>
+   <span class="c1">/// prompting the user to enable the usage of the camera.</span>
+   <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraExplanationText</span><span class="o">;</span>
 </code></pre></div></div>
 
 <p><a name="module_ScanbotSdkUi.startCroppingScreen"></a></p>
@@ -928,7 +940,7 @@ and contains some smart UI elements like magnetic lines and a magnifier.</p>
   <span class="c1">/// Background color of the bottom toolbar.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">bottomBarBackgroundColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of the titles of all buttons in the bottom toolbar (Rotate button).</span>
+  <span class="c1">/// The color of the titles of all buttons in the bottom toolbar (Rotate button).</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">bottomBarButtonsColor</span><span class="o">;</span>
 
   <span class="c1">/// Title of the cancel button.</span>
@@ -944,7 +956,7 @@ and contains some smart UI elements like magnetic lines and a magnifier.</p>
   <span class="n">Color</span><span class="o">?</span> <span class="n">polygonColorMagnetic</span><span class="o">;</span>
 
   <span class="c1">/// Width of the cropping outline.</span>
-  <span class="kt">int</span> <span class="n">polygonLineWidth</span><span class="o">;</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">polygonLineWidth</span><span class="o">;</span>
 
   <span class="c1">/// Title of the Rotate button.</span>
   <span class="kt">String</span><span class="o">?</span> <span class="n">rotateButtonTitle</span><span class="o">;</span>
@@ -952,13 +964,13 @@ and contains some smart UI elements like magnetic lines and a magnifier.</p>
   <span class="c1">/// Background color of the top toolbar.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of the titles of all buttons in the top toolbar (Cancel and Done buttons).</span>
+  <span class="c1">/// The color of the titles of all buttons in the top toolbar (Cancel and Done buttons).</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
 
   <span class="c1">/// Title in the top bar (iOS only).</span>
   <span class="kt">String</span><span class="o">?</span> <span class="n">topBarTitle</span><span class="o">;</span>
 
-  <span class="c1">/// Color of the title in the top bar (iOS only).</span>
+  <span class="c1">/// The color of the title in the top bar (iOS only).</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">titleColor</span><span class="o">;</span>
 
   <span class="c1">/// Title of the Detect button.</span>
@@ -1032,25 +1044,25 @@ By default all supported formats will be detected.</p>
   </li>
 </ul>
 
-<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// Background color of the top toolbar.</span>
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// The background color of the top toolbar.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of the titles of all buttons in the top toolbar.</span>
+  <span class="c1">/// The color of the titles of all buttons in the top toolbar.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
 
-  <span class="c1">/// Background color outside the finder window.</span>
+  <span class="c1">/// The background color outside the finder window.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of the finder window's outline.</span>
+  <span class="c1">/// The color of the finder window's outline.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">finderLineColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of the text hint under the finder window.</span>
+  <span class="c1">/// The color of the text hint under the finder window.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">finderTextHintColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of active buttons on bottom bar</span>
+  <span class="c1">/// The color of active buttons on bottom bar</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">bottomButtonsActiveColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of inactive buttons on bottom bar</span>
+  <span class="c1">/// The color of inactive buttons on bottom bar</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">bottomButtonsInactiveColor</span><span class="o">;</span>
 
   <span class="kt">bool</span><span class="o">?</span> <span class="n">cancelButtonHidden</span><span class="o">;</span>
@@ -1092,6 +1104,36 @@ By default all supported formats will be detected.</p>
 
   <span class="c1">/// Barcode formats which need to be recognized.</span>
   <span class="n">List</span><span class="o">&lt;</span><span class="n">BarcodeFormat</span><span class="o">&gt;?</span> <span class="n">barcodeFormats</span><span class="o">;</span>
+
+  <span class="c1">/// Additional parameters for tweaking the detection of barcodes.</span>
+  <span class="n">BarcodeAdditionalParameters</span><span class="o">?</span> <span class="n">additionalParameters</span><span class="o">;</span>
+
+  <span class="c1">/// Param that handle whether we need to save image from camera preview or make a snapshot while snapping barcode</span>
+  <span class="c1">/// image uri will be returned in [BarcodeScanningResult.snappedImage] property</span>
+  <span class="n">BarcodeImageGenerationType</span> <span class="n">barcodeImageGenerationType</span><span class="o">;</span>
+
+</code></pre></div></div>
+
+<p>Barcode additional params details:</p>
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// With this option, the scanner assumes that the barcode can be a GS1 barcode, and modifies the behavior as needed.</span>
+  <span class="c1">/// You can set it to FALSE, if you don't want to see decoded FNC1 characters ("]C1" and ASCII char 29).</span>
+  <span class="c1">/// The default is TRUE.</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">enableGS1Decoding</span><span class="o">;</span>
+
+  <span class="c1">/// Minimum required text length of the detected barcode.</span>
+  <span class="c1">/// The default is 0.</span>
+  <span class="c1">/// NOTE: Currently works for ITF barcodes only!</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">minimumTextLength</span><span class="o">;</span>
+
+  <span class="c1">/// Maximum text length of the detected barcode. Setting to zero removes the limit.</span>
+  <span class="c1">/// The default is 0.</span>
+  <span class="c1">/// NOTE: Currently works for ITF barcodes only!</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">maximumTextLength</span><span class="o">;</span>
+
+  <span class="c1">/// Minimum required quiet zone on the barcode. Measured in modules (the size of minimal bar on the barcode).</span>
+  <span class="c1">/// The default is 10.</span>
+  <span class="c1">/// NOTE: Currently works for ITF barcodes only!</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">minimum1DBarcodesQuietZone</span><span class="o">;</span>
 </code></pre></div></div>
 
 <p><a name="module_ScanbotSdkUi.startBatchBarcodeScanner"></a></p>
@@ -1138,34 +1180,34 @@ All config properties are optional.</p>
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// Change data representation for scanned list items.</span>
   <span class="n">BarcodeDataFormatter</span><span class="o">?</span> <span class="n">barcodeFormatter</span><span class="o">;</span>
 
-  <span class="c1">/// Background color of the top toolbar.</span>
+  <span class="c1">/// The background color of the top toolbar.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of the titles of all buttons in the top toolbar.</span>
+  <span class="c1">/// The color of the titles of all buttons in the top toolbar.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of the titles of all inactive buttons in the top toolbar.</span>
+  <span class="c1">/// The color of the titles of all inactive buttons in the top toolbar.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsInactiveColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of barcodes count text.</span>
+  <span class="c1">/// The color of barcodes count text.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">barcodesCountTextColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of barcodes details action.</span>
+  <span class="c1">/// The color of barcodes details action.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">detailsActionColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of barcodes details background.</span>
+  <span class="c1">/// The color of barcodes details background.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">detailsBackgroundColor</span><span class="o">;</span>
 
   <span class="c1">/// Primary color for barcodes details.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">detailsPrimaryColor</span><span class="o">;</span>
 
-  <span class="c1">/// Background color outside the finder window.</span>
+  <span class="c1">/// The background color outside the finder window.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of the finder window's outline.</span>
+  <span class="c1">/// The color of the finder window's outline.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">finderLineColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of the text hint under the finder window.</span>
+  <span class="c1">/// The color of the text hint under the finder window.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">finderTextHintColor</span><span class="o">;</span>
 
   <span class="c1">/// To hide cancel button or not.</span>
@@ -1221,6 +1263,31 @@ All config properties are optional.</p>
 
   <span class="c1">/// Barcode formats which need to be recognized.</span>
   <span class="n">List</span><span class="o">&lt;</span><span class="n">BarcodeFormat</span><span class="o">&gt;?</span> <span class="n">barcodeFormats</span><span class="o">;</span>
+
+  <span class="c1">/// Additional parameters for tweaking the detection of barcodes.</span>
+  <span class="n">BarcodeAdditionalParameters</span><span class="o">?</span> <span class="n">additionalParameters</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>Barcode additional params details:</p>
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// With this option, the scanner assumes that the barcode can be a GS1 barcode, and modifies the behavior as needed.</span>
+  <span class="c1">/// You can set it to FALSE, if you don't want to see decoded FNC1 characters ("]C1" and ASCII char 29).</span>
+  <span class="c1">/// The default is TRUE.</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">enableGS1Decoding</span><span class="o">;</span>
+
+  <span class="c1">/// Minimum required text length of the detected barcode.</span>
+  <span class="c1">/// The default is 0.</span>
+  <span class="c1">/// NOTE: Currently works for ITF barcodes only!</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">minimumTextLength</span><span class="o">;</span>
+
+  <span class="c1">/// Maximum text length of the detected barcode. Setting to zero removes the limit.</span>
+  <span class="c1">/// The default is 0.</span>
+  <span class="c1">/// NOTE: Currently works for ITF barcodes only!</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">maximumTextLength</span><span class="o">;</span>
+
+  <span class="c1">/// Minimum required quiet zone on the barcode. Measured in modules (the size of minimal bar on the barcode).</span>
+  <span class="c1">/// The default is 10.</span>
+  <span class="c1">/// NOTE: Currently works for ITF barcodes only!</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">minimum1DBarcodesQuietZone</span><span class="o">;</span>
 </code></pre></div></div>
 
 <p><a name="module_ScanbotSdkUi.startMrzScanner"></a></p>
@@ -1264,20 +1331,22 @@ All other settings are optional.</p>
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// Background color of the top toolbar.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of the titles of all buttons in the top toolbar.</span>
+  <span class="c1">/// The color of the titles of all buttons in the top toolbar.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
 
   <span class="c1">/// Background color outside the finder window.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of the finder window's outline.</span>
+  <span class="c1">/// The color of the finder window's outline.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">finderLineColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of the text hint under the finder window.</span>
+  <span class="c1">/// The color of the text hint under the finder window.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">finderTextHintColor</span><span class="o">;</span>
 
+  <span class="c1">/// The color of the bottom button in active state</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">bottomButtonsActiveColor</span><span class="o">;</span>
 
+  <span class="c1">/// The color of the bottom button in inactive state</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">bottomButtonsInactiveColor</span><span class="o">;</span>
 
   <span class="c1">/// Title of the cancel button.</span>
@@ -1355,23 +1424,22 @@ All other settings are optional.</p>
 
 <h5 id="healthinsurancescannerconfiguration">HealthInsuranceScannerConfiguration</h5>
 
-<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// Background color of the top toolbar.</span>
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// The background color of the top toolbar.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of the titles of all buttons in the top toolbar.</span>
+  <span class="c1">/// The color of the titles of all buttons in the top toolbar.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
 
-  <span class="c1">/// Background color outside the finder window.</span>
+  <span class="c1">/// The background color outside the finder window.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of the finder window's outline.</span>
+  <span class="c1">/// The color of the finder window's outline.</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">finderLineColor</span><span class="o">;</span>
 
-  <span class="c1">/// Color of the text hint under the finder window.</span>
-  <span class="n">Color</span><span class="o">?</span> <span class="n">finderTextHintColor</span><span class="o">;</span>
-
+  <span class="c1">/// The color of the bottom button in active state</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">bottomButtonsActiveColor</span><span class="o">;</span>
 
+  <span class="c1">/// The color of the bottom button in inactive state</span>
   <span class="n">Color</span><span class="o">?</span> <span class="n">bottomButtonsInactiveColor</span><span class="o">;</span>
 
   <span class="kt">bool</span><span class="o">?</span> <span class="n">cancelButtonHidden</span><span class="o">;</span>
@@ -1409,6 +1477,238 @@ All other settings are optional.</p>
   <span class="c1">/// Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.</span>
   <span class="c1">/// By default the camera orientation is not locked.</span>
   <span class="n">CameraOrientationMode</span><span class="o">?</span> <span class="n">orientationLockMode</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p><a name="module_ScanbotSdkUi.startLicensePlateScanner"></a></p>
+<h3 id="eu-license-plate-scanner">EU License plate Scanner</h3>
+<h4 id="scanbotsdkuistartlicenseplatescannerconfig">ScanbotSdkUi.startLicensePlateScanner(config)</h4>
+<p>Opens scanner that extracts country code and the license plate number from the European car license plate.</p>
+
+<p><img src="./assets/images/license_plate.jpeg" alt="alt" title="License Plate scanner screenshot" /></p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">var</span> <span class="n">config</span> <span class="o">=</span> <span class="n">LicensePlateScannerConfiguration</span><span class="o">(</span>
+          <span class="nl">topBarBackgroundColor:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">pink</span><span class="o">,</span>
+          <span class="nl">topBarButtonsColor:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">white70</span><span class="o">,</span>
+          <span class="nl">confirmationDialogAccentColor:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">green</span><span class="o">);</span>
+  <span class="kd">var</span> <span class="n">result</span> <span class="o">=</span> <span class="n">await</span> <span class="n">ScanbotSdkUi</span><span class="o">.</span><span class="na">startLicensePlateScanner</span><span class="o">(</span><span class="n">config</span><span class="o">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">result.operationResult</code>
+    <ul>
+      <li><code class="highlighter-rouge">SUCCESS</code> if License Plate data was detected</li>
+      <li><code class="highlighter-rouge">CANCELED</code> if the user canceled the operation (tapped on the “cancel” button)</li>
+      <li><code class="highlighter-rouge">ERROR</code> if an error occurred</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">result.countryCode</code> - country code of the license plate</li>
+  <li><code class="highlighter-rouge">result.licensePlate</code> - number on the license plate</li>
+  <li><code class="highlighter-rouge">result.rawText</code> - raw value detected on the license plate</li>
+  <li><code class="highlighter-rouge">result.confidence</code> - confidence of the recognition</li>
+</ul>
+
+<p>####LicensePlateScannerConfiguration</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// The background color of the top toolbar.</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
+
+  <span class="c1">/// The color of the inactive buttons on the toolbar.</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsInactiveColor</span><span class="o">;</span>
+
+  <span class="c1">/// The color of the titles of all buttons in the top toolbar.</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
+
+  <span class="c1">/// The background color outside the finder window.</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
+
+  <span class="c1">/// The color of the finder window's outline.</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">finderLineColor</span><span class="o">;</span>
+
+  <span class="c1">/// The color of the text hint under the finder window.</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">finderTextHintColor</span><span class="o">;</span>
+
+  <span class="c1">/// The title of the cancel button.</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
+
+  <span class="c1">/// The title of the dialog with scanned plate confirmation.</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">confirmationDialogTitle</span><span class="o">;</span>
+
+  <span class="c1">/// Message of the dialog with scanned plate confirmation.</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">confirmationDialogMessage</span><span class="o">;</span>
+
+  <span class="c1">/// Text on the retry scanning button of the dialog with scanned plate confirmation.</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">confirmationDialogRetryButtonTitle</span><span class="o">;</span>
+
+  <span class="c1">/// Text on the confirm scanning button of the dialog with scanned plate confirmation.</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">confirmationDialogConfirmButtonTitle</span><span class="o">;</span>
+
+  <span class="c1">/// The color of buttons of the dialog with scanned plate confirmation.</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">confirmationDialogAccentColor</span><span class="o">;</span>
+
+  <span class="c1">/// Whether the confirmation button should be filled with color, or should rather only be a text button</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">confirmationDialogConfirmButtonFilled</span><span class="o">;</span>
+
+  <span class="c1">/// If the confirmation button is filled, then this option selects the color of the text for this button</span>
+  <span class="n">Color</span><span class="o">?</span> <span class="n">confirmationDialogConfirmButtonFilledTextColor</span><span class="o">;</span>
+
+  <span class="c1">/// The minimum number of sequentially recognized frames where the result is equal</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">minNumberOfRequiredFramesWithEqualRecognitionResult</span><span class="o">;</span>
+
+  <span class="c1">/// Maximum number of accumulated frames to inspect before the actual result is returned</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">maximumNumberOfAccumulatedFrames</span><span class="o">;</span>
+
+  <span class="c1">/// The title of the button that opens the screen where the user can allow</span>
+  <span class="c1">/// the usage of the camera by the app.</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraButtonTitle</span><span class="o">;</span>
+
+  <span class="c1">/// Text that will be displayed when the app</span>
+  <span class="c1">/// is not allowed to use the camera, prompting the user</span>
+  <span class="c1">/// to enable the usage of the camera.</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraExplanationText</span><span class="o">;</span>
+
+  <span class="c1">/// The text hint shown under the finder window.</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">finderTextHint</span><span class="o">;</span>
+
+  <span class="c1">/// Width of the finder frame border.</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">finderLineWidth</span><span class="o">;</span>
+
+  <span class="c1">/// Controls whether the flash should be initially enabled.</span>
+  <span class="c1">/// The default value is FALSE.</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">flashEnabled</span><span class="o">;</span>
+
+  <span class="c1">/// Whether we need to show buttons text in caps mode or not</span>
+  <span class="c1">/// Android only</span>
+  <span class="kt">bool</span><span class="o">?</span> <span class="n">useButtonsAllCaps</span><span class="o">;</span>
+
+  <span class="c1">/// Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.</span>
+  <span class="c1">/// By default the camera orientation is not locked.</span>
+  <span class="n">CameraOrientationMode</span><span class="o">?</span> <span class="n">orientationLockMode</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p><a name="module_ScanbotSdkUi.startNfcPassportReader"></a></p>
+<h3 id="nfc-passport-reader">NFC Passport Reader</h3>
+<h4 id="scanbotsdkuistartnfcpassportreaderconfig">ScanbotSdkUi.startNfcPassportReader(config)</h4>
+
+<p>Opens a passport reader that extracts passport data from nfc chip by using MRZ data from that passport.</p>
+
+<p><img src="./assets/images/nfc.jpeg" alt="alt" title="NFC passport reader screenshot" /></p>
+
+<p>Notes for iOS:</p>
+
+<ul>
+  <li>Requires iOS 13.0+</li>
+  <li>Your app needs to add the “Near Field Communication Tag Reading” entitlement</li>
+  <li>Your apps info.plist needs to define the passport nfc application ID. To do so add the following entry: “com.apple.developer.nfc.readersession.iso7816.select-identifiers” and as the first element add the passport application ID “A0000002471001”</li>
+</ul>
+
+<p>Example:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="n">config</span> <span class="o">=</span> <span class="n">NfcPassportReaderConfiguration</span><span class="o">(</span>
+  <span class="nl">topBarBackgroundColor:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">pink</span><span class="o">,</span>
+  <span class="nl">topBarButtonsColor:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">white70</span><span class="o">,</span>
+  <span class="o">...</span>
+<span class="o">);</span>
+<span class="kd">var</span> <span class="n">result</span> <span class="o">=</span> <span class="n">await</span> <span class="n">ScanbotSdkUi</span><span class="o">.</span><span class="na">startNfcPassportReader</span><span class="o">(</span><span class="n">config</span><span class="o">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">result.operationResult</code> -
+    <ul>
+      <li><code class="highlighter-rouge">SUCCESS</code> if EHIC data was detected</li>
+      <li><code class="highlighter-rouge">ERROR</code> if an error occurred</li>
+      <li><code class="highlighter-rouge">CANCELED</code> if the user canceled the operation (tapped on the “cancel” button)</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">result.dataGroup1</code> - data group 1, that contains general information about the passport and its holder.</li>
+  <li><code class="highlighter-rouge">result.dataGroup2</code> - data group 2, that contains visual biometric data of the passports holder.</li>
+  <li><code class="highlighter-rouge">result.photoUri</code> - URI with image from NFC chip.</li>
+</ul>
+
+<h5 id="nfcpassportreaderconfiguration">NfcPassportReaderConfiguration</h5>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="c1">/// The background color of the top toolbar.</span>
+    <span class="n">Color</span><span class="o">?</span> <span class="n">topBarBackgroundColor</span><span class="o">;</span>
+  
+    <span class="c1">/// The color of the titles of all buttons in the top toolbar.</span>
+    <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsColor</span><span class="o">;</span>
+  
+    <span class="c1">/// The background color outside the finder window.</span>
+    <span class="n">Color</span><span class="o">?</span> <span class="n">cameraOverlayColor</span><span class="o">;</span>
+  
+    <span class="c1">/// The color of the finder window's outline.</span>
+    <span class="n">Color</span><span class="o">?</span> <span class="n">finderLineColor</span><span class="o">;</span>
+  
+    <span class="c1">/// The color of the text hint under the finder window.</span>
+    <span class="n">Color</span><span class="o">?</span> <span class="n">finderTextHintColor</span><span class="o">;</span>
+  
+    <span class="c1">/// Foreground color of the flash button when the flash is off.</span>
+    <span class="n">Color</span><span class="o">?</span> <span class="n">topBarButtonsInactiveColor</span><span class="o">;</span>
+  
+    <span class="c1">/// The color of the progress bar.</span>
+    <span class="n">Color</span><span class="o">?</span> <span class="n">progressBarColor</span><span class="o">;</span>
+  
+    <span class="c1">/// Thickness of the finder window's outline.</span>
+    <span class="kt">int</span><span class="o">?</span> <span class="n">finderLineWidth</span><span class="o">;</span>
+  
+    <span class="c1">/// Whether the cancel button is hidden or not.</span>
+    <span class="kt">bool</span><span class="o">?</span> <span class="n">cancelButtonHidden</span><span class="o">;</span>
+  
+    <span class="c1">/// Orientation lock mode of the camera: PORTRAIT or LANDSCAPE.</span>
+    <span class="c1">/// By default the camera orientation is not locked.</span>
+    <span class="n">CameraOrientationMode</span><span class="o">?</span> <span class="n">orientationLockMode</span><span class="o">;</span>
+  
+  
+    <span class="c1">/// Title of the cancel button.</span>
+    <span class="kt">String</span><span class="o">?</span> <span class="n">cancelButtonTitle</span><span class="o">;</span>
+  
+    <span class="c1">/// Title of the button that opens the screen where the user can allow</span>
+    <span class="c1">/// the usage of the camera by the app.</span>
+    <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraButtonTitle</span><span class="o">;</span>
+  
+    <span class="c1">/// Text that will be displayed when the app</span>
+    <span class="c1">/// is not allowed to use the camera, prompting the user</span>
+    <span class="c1">/// to enable the usage of the camera.</span>
+    <span class="kt">String</span><span class="o">?</span> <span class="n">enableCameraExplanationText</span><span class="o">;</span>
+  
+    <span class="c1">/// Text hint shown under the finder window.</span>
+    <span class="kt">String</span><span class="o">?</span> <span class="n">finderTextHint</span><span class="o">;</span>
+  
+    <span class="c1">/// String being displayed as a hint to hold device over the NFC chip.</span>
+    <span class="kt">String</span><span class="o">?</span> <span class="n">holdOverTheChipTitle</span><span class="o">;</span>
+  
+    <span class="c1">/// A hint that notifies about downloading datagroups.</span>
+    <span class="kt">String</span><span class="o">?</span> <span class="n">downloadingDataTitle</span><span class="o">;</span>
+  
+    <span class="c1">/// A title for the state when there is no NFC chip installed on the device, or it is not available.</span>
+    <span class="kt">String</span><span class="o">?</span> <span class="n">noChipErrorTitle</span><span class="o">;</span>
+  
+    <span class="c1">/// A title for the error, when NFC reader failed to perform authentication.</span>
+    <span class="kt">String</span><span class="o">?</span> <span class="n">authenticationErrorTitle</span><span class="o">;</span>
+  
+    <span class="c1">/// A title for the error, when NFC reader failed to download the data.</span>
+    <span class="kt">String</span><span class="o">?</span> <span class="n">downloadErrorTitle</span><span class="o">;</span>
+  
+    <span class="c1">/// Android only. A title for the retry button.</span>
+    <span class="kt">String</span><span class="o">?</span> <span class="n">retryButtonTitle</span><span class="o">;</span>
+  
+    <span class="c1">/// Android only. A title for the state when the NFC chip is disabled on the device</span>
+    <span class="kt">String</span><span class="o">?</span> <span class="n">chipDisabledErrorTitle</span><span class="o">;</span>
+  
+    <span class="c1">/// Android only. A title for the screen of passport scanning.</span>
+    <span class="kt">String</span><span class="o">?</span> <span class="n">scanPassportTitle</span><span class="o">;</span>
+  
+    <span class="c1">/// Controls whether to play a beep sound after a successful detection.</span>
+    <span class="c1">/// The default value is TRUE.</span>
+    <span class="kt">bool</span><span class="o">?</span> <span class="n">successBeepEnabled</span><span class="o">;</span>
+  
+    <span class="c1">/// Controls whether the flash should be initially enabled.</span>
+    <span class="c1">/// The default value is FALSE.</span>
+    <span class="kt">bool</span><span class="o">?</span> <span class="n">flashEnabled</span><span class="o">;</span>
+  
+    <span class="c1">/// Defines, if photo image should be stored in internal storage on disk.</span>
+    <span class="c1">/// If set to `FALSE`, the result `NfcPassportReaderResult` will not have `photoImageUri`.</span>
+    <span class="c1">/// The default value is `FALSE`.</span>
+    <span class="kt">bool</span><span class="o">?</span> <span class="n">shouldSavePhotoImageInStorage</span><span class="o">;</span>
 </code></pre></div></div>
 
 <h3 id="page-operations">Page Operations</h3>
@@ -2264,6 +2564,24 @@ It allows you to create and distribute dedicated, smaller APKs via the <strong>P
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history-and-changelog">Release History and Changelog</h2>
 
+<h3 id="250-2-jun-2021">2.5.0 (2 Jun 2021)</h3>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Added <a href="#module_ScanbotSdkUi.startNfcPassportReader">NFC Passport Reader</a>.</li>
+      <li>Add <a href="#module_ScanbotSdkUi.startLicensePlateScanner">License Plate scanner</a> for the EU cars license plates.</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Updated the native iOS Scanbot SDK to 1.15.1
+(cf. <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">changelog</a>)</li>
+      <li>Updated the native Android Scanbot SDK to 1.83.0
+(cf. <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">changelog</a>)</li>
+    </ul>
+  </li>
+</ul>
+
 <h3 id="241-1-apr-2021">2.4.1 (1 Apr 2021)</h3>
 <ul>
   <li>🐞 Bug fixes:
@@ -2486,7 +2804,7 @@ See the API docs of <code class="highlighter-rouge">OcrResult.pages</code> for m
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 
-Open Source libraries used in the Scanbot SDK Flutter Plugin version 2.4.1:
+Open Source libraries used in the Scanbot SDK Flutter Plugin version 2.5.0:
 //-------------------------------------------------------------
 json_serializable 
 
@@ -2712,7 +3030,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
-Open Source libraries used in the Scanbot SDK for Android version 1.80.0:
+Open Source libraries used in the Scanbot SDK for Android version 1.83.0:
 
 
 //-------------------------------------------------------------
