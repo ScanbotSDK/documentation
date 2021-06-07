@@ -603,6 +603,35 @@ and return the image with the filter.</p>
 
 <p>They are available under <code class="highlighter-rouge">BinarizationFilter</code> and <code class="highlighter-rouge">ColorFilter</code> types, respectively.</p>
 
+<p><a name="module_ScanbotSdk.barcodeDetection"></a></p>
+<h3 id="detect-barcodes-on-still-images">Detect Barcodes on still images</h3>
+
+<p>ScanbotSDK provides a handy API to detect barcodes on still images. 
+In conjunction with third-party libraries such as PDF.js, 
+it can be used very effectively to also detect barcodes from an imported .pdf file.</p>
+
+<p>To test it out for yourself, simply create a basic file picker:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;input class="file-picker" type="file" accept="image/jpeg" width="48" height="48"&gt;
+</code></pre></div></div>
+
+<p>Reference it in your script tag or file and listen to events:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>picker.onchange = (e) =&gt; {
+    e.preventDefault();
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    // Be sure to read it as a data url. ScanbotSDK expects a base64 string
+    reader.readAsDataURL(file);
+
+    reader.onload = async (e) =&gt; {
+        const result = await scanbotSDK.detectBarcodes(reader.result);
+        console.log("barcode detection result", result);
+    };
+};
+</code></pre></div></div>
+
+<p>The result will be your your standard <code class="highlighter-rouge">BarcodeResult</code> that is also the result of Barcode Scanner UI.</p>
+
 <h3 id="pdf--tiff-generation">PDF &amp; TIFF Generation</h3>
 
 <p>ScanbotSDK also offers functionality for PDF &amp; TIFF generation.
@@ -718,6 +747,30 @@ you can call in the detection callback to add a bit of flare to your application
 
 <p><a name="releaseHistory"></a></p>
 <h2 id="release-history">Release History</h2>
+
+<h4 id="version-230-7-june-2021">Version 2.3.0 (7 June 2021)</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Feature to detect barcodes on still images: <a href="#module_ScanbotSdk.barcodeDetection">detectBarcodes(base64: string)</a></li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Revamped barcode view finder to support additional styling</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>iOS: Fixed view finder turning gray on zoom</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Updated internal dependencies to latest versions</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="version-220-27-apr-2021">Version 2.2.0 (27 Apr 2021)</h4>
 <ul>
