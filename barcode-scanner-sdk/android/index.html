@@ -61,6 +61,7 @@ super fast integration time and customizable colors and texts to match your bran
   <li>EAN-8</li>
   <li>EAN-13</li>
   <li>UPC-A</li>
+  <li>MSI_PLESSEY</li>
 </ul>
 
 <h4 id="2d-barcodes">2D Barcodes</h4>
@@ -268,9 +269,9 @@ any license error has occurred. Use the following snippet to initialize Scanbot 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">ScanbotBarcodeScannerSDKInitializer</span><span class="p">()</span>
     <span class="p">.</span><span class="nf">withLogging</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
     <span class="p">.</span><span class="nf">license</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nc">LICENSE_KEY</span><span class="p">)</span>
-    <span class="p">.</span><span class="nf">licenceErrorHandler</span><span class="p">(</span><span class="nc">IScanbotSDKLicenseErrorHandler</span> <span class="p">{</span> <span class="n">status</span><span class="p">,</span> <span class="n">feature</span> <span class="p">-&gt;</span>
+    <span class="p">.</span><span class="nf">licenceErrorHandler</span><span class="p">(</span><span class="nc">IScanbotSDKLicenseErrorHandler</span> <span class="p">{</span> <span class="n">status</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">message</span> <span class="p">-&gt;</span>
         <span class="c1">// Handle license errors here:</span>
-        <span class="nc">LoggerProvider</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">().</span><span class="nf">d</span><span class="p">(</span><span class="s">"ExampleApplication"</span><span class="p">,</span> <span class="s">"License status: ${status.name}"</span><span class="p">)</span>
+        <span class="nc">LoggerProvider</span><span class="p">.</span><span class="n">logger</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="s">"ScanbotBarcodeScannerSDK"</span><span class="p">,</span> <span class="s">"license status:${status.name}, message: $message"</span><span class="p">)</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">feature</span> <span class="p">!=</span> <span class="nc">SdkFeature</span><span class="p">.</span><span class="nc">NoSdkFeature</span><span class="p">)</span> <span class="p">{</span>
             <span class="nc">LoggerProvider</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">().</span><span class="nf">d</span><span class="p">(</span><span class="s">"ExampleApplication"</span><span class="p">,</span> <span class="s">"Missing SDK feature in license: ${feature.name}"</span><span class="p">)</span>
         <span class="p">}</span>
@@ -286,8 +287,9 @@ any license error has occurred. Use the following snippet to initialize Scanbot 
 
 <span class="c1">// Check the license status:</span>
 <span class="kd">val</span> <span class="py">licenseInfo</span> <span class="p">=</span> <span class="nc">ScanbotBarcodeScannerSDK</span><span class="p">(</span><span class="n">activity</span><span class="p">).</span><span class="n">licenseInfo</span>
-<span class="nc">LoggerProvider</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">().</span><span class="nf">d</span><span class="p">(</span><span class="s">"ExampleApplication"</span><span class="p">,</span> <span class="s">"License status: ${licenseInfo.status}"</span><span class="p">)</span>
-<span class="nc">LoggerProvider</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">().</span><span class="nf">d</span><span class="p">(</span><span class="s">"ExampleApplication"</span><span class="p">,</span> <span class="s">"License isValid: ${licenseInfo.isValid}"</span><span class="p">)</span>
+<span class="nc">LoggerProvider</span><span class="p">.</span><span class="n">logger</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="s">"ExampleApplication"</span><span class="p">,</span> <span class="s">"License status: ${licenseInfo.status}"</span><span class="p">)</span>
+<span class="nc">LoggerProvider</span><span class="p">.</span><span class="n">logger</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="s">"ExampleApplication"</span><span class="p">,</span> <span class="s">"License isValid: ${licenseInfo.isValid}"</span><span class="p">)</span>
+<span class="nc">LoggerProvider</span><span class="p">.</span><span class="n">logger</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="s">"ExampleApplication"</span><span class="p">,</span> <span class="s">"License message: ${licenseInfo.licenseStatusMessage}"</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="n">licenseInfo</span><span class="p">.</span><span class="n">isValid</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Making your call into ScanbotBarcodeScannerSDK API is safe now.</span>
@@ -675,8 +677,34 @@ e.g. JPG files from the photo library or other sources.</p>
 
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history-and-changelog">Release History and Changelog</h3>
+<h3 id="version-180-17-jun-2021">Version 1.8.0 (17 Jun 2021)</h3>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Added a new supported barcode format <code class="highlighter-rouge">BarcodeFormat.MSI_PLESSEY</code>. By default MSI-Plessey is disabled, you must explicitly pass it as an accepted type</li>
+      <li>Additional parameter <code class="highlighter-rouge">msiPlesseyChecksumAlgorithms: EnumSet&lt;MSIPlesseyChecksumAlgorithm&gt;</code> in <code class="highlighter-rouge">BarcodeScannerAdditionalConfig</code> for <code class="highlighter-rouge">BarcodeDetector</code> classical component</li>
+      <li>Additional parameter <code class="highlighter-rouge">msiPlesseyChecksumAlgorithms: EnumSet&lt;MSIPlesseyChecksumAlgorithm&gt;</code> in <code class="highlighter-rouge">BarcodeScannerAdditionalConfiguration</code> for RTU UI screens</li>
+      <li>Added new parameter to the <code class="highlighter-rouge">SdkLicenseInfo</code> class <code class="highlighter-rouge">licenseStatusMessage: String?</code></li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>More clear default values for user guidance strings on RTU UI screens</li>
+    </ul>
+  </li>
+  <li>🐞 Bug fixes:
+    <ul>
+      <li>Fixed a problem with UPC-A barcodes being recognized as EAN13 barcodes</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li>Changed signature of the <code class="highlighter-rouge">handleLicenceStatusError</code> method in <code class="highlighter-rouge">IScanbotSDKLicenseErrorHandler</code>. Added additional parameter <code class="highlighter-rouge">errorMessage : String</code></li>
+    </ul>
+  </li>
+</ul>
 
-<h3 id="version-170-21-apr-2021">Version 1.7.0 (21 Apr 2021)</h3>
+<h4 id="version-170-21-apr-2021">Version 1.7.0 (21 Apr 2021)</h4>
 <ul>
   <li>🎉 New:
     <ul>
@@ -1028,7 +1056,7 @@ limitations under the License.
 
 Kotlin Standard Library
 
-Version 1.4
+Version 1.4.20
 (https://github.com/JetBrains/kotlin)
 
 Copyright 2010-2018 JetBrains s.r.o.
@@ -1064,7 +1092,7 @@ limitations under the License.
 
 
 google-gson
-Version 2.8.5
+Version 2.8.6
 (https://github.com/google/gson/blob/gson-parent-2.8.5/LICENSE)
 
 Copyright 2008 Google Inc.
@@ -1085,7 +1113,7 @@ limitations under the License.
 
 Dagger
 
-Version 2.25.2
+Version 2.35
 (https://github.com/google/dagger)
 
 Copyright 2012 The Dagger Authors
