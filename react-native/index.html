@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://scanbotsdk.github.io/documentation/react-native/" />
 <meta property="og:site_name" content="Scanbot SDK React Native Module" />
 <script type="application/ld+json">
-{"url":"https://scanbotsdk.github.io/documentation/react-native/","headline":"Scanbot SDK React Native Module","name":"Scanbot SDK React Native Module","@type":"WebSite","@context":"https://schema.org"}</script>
+{"headline":"Scanbot SDK React Native Module","url":"https://scanbotsdk.github.io/documentation/react-native/","name":"Scanbot SDK React Native Module","@type":"WebSite","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/documentation/react-native/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://scanbotsdk.github.io/documentation/react-native/feed.xml" title="Scanbot SDK React Native Module" /></head>
 <body><header class="site-header" role="banner">
@@ -267,10 +267,11 @@ containing default language files for DE and EN</li>
 
 <p><em>NOTE!</em></p>
 
-<p>As of <code class="highlighter-rouge">v0.62</code> of <code class="highlighter-rouge">react-native</code> and <code class="highlighter-rouge">v4.1.0</code> of <code class="highlighter-rouge">react-native-scanbot-sdk</code>, the above step is not required if you do not
-need the Scanbot SDK features <code class="highlighter-rouge">OCR</code>, <code class="highlighter-rouge">MRZ</code> or <code class="highlighter-rouge">MLDETECT</code>.
-<code class="highlighter-rouge">react-native</code> resolves your native dependencies (<code class="highlighter-rouge">.podspec</code>) from the package name in your <code class="highlighter-rouge">package.json</code> file and adds
-the <strong>default podspec</strong> <code class="highlighter-rouge">'NONE'</code>. The podspec <code class="highlighter-rouge">'NONE'</code> does not include the Scanbot SDK features <code class="highlighter-rouge">OCR</code>, <code class="highlighter-rouge">MRZ</code>, <code class="highlighter-rouge">MLDETECT</code>.</p>
+<p>As of <code class="highlighter-rouge">v0.62</code> of <code class="highlighter-rouge">react-native</code> and <code class="highlighter-rouge">v4.1.0</code> of <code class="highlighter-rouge">react-native-scanbot-sdk</code>, 
+the above step is not required if you do not need the Scanbot SDK features <code class="highlighter-rouge">OCR</code>, <code class="highlighter-rouge">MRZ</code> or <code class="highlighter-rouge">MLDETECT</code>.
+<code class="highlighter-rouge">react-native</code> resolves your native dependencies (<code class="highlighter-rouge">.podspec</code>) from the package name in your <code class="highlighter-rouge">package.json</code> file 
+and adds the <strong>default podspec</strong> <code class="highlighter-rouge">'NONE'</code>. 
+The podspec <code class="highlighter-rouge">'NONE'</code> does not include the Scanbot SDK features <code class="highlighter-rouge">OCR</code>, <code class="highlighter-rouge">MRZ</code>, <code class="highlighter-rouge">MLDETECT</code>.</p>
 
 <p>Run:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd ios/
@@ -2579,27 +2580,45 @@ It is based on the <em>Tesseract OCR Engine</em> with some modifications and enh
 
 <p><strong>Conditions while scanning</strong></p>
 
-<p>A perfect document for OCR is flat, straight, in the highest possible resolution and does not contain large shadows, folds, or any other objects that could distract the recognizer. Our UI and algorithms do their best to help you meet these requirements. But as in photography, you can never fully get the image information back that was lost during the shot.</p>
+<p>A perfect document for OCR is flat, straight, in the highest possible resolution 
+and does not contain large shadows, folds, or any other objects that could distract the recognizer. 
+Our UI and algorithms do their best to help you meet these requirements. 
+But as in photography, you can never fully get the image information back that was lost during the shot.</p>
 
 <p><strong>Languages</strong></p>
 
-<p>You can use multiple languages for OCR. But since the recognition of characters and words is a very complicated process, increasing the number of languages lowers the overall precision. With more languages, there are more results where the detected word could match. We suggest using as few languages as possible. Make sure that the language you are trying to detect is supported by the SDK and added to the project.</p>
+<p>You can use multiple languages for OCR. But since the recognition of characters and words 
+is a very complicated process, increasing the number of languages lowers the overall precision. 
+With more languages, there are more results where the detected word could match. 
+We suggest using as few languages as possible. 
+Make sure that the language you are trying to detect is supported by the SDK and added to the project.</p>
 
 <p><strong>Size and position</strong></p>
 
-<p>Put the document on a flat surface. Take the photo from straight above in parallel to the document to make sure that the perspective correction does not need to be applied much. The document should fill most of the camera frame while still showing all of the text that needs to be recognized. This results in more pixels for each character that needs to be detected and hence, more detail. Skewed pages decrease the recognition quality.</p>
+<p>Put the document on a flat surface. Take the photo from straight above in parallel to the document 
+to make sure that the perspective correction does not need to be applied much. 
+The document should fill most of the camera frame while still showing all of the text that needs to be recognized. 
+This results in more pixels for each character that needs to be detected and hence, more detail. 
+Skewed pages decrease the recognition quality.</p>
 
 <p><strong>Light and shadows</strong></p>
 
-<p>More ambient light is always better. The camera takes the shot at a lower ISO value, which results in less grainy photos. You should make sure that there are no visible shadows. If you have large shadows, it is better to take the shot at an angle instead. We also do not recommend using the flashlight - from this low distance it creates a light spot at the center of the document which decreases the recognition quality.</p>
+<p>More ambient light is always better. The camera takes the shot at a lower ISO value, 
+which results in less grainy photos. You should make sure that there are no visible shadows. 
+If you have large shadows, it is better to take the shot at an angle instead. 
+We also do not recommend using the flashlight - from this low distance it creates a light spot 
+at the center of the document which decreases the recognition quality.</p>
 
 <p><strong>Focus</strong></p>
 
-<p>The document needs to be properly focused so that the characters are sharp and clear. The autofocus of the camera works well if you meet the minimum required distance for the lens to be able to focus. This usually starts at 5-10cm.</p>
+<p>The document needs to be properly focused so that the characters are sharp and clear. 
+The autofocus of the camera works well if you meet the minimum required distance 
+for the lens to be able to focus. This usually starts at 5-10cm.</p>
 
 <p><strong>Typefaces</strong></p>
 
-<p>TThe OCR trained data is optimized for common serif and sans-serif font types. Decorative or script fonts drastically decrease the quality of the recognition.</p>
+<p>TThe OCR trained data is optimized for common serif and sans-serif font types. 
+Decorative or script fonts drastically decrease the quality of the recognition.</p>
 
 <p><a name="ocrLanguages"></a></p>
 <h4 id="ocr-languages-and-data-files">OCR Languages and Data Files</h4>
@@ -3110,6 +3129,28 @@ please add the following rules:</p>
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history">Release History</h3>
 
+<h4 id="version-480-28-jun-2021">Version 4.8.0 (28 Jun 2021):</h4>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li><code class="highlighter-rouge">MSI Plessey</code> barcode recognition</li>
+    </ul>
+  </li>
+  <li>🚀 Improvements:
+    <ul>
+      <li>Droid: Exposed native dependencies to allow custom native implementations</li>
+    </ul>
+  </li>
+  <li>🚙 Under the hood:
+    <ul>
+      <li>Upgraded the native Scanbot Android SDK to v1.84.0
+  (cf. <a href="https://github.com/doo/scanbot-sdk-example-android/wiki/Release-History">changelog</a>)</li>
+      <li>Upgraded the native Scanbot iOS SDK to v1.18.0
+  (cf. <a href="https://scanbotsdk.github.io/documentation/ios/release-history.html">changelog</a>)</li>
+    </ul>
+  </li>
+</ul>
+
 <h4 id="version-470-14-apr-2021">Version 4.7.0 (14 Apr 2021):</h4>
 <ul>
   <li>🎉 New:
@@ -3591,7 +3632,7 @@ Creates a grayscaled 8-bit image with mostly black or white pixels.</li>
 <h3 id="libraries-and-licenses">Libraries and Licenses</h3>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-Open Source libraries used in the Scanbot SDK for Android version 1.81.0
+Open Source libraries used in the Scanbot SDK for Android version 1.84.0
 
 Apache Commons Codec
 
@@ -3730,30 +3771,9 @@ limitations under the License.
 
 
 
-JetBrains Java Annotations (Annotations for JVM-based languages)
-
-Version 13.0
-(https://github.com/JetBrains/java-annotations)
-
-Copyright 2000-2016 JetBrains s.r.o.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-
-
 Kotlin Standard Library
 
-Version 1.4
+Version 1.4.20
 (https://github.com/JetBrains/kotlin)
 
 Copyright 2010-2018 JetBrains s.r.o.
@@ -3788,7 +3808,7 @@ limitations under the License.
 
 
 google-gson
-Version 2.8.5
+Version 2.8.6
 (https://github.com/google/gson/blob/gson-parent-2.8.5/LICENSE)
 
 Copyright 2008 Google Inc.
@@ -3808,7 +3828,7 @@ limitations under the License.
 
 Dagger
 
-Version 2.25.2
+Version 2.35
 (https://github.com/google/dagger)
 
 Copyright 2012 The Dagger Authors
@@ -4307,7 +4327,7 @@ POSSIBILITY OF SUCH DAMAGE.
 ------------------------------------------------------------------------------------------------------------------------
 
 
-Open Source libraries used in the Scanbot SDK for iOS version 1.15.1:
+Open Source libraries used in the Scanbot SDK for iOS version 1.18.0:
 
 
 BOOST C++ Libraries version 1.68
