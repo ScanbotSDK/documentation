@@ -59,6 +59,9 @@
                 <a class="nav-group-task-link" href="logging.html">Logging</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="modules-overview.html">Modules Overview</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="modules-in-detail.html">Modules in Detail</a>
               </li>
               <li class="nav-group-task">
@@ -183,7 +186,7 @@
                 <a class="nav-group-task-link" href="Classes/SBSDKContrastFilter.html">SBSDKContrastFilter</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes.html#/c:objc(cs)SBSDKDetectionStatusLabel">SBSDKDetectionStatusLabel</a>
+                <a class="nav-group-task-link" href="Classes/SBSDKDetectionStatusLabel.html">SBSDKDetectionStatusLabel</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKDeviceInformation.html">SBSDKDeviceInformation</a>
@@ -1321,6 +1324,9 @@
                 <a class="nav-group-task-link" href="Enums/SBSDKAESEncrypterMode.html">SBSDKAESEncrypterMode</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/SBSDKBarcodeEngineMode.html">SBSDKBarcodeEngineMode</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/SBSDKBarcodeImageGenerationType.html">SBSDKBarcodeImageGenerationType</a>
               </li>
               <li class="nav-group-task">
@@ -1630,13 +1636,7 @@
                 <a class="nav-group-task-link" href="Functions.html#/c:@F@NS_ENUM">NS_ENUM</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Functions.html#/c:@F@descriptionFromLicenseStatus">descriptionFromLicenseStatus</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Functions.html#/c:@F@isDetectionStatusOK">isDetectionStatusOK</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Functions.html#/c:@F@stringFromLicenseStatus">stringFromLicenseStatus</a>
               </li>
             </ul>
           </li>
@@ -1648,6 +1648,33 @@
           <div class="section-content">
             
             <h1 id='release-history-and-changelog' class='heading'>Release History and Changelog</h1>
+<h3 id='version-1-19-0-30-june-2021' class='heading'>Version 1.19.0 (30 June 2021):</h3>
+
+<ul>
+<li><p>🎉 New:</p>
+
+<ul>
+<li>Brand new &ldquo;Next Generation&rdquo; machine-learning-based barcode scanning engine with improved reliability and much faster performance</li>
+<li>API changes for the new barcode engine: added <code>engineMode</code> property of type <code><a href="Enums/SBSDKBarcodeEngineMode.html">SBSDKBarcodeEngineMode</a></code> on barcode scanning APIs like <code><a href="Classes/SBSDKBarcodeScanner.html">SBSDKBarcodeScanner</a></code>, <code><a href="Classes/SBSDKBarcodeScannerViewController.html">SBSDKBarcodeScannerViewController</a></code>, and <code><a href="Classes/SBSDKUIBarcodesBatchScannerBehaviorConfiguration.html">SBSDKUIBarcodesBatchScannerBehaviorConfiguration</a></code> to switch between the legacy barcode engine and the new Next Generation barcode engine. By default, the new engine is used.</li>
+</ul></li>
+<li><p>⚠️ Breaking Changes:</p>
+
+<ul>
+<li>Removed <code>enableHighSensitivityMode</code> property on <code><a href="Classes/SBSDKBarcodeScanner.html">SBSDKBarcodeScanner</a></code>, because it is no longer needed</li>
+</ul></li>
+<li><p>🚀 Improvements:</p>
+
+<ul>
+<li>Improved logging for license failures. The app bundle identifier from the license and from the app will be displayed in the log in case you accidentally set up a wrong license. Also now the expiration date of expired licenses is being logged to the console.</li>
+<li>More detailed Scanbot SDK module documentation</li>
+</ul></li>
+<li><p>🐞 Bug fixes</p>
+
+<ul>
+<li>Fixes a layout bug with long text on detection status labels</li>
+<li>Fixes a bug in document scanner view controllers (Classic UI and Ready-to-use UI) where sometimes the energy save mode did not end properly</li>
+</ul></li>
+</ul>
 <h3 id='version-1-18-0-9-june-2021' class='heading'>Version 1.18.0 (9 June 2021):</h3>
 
 <ul>
@@ -2958,7 +2985,7 @@ of the cropped image and let it be very close to the original documents aspect r
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2021 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2021-06-09)</p>
+      <p>&copy; 2021 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2021-06-30)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

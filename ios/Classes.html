@@ -60,6 +60,9 @@
                 <a class="nav-group-task-link" href="logging.html">Logging</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="modules-overview.html">Modules Overview</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="modules-in-detail.html">Modules in Detail</a>
               </li>
               <li class="nav-group-task">
@@ -184,7 +187,7 @@
                 <a class="nav-group-task-link" href="Classes/SBSDKContrastFilter.html">SBSDKContrastFilter</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes.html#/c:objc(cs)SBSDKDetectionStatusLabel">SBSDKDetectionStatusLabel</a>
+                <a class="nav-group-task-link" href="Classes/SBSDKDetectionStatusLabel.html">SBSDKDetectionStatusLabel</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SBSDKDeviceInformation.html">SBSDKDeviceInformation</a>
@@ -1322,6 +1325,9 @@
                 <a class="nav-group-task-link" href="Enums/SBSDKAESEncrypterMode.html">SBSDKAESEncrypterMode</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/SBSDKBarcodeEngineMode.html">SBSDKBarcodeEngineMode</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/SBSDKBarcodeImageGenerationType.html">SBSDKBarcodeImageGenerationType</a>
               </li>
               <li class="nav-group-task">
@@ -1631,13 +1637,7 @@
                 <a class="nav-group-task-link" href="Functions.html#/c:@F@NS_ENUM">NS_ENUM</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Functions.html#/c:@F@descriptionFromLicenseStatus">descriptionFromLicenseStatus</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Functions.html#/c:@F@isDetectionStatusOK">isDetectionStatusOK</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Functions.html#/c:@F@stringFromLicenseStatus">stringFromLicenseStatus</a>
               </li>
             </ul>
           </li>
@@ -1967,8 +1967,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Wrapper class for searching and decoding multiple types of barcodes. Recognition is performed on still UIImage
-or SampleBufferRef, result is incapsulated in an array of SBSDKBarcodeScannerResult instances.</p>
+                        <p>A class to search and decode multiple types of barcodes in a UIImage or SampleBufferRef.
+Result is incapsulated in an array of SBSDKBarcodeScannerResult instances.</p>
 
                         <a href="Classes/SBSDKBarcodeScanner.html" class="slightly-smaller">See more</a>
                       </div>
@@ -2034,7 +2034,7 @@ or SampleBufferRef, result is incapsulated in an array of SBSDKBarcodeScannerRes
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>UIViewController subclass showing a camera screen and barcode detector.
+                        <p>A UIViewController subclass to show a camera screen with the barcode detector.
 This class cannot be instanced from a storyboard.
 Instead it is installing itself as a child view controller onto a given parent view controller.</p>
 
@@ -2676,6 +2676,7 @@ operation to extract the data fields of the detected credit card.</p>
                         <p>A UILabel subclass with rounded corners and content insets to display the status of the current document
 detection result.</p>
 
+                        <a href="Classes/SBSDKDetectionStatusLabel.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -2839,8 +2840,8 @@ detection result.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Wrapper class for disability certificates recognition. Recognition is performed on still UIImage or SampleBufferRef,
-result is incapsulated in SBSDKDisabilityCertificatesRecognizerResult instance.</p>
+                        <p>A class to recognize disability certificates in a UIImage or CMSampleBufferRef.
+Result is incapsulated in SBSDKDisabilityCertificatesRecognizerResult instance.</p>
 
                         <a href="Classes/SBSDKDisabilityCertificatesRecognizer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -3042,7 +3043,7 @@ result is incapsulated in SBSDKDisabilityCertificatesRecognizerResult instance.<
                         <p></p>
 
 <ul>
-<li>This class provides methods for detecting a documents outline polygon in an UIImage or CMSampleBuffer.</li>
+<li>A class to detect a document&rsquo;s outline polygon in a UIImage or CMSampleBufferRef.</li>
 </ul>
 
                         <a href="Classes/SBSDKDocumentDetector.html" class="slightly-smaller">See more</a>
@@ -3411,10 +3412,10 @@ reduce CPU usage and therefore saves battery.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A recognizer for documents on an image or on a video stream. Recognizes and extracts data fields from specific
-documents, e.g. German passports, id cards and driver&rsquo;s licenses and, in case of success, returns an instance of
-SBSDKGenericDocument holding all recognized fields with their names, values and image excerpts, along with their OCR
-confidence values.</p>
+                        <p>A class to recognize and detect the data fields from specific documents,
+e.g. German passports, ID cards and driver&rsquo;s licenses in a UIImage or CMSampleBufferRef.
+In case of success, returns an instance of SBSDKGenericDocument holding all recognized fields
+with their names, values and image excerpts, along with their OCR confidence values.</p>
 
                         <a href="Classes/SBSDKGenericDocumentRecognizer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -3447,7 +3448,7 @@ confidence values.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A camera based view controller to recognize documents like personal ID cards, driver&rsquo;s licenses and passports on video frames.</p>
+                        <p>A UIViewController subclass to recognize  documents, e.g. German passports, ID cards and driver&rsquo;s licenses on video frames.</p>
 
                         <a href="Classes/SBSDKGenericDocumentRecognizerViewController.html" class="slightly-smaller">See more</a>
                       </div>
@@ -3781,7 +3782,7 @@ confidence values.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A class for recognizing one line of text in a small area and running a validation on the result.
+                        <p>A class to recognize one line of text in a small area and run validation on the result.
 It is intended to be a very generic text-based live video recognizer for tasks that can&rsquo;t be accomplished with
 the specialized recognizers in ScanbotSDK.</p>
 
@@ -3916,7 +3917,7 @@ the specialized recognizers in ScanbotSDK.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A highly customizable camera-based viewcontroller to recognize and validate a small rectangular text area in realtime.
+                        <p>A UIViewController subclass to show a camera screen with the text line recognizer.
 A view finder like rectangle shows the area where text is recognized. The camera can be zoomed in and out using an action
 or a double-tap to make aiming at the desired area easier.
 Once some text is recognized within the view finder area, the result is delivered to the receivers delegate.
@@ -4020,7 +4021,7 @@ A customizable validation routine checks validates the result and sets a flag in
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Recognizer for European health insurance cards (EHIC), a.k.a. elektronische Gesundheitskarten (eGK).
+                        <p>A class to recognize European health insurance cards (EHIC), a.k.a. elektronische Gesundheitskarten (eGK).
 NOTE: In order to operate, this class requires tesseract languages and trained data to be present
 in the application bundle.</p>
 
@@ -4220,10 +4221,9 @@ in the application bundle.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A recognizer for personal ID cards. Detects and recognizes ID cards on images or video frames and extracts
- the data fields, like names, dates, photos, signatures and machine readable zones.</p>
-
-<p>Detection is a quick way to check, if there is an ID card present on an image or video frame.
+                        <p>A class to detect and recognize personal ID cards in a UIImage or CMSampleBufferRef.
+ Extracts the data fields, like names, dates, photos, signatures and machine readable zones.
+ Detection is a quick way to check, if there is an ID card present on an image or video frame.
  Recognition is slower but additionally extracts the data fields from the ID card.</p>
 
 <p>Note: Currently limited to German ID cards.</p>
@@ -4395,8 +4395,9 @@ still images. Currently limited to German ID cards.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>UIViewController subclass showing an image and a polygon The user can move edge and corner handles to redefine the
-polygon manually and rotate the image in 90 degree steps (counter)clockwise.
+                        <p>A UIViewController subclass to show and edit an image.
+The user can move edge and corner handlers to redefine the polygon manually
+and rotate the image in 90 degree steps (counter) clockwise.
 This class cannot be instanced from a storyboard.
 Instead it is installing itself as a child view controller onto a given parent view controller.</p>
 
@@ -4583,7 +4584,7 @@ with the modified metadata.</p></li>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A static class that processes images asynchronously: the heart of the Scanbot SDK image processing module.
+                        <p>A class to process images asynchronously: the heart of the Scanbot SDK image processing module.
 As image processing is most often consuming lots of memory
 this class processes images on a serial queue ensuring a minimum of large images in memory.
 Each operation reads the image from the imageURL, processes it and,
@@ -4727,7 +4728,7 @@ If created from image image metadata, uses a dictionary of some known devices to
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A class for scanning a vehicles license plate in a small area and running a validation on the result.
+                        <p>A class to scan a vehicle&rsquo;s license plate in a UIImage or SampleBufferRef and run a validation on the result.
 Ideally you use an instance of this class on subsequent video frames. Each scanned frame will raise the
 confidence of the scan.</p>
 
@@ -4828,8 +4829,7 @@ confidence of the scan.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A camera based view controller to detect license plates on video frames or automatically captured
-still images.</p>
+                        <p>A UIViewController subclass to detect license plates in a UIImage or CMSampleBufferRef.</p>
 
                         <a href="Classes/SBSDKLicensePlateScannerViewController.html" class="slightly-smaller">See more</a>
                       </div>
@@ -4863,8 +4863,8 @@ still images.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Wrapper class for machine-readable zones recognition. Recognition is performed on still UIImage
-or SampleBufferRef, result is encapsulated in SBSDKMRZRecognizerResult instance.
+                        <p>A class to recognize machine-readable zones in a UIImage or SampleBufferRef.
+Result is encapsulated in SBSDKMRZRecognizerResult instance.
 NOTE: In order to operate, this class requires tesseract languages and trained data to be present
 in application bundle</p>
 
@@ -5460,7 +5460,7 @@ in application bundle</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A view controller for scanning multiple objects on a single captured still image. *</p>
+                        <p>A UIViewController subclass to scan multiple objects on a single captured still image. *</p>
 
                         <a href="Classes/SBSDKMultipleObjectScannerViewController.html" class="slightly-smaller">See more</a>
                       </div>
@@ -5494,7 +5494,7 @@ in application bundle</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Detects multiple non-overlapping rectangular objects within an image. Like a bunch of business cards.</p>
+                        <p>A class to detect multiple non-overlapping rectangular objects in a UIImage or CMSampleBufferRef. Like a bunch of business cards.</p>
 
                         <a href="Classes/SBSDKMultipleObjectsDetector.html" class="slightly-smaller">See more</a>
                       </div>
@@ -5632,7 +5632,7 @@ Contains visual biometric data of the passports holder.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A class for reading out the data of a passports Near Field Communication (NFC) chip.</p>
+                        <p>A class to extract the data from a passport&rsquo;s Near Field Communication (NFC) chip.</p>
 
 <p>Notes:</p>
 <div class="aside aside-requires">
@@ -5829,7 +5829,7 @@ For convenience this immutable class conforms to NSCopying protocol.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A static class that renders an ordered collection of images into a basic, none-searchable PDF. Very fast.
+                        <p>A class to render an ordered collection of images into a basic, non-searchable PDF. Very fast.
 It does not perform OCR.</p>
 
                         <a href="Classes/SBSDKPDFRenderer.html" class="slightly-smaller">See more</a>
@@ -6049,7 +6049,7 @@ Holds a token and its recognized text value after recognition.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The main scanner class that performs detection and recognition on either UIImage or CMSampleBufferRef (from camera).
+                        <p>A class to detect and recognize SEPA payforms on UIImage or CMSampleBufferRef.
 The larger the image the better the recognition results. Images are rotated accordingly to either the UIImage
 imageOrientation property or the given video orientation.
 Detection and recognition are successful only if the rotated image has natural orientation.</p>
@@ -6395,7 +6395,7 @@ of custom resources that extend some features functionality.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>UIViewController subclass showing a camera screen and running a user guiding Document detector.
+                        <p>A UIViewController subclass to show a camera screen and run a user guiding document detector.
 Detection result is visualized using a polygonal bezier path.
 This class cannot be instanced from a storyboard.
 Instead it is installing itself as a child view controller onto a given parent view controller.</p>
@@ -6865,7 +6865,7 @@ it is better to create instance of SBSDKTextOrientationRecognizer once and use i
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Class which handles storing and removing barcode images from <code><a href="Classes/SBSDKUIBarcodeScannerViewController.html">SBSDKUIBarcodeScannerViewController</a></code>.</p>
+                        <p>A class to store and remove barcode images from <code><a href="Classes/SBSDKUIBarcodeScannerViewController.html">SBSDKUIBarcodeScannerViewController</a></code>.</p>
 
                         <a href="Classes/SBSDKUIBarcodeImageStorage.html" class="slightly-smaller">See more</a>
                       </div>
@@ -7098,7 +7098,7 @@ Use the &lsquo;defaultConfiguration&rsquo; class method to retrieve an instance 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A configurable view controller for camera-based detection of QR and bar codes.</p>
+                        <p>A highly customizable camera-based view controller to detect QR and bar codes.</p>
 
                         <a href="Classes/SBSDKUIBarcodeScannerViewController.html" class="slightly-smaller">See more</a>
                       </div>
@@ -7265,7 +7265,7 @@ Use the &lsquo;defaultConfiguration&rsquo; class method to retrieve an instance 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A configurable view controller for camera-based detection of barcodes batches.</p>
+                        <p>A highly customizable camera-based view controller to detect barcodes batches.</p>
 
                         <a href="Classes/SBSDKUIBarcodesBatchScannerViewController.html" class="slightly-smaller">See more</a>
                       </div>
@@ -7498,7 +7498,7 @@ Use the &lsquo;defaultConfiguration&rsquo; class method to retrieve an instance 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A configurable view controller to edit a pages polygon or the orientation of the page.</p>
+                        <p>A highly customizable view controller to edit a pages polygon or the page&rsquo;s orientation.</p>
 
                         <a href="Classes/SBSDKUICroppingViewController.html" class="slightly-smaller">See more</a>
                       </div>
@@ -7798,7 +7798,7 @@ Use the &lsquo;defaultConfiguration&rsquo; class method to retrieve an instance 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A configurable view controller for camera based document scanning. 
+                        <p>A highly customizable camera-based view controller to scan documents.
 An edge-detection based algorithm finds documents in the camera stream.
 A manual or automatic high resolution snapshot can be made. Based on the detected area of the document in the photo,
 the photo is cropped and perspective-corrected, so that a nice flattened image of the document only is created.</p>
@@ -8068,7 +8068,7 @@ Use the &lsquo;defaultConfiguration&rsquo; class method to retrieve an instance 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A configurable view controller for camera-based recognition of generic documents.</p>
+                        <p>A highly customizable camera-based view controller to recognize generic documents.</p>
 
                         <a href="Classes/SBSDKUIGenericDocumentRecognizerViewController.html" class="slightly-smaller">See more</a>
                       </div>
@@ -8404,7 +8404,7 @@ Use the &lsquo;defaultConfiguration&rsquo; class method to retrieve an instance 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A configurable view controller for camera-based detection of ID cards.</p>
+                        <p>A highly customizable view controller for camera-based detection of ID cards.</p>
 
                         <a href="Classes/SBSDKUIIDCardScannerViewController.html" class="slightly-smaller">See more</a>
                       </div>
@@ -8438,7 +8438,7 @@ Use the &lsquo;defaultConfiguration&rsquo; class method to retrieve an instance 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Class which handles storing and removing ID card images from <code><a href="Classes/SBSDKUIIDCardScannerViewController.html">SBSDKUIIDCardScannerViewController</a></code>.</p>
+                        <p>A class to store and remove ID card images from <code><a href="Classes/SBSDKUIIDCardScannerViewController.html">SBSDKUIIDCardScannerViewController</a></code>.</p>
 
                         <a href="Classes/SBSDKUIIDCardStorage.html" class="slightly-smaller">See more</a>
                       </div>
@@ -8605,7 +8605,7 @@ Use the &lsquo;defaultConfiguration&rsquo; class method to retrieve an instance 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A highly customizable camera-based viewcontroller to scan vehicle license plates in realtime.
+                        <p>A highly customizable camera-based view controller to scan vehicle license plates in realtime.
 A view finder like rectangle shows the area where the license plate is recognized.
 Once a license plate has been recognized within the view finder area the result is delivered to the receivers delegate.</p>
 
@@ -8776,7 +8776,7 @@ Use the &lsquo;defaultConfiguration&rsquo; class method to retrieve an instance 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A view controller for camera-based detection of machine readable zones.</p>
+                        <p>A highly customizable camera-based view controller to detect machine readable zones.</p>
 
                         <a href="Classes/SBSDKUIMRZScannerViewController.html" class="slightly-smaller">See more</a>
                       </div>
@@ -8977,7 +8977,7 @@ Use the &lsquo;defaultConfiguration&rsquo; class method to retrieve an instance 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A configurable view controller for camera based multiple objects scanning.</p>
+                        <p>A highly customizable camera-based view controller to scan multiple objects.</p>
 
                         <a href="Classes/SBSDKUIMultipleObjectScannerViewController.html" class="slightly-smaller">See more</a>
                       </div>
@@ -9111,7 +9111,7 @@ Use the &lsquo;defaultConfiguration&rsquo; class method to retrieve an instance 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Class which handles storing and removing images from <code><a href="Classes/SBSDKUINFCPassportReaderViewController.html">SBSDKUINFCPassportReaderViewController</a></code>.</p>
+                        <p>A class to store and remove images from <code><a href="Classes/SBSDKUINFCPassportReaderViewController.html">SBSDKUINFCPassportReaderViewController</a></code>.</p>
 
                         <a href="Classes/SBSDKUINFCPassportReaderStorage.html" class="slightly-smaller">See more</a>
                       </div>
@@ -9211,8 +9211,7 @@ Use the &lsquo;defaultConfiguration&rsquo; class method to retrieve an instance 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A  ready-to-use viewcontroller component to scan the NFC chip of a passport and extract its
-information.</p>
+                        <p>A highly customizable camera-based view controller to extract the data from a passport&rsquo;s Near Field Communication (NFC) chip.</p>
 
                         <a href="Classes/SBSDKUINFCPassportReaderViewController.html" class="slightly-smaller">See more</a>
                       </div>
@@ -9246,7 +9245,7 @@ information.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Renders a &lsquo;SBSDKUIDocument&rsquo; into a PDF.</p>
+                        <p>A class to render a <code><a href="Classes/SBSDKUIDocument.html">SBSDKUIDocument</a></code> into a PDF.</p>
 
                         <a href="Classes/SBSDKUIPDFRenderer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -9312,7 +9311,7 @@ information.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A class for storing and restoring images in a memory-efficient way.
+                        <p>A class to store and restore images in a memory-efficient way.
  Stores added images on disk and restores them if requested.
  Can generate preview images of optimal resolution for the devices screen.
  Manages two types of images: original images (as from camera or photo library)
@@ -9551,8 +9550,7 @@ still images or low-res video frames (live detection).</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A &lsquo;SBSDKUIWorkflowStep&rsquo; subclass specialized on recognizing payforms on either high-res
-still images or low-res video frames (live detection).</p>
+                        <p>A <code><a href="Classes/SBSDKUIWorkflowStep.html">SBSDKUIWorkflowStep</a></code> subclass specialized in recognizing payforms in a UIImage or CMSampleBufferRef.</p>
 
                         <a href="Classes/SBSDKUIScanPayFormWorkflowStep.html" class="slightly-smaller">See more</a>
                       </div>
@@ -9785,7 +9783,7 @@ Use the &lsquo;defaultConfiguration&rsquo; class method to retrieve an instance 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A highly customizable camera-based viewcontroller to recognize and validate a small rectangular text area in realtime.
+                        <p>A highly customizable camera-based view controller to recognize and validate a small rectangular text area in realtime.
 A view finder like rectangle shows the area where text is recognized. The camera is zoomed in and out automatically.
 Once some text is recognized within the view finder area the result is delivered to the receivers delegate.</p>
 
@@ -10025,7 +10023,7 @@ By subclassing &lsquo;SBSDKUIWorkflowStep&rsquo; the creation of custom steps is
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>View controller that processes a workflow.</p>
+                        <p>A View controller that processes a workflow.</p>
 
                         <a href="Classes/SBSDKUIWorkflowScannerViewController.html" class="slightly-smaller">See more</a>
                       </div>
@@ -10351,7 +10349,7 @@ may subclass and create your own custom steps.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2021 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2021-06-09)</p>
+      <p>&copy; 2021 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external">doo GmbH</a>. All rights reserved. (Last updated: 2021-06-30)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
