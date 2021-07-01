@@ -585,11 +585,45 @@ For example:</p>
 val decryptedImageBitmap: Bitmap = scanbotBarcodeScannerSDK.fileIOProcessor().readImage(source: File, options: BitmapFactory.Options? = null)
 </code></pre></div></div>
 
+<h3 id="main-configuration">Main configuration</h3>
+
+<p>Scanbot SDK provides the ability to modify the default configuration of <code class="highlighter-rouge">ScanbotBarcodeDetector</code>.
+Here is an example how to specify a completely custom <code class="highlighter-rouge">BarcodeScannerConfig</code>:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">barcodeDetector</span> <span class="p">=</span> <span class="nc">ScanbotBarcodeScannerSDK</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nf">barcodeDetector</span><span class="p">()</span>
+<span class="kd">val</span> <span class="py">config</span> <span class="p">=</span> <span class="nc">BarcodeScannerConfig</span><span class="p">(</span>
+    <span class="n">barcodeFormats</span> <span class="p">=</span> <span class="nc">BarcodeFormat</span><span class="p">.</span><span class="nc">COMMON_CODES</span><span class="p">,</span>
+    <span class="n">acceptedDocumentFormats</span> <span class="p">=</span> <span class="nf">emptyList</span><span class="p">(),</span>
+    <span class="n">engineMode</span> <span class="p">=</span> <span class="nc">EngineMode</span><span class="p">.</span><span class="nc">NextGen</span><span class="p">,</span>
+    <span class="n">saveCameraPreviewFrame</span> <span class="p">=</span> <span class="k">false</span><span class="p">,</span>
+    <span class="n">additionalConfig</span> <span class="p">=</span> <span class="nc">BarcodeScannerAdditionalConfig</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">barcodeDetector</span><span class="p">.</span><span class="nf">setConfig</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Alternatively, utilize method <code class="highlighter-rouge">modifyConfig</code> to edit only some of parameters:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>barcodeDetector.modifyConfig {
+    setBarcodeFormats(BarcodeFormat.COMMON_CODE)
+    setEngineMode(EngineMode.NextGen)
+}
+</code></pre></div></div>
+
+<p>Parameters, currently available in <code class="highlighter-rouge">BarcodeScannerConfig</code> are:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">barcodeFormats</code>: list of <code class="highlighter-rouge">BarcodeFormat</code>s to scan. Default is <code class="highlighter-rouge">BarcodeFormat.COMMON_CODES</code></li>
+  <li><code class="highlighter-rouge">acceptedDocumentFormats</code>: list of <code class="highlighter-rouge">BarcodeDocumentFormat</code>s to scan. Default is the empty list, meaning no filtering is done and all formats are accepted.</li>
+  <li><code class="highlighter-rouge">engineMode</code>: defines used Barcode Scanner <code class="highlighter-rouge">EngineMode</code>. Default is <code class="highlighter-rouge">EngineMode.NextGen</code></li>
+  <li><code class="highlighter-rouge">saveCameraPreviewFrame</code>: whether detector should save a frame with the successful detection result. If <code class="highlighter-rouge">true</code> - <code class="highlighter-rouge">BarcodeScanningResult</code> will contain the camera preview frame <code class="highlighter-rouge">Bitmap</code>, otherwise the preview frame will not be collected. Defaults to <code class="highlighter-rouge">false</code>.</li>
+  <li><code class="highlighter-rouge">additionalConfig</code>: additional config for specific barcode types.</li>
+</ul>
+
 <h4 id="additional-configuration">Additional configuration</h4>
 
 <p>Some peculiar use-cases require special handling. For example, we can configure <code class="highlighter-rouge">ScanbotBarcodeDetector</code> to scan only barcodes of expected lengths. This might reduce false scans. Such parameters work only for enumerated types of barcodes and, usually, you don’t need to modify their default values.</p>
 
-<p>You can specify these parameters via <code class="highlighter-rouge">BarcodeScannerAdditionalConfig</code> entity as a part of <code class="highlighter-rouge">BarcodeScannerConfig</code>:</p>
+<p>User can specify these parameters via <code class="highlighter-rouge">BarcodeScannerAdditionalConfig</code> entity as a part of <code class="highlighter-rouge">BarcodeScannerConfig</code>:</p>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">barcodeDetector</span> <span class="p">=</span> <span class="nc">ScanbotBarcodeScannerSDK</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nf">barcodeDetector</span><span class="p">()</span>
 <span class="kd">val</span> <span class="py">additionalConfig</span> <span class="p">=</span> <span class="nc">BarcodeScannerAdditionalConfig</span><span class="p">(</span>
@@ -597,6 +631,7 @@ val decryptedImageBitmap: Bitmap = scanbotBarcodeScannerSDK.fileIOProcessor().re
     <span class="n">maximumTextLength</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span>
     <span class="n">minimum1DQuietZoneSize</span> <span class="p">=</span> <span class="m">10</span><span class="p">,</span>
     <span class="n">gs1DecodingEnabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
+    <span class="n">msiPlesseyChecksumAlgorithms</span> <span class="p">=</span> <span class="nc">EnumSet</span><span class="p">.</span><span class="nf">of</span><span class="p">(</span><span class="nc">MSIPlesseyChecksumAlgorithm</span><span class="p">.</span><span class="nc">Mod10</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="kd">val</span> <span class="py">config</span> <span class="p">=</span> <span class="nc">BarcodeScannerConfig</span><span class="p">(</span>
 	<span class="n">additionalConfig</span> <span class="p">=</span> <span class="n">additionalConfig</span><span class="p">,</span>
@@ -605,7 +640,7 @@ val decryptedImageBitmap: Bitmap = scanbotBarcodeScannerSDK.fileIOProcessor().re
 <span class="n">barcodeDetector</span><span class="p">.</span><span class="nf">setConfig</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Alternatively, you can utilize methods <code class="highlighter-rouge">modifyConfig</code> and <code class="highlighter-rouge">modifyAdditionalConfig</code> to only edit some of parameters:</p>
+<p>Alternatively, utilize methods <code class="highlighter-rouge">modifyConfig</code> and <code class="highlighter-rouge">modifyAdditionalConfig</code> to edit only some of parameters:</p>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">barcodeDetector</span><span class="p">.</span><span class="nf">modifyConfig</span> <span class="p">{</span>
     <span class="nf">modifyAdditionalConfig</span> <span class="p">{</span>
@@ -613,6 +648,7 @@ val decryptedImageBitmap: Bitmap = scanbotBarcodeScannerSDK.fileIOProcessor().re
         <span class="nf">setMaximumTextLength</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
         <span class="nf">setMinimum1DQuietZoneSize</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
         <span class="nf">setGs1DecodingEnabled</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+        <span class="nf">setMsiPlesseyChecksumAlgorithms</span><span class="p">(</span><span class="nc">EnumSet</span><span class="p">.</span><span class="nf">of</span><span class="p">(</span><span class="nc">MSIPlesseyChecksumAlgorithm</span><span class="p">.</span><span class="nc">Mod10</span><span class="p">))</span>
     <span class="p">}</span>
 	<span class="c1">// modify other parameters</span>
 <span class="p">}</span>
@@ -625,6 +661,7 @@ val decryptedImageBitmap: Bitmap = scanbotBarcodeScannerSDK.fileIOProcessor().re
   <li><code class="highlighter-rouge">maximumTextLength</code>: maximum text length of the detected barcode. Setting to zero removes the limit. The default value is 0 (the setting is turned off). Currently works for ITF barcodes only!</li>
   <li><code class="highlighter-rouge">minimum1DQuietZoneSize</code>: minimum required quiet zone on the barcode. Measured in modules (the size of a minimal bar on the barcode). The default value is 10. Currently works for ITF barcodes only!</li>
   <li><code class="highlighter-rouge">gs1DecodingEnabled</code>: when set to <code class="highlighter-rouge">true</code>, the scanner assumes that the barcode can be a GS1 barcode. Turn it off, if you don’t want to see decoded FNC1 characters (“]C1” and ASCII char 29). The default is <code class="highlighter-rouge">true</code>. Currently works for CODE128 barcodes only!</li>
+  <li><code class="highlighter-rouge">msiPlesseyChecksumAlgorithms</code>: the checksum algorithms for MSI Plessey barcodes. The default value is <code class="highlighter-rouge">MSIPlesseyChecksumAlgorithm.Mod10</code>.</li>
 </ul>
 
 <h4 id="full-example-of-a-custom-activity">Full Example of a Custom Activity</h4>
@@ -677,7 +714,26 @@ e.g. JPG files from the photo library or other sources.</p>
 
 <p><a name="releaseHistory"></a></p>
 <h3 id="release-history-and-changelog">Release History and Changelog</h3>
-<h3 id="version-180-17-jun-2021">Version 1.8.0 (17 Jun 2021)</h3>
+<h3 id="version-300-1-jul-2021">Version 3.0.0 (1 Jul 2021)</h3>
+<ul>
+  <li>🎉 New:
+    <ul>
+      <li>Brand new “Next Generation” machine-learning-based barcode scanning engine with improved reliability and much faster performance</li>
+      <li>Added new config parameter <code class="highlighter-rouge">engineMode: EngineMode</code> in <code class="highlighter-rouge">BarcodeScannerConfig</code> for <code class="highlighter-rouge">ScanbotBarcodeDetector</code>. By default <code class="highlighter-rouge">ScanbotBarcodeDetector</code> uses <code class="highlighter-rouge">EngineMode.NextGen</code> based on a new ML model</li>
+      <li>Added new RTU config method <code class="highlighter-rouge">setEngineMode(engineMode: EngineMode)</code> in <code class="highlighter-rouge">BarcodeScannerConfiguration</code>. By default - <code class="highlighter-rouge">EngineMode.NextGen</code>.</li>
+      <li>Added the possibility to customize the delay between successful frames for <code class="highlighter-rouge">BatchBarcodeScannerActivity</code>. Default changed from 1000 ms to 0 ms (no delay)</li>
+    </ul>
+  </li>
+  <li>⚠️ Breaking changes:
+    <ul>
+      <li>Removed <code class="highlighter-rouge">disableMlDetector</code> config parameter in <code class="highlighter-rouge">BarcodeScannerConfig</code>. Use <code class="highlighter-rouge">EngineMode.LegacyFast</code> instead.</li>
+      <li>Removed <code class="highlighter-rouge">BarcodeDetectorType</code> class and <code class="highlighter-rouge">setDetectorType()</code> method from Barcode RTU screens. Use <code class="highlighter-rouge">setEngineMode(engineMode: EngineMode)</code> instead.</li>
+      <li>Removed unused parameters <code class="highlighter-rouge">width: Int</code> and <code class="highlighter-rouge">height: Int</code> from <code class="highlighter-rouge">detectFromJpeg(jpeg: ByteArray, frameOrientation: Int)</code> method in <code class="highlighter-rouge">ScanbotBarcodeDetector</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="version-180-17-jun-2021">Version 1.8.0 (17 Jun 2021)</h4>
 <ul>
   <li>🎉 New:
     <ul>
@@ -720,7 +776,7 @@ e.g. JPG files from the photo library or other sources.</p>
   </li>
 </ul>
 
-<h3 id="version-160-29-mar-2021">Version 1.6.0 (29 Mar 2021)</h3>
+<h4 id="version-160-29-mar-2021">Version 1.6.0 (29 Mar 2021)</h4>
 <ul>
   <li>🎉 New:
     <ul>
