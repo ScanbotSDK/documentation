@@ -1669,6 +1669,7 @@ XCFramework for iOS: <a href="https://download.scanbot.io/sdk/ios/xcframeworks/s
 <li><a href="#install-cocoapods"><strong>How to install using CocoaPods</strong></a></li>
 <li><a href="#install-embeddable-framework"><strong>How to install as a standard embeddable framework</strong></a></li>
 <li><a href="#install-embeddable-xcframework"><strong>How to install as an XCFramework with Xcode 11 or later</strong></a></li>
+<li><a href="#install-spm"><strong>How to install using the Swift Package Manager on Xcode 12.5 or later</strong></a></li>
 </ul>
 
 <p>For machine readable zone recognition, text recognition and machine learning based documentation detection, additional data bundles are required in your project.
@@ -1839,8 +1840,48 @@ Navigate into the ScanbotSDK folder and drag ScanbotSDK.xcframework into your pr
 <p><strong>Step 4</strong>
 <a href="#install-additional-bundles">Install the additional data bundles if required.</a></p>
 
+<p><a name='install-spm'></a></p>
+<h2 id='4-installation-using-the-swift-package-manager-xcode-12-5' class='heading'>4. Installation using the Swift Package Manager (Xcode 12.5 +)</h2>
+
+<p>The Swift Package Manager is a tool for managing the distribution of Swift code. It’s integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies.
+Although ScanbotSDK is not written in Swift, the Swift Package Manager also can be used to conveniently distribute binary modules like xcframeworks, much like Cocoapods.</p>
+
+<p>The ScanbotSDK Swift Package is hosted in a public repository on Github.com. The versioning system correlates to the Github Releases features using git tags.</p>
+
+<p>Integrating the ScanbotSDK Swift Package into your app is very straightforward and easy to do. <a href="#step-by-step-spm">Check out our step-by-step guide.</a></p>
+
+<ul>
+<li>1. Add a new Swift Package in Xcode and provide the URL for the Swift Package repository: <a href="mailto:git@github.com">git@github.com</a>:doo/scanbot-sdk-ios-spm.git for SSL or <a href="https://github.com/doo/scanbot-sdk-ios-spm.git">https://github.com/doo/scanbot-sdk-ios-spm.git</a> for HTTPS connection</li>
+<li>2. Define the versioning and automatic updating of the package</li>
+<li>3. Add ScanbotSDK&rsquo;s additional data bundles to your app if needed</li>
+</ul>
+
+<p><a name='step-by-step-spm'></a></p>
+<h3 id='4-1-step-by-step-swift-package-manager-installation-guide' class='heading'>4.1. Step-by-step Swift Package Manager installation guide</h3>
+
+<p><strong>Step 1</strong>
+<img src="./Images/InstallSPM_1.gif" alt="Navigate to Swift Packages">
+In the navigation pane of Xcode select your app&rsquo;s project, then select your app&rsquo;s project under Targets, then select the tab &ldquo;Swift Packages&rdquo;.</p>
+
+<p><strong>Step 2</strong>
+<img src="./Images/InstallSPM_2.gif" alt="Add the ScanbotSDK Swift Packages">
+Click the + button to add a new Swift Package. In the dialog paste the following Github link: 
+<a href="mailto:git@github.com">git@github.com</a>:doo/scanbot-sdk-ios-spm.git for SSL or
+<a href="https://github.com/doo/scanbot-sdk-ios-spm.git">https://github.com/doo/scanbot-sdk-ios-spm.git</a> for https</p>
+
+<p><strong>Step 3</strong>
+<img src="./Images/InstallSPM_3.gif" alt="Configure the versions">
+Configure the versioning. Make sure to type 1.0 for the minimum version if you choose the &ldquo;Up to Next Major&rdquo; option. Press Next to continue.</p>
+
+<p><strong>Step 4</strong>
+<img src="./Images/InstallSPM_4.gif" alt="Link the Swift Package to your app&#39;s target">
+The Swift Package is now being downloaded. In the dialog confirm that ScanbotSDK is linked into your app&rsquo;s target.</p>
+
+<p><strong>Step 5</strong>
+<a href="#install-additional-bundles-spm">Install the additional data bundles if required.</a></p>
+
 <p><a name='install-additional-bundles'></a></p>
-<h2 id='4-install-additional-data-bundles-if-needed-framework-and-xcframework' class='heading'>4. Install additional data bundles if needed (Framework and XCFramework)</h2>
+<h2 id='5-install-additional-data-bundles-if-needed-framework-and-xcframework' class='heading'>5. Install additional data bundles if needed (Framework and XCFramework)</h2>
 
 <p><strong>Step 1</strong>
 <img src="./Images/Install_6.gif" alt="Navigate to Build Phases">
@@ -1853,6 +1894,20 @@ In Finder navigate to the AdditionalData folder.</p>
 <p><strong>Step 3</strong>
 <img src="./Images/Install_8.gif" alt="Drag needed bundles">
 Drag the required data bundles to the &lsquo;Copy Bundle Resources&rsquo; section.</p>
+
+<p><a name='install-additional-bundles-spm'></a></p>
+<h2 id='6-install-additional-data-bundles-if-needed-swift-package-manager' class='heading'>6. Install additional data bundles if needed (Swift Package Manager)</h2>
+
+<p><strong>Step 1</strong>
+In the navigation pane of Xcode expand the &ldquo;Swift Package Dependencies&rdquo; if needed and locate ScanbotSDK. Expand the entry until you see the data bundles under Sources/AdditionalData. </p>
+
+<p><strong>Step 2</strong>
+<img src="./Images/InstallSPM_5.gif" alt="Locate the Copy bundle resources build phase of your app">
+In the main view select your app&rsquo;s target and select the &ldquo;Build Phases&rdquo; tab. Expand the &ldquo;Copy Bundle Resources&rdquo; entry.</p>
+
+<p><strong>Step 3</strong>
+<img src="./Images/InstallSPM_6.gif" alt="Drag the bundle(s) to the copy build phase">
+Drag the required bundle(s) from the navigation pane on the left to the bundle resources. In the dialog uncheck &ldquo;Copy items if needed&rdquo; and select &ldquo;Create groups&rdquo;. Press &ldquo;Finish&rdquo;. Your app is now prepared to make use of ScanbotSDK.</p>
 
           </div>
         </section>
