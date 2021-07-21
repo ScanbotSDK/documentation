@@ -1,4 +1,3 @@
-# Scanbot SDK Docs
+The content has been moved to another location.
 
-Please see [https://scanbotsdk.github.io/documentation/](https://scanbotsdk.github.io/documentation/)
-
+Please see https://docs.scanbot.io
