@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SBSDKPDFRendererPageSize Enumeration Reference</title>
+    <title>SBSDKPDFPagesExtractor Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/objc/Enum/SBSDKPDFRendererPageSize" class="dashAnchor"></a>
+    <a name="//apple_ref/objc/Class/SBSDKPDFPagesExtractor" class="dashAnchor"></a>
 
-    <a title="SBSDKPDFRendererPageSize Enumeration Reference"></a>
+    <a title="SBSDKPDFPagesExtractor Class Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">ScanbotSDK for iOS Reference</a>
       <img class="carat" src="../img/carat.png" />
-      SBSDKPDFRendererPageSize Enumeration Reference
+      SBSDKPDFPagesExtractor Class Reference
     </p>
 
     <div class="content-wrapper">
@@ -1659,14 +1659,17 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>SBSDKPDFRendererPageSize</h1>
+            <h1>SBSDKPDFPagesExtractor</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight objective_c"><code><span class="k">enum</span> <span class="n">SBSDKPDFRendererPageSize</span> <span class="o">:</span> <span class="n">NSUInteger</span> <span class="p">{}</span></code></pre>
+                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">SBSDKPDFPagesExtractor</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
 
                 </div>
               </div>
-            <p>Specifies the desired page size (media box size) for PDF rendering operations.</p>
+            <p>Class used to extract pages from a PDF file and returns them in various ways.
+Functions of this class are running in the same thread that they are called from, so it is up to you to control the concurrency.
+It is recommended to use background queues in most cases.
+Currently the flattening of the PDF document is user&rsquo;s responsibility. So if the document will have unflattened annotations (except signs), they will not be exported.</p>
 
           </div>
         </section>
@@ -1678,9 +1681,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@E@SBSDKPDFRendererPageSize@SBSDKPDFRendererPageSizeFromImage"></a>
-                    <a name="//apple_ref/objc/Case/SBSDKPDFRendererPageSizeFromImage" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@E@SBSDKPDFRendererPageSize@SBSDKPDFRendererPageSizeFromImage">SBSDKPDFRendererPageSizeFromImage</a>
+                    <a name="/c:objc(cs)SBSDKPDFPagesExtractor(im)imageURLsFromPDF:outputDirectory:"></a>
+                    <a name="//apple_ref/objc/Method/-imageURLsFromPDF:outputDirectory:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKPDFPagesExtractor(im)imageURLsFromPDF:outputDirectory:">-imageURLsFromPDF:outputDirectory:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1688,21 +1691,58 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Each page is as large as its image at 72 dpi.</p>
+                        <p>Extracts pages from a PDF, converts them to JPEGs and writes them to a specified URL. Runs in the same thread that it is called from.
+No encryption is used here. The compression is set to 0.9. Media box scale value is 2</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="n">SBSDKPDFRendererPageSizeFromImage</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n">NSURL</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nf">imageURLsFromPDF</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">pdfURL</span>
+                               <span class="nf">outputDirectory</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">outputURL</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">fromImage</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">imageURLs</span><span class="p">(</span><span class="n">fromPDF</span> <span class="nv">pdfURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="n">outputDirectory</span> <span class="nv">outputURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">URL</span><span class="p">]</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pdfURL</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL of the PDF file.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>outputURL</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The output folder where images will be stored. Must be an existing folder.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An array of URLs with extracted pages as JPEG files. The array will be empty if something is wrong.</p>
                       </div>
                     </section>
                   </div>
@@ -1710,9 +1750,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@E@SBSDKPDFRendererPageSize@SBSDKPDFRendererPageSizeA4"></a>
-                    <a name="//apple_ref/objc/Case/SBSDKPDFRendererPageSizeA4" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@E@SBSDKPDFRendererPageSize@SBSDKPDFRendererPageSizeA4">SBSDKPDFRendererPageSizeA4</a>
+                    <a name="/c:objc(cs)SBSDKPDFPagesExtractor(im)imageURLsFromPDF:compression:outputDirectory:"></a>
+                    <a name="//apple_ref/objc/Method/-imageURLsFromPDF:compression:outputDirectory:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKPDFPagesExtractor(im)imageURLsFromPDF:compression:outputDirectory:">-imageURLsFromPDF:compression:outputDirectory:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1720,22 +1760,71 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The page has the aspect ratio of the image, but is fitted into A4 size.
-Whether portrait or landscape depends on the images aspect ratio.</p>
+                        <p>Extracts pages from a PDF, converts them to JPEGs and writes them to a specified URL. Runs in the same thread that it is called from.
+No encryption is used here. Media box scale value is 2</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="n">SBSDKPDFRendererPageSizeA4</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n">NSURL</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nf">imageURLsFromPDF</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">pdfURL</span>
+                                   <span class="nf">compression</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span><span class="nv">compression</span>
+                               <span class="nf">outputDirectory</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">outputURL</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">A4</span> <span class="o">=</span> <span class="mi">1</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">imageURLs</span><span class="p">(</span><span class="n">fromPDF</span> <span class="nv">pdfURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">compression</span><span class="p">:</span> <span class="kt">Float</span><span class="p">,</span> <span class="n">outputDirectory</span> <span class="nv">outputURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">URL</span><span class="p">]</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pdfURL</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL of the PDF file.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>compression</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Compression of the output image file. The range is from 0 to 1, where 1 - lossless conversion, 0 - maximum compression is used.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>outputURL</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The output folder where images will be stored. Must be an existing folder.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An array of URLs with extracted pages as JPEG files. The array will be empty if something is wrong.</p>
                       </div>
                     </section>
                   </div>
@@ -1743,9 +1832,9 @@ Whether portrait or landscape depends on the images aspect ratio.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@E@SBSDKPDFRendererPageSize@SBSDKPDFRendererPageSizeFixedA4"></a>
-                    <a name="//apple_ref/objc/Case/SBSDKPDFRendererPageSizeFixedA4" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@E@SBSDKPDFRendererPageSize@SBSDKPDFRendererPageSizeFixedA4">SBSDKPDFRendererPageSizeFixedA4</a>
+                    <a name="/c:objc(cs)SBSDKPDFPagesExtractor(im)imageURLsFromPDF:scaling:compression:encrypter:outputDirectory:"></a>
+                    <a name="//apple_ref/objc/Method/-imageURLsFromPDF:scaling:compression:encrypter:outputDirectory:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKPDFPagesExtractor(im)imageURLsFromPDF:scaling:compression:encrypter:outputDirectory:">-imageURLsFromPDF:scaling:compression:encrypter:outputDirectory:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1753,22 +1842,97 @@ Whether portrait or landscape depends on the images aspect ratio.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The page has A4 size. The image is fitted and centered within the page.
-Whether portrait or landscape depends on the images aspect ratio.</p>
+                        <p>Extracts pages from a PDF, converts them to JPEGs and writes them to a specified URL. Runs in the same thread that it is called from.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="n">SBSDKPDFRendererPageSizeFixedA4</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n">NSURL</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span>
+    <span class="nf">imageURLsFromPDF</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">pdfURL</span>
+             <span class="nf">scaling</span><span class="p">:(</span><span class="n">CGFloat</span><span class="p">)</span><span class="nv">scaling</span>
+         <span class="nf">compression</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span><span class="nv">compression</span>
+           <span class="nf">encrypter</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/SBSDKStorageCrypting.html">SBSDKStorageCrypting</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">encrypter</span>
+     <span class="nf">outputDirectory</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">outputURL</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">fixedA4</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">imageURLs</span><span class="p">(</span><span class="n">fromPDF</span> <span class="nv">pdfURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">scaling</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">compression</span><span class="p">:</span> <span class="kt">Float</span><span class="p">,</span> <span class="nv">encrypter</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SBSDKStorageCrypting.html">SBSDKStorageCrypting</a></span><span class="p">?,</span> <span class="n">outputDirectory</span> <span class="nv">outputURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">URL</span><span class="p">]</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pdfURL</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL of the PDF file.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>scaling</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Scaling applied to the PDF media box frame while extracting. Affects the output image quality. In most cases the recommended value is 2 and higher.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>compression</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Compression of the output image file. The range is from 0 to 1, where 1 - lossless conversion, 0 - maximum compression is used.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>encrypter</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The encrypter used to encrypt output image files. If nil, no encryption is used.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>outputURL</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The output folder where images will be stored. Must be an existing folder.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An array of URLs with extracted pages as JPEG files. The array will be empty if something is wrong.</p>
                       </div>
                     </section>
                   </div>
@@ -1776,9 +1940,9 @@ Whether portrait or landscape depends on the images aspect ratio.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@E@SBSDKPDFRendererPageSize@SBSDKPDFRendererPageSizeUSLetter"></a>
-                    <a name="//apple_ref/objc/Case/SBSDKPDFRendererPageSizeUSLetter" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@E@SBSDKPDFRendererPageSize@SBSDKPDFRendererPageSizeUSLetter">SBSDKPDFRendererPageSizeUSLetter</a>
+                    <a name="/c:objc(cs)SBSDKPDFPagesExtractor(im)imagesFromPDF:"></a>
+                    <a name="//apple_ref/objc/Method/-imagesFromPDF:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKPDFPagesExtractor(im)imagesFromPDF:">-imagesFromPDF:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1786,22 +1950,45 @@ Whether portrait or landscape depends on the images aspect ratio.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The page has the aspect ratio of the image, but is fitted into US letter size.
-Whether portrait or landscape depends on the images aspect ratio.</p>
+                        <p>Extracts pages from PDF and converts them to an array of UIImages. Nothing is written to disk during this operation. Runs in the same thread, as it is called from.
+The scaling of the media box is set to 2.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="n">SBSDKPDFRendererPageSizeUSLetter</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n">UIImage</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nf">imagesFromPDF</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">pdfURL</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">usLetter</span> <span class="o">=</span> <span class="mi">3</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">images</span><span class="p">(</span><span class="n">fromPDF</span> <span class="nv">pdfURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">UIImage</span><span class="p">]</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pdfURL</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL of the PDF file.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An array of UIImages with extracted pages. The array will be empty if something is wrong.</p>
                       </div>
                     </section>
                   </div>
@@ -1809,9 +1996,9 @@ Whether portrait or landscape depends on the images aspect ratio.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@E@SBSDKPDFRendererPageSize@SBSDKPDFRendererPageSizeFixedUSLetter"></a>
-                    <a name="//apple_ref/objc/Case/SBSDKPDFRendererPageSizeFixedUSLetter" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@E@SBSDKPDFRendererPageSize@SBSDKPDFRendererPageSizeFixedUSLetter">SBSDKPDFRendererPageSizeFixedUSLetter</a>
+                    <a name="/c:objc(cs)SBSDKPDFPagesExtractor(im)imagesFromPDF:scaling:"></a>
+                    <a name="//apple_ref/objc/Method/-imagesFromPDF:scaling:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKPDFPagesExtractor(im)imagesFromPDF:scaling:">-imagesFromPDF:scaling:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1819,22 +2006,57 @@ Whether portrait or landscape depends on the images aspect ratio.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The page has US letter size. The image is fitted and centered within the page.
-Whether portrait or landscape depends on the images aspect ratio.</p>
+                        <p>Extracts pages from PDF and converts them to an array of UIImages. Nothing is written to disk during this operation. Runs in the same thread, as it is called from.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="n">SBSDKPDFRendererPageSizeFixedUSLetter</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n">UIImage</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nf">imagesFromPDF</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">pdfURL</span>
+                                      <span class="nf">scaling</span><span class="p">:(</span><span class="n">CGFloat</span><span class="p">)</span><span class="nv">scaling</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">fixedUSLetter</span> <span class="o">=</span> <span class="mi">4</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">images</span><span class="p">(</span><span class="n">fromPDF</span> <span class="nv">pdfURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">scaling</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">UIImage</span><span class="p">]</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pdfURL</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL of the PDF file.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>scaling</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Scaling applied to the PDF media box frame while extracting. Affects the output image quality. In most cases the recommended value is 2 and higher.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An array of UIImages with extracted pages. The array will be empty if something is wrong.</p>
                       </div>
                     </section>
                   </div>
@@ -1842,9 +2064,9 @@ Whether portrait or landscape depends on the images aspect ratio.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@E@SBSDKPDFRendererPageSize@SBSDKPDFRendererPageSizeAutoLocale"></a>
-                    <a name="//apple_ref/objc/Case/SBSDKPDFRendererPageSizeAutoLocale" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@E@SBSDKPDFRendererPageSize@SBSDKPDFRendererPageSizeAutoLocale">SBSDKPDFRendererPageSizeAutoLocale</a>
+                    <a name="/c:objc(cs)SBSDKPDFPagesExtractor(im)documentFromPDF:"></a>
+                    <a name="//apple_ref/objc/Method/-documentFromPDF:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKPDFPagesExtractor(im)documentFromPDF:">-documentFromPDF:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1852,55 +2074,45 @@ Whether portrait or landscape depends on the images aspect ratio.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Each page of the result PDF will be of US letter or A4 size depending on the current locale.
-Whether portrait or landscape depends on the images aspect ratio.</p>
+                        <p>Extracts pages from PDF and returns them as <code><a href="../Classes/SBSDKUIDocument.html">SBSDKUIDocument</a></code>. Each page of the PDF will be a separate <code><a href="../Classes/SBSDKUIPage.html">SBSDKUIPage</a></code>.
+Runs in the same thread, as it is called from.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="n">SBSDKPDFRendererPageSizeAutoLocale</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKUIDocument.html">SBSDKUIDocument</a></span> <span class="o">*</span><span class="p">)</span><span class="nf">documentFromPDF</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">pdfURL</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">autoLocale</span> <span class="o">=</span> <span class="mi">5</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">document</span><span class="p">(</span><span class="n">fromPDF</span> <span class="nv">pdfURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SBSDKUIDocument.html">SBSDKUIDocument</a></span></code></pre>
 
                         </div>
                       </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@E@SBSDKPDFRendererPageSize@SBSDKPDFRendererPageSizeAuto"></a>
-                    <a name="//apple_ref/objc/Case/SBSDKPDFRendererPageSizeAuto" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@E@SBSDKPDFRendererPageSize@SBSDKPDFRendererPageSizeAuto">SBSDKPDFRendererPageSizeAuto</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>For each page the best matching format (A4 or US letter) is used.
-Whether portrait or landscape depends on the images aspect ratio.</p>
-
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pdfURL</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL of the PDF file.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="n">SBSDKPDFRendererPageSizeAuto</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">auto</span> <span class="o">=</span> <span class="mi">6</span></code></pre>
-
-                        </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An array of UIImages with extracted pages. The array will be empty if something is wrong.</p>
                       </div>
                     </section>
                   </div>
