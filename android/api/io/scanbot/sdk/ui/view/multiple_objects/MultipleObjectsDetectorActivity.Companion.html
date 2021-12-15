@@ -100,6 +100,9 @@ var pathtoroot = "../../../../../../";
                         <dt>All Implemented Interfaces:</dt>
                         <dd>
                             
+                            <code>io.scanbot.sdk.ui.view.base.BaseActivity.RtuCompanion</code>
+                            
+                            
                         </dd>
                     </dl>
                     
@@ -107,7 +110,7 @@ var pathtoroot = "../../../../../../";
                     <pre class="wrap-overflow">
 
 public class <span class="typeNameLabel"><a href=MultipleObjectsDetectorActivity.Companion.html>MultipleObjectsDetectorActivity.Companion</a></span>
-
+ implements BaseActivity.RtuCompanion&lt;<a href=MultipleObjectsDetectorActivity.Result.html>MultipleObjectsDetectorActivity.Result</a>&gt;
                     </pre>
                     <div class="block"></div>
                 </li>
@@ -157,12 +160,6 @@ public class <span class="typeNameLabel"><a href=MultipleObjectsDetectorActivity
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=MultipleObjectsDetectorActivity.Companion.html#RESULT_LICENSE_INVALID>RESULT_LICENSE_INVALID</a></code></th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr class="rowColor">
                                             <td class="colFirst"><code>public final static <a href=MultipleObjectsDetectorActivity.Companion.html>MultipleObjectsDetectorActivity.Companion</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=MultipleObjectsDetectorActivity.Companion.html#INSTANCE>INSTANCE</a></code></th>
                                             <td class="colLast"></td>
@@ -266,11 +263,11 @@ public class <span class="typeNameLabel"><a href=MultipleObjectsDetectorActivity
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a></code>
+                                            <td class="colFirst"><code><a href=MultipleObjectsDetectorActivity.Result.html>MultipleObjectsDetectorActivity.Result</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=MultipleObjectsDetectorActivity.Companion.html#getRESULT_LICENSE_INVALID()>getRESULT_LICENSE_INVALID</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=MultipleObjectsDetectorActivity.Companion.html#extractResult(Integer,Intent)>extractResult</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> resultCode, <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> data) </code>
                                             </th>
-                                            <td class="colLast">Check for this <code>resultCode</code> in <a href=https://developer.android.com/reference/kotlin/android/app/Activity.html#onActivityResult-kotlin.Int-kotlin.Int-android.content.Intent->Activity.onActivityResult</a> in calling activity to know if there are problems with SDK license.</td>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         </tbody>
@@ -325,7 +322,7 @@ public class <span class="typeNameLabel"><a href=MultipleObjectsDetectorActivity
                                           >
                                     <li class="blockList">
                                         <h4>newIntent</h4>
-                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> <a href=MultipleObjectsDetectorActivity.Companion.html#newIntent(Context,MultipleObjectsDetectorConfiguration)>newIntent</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=configuration/MultipleObjectsDetectorConfiguration.html>MultipleObjectsDetectorConfiguration</a> multipleObjectsDetectorConfiguration)</pre>
+                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-deprecated/index.html>Deprecated</a>(message = "Migrate to new AndroidX Result API. Please see ResultContract.") final <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> <a href=MultipleObjectsDetectorActivity.Companion.html#newIntent(Context,MultipleObjectsDetectorConfiguration)>newIntent</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=configuration/MultipleObjectsDetectorConfiguration.html>MultipleObjectsDetectorConfiguration</a> multipleObjectsDetectorConfiguration)</pre>
                                         <div class="block"><p>Utility method - returns a ready-made <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> object to start this activity</p></div>
                                         
                                         <dl>
@@ -353,7 +350,7 @@ public class <span class="typeNameLabel"><a href=MultipleObjectsDetectorActivity
                                           >
                                     <li class="blockList">
                                         <h4>parseActivityResult</h4>
-                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/util/List.html>List</a>&lt;<a href=../../../persistence/Page.html>Page</a>&gt; <a href=MultipleObjectsDetectorActivity.Companion.html#parseActivityResult(Intent)>parseActivityResult</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> data)</pre>
+                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-deprecated/index.html>Deprecated</a>(message = "Deprecated in favor of extractResult method (for consistency with other components' API)", replaceWith = @<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-replace-with/index.html>ReplaceWith</a>(imports = {}, expression = "MultipleObjectsDetectorActivity.extractResult(data)")) final <a href=https://docs.oracle.com/javase/8/docs/api/java/util/List.html>List</a>&lt;<a href=../../../persistence/Page.html>Page</a>&gt; <a href=MultipleObjectsDetectorActivity.Companion.html#parseActivityResult(Intent)>parseActivityResult</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> data)</pre>
                                         <div class="block"><p>Use this to obtain detection results from <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> object - the one given in <a href=https://developer.android.com/reference/kotlin/android/app/Activity.html#onActivityResult-kotlin.Int-kotlin.Int-android.content.Intent->Activity.onActivityResult</a> method.</p><p>Example:</p><pre><code>if (requestCode == CAMERA_MULTIPLE_DETECTOR_REQUEST_CODE &amp;&amp; resultCode == Activity.RESULT_OK) {
   val multipleDetectorResult = MultipleObjectsDetectorActivity.parseActivityResult(data)
 
@@ -392,16 +389,16 @@ public class <span class="typeNameLabel"><a href=MultipleObjectsDetectorActivity
                                     </li>
                                 </ul>
                                 
-                                <a id="getRESULT_LICENSE_INVALID()">
+                                <a id="extractResult(Integer,Intent)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockListLast"
                                           >
                                     <li class="blockList">
-                                        <h4>getRESULT_LICENSE_INVALID</h4>
-                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> <a href=MultipleObjectsDetectorActivity.Companion.html#getRESULT_LICENSE_INVALID()>getRESULT_LICENSE_INVALID</a>()</pre>
-                                        <div class="block"><p>Check for this <code>resultCode</code> in <a href=https://developer.android.com/reference/kotlin/android/app/Activity.html#onActivityResult-kotlin.Int-kotlin.Int-android.content.Intent->Activity.onActivityResult</a> in calling activity to know if there are problems with SDK license.</p></div>
+                                        <h4>extractResult</h4>
+                                        <pre class="methodSignature"> <a href=MultipleObjectsDetectorActivity.Result.html>MultipleObjectsDetectorActivity.Result</a> <a href=MultipleObjectsDetectorActivity.Companion.html#extractResult(Integer,Intent)>extractResult</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> resultCode, <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> data)</pre>
+                                        <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

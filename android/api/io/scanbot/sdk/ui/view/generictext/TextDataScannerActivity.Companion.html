@@ -100,6 +100,9 @@ var pathtoroot = "../../../../../../";
                         <dt>All Implemented Interfaces:</dt>
                         <dd>
                             
+                            <code>io.scanbot.sdk.ui.view.base.BaseActivity.RtuCompanion</code>
+                            
+                            
                         </dd>
                     </dl>
                     
@@ -107,7 +110,7 @@ var pathtoroot = "../../../../../../";
                     <pre class="wrap-overflow">
 
 public class <span class="typeNameLabel"><a href=TextDataScannerActivity.Companion.html>TextDataScannerActivity.Companion</a></span>
-
+ implements BaseActivity.RtuCompanion&lt;<a href=TextDataScannerActivity.Result.html>TextDataScannerActivity.Result</a>&gt;
                     </pre>
                     <div class="block"></div>
                 </li>
@@ -157,12 +160,6 @@ public class <span class="typeNameLabel"><a href=TextDataScannerActivity.Compani
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=TextDataScannerActivity.Companion.html#EXTRACTED_FIELDS_EXTRA>EXTRACTED_FIELDS_EXTRA</a></code></th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr class="rowColor">
                                             <td class="colFirst"><code>public final static <a href=TextDataScannerActivity.Companion.html>TextDataScannerActivity.Companion</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=TextDataScannerActivity.Companion.html#INSTANCE>INSTANCE</a></code></th>
                                             <td class="colLast"></td>
@@ -246,7 +243,7 @@ public class <span class="typeNameLabel"><a href=TextDataScannerActivity.Compani
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=TextDataScannerActivity.Companion.html#newIntent(Context,TextDataScannerConfiguration,TextDataScannerStep)>newIntent</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=configuration/TextDataScannerConfiguration.html>TextDataScannerConfiguration</a> scannerConfiguration, <a href=entity/TextDataScannerStep.html>TextDataScannerStep</a> step) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Factory method to construct intent to start this activity.</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
@@ -258,9 +255,9 @@ public class <span class="typeNameLabel"><a href=TextDataScannerActivity.Compani
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code>
+                                            <td class="colFirst"><code><a href=TextDataScannerActivity.Result.html>TextDataScannerActivity.Result</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=TextDataScannerActivity.Companion.html#getEXTRACTED_FIELDS_EXTRA()>getEXTRACTED_FIELDS_EXTRA</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=TextDataScannerActivity.Companion.html#extractResult(Integer,Intent)>extractResult</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> resultCode, <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> data) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -317,8 +314,8 @@ public class <span class="typeNameLabel"><a href=TextDataScannerActivity.Compani
                                           >
                                     <li class="blockList">
                                         <h4>newIntent</h4>
-                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> <a href=TextDataScannerActivity.Companion.html#newIntent(Context,TextDataScannerConfiguration,TextDataScannerStep)>newIntent</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=configuration/TextDataScannerConfiguration.html>TextDataScannerConfiguration</a> scannerConfiguration, <a href=entity/TextDataScannerStep.html>TextDataScannerStep</a> step)</pre>
-                                        <div class="block"></div>
+                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-deprecated/index.html>Deprecated</a>(message = "Migrate to new AndroidX Result API. Please see ResultContract.") final <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> <a href=TextDataScannerActivity.Companion.html#newIntent(Context,TextDataScannerConfiguration,TextDataScannerStep)>newIntent</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=configuration/TextDataScannerConfiguration.html>TextDataScannerConfiguration</a> scannerConfiguration, <a href=entity/TextDataScannerStep.html>TextDataScannerStep</a> step)</pre>
+                                        <div class="block"><p>Factory method to construct intent to start this activity.</p><p>Deprecated: please see <a href=TextDataScannerActivity.ResultContract.html>ResultContract</a></p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -348,15 +345,15 @@ public class <span class="typeNameLabel"><a href=TextDataScannerActivity.Compani
                                     </li>
                                 </ul>
                                 
-                                <a id="getEXTRACTED_FIELDS_EXTRA()">
+                                <a id="extractResult(Integer,Intent)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockListLast"
                                           >
                                     <li class="blockList">
-                                        <h4>getEXTRACTED_FIELDS_EXTRA</h4>
-                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> <a href=TextDataScannerActivity.Companion.html#getEXTRACTED_FIELDS_EXTRA()>getEXTRACTED_FIELDS_EXTRA</a>()</pre>
+                                        <h4>extractResult</h4>
+                                        <pre class="methodSignature"> <a href=TextDataScannerActivity.Result.html>TextDataScannerActivity.Result</a> <a href=TextDataScannerActivity.Companion.html#extractResult(Integer,Intent)>extractResult</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> resultCode, <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> data)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
