@@ -100,6 +100,9 @@ var pathtoroot = "../../../../../../";
                         <dt>All Implemented Interfaces:</dt>
                         <dd>
                             
+                            <code>io.scanbot.sdk.ui.view.base.BaseActivity.RtuCompanion</code>
+                            
+                            
                         </dd>
                     </dl>
                     
@@ -107,7 +110,7 @@ var pathtoroot = "../../../../../../";
                     <pre class="wrap-overflow">
 
 public class <span class="typeNameLabel"><a href=DocumentScannerActivity.Companion.html>DocumentScannerActivity.Companion</a></span>
-
+ implements BaseActivity.RtuCompanion&lt;<a href=DocumentScannerActivity.Result.html>DocumentScannerActivity.Result</a>&gt;
                     </pre>
                     <div class="block"></div>
                 </li>
@@ -154,18 +157,6 @@ public class <span class="typeNameLabel"><a href=DocumentScannerActivity.Compani
                                             <th class="colFirst" scope="col">Modifier and Type</th>
                                             <th class="colSecond" scope="col">Field</th>
                                             <th class="colLast" scope="col">Description</th>
-                                        </tr>
-                                        
-                                        <tr class="altColor">
-                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=DocumentScannerActivity.Companion.html#SNAPPED_PAGE_EXTRA>SNAPPED_PAGE_EXTRA</a></code></th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr class="rowColor">
-                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=DocumentScannerActivity.Companion.html#RESULT_LICENSE_INVALID>RESULT_LICENSE_INVALID</a></code></th>
-                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="altColor">
@@ -252,31 +243,23 @@ public class <span class="typeNameLabel"><a href=DocumentScannerActivity.Compani
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=DocumentScannerActivity.Companion.html#newIntent(Context,DocumentScannerConfiguration)>newIntent</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=configuration/DocumentScannerConfiguration.html>DocumentScannerConfiguration</a> documentScannerConfiguration) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Factory method to construct intent to start this activity.</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code><a href=DocumentScannerActivity.Result.html>DocumentScannerActivity.Result</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=DocumentScannerActivity.Companion.html#extractResult(Integer,Intent)>extractResult</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> resultCode, <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> data) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
                                             <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=DocumentScannerActivity.Companion.html#forceClose(Context,Boolean)>forceClose</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> keepResult) </code>
                                             </th>
                                             <td class="colLast">Triggers the force-finishing of the RTU UI Activity</td>
-                                        </tr>
-                                        
-                                        <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=DocumentScannerActivity.Companion.html#getSNAPPED_PAGE_EXTRA()>getSNAPPED_PAGE_EXTRA</a>() </code>
-                                            </th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr id="i3" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=DocumentScannerActivity.Companion.html#getRESULT_LICENSE_INVALID()>getRESULT_LICENSE_INVALID</a>() </code>
-                                            </th>
-                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         </tbody>
@@ -331,7 +314,22 @@ public class <span class="typeNameLabel"><a href=DocumentScannerActivity.Compani
                                           >
                                     <li class="blockList">
                                         <h4>newIntent</h4>
-                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> <a href=DocumentScannerActivity.Companion.html#newIntent(Context,DocumentScannerConfiguration)>newIntent</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=configuration/DocumentScannerConfiguration.html>DocumentScannerConfiguration</a> documentScannerConfiguration)</pre>
+                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-deprecated/index.html>Deprecated</a>(message = "Migrate to new AndroidX Result API. Please see ResultContract.") final <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> <a href=DocumentScannerActivity.Companion.html#newIntent(Context,DocumentScannerConfiguration)>newIntent</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=configuration/DocumentScannerConfiguration.html>DocumentScannerConfiguration</a> documentScannerConfiguration)</pre>
+                                        <div class="block"><p>Factory method to construct intent to start this activity.</p><p>Deprecated: please see <a href=DocumentScannerActivity.ResultContract.html>ResultContract</a></p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="extractResult(Integer,Intent)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>extractResult</h4>
+                                        <pre class="methodSignature"> <a href=DocumentScannerActivity.Result.html>DocumentScannerActivity.Result</a> <a href=DocumentScannerActivity.Companion.html#extractResult(Integer,Intent)>extractResult</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> resultCode, <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> data)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -342,7 +340,7 @@ public class <span class="typeNameLabel"><a href=DocumentScannerActivity.Compani
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockList"
+                                              "blockListLast"
                                           >
                                     <li class="blockList">
                                         <h4>forceClose</h4>
@@ -361,36 +359,6 @@ public class <span class="typeNameLabel"><a href=DocumentScannerActivity.Compani
                                             
                                             
                                         </dl>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="getSNAPPED_PAGE_EXTRA()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>getSNAPPED_PAGE_EXTRA</h4>
-                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> <a href=DocumentScannerActivity.Companion.html#getSNAPPED_PAGE_EXTRA()>getSNAPPED_PAGE_EXTRA</a>()</pre>
-                                        <div class="block"></div>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="getRESULT_LICENSE_INVALID()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockListLast"
-                                          >
-                                    <li class="blockList">
-                                        <h4>getRESULT_LICENSE_INVALID</h4>
-                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> <a href=DocumentScannerActivity.Companion.html#getRESULT_LICENSE_INVALID()>getRESULT_LICENSE_INVALID</a>()</pre>
-                                        <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
