@@ -233,7 +233,7 @@ var pathtoroot = "../../../../../../";
 public abstract class <span class="typeNameLabel"><a href=InternalBarcodeScannerActivity.html>InternalBarcodeScannerActivity</a></span>
 extends <a href=BaseBarcodeScannerActivity.html>BaseBarcodeScannerActivity</a>
                     </pre>
-                    <div class="block"><p>Represents base camera screen for Barcodes scanning.</p></div>
+                    <div class="block"><p>Shares code common only for all non-batch-barcode scanning (standalone and bundle) activities.</p></div>
                 </li>
             </ul>
         </div>
@@ -302,43 +302,61 @@ extends <a href=BaseBarcodeScannerActivity.html>BaseBarcodeScannerActivity</a>
                                         </tr>
                                         
                                         <tr class="altColor">
+                                            <td class="colFirst"><code>private  <a href=https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModelProvider.Factory.html>ViewModelProvider.Factory</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=../../barcode_scanner/view/barcode/batch/BatchBarcodeScannerActivity.html#factory>factory</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private  <a href=BarcodeCameraView.html>BarcodeCameraView</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=../../barcode_scanner/view/barcode/batch/BatchBarcodeScannerActivity.html#barcodeCameraView>barcodeCameraView</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private  <a href=../../camera/CameraUiSettings.html>CameraUiSettings</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=../../barcode_scanner/view/barcode/batch/BatchBarcodeScannerActivity.html#cameraUiSettings>cameraUiSettings</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
                                             <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/androidx/activity/contextaware/ContextAwareHelper.html>ContextAwareHelper</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=../../barcode_scanner/view/barcode/batch/BatchBarcodeScannerActivity.html#mContextAwareHelper>mContextAwareHelper</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="rowColor">
-                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code></td>
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=../../barcode_scanner/view/barcode/batch/BatchBarcodeScannerActivity.html#mCreated>mCreated</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="altColor">
+                                        <tr class="rowColor">
                                             <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/androidx/lifecycle/LifecycleRegistry.html>LifecycleRegistry</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=../../barcode_scanner/view/barcode/batch/BatchBarcodeScannerActivity.html#mFragmentLifecycleRegistry>mFragmentLifecycleRegistry</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="rowColor">
+                                        <tr class="altColor">
                                             <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentController.html>FragmentController</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=../../barcode_scanner/view/barcode/batch/BatchBarcodeScannerActivity.html#mFragments>mFragments</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="altColor">
-                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code></td>
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=../../barcode_scanner/view/barcode/batch/BatchBarcodeScannerActivity.html#mResumed>mResumed</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="rowColor">
+                                        <tr class="altColor">
                                             <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/androidx/savedstate/SavedStateRegistryController.html>SavedStateRegistryController</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=../../barcode_scanner/view/barcode/batch/BatchBarcodeScannerActivity.html#mSavedStateRegistryController>mSavedStateRegistryController</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="altColor">
-                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code></td>
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=../../barcode_scanner/view/barcode/batch/BatchBarcodeScannerActivity.html#mStopped>mStopped</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -422,21 +440,91 @@ extends <a href=BaseBarcodeScannerActivity.html>BaseBarcodeScannerActivity</a>
                                             <th class="colLast" scope="col">Description</th>
                                         </tr>
                                         
+                                        <tr id="i0" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModelProvider.Factory.html>ViewModelProvider.Factory</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=InternalBarcodeScannerActivity.html#getFactory()>getFactory</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=InternalBarcodeScannerActivity.html#setFactory(ViewModelProvider.Factory)>setFactory</a>(@Inject() <a href=https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModelProvider.Factory.html>ViewModelProvider.Factory</a> factory) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>final <a href=BarcodeCameraView.html>BarcodeCameraView</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=InternalBarcodeScannerActivity.html#getBarcodeCameraView()>getBarcodeCameraView</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=InternalBarcodeScannerActivity.html#setBarcodeCameraView(BarcodeCameraView)>setBarcodeCameraView</a>(<a href=BarcodeCameraView.html>BarcodeCameraView</a> barcodeCameraView) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code>final <a href=../../camera/CameraUiSettings.html>CameraUiSettings</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=InternalBarcodeScannerActivity.html#getCameraUiSettings()>getCameraUiSettings</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i5" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=InternalBarcodeScannerActivity.html#setCameraUiSettings(CameraUiSettings)>setCameraUiSettings</a>(<a href=../../camera/CameraUiSettings.html>CameraUiSettings</a> cameraUiSettings) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=InternalBarcodeScannerActivity.html#provideLayoutId()>provideLayoutId</a>() </code>
+                                            </th>
+                                            <td class="colLast">Will be overridden by descendants that define their own layout, but we need to call it in onCreate here.</td>
+                                        </tr>
+                                        
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=InternalBarcodeScannerActivity.html#onRequestPermissionsResult(Integer,Array,IntArray)>onRequestPermissionsResult</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> requestCode, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; permissions, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html>IntArray</a> grantResults) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
                                 <ul class="blockList">
                                 
+                                    <li class="blockList"><a id="methods.inherited.from.class.androidx.core.app.ComponentActivity">
+                                            <!--   -->
+                                        </a>
+                                            <h3>Methods inherited from class&nbsp;androidx.core.app.ComponentActivity</h3>
+                                            <code>closeContextMenu, createPendingResult, dismissKeyboardShortcutsHelper, dispatchGenericMotionEvent, dispatchPopulateAccessibilityEvent, dispatchTouchEvent, dispatchTrackballEvent, enterPictureInPictureMode, finish, finishActivity, finishAffinity, finishAfterTransition, finishAndRemoveTask, getActionBar, getApplication, getCallingActivity, getCallingPackage, getChangingConfigurations, getComponentName, getContentScene, getContentTransitionManager, getCurrentFocus, getIntent, getLastNonConfigurationInstance, getLayoutInflater, getLocalClassName, getMaxNumPictureInPictureActions, getMediaController, getParent, getParentActivityIntent, getPreferences, getReferrer, getRequestedOrientation, getSearchEvent, getSystemService, getTaskId, getTitle, getTitleColor, getVoiceInteractor, getVolumeControlStream, getWindow, getWindowManager, hasWindowFocus, isActivityTransitionRunning, isChangingConfigurations, isChild, isDestroyed, isFinishing, isImmersive, isInMultiWindowMode, isInPictureInPictureMode, isLocalVoiceInteractionSupported, isTaskRoot, isVoiceInteraction, isVoiceInteractionRoot, moveTaskToBack, navigateUpTo, onActionModeFinished, onActionModeStarted, onActivityReenter, onApplyThemeResource, onAttachedToWindow, onChildTitleChanged, onContextItemSelected, onContextMenuClosed, onCreate, onCreateContextMenu, onCreateDescription, onCreateNavigateUpTaskStack, onCreateOptionsMenu, onCreatePanelView, onDetachedFromWindow, onEnterAnimationComplete, onGenericMotionEvent, onGetDirectActions, onKeyLongPress, onKeyMultiple, onKeyShortcut, onKeyUp, onLocalVoiceInteractionStarted, onLocalVoiceInteractionStopped, onMultiWindowModeChanged, onNavigateUp, onOptionsItemSelected, onOptionsMenuClosed, onPerformDirectAction, onPictureInPictureModeChanged, onPictureInPictureRequested, onPostCreate, onPrepareNavigateUpTaskStack, onPrepareOptionsMenu, onProvideAssistContent, onProvideAssistData, onProvideKeyboardShortcuts, onProvideReferrer, onRestart, onRestoreInstanceState, onRestoreInstanceState, onSaveInstanceState, onSearchRequested, onSearchRequested, onTopResumedActivityChanged, onTouchEvent, onTrackballEvent, onTrimMemory, onUserInteraction, onUserLeaveHint, onWindowAttributesChanged, onWindowFocusChanged, onWindowStartingActionMode, onWindowStartingActionMode, openContextMenu, overridePendingTransition, postponeEnterTransition, recreate, registerActivityLifecycleCallbacks, registerForContextMenu, releaseInstance, requestDragAndDropPermissions, requestPermissions, requestShowKeyboardShortcuts, requestWindowFeature, requireViewById, runOnUiThread, setActionBar, setContentTransitionManager, setDefaultKeyMode, setEnterSharedElementCallback, setExitSharedElementCallback, setFeatureDrawable, setFeatureDrawableAlpha, setFeatureDrawableResource, setFeatureDrawableUri, setFinishOnTouchOutside, setImmersive, setInheritShowWhenLocked, setIntent, setLocusContext, setMediaController, setPictureInPictureParams, setRequestedOrientation, setResult, setResult, setShowWhenLocked, setTaskDescription, setTitle, setTitle, setTranslucent, setTurnScreenOn, setVisible, setVolumeControlStream, setVrModeEnabled, shouldShowRequestPermissionRationale, shouldUpRecreateTask, showAssist, showLockTaskEscapeMessage, startActionMode, startActionMode, startActivities, startActivities, startActivity, startActivity, startActivityIfNeeded, startActivityIfNeeded, startIntentSender, startIntentSender, startLocalVoiceInteraction, startLockTask, startNextMatchingActivity, startNextMatchingActivity, startPostponedEnterTransition, startSearch, stopLocalVoiceInteraction, stopLockTask, takeKeyEvents, triggerSearch, unregisterActivityLifecycleCallbacks, unregisterForContextMenu</code></li>
+                                 
                                     <li class="blockList"><a id="methods.inherited.from.class.io.scanbot.sdk.ui.view.barcode.InternalBarcodeScannerActivity">
                                             <!--   -->
                                         </a>
                                             <h3>Methods inherited from class&nbsp;io.scanbot.sdk.ui.view.barcode.InternalBarcodeScannerActivity</h3>
                                             <code>onCancelScanning, onCancelScanningLicenseInvalid, onSnappingTimeout</code></li>
                                  
-                                    <li class="blockList"><a id="methods.inherited.from.class.io.scanbot.sdk.ui.view.base.BaseActivity">
+                                    <li class="blockList"><a id="methods.inherited.from.class.io.scanbot.sdk.ui.view.base.NFBaseActivity">
                                             <!--   -->
                                         </a>
-                                            <h3>Methods inherited from class&nbsp;io.scanbot.sdk.ui.view.base.BaseActivity</h3>
+                                            <h3>Methods inherited from class&nbsp;io.scanbot.sdk.ui.view.base.NFBaseActivity</h3>
                                             <code>activateCameraPermission, addContentView, attachBaseContext, closeOptionsMenu, dispatchKeyEvent, findViewById, getDelegate, getDrawerToggleDelegate, getMenuInflater, getResources, getSupportActionBar, getSupportParentActivityIntent, init, invalidateOptionsMenu, onConfigurationChanged, onContentChanged, onCreateSupportNavigateUpTaskStack, onKeyDown, onMenuItemSelected, onMenuOpened, onNightModeChanged, onPanelClosed, onPostCreate, onPostResume, onPrepareSupportNavigateUpTaskStack, onStart, onStop, onSupportActionModeFinished, onSupportActionModeStarted, onSupportNavigateUp, onTitleChanged, onWindowStartingSupportActionMode, openOptionsMenu, openPermissionSettings, setContentView, setContentView, setContentView, setSupportActionBar, setTheme, startSupportActionMode, supportInvalidateOptionsMenu, supportNavigateUpTo, supportRequestWindowFeature, supportShouldUpRecreateTask, tryAskCameraPermission</code></li>
                                  
                                     <li class="blockList"><a id="methods.inherited.from.class.androidx.fragment.app.FragmentActivity">
@@ -463,17 +551,11 @@ extends <a href=BaseBarcodeScannerActivity.html>BaseBarcodeScannerActivity</a>
                                             <h3>Methods inherited from class&nbsp;io.scanbot.sdk.ui.view.barcode.BaseBarcodeScannerActivity</h3>
                                             <code>cancel, cancelWithInvalidLicense, cancelWithNotInitialized, finishCurrentState</code></li>
                                  
-                                    <li class="blockList"><a id="methods.inherited.from.class.androidx.core.app.ComponentActivity">
-                                            <!--   -->
-                                        </a>
-                                            <h3>Methods inherited from class&nbsp;androidx.core.app.ComponentActivity</h3>
-                                            <code>closeContextMenu, createPendingResult, dismissKeyboardShortcutsHelper, dispatchGenericMotionEvent, dispatchPopulateAccessibilityEvent, dispatchTouchEvent, dispatchTrackballEvent, enterPictureInPictureMode, finish, finishActivity, finishAffinity, finishAfterTransition, finishAndRemoveTask, getActionBar, getApplication, getCallingActivity, getCallingPackage, getChangingConfigurations, getComponentName, getContentScene, getContentTransitionManager, getCurrentFocus, getIntent, getLastNonConfigurationInstance, getLayoutInflater, getLocalClassName, getMaxNumPictureInPictureActions, getMediaController, getParent, getParentActivityIntent, getPreferences, getReferrer, getRequestedOrientation, getSearchEvent, getSystemService, getTaskId, getTitle, getTitleColor, getVoiceInteractor, getVolumeControlStream, getWindow, getWindowManager, hasWindowFocus, isActivityTransitionRunning, isChangingConfigurations, isChild, isDestroyed, isFinishing, isImmersive, isInMultiWindowMode, isInPictureInPictureMode, isLocalVoiceInteractionSupported, isTaskRoot, isVoiceInteraction, isVoiceInteractionRoot, moveTaskToBack, navigateUpTo, onActionModeFinished, onActionModeStarted, onActivityReenter, onApplyThemeResource, onAttachedToWindow, onChildTitleChanged, onContextItemSelected, onContextMenuClosed, onCreate, onCreateContextMenu, onCreateDescription, onCreateNavigateUpTaskStack, onCreateOptionsMenu, onCreatePanelView, onDetachedFromWindow, onEnterAnimationComplete, onGenericMotionEvent, onGetDirectActions, onKeyLongPress, onKeyMultiple, onKeyShortcut, onKeyUp, onLocalVoiceInteractionStarted, onLocalVoiceInteractionStopped, onMultiWindowModeChanged, onNavigateUp, onOptionsItemSelected, onOptionsMenuClosed, onPerformDirectAction, onPictureInPictureModeChanged, onPictureInPictureRequested, onPostCreate, onPrepareNavigateUpTaskStack, onPrepareOptionsMenu, onProvideAssistContent, onProvideAssistData, onProvideKeyboardShortcuts, onProvideReferrer, onRestart, onRestoreInstanceState, onRestoreInstanceState, onSaveInstanceState, onSearchRequested, onSearchRequested, onTopResumedActivityChanged, onTouchEvent, onTrackballEvent, onTrimMemory, onUserInteraction, onUserLeaveHint, onWindowAttributesChanged, onWindowFocusChanged, onWindowStartingActionMode, onWindowStartingActionMode, openContextMenu, overridePendingTransition, postponeEnterTransition, recreate, registerActivityLifecycleCallbacks, registerForContextMenu, releaseInstance, requestDragAndDropPermissions, requestPermissions, requestShowKeyboardShortcuts, requestWindowFeature, requireViewById, runOnUiThread, setActionBar, setContentTransitionManager, setDefaultKeyMode, setEnterSharedElementCallback, setExitSharedElementCallback, setFeatureDrawable, setFeatureDrawableAlpha, setFeatureDrawableResource, setFeatureDrawableUri, setFinishOnTouchOutside, setImmersive, setInheritShowWhenLocked, setIntent, setLocusContext, setMediaController, setPictureInPictureParams, setRequestedOrientation, setResult, setResult, setShowWhenLocked, setTaskDescription, setTitle, setTitle, setTranslucent, setTurnScreenOn, setVisible, setVolumeControlStream, setVrModeEnabled, shouldShowRequestPermissionRationale, shouldUpRecreateTask, showAssist, showLockTaskEscapeMessage, startActionMode, startActionMode, startActivities, startActivities, startActivity, startActivity, startActivityIfNeeded, startActivityIfNeeded, startIntentSender, startIntentSender, startLocalVoiceInteraction, startLockTask, startNextMatchingActivity, startNextMatchingActivity, startPostponedEnterTransition, startSearch, stopLocalVoiceInteraction, stopLockTask, takeKeyEvents, triggerSearch, unregisterActivityLifecycleCallbacks, unregisterForContextMenu</code></li>
-                                 
                                     <li class="blockList"><a id="methods.inherited.from.class.androidx.appcompat.app.AppCompatActivity">
                                             <!--   -->
                                         </a>
                                             <h3>Methods inherited from class&nbsp;androidx.appcompat.app.AppCompatActivity</h3>
-                                            <code>dispatchFragmentsOnCreateView, dump, getSupportFragmentManager, markFragmentsCreated, onActivityResult, onCreatePanelMenu, onCreateView, onCreateView, onLowMemory, onMultiWindowModeChanged, onNewIntent, onPause, onPictureInPictureModeChanged, onPreparePanel, onRequestPermissionsResult, onResume, onResumeFragments, onStateNotSaved, setEnterSharedElementCallback, setExitSharedElementCallback, startActivityFromFragment, startActivityFromFragment, supportFinishAfterTransition, supportPostponeEnterTransition, supportStartPostponedEnterTransition</code></li>
+                                            <code>dispatchFragmentsOnCreateView, dump, getSupportFragmentManager, markFragmentsCreated, onActivityResult, onCreatePanelMenu, onCreateView, onCreateView, onLowMemory, onMultiWindowModeChanged, onNewIntent, onPictureInPictureModeChanged, onPreparePanel, onResumeFragments, onStateNotSaved, setEnterSharedElementCallback, setExitSharedElementCallback, startActivityFromFragment, startActivityFromFragment, supportFinishAfterTransition, supportPostponeEnterTransition, supportStartPostponedEnterTransition</code></li>
                                  
                                     <li class="blockList"><a id="methods.inherited.from.class.androidx.activity.ComponentActivity">
                                             <!--   -->
@@ -535,6 +617,126 @@ extends <a href=BaseBarcodeScannerActivity.html>BaseBarcodeScannerActivity</a>
                                 <!--   -->
                             </a>
                                 <h3>Method Detail</h3>
+                                
+                                <a id="getFactory()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getFactory</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModelProvider.Factory.html>ViewModelProvider.Factory</a> <a href=InternalBarcodeScannerActivity.html#getFactory()>getFactory</a>()</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setFactory(ViewModelProvider.Factory)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setFactory</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=InternalBarcodeScannerActivity.html#setFactory(ViewModelProvider.Factory)>setFactory</a>(@Inject() <a href=https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModelProvider.Factory.html>ViewModelProvider.Factory</a> factory)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getBarcodeCameraView()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getBarcodeCameraView</h4>
+                                        <pre class="methodSignature"> final <a href=BarcodeCameraView.html>BarcodeCameraView</a> <a href=InternalBarcodeScannerActivity.html#getBarcodeCameraView()>getBarcodeCameraView</a>()</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setBarcodeCameraView(BarcodeCameraView)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setBarcodeCameraView</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=InternalBarcodeScannerActivity.html#setBarcodeCameraView(BarcodeCameraView)>setBarcodeCameraView</a>(<a href=BarcodeCameraView.html>BarcodeCameraView</a> barcodeCameraView)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getCameraUiSettings()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getCameraUiSettings</h4>
+                                        <pre class="methodSignature"> final <a href=../../camera/CameraUiSettings.html>CameraUiSettings</a> <a href=InternalBarcodeScannerActivity.html#getCameraUiSettings()>getCameraUiSettings</a>()</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setCameraUiSettings(CameraUiSettings)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setCameraUiSettings</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=InternalBarcodeScannerActivity.html#setCameraUiSettings(CameraUiSettings)>setCameraUiSettings</a>(<a href=../../camera/CameraUiSettings.html>CameraUiSettings</a> cameraUiSettings)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="provideLayoutId()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>provideLayoutId</h4>
+                                        <pre class="methodSignature"> <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> <a href=InternalBarcodeScannerActivity.html#provideLayoutId()>provideLayoutId</a>()</pre>
+                                        <div class="block"><p>Will be overridden by descendants that define their own layout, but we need to call it in onCreate here.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onRequestPermissionsResult(Integer,Array,IntArray)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onRequestPermissionsResult</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=InternalBarcodeScannerActivity.html#onRequestPermissionsResult(Integer,Array,IntArray)>onRequestPermissionsResult</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> requestCode, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; permissions, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html>IntArray</a> grantResults)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
                                 
                             </li>
                         </ul>
