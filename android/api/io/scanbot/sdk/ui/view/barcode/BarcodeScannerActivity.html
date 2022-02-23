@@ -206,11 +206,6 @@ var pathtoroot = "../../../../../../";
                             ,
                             
                             
-                            <code>io.scanbot.sdk.ui.di.HasComponent</code>
-                            
-                            ,
-                            
-                            
                             <code>io.scanbot.sdk.ui.view.base.Cancelable</code>
                             
                             ,
@@ -236,7 +231,7 @@ var pathtoroot = "../../../../../../";
                     <pre class="wrap-overflow">
 
 public final class <span class="typeNameLabel"><a href=BarcodeScannerActivity.html>BarcodeScannerActivity</a></span>
-extends <a href=InternalBarcodeScannerActivity.html>InternalBarcodeScannerActivity</a> implements <a href=../../di/HasComponent.html>HasComponent</a>&lt;SDKUIComponent&gt;
+extends <a href=InternalBarcodeScannerActivity.html>InternalBarcodeScannerActivity</a>
                     </pre>
                     <div class="block"><p>Represents camera screen for Barcodes scanning.</p></div>
                 </li>
@@ -307,8 +302,20 @@ extends <a href=InternalBarcodeScannerActivity.html>InternalBarcodeScannerActivi
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>private final SDKUIComponent</code></td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodeScannerActivity.html#component>component</a></code></th>
+                                            <td class="colFirst"><code>private  <a href=BarcodeCameraView.html>BarcodeCameraView</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=batch/BatchBarcodeScannerActivity.html#barcodeCameraView>barcodeCameraView</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private  <a href=../../camera/CameraUiSettings.html>CameraUiSettings</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=../mrz/BaseMRZScannerActivity.html#cameraUiSettings>cameraUiSettings</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private  <a href=https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModelProvider.Factory.html>ViewModelProvider.Factory</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=batch/BatchBarcodeScannerActivity.html#factory>factory</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
@@ -434,17 +441,49 @@ extends <a href=InternalBarcodeScannerActivity.html>InternalBarcodeScannerActivi
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code>SDKUIComponent</code>
+                                            <td class="colFirst"><code>final <a href=BarcodeCameraView.html>BarcodeCameraView</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodeScannerActivity.html#getComponent()>getComponent</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=BarcodeScannerActivity.html#getBarcodeCameraView()>getBarcodeCameraView</a>() </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodeScannerActivity.html#onRequestPermissionsResult(Integer,Array,IntArray)>onRequestPermissionsResult</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> requestCode, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; permissions, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html>IntArray</a> grantResults) </code>
+                                            <th class="colSecond" scope="row"><code><a href=BarcodeScannerActivity.html#setBarcodeCameraView(BarcodeCameraView)>setBarcodeCameraView</a>(<a href=BarcodeCameraView.html>BarcodeCameraView</a> barcodeCameraView) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>final <a href=../../camera/CameraUiSettings.html>CameraUiSettings</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=BarcodeScannerActivity.html#getCameraUiSettings()>getCameraUiSettings</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=BarcodeScannerActivity.html#setCameraUiSettings(CameraUiSettings)>setCameraUiSettings</a>(<a href=../../camera/CameraUiSettings.html>CameraUiSettings</a> cameraUiSettings) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModelProvider.Factory.html>ViewModelProvider.Factory</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=BarcodeScannerActivity.html#getFactory()>getFactory</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i5" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=BarcodeScannerActivity.html#setFactory(ViewModelProvider.Factory)>setFactory</a>(<a href=https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModelProvider.Factory.html>ViewModelProvider.Factory</a> factory) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -460,10 +499,10 @@ extends <a href=InternalBarcodeScannerActivity.html>InternalBarcodeScannerActivi
                                             <h3>Methods inherited from class&nbsp;androidx.core.app.ComponentActivity</h3>
                                             <code>closeContextMenu, createPendingResult, dismissKeyboardShortcutsHelper, dispatchGenericMotionEvent, dispatchPopulateAccessibilityEvent, dispatchTouchEvent, dispatchTrackballEvent, enterPictureInPictureMode, finish, finishActivity, finishAffinity, finishAfterTransition, finishAndRemoveTask, getActionBar, getApplication, getCallingActivity, getCallingPackage, getChangingConfigurations, getComponentName, getContentScene, getContentTransitionManager, getCurrentFocus, getIntent, getLastNonConfigurationInstance, getLayoutInflater, getLocalClassName, getMaxNumPictureInPictureActions, getMediaController, getParent, getParentActivityIntent, getPreferences, getReferrer, getRequestedOrientation, getSearchEvent, getSystemService, getTaskId, getTitle, getTitleColor, getVoiceInteractor, getVolumeControlStream, getWindow, getWindowManager, hasWindowFocus, isActivityTransitionRunning, isChangingConfigurations, isChild, isDestroyed, isFinishing, isImmersive, isInMultiWindowMode, isInPictureInPictureMode, isLocalVoiceInteractionSupported, isTaskRoot, isVoiceInteraction, isVoiceInteractionRoot, moveTaskToBack, navigateUpTo, onActionModeFinished, onActionModeStarted, onActivityReenter, onApplyThemeResource, onAttachedToWindow, onChildTitleChanged, onContextItemSelected, onContextMenuClosed, onCreate, onCreateContextMenu, onCreateDescription, onCreateNavigateUpTaskStack, onCreateOptionsMenu, onCreatePanelView, onDetachedFromWindow, onEnterAnimationComplete, onGenericMotionEvent, onGetDirectActions, onKeyLongPress, onKeyMultiple, onKeyShortcut, onKeyUp, onLocalVoiceInteractionStarted, onLocalVoiceInteractionStopped, onMultiWindowModeChanged, onNavigateUp, onOptionsItemSelected, onOptionsMenuClosed, onPerformDirectAction, onPictureInPictureModeChanged, onPictureInPictureRequested, onPostCreate, onPrepareNavigateUpTaskStack, onPrepareOptionsMenu, onProvideAssistContent, onProvideAssistData, onProvideKeyboardShortcuts, onProvideReferrer, onRestart, onRestoreInstanceState, onRestoreInstanceState, onSaveInstanceState, onSearchRequested, onSearchRequested, onTopResumedActivityChanged, onTouchEvent, onTrackballEvent, onTrimMemory, onUserInteraction, onUserLeaveHint, onWindowAttributesChanged, onWindowFocusChanged, onWindowStartingActionMode, onWindowStartingActionMode, openContextMenu, overridePendingTransition, postponeEnterTransition, recreate, registerActivityLifecycleCallbacks, registerForContextMenu, releaseInstance, requestDragAndDropPermissions, requestPermissions, requestShowKeyboardShortcuts, requestWindowFeature, requireViewById, runOnUiThread, setActionBar, setContentTransitionManager, setDefaultKeyMode, setEnterSharedElementCallback, setExitSharedElementCallback, setFeatureDrawable, setFeatureDrawableAlpha, setFeatureDrawableResource, setFeatureDrawableUri, setFinishOnTouchOutside, setImmersive, setInheritShowWhenLocked, setIntent, setLocusContext, setMediaController, setPictureInPictureParams, setRequestedOrientation, setResult, setResult, setShowWhenLocked, setTaskDescription, setTitle, setTitle, setTranslucent, setTurnScreenOn, setVisible, setVolumeControlStream, setVrModeEnabled, shouldShowRequestPermissionRationale, shouldUpRecreateTask, showAssist, showLockTaskEscapeMessage, startActionMode, startActionMode, startActivities, startActivities, startActivity, startActivity, startActivityIfNeeded, startActivityIfNeeded, startIntentSender, startIntentSender, startLocalVoiceInteraction, startLockTask, startNextMatchingActivity, startNextMatchingActivity, startPostponedEnterTransition, startSearch, stopLocalVoiceInteraction, stopLockTask, takeKeyEvents, triggerSearch, unregisterActivityLifecycleCallbacks, unregisterForContextMenu</code></li>
                                  
-                                    <li class="blockList"><a id="methods.inherited.from.class.io.scanbot.sdk.ui.view.base.BaseActivity">
+                                    <li class="blockList"><a id="methods.inherited.from.class.io.scanbot.sdk.ui.view.base.NFBaseActivity">
                                             <!--   -->
                                         </a>
-                                            <h3>Methods inherited from class&nbsp;io.scanbot.sdk.ui.view.base.BaseActivity</h3>
+                                            <h3>Methods inherited from class&nbsp;io.scanbot.sdk.ui.view.base.NFBaseActivity</h3>
                                             <code>activateCameraPermission, addContentView, attachBaseContext, closeOptionsMenu, dispatchKeyEvent, findViewById, getDelegate, getDrawerToggleDelegate, getMenuInflater, getResources, getSupportActionBar, getSupportParentActivityIntent, init, invalidateOptionsMenu, onConfigurationChanged, onContentChanged, onCreateSupportNavigateUpTaskStack, onKeyDown, onMenuItemSelected, onMenuOpened, onNightModeChanged, onPanelClosed, onPostCreate, onPostResume, onPrepareSupportNavigateUpTaskStack, onStart, onStop, onSupportActionModeFinished, onSupportActionModeStarted, onSupportNavigateUp, onTitleChanged, onWindowStartingSupportActionMode, openOptionsMenu, openPermissionSettings, setContentView, setContentView, setContentView, setSupportActionBar, setTheme, startSupportActionMode, supportInvalidateOptionsMenu, supportNavigateUpTo, supportRequestWindowFeature, supportShouldUpRecreateTask, tryAskCameraPermission</code></li>
                                  
                                     <li class="blockList"><a id="methods.inherited.from.class.androidx.fragment.app.FragmentActivity">
@@ -494,7 +533,7 @@ extends <a href=InternalBarcodeScannerActivity.html>InternalBarcodeScannerActivi
                                             <!--   -->
                                         </a>
                                             <h3>Methods inherited from class&nbsp;androidx.appcompat.app.AppCompatActivity</h3>
-                                            <code>dispatchFragmentsOnCreateView, dump, getSupportFragmentManager, markFragmentsCreated, onActivityResult, onCreatePanelMenu, onCreateView, onCreateView, onLowMemory, onMultiWindowModeChanged, onNewIntent, onPause, onPictureInPictureModeChanged, onPreparePanel, onResume, onResumeFragments, onStateNotSaved, setEnterSharedElementCallback, setExitSharedElementCallback, startActivityFromFragment, startActivityFromFragment, supportFinishAfterTransition, supportPostponeEnterTransition, supportStartPostponedEnterTransition</code></li>
+                                            <code>dispatchFragmentsOnCreateView, dump, getSupportFragmentManager, markFragmentsCreated, onActivityResult, onCreatePanelMenu, onCreateView, onCreateView, onLowMemory, onMultiWindowModeChanged, onNewIntent, onPictureInPictureModeChanged, onPreparePanel, onResumeFragments, onStateNotSaved, setEnterSharedElementCallback, setExitSharedElementCallback, startActivityFromFragment, startActivityFromFragment, supportFinishAfterTransition, supportPostponeEnterTransition, supportStartPostponedEnterTransition</code></li>
                                  
                                     <li class="blockList"><a id="methods.inherited.from.class.androidx.activity.ComponentActivity">
                                             <!--   -->
@@ -513,6 +552,12 @@ extends <a href=InternalBarcodeScannerActivity.html>InternalBarcodeScannerActivi
                                         </a>
                                             <h3>Methods inherited from class&nbsp;io.scanbot.sdk.ui.view.barcode.InternalBarcodeScannerActivity</h3>
                                             <code>onCancelScanning, onCancelScanningLicenseInvalid, onSnappingTimeout</code></li>
+                                 
+                                    <li class="blockList"><a id="methods.inherited.from.class.io.scanbot.sdk.ui.view.barcode.BarcodeScannerActivity">
+                                            <!--   -->
+                                        </a>
+                                            <h3>Methods inherited from class&nbsp;io.scanbot.sdk.ui.view.barcode.BarcodeScannerActivity</h3>
+                                            <code>onRequestPermissionsResult, provideLayoutId</code></li>
                                  
                                     <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
                                         <!--   -->
@@ -563,30 +608,90 @@ extends <a href=InternalBarcodeScannerActivity.html>InternalBarcodeScannerActivi
                             </a>
                                 <h3>Method Detail</h3>
                                 
-                                <a id="getComponent()">
+                                <a id="getBarcodeCameraView()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>getComponent</h4>
-                                        <pre class="methodSignature"> SDKUIComponent <a href=BarcodeScannerActivity.html#getComponent()>getComponent</a>()</pre>
+                                        <h4>getBarcodeCameraView</h4>
+                                        <pre class="methodSignature"> final <a href=BarcodeCameraView.html>BarcodeCameraView</a> <a href=BarcodeScannerActivity.html#getBarcodeCameraView()>getBarcodeCameraView</a>()</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
                                 </ul>
                                 
-                                <a id="onRequestPermissionsResult(Integer,Array,IntArray)">
+                                <a id="setBarcodeCameraView(BarcodeCameraView)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setBarcodeCameraView</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodeScannerActivity.html#setBarcodeCameraView(BarcodeCameraView)>setBarcodeCameraView</a>(<a href=BarcodeCameraView.html>BarcodeCameraView</a> barcodeCameraView)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getCameraUiSettings()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getCameraUiSettings</h4>
+                                        <pre class="methodSignature"> final <a href=../../camera/CameraUiSettings.html>CameraUiSettings</a> <a href=BarcodeScannerActivity.html#getCameraUiSettings()>getCameraUiSettings</a>()</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setCameraUiSettings(CameraUiSettings)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setCameraUiSettings</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodeScannerActivity.html#setCameraUiSettings(CameraUiSettings)>setCameraUiSettings</a>(<a href=../../camera/CameraUiSettings.html>CameraUiSettings</a> cameraUiSettings)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getFactory()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getFactory</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModelProvider.Factory.html>ViewModelProvider.Factory</a> <a href=BarcodeScannerActivity.html#getFactory()>getFactory</a>()</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setFactory(ViewModelProvider.Factory)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockListLast"
                                           >
                                     <li class="blockList">
-                                        <h4>onRequestPermissionsResult</h4>
-                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodeScannerActivity.html#onRequestPermissionsResult(Integer,Array,IntArray)>onRequestPermissionsResult</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> requestCode, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; permissions, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html>IntArray</a> grantResults)</pre>
+                                        <h4>setFactory</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodeScannerActivity.html#setFactory(ViewModelProvider.Factory)>setFactory</a>(<a href=https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModelProvider.Factory.html>ViewModelProvider.Factory</a> factory)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
