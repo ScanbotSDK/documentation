@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SBSDKOpticalTextRecognizerDelegate Protocol Reference</title>
+    <title>SBSDKZoomingImageScrollView Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Protocol/SBSDKOpticalTextRecognizerDelegate" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Class/SBSDKZoomingImageScrollView" class="dashAnchor"></a>
 
-    <a title="SBSDKOpticalTextRecognizerDelegate Protocol Reference"></a>
+    <a title="SBSDKZoomingImageScrollView Class Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">ScanbotSDK for iOS Reference</a>
       <img class="carat" src="../img/carat.png" />
-      SBSDKOpticalTextRecognizerDelegate Protocol Reference
+      SBSDKZoomingImageScrollView Class Reference
     </p>
 
     <div class="content-wrapper">
@@ -1729,14 +1729,15 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>SBSDKOpticalTextRecognizerDelegate</h1>
+            <h1>SBSDKZoomingImageScrollView</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SBSDKOpticalTextRecognizerDelegate</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">SBSDKZoomingImageScrollView</span> <span class="p">:</span> <span class="nc">UIScrollView</span> <span class="o">&lt;</span><span class="n">UIScrollViewDelegate</span><span class="o">&gt;</span></code></pre>
 
                 </div>
               </div>
-            <p>Delegate protocol for <code><a href="../Classes/SBSDKOpticalTextRecognizer.html">SBSDKOpticalTextRecognizer</a></code>.</p>
+            <p>A scrollable and zoomable UIScrollView subclass that displays images and an overlay view.
+Zooming and scrolling can be controlled using the standard UIScrollView properties.</p>
 
           </div>
         </section>
@@ -1748,9 +1749,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(pl)SBSDKOpticalTextRecognizerDelegate(im)shouldCancelTextRecognition"></a>
-                    <a name="//apple_ref/swift/Method/-shouldCancelTextRecognition" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)SBSDKOpticalTextRecognizerDelegate(im)shouldCancelTextRecognition">-shouldCancelTextRecognition</a>
+                    <a name="/c:objc(cs)SBSDKZoomingImageScrollView(py)image"></a>
+                    <a name="//apple_ref/swift/Property/image" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKZoomingImageScrollView(py)image">image</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1758,26 +1759,87 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Asks the delegate if the text recognition should be cancelled.</p>
+                        <p>The image to be displayed. Can be zoomed and scrolled. If the image is zoomed out, it will be automatically centered.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="n">shouldCancelTextRecognition</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">UIImage</span> <span class="o">*</span><span class="n">image</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">shouldCancelTextRecognition</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>YES, if the text recognition should cancel, NO otherwise.
-*</p>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKZoomingImageScrollView(py)margins"></a>
+                    <a name="//apple_ref/swift/Property/margins" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKZoomingImageScrollView(py)margins">margins</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The margins of the displayed image to the bounds of the receiver. Defaults to (20.0, 20.0, 20.0, 20.0).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">UIEdgeInsets</span> <span class="n">margins</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">margins</span><span class="p">:</span> <span class="kt">UIEdgeInsets</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKZoomingImageScrollView(py)overlayView"></a>
+                    <a name="//apple_ref/swift/Property/overlayView" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKZoomingImageScrollView(py)overlayView">overlayView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Pass a transparent view here to display it as a HUD style view above the image view.
+If set, it will automatically be laid out to match the frame of the image view.
+By default it is nil.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">UIView</span> <span class="o">*</span><span class="n">overlayView</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">overlayView</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
