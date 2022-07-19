@@ -911,6 +911,9 @@
                 <a class="nav-group-task-link" href="../Classes/ScanbotSDK.html">ScanbotSDK</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ScanbotSDKConfiguration.html">ScanbotSDKConfiguration</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/ScanbotSDKUI.html">ScanbotSDKUI</a>
               </li>
             </ul>
@@ -1449,6 +1452,12 @@
                 <a class="nav-group-task-link" href="../Enums/SBSDKAESEncrypterMode.html">SBSDKAESEncrypterMode</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SBSDKAutosnappingMode.html">SBSDKAutosnappingMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SBSDKBarcodeDensity.html">SBSDKBarcodeDensity</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/SBSDKBarcodeEngineMode.html">SBSDKBarcodeEngineMode</a>
               </li>
               <li class="nav-group-task">
@@ -1801,6 +1810,17 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Functions.html#/c:@F@isDetectionStatusOK">isDetectionStatusOK</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/c:SBSDKOrientationLock.h@F@orientationsFromLock">orientationsFromLock</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UIColor.html">UIColor</a>
               </li>
             </ul>
           </li>
@@ -3431,170 +3451,6 @@ You could for example return green for DetectionStateOK and red otherwise.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(pl)SBSDKScannerViewControllerDelegate(im)scannerControllerDidChangeDeviceOrientation:to:transform:"></a>
-                    <a name="//apple_ref/swift/Method/-scannerControllerDidChangeDeviceOrientation:to:transform:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)SBSDKScannerViewControllerDelegate(im)scannerControllerDidChangeDeviceOrientation:to:transform:">-scannerControllerDidChangeDeviceOrientation:to:transform:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Informs the delegate that the device orientation has changed. 
-The SBSDKScannerController will use this orientation to rotate captured images.
-Optional.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-    <span class="nf">scannerControllerDidChangeDeviceOrientation</span><span class="p">:</span>
-        <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">controller</span>
-                                             <span class="nf">to</span><span class="p">:(</span><span class="n">UIDeviceOrientation</span><span class="p">)</span><span class="nv">orientation</span>
-                                      <span class="nf">transform</span><span class="p">:(</span><span class="n">CGAffineTransform</span><span class="p">)</span><span class="nv">transform</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">scannerControllerDidChangeDeviceOrientation</span><span class="p">(</span><span class="n">_</span> <span class="nv">controller</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></span><span class="p">,</span> <span class="n">to</span> <span class="nv">orientation</span><span class="p">:</span> <span class="kt">UIDeviceOrientation</span><span class="p">,</span> <span class="nv">transform</span><span class="p">:</span> <span class="kt">CGAffineTransform</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>controller</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The calling SBSDKScannerViewController.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>orientation</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The new device orientation used to rotate captured images automatically.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>transform</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The CGAffineTransform that can be used to rotate UI elements to reflect the current 
-capture orientation.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(pl)SBSDKScannerViewControllerDelegate(im)scannerController:shouldRotateInterfaceForDeviceOrientation:transform:"></a>
-                    <a name="//apple_ref/swift/Method/-scannerController:shouldRotateInterfaceForDeviceOrientation:transform:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)SBSDKScannerViewControllerDelegate(im)scannerController:shouldRotateInterfaceForDeviceOrientation:transform:">-scannerController:shouldRotateInterfaceForDeviceOrientation:transform:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Asks the delegate whether the camera UI, shutter button and guidance UI, should be rotated to
- reflect the device orientation or not.</p>
-
-<p>Not called if the imageOrientationLock property is other than SBSDKOrientationLockNone.</p>
-
-<p>Optional.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">scannerController</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">controller</span>
-    <span class="nf">shouldRotateInterfaceForDeviceOrientation</span><span class="p">:(</span><span class="n">UIDeviceOrientation</span><span class="p">)</span><span class="nv">orientation</span>
-                                    <span class="nf">transform</span><span class="p">:(</span><span class="n">CGAffineTransform</span><span class="p">)</span><span class="nv">transform</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">scannerController</span><span class="p">(</span><span class="n">_</span> <span class="nv">controller</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKScannerViewController.html">SBSDKScannerViewController</a></span><span class="p">,</span> <span class="n">shouldRotateInterfaceFor</span> <span class="nv">orientation</span><span class="p">:</span> <span class="kt">UIDeviceOrientation</span><span class="p">,</span> <span class="nv">transform</span><span class="p">:</span> <span class="kt">CGAffineTransform</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>controller</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The calling SBSDKScannerViewController.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>orientation</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The new device orientation the device is rotated to.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>transform</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The CGAffineTransform that will be used to rotate UI elements.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/c:objc(pl)SBSDKScannerViewControllerDelegate(im)scannerControllerShouldDetectMachineReadableCodes:"></a>
                     <a name="//apple_ref/swift/Method/-scannerControllerShouldDetectMachineReadableCodes:" class="dashAnchor"></a>
                     <a class="token" href="#/c:objc(pl)SBSDKScannerViewControllerDelegate(im)scannerControllerShouldDetectMachineReadableCodes:">-scannerControllerShouldDetectMachineReadableCodes:</a>
@@ -3849,7 +3705,7 @@ Equals to CGRectZero when the view finder is not visible.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2022 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external noopener">doo GmbH</a>. All rights reserved. (Last updated: 2022-06-07)</p>
+      <p>&copy; 2022 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external noopener">doo GmbH</a>. All rights reserved. (Last updated: 2022-07-19)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

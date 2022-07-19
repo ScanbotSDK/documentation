@@ -911,6 +911,9 @@
                 <a class="nav-group-task-link" href="../Classes/ScanbotSDK.html">ScanbotSDK</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ScanbotSDKConfiguration.html">ScanbotSDKConfiguration</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/ScanbotSDKUI.html">ScanbotSDKUI</a>
               </li>
             </ul>
@@ -1449,6 +1452,12 @@
                 <a class="nav-group-task-link" href="../Enums/SBSDKAESEncrypterMode.html">SBSDKAESEncrypterMode</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SBSDKAutosnappingMode.html">SBSDKAutosnappingMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SBSDKBarcodeDensity.html">SBSDKBarcodeDensity</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/SBSDKBarcodeEngineMode.html">SBSDKBarcodeEngineMode</a>
               </li>
               <li class="nav-group-task">
@@ -1802,6 +1811,17 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Functions.html#/c:@F@isDetectionStatusOK">isDetectionStatusOK</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/c:SBSDKOrientationLock.h@F@orientationsFromLock">orientationsFromLock</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UIColor.html">UIColor</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -1817,8 +1837,8 @@
 
                 </div>
               </div>
-            <p>This enum describes the available orientation lock modes for image capturing.
-All modes work independently from the user interface orientation.</p>
+            <p>This enum describes the available orientation lock modes for the user interface.
+Captured images are always top-oriented to the status bar.</p>
 
           </div>
         </section>
@@ -1840,7 +1860,8 @@ All modes work independently from the user interface orientation.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The orientation is not locked. The captured image is oriented according to the current device orientation.
+                        <p>The orientation is not locked. The captured image is orientated so that the
+upper area of the image is directed towards the status bar.
 The image either has a landscape or portrait aspect ratio.</p>
 
                       </div>
@@ -1849,6 +1870,11 @@ The image either has a landscape or portrait aspect ratio.</p>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
                           <pre class="highlight objective_c"><code><span class="n">SBSDKOrientationLockNone</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="k">none</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
 
                         </div>
                       </div>
@@ -1868,8 +1894,8 @@ The image either has a landscape or portrait aspect ratio.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The orientation is locked to portrait. The captured image is orientated so that the
-upper area of the image is directed towards the devices camera (top edge). The image always
+                        <p>The orientation is locked to the portrait modes. The captured image is orientated so that the
+upper area of the image is directed towards the status bar. The image always
 has a portrait aspect ratio.</p>
 
                       </div>
@@ -1880,33 +1906,9 @@ has a portrait aspect ratio.</p>
                           <pre class="highlight objective_c"><code><span class="n">SBSDKOrientationLockPortrait</span> <span class="o">=</span> <span class="mi">1</span></code></pre>
 
                         </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@E@SBSDKOrientationLock@SBSDKOrientationLockPortraitUpsideDown"></a>
-                    <a name="//apple_ref/swift/Case/SBSDKOrientationLockPortraitUpsideDown" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@E@SBSDKOrientationLock@SBSDKOrientationLockPortraitUpsideDown">SBSDKOrientationLockPortraitUpsideDown</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The orientation is locked to portrait upside down. The captured image is orientated so that the
-upper area of the image is directed towards the devices home button (bottom edge). The image always
-has a portrait aspect ratio.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
                         <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="n">SBSDKOrientationLockPortraitUpsideDown</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">portrait</span> <span class="o">=</span> <span class="mi">1</span></code></pre>
 
                         </div>
                       </div>
@@ -1916,9 +1918,9 @@ has a portrait aspect ratio.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@E@SBSDKOrientationLock@SBSDKOrientationLockLandscapeLeft"></a>
-                    <a name="//apple_ref/swift/Case/SBSDKOrientationLockLandscapeLeft" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@E@SBSDKOrientationLock@SBSDKOrientationLockLandscapeLeft">SBSDKOrientationLockLandscapeLeft</a>
+                    <a name="/c:@E@SBSDKOrientationLock@SBSDKOrientationLockLandscape"></a>
+                    <a name="//apple_ref/swift/Case/SBSDKOrientationLockLandscape" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@SBSDKOrientationLock@SBSDKOrientationLockLandscape">SBSDKOrientationLockLandscape</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1926,8 +1928,8 @@ has a portrait aspect ratio.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The orientation is locked to landscape left. The captured image is orientated so that the
-left area of the image is directed towards the devices camera (top edge). The image always
+                        <p>The orientation is locked to the landscape modes. The captured image is orientated so that the
+upper area of the image is directed towards the status bar. The image always
 has a landscape aspect ratio.</p>
 
                       </div>
@@ -1935,36 +1937,12 @@ has a landscape aspect ratio.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="n">SBSDKOrientationLockLandscapeLeft</span> <span class="o">=</span> <span class="mi">3</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="n">SBSDKOrientationLockLandscape</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
 
                         </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@E@SBSDKOrientationLock@SBSDKOrientationLockLandscapeRight"></a>
-                    <a name="//apple_ref/swift/Case/SBSDKOrientationLockLandscapeRight" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@E@SBSDKOrientationLock@SBSDKOrientationLockLandscapeRight">SBSDKOrientationLockLandscapeRight</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The orientation is locked to landscape right. The captured image is orientated so that the
-left area of the image is directed towards the devices home button (bottom edge). The image always
-has a landscape aspect ratio.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
                         <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="n">SBSDKOrientationLockLandscapeRight</span> <span class="o">=</span> <span class="mi">4</span></code></pre>
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">landscape</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
 
                         </div>
                       </div>
@@ -1979,7 +1957,7 @@ has a landscape aspect ratio.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2022 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external noopener">doo GmbH</a>. All rights reserved. (Last updated: 2022-06-07)</p>
+      <p>&copy; 2022 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external noopener">doo GmbH</a>. All rights reserved. (Last updated: 2022-07-19)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

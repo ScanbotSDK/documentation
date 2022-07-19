@@ -911,6 +911,9 @@
                 <a class="nav-group-task-link" href="../Classes/ScanbotSDK.html">ScanbotSDK</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ScanbotSDKConfiguration.html">ScanbotSDKConfiguration</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/ScanbotSDKUI.html">ScanbotSDKUI</a>
               </li>
             </ul>
@@ -1449,6 +1452,12 @@
                 <a class="nav-group-task-link" href="../Enums/SBSDKAESEncrypterMode.html">SBSDKAESEncrypterMode</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SBSDKAutosnappingMode.html">SBSDKAutosnappingMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SBSDKBarcodeDensity.html">SBSDKBarcodeDensity</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/SBSDKBarcodeEngineMode.html">SBSDKBarcodeEngineMode</a>
               </li>
               <li class="nav-group-task">
@@ -1802,6 +1811,17 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Functions.html#/c:@F@isDetectionStatusOK">isDetectionStatusOK</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/c:SBSDKOrientationLock.h@F@orientationsFromLock">orientationsFromLock</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UIColor.html">UIColor</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -1914,9 +1934,9 @@ Result is incapsulated in an array of SBSDKBarcodeScannerResult instances.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScanner(im)initWithFrameAccumulator:types:"></a>
-                    <a name="//apple_ref/swift/Method/-initWithFrameAccumulator:types:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScanner(im)initWithFrameAccumulator:types:">-initWithFrameAccumulator:types:</a>
+                    <a name="/c:objc(cs)SBSDKBarcodeScanner(im)initWithTypes:liveMode:"></a>
+                    <a name="//apple_ref/swift/Method/-initWithTypes:liveMode:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScanner(im)initWithTypes:liveMode:">-initWithTypes:liveMode:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1934,15 +1954,14 @@ amount of blur. Intended for using with live detection.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span>
-    <span class="nf">initWithFrameAccumulator</span><span class="p">:(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">accumulatedFrames</span>
-                       <span class="nf">types</span><span class="p">:</span>
-                           <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKBarcodeType.html">SBSDKBarcodeType</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nv">barCodeTypes</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithTypes</span><span class="p">:</span>
+                            <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKBarcodeType.html">SBSDKBarcodeType</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nv">barCodeTypes</span>
+                             <span class="nf">liveMode</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">useLiveMode</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">frameAccumulator</span> <span class="nv">accumulatedFrames</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">types</span> <span class="nv">barCodeTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKBarcodeType.html">SBSDKBarcodeType</a></span><span class="p">])</span></code></pre>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">types</span> <span class="nv">barCodeTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKBarcodeType.html">SBSDKBarcodeType</a></span><span class="p">],</span> <span class="n">liveMode</span> <span class="nv">useLiveMode</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1950,87 +1969,6 @@ amount of blur. Intended for using with live detection.</p>
                         <h4>Parameters</h4>
                         <table class="graybox">
                           <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>accumulatedFrames</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Number of frames to accumulate before running detection on the sharpest one.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>barCodeTypes</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Bar code types to limit detection results to.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScanner(im)initWithFrameAccumulator:types:liveMode:"></a>
-                    <a name="//apple_ref/swift/Method/-initWithFrameAccumulator:types:liveMode:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScanner(im)initWithFrameAccumulator:types:liveMode:">-initWithFrameAccumulator:types:liveMode:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Creates an SBSDKBarcodeScanner that accumulates multiple frames before returning a detection result.
-The barcode scanner&rsquo;s detect* methods will return empty results until they&rsquo;ve been called the
-given number of times. Then, they will perform detection on the frame with the least
-amount of blur. Intended for using with live detection.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span>
-    <span class="nf">initWithFrameAccumulator</span><span class="p">:(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">accumulatedFrames</span>
-                       <span class="nf">types</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKBarcodeType.html">SBSDKBarcodeType</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nv">barCodeTypes</span>
-                    <span class="nf">liveMode</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">useLiveMode</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">frameAccumulator</span> <span class="nv">accumulatedFrames</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">types</span> <span class="nv">barCodeTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKBarcodeType.html">SBSDKBarcodeType</a></span><span class="p">],</span> <span class="n">liveMode</span> <span class="nv">useLiveMode</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>accumulatedFrames</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Number of frames to accumulate before running detection on the sharpest one.</p>
-                                </div>
-                              </td>
-                            </tr>
                             <tr>
                               <td>
                                 <code>
@@ -2509,38 +2447,6 @@ Default is nil.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKBarcodeScanner(py)accumulatedFramesCount"></a>
-                    <a name="//apple_ref/swift/Property/accumulatedFramesCount" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBarcodeScanner(py)accumulatedFramesCount">accumulatedFramesCount</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Number of frames to accumulate before running detection on the sharpest one.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">accumulatedFramesCount</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">accumulatedFramesCount</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/c:objc(cs)SBSDKBarcodeScanner(py)additionalParameters"></a>
                     <a name="//apple_ref/swift/Property/additionalParameters" class="dashAnchor"></a>
                     <a class="token" href="#/c:objc(cs)SBSDKBarcodeScanner(py)additionalParameters">additionalParameters</a>
@@ -2645,7 +2551,7 @@ The default value is NO.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2022 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external noopener">doo GmbH</a>. All rights reserved. (Last updated: 2022-06-07)</p>
+      <p>&copy; 2022 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external noopener">doo GmbH</a>. All rights reserved. (Last updated: 2022-07-19)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
