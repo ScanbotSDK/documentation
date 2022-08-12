@@ -7,8 +7,8 @@
     <link rel="stylesheet" type="text/css" href="../../../stylesheet.css" title="Style">
     <link rel="stylesheet" type="text/css" href="../../../dokka-javadoc-stylesheet.css" title="Style">
     <link rel="stylesheet" type="text/css" href="../../../jquery/jquery-ui.css" title="Style">
-    <script type="text/javascript" src="../../../jquery/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="../../../jquery/jquery-migrate-3.0.1.js"></script>
+    <script type="text/javascript" src="../../../jquery/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../../../jquery/jquery-migrate-3.4.0.min.js"></script>
     <script type="text/javascript" src="../../../jquery/jquery-ui.js"></script>
 
     <script type="text/javascript" src="../../../search.js"></script>
@@ -110,7 +110,7 @@ var pathtoroot = "../../../";
 public final class <span class="typeNameLabel"><a href=ScanbotSDK.html>ScanbotSDK</a></span>
 
                     </pre>
-                    <div class="block"><p>Provider for Scanbot SDK features.</p><p>Typical use case is to create this object in <a href=https://developer.android.com/reference/kotlin/android/app/Activity.html#onCreate-android.os.Bundle?->Activity.onCreate</a> or <a href=https://developer.android.com/reference/kotlin/android/app/Service.html#onCreate-->Service.onCreate</a>, but it's allowed to create it during any other point of lifecycle before onDestroy.</p><p>Note that each instance stores reference to given context, so it should not be cached statically. All necessary caching is already done by <a href=ScanbotSDK.html>ScanbotSDK</a> itself - some methods might return same instance repeatedly.</p><p>Some insight - Scanbot uses Dependency Injection internally, but we do not want to expose it to users of the library to ensure that changes in DI implementation won't affect users of the library.</p></div>
+                    <div class="block"><p>Provider for Scanbot SDK features.</p><p>Typical use case is to create this object in <a href=https://developer.android.com/reference/kotlin/android/app/Activity.html#oncreate>Activity.onCreate</a> or <a href=https://developer.android.com/reference/kotlin/android/app/Service.html#oncreate>Service.onCreate</a>, but it's allowed to create it during any other point of lifecycle before onDestroy.</p><p>Note that each instance stores reference to given context, so it should not be cached statically. All necessary caching is already done by <a href=ScanbotSDK.html>ScanbotSDK</a> itself - some methods might return same instance repeatedly.</p><p>Some insight - Scanbot uses Dependency Injection internally, but we do not want to expose it to users of the library to ensure that changes in DI implementation won't affect users of the library.</p></div>
                 </li>
             </ul>
         </div>
@@ -165,14 +165,14 @@ public final class <span class="typeNameLabel"><a href=ScanbotSDK.html>ScanbotSD
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=ScanbotSDK.html#isLicenseActive>isLicenseActive</a></code></th>
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotSDK.html#isLicenseActive()>isLicenseActive</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="rowColor">
-                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=ScanbotSDK.html#isLicenseValid>isLicenseValid</a></code></th>
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotSDK.html#isLicenseValid()>isLicenseValid</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
@@ -286,17 +286,17 @@ public final class <span class="typeNameLabel"><a href=ScanbotSDK.html>ScanbotSD
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ScanbotSDK.html#getIsLicenseActive()>getIsLicenseActive</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotSDK.html#isLicenseActive()>isLicenseActive</a>() </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ScanbotSDK.html#getIsLicenseValid()>getIsLicenseValid</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotSDK.html#isLicenseValid()>isLicenseValid</a>() </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -544,7 +544,7 @@ public final class <span class="typeNameLabel"><a href=ScanbotSDK.html>ScanbotSD
                                         <tr id="i32" class="altColor">
                                             <td class="colFirst"><code>final &lt;T extends <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html>Any</a>&gt; <a href=ui/result/ResultRepository.html>ResultRepository</a>&lt;<a href=ScanbotSDK.html#resultRepositoryForClass(Class)>T</a>&gt;</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ScanbotSDK.html#resultRepositoryForClass(Class)>resultRepositoryForClass</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html>Class</a>&lt;<a href=ScanbotSDK.html#resultRepositoryForClass(Class)>T</a>&gt; clazz) </code>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotSDK.html#resultRepositoryForClass(Class)>resultRepositoryForClass</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Class.html>Class</a>&lt;<a href=ScanbotSDK.html#resultRepositoryForClass(Class)>T</a>&gt; clazz) </code>
                                             </th>
                                             <td class="colLast">Provides result repository for the given classTo get access to the full result object it is needed to do the following:val resultWrapper: ResultWrapper&lt;GenericDocument&gt; val result = ScanbotSDK(context).resultRepositoryForClass(resultWrapper.clazz).getResultAndErase(resultWrapper.</td>
                                         </tr>
@@ -641,30 +641,30 @@ public final class <span class="typeNameLabel"><a href=ScanbotSDK.html>ScanbotSD
                             </a>
                                 <h3>Method Detail</h3>
                                 
-                                <a id="getIsLicenseActive()">
+                                <a id="isLicenseActive()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>getIsLicenseActive</h4>
-                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=ScanbotSDK.html#getIsLicenseActive()>getIsLicenseActive</a>()</pre>
+                                        <h4>isLicenseActive</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=ScanbotSDK.html#isLicenseActive()>isLicenseActive</a>()</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
                                 </ul>
                                 
-                                <a id="getIsLicenseValid()">
+                                <a id="isLicenseValid()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>getIsLicenseValid</h4>
-                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=ScanbotSDK.html#getIsLicenseValid()>getIsLicenseValid</a>()</pre>
+                                        <h4>isLicenseValid</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=ScanbotSDK.html#isLicenseValid()>isLicenseValid</a>()</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -1129,7 +1129,7 @@ public final class <span class="typeNameLabel"><a href=ScanbotSDK.html>ScanbotSD
                                           >
                                     <li class="blockList">
                                         <h4>resultRepositoryForClass</h4>
-                                        <pre class="methodSignature"> final &lt;T extends <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html>Any</a>&gt; <a href=ui/result/ResultRepository.html>ResultRepository</a>&lt;<a href=ScanbotSDK.html#resultRepositoryForClass(Class)>T</a>&gt; <a href=ScanbotSDK.html#resultRepositoryForClass(Class)>resultRepositoryForClass</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html>Class</a>&lt;<a href=ScanbotSDK.html#resultRepositoryForClass(Class)>T</a>&gt; clazz)</pre>
+                                        <pre class="methodSignature"> final &lt;T extends <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html>Any</a>&gt; <a href=ui/result/ResultRepository.html>ResultRepository</a>&lt;<a href=ScanbotSDK.html#resultRepositoryForClass(Class)>T</a>&gt; <a href=ScanbotSDK.html#resultRepositoryForClass(Class)>resultRepositoryForClass</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Class.html>Class</a>&lt;<a href=ScanbotSDK.html#resultRepositoryForClass(Class)>T</a>&gt; clazz)</pre>
                                         <div class="block"><p>Provides result repository for the given class</p><p>To get access to the full result object it is needed to do the following:</p><p>val resultWrapper: ResultWrapper&lt;GenericDocument&gt; val result = ScanbotSDK(context).resultRepositoryForClass(resultWrapper.clazz).getResultAndErase(resultWrapper.resultId) The result object will contain the full GenericDocument object</p></div>
                                         
                                         <dl>
