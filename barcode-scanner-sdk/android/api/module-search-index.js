@@ -1,1 +1,1 @@
-var moduleSearchIndex = [{"l":"scanbot-sdk-android","url":"index.html"}]
+var moduleSearchIndex = [{"l":"dokka-aggregator","url":"index.html"}]
