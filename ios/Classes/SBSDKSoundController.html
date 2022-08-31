@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SBSDKBrightnessFilter Class Reference</title>
+    <title>SBSDKSoundController Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Class/SBSDKBrightnessFilter" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Class/SBSDKSoundController" class="dashAnchor"></a>
 
-    <a title="SBSDKBrightnessFilter Class Reference"></a>
+    <a title="SBSDKSoundController Class Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">ScanbotSDK for iOS Reference</a>
       <img class="carat" src="../img/carat.png" />
-      SBSDKBrightnessFilter Class Reference
+      SBSDKSoundController Class Reference
     </p>
 
     <div class="content-wrapper">
@@ -1833,14 +1833,14 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>SBSDKBrightnessFilter</h1>
+            <h1>SBSDKSoundController</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">SBSDKBrightnessFilter</span> <span class="p">:</span> <span class="nc"><a href="../Classes/SBSDKBaseAdjustableFilter.html">SBSDKBaseAdjustableFilter</a></span></code></pre>
+                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">SBSDKSoundController</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
 
                 </div>
               </div>
-            <p>Adjusts the brightness of an image.</p>
+            <p>A class to manage playback of sounds and vibration.</p>
 
           </div>
         </section>
@@ -1852,9 +1852,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKBrightnessFilter(py)brightness"></a>
-                    <a name="//apple_ref/swift/Property/brightness" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBrightnessFilter(py)brightness">brightness</a>
+                    <a name="/c:objc(cs)SBSDKSoundController(im)playBleepSound"></a>
+                    <a name="//apple_ref/swift/Method/-playBleepSound" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKSoundController(im)playBleepSound">-playBleepSound</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1862,19 +1862,87 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The amount of brightness to apply to the image. Valid values range from -1.0 (very dark) to 1.0 (very bright).</p>
+                        <p>Plays a standard bleep sound.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="kt">float</span> <span class="n">brightness</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">playBleepSound</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">brightness</span><span class="p">:</span> <span class="kt">Float</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">playBleepSound</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKSoundController(im)playCustomSoundFromURL:"></a>
+                    <a name="//apple_ref/swift/Method/-playCustomSoundFromURL:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKSoundController(im)playCustomSoundFromURL:">-playCustomSoundFromURL:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Plays a custom sound loaded from a given URL.</p>
+
+<ul>
+<li>- parameter: soundURL URL to the sound.</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">playCustomSoundFromURL</span><span class="p">:(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">soundURL</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">playCustomSound</span><span class="p">(</span><span class="n">from</span> <span class="nv">soundURL</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKSoundController(im)vibrate"></a>
+                    <a name="//apple_ref/swift/Method/-vibrate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKSoundController(im)vibrate">-vibrate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initiates a short vibration of the device. Can be used to give a haptic feedback.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">vibrate</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">vibrate</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
