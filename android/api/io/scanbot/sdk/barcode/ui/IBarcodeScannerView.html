@@ -109,7 +109,7 @@ var pathtoroot = "../../../../../";
 public interface <span class="typeNameLabel"><a href=IBarcodeScannerView.html>IBarcodeScannerView</a></span>
 
                     </pre>
-                    <div class="block"><p>A component which allows to quickly integrate a Barcode scanning feature into your application. It wraps <a href=../BarcodeDetectorFrameHandler.html>BarcodeDetectorFrameHandler</a>, <a href=../../ui/camera/IScanbotCameraView.html>io.scanbot.sdk.ui.camera.IScanbotCameraView</a>, <a href=../../camera/IFinderView.html>io.scanbot.sdk.camera.IFinderView</a> and <a href=../BarcodeAutoSnappingController.html>BarcodeAutoSnappingController</a> providing an interface allowing to contol appearance and behavior of the component.</p><p>To start using it you need to add <a href=BarcodeScannerView.html>BarcodeScannerView</a> into your layout and the call two methods <a href=IBarcodeScannerView.html#initCamera(CameraUiSettings)>initCamera</a> and <a href=IBarcodeScannerView.html#initDetectionBehavior(ScanbotBarcodeDetector,BarcodeDetectorFrameHandler.ResultHandler,IBarcodeScannerViewCallback)>initDetectionBehavior</a> (see corresponding docs).</p><p>If you use a legacy camera (non CameraX - see <a href=../../ui/camera/CameraUiSettings.html>CameraUiSettings</a>) it is also required to call IBarcodeScannerViewController.onResume on the viewController in Activity onResume and IBarcodeScannerViewController.onPause on the viewController in Activity onPause</p></div>
+                    <div class="block"><p>A component which allows to quickly integrate a Barcode scanning feature into your application. It wraps <a href=../BarcodeDetectorFrameHandler.html>BarcodeDetectorFrameHandler</a>, <a href=../../ui/camera/IScanbotCameraView.html>io.scanbot.sdk.ui.camera.IScanbotCameraView</a>, <a href=../../camera/IFinderView.html>io.scanbot.sdk.camera.IFinderView</a> and <a href=../BarcodeAutoSnappingController.html>BarcodeAutoSnappingController</a> providing an interface allowing to control appearance and behavior of the component.</p><p>To start using it you need to add <a href=BarcodeScannerView.html>BarcodeScannerView</a> into your layout and the call two methods <a href=IBarcodeScannerView.html#initCamera(CameraUiSettings)>initCamera</a> and <a href=IBarcodeScannerView.html#initDetectionBehavior(ScanbotBarcodeDetector,BarcodeDetectorFrameHandler.ResultHandler,IBarcodeScannerViewCallback)>initDetectionBehavior</a> (see corresponding docs).</p><p>If you use a legacy camera (non CameraX - see <a href=../../ui/camera/CameraUiSettings.html>CameraUiSettings</a>) it is also required to call IBarcodeScannerViewController.onResume on the viewController in Activity onResume and IBarcodeScannerViewController.onPause on the viewController in Activity onPause</p></div>
                 </li>
             </ul>
         </div>
@@ -277,6 +277,14 @@ public interface <span class="typeNameLabel"><a href=IBarcodeScannerView.html>IB
                                             <td class="colLast">Use this object to control the state or the behavior of the Finder inside</td>
                                         </tr>
                                         
+                                        <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=IBarcodeScannerSelectionOverlayController.html>IBarcodeScannerSelectionOverlayController</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=IBarcodeScannerView.html#getSelectionOverlayController()>getSelectionOverlayController</a>() </code>
+                                            </th>
+                                            <td class="colLast">Use this object to control the state or the behavior of the selection overlay layer</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -400,12 +408,27 @@ public interface <span class="typeNameLabel"><a href=IBarcodeScannerView.html>IB
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getFinderViewController</h4>
                                         <pre class="methodSignature"> abstract <a href=IBarcodeScannerFinderViewController.html>IBarcodeScannerFinderViewController</a> <a href=IBarcodeScannerView.html#getFinderViewController()>getFinderViewController</a>()</pre>
                                         <div class="block"><p>Use this object to control the state or the behavior of the Finder inside</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getSelectionOverlayController()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getSelectionOverlayController</h4>
+                                        <pre class="methodSignature"> abstract <a href=IBarcodeScannerSelectionOverlayController.html>IBarcodeScannerSelectionOverlayController</a> <a href=IBarcodeScannerView.html#getSelectionOverlayController()>getSelectionOverlayController</a>()</pre>
+                                        <div class="block"><p>Use this object to control the state or the behavior of the selection overlay layer</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
