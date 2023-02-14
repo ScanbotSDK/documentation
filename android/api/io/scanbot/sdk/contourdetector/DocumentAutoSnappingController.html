@@ -101,6 +101,11 @@ var pathtoroot = "../../../../";
                         <dt>All Implemented Interfaces:</dt>
                         <dd>
                             
+                            <code>io.scanbot.sdk.camera.BasePictureCallback</code>
+                            
+                            ,
+                            
+                            
                             <code>io.scanbot.sdk.camera.autosnapping.IAutoSnappingController</code>
                             
                             
@@ -111,7 +116,7 @@ var pathtoroot = "../../../../";
                     <pre class="wrap-overflow">
 
 public final class <span class="typeNameLabel"><a href=DocumentAutoSnappingController.html>DocumentAutoSnappingController</a></span>
-extends <a href=../autosnapping/BaseContourAutoSnappingController.html>BaseContourAutoSnappingController</a>
+extends <a href=../autosnapping/BaseContourAutoSnappingController.html>BaseContourAutoSnappingController</a> implements <a href=../camera/BasePictureCallback.html>BasePictureCallback</a>
                     </pre>
                     <div class="block"><p>Controls auto-snapping for a document based on it's detected contours.</p></div>
                 </li>
@@ -254,6 +259,14 @@ extends <a href=../autosnapping/BaseContourAutoSnappingController.html>BaseConto
                                             <td class="colLast">Allows to detach successor implementation class.</td>
                                         </tr>
                                         
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=DocumentAutoSnappingController.html#onPictureTakenInternal(ByteArray,Integer,List,Boolean)>onPictureTakenInternal</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> image, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> imageOrientation, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/android/graphics/PointF.html>PointF</a>&gt; finderRect, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> isCapturedAutomatically) </code>
+                                            </th>
+                                            <td class="colLast">Invoked when picture is taken</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -323,12 +336,27 @@ extends <a href=../autosnapping/BaseContourAutoSnappingController.html>BaseConto
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>detach</h4>
                                         <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=DocumentAutoSnappingController.html#detach()>detach</a>()</pre>
                                         <div class="block"><p>Allows to detach successor implementation class. To be called in place of usage when screen hierarchy is being destroyed.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onPictureTakenInternal(ByteArray,Integer,List,Boolean)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onPictureTakenInternal</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=DocumentAutoSnappingController.html#onPictureTakenInternal(ByteArray,Integer,List,Boolean)>onPictureTakenInternal</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> image, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> imageOrientation, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/android/graphics/PointF.html>PointF</a>&gt; finderRect, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> isCapturedAutomatically)</pre>
+                                        <div class="block"><p>Invoked when picture is taken</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
