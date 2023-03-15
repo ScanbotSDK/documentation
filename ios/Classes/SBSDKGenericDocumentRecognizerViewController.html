@@ -680,6 +680,24 @@
                 <a class="nav-group-task-link" href="../Classes/SBSDKUIEnableCameraUIConfiguration.html">SBSDKUIEnableCameraUIConfiguration</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SBSDKUIFinderDocumentScannerAccessibilityConfiguration.html">SBSDKUIFinderDocumentScannerAccessibilityConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SBSDKUIFinderDocumentScannerBehaviorConfiguration.html">SBSDKUIFinderDocumentScannerBehaviorConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SBSDKUIFinderDocumentScannerConfiguration.html">SBSDKUIFinderDocumentScannerConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SBSDKUIFinderDocumentScannerTextConfiguration.html">SBSDKUIFinderDocumentScannerTextConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SBSDKUIFinderDocumentScannerUIConfiguration.html">SBSDKUIFinderDocumentScannerUIConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SBSDKUIFinderDocumentScannerViewController.html">SBSDKUIFinderDocumentScannerViewController</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SBSDKUIGenericDocumentRecognizerBehaviorConfiguration.html">SBSDKUIGenericDocumentRecognizerBehaviorConfiguration</a>
               </li>
               <li class="nav-group-task">
@@ -1586,6 +1604,9 @@
                 <a class="nav-group-task-link" href="../Protocols/SBSDKUIDocumentScannerViewControllerDelegate.html">SBSDKUIDocumentScannerViewControllerDelegate</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/SBSDKUIFinderDocumentScannerViewControllerDelegate.html">SBSDKUIFinderDocumentScannerViewControllerDelegate</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/SBSDKUIGenericDocumentRecognizerViewControllerDelegate.html">SBSDKUIGenericDocumentRecognizerViewControllerDelegate</a>
               </li>
               <li class="nav-group-task">
@@ -1674,6 +1695,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/SBSDKUIDocumentScannerConfiguration.html">SBSDKUIDocumentScannerConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/SBSDKUIFinderDocumentScannerConfiguration.html">SBSDKUIFinderDocumentScannerConfiguration</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/SBSDKUIGenericDocumentRecognizerConfiguration.html">SBSDKUIGenericDocumentRecognizerConfiguration</a>
@@ -1808,19 +1832,20 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The array of recognizable document types. Readonly.</p>
+                        <p>The array of recognizable document types. 
+If nil, all document types will be recognized.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKGenericDocumentRootType.html">SBSDKGenericDocumentRootType</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">acceptedDocumentTypes</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKGenericDocumentRootType.html">SBSDKGenericDocumentRootType</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">acceptedDocumentTypes</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">acceptedDocumentTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKGenericDocumentRootType.html">SBSDKGenericDocumentRootType</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">acceptedDocumentTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKGenericDocumentRootType.html">SBSDKGenericDocumentRootType</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1840,19 +1865,20 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An array of normalized names for the document field types that should not be recognized. If nil all the fields are going to be recognized.</p>
+                        <p>An array of normalized names for the document field types that should not be recognized. 
+If nil all the fields are going to be recognized.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n">NSString</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">excludedFieldTypes</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n">NSString</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">excludedFieldTypes</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">excludedFieldTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">excludedFieldTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1916,6 +1942,91 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:objc(cs)SBSDKGenericDocumentRecognizerViewController(im)initWithParentViewController:parentView:delegate:"></a>
+                    <a name="//apple_ref/swift/Method/-initWithParentViewController:parentView:delegate:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKGenericDocumentRecognizerViewController(im)initWithParentViewController:parentView:delegate:">-initWithParentViewController:parentView:delegate:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Designated initializer. Installs the receiver as child view controller onto the parent view controllers
+view using its entire bounds area.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">instancetype</span><span class="p">)</span>
+    <span class="nf">initWithParentViewController</span><span class="p">:</span>
+        <span class="p">(</span><span class="n">nonnull</span> <span class="n">UIViewController</span> <span class="o">*</span><span class="p">)</span><span class="nv">parentViewController</span>
+                      <span class="nf">parentView</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nv">parentView</span>
+                        <span class="nf">delegate</span><span class="p">:</span>
+                            <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span>
+                                <span class="n"><a href="../Protocols/SBSDKGenericDocumentRecognizerViewControllerDelegate.html">SBSDKGenericDocumentRecognizerViewControllerDelegate</a></span><span class="o">&gt;</span><span class="p">)</span>
+                                <span class="n"><a href="../Classes/SBSDKGenericDocumentRecognizerViewController.html#/c:objc(cs)SBSDKGenericDocumentRecognizerViewController(py)delegate">delegate</a></span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">?(</span><span class="nv">parentViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">parentView</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">?,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SBSDKGenericDocumentRecognizerViewControllerDelegate.html">SBSDKGenericDocumentRecognizerViewControllerDelegate</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>parentViewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The view controller the newly created instance is embedded into.
+If parentViewController conforms to SBSDKGenericDocumentRecognizerViewControllerDelegate, it is automatically set as delegate.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>parentView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The view the newly created instance is embedded into.
+If nil the parentViewControllers view is used.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>delegate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The delegate of the receiver.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:objc(cs)SBSDKGenericDocumentRecognizerViewController(im)initWithParentViewController:parentView:acceptedDocumentTypes:delegate:"></a>
                     <a name="//apple_ref/swift/Method/-initWithParentViewController:parentView:acceptedDocumentTypes:delegate:" class="dashAnchor"></a>
                     <a class="token" href="#/c:objc(cs)SBSDKGenericDocumentRecognizerViewController(im)initWithParentViewController:parentView:acceptedDocumentTypes:delegate:">-initWithParentViewController:parentView:acceptedDocumentTypes:delegate:</a>
@@ -1939,7 +2050,7 @@ view using its entire bounds area.</p>
         <span class="p">(</span><span class="n">nonnull</span> <span class="n">UIViewController</span> <span class="o">*</span><span class="p">)</span><span class="nv">parentViewController</span>
                       <span class="nf">parentView</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nv">parentView</span>
            <span class="nf">acceptedDocumentTypes</span><span class="p">:</span>
-               <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKGenericDocumentRootType.html">SBSDKGenericDocumentRootType</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span>
+               <span class="p">(</span><span class="n">nullable</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKGenericDocumentRootType.html">SBSDKGenericDocumentRootType</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span>
                    <span class="n"><a href="../Classes/SBSDKGenericDocumentRecognizerViewController.html#/c:objc(cs)SBSDKGenericDocumentRecognizerViewController(py)acceptedDocumentTypes">acceptedDocumentTypes</a></span>
                         <span class="n"><a href="../Classes/SBSDKGenericDocumentRecognizerViewController.html#/c:objc(cs)SBSDKGenericDocumentRecognizerViewController(py)delegate">delegate</a></span><span class="o">:</span>
                             <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span>
@@ -1949,7 +2060,7 @@ view using its entire bounds area.</p>
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">?(</span><span class="nv">parentViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">parentView</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">?,</span> <span class="nv">acceptedDocumentTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKGenericDocumentRootType.html">SBSDKGenericDocumentRootType</a></span><span class="p">],</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SBSDKGenericDocumentRecognizerViewControllerDelegate.html">SBSDKGenericDocumentRecognizerViewControllerDelegate</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">?(</span><span class="nv">parentViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">parentView</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">?,</span> <span class="nv">acceptedDocumentTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKGenericDocumentRootType.html">SBSDKGenericDocumentRootType</a></span><span class="p">]?,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SBSDKGenericDocumentRecognizerViewControllerDelegate.html">SBSDKGenericDocumentRecognizerViewControllerDelegate</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1991,7 +2102,7 @@ If nil the parentViewControllers view is used.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>Array of document types to be recognized.</p>
+                                  <p>Array of document types to be recognized. If nil, all document types will be recognized.</p>
                                 </div>
                               </td>
                             </tr>
@@ -2039,7 +2150,7 @@ view using its entire bounds area.</p>
         <span class="p">(</span><span class="n">nonnull</span> <span class="n">UIViewController</span> <span class="o">*</span><span class="p">)</span><span class="nv">parentViewController</span>
                       <span class="nf">parentView</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nv">parentView</span>
            <span class="nf">acceptedDocumentTypes</span><span class="p">:</span>
-               <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKGenericDocumentRootType.html">SBSDKGenericDocumentRootType</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span>
+               <span class="p">(</span><span class="n">nullable</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKGenericDocumentRootType.html">SBSDKGenericDocumentRootType</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span>
                    <span class="n"><a href="../Classes/SBSDKGenericDocumentRecognizerViewController.html#/c:objc(cs)SBSDKGenericDocumentRecognizerViewController(py)acceptedDocumentTypes">acceptedDocumentTypes</a></span>
               <span class="n"><a href="../Classes/SBSDKGenericDocumentRecognizerViewController.html#/c:objc(cs)SBSDKGenericDocumentRecognizerViewController(py)excludedFieldTypes">excludedFieldTypes</a></span><span class="o">:</span>
                   <span class="p">(</span><span class="n">nullable</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n">NSString</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span><span class="n"><a href="../Classes/SBSDKGenericDocumentRecognizerViewController.html#/c:objc(cs)SBSDKGenericDocumentRecognizerViewController(py)excludedFieldTypes">excludedFieldTypes</a></span>
@@ -2051,7 +2162,7 @@ view using its entire bounds area.</p>
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">?(</span><span class="nv">parentViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">parentView</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">?,</span> <span class="nv">acceptedDocumentTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKGenericDocumentRootType.html">SBSDKGenericDocumentRootType</a></span><span class="p">],</span> <span class="nv">excludedFieldTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SBSDKGenericDocumentRecognizerViewControllerDelegate.html">SBSDKGenericDocumentRecognizerViewControllerDelegate</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">?(</span><span class="nv">parentViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">parentView</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">?,</span> <span class="nv">acceptedDocumentTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKGenericDocumentRootType.html">SBSDKGenericDocumentRootType</a></span><span class="p">]?,</span> <span class="nv">excludedFieldTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SBSDKGenericDocumentRecognizerViewControllerDelegate.html">SBSDKGenericDocumentRecognizerViewControllerDelegate</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -2093,7 +2204,7 @@ If nil the parentViewControllers view is used.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>Array of document types to be recognized.</p>
+                                  <p>Array of document types to be recognized. If nil, all document types will be recognized.</p>
                                 </div>
                               </td>
                             </tr>
@@ -2167,7 +2278,7 @@ If nil the parentViewControllers view is used.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2023 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external noopener">doo GmbH</a>. All rights reserved. (Last updated: 2023-02-01)</p>
+      <p>&copy; 2023 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external noopener">doo GmbH</a>. All rights reserved. (Last updated: 2023-03-15)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
