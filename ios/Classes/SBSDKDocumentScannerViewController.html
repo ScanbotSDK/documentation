@@ -380,9 +380,6 @@
                 <a class="nav-group-task-link" href="../Classes/SBSDKMachineReadableZoneRecognizerResultCheckDigit.html">SBSDKMachineReadableZoneRecognizerResultCheckDigit</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/SBSDKMachineReadableZoneRecognizerTextLine.html">SBSDKMachineReadableZoneRecognizerTextLine</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SBSDKMedicalCertificateDocumentField.html">SBSDKMedicalCertificateDocumentField</a>
               </li>
               <li class="nav-group-task">
@@ -662,6 +659,9 @@
                 <a class="nav-group-task-link" href="../Classes/SBSDKUIDocumentScannerConfiguration.html">SBSDKUIDocumentScannerConfiguration</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SBSDKUIDocumentScannerSettings.html">SBSDKUIDocumentScannerSettings</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SBSDKUIDocumentScannerTextConfiguration.html">SBSDKUIDocumentScannerTextConfiguration</a>
               </li>
               <li class="nav-group-task">
@@ -896,6 +896,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Constants.html#/c:@SBSDKBarcodeTypeCode128">SBSDKBarcodeTypeCode128</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Constants.html#/c:@SBSDKBarcodeTypeCode25">SBSDKBarcodeTypeCode25</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Constants.html#/c:@SBSDKBarcodeTypeCode39">SBSDKBarcodeTypeCode39</a>
@@ -1766,8 +1769,7 @@ and energy management.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Designated initializer. Installs the receiver as child view controller onto the parent view controllers
-view using its entire bounds area.</p>
+                        <p>Installs the receiver as child view controller onto the parent view controllers view using its entire bounds area.</p>
 
                       </div>
                       <div class="declaration">
@@ -1777,7 +1779,7 @@ view using its entire bounds area.</p>
                           <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">instancetype</span><span class="p">)</span>
     <span class="nf">initWithParentViewController</span><span class="p">:</span>
         <span class="p">(</span><span class="n">nonnull</span> <span class="n">UIViewController</span> <span class="o">*</span><span class="p">)</span><span class="nv">parentViewController</span>
-                      <span class="nf">parentView</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nv">containerView</span>
+                      <span class="nf">parentView</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nv">containerView</span>
                         <span class="nf">delegate</span><span class="p">:</span>
                             <span class="p">(</span><span class="n">nullable</span>
                                  <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/SBSDKDocumentScannerViewControllerDelegate.html">SBSDKDocumentScannerViewControllerDelegate</a></span><span class="o">&gt;</span><span class="p">)</span>
@@ -1786,7 +1788,7 @@ view using its entire bounds area.</p>
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">?(</span><span class="nv">parentViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="n">parentView</span> <span class="nv">containerView</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">?,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SBSDKDocumentScannerViewControllerDelegate.html">SBSDKDocumentScannerViewControllerDelegate</a></span><span class="p">?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">?(</span><span class="nv">parentViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="n">parentView</span> <span class="nv">containerView</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SBSDKDocumentScannerViewControllerDelegate.html">SBSDKDocumentScannerViewControllerDelegate</a></span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -1802,21 +1804,19 @@ view using its entire bounds area.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The view controller in which the newly created instance is embedded into.
-If parentViewController conforms to SBSDKScannerViewControllerDelegate, it is automatically set as delegate.</p>
+                                  <p>The view controller the newly created instance is embedded into.</p>
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td>
                                 <code>
-                                <em>containerView</em>
+                                <em>parentView</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The view in which the newly created instance is embedded into.
-If nil the parentViewControllers view is used.</p>
+                                  <p>The view the newly created instance is embedded into.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1858,7 +1858,7 @@ If nil the parentViewControllers view is used.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">weak</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/SBSDKDocumentScannerViewControllerDelegate.html">SBSDKDocumentScannerViewControllerDelegate</a></span><span class="o">&gt;</span> <span class="n">_Nullable</span> <span class="n">delegate</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">weak</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/SBSDKDocumentScannerViewControllerDelegate.html">SBSDKDocumentScannerViewControllerDelegate</a></span><span class="o">&gt;</span> <span class="n">delegate</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -2865,7 +2865,7 @@ fires. Calls the appropriate delegate functions.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2023 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external noopener">doo GmbH</a>. All rights reserved. (Last updated: 2023-03-15)</p>
+      <p>&copy; 2023 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external noopener">doo GmbH</a>. All rights reserved. (Last updated: 2023-04-19)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
