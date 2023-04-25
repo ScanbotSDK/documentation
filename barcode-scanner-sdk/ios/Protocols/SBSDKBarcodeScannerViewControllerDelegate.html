@@ -370,6 +370,9 @@
                 <a class="nav-group-task-link" href="../Constants.html#/c:@SBSDKBarcodeTypeCode128">SBSDKBarcodeTypeCode128</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Constants.html#/c:@SBSDKBarcodeTypeCode25">SBSDKBarcodeTypeCode25</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Constants.html#/c:@SBSDKBarcodeTypeCode39">SBSDKBarcodeTypeCode39</a>
               </li>
               <li class="nav-group-task">
@@ -620,7 +623,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Informs the delegate that the receiver has detected some barcodes.</p>
+                        <p>Informs the delegate that the receiver has detected some barcodes.
+If the receivers selectionOverlayEnabled property is set to YES and its automaticSelectionEnabled property is
+set to NO, this method is not called unless the user taps on a barcode in the selection overlay.</p>
 
                       </div>
                       <div class="declaration">
@@ -805,73 +810,6 @@ Optional.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(pl)SBSDKBarcodeScannerViewControllerDelegate(im)barcodeScannerController:didTapOnBarcode:"></a>
-                    <a name="//apple_ref/swift/Method/-barcodeScannerController:didTapOnBarcode:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)SBSDKBarcodeScannerViewControllerDelegate(im)barcodeScannerController:didTapOnBarcode:">-barcodeScannerController:didTapOnBarcode:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Informs the delegate that a barcode has been tapped on the barcode selection overlay.
-Optional.
-Is not called if the barcode selection overlay is disabled.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">barcodeScannerController</span><span class="p">:</span>
-            <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKBarcodeScannerViewController.html">SBSDKBarcodeScannerViewController</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">controller</span>
-                 <span class="nf">didTapOnBarcode</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">code</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">barcodeScannerController</span><span class="p">(</span><span class="n">_</span> <span class="nv">controller</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKBarcodeScannerViewController.html">SBSDKBarcodeScannerViewController</a></span><span class="p">,</span> <span class="n">didTapOnBarcode</span> <span class="nv">code</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>controller</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The calling SBSDKBarcodeScannerViewController.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>code</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The SBSDKBarcodeScannerResult the user has tapped on.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/c:objc(pl)SBSDKBarcodeScannerViewControllerDelegate(im)barcodeScannerController:shouldHighlightResult:"></a>
                     <a name="//apple_ref/swift/Method/-barcodeScannerController:shouldHighlightResult:" class="dashAnchor"></a>
                     <a class="token" href="#/c:objc(pl)SBSDKBarcodeScannerViewControllerDelegate(im)barcodeScannerController:shouldHighlightResult:">-barcodeScannerController:shouldHighlightResult:</a>
@@ -883,7 +821,7 @@ Is not called if the barcode selection overlay is disabled.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Asks the delegate whether to highlight a barcode on the selection overlay or not.
-Only called only when the selection overlay is enabled.</p>
+Called only if the receivers selectionOverlayEnabled property is set to YES and custom-cell mode is disabled.</p>
 
                       </div>
                       <div class="declaration">
@@ -953,7 +891,7 @@ Only called only when the selection overlay is enabled.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Asks the delegate for the string to be displayed for the given barcode result on the selection overlay.
-Only called only when the selection overlay is enabled.</p>
+Called only if the receivers selectionOverlayEnabled property is set to YES and custom-cell mode is disabled.</p>
 
                       </div>
                       <div class="declaration">
@@ -1013,6 +951,305 @@ Otherwise the setting of the selectionOverlayTextFormat property is ignored.</p>
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SBSDKBarcodeScannerViewControllerDelegate(im)barcodeScannerController:didTapOnBarcode:"></a>
+                    <a name="//apple_ref/swift/Method/-barcodeScannerController:didTapOnBarcode:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SBSDKBarcodeScannerViewControllerDelegate(im)barcodeScannerController:didTapOnBarcode:">-barcodeScannerController:didTapOnBarcode:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Informs the delegate that a barcode has been tapped on the barcode selection overlay.
+Optional.
+Called only if the receivers selectionOverlayEnabled property is set to YES and
+its automaticSelectionEnabled property is set to NO.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">barcodeScannerController</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKBarcodeScannerViewController.html">SBSDKBarcodeScannerViewController</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">controller</span>
+                 <span class="nf">didTapOnBarcode</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">code</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">barcodeScannerController</span><span class="p">(</span><span class="n">_</span> <span class="nv">controller</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKBarcodeScannerViewController.html">SBSDKBarcodeScannerViewController</a></span><span class="p">,</span> <span class="n">didTapOnBarcode</span> <span class="nv">code</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>controller</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calling SBSDKBarcodeScannerViewController.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>code</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The SBSDKBarcodeScannerResult the user has tapped on.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SBSDKBarcodeScannerViewControllerDelegate(im)barcodeScannerController:didUpdateDetectedBarcodes:"></a>
+                    <a name="//apple_ref/swift/Method/-barcodeScannerController:didUpdateDetectedBarcodes:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SBSDKBarcodeScannerViewControllerDelegate(im)barcodeScannerController:didUpdateDetectedBarcodes:">-barcodeScannerController:didUpdateDetectedBarcodes:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Informs the delegate that the receiver has updated the detected barcodes.
+Called only if the receivers selectionOverlayEnabled property is set to YES and
+its automaticSelectionEnabled property is set to NO.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">barcodeScannerController</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKBarcodeScannerViewController.html">SBSDKBarcodeScannerViewController</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">controller</span>
+       <span class="nf">didUpdateDetectedBarcodes</span><span class="p">:</span>
+           <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nv">codes</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">barcodeScannerController</span><span class="p">(</span><span class="n">_</span> <span class="nv">controller</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKBarcodeScannerViewController.html">SBSDKBarcodeScannerViewController</a></span><span class="p">,</span> <span class="n">didUpdateDetectedBarcodes</span> <span class="nv">codes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>controller</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calling SBSDKBarcodeScannerViewController.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>codes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Array of SBSDKBarcodeScannerResult containing the currently detected barcodes.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SBSDKBarcodeScannerViewControllerDelegate(im)barcodeScannerController:configureCustomCell:forBarcode:withBarcodePolygonPath:"></a>
+                    <a name="//apple_ref/swift/Method/-barcodeScannerController:configureCustomCell:forBarcode:withBarcodePolygonPath:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SBSDKBarcodeScannerViewControllerDelegate(im)barcodeScannerController:configureCustomCell:forBarcode:withBarcodePolygonPath:">-barcodeScannerController:configureCustomCell:forBarcode:withBarcodePolygonPath:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to configure your custom cell for a barcode. Only called in custom-cell mode.
+Called only if the receivers selectionOverlayEnabled property is set to YES and custom-cell mode is enabled.
+Must be implemented if custom-cell mode is enabled!</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">barcodeScannerController</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKBarcodeScannerViewController.html">SBSDKBarcodeScannerViewController</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">controller</span>
+             <span class="nf">configureCustomCell</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">UICollectionViewCell</span> <span class="o">*</span><span class="p">)</span><span class="nv">cell</span>
+                      <span class="nf">forBarcode</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">code</span>
+          <span class="nf">withBarcodePolygonPath</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">UIBezierPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">path</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">barcodeScannerController</span><span class="p">(</span><span class="n">_</span> <span class="nv">controller</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKBarcodeScannerViewController.html">SBSDKBarcodeScannerViewController</a></span><span class="p">,</span> <span class="n">configureCustomCell</span> <span class="nv">cell</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span> <span class="n">forBarcode</span> <span class="nv">code</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKBarcodeScannerResult.html">SBSDKBarcodeScannerResult</a></span><span class="p">,</span> <span class="n">withBarcodePolygonPath</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">UIBezierPath</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>controller</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calling SBSDKBarcodeScannerViewController.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cell</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The UICollectionViewCell to be configured with the barcode. Must be casted to your custom cells class.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>code</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The barcode scanner result that should be represented by the cell.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>path</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The UIBezierPath of the actual barcodes outline in the view space of the cell with an unmodified frame.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SBSDKBarcodeScannerViewControllerDelegate(im)barcodeScannerController:customCellFrameForProposedFrame:"></a>
+                    <a name="//apple_ref/swift/Method/-barcodeScannerController:customCellFrameForProposedFrame:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SBSDKBarcodeScannerViewControllerDelegate(im)barcodeScannerController:customCellFrameForProposedFrame:">-barcodeScannerController:customCellFrameForProposedFrame:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to modify the frame of a custom cell.
+Called only if the receivers selectionOverlayEnabled property is set to YES and custom-cell mode is enabled.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">CGRect</span><span class="p">)</span><span class="nf">barcodeScannerController</span><span class="p">:</span>
+              <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/SBSDKBarcodeScannerViewController.html">SBSDKBarcodeScannerViewController</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">controller</span>
+    <span class="nf">customCellFrameForProposedFrame</span><span class="p">:(</span><span class="n">CGRect</span><span class="p">)</span><span class="nv">frame</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">barcodeScannerController</span><span class="p">(</span><span class="n">_</span> <span class="nv">controller</span><span class="p">:</span> <span class="kt"><a href="../Classes/SBSDKBarcodeScannerViewController.html">SBSDKBarcodeScannerViewController</a></span><span class="p">,</span> <span class="n">customCellFrameForProposedFrame</span> <span class="nv">frame</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGRect</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>controller</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calling SBSDKBarcodeScannerViewController.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>frame</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The proposed frame of a custom selection overlay cell in view space.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The final frame of the cell.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -1021,7 +1258,7 @@ Otherwise the setting of the selectionOverlayTextFormat property is ignored.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2023 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external noopener">doo GmbH</a>. All rights reserved. (Last updated: 2023-02-03)</p>
+      <p>&copy; 2023 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external noopener">doo GmbH</a>. All rights reserved. (Last updated: 2023-04-25)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
