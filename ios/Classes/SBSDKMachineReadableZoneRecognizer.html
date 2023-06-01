@@ -1685,45 +1685,6 @@
             <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/SBSDKUIBarcodeScannerConfiguration.html">SBSDKUIBarcodeScannerConfiguration</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/SBSDKUIBarcodesBatchScannerConfiguration.html">SBSDKUIBarcodesBatchScannerConfiguration</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/SBSDKUICheckRecognizerConfiguration.html">SBSDKUICheckRecognizerConfiguration</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/SBSDKUICroppingScreenConfiguration.html">SBSDKUICroppingScreenConfiguration</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/SBSDKUIDocumentScannerConfiguration.html">SBSDKUIDocumentScannerConfiguration</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/SBSDKUIFinderDocumentScannerConfiguration.html">SBSDKUIFinderDocumentScannerConfiguration</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/SBSDKUIGenericDocumentRecognizerConfiguration.html">SBSDKUIGenericDocumentRecognizerConfiguration</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/SBSDKUIHealthInsuranceCardScannerConfiguration.html">SBSDKUIHealthInsuranceCardScannerConfiguration</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/SBSDKUILicensePlateScannerConfiguration.html">SBSDKUILicensePlateScannerConfiguration</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/SBSDKUIMRZScannerConfiguration.html">SBSDKUIMRZScannerConfiguration</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/SBSDKUIMedicalCertificateScannerConfiguration.html">SBSDKUIMedicalCertificateScannerConfiguration</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/SBSDKUITextDataScannerConfiguration.html">SBSDKUITextDataScannerConfiguration</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/ScanbotSDK.html">ScanbotSDK</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/UIColor.html">UIColor</a>
               </li>
             </ul>
@@ -1756,9 +1717,9 @@ in application bundle</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKMachineReadableZoneRecognizer(py)resultAccumulationCount"></a>
-                    <a name="//apple_ref/swift/Property/resultAccumulationCount" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKMachineReadableZoneRecognizer(py)resultAccumulationCount">resultAccumulationCount</a>
+                    <a name="/c:objc(cs)SBSDKMachineReadableZoneRecognizer(py)maxNumberOfAccumulatedResults"></a>
+                    <a name="//apple_ref/swift/Property/maxNumberOfAccumulatedResults" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKMachineReadableZoneRecognizer(py)maxNumberOfAccumulatedResults">maxNumberOfAccumulatedResults</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1766,9 +1727,11 @@ in application bundle</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The number of frames to be accumulated results when recognizing machine readable zones. 
-Lower values are more inaccurate but faster, higher values are more accurate but slower. 
-Values less than or equal 1 effectively turn accumulation off.
+                        <p>The maximum number of results to be accumulated when live-recognizing machine readable zones on sample buffers. 
+This sets the second part of a requiredNumberOfEqualAccumulatedResults-of-maxNumberOfAccumulatedResults selector, e.g. 2 of 4 results must be equal. 
+To make the selector less strict, select a higher value, e.g. 2 of 5 or even 2 of 6.
+Setting a value lower than requiredNumberOfEqualAccumulatedResults will throw an exception.
+Values less-than-or-equal to 0, will effectively turn off the result accumulation.
 The default value is 4.</p>
 
                       </div>
@@ -1776,12 +1739,49 @@ The default value is 4.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSUInteger</span> <span class="n">resultAccumulationCount</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSUInteger</span> <span class="n">maxNumberOfAccumulatedResults</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">resultAccumulationCount</span><span class="p">:</span> <span class="kt">UInt</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">maxNumberOfAccumulatedResults</span><span class="p">:</span> <span class="kt">UInt</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SBSDKMachineReadableZoneRecognizer(py)requiredNumberOfEqualAccumulatedResults"></a>
+                    <a name="//apple_ref/swift/Property/requiredNumberOfEqualAccumulatedResults" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SBSDKMachineReadableZoneRecognizer(py)requiredNumberOfEqualAccumulatedResults">requiredNumberOfEqualAccumulatedResults</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The minimum number of equal results in the accumulator when live-recognizing machine readable zones on sample buffers. 
+This sets the first part of a requiredNumberOfEqualAccumulatedResults-of-maxNumberOfAccumulatedResults selector, e.g. 2 of 4 results must be equal. 
+To get less false positive results make the selector more strict by selecting a higher value, e.g. 3 of 4 or even 4 of 4.
+Setting a value higher than maxNumberOfAccumulatedResults will throw an exception.
+Values less-than-or-equal to 0, will effectively turn off the result accumulation.
+The default value is 2.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSUInteger</span> <span class="n">requiredNumberOfEqualAccumulatedResults</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">requiredNumberOfEqualAccumulatedResults</span><span class="p">:</span> <span class="kt">UInt</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1993,7 +1993,7 @@ if no frame is used.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2023 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external noopener">doo GmbH</a>. All rights reserved. (Last updated: 2023-04-19)</p>
+      <p>&copy; 2023 <a class="link" href="https://scanbot.io/sdk" target="_blank" rel="external noopener">doo GmbH</a>. All rights reserved. (Last updated: 2023-06-01)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
