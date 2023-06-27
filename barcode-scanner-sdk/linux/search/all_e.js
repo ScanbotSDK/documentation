@@ -1,0 +1,11 @@
+var searchData=
+[
+  ['tensorrt_5fmax_5finput_5fheight_0',['tensorrt_max_input_height',['../group__C-BarcodeRecognizer.html#ae7e52779f9f116f5962165b92cdf8a6f',1,'scanbotsdk_barcode_recognizer_init_params_t::tensorrt_max_input_height'],['../classscanbotsdk_1_1scanbotsdk_1_1BarcodeRecognizerInitParams.html#ad708c04492b868061c24d83b3b07f609',1,'scanbotsdk.scanbotsdk.BarcodeRecognizerInitParams.tensorrt_max_input_height']]],
+  ['tensorrt_5fmax_5finput_5fwidth_1',['tensorrt_max_input_width',['../group__C-BarcodeRecognizer.html#ab8a54f5e62cdffeecfbfc4801fabc6d1',1,'scanbotsdk_barcode_recognizer_init_params_t::tensorrt_max_input_width'],['../classscanbotsdk_1_1scanbotsdk_1_1BarcodeRecognizerInitParams.html#a7e6dcb8ac64f27f29c413705c44a41d7',1,'scanbotsdk.scanbotsdk.BarcodeRecognizerInitParams.tensorrt_max_input_width']]],
+  ['tensorrt_5fmax_5fworkspace_5fsize_2',['tensorrt_max_workspace_size',['../group__C-BarcodeRecognizer.html#a48c09af4f78dae0edda2782f616b42a8',1,'scanbotsdk_barcode_recognizer_init_params_t::tensorrt_max_workspace_size'],['../classscanbotsdk_1_1scanbotsdk_1_1BarcodeRecognizerInitParams.html#aca1e02d8bcfa78d150d83396d9596b05',1,'scanbotsdk.scanbotsdk.BarcodeRecognizerInitParams.tensorrt_max_workspace_size']]],
+  ['tensorrtmaxinputheight_3',['tensorrtMaxInputHeight',['../structscanbotsdk_1_1BarcodeRecognizer_1_1InitializationParams.html#ab2d6806b7192e8915f98c0ec1a6f53ba',1,'scanbotsdk::BarcodeRecognizer::InitializationParams']]],
+  ['tensorrtmaxinputwidth_4',['tensorrtMaxInputWidth',['../structscanbotsdk_1_1BarcodeRecognizer_1_1InitializationParams.html#a5a56c39d9a23df11bea5e328de9f06d9',1,'scanbotsdk::BarcodeRecognizer::InitializationParams']]],
+  ['tensorrtmaxworkspacesize_5',['tensorrtMaxWorkspaceSize',['../structscanbotsdk_1_1BarcodeRecognizer_1_1InitializationParams.html#a15f3edc668e3669e136b4161b14c10c9',1,'scanbotsdk::BarcodeRecognizer::InitializationParams']]],
+  ['text_6',['text',['../structscanbotsdk_1_1BarCodeItem.html#a23c058547fbc73b5659191844a9f258c',1,'scanbotsdk::BarCodeItem::text'],['../classscanbotsdk_1_1scanbotsdk_1_1Barcode.html#aa69d8a850601e73031ceff7a95c4607d',1,'scanbotsdk.scanbotsdk.Barcode.text']]],
+  ['toimage_7',['toImage',['../ScanbotSDKOpenCV_8hpp.html#a321d8a5830e926c90bd7d315f15d1386',1,'scanbotsdk']]]
+];
