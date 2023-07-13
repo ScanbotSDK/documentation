@@ -254,7 +254,7 @@ extends <a href=../core/SelfDisposable.html>SelfDisposable</a>
                                         <tr id="i1" class="rowColor">
                                             <td class="colFirst"><code>final <a href=model/BarcodeScannerResult.html>BarcodeScannerResult</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodeScanner.html#detectAndDecode(ByteArray,Integer,Integer,Integer)>detectAndDecode</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> nv21, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> width, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> height, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> orientation) </code>
+                                            <th class="colSecond" scope="row"><code><a href=BarcodeScanner.html#detectAndDecode(ByteArray,Integer,Integer,Integer,Boolean)>detectAndDecode</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> nv21, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> width, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> height, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> orientation, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> isLive) </code>
                                             </th>
                                             <td class="colLast">Detect barcodes on the nv21 frame.</td>
                                         </tr>
@@ -262,7 +262,7 @@ extends <a href=../core/SelfDisposable.html>SelfDisposable</a>
                                         <tr id="i2" class="altColor">
                                             <td class="colFirst"><code>final <a href=model/BarcodeScannerResult.html>BarcodeScannerResult</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodeScanner.html#detectAndDecodeInArea(ByteArray,Rect,Integer,Integer,Integer)>detectAndDecodeInArea</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> nv21, <a href=https://developer.android.com/reference/kotlin/android/graphics/Rect.html>Rect</a> areaRect, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> width, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> height, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> orientation) </code>
+                                            <th class="colSecond" scope="row"><code><a href=BarcodeScanner.html#detectAndDecodeInArea(ByteArray,Rect,Integer,Integer,Integer,Boolean)>detectAndDecodeInArea</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> nv21, <a href=https://developer.android.com/reference/kotlin/android/graphics/Rect.html>Rect</a> areaRect, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> width, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> height, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> orientation, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> isLive) </code>
                                             </th>
                                             <td class="colLast">Detect barcodes on the nv21 frame.</td>
                                         </tr>
@@ -360,7 +360,7 @@ extends <a href=../core/SelfDisposable.html>SelfDisposable</a>
                                     </li>
                                 </ul>
                                 
-                                <a id="detectAndDecode(ByteArray,Integer,Integer,Integer)">
+                                <a id="detectAndDecode(ByteArray,Integer,Integer,Integer,Boolean)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -368,7 +368,7 @@ extends <a href=../core/SelfDisposable.html>SelfDisposable</a>
                                           >
                                     <li class="blockList">
                                         <h4>detectAndDecode</h4>
-                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-synchronized/index.html>Synchronized</a>() final <a href=model/BarcodeScannerResult.html>BarcodeScannerResult</a> <a href=BarcodeScanner.html#detectAndDecode(ByteArray,Integer,Integer,Integer)>detectAndDecode</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> nv21, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> width, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> height, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> orientation)</pre>
+                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-synchronized/index.html>Synchronized</a>() final <a href=model/BarcodeScannerResult.html>BarcodeScannerResult</a> <a href=BarcodeScanner.html#detectAndDecode(ByteArray,Integer,Integer,Integer,Boolean)>detectAndDecode</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> nv21, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> width, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> height, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> orientation, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> isLive)</pre>
                                         <div class="block"><p>Detect barcodes on the nv21 frame.</p></div>
                                         
                                         <dl>
@@ -387,6 +387,12 @@ extends <a href=../core/SelfDisposable.html>SelfDisposable</a>
                                             
                                             
                                             
+                                            <dd><code>orientation</code> - The frame orientation degrees.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>isLive</code> - if <code>true</code> - live engine mode will be used.</dd>
+                                            
                                             
                                         </dl>
                                         
@@ -394,7 +400,7 @@ extends <a href=../core/SelfDisposable.html>SelfDisposable</a>
                                     </li>
                                 </ul>
                                 
-                                <a id="detectAndDecodeInArea(ByteArray,Rect,Integer,Integer,Integer)">
+                                <a id="detectAndDecodeInArea(ByteArray,Rect,Integer,Integer,Integer,Boolean)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -402,7 +408,7 @@ extends <a href=../core/SelfDisposable.html>SelfDisposable</a>
                                           >
                                     <li class="blockList">
                                         <h4>detectAndDecodeInArea</h4>
-                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-synchronized/index.html>Synchronized</a>() final <a href=model/BarcodeScannerResult.html>BarcodeScannerResult</a> <a href=BarcodeScanner.html#detectAndDecodeInArea(ByteArray,Rect,Integer,Integer,Integer)>detectAndDecodeInArea</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> nv21, <a href=https://developer.android.com/reference/kotlin/android/graphics/Rect.html>Rect</a> areaRect, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> width, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> height, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> orientation)</pre>
+                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-synchronized/index.html>Synchronized</a>() final <a href=model/BarcodeScannerResult.html>BarcodeScannerResult</a> <a href=BarcodeScanner.html#detectAndDecodeInArea(ByteArray,Rect,Integer,Integer,Integer,Boolean)>detectAndDecodeInArea</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> nv21, <a href=https://developer.android.com/reference/kotlin/android/graphics/Rect.html>Rect</a> areaRect, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> width, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> height, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> orientation, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> isLive)</pre>
                                         <div class="block"><p>Detect barcodes on the nv21 frame.</p></div>
                                         
                                         <dl>
@@ -424,6 +430,8 @@ extends <a href=../core/SelfDisposable.html>SelfDisposable</a>
                                             
                                             
                                             <dd><code>orientation</code> - The frame orientation degrees.</dd>
+                                            
+                                            
                                             
                                             
                                         </dl>
