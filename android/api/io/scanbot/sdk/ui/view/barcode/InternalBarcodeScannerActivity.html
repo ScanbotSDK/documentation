@@ -101,6 +101,11 @@ var pathtoroot = "../../../../../../";
                         <dt>All Implemented Interfaces:</dt>
                         <dd>
                             
+                            <code>io.scanbot.sdk.ui.view.barcode.dialog.BarcodeConfirmationDialogInterface</code>
+                            
+                            ,
+                            
+                            
                             <code>io.scanbot.sdk.ui.view.base.Cancelable</code>
                             
                             ,
@@ -126,7 +131,7 @@ var pathtoroot = "../../../../../../";
                     <pre class="wrap-overflow">
 
 public abstract class <span class="typeNameLabel"><a href=InternalBarcodeScannerActivity.html>InternalBarcodeScannerActivity</a></span>
-extends <a href=BaseBarcodeScannerActivity.html>BaseBarcodeScannerActivity</a>
+extends <a href=BaseBarcodeScannerActivity.html>BaseBarcodeScannerActivity</a> implements <a href=dialog/BarcodeConfirmationDialogInterface.html>BarcodeConfirmationDialogInterface</a>
                     </pre>
                     <div class="block"><p>Shares code common only for all non-batch-barcode scanning (standalone and bundle) activities.</p></div>
                 </li>
@@ -291,6 +296,22 @@ extends <a href=BaseBarcodeScannerActivity.html>BaseBarcodeScannerActivity</a>
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=InternalBarcodeScannerActivity.html#onBarcodeConfirmed(BarcodeScanningResult)>onBarcodeConfirmed</a>(<a href=../../../barcode/entity/BarcodeScanningResult.html>BarcodeScanningResult</a> result) </code>
+                                            </th>
+                                            <td class="colLast">Called when the user wants to confirm the scan result</td>
+                                        </tr>
+                                        
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=InternalBarcodeScannerActivity.html#onBarcodeRejected()>onBarcodeRejected</a>() </code>
+                                            </th>
+                                            <td class="colLast">Called when the user rejected the scan result and wants to retry the scan</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -364,12 +385,42 @@ extends <a href=BaseBarcodeScannerActivity.html>BaseBarcodeScannerActivity</a>
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>onRequestPermissionsResult</h4>
                                         <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=InternalBarcodeScannerActivity.html#onRequestPermissionsResult(Integer,Array,IntArray)>onRequestPermissionsResult</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> requestCode, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; permissions, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html>IntArray</a> grantResults)</pre>
                                         <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onBarcodeConfirmed(BarcodeScanningResult)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onBarcodeConfirmed</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=InternalBarcodeScannerActivity.html#onBarcodeConfirmed(BarcodeScanningResult)>onBarcodeConfirmed</a>(<a href=../../../barcode/entity/BarcodeScanningResult.html>BarcodeScanningResult</a> result)</pre>
+                                        <div class="block"><p>Called when the user wants to confirm the scan result</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onBarcodeRejected()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onBarcodeRejected</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=InternalBarcodeScannerActivity.html#onBarcodeRejected()>onBarcodeRejected</a>()</pre>
+                                        <div class="block"><p>Called when the user rejected the scan result and wants to retry the scan</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

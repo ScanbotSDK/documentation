@@ -103,6 +103,11 @@ var pathtoroot = "../../../../";
                             
                             <code>io.scanbot.sdk.docprocessing.PdfPagesExtractor</code>
                             
+                            ,
+                            
+                            
+                            <code>io.scanbot.sdk.pdf.PdfImagesExtractor</code>
+                            
                             
                         </dd>
                     </dl>
@@ -111,9 +116,9 @@ var pathtoroot = "../../../../";
                     <pre class="wrap-overflow">
 
 public final class <span class="typeNameLabel"><a href=DefaultPdfPagesExtractor.html>DefaultPdfPagesExtractor</a></span>
- implements <a href=PdfPagesExtractor.html>PdfPagesExtractor</a>
+extends <a href=../pdf/DefaultPdfImagesExtractor.html>DefaultPdfImagesExtractor</a> implements <a href=PdfPagesExtractor.html>PdfPagesExtractor</a>
                     </pre>
-                    <div class="block"><p>Allows to import pdf files to Scanbot SDK as pages or extract image files</p></div>
+                    <div class="block"><p>Allows to import pdf files to Scanbot SDK as pages or extract image files. Based on Android PdfRenderer.</p></div>
                 </li>
             </ul>
         </div>
@@ -163,12 +168,6 @@ public final class <span class="typeNameLabel"><a href=DefaultPdfPagesExtractor.
                                         <tr class="altColor">
                                             <td class="colFirst"><code>private final <a href=../persistence/PageFileStorage.html>PageFileStorage</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=DefaultPdfPagesExtractor.html#pageFileStorage>pageFileStorage</a></code></th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr class="rowColor">
-                                            <td class="colFirst"><code>private final <a href=../persistence/fileio/FileIOProcessor.html>FileIOProcessor</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=DefaultPdfPagesExtractor.html#fileIOProcessor>fileIOProcessor</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
@@ -260,27 +259,11 @@ public final class <span class="typeNameLabel"><a href=DefaultPdfPagesExtractor.
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=../persistence/fileio/FileIOProcessor.html>FileIOProcessor</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=DefaultPdfPagesExtractor.html#getFileIOProcessor()>getFileIOProcessor</a>() </code>
-                                            </th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr id="i2" class="altColor">
                                             <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=DefaultPdfPagesExtractor.html#pagesFromPdf(File,Float,Bitmap.Config,LongOperationCancelCallback,ProgressCallback)>pagesFromPdf</a>(<a href=https://developer.android.com/reference/kotlin/java/io/File.html>File</a> pdfFile, <a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> scaling, <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.Config.html>Bitmap.Config</a> bitmapConfig, <a href=../util/LongOperationCancelCallback.html>LongOperationCancelCallback</a> cancelCallback, <a href=../util/ProgressCallback.html>ProgressCallback</a> progressCallback) </code>
                                             </th>
                                             <td class="colLast">Converts pdf document to separate image files as pages with given options.</td>
-                                        </tr>
-                                        
-                                        <tr id="i3" class="rowColor">
-                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/android/net/Uri.html>Uri</a>&gt;</code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=DefaultPdfPagesExtractor.html#imageUrlsFromPdf(File,File,String,Bitmap.CompressFormat,Integer,Float,Bitmap.Config,LongOperationCancelCallback,ProgressCallback)>imageUrlsFromPdf</a>(<a href=https://developer.android.com/reference/kotlin/java/io/File.html>File</a> pdfFile, <a href=https://developer.android.com/reference/kotlin/java/io/File.html>File</a> outputDir, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> prefix, <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.CompressFormat.html>Bitmap.CompressFormat</a> compression, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> quality, <a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> scaling, <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.Config.html>Bitmap.Config</a> bitmapConfig, <a href=../util/LongOperationCancelCallback.html>LongOperationCancelCallback</a> cancelCallback, <a href=../util/ProgressCallback.html>ProgressCallback</a> progressCallback) </code>
-                                            </th>
-                                            <td class="colLast">Converts pdf document to separate image files with given options.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -365,26 +348,11 @@ public final class <span class="typeNameLabel"><a href=DefaultPdfPagesExtractor.
                                     </li>
                                 </ul>
                                 
-                                <a id="getFileIOProcessor()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>getFileIOProcessor</h4>
-                                        <pre class="methodSignature"> final <a href=../persistence/fileio/FileIOProcessor.html>FileIOProcessor</a> <a href=DefaultPdfPagesExtractor.html#getFileIOProcessor()>getFileIOProcessor</a>()</pre>
-                                        <div class="block"></div>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
                                 <a id="pagesFromPdf(File,Float,Bitmap.Config,LongOperationCancelCallback,ProgressCallback)">
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockList"
+                                              "blockListLast"
                                           >
                                     <li class="blockList">
                                         <h4>pagesFromPdf</h4>
@@ -396,62 +364,6 @@ public final class <span class="typeNameLabel"><a href=DefaultPdfPagesExtractor.
                                             
                                             
                                             <dd><code>pdfFile</code> - input pdf document</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>scaling</code> - size of the image modifier.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>bitmapConfig</code> - bitmap config to use.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>cancelCallback</code> - callback that can cancel the operation during the extraction of pages</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>progressCallback</code> - callback that can get the number of pages already processed during the extraction of pages</dd>
-                                            
-                                            
-                                        </dl>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="imageUrlsFromPdf(File,File,String,Bitmap.CompressFormat,Integer,Float,Bitmap.Config,LongOperationCancelCallback,ProgressCallback)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockListLast"
-                                          >
-                                    <li class="blockList">
-                                        <h4>imageUrlsFromPdf</h4>
-                                        <pre class="methodSignature"> <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/android/net/Uri.html>Uri</a>&gt; <a href=DefaultPdfPagesExtractor.html#imageUrlsFromPdf(File,File,String,Bitmap.CompressFormat,Integer,Float,Bitmap.Config,LongOperationCancelCallback,ProgressCallback)>imageUrlsFromPdf</a>(<a href=https://developer.android.com/reference/kotlin/java/io/File.html>File</a> pdfFile, <a href=https://developer.android.com/reference/kotlin/java/io/File.html>File</a> outputDir, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> prefix, <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.CompressFormat.html>Bitmap.CompressFormat</a> compression, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> quality, <a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> scaling, <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.Config.html>Bitmap.Config</a> bitmapConfig, <a href=../util/LongOperationCancelCallback.html>LongOperationCancelCallback</a> cancelCallback, <a href=../util/ProgressCallback.html>ProgressCallback</a> progressCallback)</pre>
-                                        <div class="block"><p>Converts pdf document to separate image files with given options. If the encryption of sdk is enabled all images WILL be encrypted.</p></div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>pdfFile</code> - input pdf document</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>outputDir</code> - directory, where the output files will be stored</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>prefix</code> - prefix for output image files, naming will be &lt;prefix&gt;_.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>compression</code> - bitmap compress format to use.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>quality</code> - compression quality.</dd>
                                             
                                             
                                             
