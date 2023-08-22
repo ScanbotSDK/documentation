@@ -81,7 +81,7 @@ var pathtoroot = "../../../../../";
 
 <main role="main">
     <div class="header">
-        <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html"></a></div>
+        <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">io.scanbot.sdk.barcode.ui</a></div>
         <h2 title="Class BarcodePolygonsStaticView" class="title">Class BarcodePolygonsStaticView</h2>
     </div>
     <div class="contentContainer">
@@ -163,31 +163,45 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                         </tr>
                                         
                                         <tr class="altColor">
+                                            <td class="colFirst"><code>public final class</code></td>
+                                            <th class="colSecond" scope="row"><code><a href="BarcodePolygonsStaticView.BarcodePolygonStyle.html">BarcodePolygonsStaticView.BarcodePolygonStyle</a></span></code>
+                                            </th>
+                                            <td class="colLast"><p>Class that declares appearance of polygon</p></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
                                             <td class="colFirst"><code>public interface</code></td>
                                             <th class="colSecond" scope="row"><code><a href="BarcodePolygonsStaticView.BarcodeItemViewFactory.html">BarcodePolygonsStaticView.BarcodeItemViewFactory</a></span></code>
                                             </th>
                                             <td class="colLast"><p>Factory interface for the view under the polygon</p></td>
                                         </tr>
                                         
-                                        <tr class="rowColor">
+                                        <tr class="altColor">
                                             <td class="colFirst"><code>public interface</code></td>
                                             <th class="colSecond" scope="row"><code><a href="BarcodePolygonsStaticView.BarcodeItemViewBinder.html">BarcodePolygonsStaticView.BarcodeItemViewBinder</a></span></code>
                                             </th>
                                             <td class="colLast"><p>Interface for the binding a <a href=io/scanbot/sdk/barcode/entity/BarcodeItem.html>BarcodeItem</a> to a view created by <a href=io/scanbot/sdk/barcode/ui/BarcodePolygonsStaticView.BarcodeItemViewFactory.html>BarcodeItemViewFactory</a></p></td>
                                         </tr>
                                         
-                                        <tr class="altColor">
+                                        <tr class="rowColor">
                                             <td class="colFirst"><code>public interface</code></td>
                                             <th class="colSecond" scope="row"><code><a href="BarcodePolygonsStaticView.BarcodeItemViewPositionHandler.html">BarcodePolygonsStaticView.BarcodeItemViewPositionHandler</a></span></code>
                                             </th>
                                             <td class="colLast"><p>Interface for the correcting position a <a href=io/scanbot/sdk/barcode/entity/BarcodeItem.html>BarcodeItem</a> view created by <a href=io/scanbot/sdk/barcode/ui/BarcodePolygonsStaticView.BarcodeItemViewFactory.html>BarcodeItemViewFactory</a> to a barcode polygon path</p></td>
                                         </tr>
                                         
-                                        <tr class="rowColor">
+                                        <tr class="altColor">
                                             <td class="colFirst"><code>public interface</code></td>
                                             <th class="colSecond" scope="row"><code><a href="BarcodePolygonsStaticView.BarcodeAcceptanceDelegate.html">BarcodePolygonsStaticView.BarcodeAcceptanceDelegate</a></span></code>
                                             </th>
                                             <td class="colLast"><p>Interface for a <a href=io/scanbot/sdk/barcode/entity/BarcodeItem.html>BarcodeItem</a> to be marked as highlighted or not. Should be fast (called in onDraw)</p></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>public interface</code></td>
+                                            <th class="colSecond" scope="row"><code><a href="BarcodePolygonsStaticView.BarcodeAppearanceDelegate.html">BarcodePolygonsStaticView.BarcodeAppearanceDelegate</a></span></code>
+                                            </th>
+                                            <td class="colLast"><p>Interface for a <a href=io/scanbot/sdk/barcode/entity/BarcodeItem.html>BarcodeItem</a> to decide the appearance of the given barcode polygon</p></td>
                                         </tr>
                                         
                                     </table>
@@ -238,12 +252,18 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                         </tr>
                                         
                                         <tr class="altColor">
+                                            <td class="colFirst"><code>private  <a href=BarcodePolygonsStaticView.BarcodeAppearanceDelegate.html>BarcodePolygonsStaticView.BarcodeAppearanceDelegate</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#barcodeAppearanceDelegate>barcodeAppearanceDelegate</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
                                             <td class="colFirst"><code>private final <a href=../../camera/FrameHandler.html>FrameHandler</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#frameHandler>frameHandler</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="rowColor">
+                                        <tr class="altColor">
                                             <td class="colFirst"><code>private final <a href=../BarcodeCounterFrameHandler.ResultHandler.html>BarcodeCounterFrameHandler.ResultHandler</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#barcodesResultHandler>barcodesResultHandler</a></code></th>
                                             <td class="colLast"></td>
@@ -275,13 +295,13 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#BarcodePolygonsStaticView(Context)">BarcodePolygonsStaticView</a></span>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context)</code></th>
+                                                        href="#BarcodePolygonsStaticView(android.content.Context)">BarcodePolygonsStaticView</a></span>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
                                             <tr class="rowColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#BarcodePolygonsStaticView(Context,AttributeSet)">BarcodePolygonsStaticView</a></span>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://developer.android.com/reference/kotlin/android/util/AttributeSet.html>AttributeSet</a> attrs)</code></th>
+                                                        href="#BarcodePolygonsStaticView(android.content.Context,android.util.AttributeSet)">BarcodePolygonsStaticView</a></span>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://developer.android.com/reference/kotlin/android/util/AttributeSet.html>AttributeSet</a> attrs)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -345,7 +365,7 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                         <tr id="i1" class="rowColor">
                                             <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#setBarcodeAcceptanceDelegate(BarcodePolygonsStaticView.BarcodeAcceptanceDelegate)>setBarcodeAcceptanceDelegate</a>(<a href=BarcodePolygonsStaticView.BarcodeAcceptanceDelegate.html>BarcodePolygonsStaticView.BarcodeAcceptanceDelegate</a> barcodeAcceptanceDelegate) </code>
+                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#setBarcodeAcceptanceDelegate(io.scanbot.sdk.barcode.ui.BarcodePolygonsStaticView.BarcodeAcceptanceDelegate)>setBarcodeAcceptanceDelegate</a>(<a href=BarcodePolygonsStaticView.BarcodeAcceptanceDelegate.html>BarcodePolygonsStaticView.BarcodeAcceptanceDelegate</a> barcodeAcceptanceDelegate) </code>
                                             </th>
                                             <td class="colLast">Allows to set a delegate to decide if the given barcode should be highlighted</td>
                                         </tr>
@@ -361,7 +381,7 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                         <tr id="i3" class="rowColor">
                                             <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#setBarcodeItemViewFactory(BarcodePolygonsStaticView.BarcodeItemViewFactory)>setBarcodeItemViewFactory</a>(<a href=BarcodePolygonsStaticView.BarcodeItemViewFactory.html>BarcodePolygonsStaticView.BarcodeItemViewFactory</a> barcodeItemViewFactory) </code>
+                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#setBarcodeItemViewFactory(io.scanbot.sdk.barcode.ui.BarcodePolygonsStaticView.BarcodeItemViewFactory)>setBarcodeItemViewFactory</a>(<a href=BarcodePolygonsStaticView.BarcodeItemViewFactory.html>BarcodePolygonsStaticView.BarcodeItemViewFactory</a> barcodeItemViewFactory) </code>
                                             </th>
                                             <td class="colLast">Factory for the viewsPool appearing on the bottom of the barcode (or null if the view is not needed)</td>
                                         </tr>
@@ -377,7 +397,7 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                         <tr id="i5" class="rowColor">
                                             <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#setBarcodeItemViewBinder(BarcodePolygonsStaticView.BarcodeItemViewBinder)>setBarcodeItemViewBinder</a>(<a href=BarcodePolygonsStaticView.BarcodeItemViewBinder.html>BarcodePolygonsStaticView.BarcodeItemViewBinder</a> barcodeItemViewBinder) </code>
+                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#setBarcodeItemViewBinder(io.scanbot.sdk.barcode.ui.BarcodePolygonsStaticView.BarcodeItemViewBinder)>setBarcodeItemViewBinder</a>(<a href=BarcodePolygonsStaticView.BarcodeItemViewBinder.html>BarcodePolygonsStaticView.BarcodeItemViewBinder</a> barcodeItemViewBinder) </code>
                                             </th>
                                             <td class="colLast">Callback for the binding a <a href=../entity/BarcodeItem.html>BarcodeItem</a> to a view created by <a href=BarcodePolygonsStaticView.BarcodeItemViewFactory.html>BarcodeItemViewFactory</a></td>
                                         </tr>
@@ -393,12 +413,28 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                         <tr id="i7" class="rowColor">
                                             <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#setBarcodeItemViewPositionHandler(BarcodePolygonsStaticView.BarcodeItemViewPositionHandler)>setBarcodeItemViewPositionHandler</a>(<a href=BarcodePolygonsStaticView.BarcodeItemViewPositionHandler.html>BarcodePolygonsStaticView.BarcodeItemViewPositionHandler</a> barcodeItemViewPositionHandler) </code>
+                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#setBarcodeItemViewPositionHandler(io.scanbot.sdk.barcode.ui.BarcodePolygonsStaticView.BarcodeItemViewPositionHandler)>setBarcodeItemViewPositionHandler</a>(<a href=BarcodePolygonsStaticView.BarcodeItemViewPositionHandler.html>BarcodePolygonsStaticView.BarcodeItemViewPositionHandler</a> barcodeItemViewPositionHandler) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i8" class="altColor">
+                                            <td class="colFirst"><code>final <a href=BarcodePolygonsStaticView.BarcodeAppearanceDelegate.html>BarcodePolygonsStaticView.BarcodeAppearanceDelegate</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#getBarcodeAppearanceDelegate()>getBarcodeAppearanceDelegate</a>() </code>
+                                            </th>
+                                            <td class="colLast">Allows to set a style delegate to the view</td>
+                                        </tr>
+                                        
+                                        <tr id="i9" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#setBarcodeAppearanceDelegate(io.scanbot.sdk.barcode.ui.BarcodePolygonsStaticView.BarcodeAppearanceDelegate)>setBarcodeAppearanceDelegate</a>(<a href=BarcodePolygonsStaticView.BarcodeAppearanceDelegate.html>BarcodePolygonsStaticView.BarcodeAppearanceDelegate</a> barcodeAppearanceDelegate) </code>
+                                            </th>
+                                            <td class="colLast">Allows to set a style delegate to the view</td>
+                                        </tr>
+                                        
+                                        <tr id="i10" class="altColor">
                                             <td class="colFirst"><code>final <a href=../../camera/FrameHandler.html>FrameHandler</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#getFrameHandler()>getFrameHandler</a>() </code>
@@ -406,7 +442,7 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                             <td class="colLast">Attach this frame handler to IScanbotCameraView</td>
                                         </tr>
                                         
-                                        <tr id="i9" class="rowColor">
+                                        <tr id="i11" class="rowColor">
                                             <td class="colFirst"><code>final <a href=../BarcodeCounterFrameHandler.ResultHandler.html>BarcodeCounterFrameHandler.ResultHandler</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#getBarcodesResultHandler()>getBarcodesResultHandler</a>() </code>
@@ -414,71 +450,7 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                             <td class="colLast">Add this result handler to your <a href=../BarcodeCounterFrameHandler.html>BarcodeCounterFrameHandler</a></td>
                                         </tr>
                                         
-                                        <tr id="i10" class="altColor">
-                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#setFillColor(Integer)>setFillColor</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> color) </code>
-                                            </th>
-                                            <td class="colLast">Changes fill color of the polygon</td>
-                                        </tr>
-                                        
-                                        <tr id="i11" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#setFillDeclinedColor(Integer)>setFillDeclinedColor</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> color) </code>
-                                            </th>
-                                            <td class="colLast">Changes fill color of the polygon for the higlighted item</td>
-                                        </tr>
-                                        
                                         <tr id="i12" class="altColor">
-                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#setDrawShadows(Boolean)>setDrawShadows</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> drawShadows) </code>
-                                            </th>
-                                            <td class="colLast">Enable shadows under the polygon stroke if poly fill is transparent.</td>
-                                        </tr>
-                                        
-                                        <tr id="i13" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#setDrawPolygons(Boolean)>setDrawPolygons</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enabled) </code>
-                                            </th>
-                                            <td class="colLast">Enable shadows under the polygon stroke if poly fill is transparent.</td>
-                                        </tr>
-                                        
-                                        <tr id="i14" class="altColor">
-                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#setStrokeColor(Integer)>setStrokeColor</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> strokeColor) </code>
-                                            </th>
-                                            <td class="colLast">Changes stroke color of the polygon.</td>
-                                        </tr>
-                                        
-                                        <tr id="i15" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#setStrokeDeclinedColor(Integer)>setStrokeDeclinedColor</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> strokeColor) </code>
-                                            </th>
-                                            <td class="colLast">Changes stroke color of the polygon.</td>
-                                        </tr>
-                                        
-                                        <tr id="i16" class="altColor">
-                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#setStrokeWidth(Integer)>setStrokeWidth</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> strokeWidth) </code>
-                                            </th>
-                                            <td class="colLast">Changes width of the stroke of the polygon.</td>
-                                        </tr>
-                                        
-                                        <tr id="i17" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#setCornerRadius(Integer)>setCornerRadius</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> cornerRadius) </code>
-                                            </th>
-                                            <td class="colLast">Changes the radius of corners of the polygon</td>
-                                        </tr>
-                                        
-                                        <tr id="i18" class="altColor">
                                             <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=BarcodePolygonsStaticView.html#clearBarcodes()>clearBarcodes</a>() </code>
@@ -517,7 +489,7 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="BarcodePolygonsStaticView(Context)"></a>
+                                <a name="BarcodePolygonsStaticView(android.content.Context)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>BarcodePolygonsStaticView</h4>
@@ -527,7 +499,7 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                     </li>
                                 </ul>
                                 
-                                <a name="BarcodePolygonsStaticView(Context,AttributeSet)"></a>
+                                <a name="BarcodePolygonsStaticView(android.content.Context,android.util.AttributeSet)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>BarcodePolygonsStaticView</h4>
@@ -565,7 +537,7 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                     </li>
                                 </ul>
                                 
-                                <a id="setBarcodeAcceptanceDelegate(BarcodePolygonsStaticView.BarcodeAcceptanceDelegate)">
+                                <a id="setBarcodeAcceptanceDelegate(io.scanbot.sdk.barcode.ui.BarcodePolygonsStaticView.BarcodeAcceptanceDelegate)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -573,7 +545,7 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                           >
                                     <li class="blockList">
                                         <h4>setBarcodeAcceptanceDelegate</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodePolygonsStaticView.html#setBarcodeAcceptanceDelegate(BarcodePolygonsStaticView.BarcodeAcceptanceDelegate)>setBarcodeAcceptanceDelegate</a>(<a href=BarcodePolygonsStaticView.BarcodeAcceptanceDelegate.html>BarcodePolygonsStaticView.BarcodeAcceptanceDelegate</a> barcodeAcceptanceDelegate)</pre>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodePolygonsStaticView.html#setBarcodeAcceptanceDelegate(io.scanbot.sdk.barcode.ui.BarcodePolygonsStaticView.BarcodeAcceptanceDelegate)>setBarcodeAcceptanceDelegate</a>(<a href=BarcodePolygonsStaticView.BarcodeAcceptanceDelegate.html>BarcodePolygonsStaticView.BarcodeAcceptanceDelegate</a> barcodeAcceptanceDelegate)</pre>
                                         <div class="block"><p>Allows to set a delegate to decide if the given barcode should be highlighted</p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -595,7 +567,7 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                     </li>
                                 </ul>
                                 
-                                <a id="setBarcodeItemViewFactory(BarcodePolygonsStaticView.BarcodeItemViewFactory)">
+                                <a id="setBarcodeItemViewFactory(io.scanbot.sdk.barcode.ui.BarcodePolygonsStaticView.BarcodeItemViewFactory)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -603,7 +575,7 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                           >
                                     <li class="blockList">
                                         <h4>setBarcodeItemViewFactory</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodePolygonsStaticView.html#setBarcodeItemViewFactory(BarcodePolygonsStaticView.BarcodeItemViewFactory)>setBarcodeItemViewFactory</a>(<a href=BarcodePolygonsStaticView.BarcodeItemViewFactory.html>BarcodePolygonsStaticView.BarcodeItemViewFactory</a> barcodeItemViewFactory)</pre>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodePolygonsStaticView.html#setBarcodeItemViewFactory(io.scanbot.sdk.barcode.ui.BarcodePolygonsStaticView.BarcodeItemViewFactory)>setBarcodeItemViewFactory</a>(<a href=BarcodePolygonsStaticView.BarcodeItemViewFactory.html>BarcodePolygonsStaticView.BarcodeItemViewFactory</a> barcodeItemViewFactory)</pre>
                                         <div class="block"><p>Factory for the viewsPool appearing on the bottom of the barcode (or null if the view is not needed)</p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -625,7 +597,7 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                     </li>
                                 </ul>
                                 
-                                <a id="setBarcodeItemViewBinder(BarcodePolygonsStaticView.BarcodeItemViewBinder)">
+                                <a id="setBarcodeItemViewBinder(io.scanbot.sdk.barcode.ui.BarcodePolygonsStaticView.BarcodeItemViewBinder)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -633,7 +605,7 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                           >
                                     <li class="blockList">
                                         <h4>setBarcodeItemViewBinder</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodePolygonsStaticView.html#setBarcodeItemViewBinder(BarcodePolygonsStaticView.BarcodeItemViewBinder)>setBarcodeItemViewBinder</a>(<a href=BarcodePolygonsStaticView.BarcodeItemViewBinder.html>BarcodePolygonsStaticView.BarcodeItemViewBinder</a> barcodeItemViewBinder)</pre>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodePolygonsStaticView.html#setBarcodeItemViewBinder(io.scanbot.sdk.barcode.ui.BarcodePolygonsStaticView.BarcodeItemViewBinder)>setBarcodeItemViewBinder</a>(<a href=BarcodePolygonsStaticView.BarcodeItemViewBinder.html>BarcodePolygonsStaticView.BarcodeItemViewBinder</a> barcodeItemViewBinder)</pre>
                                         <div class="block"><p>Callback for the binding a <a href=../entity/BarcodeItem.html>BarcodeItem</a> to a view created by <a href=BarcodePolygonsStaticView.BarcodeItemViewFactory.html>BarcodeItemViewFactory</a></p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -655,7 +627,7 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                     </li>
                                 </ul>
                                 
-                                <a id="setBarcodeItemViewPositionHandler(BarcodePolygonsStaticView.BarcodeItemViewPositionHandler)">
+                                <a id="setBarcodeItemViewPositionHandler(io.scanbot.sdk.barcode.ui.BarcodePolygonsStaticView.BarcodeItemViewPositionHandler)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -663,8 +635,38 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                           >
                                     <li class="blockList">
                                         <h4>setBarcodeItemViewPositionHandler</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodePolygonsStaticView.html#setBarcodeItemViewPositionHandler(BarcodePolygonsStaticView.BarcodeItemViewPositionHandler)>setBarcodeItemViewPositionHandler</a>(<a href=BarcodePolygonsStaticView.BarcodeItemViewPositionHandler.html>BarcodePolygonsStaticView.BarcodeItemViewPositionHandler</a> barcodeItemViewPositionHandler)</pre>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodePolygonsStaticView.html#setBarcodeItemViewPositionHandler(io.scanbot.sdk.barcode.ui.BarcodePolygonsStaticView.BarcodeItemViewPositionHandler)>setBarcodeItemViewPositionHandler</a>(<a href=BarcodePolygonsStaticView.BarcodeItemViewPositionHandler.html>BarcodePolygonsStaticView.BarcodeItemViewPositionHandler</a> barcodeItemViewPositionHandler)</pre>
                                         <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getBarcodeAppearanceDelegate()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getBarcodeAppearanceDelegate</h4>
+                                        <pre class="methodSignature"> final <a href=BarcodePolygonsStaticView.BarcodeAppearanceDelegate.html>BarcodePolygonsStaticView.BarcodeAppearanceDelegate</a> <a href=BarcodePolygonsStaticView.html#getBarcodeAppearanceDelegate()>getBarcodeAppearanceDelegate</a>()</pre>
+                                        <div class="block"><p>Allows to set a style delegate to the view</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setBarcodeAppearanceDelegate(io.scanbot.sdk.barcode.ui.BarcodePolygonsStaticView.BarcodeAppearanceDelegate)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setBarcodeAppearanceDelegate</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodePolygonsStaticView.html#setBarcodeAppearanceDelegate(io.scanbot.sdk.barcode.ui.BarcodePolygonsStaticView.BarcodeAppearanceDelegate)>setBarcodeAppearanceDelegate</a>(<a href=BarcodePolygonsStaticView.BarcodeAppearanceDelegate.html>BarcodePolygonsStaticView.BarcodeAppearanceDelegate</a> barcodeAppearanceDelegate)</pre>
+                                        <div class="block"><p>Allows to set a style delegate to the view</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -695,189 +697,6 @@ extends <a href=https://developer.android.com/reference/kotlin/android/widget/Fr
                                         <h4>getBarcodesResultHandler</h4>
                                         <pre class="methodSignature"> final <a href=../BarcodeCounterFrameHandler.ResultHandler.html>BarcodeCounterFrameHandler.ResultHandler</a> <a href=BarcodePolygonsStaticView.html#getBarcodesResultHandler()>getBarcodesResultHandler</a>()</pre>
                                         <div class="block"><p>Add this result handler to your <a href=../BarcodeCounterFrameHandler.html>BarcodeCounterFrameHandler</a></p></div>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="setFillColor(Integer)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>setFillColor</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodePolygonsStaticView.html#setFillColor(Integer)>setFillColor</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> color)</pre>
-                                        <div class="block"><p>Changes fill color of the polygon</p></div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>color</code> - color to fill polygon with.</dd>
-                                            
-                                            
-                                        </dl>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="setFillDeclinedColor(Integer)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>setFillDeclinedColor</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodePolygonsStaticView.html#setFillDeclinedColor(Integer)>setFillDeclinedColor</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> color)</pre>
-                                        <div class="block"><p>Changes fill color of the polygon for the higlighted item</p></div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>color</code> - color to fill polygon with.</dd>
-                                            
-                                            
-                                        </dl>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="setDrawShadows(Boolean)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>setDrawShadows</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodePolygonsStaticView.html#setDrawShadows(Boolean)>setDrawShadows</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> drawShadows)</pre>
-                                        <div class="block"><p>Enable shadows under the polygon stroke if poly fill is transparent.</p></div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>drawShadows</code> - enable shadow if true, disable otherwise</dd>
-                                            
-                                            
-                                        </dl>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="setDrawPolygons(Boolean)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>setDrawPolygons</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodePolygonsStaticView.html#setDrawPolygons(Boolean)>setDrawPolygons</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enabled)</pre>
-                                        <div class="block"><p>Enable shadows under the polygon stroke if poly fill is transparent.</p></div>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="setStrokeColor(Integer)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>setStrokeColor</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodePolygonsStaticView.html#setStrokeColor(Integer)>setStrokeColor</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> strokeColor)</pre>
-                                        <div class="block"><p>Changes stroke color of the polygon.</p></div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>strokeColor</code> - color to draw lines with.</dd>
-                                            
-                                            
-                                        </dl>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="setStrokeDeclinedColor(Integer)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>setStrokeDeclinedColor</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodePolygonsStaticView.html#setStrokeDeclinedColor(Integer)>setStrokeDeclinedColor</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> strokeColor)</pre>
-                                        <div class="block"><p>Changes stroke color of the polygon.</p></div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>strokeColor</code> - color to draw lines with.</dd>
-                                            
-                                            
-                                        </dl>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="setStrokeWidth(Integer)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>setStrokeWidth</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodePolygonsStaticView.html#setStrokeWidth(Integer)>setStrokeWidth</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> strokeWidth)</pre>
-                                        <div class="block"><p>Changes width of the stroke of the polygon.</p></div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>strokeWidth</code> - width of the stroke in pixels.</dd>
-                                            
-                                            
-                                        </dl>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="setCornerRadius(Integer)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>setCornerRadius</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodePolygonsStaticView.html#setCornerRadius(Integer)>setCornerRadius</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> cornerRadius)</pre>
-                                        <div class="block"><p>Changes the radius of corners of the polygon</p></div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>cornerRadius</code> - radius of corners in pixels.</dd>
-                                            
-                                            
-                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
