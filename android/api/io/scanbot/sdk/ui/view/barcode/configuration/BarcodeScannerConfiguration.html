@@ -325,7 +325,7 @@ public final class <span class="typeNameLabel"><a href=BarcodeScannerConfigurati
                                         <tr id="i7" class="rowColor">
                                             <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodeScannerConfiguration.html#setBarcodeFormatsFilter(kotlin.collections.ArrayList)>setBarcodeFormatsFilter</a>(<a href=https://developer.android.com/reference/kotlin/java/util/ArrayList.html>ArrayList</a>&lt;<a href=../../../../barcode/entity/BarcodeFormat.html>BarcodeFormat</a>&gt; barcodeFormat) </code>
+                                            <th class="colSecond" scope="row"><code><a href=BarcodeScannerConfiguration.html#setBarcodeFormatsFilter(java.util.List)>setBarcodeFormatsFilter</a>(<a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=../../../../barcode/entity/BarcodeFormat.html>BarcodeFormat</a>&gt; barcodeFormat) </code>
                                             </th>
                                             <td class="colLast">A list of barcodes that the scanner should recognize.</td>
                                         </tr>
@@ -461,9 +461,9 @@ public final class <span class="typeNameLabel"><a href=BarcodeScannerConfigurati
                                         <tr id="i24" class="altColor">
                                             <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=BarcodeScannerConfiguration.html#setCameraZoomFactor(java.lang.Float)>setCameraZoomFactor</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> zoomFactor) </code>
+                                            <th class="colSecond" scope="row"><code><a href=BarcodeScannerConfiguration.html#setCameraZoomRatio(java.lang.Float)>setCameraZoomRatio</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> zoomFactor) </code>
                                             </th>
-                                            <td class="colLast">Set current zoom by a linear zoom value ranging from 0f to 1.0f.</td>
+                                            <td class="colLast">Set current zoom ratio from 0.5x up to 100x (if supported).</td>
                                         </tr>
                                         
                                         <tr id="i25" class="rowColor">
@@ -729,7 +729,7 @@ public final class <span class="typeNameLabel"><a href=BarcodeScannerConfigurati
                                     </li>
                                 </ul>
                                 
-                                <a id="setBarcodeFormatsFilter(kotlin.collections.ArrayList)">
+                                <a id="setBarcodeFormatsFilter(java.util.List)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -737,7 +737,7 @@ public final class <span class="typeNameLabel"><a href=BarcodeScannerConfigurati
                                           >
                                     <li class="blockList">
                                         <h4>setBarcodeFormatsFilter</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodeScannerConfiguration.html#setBarcodeFormatsFilter(kotlin.collections.ArrayList)>setBarcodeFormatsFilter</a>(<a href=https://developer.android.com/reference/kotlin/java/util/ArrayList.html>ArrayList</a>&lt;<a href=../../../../barcode/entity/BarcodeFormat.html>BarcodeFormat</a>&gt; barcodeFormat)</pre>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodeScannerConfiguration.html#setBarcodeFormatsFilter(java.util.List)>setBarcodeFormatsFilter</a>(<a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=../../../../barcode/entity/BarcodeFormat.html>BarcodeFormat</a>&gt; barcodeFormat)</pre>
                                         <div class="block"><p>A list of barcodes that the scanner should recognize. Anything not on the list will not trigger a detection.</p><p>By default, all supported barcode formats will be recognized.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -993,16 +993,16 @@ public final class <span class="typeNameLabel"><a href=BarcodeScannerConfigurati
                                     </li>
                                 </ul>
                                 
-                                <a id="setCameraZoomFactor(java.lang.Float)">
+                                <a id="setCameraZoomRatio(java.lang.Float)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>setCameraZoomFactor</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodeScannerConfiguration.html#setCameraZoomFactor(java.lang.Float)>setCameraZoomFactor</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> zoomFactor)</pre>
-                                        <div class="block"><p>Set current zoom by a linear zoom value ranging from 0f to 1.0f. Optical Zoom Level 0f represents the minimum zoom while Optical Zoom Level 1.0f represents the maximum zoom. Default value is 0f.</p></div>
+                                        <h4>setCameraZoomRatio</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodeScannerConfiguration.html#setCameraZoomRatio(java.lang.Float)>setCameraZoomRatio</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> zoomFactor)</pre>
+                                        <div class="block"><p>Set current zoom ratio from 0.5x up to 100x (if supported). Default value is 1x.</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
@@ -1026,7 +1026,7 @@ public final class <span class="typeNameLabel"><a href=BarcodeScannerConfigurati
                                     <li class="blockList">
                                         <h4>setCameraZoomRange</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BarcodeScannerConfiguration.html#setCameraZoomRange(io.scanbot.sdk.camera.ZoomRange)>setCameraZoomRange</a>(<a href=../../../../camera/ZoomRange.html>ZoomRange</a> zoomRange)</pre>
-                                        <div class="block"><p>Set custom camera zoom range. Min value 0f and max value 1.0f. Default value is ZoomRange(0f, 1f).</p></div>
+                                        <div class="block"><p>Set custom camera zoom range. Min value 0.5f and max value 100f (if supported by device). Default value is ZoomRange(0.5x, 100x).</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

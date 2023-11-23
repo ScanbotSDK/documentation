@@ -293,15 +293,15 @@ public interface <span class="typeNameLabel"><a href=ICameraViewConfiguration.ht
                                         <tr id="i7" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ICameraViewConfiguration.html#setOpticalZoomLevel(java.lang.Float)>setOpticalZoomLevel</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> zoomFactor) </code>
+                                            <th class="colSecond" scope="row"><code><a href=ICameraViewConfiguration.html#setPhysicalZoomRatio(java.lang.Float)>setPhysicalZoomRatio</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> zoomRatio) </code>
                                             </th>
-                                            <td class="colLast">Sets current zoom by a linear zoom value ranging from 0f to 1.0f.</td>
+                                            <td class="colLast">Sets current zoom ratio ranging from 0.5f to 100f.</td>
                                         </tr>
                                         
                                         <tr id="i8" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ICameraViewConfiguration.html#setOpticalZoomRange(io.scanbot.sdk.camera.ZoomRange)>setOpticalZoomRange</a>(<a href=../camera/ZoomRange.html>ZoomRange</a> zoomRange) </code>
+                                            <th class="colSecond" scope="row"><code><a href=ICameraViewConfiguration.html#setPhysicalZoomRange(io.scanbot.sdk.camera.ZoomRange)>setPhysicalZoomRange</a>(<a href=../camera/ZoomRange.html>ZoomRange</a> zoomRange) </code>
                                             </th>
                                             <td class="colLast">Set custom zoom range.</td>
                                         </tr>
@@ -506,31 +506,40 @@ public interface <span class="typeNameLabel"><a href=ICameraViewConfiguration.ht
                                     </li>
                                 </ul>
                                 
-                                <a id="setOpticalZoomLevel(java.lang.Float)">
+                                <a id="setPhysicalZoomRatio(java.lang.Float)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>setOpticalZoomLevel</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=ICameraViewConfiguration.html#setOpticalZoomLevel(java.lang.Float)>setOpticalZoomLevel</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> zoomFactor)</pre>
-                                        <div class="block"><p>Sets current zoom by a linear zoom value ranging from 0f to 1.0f. Zoom Level 0f represents the minimum zoom while Zoom Level 1.0f represents the maximum zoom. Default value is 0f.</p></div>
+                                        <h4>setPhysicalZoomRatio</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=ICameraViewConfiguration.html#setPhysicalZoomRatio(java.lang.Float)>setPhysicalZoomRatio</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> zoomRatio)</pre>
+                                        <div class="block"><p>Sets current zoom ratio ranging from 0.5f to 100f. Zoom Level 1f represents 1x zoom ratio. Default value is 1f.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>zoomRatio</code> - Target zoom level</dd>
+                                            
+                                            
+                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
                                 </ul>
                                 
-                                <a id="setOpticalZoomRange(io.scanbot.sdk.camera.ZoomRange)">
+                                <a id="setPhysicalZoomRange(io.scanbot.sdk.camera.ZoomRange)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>setOpticalZoomRange</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=ICameraViewConfiguration.html#setOpticalZoomRange(io.scanbot.sdk.camera.ZoomRange)>setOpticalZoomRange</a>(<a href=../camera/ZoomRange.html>ZoomRange</a> zoomRange)</pre>
-                                        <div class="block"><p>Set custom zoom range. Default value is ZoomRange(0f, 1f).</p></div>
+                                        <h4>setPhysicalZoomRange</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=ICameraViewConfiguration.html#setPhysicalZoomRange(io.scanbot.sdk.camera.ZoomRange)>setPhysicalZoomRange</a>(<a href=../camera/ZoomRange.html>ZoomRange</a> zoomRange)</pre>
+                                        <div class="block"><p>Set custom zoom range. Default value is ZoomRange(0.5f, 100f).</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>

@@ -171,14 +171,26 @@ public final class <span class="typeNameLabel"><a href=ZoomRange.html>ZoomRange<
                                         </tr>
                                         
                                         <tr class="altColor">
+                                            <td class="colFirst"><code>public final static <a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=ZoomRange.html#MAX_ZOOM>MAX_ZOOM</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>public final static <a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=ZoomRange.html#MIN_ZOOM>MIN_ZOOM</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
                                             <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=ZoomRange.html#minZoomFactor>minZoomFactor</a></code></th>
+                                            <th class="colSecond" scope="row"><code><a href=ZoomRange.html#minZoomRatio>minZoomRatio</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="rowColor">
                                             <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=ZoomRange.html#maxZoomFactor>maxZoomFactor</a></code></th>
+                                            <th class="colSecond" scope="row"><code><a href=ZoomRange.html#maxZoomRatio>maxZoomRatio</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
@@ -208,7 +220,7 @@ public final class <span class="typeNameLabel"><a href=ZoomRange.html>ZoomRange<
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#ZoomRange(java.lang.Float,java.lang.Float)">ZoomRange</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> minZoomFactor, <a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> maxZoomFactor)</code></th>
+                                                        href="#ZoomRange(java.lang.Float,java.lang.Float)">ZoomRange</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> minZoomRatio, <a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> maxZoomRatio)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -264,17 +276,17 @@ public final class <span class="typeNameLabel"><a href=ZoomRange.html>ZoomRange<
                                         <tr id="i0" class="altColor">
                                             <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ZoomRange.html#getMinZoomFactor()>getMinZoomFactor</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=ZoomRange.html#getMinZoomRatio()>getMinZoomRatio</a>() </code>
                                             </th>
-                                            <td class="colLast">Minimal zoom factor in the range from 0f to 1f.</td>
+                                            <td class="colLast">Minimal zoom factor in the range from 0.5f to 100f.</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
                                             <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ZoomRange.html#getMaxZoomFactor()>getMaxZoomFactor</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=ZoomRange.html#getMaxZoomRatio()>getMaxZoomRatio</a>() </code>
                                             </th>
-                                            <td class="colLast">Maximal zoom factor in the range from 0f to 1f.</td>
+                                            <td class="colLast">Maximal zoom factor in the range from 0.5f to 100f.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -312,7 +324,7 @@ public final class <span class="typeNameLabel"><a href=ZoomRange.html>ZoomRange<
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>ZoomRange</h4>
-                                        <pre>ZoomRange(<a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> minZoomFactor, <a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> maxZoomFactor)</pre>
+                                        <pre>ZoomRange(<a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> minZoomRatio, <a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> maxZoomRatio)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -331,31 +343,31 @@ public final class <span class="typeNameLabel"><a href=ZoomRange.html>ZoomRange<
                             </a>
                                 <h3>Method Detail</h3>
                                 
-                                <a id="getMinZoomFactor()">
+                                <a id="getMinZoomRatio()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>getMinZoomFactor</h4>
-                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> <a href=ZoomRange.html#getMinZoomFactor()>getMinZoomFactor</a>()</pre>
-                                        <div class="block"><p>Minimal zoom factor in the range from 0f to 1f. Default - 0f</p></div>
+                                        <h4>getMinZoomRatio</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> <a href=ZoomRange.html#getMinZoomRatio()>getMinZoomRatio</a>()</pre>
+                                        <div class="block"><p>Minimal zoom factor in the range from 0.5f to 100f. Default - 0.5f</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
                                 </ul>
                                 
-                                <a id="getMaxZoomFactor()">
+                                <a id="getMaxZoomRatio()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockListLast"
                                           >
                                     <li class="blockList">
-                                        <h4>getMaxZoomFactor</h4>
-                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> <a href=ZoomRange.html#getMaxZoomFactor()>getMaxZoomFactor</a>()</pre>
-                                        <div class="block"><p>Maximal zoom factor in the range from 0f to 1f. Default - 1f.</p></div>
+                                        <h4>getMaxZoomRatio</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> <a href=ZoomRange.html#getMaxZoomRatio()>getMaxZoomRatio</a>()</pre>
+                                        <div class="block"><p>Maximal zoom factor in the range from 0.5f to 100f. Default - 100f.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
