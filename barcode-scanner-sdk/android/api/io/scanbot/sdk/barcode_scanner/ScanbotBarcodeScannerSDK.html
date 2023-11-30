@@ -51,7 +51,12 @@ var pathtoroot = "../../../../";
     <li><a href="../../../../allclasses.html">All&nbsp;Classes</a></li>
 </ul>
 
-
+<ul class="navListSearch">
+<li><label for="search">SEARCH:</label>
+<input type="text" id="search" value="search" class="ui-autocomplete-input" autocomplete="off" placeholder="Search">
+<input type="reset" id="reset" value="reset">
+</li>
+</ul>
 <div>
 <script type="text/javascript"><!--
   allClassesLink = document.getElementById("allclasses_navbar_top");
@@ -101,6 +106,9 @@ var pathtoroot = "../../../../";
                         <dt>All Implemented Interfaces:</dt>
                         <dd>
                             
+                            <code>io.scanbot.sdk.persistence.StorageSpaceAware</code>
+                            
+                            
                         </dd>
                     </dl>
                     
@@ -108,7 +116,7 @@ var pathtoroot = "../../../../";
                     <pre class="wrap-overflow">
 
 public final class <span class="typeNameLabel"><a href=ScanbotBarcodeScannerSDK.html>ScanbotBarcodeScannerSDK</a></span>
-
+ implements <a href=../persistence/StorageSpaceAware.html>StorageSpaceAware</a>
                     </pre>
                     <div class="block"><p>Provider for Scanbot Barcode Scanner SDK features.</p><p>Typical use case is to create this object in <a href=https://developer.android.com/reference/kotlin/android/app/Activity.html#oncreate>Activity.onCreate</a> or <a href=https://developer.android.com/reference/kotlin/android/app/Service.html#oncreate>Service.onCreate</a>, but it's allowed to create it during any other point of lifecycle before onDestroy.</p><p>Note that each instance stores reference to given context, so it should not be cached statically. All necessary caching is already done by <a href=ScanbotBarcodeScannerSDK.html>ScanbotBarcodeScannerSDK</a> itself - some methods might return same instance repeatedly.</p><p>Some insight - Scanbot uses Dependency Injection internally, but we do not want to expose it to users of the library to ensure that changes in DI implementation won't affect users of the library.</p></div>
                 </li>
