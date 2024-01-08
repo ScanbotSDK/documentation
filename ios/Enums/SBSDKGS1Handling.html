@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SBSDKBrightnessFilter Class Reference</title>
+    <title>SBSDKGS1Handling Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Class/SBSDKBrightnessFilter" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Enum/SBSDKGS1Handling" class="dashAnchor"></a>
 
-    <a title="SBSDKBrightnessFilter Class Reference"></a>
+    <a title="SBSDKGS1Handling Enumeration Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">ScanbotSDK for iOS Reference</a>
       <img class="carat" src="../img/carat.png" />
-      SBSDKBrightnessFilter Class Reference
+      SBSDKGS1Handling Enumeration Reference
     </p>
 
     <div class="content-wrapper">
@@ -1820,14 +1820,14 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>SBSDKBrightnessFilter</h1>
+            <h1>SBSDKGS1Handling</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">SBSDKBrightnessFilter</span> <span class="p">:</span> <span class="nc"><a href="../Classes/SBSDKBaseAdjustableFilter.html">SBSDKBaseAdjustableFilter</a></span></code></pre>
+                  <pre class="highlight objective_c"><code><span class="k">enum</span> <span class="n">SBSDKGS1Handling</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
 
                 </div>
               </div>
-            <p>Adjusts the brightness of an image.</p>
+            <p>Defines how GS1-formatted barcodes are handled.</p>
 
           </div>
         </section>
@@ -1839,9 +1839,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)SBSDKBrightnessFilter(py)brightness"></a>
-                    <a name="//apple_ref/swift/Property/brightness" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SBSDKBrightnessFilter(py)brightness">brightness</a>
+                    <a name="/c:@E@SBSDKGS1Handling@SBSDKGS1HandlingNone"></a>
+                    <a name="//apple_ref/swift/Case/SBSDKGS1HandlingNone" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@SBSDKGS1Handling@SBSDKGS1HandlingNone">SBSDKGS1HandlingNone</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1849,19 +1849,115 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The amount of brightness to apply to the image. Valid values range from -1.0 (very dark) to 1.0 (very bright).</p>
+                        <p>No special handling for GS1-formatted results. Special (FNC1) characters are stripped.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="kt">float</span> <span class="n">brightness</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="n">SBSDKGS1HandlingNone</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">brightness</span><span class="p">:</span> <span class="kt">Float</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="k">none</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@E@SBSDKGS1Handling@SBSDKGS1HandlingParse"></a>
+                    <a name="//apple_ref/swift/Case/SBSDKGS1HandlingParse" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@SBSDKGS1Handling@SBSDKGS1HandlingParse">SBSDKGS1HandlingParse</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>GS1 messages are converted to machine-readable format per the GS1 spec (the special character is converted to ASCII \x1D). Message is not validated.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="n">SBSDKGS1HandlingParse</span> <span class="o">=</span> <span class="mi">1</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">parse</span> <span class="o">=</span> <span class="mi">1</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@E@SBSDKGS1Handling@SBSDKGS1HandlingValidate"></a>
+                    <a name="//apple_ref/swift/Case/SBSDKGS1HandlingValidate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@SBSDKGS1Handling@SBSDKGS1HandlingValidate">SBSDKGS1HandlingValidate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>GS1 messages are converted to machine-readable format per the GS1 spec (the special character is converted to ASCII \x1D) and validated.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="n">SBSDKGS1HandlingValidate</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">validate</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@E@SBSDKGS1Handling@SBSDKGS1HandlingDecode"></a>
+                    <a name="//apple_ref/swift/Case/SBSDKGS1HandlingDecode" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@SBSDKGS1Handling@SBSDKGS1HandlingDecode">SBSDKGS1HandlingDecode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>GS1 strings are converted to human-readable format and validated.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="n">SBSDKGS1HandlingDecode</span> <span class="o">=</span> <span class="mi">3</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">decode</span> <span class="o">=</span> <span class="mi">3</span></code></pre>
 
                         </div>
                       </div>
