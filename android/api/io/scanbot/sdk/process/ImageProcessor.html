@@ -139,20 +139,6 @@ public final class <span class="typeNameLabel"><a href=ImageProcessor.html>Image
                                             <th class="colLast" scope="col">Description</th>
                                         </tr>
                                         
-                                        <tr class="altColor">
-                                            <td class="colFirst"><code>public class</code></td>
-                                            <th class="colSecond" scope="row"><code><a href="ImageProcessor.FilterTuneType.html">ImageProcessor.FilterTuneType</a></span></code>
-                                            </th>
-                                            <td class="colLast"><p>Filter tune type enum.</p></td>
-                                        </tr>
-                                        
-                                        <tr class="rowColor">
-                                            <td class="colFirst"><code>public enum</code></td>
-                                            <th class="colSecond" scope="row"><code><a href="ImageProcessor.Type.html">ImageProcessor.Type</a></span></code>
-                                            </th>
-                                            <td class="colLast"><p>The type of the <a href=io/scanbot/sdk/process/ImageProcessor.html>ImageProcessor</a>. BASE is the default implementation</p></td>
-                                        </tr>
-                                        
                                     </table>
                                 </div>
                             </li>
@@ -174,12 +160,6 @@ public final class <span class="typeNameLabel"><a href=ImageProcessor.html>Image
                                             <th class="colFirst" scope="col">Modifier and Type</th>
                                             <th class="colSecond" scope="col">Field</th>
                                             <th class="colLast" scope="col">Description</th>
-                                        </tr>
-                                        
-                                        <tr class="altColor">
-                                            <td class="colFirst"><code>private final <a href=ImageProcessor.Type.html>ImageProcessor.Type</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#type>type</a></code></th>
-                                            <td class="colLast"></td>
                                         </tr>
                                         
                                     </table>
@@ -208,7 +188,25 @@ public final class <span class="typeNameLabel"><a href=ImageProcessor.html>Image
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#ImageProcessor(io.scanbot.sdk.process.ImageProcessor.Type)">ImageProcessor</a></span>(<a href=ImageProcessor.Type.html>ImageProcessor.Type</a> type)</code></th>
+                                                        href="#ImageProcessor(android.graphics.Bitmap)">ImageProcessor</a></span>(<a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a> bitmap)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#ImageProcessor(kotlin.ByteArray,java.lang.Integer,java.lang.Integer)">ImageProcessor</a></span>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> nv21, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> width, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> height)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#ImageProcessor(kotlin.ByteArray)">ImageProcessor</a></span>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> jpeg)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#ImageProcessor(java.lang.String)">ImageProcessor</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> imagePath)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -262,14 +260,6 @@ public final class <span class="typeNameLabel"><a href=ImageProcessor.html>Image
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code>final <a href=ImageProcessor.Type.html>ImageProcessor.Type</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#getType()>getType</a>() </code>
-                                            </th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr id="i1" class="rowColor">
                                             <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#dispose()>dispose</a>() </code>
@@ -277,60 +267,68 @@ public final class <span class="typeNameLabel"><a href=ImageProcessor.html>Image
                                             <td class="colLast">Calling this method will clear native buffer for ImageProcessor.</td>
                                         </tr>
                                         
-                                        <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a></code>
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=ImageProcessor.html>ImageProcessor</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#process(android.graphics.Bitmap,java.util.List)>process</a>(<a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a> image, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=Operation.html>Operation</a>&gt; operations) </code>
+                                            <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#applyFilter(.<Error class: unknown class>)>applyFilter</a>(&lt;Error class: unknown class&gt; filter) </code>
                                             </th>
-                                            <td class="colLast">Process provided image with list of operations.</td>
+                                            <td class="colLast">Applies filter to the image.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>final <a href=ImageProcessor.html>ImageProcessor</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#crop(java.util.List)>crop</a>(<a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/android/graphics/PointF.html>PointF</a>&gt; polygon) </code>
+                                            </th>
+                                            <td class="colLast">Crops the image to the given polygon.</td>
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a></code>
+                                            <td class="colFirst"><code>final <a href=ImageProcessor.html>ImageProcessor</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#processBitmap(android.graphics.Bitmap,java.util.List)>processBitmap</a>(<a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a> image, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=Operation.html>Operation</a>&gt; operations) </code>
+                                            <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#rotate(.<Error class: unknown class>)>rotate</a>(&lt;Error class: unknown class&gt; rotation) </code>
                                             </th>
-                                            <td class="colLast">Process provided image with list of operations.</td>
+                                            <td class="colLast">Rotates the given image.</td>
                                         </tr>
                                         
                                         <tr id="i4" class="altColor">
-                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a></code>
+                                            <td class="colFirst"><code>final <a href=ImageProcessor.html>ImageProcessor</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#processBitmap(android.graphics.Bitmap,io.scanbot.sdk.process.Operation)>processBitmap</a>(<a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a> image, <a href=Operation.html>Operation</a> operation) </code>
+                                            <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#rotate(java.lang.Integer)>rotate</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> degrees) </code>
                                             </th>
-                                            <td class="colLast">Process provided image with list of operations.</td>
+                                            <td class="colLast">Rotates the given image clockwise.</td>
                                         </tr>
                                         
                                         <tr id="i5" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a></code>
+                                            <td class="colFirst"><code>final <a href=ImageProcessor.html>ImageProcessor</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#processNv21(kotlin.ByteArray,java.lang.Integer,java.lang.Integer,java.util.List)>processNv21</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> nv21, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> width, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> height, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=Operation.html>Operation</a>&gt; operations) </code>
+                                            <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#resize(java.lang.Integer)>resize</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> maxSize) </code>
                                             </th>
-                                            <td class="colLast">Process provided image with list of operations.</td>
+                                            <td class="colLast">Resizes image to the given size.</td>
                                         </tr>
                                         
                                         <tr id="i6" class="altColor">
                                             <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#processNv21(kotlin.ByteArray,java.lang.Integer,java.lang.Integer,io.scanbot.sdk.process.Operation)>processNv21</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> nv21, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> width, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> height, <a href=Operation.html>Operation</a> operation) </code>
+                                            <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#processedBitmap()>processedBitmap</a>() </code>
                                             </th>
-                                            <td class="colLast">Process provided image with list of operations.</td>
+                                            <td class="colLast">Returns processed image.</td>
                                         </tr>
                                         
                                         <tr id="i7" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a></code>
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#processJpeg(kotlin.ByteArray,java.util.List)>processJpeg</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> jpeg, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=Operation.html>Operation</a>&gt; operations) </code>
+                                            <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#encodedProcessedImage(java.lang.String)>encodedProcessedImage</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> extension) </code>
                                             </th>
-                                            <td class="colLast">Process provided image with list of operations.</td>
+                                            <td class="colLast">Returns encoded processed image as <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a>.</td>
                                         </tr>
                                         
                                         <tr id="i8" class="altColor">
-                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a></code>
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#processJpeg(kotlin.ByteArray,io.scanbot.sdk.process.Operation)>processJpeg</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> jpeg, <a href=Operation.html>Operation</a> operation) </code>
+                                            <th class="colSecond" scope="row"><code><a href=ImageProcessor.html#saveProcessedImage(java.lang.String)>saveProcessedImage</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> path) </code>
                                             </th>
-                                            <td class="colLast">Process provided image with list of operations.</td>
+                                            <td class="colLast">Saves processed image to the given path.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -364,21 +362,42 @@ public final class <span class="typeNameLabel"><a href=ImageProcessor.html>Image
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="ImageProcessor(io.scanbot.sdk.process.ImageProcessor.Type)"></a>
+                                <a name="ImageProcessor(android.graphics.Bitmap)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>ImageProcessor</h4>
-                                        <pre>ImageProcessor(<a href=ImageProcessor.Type.html>ImageProcessor.Type</a> type)</pre>
+                                        <pre>ImageProcessor(<a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a> bitmap)</pre>
                                         <div class="block"></div>
                                         
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>type</code> - the type of the image processor to be inited</dd>
-                                            
-                                            
-                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a name="ImageProcessor(kotlin.ByteArray,java.lang.Integer,java.lang.Integer)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>ImageProcessor</h4>
+                                        <pre>ImageProcessor(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> nv21, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> width, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> height)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="ImageProcessor(kotlin.ByteArray)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>ImageProcessor</h4>
+                                        <pre>ImageProcessor(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> jpeg)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="ImageProcessor(java.lang.String)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>ImageProcessor</h4>
+                                        <pre>ImageProcessor(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> imagePath)</pre>
+                                        <div class="block"></div>
                                         
                                     </li>
                                 </ul>
@@ -396,21 +415,6 @@ public final class <span class="typeNameLabel"><a href=ImageProcessor.html>Image
                             </a>
                                 <h3>Method Detail</h3>
                                 
-                                <a id="getType()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>getType</h4>
-                                        <pre class="methodSignature"> final <a href=ImageProcessor.Type.html>ImageProcessor.Type</a> <a href=ImageProcessor.html#getType()>getType</a>()</pre>
-                                        <div class="block"></div>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
                                 <a id="dispose()">
                                     <!--   -->
                                 </a>
@@ -426,26 +430,22 @@ public final class <span class="typeNameLabel"><a href=ImageProcessor.html>Image
                                     </li>
                                 </ul>
                                 
-                                <a id="process(android.graphics.Bitmap,java.util.List)">
+                                <a id="applyFilter(.&lt;Error class: unknown class&gt;)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>process</h4>
-                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-deprecated/index.html>Deprecated</a>(message = &quot;Deprecated in favor of explicitly named method&quot;, replaceWith = @<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-replace-with/index.html>ReplaceWith</a>(imports = {}, expression = &quot;processBitmap(image, operations)&quot;)) final <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a> <a href=ImageProcessor.html#process(android.graphics.Bitmap,java.util.List)>process</a>(<a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a> image, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=Operation.html>Operation</a>&gt; operations)</pre>
-                                        <div class="block"><p>Process provided image with list of operations.</p></div>
+                                        <h4>applyFilter</h4>
+                                        <pre class="methodSignature"> final <a href=ImageProcessor.html>ImageProcessor</a> <a href=ImageProcessor.html#applyFilter(.<Error class: unknown class>)>applyFilter</a>(&lt;Error class: unknown class&gt; filter)</pre>
+                                        <div class="block"><p>Applies filter to the image.</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
-                                            <dd><code>image</code> - provided image</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>operations</code> - list of operations</dd>
+                                            <dd><code>filter</code> - filter to apply</dd>
                                             
                                             
                                         </dl>
@@ -454,26 +454,22 @@ public final class <span class="typeNameLabel"><a href=ImageProcessor.html>Image
                                     </li>
                                 </ul>
                                 
-                                <a id="processBitmap(android.graphics.Bitmap,java.util.List)">
+                                <a id="crop(java.util.List)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>processBitmap</h4>
-                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a> <a href=ImageProcessor.html#processBitmap(android.graphics.Bitmap,java.util.List)>processBitmap</a>(<a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a> image, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=Operation.html>Operation</a>&gt; operations)</pre>
-                                        <div class="block"><p>Process provided image with list of operations.</p></div>
+                                        <h4>crop</h4>
+                                        <pre class="methodSignature"> final <a href=ImageProcessor.html>ImageProcessor</a> <a href=ImageProcessor.html#crop(java.util.List)>crop</a>(<a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/android/graphics/PointF.html>PointF</a>&gt; polygon)</pre>
+                                        <div class="block"><p>Crops the image to the given polygon.</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
-                                            <dd><code>image</code> - provided image</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>operations</code> - list of operations</dd>
+                                            <dd><code>polygon</code> - polygon to crop</dd>
                                             
                                             
                                         </dl>
@@ -482,26 +478,22 @@ public final class <span class="typeNameLabel"><a href=ImageProcessor.html>Image
                                     </li>
                                 </ul>
                                 
-                                <a id="processBitmap(android.graphics.Bitmap,io.scanbot.sdk.process.Operation)">
+                                <a id="rotate(.&lt;Error class: unknown class&gt;)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>processBitmap</h4>
-                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a> <a href=ImageProcessor.html#processBitmap(android.graphics.Bitmap,io.scanbot.sdk.process.Operation)>processBitmap</a>(<a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a> image, <a href=Operation.html>Operation</a> operation)</pre>
-                                        <div class="block"><p>Process provided image with list of operations.</p></div>
+                                        <h4>rotate</h4>
+                                        <pre class="methodSignature"> final <a href=ImageProcessor.html>ImageProcessor</a> <a href=ImageProcessor.html#rotate(.<Error class: unknown class>)>rotate</a>(&lt;Error class: unknown class&gt; rotation)</pre>
+                                        <div class="block"><p>Rotates the given image.</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
-                                            <dd><code>image</code> - provided image</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>operation</code> - operation to apply</dd>
+                                            <dd><code>rotation</code> - one of ImageProcessor.</dd>
                                             
                                             
                                         </dl>
@@ -510,34 +502,22 @@ public final class <span class="typeNameLabel"><a href=ImageProcessor.html>Image
                                     </li>
                                 </ul>
                                 
-                                <a id="processNv21(kotlin.ByteArray,java.lang.Integer,java.lang.Integer,java.util.List)">
+                                <a id="rotate(java.lang.Integer)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>processNv21</h4>
-                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a> <a href=ImageProcessor.html#processNv21(kotlin.ByteArray,java.lang.Integer,java.lang.Integer,java.util.List)>processNv21</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> nv21, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> width, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> height, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=Operation.html>Operation</a>&gt; operations)</pre>
-                                        <div class="block"><p>Process provided image with list of operations.</p></div>
+                                        <h4>rotate</h4>
+                                        <pre class="methodSignature"> final <a href=ImageProcessor.html>ImageProcessor</a> <a href=ImageProcessor.html#rotate(java.lang.Integer)>rotate</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> degrees)</pre>
+                                        <div class="block"><p>Rotates the given image clockwise.</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
-                                            <dd><code>nv21</code> - provided image</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>width</code> - width of image, encoded in <a href=ImageProcessor.html#processNv21(kotlin.ByteArray,java.lang.Integer,java.lang.Integer,java.util.List)>nv21</a></dd>
-                                            
-                                            
-                                            
-                                            <dd><code>height</code> - height of image, encoded in <a href=ImageProcessor.html#processNv21(kotlin.ByteArray,java.lang.Integer,java.lang.Integer,java.util.List)>nv21</a></dd>
-                                            
-                                            
-                                            
-                                            <dd><code>operations</code> - list of operations</dd>
+                                            <dd><code>degrees</code> - 0, 90, 180, 270 are supported</dd>
                                             
                                             
                                         </dl>
@@ -546,34 +526,22 @@ public final class <span class="typeNameLabel"><a href=ImageProcessor.html>Image
                                     </li>
                                 </ul>
                                 
-                                <a id="processNv21(kotlin.ByteArray,java.lang.Integer,java.lang.Integer,io.scanbot.sdk.process.Operation)">
+                                <a id="resize(java.lang.Integer)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>processNv21</h4>
-                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a> <a href=ImageProcessor.html#processNv21(kotlin.ByteArray,java.lang.Integer,java.lang.Integer,io.scanbot.sdk.process.Operation)>processNv21</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> nv21, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> width, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> height, <a href=Operation.html>Operation</a> operation)</pre>
-                                        <div class="block"><p>Process provided image with list of operations.</p></div>
+                                        <h4>resize</h4>
+                                        <pre class="methodSignature"> final <a href=ImageProcessor.html>ImageProcessor</a> <a href=ImageProcessor.html#resize(java.lang.Integer)>resize</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> maxSize)</pre>
+                                        <div class="block"><p>Resizes image to the given size.</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
-                                            <dd><code>nv21</code> - provided image</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>width</code> - width of image, encoded in <a href=ImageProcessor.html#processNv21(kotlin.ByteArray,java.lang.Integer,java.lang.Integer,io.scanbot.sdk.process.Operation)>nv21</a></dd>
-                                            
-                                            
-                                            
-                                            <dd><code>height</code> - height of image, encoded in <a href=ImageProcessor.html#processNv21(kotlin.ByteArray,java.lang.Integer,java.lang.Integer,io.scanbot.sdk.process.Operation)>nv21</a></dd>
-                                            
-                                            
-                                            
-                                            <dd><code>operation</code> - operation to apply</dd>
+                                            <dd><code>maxSize</code> - max size of the image</dd>
                                             
                                             
                                         </dl>
@@ -582,26 +550,37 @@ public final class <span class="typeNameLabel"><a href=ImageProcessor.html>Image
                                     </li>
                                 </ul>
                                 
-                                <a id="processJpeg(kotlin.ByteArray,java.util.List)">
+                                <a id="processedBitmap()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>processJpeg</h4>
-                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a> <a href=ImageProcessor.html#processJpeg(kotlin.ByteArray,java.util.List)>processJpeg</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> jpeg, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=Operation.html>Operation</a>&gt; operations)</pre>
-                                        <div class="block"><p>Process provided image with list of operations.</p></div>
+                                        <h4>processedBitmap</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a> <a href=ImageProcessor.html#processedBitmap()>processedBitmap</a>()</pre>
+                                        <div class="block"><p>Returns processed image.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="encodedProcessedImage(java.lang.String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>encodedProcessedImage</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> <a href=ImageProcessor.html#encodedProcessedImage(java.lang.String)>encodedProcessedImage</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> extension)</pre>
+                                        <div class="block"><p>Returns encoded processed image as <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a>.</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
-                                            <dd><code>jpeg</code> - provided image</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>operations</code> - list of operations</dd>
+                                            <dd><code>extension</code> - file extension of the encoded image &quot;.jpg&quot;, &quot;.</dd>
                                             
                                             
                                         </dl>
@@ -610,26 +589,22 @@ public final class <span class="typeNameLabel"><a href=ImageProcessor.html>Image
                                     </li>
                                 </ul>
                                 
-                                <a id="processJpeg(kotlin.ByteArray,io.scanbot.sdk.process.Operation)">
+                                <a id="saveProcessedImage(java.lang.String)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockListLast"
                                           >
                                     <li class="blockList">
-                                        <h4>processJpeg</h4>
-                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html>Bitmap</a> <a href=ImageProcessor.html#processJpeg(kotlin.ByteArray,io.scanbot.sdk.process.Operation)>processJpeg</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> jpeg, <a href=Operation.html>Operation</a> operation)</pre>
-                                        <div class="block"><p>Process provided image with list of operations.</p></div>
+                                        <h4>saveProcessedImage</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=ImageProcessor.html#saveProcessedImage(java.lang.String)>saveProcessedImage</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> path)</pre>
+                                        <div class="block"><p>Saves processed image to the given path.</p><p>Warning: this method doesn't use SDK encryption!</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
-                                            <dd><code>jpeg</code> - provided image</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>operation</code> - operation to apply</dd>
+                                            <dd><code>path</code> - path to save image</dd>
                                             
                                             
                                         </dl>

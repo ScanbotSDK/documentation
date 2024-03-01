@@ -40,7 +40,6 @@ var pathtoroot = "../../../../../";
     
     <li><a href="package-summary.html">Package</a></li>
     
-    <li class="navBarCell1Rev">Class</li>
     
     
     <li><a href="../../../../../deprecated.html">Deprecated</a></li>
@@ -87,7 +86,7 @@ var pathtoroot = "../../../../../";
 <main role="main">
     <div class="header">
         <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">io.scanbot.sdk.util.snap</a></div>
-        <h2 title="Class SoundController" class="title">Class SoundController</h2>
+        <h2 title="Interface SoundController" class="title">Interface SoundController</h2>
     </div>
     <div class="contentContainer">
         <!-- <ul class="inheritance">
@@ -112,10 +111,10 @@ var pathtoroot = "../../../../../";
                     <hr>
                     <pre class="wrap-overflow">
 
-public final class <span class="typeNameLabel"><a href=SoundController.html>SoundController</a></span>
+public interface <span class="typeNameLabel"><a href=SoundController.html>SoundController</a></span>
 
                     </pre>
-                    <div class="block"><p>Controls playing 'bleep' sound and vibration. NOTE: Vibration feature requires <code>android.permission.VIBRATE</code> permission. Add it to the AndroidManifest to use vibration.</p></div>
+                    <div class="block"><p>Encapsulates playing 'bleep' sound and setting up/releasing corresponding resources. NOTE: Vibration feature requires <code>android.permission.VIBRATE</code> permission. Add it to the AndroidManifest to use vibration.</p></div>
                 </li>
             </ul>
         </div>
@@ -162,12 +161,6 @@ public final class <span class="typeNameLabel"><a href=SoundController.html>Soun
                                             <th class="colLast" scope="col">Description</th>
                                         </tr>
                                         
-                                        <tr class="altColor">
-                                            <td class="colFirst"><code>public final static <a href=https://developer.android.com/reference/kotlin/java/lang/Long.html>Long</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=SoundController.html#vibrationDurationMs>vibrationDurationMs</a></code></th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
                                     </table>
                                 </div>
                             </li>
@@ -191,18 +184,6 @@ public final class <span class="typeNameLabel"><a href=SoundController.html>Soun
                                             <th class="colLast" scope="col">Description</th>
                                         </tr>
 
-                                        
-                                            <tr class="altColor">
-                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#SoundController(android.content.Context,android.net.Uri)">SoundController</a></span>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://developer.android.com/reference/kotlin/android/net/Uri.html>Uri</a> bleepUri)</code></th>
-                                                <td class="colLast">Controls playing 'bleep' sound and vibration.</td>
-                                            </tr>
-                                        
-                                            <tr class="rowColor">
-                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#SoundController(android.content.Context,java.lang.Integer)">SoundController</a></span>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> bleepResId)</code></th>
-                                                <td class="colLast"></td>
-                                            </tr>
                                         
 
                                         </tbody>
@@ -254,47 +235,55 @@ public final class <span class="typeNameLabel"><a href=SoundController.html>Soun
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=SoundController.html#setUp()>setUp</a>() </code>
                                             </th>
-                                            <td class="colLast">Prepare mediaPlayer for future 'bleep' playing.</td>
+                                            <td class="colLast">Prepare <a href=SoundController.html>SoundController</a> for future sound or vibration playing.</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=SoundController.html#release()>release</a>() </code>
                                             </th>
-                                            <td class="colLast">Release <a href=https://developer.android.com/reference/kotlin/android/media/MediaPlayer.html>MediaPlayer</a> and <a href=https://developer.android.com/reference/kotlin/android/os/Vibrator.html>Vibrator</a>.</td>
+                                            <td class="colLast">Release resources.</td>
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=SoundController.html#setOnBleepCompleteAction(kotlin.jvm.functions.Function0)>setOnBleepCompleteAction</a>(Function0&lt;<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; onBleepCompleteAction) </code>
-                                            </th>
-                                            <td class="colLast">Sets the action to be invoked after <a href=SoundController.html#playBleepSound()>playBleepSound</a> method executed.</td>
-                                        </tr>
-                                        
-                                        <tr id="i3" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=SoundController.html#setBleepEnabled(java.lang.Boolean)>setBleepEnabled</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enable) </code>
                                             </th>
                                             <td class="colLast">Whether actual sound playing is enabled.</td>
                                         </tr>
                                         
-                                        <tr id="i4" class="altColor">
-                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=SoundController.html#setVibrationEnabled(java.lang.Boolean)>setVibrationEnabled</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enable) </code>
                                             </th>
                                             <td class="colLast">Whether actual vibration is enabled.</td>
                                         </tr>
                                         
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=SoundController.html#setBleepUri(android.net.Uri)>setBleepUri</a>(<a href=https://developer.android.com/reference/kotlin/android/net/Uri.html>Uri</a> uri) </code>
+                                            </th>
+                                            <td class="colLast">Set custom <code>bleep</code> sound resource from file <a href=https://developer.android.com/reference/kotlin/android/net/Uri.html>Uri</a>.</td>
+                                        </tr>
+                                        
                                         <tr id="i5" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=SoundController.html#setBleepResId(java.lang.Integer)>setBleepResId</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> resId) </code>
+                                            </th>
+                                            <td class="colLast">Set custom <code>bleep</code> sound resource from app resources.</td>
+                                        </tr>
+                                        
+                                        <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=SoundController.html#playBleepSound()>playBleepSound</a>() </code>
                                             </th>
@@ -332,52 +321,6 @@ public final class <span class="typeNameLabel"><a href=SoundController.html>Soun
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="SoundController(android.content.Context,android.net.Uri)"></a>
-                                <ul class="blockList">
-                                    <li class="blockList">
-                                        <h4>SoundController</h4>
-                                        <pre>SoundController(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://developer.android.com/reference/kotlin/android/net/Uri.html>Uri</a> bleepUri)</pre>
-                                        <div class="block">Controls playing 'bleep' sound and vibration.</div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>context</code> - application context</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>bleepUri</code> - <a href=https://developer.android.com/reference/kotlin/android/net/Uri.html>Uri</a> to the custom <code>bleep</code> sound resource</dd>
-                                            
-                                            
-                                        </dl>
-                                        
-                                    </li>
-                                </ul>
-                                
-                                <a name="SoundController(android.content.Context,java.lang.Integer)"></a>
-                                <ul class="blockList">
-                                    <li class="blockList">
-                                        <h4>SoundController</h4>
-                                        <pre>SoundController(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> bleepResId)</pre>
-                                        <div class="block"></div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>context</code> - application context</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>bleepResId</code> - resource id for the <code>bleep</code> sound resource</dd>
-                                            
-                                            
-                                        </dl>
-                                        
-                                    </li>
-                                </ul>
-                                
                             </li>
                         </ul>
                     </section>
@@ -399,8 +342,8 @@ public final class <span class="typeNameLabel"><a href=SoundController.html>Soun
                                           >
                                     <li class="blockList">
                                         <h4>setUp</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=SoundController.html#setUp()>setUp</a>()</pre>
-                                        <div class="block"><p>Prepare mediaPlayer for future 'bleep' playing.</p></div>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=SoundController.html#setUp()>setUp</a>()</pre>
+                                        <div class="block"><p>Prepare <a href=SoundController.html>SoundController</a> for future sound or vibration playing.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -414,23 +357,8 @@ public final class <span class="typeNameLabel"><a href=SoundController.html>Soun
                                           >
                                     <li class="blockList">
                                         <h4>release</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=SoundController.html#release()>release</a>()</pre>
-                                        <div class="block"><p>Release <a href=https://developer.android.com/reference/kotlin/android/media/MediaPlayer.html>MediaPlayer</a> and <a href=https://developer.android.com/reference/kotlin/android/os/Vibrator.html>Vibrator</a>.</p></div>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="setOnBleepCompleteAction(kotlin.jvm.functions.Function0)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>setOnBleepCompleteAction</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=SoundController.html#setOnBleepCompleteAction(kotlin.jvm.functions.Function0)>setOnBleepCompleteAction</a>(Function0&lt;<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; onBleepCompleteAction)</pre>
-                                        <div class="block"><p>Sets the action to be invoked after <a href=SoundController.html#playBleepSound()>playBleepSound</a> method executed.</p><p>NOTE: will be executed if set, even if no bleep set to play bleepEnabled is <code>false</code> and vibrationEnabled is <code>false</code>.</p></div>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=SoundController.html#release()>release</a>()</pre>
+                                        <div class="block"><p>Release resources.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -444,7 +372,7 @@ public final class <span class="typeNameLabel"><a href=SoundController.html>Soun
                                           >
                                     <li class="blockList">
                                         <h4>setBleepEnabled</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=SoundController.html#setBleepEnabled(java.lang.Boolean)>setBleepEnabled</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enable)</pre>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=SoundController.html#setBleepEnabled(java.lang.Boolean)>setBleepEnabled</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enable)</pre>
                                         <div class="block"><p>Whether actual sound playing is enabled.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -459,8 +387,38 @@ public final class <span class="typeNameLabel"><a href=SoundController.html>Soun
                                           >
                                     <li class="blockList">
                                         <h4>setVibrationEnabled</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=SoundController.html#setVibrationEnabled(java.lang.Boolean)>setVibrationEnabled</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enable)</pre>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=SoundController.html#setVibrationEnabled(java.lang.Boolean)>setVibrationEnabled</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enable)</pre>
                                         <div class="block"><p>Whether actual vibration is enabled. NOTE: Vibration feature requires <code>android.permission.VIBRATE</code> permission. Add it to the AndroidManifest to use the vibration.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setBleepUri(android.net.Uri)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setBleepUri</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=SoundController.html#setBleepUri(android.net.Uri)>setBleepUri</a>(<a href=https://developer.android.com/reference/kotlin/android/net/Uri.html>Uri</a> uri)</pre>
+                                        <div class="block"><p>Set custom <code>bleep</code> sound resource from file <a href=https://developer.android.com/reference/kotlin/android/net/Uri.html>Uri</a>.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setBleepResId(java.lang.Integer)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setBleepResId</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=SoundController.html#setBleepResId(java.lang.Integer)>setBleepResId</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> resId)</pre>
+                                        <div class="block"><p>Set custom <code>bleep</code> sound resource from app resources.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -474,8 +432,8 @@ public final class <span class="typeNameLabel"><a href=SoundController.html>Soun
                                           >
                                     <li class="blockList">
                                         <h4>playBleepSound</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=SoundController.html#playBleepSound()>playBleepSound</a>()</pre>
-                                        <div class="block"><p>Attempt to play sound and vibrate, if enabled. Also see <a href=SoundController.html#setOnBleepCompleteAction(kotlin.jvm.functions.Function0)>setOnBleepCompleteAction</a>.</p></div>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=SoundController.html#playBleepSound()>playBleepSound</a>()</pre>
+                                        <div class="block"><p>Attempt to play sound and vibrate, if enabled. Also see setOnBleepCompleteAction.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -506,7 +464,6 @@ public final class <span class="typeNameLabel"><a href=SoundController.html>Soun
     
     <li><a href="package-summary.html">Package</a></li>
     
-    <li class="navBarCell1Rev">Class</li>
     
     
     <li><a href="../../../../../deprecated.html">Deprecated</a></li>
