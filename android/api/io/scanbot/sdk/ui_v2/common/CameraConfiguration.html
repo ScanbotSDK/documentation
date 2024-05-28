@@ -42,9 +42,11 @@ var pathtoroot = "../../../../../";
     
     <li class="navBarCell1Rev">Class</li>
     
+    <li><a href="package-tree.html">Tree</a></li>
     
     <li><a href="../../../../../deprecated.html">Deprecated</a></li>
     <li><a href="../../../../../index-files/index-1.html">Index</a></li>
+    <li>Help</li>
 </ul></div>
             <div class="subNav">
 <ul class="navList" id="allclasses_navbar_top" style="display: block;">
@@ -245,13 +247,13 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#CameraConfiguration(java.util.Map)">CameraConfiguration</a></span>(<a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; json)</code></th>
+                                                        href="#CameraConfiguration(java.util.Map)">CameraConfiguration</a></span>(<a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; source)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
                                             <tr class="rowColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#CameraConfiguration()">CameraConfiguration</a></span>()</code></th>
+                                                        href="#CameraConfiguration(org.json.JSONObject)">CameraConfiguration</a></span>(<a href=https://developer.android.com/reference/kotlin/org/json/JSONObject.html>JSONObject</a> json)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -454,6 +456,22 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                             <td class="colLast">Which camera preview mode to use.</td>
                                         </tr>
                                         
+                                        <tr id="i18" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/org/json/JSONObject.html>JSONObject</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=CameraConfiguration.html#toJson()>toJson</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i19" class="rowColor">
+                                            <td class="colFirst"><code>final static <a href=CameraConfiguration.html>CameraConfiguration</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=CameraConfiguration.html#default()>default</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -489,17 +507,17 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>CameraConfiguration</h4>
-                                        <pre>CameraConfiguration(<a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; json)</pre>
+                                        <pre>CameraConfiguration(<a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; source)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
                                 </ul>
                                 
-                                <a name="CameraConfiguration()"></a>
+                                <a name="CameraConfiguration(org.json.JSONObject)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>CameraConfiguration</h4>
-                                        <pre>CameraConfiguration()</pre>
+                                        <pre>CameraConfiguration(<a href=https://developer.android.com/reference/kotlin/org/json/JSONObject.html>JSONObject</a> json)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -537,7 +555,7 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                     <li class="blockList">
                                         <h4>getCameraModule</h4>
                                         <pre class="methodSignature"> final <a href=CameraModule.html>CameraModule</a> <a href=CameraConfiguration.html#getCameraModule()>getCameraModule</a>()</pre>
-                                        <div class="block"><p>Which camera module to use on start-up.</p></div>
+                                        <div class="block"><p>Which camera module to use on start-up. Default is BACK</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -552,7 +570,7 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                     <li class="blockList">
                                         <h4>setCameraModule</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=CameraConfiguration.html#setCameraModule(io.scanbot.sdk.ui_v2.common.CameraModule)>setCameraModule</a>(<a href=CameraModule.html>CameraModule</a> cameraModule)</pre>
-                                        <div class="block"><p>Which camera module to use on start-up.</p></div>
+                                        <div class="block"><p>Which camera module to use on start-up. Default is BACK</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -597,7 +615,7 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                     <li class="blockList">
                                         <h4>getDefaultZoomFactor</h4>
                                         <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Double.html>Double</a> <a href=CameraConfiguration.html#getDefaultZoomFactor()>getDefaultZoomFactor</a>()</pre>
-                                        <div class="block"><p>The default zoom factor on start-up.</p></div>
+                                        <div class="block"><p>The default zoom factor on start-up. Default is 1.0</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -612,7 +630,7 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                     <li class="blockList">
                                         <h4>setDefaultZoomFactor</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=CameraConfiguration.html#setDefaultZoomFactor(java.lang.Double)>setDefaultZoomFactor</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Double.html>Double</a> defaultZoomFactor)</pre>
-                                        <div class="block"><p>The default zoom factor on start-up.</p></div>
+                                        <div class="block"><p>The default zoom factor on start-up. Default is 1.0</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -627,7 +645,7 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                     <li class="blockList">
                                         <h4>getFlashEnabled</h4>
                                         <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=CameraConfiguration.html#getFlashEnabled()>getFlashEnabled</a>()</pre>
-                                        <div class="block"><p>Whether the flash is enabled by default.</p></div>
+                                        <div class="block"><p>Whether the flash is enabled by default. Default is false</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -642,7 +660,7 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                     <li class="blockList">
                                         <h4>setFlashEnabled</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=CameraConfiguration.html#setFlashEnabled(java.lang.Boolean)>setFlashEnabled</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> flashEnabled)</pre>
-                                        <div class="block"><p>Whether the flash is enabled by default.</p></div>
+                                        <div class="block"><p>Whether the flash is enabled by default. Default is false</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -657,7 +675,7 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                     <li class="blockList">
                                         <h4>getMinFocusDistanceLock</h4>
                                         <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=CameraConfiguration.html#getMinFocusDistanceLock()>getMinFocusDistanceLock</a>()</pre>
-                                        <div class="block"><p>Whether to lock the focus on the minimum possible distance (device-specific).</p></div>
+                                        <div class="block"><p>Whether to lock the focus on the minimum possible distance (device-specific). Default is false</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -672,7 +690,7 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                     <li class="blockList">
                                         <h4>setMinFocusDistanceLock</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=CameraConfiguration.html#setMinFocusDistanceLock(java.lang.Boolean)>setMinFocusDistanceLock</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> minFocusDistanceLock)</pre>
-                                        <div class="block"><p>Whether to lock the focus on the minimum possible distance (device-specific).</p></div>
+                                        <div class="block"><p>Whether to lock the focus on the minimum possible distance (device-specific). Default is false</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -687,7 +705,7 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                     <li class="blockList">
                                         <h4>getTouchToFocusEnabled</h4>
                                         <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=CameraConfiguration.html#getTouchToFocusEnabled()>getTouchToFocusEnabled</a>()</pre>
-                                        <div class="block"><p>Whether touch-to-focus is enabled. Android only.</p></div>
+                                        <div class="block"><p>Whether touch-to-focus is enabled. Android only. Default is false</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -702,7 +720,7 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                     <li class="blockList">
                                         <h4>setTouchToFocusEnabled</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=CameraConfiguration.html#setTouchToFocusEnabled(java.lang.Boolean)>setTouchToFocusEnabled</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> touchToFocusEnabled)</pre>
-                                        <div class="block"><p>Whether touch-to-focus is enabled. Android only.</p></div>
+                                        <div class="block"><p>Whether touch-to-focus is enabled. Android only. Default is false</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -717,7 +735,7 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                     <li class="blockList">
                                         <h4>getPinchToZoomEnabled</h4>
                                         <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=CameraConfiguration.html#getPinchToZoomEnabled()>getPinchToZoomEnabled</a>()</pre>
-                                        <div class="block"><p>Whether pinch-to-zoom is enabled.</p></div>
+                                        <div class="block"><p>Whether pinch-to-zoom is enabled. Default is true</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -732,7 +750,7 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                     <li class="blockList">
                                         <h4>setPinchToZoomEnabled</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=CameraConfiguration.html#setPinchToZoomEnabled(java.lang.Boolean)>setPinchToZoomEnabled</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> pinchToZoomEnabled)</pre>
-                                        <div class="block"><p>Whether pinch-to-zoom is enabled.</p></div>
+                                        <div class="block"><p>Whether pinch-to-zoom is enabled. Default is true</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -747,7 +765,7 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                     <li class="blockList">
                                         <h4>getOrientationLockMode</h4>
                                         <pre class="methodSignature"> final <a href=OrientationLockMode.html>OrientationLockMode</a> <a href=CameraConfiguration.html#getOrientationLockMode()>getOrientationLockMode</a>()</pre>
-                                        <div class="block"><p>Which mode to use when orientation should be locked to landscape or portrait.</p></div>
+                                        <div class="block"><p>Which mode to use when orientation should be locked to landscape or portrait. Default is NONE</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -762,7 +780,7 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                     <li class="blockList">
                                         <h4>setOrientationLockMode</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=CameraConfiguration.html#setOrientationLockMode(io.scanbot.sdk.ui_v2.common.OrientationLockMode)>setOrientationLockMode</a>(<a href=OrientationLockMode.html>OrientationLockMode</a> orientationLockMode)</pre>
-                                        <div class="block"><p>Which mode to use when orientation should be locked to landscape or portrait.</p></div>
+                                        <div class="block"><p>Which mode to use when orientation should be locked to landscape or portrait. Default is NONE</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -777,7 +795,7 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                     <li class="blockList">
                                         <h4>getCameraPreviewMode</h4>
                                         <pre class="methodSignature"> final <a href=CameraPreviewMode.html>CameraPreviewMode</a> <a href=CameraConfiguration.html#getCameraPreviewMode()>getCameraPreviewMode</a>()</pre>
-                                        <div class="block"><p>Which camera preview mode to use.</p></div>
+                                        <div class="block"><p>Which camera preview mode to use. Default is FILL_IN</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -787,12 +805,42 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>setCameraPreviewMode</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=CameraConfiguration.html#setCameraPreviewMode(io.scanbot.sdk.ui_v2.common.CameraPreviewMode)>setCameraPreviewMode</a>(<a href=CameraPreviewMode.html>CameraPreviewMode</a> cameraPreviewMode)</pre>
-                                        <div class="block"><p>Which camera preview mode to use.</p></div>
+                                        <div class="block"><p>Which camera preview mode to use. Default is FILL_IN</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="toJson()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>toJson</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/org/json/JSONObject.html>JSONObject</a> <a href=CameraConfiguration.html#toJson()>toJson</a>()</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="default()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>default</h4>
+                                        <pre class="methodSignature"> final static <a href=CameraConfiguration.html>CameraConfiguration</a> <a href=CameraConfiguration.html#default()>default</a>()</pre>
+                                        <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -825,9 +873,11 @@ public final class <span class="typeNameLabel"><a href=CameraConfiguration.html>
     
     <li class="navBarCell1Rev">Class</li>
     
+    <li><a href="package-tree.html">Tree</a></li>
     
     <li><a href="../../../../../deprecated.html">Deprecated</a></li>
     <li><a href="../../../../../index-files/index-1.html">Index</a></li>
+    <li>Help</li>
 </ul></div>
         <a id="skip.navbar.bottom">
             <!--   -->
