@@ -42,9 +42,11 @@ var pathtoroot = "../../../../";
     
     <li class="navBarCell1Rev">Class</li>
     
+    <li><a href="package-tree.html">Tree</a></li>
     
     <li><a href="../../../../deprecated.html">Deprecated</a></li>
     <li><a href="../../../../index-files/index-1.html">Index</a></li>
+    <li>Help</li>
 </ul></div>
             <div class="subNav">
 <ul class="navList" id="allclasses_navbar_top" style="display: block;">
@@ -189,6 +191,12 @@ public final class <span class="typeNameLabel"><a href=Field.Type.html>Field.Typ
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=Field.Type.html#listIndex>listIndex</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                     </table>
                                 </div>
                             </li>
@@ -215,7 +223,7 @@ public final class <span class="typeNameLabel"><a href=Field.Type.html>Field.Typ
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#Field.Type(java.lang.String,java.lang.String,java.lang.String,io.scanbot.genericdocument.entity.CommonFieldType)">Field.Type</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> name, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> fullName, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> normalizedName, <a href=CommonFieldType.html>CommonFieldType</a> commonType)</code></th>
+                                                        href="#Field.Type(java.lang.String,java.lang.String,java.lang.String,io.scanbot.genericdocument.entity.CommonFieldType,java.lang.Integer)">Field.Type</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> name, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> fullName, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> normalizedName, <a href=CommonFieldType.html>CommonFieldType</a> commonType, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> listIndex)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -300,6 +308,14 @@ public final class <span class="typeNameLabel"><a href=Field.Type.html>Field.Typ
                                             <td class="colLast">optional common field type.</td>
                                         </tr>
                                         
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Field.Type.html#getListIndex()>getListIndex</a>() </code>
+                                            </th>
+                                            <td class="colLast">A document contain multiple fields of the same name, the property serves for storing natural order of such fields, null if multiple entries aren't allowed for this child</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -331,11 +347,11 @@ public final class <span class="typeNameLabel"><a href=Field.Type.html>Field.Typ
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="Field.Type(java.lang.String,java.lang.String,java.lang.String,io.scanbot.genericdocument.entity.CommonFieldType)"></a>
+                                <a name="Field.Type(java.lang.String,java.lang.String,java.lang.String,io.scanbot.genericdocument.entity.CommonFieldType,java.lang.Integer)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>Field.Type</h4>
-                                        <pre>Field.Type(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> name, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> fullName, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> normalizedName, <a href=CommonFieldType.html>CommonFieldType</a> commonType)</pre>
+                                        <pre>Field.Type(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> name, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> fullName, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> normalizedName, <a href=CommonFieldType.html>CommonFieldType</a> commonType, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> listIndex)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -403,12 +419,27 @@ public final class <span class="typeNameLabel"><a href=Field.Type.html>Field.Typ
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getCommonType</h4>
                                         <pre class="methodSignature"> final <a href=CommonFieldType.html>CommonFieldType</a> <a href=Field.Type.html#getCommonType()>getCommonType</a>()</pre>
                                         <div class="block"><p>optional common field type. Commonly occurring fields that have the same semantic meaning in different document types will often have a set common type.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getListIndex()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getListIndex</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> <a href=Field.Type.html#getListIndex()>getListIndex</a>()</pre>
+                                        <div class="block"><p>A document contain multiple fields of the same name, the property serves for storing natural order of such fields, null if multiple entries aren't allowed for this child</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -441,9 +472,11 @@ public final class <span class="typeNameLabel"><a href=Field.Type.html>Field.Typ
     
     <li class="navBarCell1Rev">Class</li>
     
+    <li><a href="package-tree.html">Tree</a></li>
     
     <li><a href="../../../../deprecated.html">Deprecated</a></li>
     <li><a href="../../../../index-files/index-1.html">Index</a></li>
+    <li>Help</li>
 </ul></div>
         <a id="skip.navbar.bottom">
             <!--   -->
