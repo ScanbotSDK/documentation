@@ -42,9 +42,11 @@ var pathtoroot = "../../../../";
     
     <li class="navBarCell1Rev">Class</li>
     
+    <li><a href="package-tree.html">Tree</a></li>
     
     <li><a href="../../../../deprecated.html">Deprecated</a></li>
     <li><a href="../../../../index-files/index-1.html">Index</a></li>
+    <li>Help</li>
 </ul></div>
             <div class="subNav">
 <ul class="navList" id="allclasses_navbar_top" style="display: block;">
@@ -106,6 +108,16 @@ var pathtoroot = "../../../../";
                         <dt>All Implemented Interfaces:</dt>
                         <dd>
                             
+                            <code>io.scanbot.sdk.LicensableSdk</code>
+                            
+                            ,
+                            
+                            
+                            <code>io.scanbot.sdk.barcode.BarcodeScanningSdk</code>
+                            
+                            ,
+                            
+                            
                             <code>io.scanbot.sdk.persistence.StorageSpaceAware</code>
                             
                             
@@ -116,7 +128,7 @@ var pathtoroot = "../../../../";
                     <pre class="wrap-overflow">
 
 public final class <span class="typeNameLabel"><a href=ScanbotBarcodeScannerSDK.html>ScanbotBarcodeScannerSDK</a></span>
- implements <a href=../persistence/StorageSpaceAware.html>StorageSpaceAware</a>
+ implements <a href=../persistence/StorageSpaceAware.html>StorageSpaceAware</a>, <a href=../LicensableSdk.html>LicensableSdk</a>, <a href=../barcode/BarcodeScanningSdk.html>BarcodeScanningSdk</a>
                     </pre>
                     <div class="block"><p>Provider for Scanbot Barcode Scanner SDK features.</p><p>Typical use case is to create this object in <a href=https://developer.android.com/reference/kotlin/android/app/Activity.html#oncreate>Activity.onCreate</a> or <a href=https://developer.android.com/reference/kotlin/android/app/Service.html#oncreate>Service.onCreate</a>, but it's allowed to create it during any other point of lifecycle before onDestroy.</p><p>Note that each instance stores reference to given context, so it should not be cached statically. All necessary caching is already done by <a href=ScanbotBarcodeScannerSDK.html>ScanbotBarcodeScannerSDK</a> itself - some methods might return same instance repeatedly.</p><p>Some insight - Scanbot uses Dependency Injection internally, but we do not want to expose it to users of the library to ensure that changes in DI implementation won't affect users of the library.</p></div>
                 </li>
@@ -269,11 +281,11 @@ public final class <span class="typeNameLabel"><a href=ScanbotBarcodeScannerSDK.
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code>final SdkLicenseInfo</code>
+                                            <td class="colFirst"><code>SdkLicenseInfo</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=ScanbotBarcodeScannerSDK.html#getLicenseInfo()>getLicenseInfo</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Provides full info of the license current state.</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
@@ -285,7 +297,7 @@ public final class <span class="typeNameLabel"><a href=ScanbotBarcodeScannerSDK.
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code>final <a href=../barcode/ScanbotBarcodeDetector.html>ScanbotBarcodeDetector</a></code>
+                                            <td class="colFirst"><code><a href=../barcode/ScanbotBarcodeDetector.html>ScanbotBarcodeDetector</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=ScanbotBarcodeScannerSDK.html#createBarcodeDetector()>createBarcodeDetector</a>() </code>
                                             </th>
@@ -293,7 +305,7 @@ public final class <span class="typeNameLabel"><a href=ScanbotBarcodeScannerSDK.
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=../barcode/document/BarcodeDocumentParser.html>BarcodeDocumentParser</a></code>
+                                            <td class="colFirst"><code><a href=../barcode/document/BarcodeDocumentParser.html>BarcodeDocumentParser</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=ScanbotBarcodeScannerSDK.html#createBarcodeDocumentParser()>createBarcodeDocumentParser</a>() </code>
                                             </th>
@@ -301,7 +313,7 @@ public final class <span class="typeNameLabel"><a href=ScanbotBarcodeScannerSDK.
                                         </tr>
                                         
                                         <tr id="i4" class="altColor">
-                                            <td class="colFirst"><code>final <a href=../persistence/BarcodeFileStorage.html>BarcodeFileStorage</a></code>
+                                            <td class="colFirst"><code><a href=../persistence/BarcodeFileStorage.html>BarcodeFileStorage</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=ScanbotBarcodeScannerSDK.html#createBarcodeFileStorage()>createBarcodeFileStorage</a>() </code>
                                             </th>
@@ -317,22 +329,6 @@ public final class <span class="typeNameLabel"><a href=ScanbotBarcodeScannerSDK.
                                         </tr>
                                         
                                         <tr id="i6" class="altColor">
-                                            <td class="colFirst"><code>final <a href=../blob/BlobManager.html>BlobManager</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=ScanbotBarcodeScannerSDK.html#createBlobManager()>createBlobManager</a>() </code>
-                                            </th>
-                                            <td class="colLast">Provides <a href=../blob/BlobManager.html>BlobManager</a>.</td>
-                                        </tr>
-                                        
-                                        <tr id="i7" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=../blob/BlobFactory.html>BlobFactory</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=ScanbotBarcodeScannerSDK.html#createBlobFactory()>createBlobFactory</a>() </code>
-                                            </th>
-                                            <td class="colLast">Provides <a href=../blob/BlobFactory.html>BlobFactory</a>.</td>
-                                        </tr>
-                                        
-                                        <tr id="i8" class="altColor">
                                             <td class="colFirst"><code>final <a href=../pdf/PdfImagesExtractor.html>PdfImagesExtractor</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=ScanbotBarcodeScannerSDK.html#createPdfImagesExtractor()>createPdfImagesExtractor</a>() </code>
@@ -432,8 +428,8 @@ public final class <span class="typeNameLabel"><a href=ScanbotBarcodeScannerSDK.
                                           >
                                     <li class="blockList">
                                         <h4>getLicenseInfo</h4>
-                                        <pre class="methodSignature"> final SdkLicenseInfo <a href=ScanbotBarcodeScannerSDK.html#getLicenseInfo()>getLicenseInfo</a>()</pre>
-                                        <div class="block"></div>
+                                        <pre class="methodSignature"> SdkLicenseInfo <a href=ScanbotBarcodeScannerSDK.html#getLicenseInfo()>getLicenseInfo</a>()</pre>
+                                        <div class="block"><p>Provides full info of the license current state. Returned value is consistent during lifetime of the process, i.e. if license is active at application start-up it will remain that way until app will be killed.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -462,7 +458,7 @@ public final class <span class="typeNameLabel"><a href=ScanbotBarcodeScannerSDK.
                                           >
                                     <li class="blockList">
                                         <h4>createBarcodeDetector</h4>
-                                        <pre class="methodSignature"> final <a href=../barcode/ScanbotBarcodeDetector.html>ScanbotBarcodeDetector</a> <a href=ScanbotBarcodeScannerSDK.html#createBarcodeDetector()>createBarcodeDetector</a>()</pre>
+                                        <pre class="methodSignature"> <a href=../barcode/ScanbotBarcodeDetector.html>ScanbotBarcodeDetector</a> <a href=ScanbotBarcodeScannerSDK.html#createBarcodeDetector()>createBarcodeDetector</a>()</pre>
                                         <div class="block"><p>Provides <a href=../barcode/ScanbotBarcodeDetector.html>ScanbotBarcodeDetector</a>.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -477,7 +473,7 @@ public final class <span class="typeNameLabel"><a href=ScanbotBarcodeScannerSDK.
                                           >
                                     <li class="blockList">
                                         <h4>createBarcodeDocumentParser</h4>
-                                        <pre class="methodSignature"> final <a href=../barcode/document/BarcodeDocumentParser.html>BarcodeDocumentParser</a> <a href=ScanbotBarcodeScannerSDK.html#createBarcodeDocumentParser()>createBarcodeDocumentParser</a>()</pre>
+                                        <pre class="methodSignature"> <a href=../barcode/document/BarcodeDocumentParser.html>BarcodeDocumentParser</a> <a href=ScanbotBarcodeScannerSDK.html#createBarcodeDocumentParser()>createBarcodeDocumentParser</a>()</pre>
                                         <div class="block"><p>Provides <a href=../barcode/document/BarcodeDocumentParser.html>BarcodeDocumentParser</a>.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -492,7 +488,7 @@ public final class <span class="typeNameLabel"><a href=ScanbotBarcodeScannerSDK.
                                           >
                                     <li class="blockList">
                                         <h4>createBarcodeFileStorage</h4>
-                                        <pre class="methodSignature"> final <a href=../persistence/BarcodeFileStorage.html>BarcodeFileStorage</a> <a href=ScanbotBarcodeScannerSDK.html#createBarcodeFileStorage()>createBarcodeFileStorage</a>()</pre>
+                                        <pre class="methodSignature"> <a href=../persistence/BarcodeFileStorage.html>BarcodeFileStorage</a> <a href=ScanbotBarcodeScannerSDK.html#createBarcodeFileStorage()>createBarcodeFileStorage</a>()</pre>
                                         <div class="block"><p>Provides <a href=../persistence/BarcodeFileStorage.html>BarcodeFileStorage</a>.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -509,36 +505,6 @@ public final class <span class="typeNameLabel"><a href=ScanbotBarcodeScannerSDK.
                                         <h4>fileIOProcessor</h4>
                                         <pre class="methodSignature"> final <a href=../persistence/fileio/FileIOProcessor.html>FileIOProcessor</a> <a href=ScanbotBarcodeScannerSDK.html#fileIOProcessor()>fileIOProcessor</a>()</pre>
                                         <div class="block"><p>Provides <a href=../persistence/fileio/FileIOProcessor.html>FileIOProcessor</a>.</p></div>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="createBlobManager()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>createBlobManager</h4>
-                                        <pre class="methodSignature"> final <a href=../blob/BlobManager.html>BlobManager</a> <a href=ScanbotBarcodeScannerSDK.html#createBlobManager()>createBlobManager</a>()</pre>
-                                        <div class="block"><p>Provides <a href=../blob/BlobManager.html>BlobManager</a>.</p></div>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="createBlobFactory()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>createBlobFactory</h4>
-                                        <pre class="methodSignature"> final <a href=../blob/BlobFactory.html>BlobFactory</a> <a href=ScanbotBarcodeScannerSDK.html#createBlobFactory()>createBlobFactory</a>()</pre>
-                                        <div class="block"><p>Provides <a href=../blob/BlobFactory.html>BlobFactory</a>.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -586,9 +552,11 @@ public final class <span class="typeNameLabel"><a href=ScanbotBarcodeScannerSDK.
     
     <li class="navBarCell1Rev">Class</li>
     
+    <li><a href="package-tree.html">Tree</a></li>
     
     <li><a href="../../../../deprecated.html">Deprecated</a></li>
     <li><a href="../../../../index-files/index-1.html">Index</a></li>
+    <li>Help</li>
 </ul></div>
         <a id="skip.navbar.bottom">
             <!--   -->
