@@ -222,25 +222,37 @@ extends <a href=https://developer.android.com/reference/kotlin/java/lang/Enum.ht
                                     <tr class="altColor">
                                         <th class="colFirst" scope="row"><code><span class="memberNameLink"><a
                                                 href="TODO"><a href=JsonGs1HandlingMode.html#NONE>NONE</a></a></span></code></th>
-                                        <td class="colLast"><p>No special handling for GS1-formatted results. Special (FNC1) characters are stripped. Equivalent to assumeGS1=false in ZXing for Code128 results.</p></td>
+                                        <td class="colLast"><p>The (FNC1) character is simply stripped from the result in barcodes that implement this mode. Do not use. Will be removed in a future release.</p></td>
                                     </tr>
                                     
                                     <tr class="rowColor">
                                         <th class="colFirst" scope="row"><code><span class="memberNameLink"><a
                                                 href="TODO"><a href=JsonGs1HandlingMode.html#PARSE>PARSE</a></a></span></code></th>
-                                        <td class="colLast"><p>GS1 messages are converted to machine-readable format per the GS1 spec (the special character is converted to ASCII \x1D). Message is not validated. This is the default. The implied 01 AI key is prepended to DataBar results. Equivalent to assumeGS1=true in ZXing for Code128 results.</p></td>
+                                        <td class="colLast"><p>GS1 messages are converted to the machine-readable format per the GS1 spec (the special FNC1 character is converted to ASCII \x1D). The implied 01 AI key is prepended to DataBar results. No validation is performed.</p></td>
                                     </tr>
                                     
                                     <tr class="altColor">
                                         <th class="colFirst" scope="row"><code><span class="memberNameLink"><a
-                                                href="TODO"><a href=JsonGs1HandlingMode.html#VALIDATE>VALIDATE</a></a></span></code></th>
-                                        <td class="colLast"><p>GS1 messages are converted to machine-readable format per the GS1 spec (the special character is converted to ASCII \x1D) and validated. The implied 01 AI key is prepended to DataBar results. Invalid messages are not returned.</p></td>
+                                                href="TODO"><a href=JsonGs1HandlingMode.html#VALIDATE_STRUCTURE>VALIDATE_STRUCTURE</a></a></span></code></th>
+                                        <td class="colLast"><p>Same as PARSE. Additionally, messages containing unknown AI keys, or containing values of incorrect format for known keys, are not returned.</p></td>
                                     </tr>
                                     
                                     <tr class="rowColor">
                                         <th class="colFirst" scope="row"><code><span class="memberNameLink"><a
-                                                href="TODO"><a href=JsonGs1HandlingMode.html#DECODE>DECODE</a></a></span></code></th>
-                                        <td class="colLast"><p>GS1 strings are converted to human-readable format and validated. The implied (01) AI key is prepended to DataBar results. Invalid messages are not returned.</p></td>
+                                                href="TODO"><a href=JsonGs1HandlingMode.html#DECODE_STRUCTURE>DECODE_STRUCTURE</a></a></span></code></th>
+                                        <td class="colLast"><p>Same as VALIDATE_STRUCTURE, except that GS1 strings are converted to the human-readable format, instead (with parentheses used to wrap AI keys, e.g. (01)123456789). The \x1D character is never used in this representation.</p></td>
+                                    </tr>
+                                    
+                                    <tr class="altColor">
+                                        <th class="colFirst" scope="row"><code><span class="memberNameLink"><a
+                                                href="TODO"><a href=JsonGs1HandlingMode.html#VALIDATE_FULL>VALIDATE_FULL</a></a></span></code></th>
+                                        <td class="colLast"><p>Full validation including linting and checksums. This is the most strict mode.</p></td>
+                                    </tr>
+                                    
+                                    <tr class="rowColor">
+                                        <th class="colFirst" scope="row"><code><span class="memberNameLink"><a
+                                                href="TODO"><a href=JsonGs1HandlingMode.html#DECODE_FULL>DECODE_FULL</a></a></span></code></th>
+                                        <td class="colLast"><p>Same as DECODE_STRUCTURE, but with full validation.</p></td>
                                     </tr>
                                     
                                 </table>
