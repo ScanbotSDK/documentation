@@ -1,0 +1,367 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>FindAndPickScanningMode</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            scanbot-sdk-compose-multiplatform
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">common</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="scanbot-sdk-compose-multiplatform::io.scanbot.sdk.compose.multiplatform.configuration/FindAndPickScanningMode///PointingToDeclaration//-1428095350">
+  <div class="breadcrumbs"><a href="../../index.html">scanbot-sdk-compose-multiplatform</a><span class="delimiter">/</span><a href="../index.html">io.scanbot.sdk.compose.multiplatform.configuration</a><span class="delimiter">/</span><span class="current">FindAndPickScanningMode</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Find</span><wbr><span>And</span><wbr><span>Pick</span><wbr><span>Scanning</span><wbr><span><span>Mode</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">FindAndPickScanningMode</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>scanningCompletedColor<span class="token operator">: </span><a href="../../io.scanbot.sdk.compose.multiplatform.common/-scanbot-color/index.html">ScanbotColor</a><span class="token operator"> = </span>ScanbotColor("?sbColorPositive", isArgb = false)<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>scanningPartiallyColor<span class="token operator">: </span><a href="../../io.scanbot.sdk.compose.multiplatform.common/-scanbot-color/index.html">ScanbotColor</a><span class="token operator"> = </span>ScanbotColor("?sbColorWarning", isArgb = false)<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>scanningNotScannedColor<span class="token operator">: </span><a href="../../io.scanbot.sdk.compose.multiplatform.common/-scanbot-color/index.html">ScanbotColor</a><span class="token operator"> = </span>ScanbotColor("?sbColorOutline", isArgb = false)<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>allowPartialScan<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>expectedBarcodes<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-expected-barcode/index.html">ExpectedBarcode</a><span class="token operator">&gt;</span><span class="token operator"> = </span>listOf(  )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>countingRepeatDelay<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1000</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>sheet<span class="token operator">: </span><a href="../-sheet/index.html">Sheet</a><span class="token operator"> = </span>Sheet( mode = SheetMode.COLLAPSED_SHEET, collapsedVisibleHeight = CollapsedVisibleHeight.SMALL, listButton = BadgedButton( badgeBackgroundColor = ScanbotColor("?sbColorSurface", isArgb = false), badgeForegroundColor = ScanbotColor("?sbColorPrimary", isArgb = false), visible = true, backgroundColor = ScanbotColor("?sbColorSurfaceHigh", isArgb = false), foregroundColor = ScanbotColor("?sbColorOnPrimary", isArgb = false), activeBackgroundColor = ScanbotColor("?sbColorSurfaceHigh", isArgb = false), activeForegroundColor = ScanbotColor("?sbColorOnPrimary", isArgb = false) ) )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>sheetContent<span class="token operator">: </span><a href="../-sheet-content/index.html">SheetContent</a><span class="token operator"> = </span>SheetContent( sheetColor = ScanbotColor("?sbColorSurface", isArgb = false), dividerColor = ScanbotColor("?sbColorOutline", isArgb = false), manualCountChangeEnabled = true, manualCountOutlineColor = ScanbotColor("?sbColorOutline", isArgb = false), manualCountChangeColor = ScanbotColor("?sbColorPrimary", isArgb = false), title = StyledText( visible = true, text = "?findAndPickSheetTitle", color = ScanbotColor("?sbColorOnSurface", isArgb = false), useShadow = false ), clearAllButton = ButtonConfiguration( visible = true, text = "?sheetResetButton", background = BackgroundStyle( strokeColor = ScanbotColor("#00000000", isArgb = false), fillColor = ScanbotColor("#00000000", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor("?sbColorOnSurface", isArgb = false), useShadow = false ) ), barcodeItemTitle = StyledText( text = "BARCODE_TITLE", color = ScanbotColor("?sbColorOnSurface", isArgb = false) ), barcodeItemSubtitle = StyledText( text = "?findAndPickSheetBarcodeItemSubtitle", color = ScanbotColor("?sbColorOnSurfaceVariant", isArgb = false) ), barcodeItemImageVisible = true, submitButton = ButtonConfiguration( visible = true, text = "?sheetSubmitButton", background = BackgroundStyle( strokeColor = ScanbotColor("#00000000", isArgb = false), fillColor = ScanbotColor("#00000000", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor("?sbColorOnSurface", isArgb = false), useShadow = false ) ), startScanningButton = ButtonConfiguration( visible = true, text = "?sheetStartScanningButton", background = BackgroundStyle( strokeColor = ScanbotColor("?sbColorPrimary", isArgb = false), fillColor = ScanbotColor("?sbColorPrimary", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor("?sbColorOnPrimary", isArgb = false), useShadow = false ) ), placeholderTitle = StyledText( text = "?sheetPlaceholderTitle", color = ScanbotColor("?sbColorOnSurface", isArgb = false) ), placeholderSubtitle = StyledText( text = "?sheetPlaceholderSubtitle", color = ScanbotColor("?sbColorOnSurfaceVariant", isArgb = false) ), placeholderIconBackground = ScanbotColor("?sbColorOutline", isArgb = false), placeholderIcon = IconStyle( visible = true, color = ScanbotColor("?sbColorOnSurface", isArgb = false) ), swipeToDelete = SwipeToDelete( enabled = false, backgroundColor = ScanbotColor("?sbColorNegative", isArgb = false), iconColor = ScanbotColor("?sbColorOnPrimary", isArgb = false) ) )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>manualCountEditDialog<span class="token operator">: </span><a href="../-manual-count-edit-dialog/index.html">ManualCountEditDialog</a><span class="token operator"> = </span>ManualCountEditDialog( sheetColor = ScanbotColor("?sbColorSurface", isArgb = false), dividerColor = ScanbotColor("?sbColorOutline", isArgb = false), modalOverlayColor = ScanbotColor("?sbColorModalOverlay", isArgb = false), title = StyledText( text = "?manualCountEditDialogTitle", color = ScanbotColor("?sbColorOnSurface", isArgb = false) ), info = StyledText( text = "?manualCountEditDialogInfo", color = ScanbotColor("?sbColorOnSurfaceVariant", isArgb = false) ), updateButton = ButtonConfiguration( visible = true, text = "?manualCountEditDialogUpdateButton", background = BackgroundStyle( strokeColor = ScanbotColor("?sbColorPrimary", isArgb = false), fillColor = ScanbotColor("?sbColorPrimary", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor("?sbColorOnPrimary", isArgb = false), useShadow = false ) ), cancelButton = ButtonConfiguration( visible = true, text = "?manualCountEditDialogCancelButton", background = BackgroundStyle( strokeColor = ScanbotColor("#00000000", isArgb = false), fillColor = ScanbotColor("#00000000", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor("?sbColorPrimary", isArgb = false), useShadow = false ) ), clearTextButton = IconStyle( visible = true, color = ScanbotColor("?sbColorOnSurfaceVariant", isArgb = false) ) )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>arOverlay<span class="token operator">: </span><a href="../-ar-overlay-find-and-pick-configuration/index.html">ArOverlayFindAndPickConfiguration</a><span class="token operator"> = </span>ArOverlayFindAndPickConfiguration( visible = true, automaticSelectionEnabled = true, polygon = FindAndPickArOverlayPolygonConfiguration( partiallyScanned = PolygonStyle( strokeColor = ScanbotColor("?sbColorWarning", isArgb = false), fillColor = ScanbotColor("#00000000", isArgb = false), strokeWidth = 3.0, cornerRadius = 5.0 ), rejected = PolygonStyle( strokeColor = ScanbotColor("?sbColorSurface", isArgb = false), fillColor = ScanbotColor("#00000000", isArgb = false), strokeWidth = 3.0, cornerRadius = 5.0 ), completed = PolygonStyle( strokeColor = ScanbotColor("?sbColorPositive", isArgb = false), fillColor = ScanbotColor("#00000000", isArgb = false), strokeWidth = 3.0, cornerRadius = 5.0 ) ), badge = FindAndPickBadgeConfiguration( partiallyScanned = BadgeStyle( visible = true, background = BackgroundStyle( strokeColor = ScanbotColor("#000000FF", isArgb = false), fillColor = ScanbotColor("?sbColorWarning", isArgb = false), strokeWidth = 0.0 ), foregroundColor = ScanbotColor("?sbColorOnSurface", isArgb = false) ), rejected = BadgeStyle( visible = true, background = BackgroundStyle( strokeColor = ScanbotColor("#000000FF", isArgb = false), fillColor = ScanbotColor("?sbColorSurface", isArgb = false), strokeWidth = 0.0 ), foregroundColor = ScanbotColor("?sbColorOnSurface", isArgb = false) ), completed = BadgeStyle( visible = true, background = BackgroundStyle( strokeColor = ScanbotColor("#000000FF", isArgb = false), fillColor = ScanbotColor("?sbColorPositive", isArgb = false), strokeWidth = 0.0 ), foregroundColor = ScanbotColor("?sbColorOnSurface", isArgb = false) ) ) )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>partialScannedAlertDialogEnabled<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>partialScannedAlertDialog<span class="token operator">: </span><a href="../../io.scanbot.sdk.compose.multiplatform.common/-scanbot-alert-dialog/index.html">ScanbotAlertDialog</a><span class="token operator"> = </span>ScanbotAlertDialog( title = StyledText( text = "?findAndPickPartialAlertTitle", color = ScanbotColor("?sbColorOnSurface", isArgb = false) ), subtitle = StyledText( text = "?findAndPickPartialAlertSubtitle", color = ScanbotColor("?sbColorOnSurfaceVariant", isArgb = false) ), sheetColor = ScanbotColor("?sbColorSurface", isArgb = false), modalOverlayColor = ScanbotColor("?sbColorModalOverlay", isArgb = false), dividerColor = ScanbotColor("?sbColorOutline", isArgb = false), okButton = ButtonConfiguration( visible = true, text = "?findAndPickPartialAlertSubmitButton", background = BackgroundStyle( strokeColor = ScanbotColor("?sbColorPrimary", isArgb = false), fillColor = ScanbotColor("?sbColorPrimary", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = true, color = ScanbotColor("?sbColorOnPrimary", isArgb = false), useShadow = false ) ), cancelButton = ButtonConfiguration( visible = true, text = "?findAndPickPartialAlertCancelButton", background = BackgroundStyle( strokeColor = ScanbotColor("#00000000", isArgb = false), fillColor = ScanbotColor("#00000000", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor("?sbColorPrimary", isArgb = false), useShadow = false ) ) )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>confirmationAlertDialogEnabled<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>confirmationAlertDialog<span class="token operator">: </span><a href="../../io.scanbot.sdk.compose.multiplatform.common/-scanbot-alert-dialog/index.html">ScanbotAlertDialog</a><span class="token operator"> = </span>ScanbotAlertDialog( title = StyledText( text = "?findAndPickCompleteAlertTitle", color = ScanbotColor("?sbColorOnSurface", isArgb = false) ), subtitle = StyledText( text = "?findAndPickCompleteAlertSubtitle", color = ScanbotColor("?sbColorOnSurfaceVariant", isArgb = false) ), sheetColor = ScanbotColor("?sbColorSurface", isArgb = false), modalOverlayColor = ScanbotColor("?sbColorModalOverlay", isArgb = false), dividerColor = ScanbotColor("?sbColorOutline", isArgb = false), okButton = ButtonConfiguration( visible = true, text = "?findAndPickCompleteAlertSubmitButton", background = BackgroundStyle( strokeColor = ScanbotColor("?sbColorPrimary", isArgb = false), fillColor = ScanbotColor("?sbColorPrimary", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = true, color = ScanbotColor("?sbColorOnPrimary", isArgb = false), useShadow = false ) ), cancelButton = ButtonConfiguration( visible = true, text = "?findAndPickCompleteAlertCancelButton", background = BackgroundStyle( strokeColor = ScanbotColor("#00000000", isArgb = false), fillColor = ScanbotColor("#00000000", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor("?sbColorPrimary", isArgb = false), useShadow = false ) ) )</span></span><span class="token punctuation">)</span> : <a href="../-barcode-use-case/index.html">BarcodeUseCase</a></div><p class="paragraph">Configuration of the Find and Pick barcode scanning mode.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1819359047%2FConstructors%2F-1428095350" anchor-label="FindAndPickScanningMode" id="1819359047%2FConstructors%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-find-and-pick-scanning-mode.html"><span>Find</span><wbr><span>And</span><wbr><span>Pick</span><wbr><span>Scanning</span><wbr><span><span>Mode</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1819359047%2FConstructors%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">source<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">json<span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization.json/JsonObject///PointingToDeclaration/">JsonObject</span></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">scanningCompletedColor<span class="token operator">: </span><a href="../../io.scanbot.sdk.compose.multiplatform.common/-scanbot-color/index.html">ScanbotColor</a><span class="token operator"> = </span>ScanbotColor("?sbColorPositive", isArgb = false)<span class="token punctuation">, </span></span><span class="parameter ">scanningPartiallyColor<span class="token operator">: </span><a href="../../io.scanbot.sdk.compose.multiplatform.common/-scanbot-color/index.html">ScanbotColor</a><span class="token operator"> = </span>ScanbotColor("?sbColorWarning", isArgb = false)<span class="token punctuation">, </span></span><span class="parameter ">scanningNotScannedColor<span class="token operator">: </span><a href="../../io.scanbot.sdk.compose.multiplatform.common/-scanbot-color/index.html">ScanbotColor</a><span class="token operator"> = </span>ScanbotColor("?sbColorOutline", isArgb = false)<span class="token punctuation">, </span></span><span class="parameter ">allowPartialScan<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">expectedBarcodes<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-expected-barcode/index.html">ExpectedBarcode</a><span class="token operator">&gt;</span><span class="token operator"> = </span>listOf(  )<span class="token punctuation">, </span></span><span class="parameter ">countingRepeatDelay<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1000</span><span class="token punctuation">, </span></span><span class="parameter ">sheet<span class="token operator">: </span><a href="../-sheet/index.html">Sheet</a><span class="token operator"> = </span>Sheet( mode = SheetMode.COLLAPSED_SHEET, collapsedVisibleHeight = CollapsedVisibleHeight.SMALL, listButton = BadgedButton( badgeBackgroundColor = ScanbotColor("?sbColorSurface", isArgb = false), badgeForegroundColor = ScanbotColor("?sbColorPrimary", isArgb = false), visible = true, backgroundColor = ScanbotColor("?sbColorSurfaceHigh", isArgb = false), foregroundColor = ScanbotColor("?sbColorOnPrimary", isArgb = false), activeBackgroundColor = ScanbotColor("?sbColorSurfaceHigh", isArgb = false), activeForegroundColor = ScanbotColor("?sbColorOnPrimary", isArgb = false) ) )<span class="token punctuation">, </span></span><span class="parameter ">sheetContent<span class="token operator">: </span><a href="../-sheet-content/index.html">SheetContent</a><span class="token operator"> = </span>SheetContent( sheetColor = ScanbotColor("?sbColorSurface", isArgb = false), dividerColor = ScanbotColor("?sbColorOutline", isArgb = false), manualCountChangeEnabled = true, manualCountOutlineColor = ScanbotColor("?sbColorOutline", isArgb = false), manualCountChangeColor = ScanbotColor("?sbColorPrimary", isArgb = false), title = StyledText( visible = true, text = "?findAndPickSheetTitle", color = ScanbotColor("?sbColorOnSurface", isArgb = false), useShadow = false ), clearAllButton = ButtonConfiguration( visible = true, text = "?sheetResetButton", background = BackgroundStyle( strokeColor = ScanbotColor("#00000000", isArgb = false), fillColor = ScanbotColor("#00000000", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor("?sbColorOnSurface", isArgb = false), useShadow = false ) ), barcodeItemTitle = StyledText( text = "BARCODE_TITLE", color = ScanbotColor("?sbColorOnSurface", isArgb = false) ), barcodeItemSubtitle = StyledText( text = "?findAndPickSheetBarcodeItemSubtitle", color = ScanbotColor("?sbColorOnSurfaceVariant", isArgb = false) ), barcodeItemImageVisible = true, submitButton = ButtonConfiguration( visible = true, text = "?sheetSubmitButton", background = BackgroundStyle( strokeColor = ScanbotColor("#00000000", isArgb = false), fillColor = ScanbotColor("#00000000", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor("?sbColorOnSurface", isArgb = false), useShadow = false ) ), startScanningButton = ButtonConfiguration( visible = true, text = "?sheetStartScanningButton", background = BackgroundStyle( strokeColor = ScanbotColor("?sbColorPrimary", isArgb = false), fillColor = ScanbotColor("?sbColorPrimary", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor("?sbColorOnPrimary", isArgb = false), useShadow = false ) ), placeholderTitle = StyledText( text = "?sheetPlaceholderTitle", color = ScanbotColor("?sbColorOnSurface", isArgb = false) ), placeholderSubtitle = StyledText( text = "?sheetPlaceholderSubtitle", color = ScanbotColor("?sbColorOnSurfaceVariant", isArgb = false) ), placeholderIconBackground = ScanbotColor("?sbColorOutline", isArgb = false), placeholderIcon = IconStyle( visible = true, color = ScanbotColor("?sbColorOnSurface", isArgb = false) ), swipeToDelete = SwipeToDelete( enabled = false, backgroundColor = ScanbotColor("?sbColorNegative", isArgb = false), iconColor = ScanbotColor("?sbColorOnPrimary", isArgb = false) ) )<span class="token punctuation">, </span></span><span class="parameter ">manualCountEditDialog<span class="token operator">: </span><a href="../-manual-count-edit-dialog/index.html">ManualCountEditDialog</a><span class="token operator"> = </span>ManualCountEditDialog( sheetColor = ScanbotColor("?sbColorSurface", isArgb = false), dividerColor = ScanbotColor("?sbColorOutline", isArgb = false), modalOverlayColor = ScanbotColor("?sbColorModalOverlay", isArgb = false), title = StyledText( text = "?manualCountEditDialogTitle", color = ScanbotColor("?sbColorOnSurface", isArgb = false) ), info = StyledText( text = "?manualCountEditDialogInfo", color = ScanbotColor("?sbColorOnSurfaceVariant", isArgb = false) ), updateButton = ButtonConfiguration( visible = true, text = "?manualCountEditDialogUpdateButton", background = BackgroundStyle( strokeColor = ScanbotColor("?sbColorPrimary", isArgb = false), fillColor = ScanbotColor("?sbColorPrimary", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor("?sbColorOnPrimary", isArgb = false), useShadow = false ) ), cancelButton = ButtonConfiguration( visible = true, text = "?manualCountEditDialogCancelButton", background = BackgroundStyle( strokeColor = ScanbotColor("#00000000", isArgb = false), fillColor = ScanbotColor("#00000000", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor("?sbColorPrimary", isArgb = false), useShadow = false ) ), clearTextButton = IconStyle( visible = true, color = ScanbotColor("?sbColorOnSurfaceVariant", isArgb = false) ) )<span class="token punctuation">, </span></span><span class="parameter ">arOverlay<span class="token operator">: </span><a href="../-ar-overlay-find-and-pick-configuration/index.html">ArOverlayFindAndPickConfiguration</a><span class="token operator"> = </span>ArOverlayFindAndPickConfiguration( visible = true, automaticSelectionEnabled = true, polygon = FindAndPickArOverlayPolygonConfiguration( partiallyScanned = PolygonStyle( strokeColor = ScanbotColor("?sbColorWarning", isArgb = false), fillColor = ScanbotColor("#00000000", isArgb = false), strokeWidth = 3.0, cornerRadius = 5.0 ), rejected = PolygonStyle( strokeColor = ScanbotColor("?sbColorSurface", isArgb = false), fillColor = ScanbotColor("#00000000", isArgb = false), strokeWidth = 3.0, cornerRadius = 5.0 ), completed = PolygonStyle( strokeColor = ScanbotColor("?sbColorPositive", isArgb = false), fillColor = ScanbotColor("#00000000", isArgb = false), strokeWidth = 3.0, cornerRadius = 5.0 ) ), badge = FindAndPickBadgeConfiguration( partiallyScanned = BadgeStyle( visible = true, background = BackgroundStyle( strokeColor = ScanbotColor("#000000FF", isArgb = false), fillColor = ScanbotColor("?sbColorWarning", isArgb = false), strokeWidth = 0.0 ), foregroundColor = ScanbotColor("?sbColorOnSurface", isArgb = false) ), rejected = BadgeStyle( visible = true, background = BackgroundStyle( strokeColor = ScanbotColor("#000000FF", isArgb = false), fillColor = ScanbotColor("?sbColorSurface", isArgb = false), strokeWidth = 0.0 ), foregroundColor = ScanbotColor("?sbColorOnSurface", isArgb = false) ), completed = BadgeStyle( visible = true, background = BackgroundStyle( strokeColor = ScanbotColor("#000000FF", isArgb = false), fillColor = ScanbotColor("?sbColorPositive", isArgb = false), strokeWidth = 0.0 ), foregroundColor = ScanbotColor("?sbColorOnSurface", isArgb = false) ) ) )<span class="token punctuation">, </span></span><span class="parameter ">partialScannedAlertDialogEnabled<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">partialScannedAlertDialog<span class="token operator">: </span><a href="../../io.scanbot.sdk.compose.multiplatform.common/-scanbot-alert-dialog/index.html">ScanbotAlertDialog</a><span class="token operator"> = </span>ScanbotAlertDialog( title = StyledText( text = "?findAndPickPartialAlertTitle", color = ScanbotColor("?sbColorOnSurface", isArgb = false) ), subtitle = StyledText( text = "?findAndPickPartialAlertSubtitle", color = ScanbotColor("?sbColorOnSurfaceVariant", isArgb = false) ), sheetColor = ScanbotColor("?sbColorSurface", isArgb = false), modalOverlayColor = ScanbotColor("?sbColorModalOverlay", isArgb = false), dividerColor = ScanbotColor("?sbColorOutline", isArgb = false), okButton = ButtonConfiguration( visible = true, text = "?findAndPickPartialAlertSubmitButton", background = BackgroundStyle( strokeColor = ScanbotColor("?sbColorPrimary", isArgb = false), fillColor = ScanbotColor("?sbColorPrimary", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = true, color = ScanbotColor("?sbColorOnPrimary", isArgb = false), useShadow = false ) ), cancelButton = ButtonConfiguration( visible = true, text = "?findAndPickPartialAlertCancelButton", background = BackgroundStyle( strokeColor = ScanbotColor("#00000000", isArgb = false), fillColor = ScanbotColor("#00000000", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor("?sbColorPrimary", isArgb = false), useShadow = false ) ) )<span class="token punctuation">, </span></span><span class="parameter ">confirmationAlertDialogEnabled<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">confirmationAlertDialog<span class="token operator">: </span><a href="../../io.scanbot.sdk.compose.multiplatform.common/-scanbot-alert-dialog/index.html">ScanbotAlertDialog</a><span class="token operator"> = </span>ScanbotAlertDialog( title = StyledText( text = "?findAndPickCompleteAlertTitle", color = ScanbotColor("?sbColorOnSurface", isArgb = false) ), subtitle = StyledText( text = "?findAndPickCompleteAlertSubtitle", color = ScanbotColor("?sbColorOnSurfaceVariant", isArgb = false) ), sheetColor = ScanbotColor("?sbColorSurface", isArgb = false), modalOverlayColor = ScanbotColor("?sbColorModalOverlay", isArgb = false), dividerColor = ScanbotColor("?sbColorOutline", isArgb = false), okButton = ButtonConfiguration( visible = true, text = "?findAndPickCompleteAlertSubmitButton", background = BackgroundStyle( strokeColor = ScanbotColor("?sbColorPrimary", isArgb = false), fillColor = ScanbotColor("?sbColorPrimary", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = true, color = ScanbotColor("?sbColorOnPrimary", isArgb = false), useShadow = false ) ), cancelButton = ButtonConfiguration( visible = true, text = "?findAndPickCompleteAlertCancelButton", background = BackgroundStyle( strokeColor = ScanbotColor("#00000000", isArgb = false), fillColor = ScanbotColor("#00000000", isArgb = false), strokeWidth = 1.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor("?sbColorPrimary", isArgb = false), useShadow = false ) ) )</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="35739223%2FClasslikes%2F-1428095350" anchor-label="Companion" id="35739223%2FClasslikes%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="35739223%2FClasslikes%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-10421097%2FProperties%2F-1428095350" anchor-label="_type" id="-10421097%2FProperties%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="_type.html"><span><span>_type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-10421097%2FProperties%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="_type.html">_type</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1845368811%2FProperties%2F-1428095350" anchor-label="allowPartialScan" id="-1845368811%2FProperties%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="allow-partial-scan.html"><span>allow</span><wbr><span>Partial</span><wbr><span><span>Scan</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1845368811%2FProperties%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="allow-partial-scan.html">allowPartialScan</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If the user is allowed to finish the scanning process without scanning all the expected barcodes. Default is false</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="809617169%2FProperties%2F-1428095350" anchor-label="arOverlay" id="809617169%2FProperties%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ar-overlay.html"><span>ar</span><wbr><span><span>Overlay</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="809617169%2FProperties%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="ar-overlay.html">arOverlay</a><span class="token operator">: </span><a href="../-ar-overlay-find-and-pick-configuration/index.html">ArOverlayFindAndPickConfiguration</a></div><div class="brief "><p class="paragraph">Configuration of the AR overlay.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-262551455%2FProperties%2F-1428095350" anchor-label="confirmationAlertDialog" id="-262551455%2FProperties%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="confirmation-alert-dialog.html"><span>confirmation</span><wbr><span>Alert</span><wbr><span><span>Dialog</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-262551455%2FProperties%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="confirmation-alert-dialog.html">confirmationAlertDialog</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.compose.multiplatform.common/-scanbot-alert-dialog/index.html">ScanbotAlertDialog</a></div><div class="brief "><p class="paragraph">Configuration of the confirmation alert dialog.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-994135400%2FProperties%2F-1428095350" anchor-label="confirmationAlertDialogEnabled" id="-994135400%2FProperties%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="confirmation-alert-dialog-enabled.html"><span>confirmation</span><wbr><span>Alert</span><wbr><span>Dialog</span><wbr><span><span>Enabled</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-994135400%2FProperties%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="confirmation-alert-dialog-enabled.html">confirmationAlertDialogEnabled</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If the confirmation alert dialog is enabled. Default is false</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1622421317%2FProperties%2F-1428095350" anchor-label="countingRepeatDelay" id="-1622421317%2FProperties%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="counting-repeat-delay.html"><span>counting</span><wbr><span>Repeat</span><wbr><span><span>Delay</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1622421317%2FProperties%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="counting-repeat-delay.html">countingRepeatDelay</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Time interval in milliseconds before a barcode is counted again. 0 = no delay. The default value is 1000. Default is 1000</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="804306591%2FProperties%2F-1428095350" anchor-label="expectedBarcodes" id="804306591%2FProperties%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="expected-barcodes.html"><span>expected</span><wbr><span><span>Barcodes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="804306591%2FProperties%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="expected-barcodes.html">expectedBarcodes</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-expected-barcode/index.html">ExpectedBarcode</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">List of barcodes that the user has to find and scan.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="62185269%2FProperties%2F-1428095350" anchor-label="manualCountEditDialog" id="62185269%2FProperties%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="manual-count-edit-dialog.html"><span>manual</span><wbr><span>Count</span><wbr><span>Edit</span><wbr><span><span>Dialog</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="62185269%2FProperties%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="manual-count-edit-dialog.html">manualCountEditDialog</a><span class="token operator">: </span><a href="../-manual-count-edit-dialog/index.html">ManualCountEditDialog</a></div><div class="brief "><p class="paragraph">Configuration of the dialog to manually edit the barcode count.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="160911259%2FProperties%2F-1428095350" anchor-label="partialScannedAlertDialog" id="160911259%2FProperties%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="partial-scanned-alert-dialog.html"><span>partial</span><wbr><span>Scanned</span><wbr><span>Alert</span><wbr><span><span>Dialog</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="160911259%2FProperties%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="partial-scanned-alert-dialog.html">partialScannedAlertDialog</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.compose.multiplatform.common/-scanbot-alert-dialog/index.html">ScanbotAlertDialog</a></div><div class="brief "><p class="paragraph">Configuration of the partial scanned alert dialog.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2070972898%2FProperties%2F-1428095350" anchor-label="partialScannedAlertDialogEnabled" id="-2070972898%2FProperties%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="partial-scanned-alert-dialog-enabled.html"><span>partial</span><wbr><span>Scanned</span><wbr><span>Alert</span><wbr><span>Dialog</span><wbr><span><span>Enabled</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2070972898%2FProperties%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="partial-scanned-alert-dialog-enabled.html">partialScannedAlertDialogEnabled</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If the partial scanned alert dialog is enabled. Default is true</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="731188865%2FProperties%2F-1428095350" anchor-label="scanningCompletedColor" id="731188865%2FProperties%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="scanning-completed-color.html"><span>scanning</span><wbr><span>Completed</span><wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="731188865%2FProperties%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="scanning-completed-color.html">scanningCompletedColor</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.compose.multiplatform.common/-scanbot-color/index.html">ScanbotColor</a></div><div class="brief "><p class="paragraph">Color of the selected barcode. Default is "?sbColorPositive"</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="912277659%2FProperties%2F-1428095350" anchor-label="scanningNotScannedColor" id="912277659%2FProperties%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="scanning-not-scanned-color.html"><span>scanning</span><wbr><span>Not</span><wbr><span>Scanned</span><wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="912277659%2FProperties%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="scanning-not-scanned-color.html">scanningNotScannedColor</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.compose.multiplatform.common/-scanbot-color/index.html">ScanbotColor</a></div><div class="brief "><p class="paragraph">Color of the not scanned barcode . Default is "?sbColorOutline"</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1711010876%2FProperties%2F-1428095350" anchor-label="scanningPartiallyColor" id="-1711010876%2FProperties%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="scanning-partially-color.html"><span>scanning</span><wbr><span>Partially</span><wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1711010876%2FProperties%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="scanning-partially-color.html">scanningPartiallyColor</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.compose.multiplatform.common/-scanbot-color/index.html">ScanbotColor</a></div><div class="brief "><p class="paragraph">Color of the partially scanned barcode. Default is "?sbColorWarning"</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-234143215%2FProperties%2F-1428095350" anchor-label="sheet" id="-234143215%2FProperties%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sheet.html"><span><span>sheet</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-234143215%2FProperties%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="sheet.html">sheet</a><span class="token operator">: </span><a href="../-sheet/index.html">Sheet</a></div><div class="brief "><p class="paragraph">Configuration of the preview mode for the barcodes required to be found and scanned.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="60070064%2FProperties%2F-1428095350" anchor-label="sheetContent" id="60070064%2FProperties%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sheet-content.html"><span>sheet</span><wbr><span><span>Content</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="60070064%2FProperties%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="sheet-content.html">sheetContent</a><span class="token operator">: </span><a href="../-sheet-content/index.html">SheetContent</a></div><div class="brief "><p class="paragraph">Configuration of the list of barcodes required to be found and scanned.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="1854339751%2FFunctions%2F-1428095350" anchor-label="toJson" id="1854339751%2FFunctions%2F-1428095350" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain" data-filterable-set=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-json.html"><span>to</span><wbr><span><span>Json</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1854339751%2FFunctions%2F-1428095350"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":scanbot-sdk-compose-multiplatform:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-json.html"><span class="token function">toJson</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization.json/JsonObject///PointingToDeclaration/">JsonObject</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
