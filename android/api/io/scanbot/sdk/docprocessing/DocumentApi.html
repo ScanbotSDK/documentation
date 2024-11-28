@@ -109,7 +109,7 @@ var pathtoroot = "../../../../";
 public interface <span class="typeNameLabel"><a href=DocumentApi.html>DocumentApi</a></span>
 
                     </pre>
-                    <div class="block"><p>Represents a Document API that allows to create, load and store documents.</p></div>
+                    <div class="block"><p>Represents a Document API that allows to create, load and store documents. Please call all this methods in IO thread if possible as they performs file operations.</p></div>
                 </li>
             </ul>
         </div>
@@ -250,10 +250,26 @@ public interface <span class="typeNameLabel"><a href=DocumentApi.html>DocumentAp
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=DocumentApi.html#storedDocumentIds()>storedDocumentIds</a>() </code>
                                             </th>
-                                            <td class="colLast">Delete a document by its ID.</td>
+                                            <td class="colLast">Get all stored documents.</td>
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=DocumentApi.html#deleteDocument(java.lang.String)>deleteDocument</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> uuid) </code>
+                                            </th>
+                                            <td class="colLast">Delete a document by its ID.</td>
+                                        </tr>
+                                        
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=DocumentApi.html#deleteAllDocuments()>deleteAllDocuments</a>() </code>
+                                            </th>
+                                            <td class="colLast">Delete all stores documents.</td>
+                                        </tr>
+                                        
+                                        <tr id="i5" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=DocumentApi.html#isDocumentExist(java.lang.String)>isDocumentExist</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> documentId) </code>
@@ -344,7 +360,37 @@ public interface <span class="typeNameLabel"><a href=DocumentApi.html>DocumentAp
                                     <li class="blockList">
                                         <h4>storedDocumentIds</h4>
                                         <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; <a href=DocumentApi.html#storedDocumentIds()>storedDocumentIds</a>()</pre>
+                                        <div class="block"><p>Get all stored documents.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="deleteDocument(java.lang.String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>deleteDocument</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=DocumentApi.html#deleteDocument(java.lang.String)>deleteDocument</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> uuid)</pre>
                                         <div class="block"><p>Delete a document by its ID.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="deleteAllDocuments()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>deleteAllDocuments</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=DocumentApi.html#deleteAllDocuments()>deleteAllDocuments</a>()</pre>
+                                        <div class="block"><p>Delete all stores documents.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
