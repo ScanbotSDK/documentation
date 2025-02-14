@@ -150,10 +150,10 @@ public sealed class Field : Object, IParcelable, IJavaObject, IJavaPeerable, IDi
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait">Object.Wait()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait(system-int64)">Object.Wait(long)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait(system-int64-system-int32)">Object.Wait(long, int)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait(system-int64-system-int32)">Object.Wait(long, int)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait(system-int64)">Object.Wait(long)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.dispose#java-lang-object-dispose">Object.Dispose()</a>
@@ -192,8 +192,8 @@ public sealed class Field : Object, IParcelable, IJavaObject, IJavaPeerable, IDi
 
   <a id="IO_Scanbot_Genericdocument_Entity_Field__ctor_" data-uid="IO.Scanbot.Genericdocument.Entity.Field.#ctor*"></a>
 
-  <h3 id="IO_Scanbot_Genericdocument_Entity_Field__ctor_IO_Scanbot_Genericdocument_Entity_Field_Type_IO_Scanbot_Genericdocument_Entity_OcrResult_Android_Graphics_Bitmap_IO_Scanbot_Genericdocument_Entity_ValidationStatus_" data-uid="IO.Scanbot.Genericdocument.Entity.Field.#ctor(IO.Scanbot.Genericdocument.Entity.Field.Type,IO.Scanbot.Genericdocument.Entity.OcrResult,Android.Graphics.Bitmap,IO.Scanbot.Genericdocument.Entity.ValidationStatus)">
-  Field(Type, OcrResult, Bitmap, ValidationStatus)
+  <h3 id="IO_Scanbot_Genericdocument_Entity_Field__ctor_IO_Scanbot_Genericdocument_Entity_Field_Type_IO_Scanbot_Genericdocument_Entity_OcrResult_Android_Graphics_Bitmap_System_Collections_Generic_IList_Android_Graphics_PointF__IO_Scanbot_Genericdocument_Entity_ValidationStatus_" data-uid="IO.Scanbot.Genericdocument.Entity.Field.#ctor(IO.Scanbot.Genericdocument.Entity.Field.Type,IO.Scanbot.Genericdocument.Entity.OcrResult,Android.Graphics.Bitmap,System.Collections.Generic.IList{Android.Graphics.PointF},IO.Scanbot.Genericdocument.Entity.ValidationStatus)">
+  Field(Type, OcrResult, Bitmap, IList&lt;PointF&gt;, ValidationStatus)
   
   </h3>
 
@@ -201,8 +201,8 @@ public sealed class Field : Object, IParcelable, IJavaObject, IJavaPeerable, IDi
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Register(&quot;.ctor&quot;, &quot;(Lio/scanbot/genericdocument/entity/Field$Type;Lio/scanbot/genericdocument/entity/OcrResult;Landroid/graphics/Bitmap;Lio/scanbot/genericdocument/entity/ValidationStatus;)V&quot;, &quot;&quot;)]
-public Field(Field.Type type, OcrResult value, Bitmap image, ValidationStatus validationStatus)</code></pre>
+    <pre><code class="lang-csharp hljs">[Register(&quot;.ctor&quot;, &quot;(Lio/scanbot/genericdocument/entity/Field$Type;Lio/scanbot/genericdocument/entity/OcrResult;Landroid/graphics/Bitmap;Ljava/util/List;Lio/scanbot/genericdocument/entity/ValidationStatus;)V&quot;, &quot;&quot;)]
+public Field(Field.Type type, OcrResult value, Bitmap image, IList&lt;PointF&gt; polygonInRoot, ValidationStatus validationStatus)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -212,6 +212,8 @@ public Field(Field.Type type, OcrResult value, Bitmap image, ValidationStatus va
     <dt><code>value</code> <a class="xref" href="IO.Scanbot.Genericdocument.Entity.OcrResult.html">OcrResult</a></dt>
     <dd></dd>
     <dt><code>image</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.bitmap">Bitmap</a></dt>
+    <dd></dd>
+    <dt><code>polygonInRoot</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.pointf">PointF</a>&gt;</dt>
     <dd></dd>
     <dt><code>validationStatus</code> <a class="xref" href="IO.Scanbot.Genericdocument.Entity.ValidationStatus.html">ValidationStatus</a></dt>
     <dd></dd>
@@ -285,6 +287,37 @@ public static IParcelableCreator Creator { get; }</code></pre>
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.bitmap">Bitmap</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Genericdocument_Entity_Field_PolygonInRoot_" data-uid="IO.Scanbot.Genericdocument.Entity.Field.PolygonInRoot*"></a>
+
+  <h3 id="IO_Scanbot_Genericdocument_Entity_Field_PolygonInRoot" data-uid="IO.Scanbot.Genericdocument.Entity.Field.PolygonInRoot">
+  PolygonInRoot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;PointF&gt; PolygonInRoot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.pointf">PointF</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -468,8 +501,40 @@ public Bitmap Component3()</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Register(&quot;component4&quot;, &quot;()Lio/scanbot/genericdocument/entity/ValidationStatus;&quot;, &quot;&quot;)]
-public ValidationStatus Component4()</code></pre>
+    <pre><code class="lang-csharp hljs">[Register(&quot;component4&quot;, &quot;()Ljava/util/List;&quot;, &quot;&quot;)]
+public IList&lt;PointF&gt; Component4()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.pointf">PointF</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Genericdocument_Entity_Field_Component5_" data-uid="IO.Scanbot.Genericdocument.Entity.Field.Component5*"></a>
+
+  <h3 id="IO_Scanbot_Genericdocument_Entity_Field_Component5" data-uid="IO.Scanbot.Genericdocument.Entity.Field.Component5">
+  Component5()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;component5&quot;, &quot;()Lio/scanbot/genericdocument/entity/ValidationStatus;&quot;, &quot;&quot;)]
+public ValidationStatus Component5()</code></pre>
   </div>
 
 
@@ -491,8 +556,8 @@ public ValidationStatus Component4()</code></pre>
 
   <a id="IO_Scanbot_Genericdocument_Entity_Field_Copy_" data-uid="IO.Scanbot.Genericdocument.Entity.Field.Copy*"></a>
 
-  <h3 id="IO_Scanbot_Genericdocument_Entity_Field_Copy_IO_Scanbot_Genericdocument_Entity_Field_Type_IO_Scanbot_Genericdocument_Entity_OcrResult_Android_Graphics_Bitmap_IO_Scanbot_Genericdocument_Entity_ValidationStatus_" data-uid="IO.Scanbot.Genericdocument.Entity.Field.Copy(IO.Scanbot.Genericdocument.Entity.Field.Type,IO.Scanbot.Genericdocument.Entity.OcrResult,Android.Graphics.Bitmap,IO.Scanbot.Genericdocument.Entity.ValidationStatus)">
-  Copy(Type, OcrResult, Bitmap, ValidationStatus)
+  <h3 id="IO_Scanbot_Genericdocument_Entity_Field_Copy_IO_Scanbot_Genericdocument_Entity_Field_Type_IO_Scanbot_Genericdocument_Entity_OcrResult_Android_Graphics_Bitmap_System_Collections_Generic_IList_Android_Graphics_PointF__IO_Scanbot_Genericdocument_Entity_ValidationStatus_" data-uid="IO.Scanbot.Genericdocument.Entity.Field.Copy(IO.Scanbot.Genericdocument.Entity.Field.Type,IO.Scanbot.Genericdocument.Entity.OcrResult,Android.Graphics.Bitmap,System.Collections.Generic.IList{Android.Graphics.PointF},IO.Scanbot.Genericdocument.Entity.ValidationStatus)">
+  Copy(Type, OcrResult, Bitmap, IList&lt;PointF&gt;, ValidationStatus)
   
   </h3>
 
@@ -500,8 +565,8 @@ public ValidationStatus Component4()</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Register(&quot;copy&quot;, &quot;(Lio/scanbot/genericdocument/entity/Field$Type;Lio/scanbot/genericdocument/entity/OcrResult;Landroid/graphics/Bitmap;Lio/scanbot/genericdocument/entity/ValidationStatus;)Lio/scanbot/genericdocument/entity/Field;&quot;, &quot;&quot;)]
-public Field Copy(Field.Type type, OcrResult value, Bitmap image, ValidationStatus validationStatus)</code></pre>
+    <pre><code class="lang-csharp hljs">[Register(&quot;copy&quot;, &quot;(Lio/scanbot/genericdocument/entity/Field$Type;Lio/scanbot/genericdocument/entity/OcrResult;Landroid/graphics/Bitmap;Ljava/util/List;Lio/scanbot/genericdocument/entity/ValidationStatus;)Lio/scanbot/genericdocument/entity/Field;&quot;, &quot;&quot;)]
+public Field Copy(Field.Type type, OcrResult value, Bitmap image, IList&lt;PointF&gt; polygonInRoot, ValidationStatus validationStatus)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -511,6 +576,8 @@ public Field Copy(Field.Type type, OcrResult value, Bitmap image, ValidationStat
     <dt><code>value</code> <a class="xref" href="IO.Scanbot.Genericdocument.Entity.OcrResult.html">OcrResult</a></dt>
     <dd></dd>
     <dt><code>image</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.bitmap">Bitmap</a></dt>
+    <dd></dd>
+    <dt><code>polygonInRoot</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.pointf">PointF</a>&gt;</dt>
     <dd></dd>
     <dt><code>validationStatus</code> <a class="xref" href="IO.Scanbot.Genericdocument.Entity.ValidationStatus.html">ValidationStatus</a></dt>
     <dd></dd>

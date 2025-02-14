@@ -150,10 +150,10 @@ public sealed class GenericDocument : Object, IParcelable, IJavaObject, IJavaPee
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait">Object.Wait()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait(system-int64)">Object.Wait(long)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait(system-int64-system-int32)">Object.Wait(long, int)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait(system-int64-system-int32)">Object.Wait(long, int)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait(system-int64)">Object.Wait(long)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.dispose#java-lang-object-dispose">Object.Dispose()</a>
@@ -192,8 +192,8 @@ public sealed class GenericDocument : Object, IParcelable, IJavaObject, IJavaPee
 
   <a id="IO_Scanbot_Genericdocument_Entity_GenericDocument__ctor_" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.#ctor*"></a>
 
-  <h3 id="IO_Scanbot_Genericdocument_Entity_GenericDocument__ctor_IO_Scanbot_Genericdocument_Entity_GenericDocument_Type_System_Collections_Generic_IList_IO_Scanbot_Genericdocument_Entity_Field__System_Collections_Generic_IList_IO_Scanbot_Genericdocument_Entity_GenericDocument__System_Single_System_Single_" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.#ctor(IO.Scanbot.Genericdocument.Entity.GenericDocument.Type,System.Collections.Generic.IList{IO.Scanbot.Genericdocument.Entity.Field},System.Collections.Generic.IList{IO.Scanbot.Genericdocument.Entity.GenericDocument},System.Single,System.Single)">
-  GenericDocument(Type, IList&lt;Field&gt;, IList&lt;GenericDocument&gt;, float, float)
+  <h3 id="IO_Scanbot_Genericdocument_Entity_GenericDocument__ctor_IO_Scanbot_Genericdocument_Entity_GenericDocument_Type_System_Collections_Generic_IList_IO_Scanbot_Genericdocument_Entity_Field__System_Collections_Generic_IList_IO_Scanbot_Genericdocument_Entity_GenericDocument__System_Single_System_Single_System_Collections_Generic_IList_Android_Graphics_PointF__System_Collections_Generic_IList_Android_Graphics_PointF__Android_Graphics_Bitmap_" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.#ctor(IO.Scanbot.Genericdocument.Entity.GenericDocument.Type,System.Collections.Generic.IList{IO.Scanbot.Genericdocument.Entity.Field},System.Collections.Generic.IList{IO.Scanbot.Genericdocument.Entity.GenericDocument},System.Single,System.Single,System.Collections.Generic.IList{Android.Graphics.PointF},System.Collections.Generic.IList{Android.Graphics.PointF},Android.Graphics.Bitmap)">
+  GenericDocument(Type, IList&lt;Field&gt;, IList&lt;GenericDocument&gt;, float, float, IList&lt;PointF&gt;, IList&lt;PointF&gt;, Bitmap)
   
   </h3>
 
@@ -201,8 +201,8 @@ public sealed class GenericDocument : Object, IParcelable, IJavaObject, IJavaPee
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Register(&quot;.ctor&quot;, &quot;(Lio/scanbot/genericdocument/entity/GenericDocument$Type;Ljava/util/List;Ljava/util/List;FF)V&quot;, &quot;&quot;)]
-public GenericDocument(GenericDocument.Type type, IList&lt;Field&gt; fields, IList&lt;GenericDocument&gt; children, float confidence, float confidenceWeight)</code></pre>
+    <pre><code class="lang-csharp hljs">[Register(&quot;.ctor&quot;, &quot;(Lio/scanbot/genericdocument/entity/GenericDocument$Type;Ljava/util/List;Ljava/util/List;FFLjava/util/List;Ljava/util/List;Landroid/graphics/Bitmap;)V&quot;, &quot;&quot;)]
+public GenericDocument(GenericDocument.Type type, IList&lt;Field&gt; fields, IList&lt;GenericDocument&gt; children, float confidence, float confidenceWeight, IList&lt;PointF&gt; quad, IList&lt;PointF&gt; quadInRoot, Bitmap crop)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -216,6 +216,12 @@ public GenericDocument(GenericDocument.Type type, IList&lt;Field&gt; fields, ILi
     <dt><code>confidence</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
     <dt><code>confidenceWeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>quad</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.pointf">PointF</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>quadInRoot</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.pointf">PointF</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>crop</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.bitmap">Bitmap</a></dt>
     <dd></dd>
   </dl>
 
@@ -359,6 +365,37 @@ public static IParcelableCreator Creator { get; }</code></pre>
 
 
 
+  <a id="IO_Scanbot_Genericdocument_Entity_GenericDocument_Crop_" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.Crop*"></a>
+
+  <h3 id="IO_Scanbot_Genericdocument_Entity_GenericDocument_Crop" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.Crop">
+  Crop
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Bitmap Crop { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.bitmap">Bitmap</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="IO_Scanbot_Genericdocument_Entity_GenericDocument_Fields_" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.Fields*"></a>
 
   <h3 id="IO_Scanbot_Genericdocument_Entity_GenericDocument_Fields" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.Fields">
@@ -380,6 +417,68 @@ public static IParcelableCreator Creator { get; }</code></pre>
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="IO.Scanbot.Genericdocument.Entity.Field.html">Field</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Genericdocument_Entity_GenericDocument_Quad_" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.Quad*"></a>
+
+  <h3 id="IO_Scanbot_Genericdocument_Entity_GenericDocument_Quad" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.Quad">
+  Quad
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;PointF&gt; Quad { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.pointf">PointF</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Genericdocument_Entity_GenericDocument_QuadInRoot_" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.QuadInRoot*"></a>
+
+  <h3 id="IO_Scanbot_Genericdocument_Entity_GenericDocument_QuadInRoot" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.QuadInRoot">
+  QuadInRoot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;PointF&gt; QuadInRoot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.pointf">PointF</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -628,10 +727,10 @@ public float Component5()</code></pre>
 
 
 
-  <a id="IO_Scanbot_Genericdocument_Entity_GenericDocument_Copy_" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.Copy*"></a>
+  <a id="IO_Scanbot_Genericdocument_Entity_GenericDocument_Component6_" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.Component6*"></a>
 
-  <h3 id="IO_Scanbot_Genericdocument_Entity_GenericDocument_Copy_IO_Scanbot_Genericdocument_Entity_GenericDocument_Type_System_Collections_Generic_IList_IO_Scanbot_Genericdocument_Entity_Field__System_Collections_Generic_IList_IO_Scanbot_Genericdocument_Entity_GenericDocument__System_Single_System_Single_" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.Copy(IO.Scanbot.Genericdocument.Entity.GenericDocument.Type,System.Collections.Generic.IList{IO.Scanbot.Genericdocument.Entity.Field},System.Collections.Generic.IList{IO.Scanbot.Genericdocument.Entity.GenericDocument},System.Single,System.Single)">
-  Copy(Type, IList&lt;Field&gt;, IList&lt;GenericDocument&gt;, float, float)
+  <h3 id="IO_Scanbot_Genericdocument_Entity_GenericDocument_Component6" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.Component6">
+  Component6()
   
   </h3>
 
@@ -639,8 +738,104 @@ public float Component5()</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Register(&quot;copy&quot;, &quot;(Lio/scanbot/genericdocument/entity/GenericDocument$Type;Ljava/util/List;Ljava/util/List;FF)Lio/scanbot/genericdocument/entity/GenericDocument;&quot;, &quot;&quot;)]
-public GenericDocument Copy(GenericDocument.Type type, IList&lt;Field&gt; fields, IList&lt;GenericDocument&gt; children, float confidence, float confidenceWeight)</code></pre>
+    <pre><code class="lang-csharp hljs">[Register(&quot;component6&quot;, &quot;()Ljava/util/List;&quot;, &quot;&quot;)]
+public IList&lt;PointF&gt; Component6()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.pointf">PointF</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Genericdocument_Entity_GenericDocument_Component7_" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.Component7*"></a>
+
+  <h3 id="IO_Scanbot_Genericdocument_Entity_GenericDocument_Component7" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.Component7">
+  Component7()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;component7&quot;, &quot;()Ljava/util/List;&quot;, &quot;&quot;)]
+public IList&lt;PointF&gt; Component7()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.pointf">PointF</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Genericdocument_Entity_GenericDocument_Component8_" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.Component8*"></a>
+
+  <h3 id="IO_Scanbot_Genericdocument_Entity_GenericDocument_Component8" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.Component8">
+  Component8()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;component8&quot;, &quot;()Landroid/graphics/Bitmap;&quot;, &quot;&quot;)]
+public Bitmap Component8()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.bitmap">Bitmap</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Genericdocument_Entity_GenericDocument_Copy_" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.Copy*"></a>
+
+  <h3 id="IO_Scanbot_Genericdocument_Entity_GenericDocument_Copy_IO_Scanbot_Genericdocument_Entity_GenericDocument_Type_System_Collections_Generic_IList_IO_Scanbot_Genericdocument_Entity_Field__System_Collections_Generic_IList_IO_Scanbot_Genericdocument_Entity_GenericDocument__System_Single_System_Single_System_Collections_Generic_IList_Android_Graphics_PointF__System_Collections_Generic_IList_Android_Graphics_PointF__Android_Graphics_Bitmap_" data-uid="IO.Scanbot.Genericdocument.Entity.GenericDocument.Copy(IO.Scanbot.Genericdocument.Entity.GenericDocument.Type,System.Collections.Generic.IList{IO.Scanbot.Genericdocument.Entity.Field},System.Collections.Generic.IList{IO.Scanbot.Genericdocument.Entity.GenericDocument},System.Single,System.Single,System.Collections.Generic.IList{Android.Graphics.PointF},System.Collections.Generic.IList{Android.Graphics.PointF},Android.Graphics.Bitmap)">
+  Copy(Type, IList&lt;Field&gt;, IList&lt;GenericDocument&gt;, float, float, IList&lt;PointF&gt;, IList&lt;PointF&gt;, Bitmap)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;copy&quot;, &quot;(Lio/scanbot/genericdocument/entity/GenericDocument$Type;Ljava/util/List;Ljava/util/List;FFLjava/util/List;Ljava/util/List;Landroid/graphics/Bitmap;)Lio/scanbot/genericdocument/entity/GenericDocument;&quot;, &quot;&quot;)]
+public GenericDocument Copy(GenericDocument.Type type, IList&lt;Field&gt; fields, IList&lt;GenericDocument&gt; children, float confidence, float confidenceWeight, IList&lt;PointF&gt; quad, IList&lt;PointF&gt; quadInRoot, Bitmap crop)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -654,6 +849,12 @@ public GenericDocument Copy(GenericDocument.Type type, IList&lt;Field&gt; fields
     <dt><code>confidence</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
     <dt><code>confidenceWeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>quad</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.pointf">PointF</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>quadInRoot</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.pointf">PointF</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>crop</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.bitmap">Bitmap</a></dt>
     <dd></dd>
   </dl>
 
