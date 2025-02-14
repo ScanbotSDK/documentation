@@ -150,10 +150,10 @@ public sealed class ButtonConfiguration : Object, IParcelable, IJavaObject, IJav
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait">Object.Wait()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait(system-int64)">Object.Wait(long)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait(system-int64-system-int32)">Object.Wait(long, int)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait(system-int64-system-int32)">Object.Wait(long, int)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait(system-int64)">Object.Wait(long)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.dispose#java-lang-object-dispose">Object.Dispose()</a>
@@ -254,8 +254,8 @@ public ButtonConfiguration(JSONObject json)</code></pre>
 
   <a id="IO_Scanbot_Sdk_Ui_v2_Common_ButtonConfiguration__ctor_" data-uid="IO.Scanbot.Sdk.Ui_v2.Common.ButtonConfiguration.#ctor*"></a>
 
-  <h3 id="IO_Scanbot_Sdk_Ui_v2_Common_ButtonConfiguration__ctor_System_Boolean_System_String_IO_Scanbot_Sdk_Ui_v2_Common_BackgroundStyle_IO_Scanbot_Sdk_Ui_v2_Common_ForegroundStyle_" data-uid="IO.Scanbot.Sdk.Ui_v2.Common.ButtonConfiguration.#ctor(System.Boolean,System.String,IO.Scanbot.Sdk.Ui_v2.Common.BackgroundStyle,IO.Scanbot.Sdk.Ui_v2.Common.ForegroundStyle)">
-  ButtonConfiguration(bool, string, BackgroundStyle, ForegroundStyle)
+  <h3 id="IO_Scanbot_Sdk_Ui_v2_Common_ButtonConfiguration__ctor_System_Boolean_System_String_System_String_IO_Scanbot_Sdk_Ui_v2_Common_BackgroundStyle_IO_Scanbot_Sdk_Ui_v2_Common_ForegroundStyle_" data-uid="IO.Scanbot.Sdk.Ui_v2.Common.ButtonConfiguration.#ctor(System.Boolean,System.String,System.String,IO.Scanbot.Sdk.Ui_v2.Common.BackgroundStyle,IO.Scanbot.Sdk.Ui_v2.Common.ForegroundStyle)">
+  ButtonConfiguration(bool, string, string, BackgroundStyle, ForegroundStyle)
   
   </h3>
 
@@ -263,8 +263,8 @@ public ButtonConfiguration(JSONObject json)</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Register(&quot;.ctor&quot;, &quot;(ZLjava/lang/String;Lio/scanbot/sdk/ui_v2/common/BackgroundStyle;Lio/scanbot/sdk/ui_v2/common/ForegroundStyle;)V&quot;, &quot;&quot;)]
-public ButtonConfiguration(bool visible, string text, BackgroundStyle background, ForegroundStyle foreground)</code></pre>
+    <pre><code class="lang-csharp hljs">[Register(&quot;.ctor&quot;, &quot;(ZLjava/lang/String;Ljava/lang/String;Lio/scanbot/sdk/ui_v2/common/BackgroundStyle;Lio/scanbot/sdk/ui_v2/common/ForegroundStyle;)V&quot;, &quot;&quot;)]
+public ButtonConfiguration(bool visible, string text, string accessibilityDescription, BackgroundStyle background, ForegroundStyle foreground)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -272,6 +272,8 @@ public ButtonConfiguration(bool visible, string text, BackgroundStyle background
     <dt><code>visible</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
     <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>accessibilityDescription</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
     <dt><code>background</code> <a class="xref" href="IO.Scanbot.Sdk.Ui_v2.Common.BackgroundStyle.html">BackgroundStyle</a></dt>
     <dd></dd>
@@ -324,6 +326,37 @@ public ButtonConfiguration(IDictionary&lt;string, Object&gt; source)</code></pre
 
   <h2 class="section" id="properties">Properties
 </h2>
+
+
+  <a id="IO_Scanbot_Sdk_Ui_v2_Common_ButtonConfiguration_AccessibilityDescription_" data-uid="IO.Scanbot.Sdk.Ui_v2.Common.ButtonConfiguration.AccessibilityDescription*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Ui_v2_Common_ButtonConfiguration_AccessibilityDescription" data-uid="IO.Scanbot.Sdk.Ui_v2.Common.ButtonConfiguration.AccessibilityDescription">
+  AccessibilityDescription
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string AccessibilityDescription { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
 
 
   <a id="IO_Scanbot_Sdk_Ui_v2_Common_ButtonConfiguration_Background_" data-uid="IO.Scanbot.Sdk.Ui_v2.Common.ButtonConfiguration.Background*"></a>
@@ -561,14 +594,14 @@ public string Component2()</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Register(&quot;component3&quot;, &quot;()Lio/scanbot/sdk/ui_v2/common/BackgroundStyle;&quot;, &quot;&quot;)]
-public BackgroundStyle Component3()</code></pre>
+    <pre><code class="lang-csharp hljs">[Register(&quot;component3&quot;, &quot;()Ljava/lang/String;&quot;, &quot;&quot;)]
+public string Component3()</code></pre>
   </div>
 
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="IO.Scanbot.Sdk.Ui_v2.Common.BackgroundStyle.html">BackgroundStyle</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 
@@ -593,8 +626,40 @@ public BackgroundStyle Component3()</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Register(&quot;component4&quot;, &quot;()Lio/scanbot/sdk/ui_v2/common/ForegroundStyle;&quot;, &quot;&quot;)]
-public ForegroundStyle Component4()</code></pre>
+    <pre><code class="lang-csharp hljs">[Register(&quot;component4&quot;, &quot;()Lio/scanbot/sdk/ui_v2/common/BackgroundStyle;&quot;, &quot;&quot;)]
+public BackgroundStyle Component4()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IO.Scanbot.Sdk.Ui_v2.Common.BackgroundStyle.html">BackgroundStyle</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Ui_v2_Common_ButtonConfiguration_Component5_" data-uid="IO.Scanbot.Sdk.Ui_v2.Common.ButtonConfiguration.Component5*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Ui_v2_Common_ButtonConfiguration_Component5" data-uid="IO.Scanbot.Sdk.Ui_v2.Common.ButtonConfiguration.Component5">
+  Component5()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;component5&quot;, &quot;()Lio/scanbot/sdk/ui_v2/common/ForegroundStyle;&quot;, &quot;&quot;)]
+public ForegroundStyle Component5()</code></pre>
   </div>
 
 
@@ -616,8 +681,8 @@ public ForegroundStyle Component4()</code></pre>
 
   <a id="IO_Scanbot_Sdk_Ui_v2_Common_ButtonConfiguration_Copy_" data-uid="IO.Scanbot.Sdk.Ui_v2.Common.ButtonConfiguration.Copy*"></a>
 
-  <h3 id="IO_Scanbot_Sdk_Ui_v2_Common_ButtonConfiguration_Copy_System_Boolean_System_String_IO_Scanbot_Sdk_Ui_v2_Common_BackgroundStyle_IO_Scanbot_Sdk_Ui_v2_Common_ForegroundStyle_" data-uid="IO.Scanbot.Sdk.Ui_v2.Common.ButtonConfiguration.Copy(System.Boolean,System.String,IO.Scanbot.Sdk.Ui_v2.Common.BackgroundStyle,IO.Scanbot.Sdk.Ui_v2.Common.ForegroundStyle)">
-  Copy(bool, string, BackgroundStyle, ForegroundStyle)
+  <h3 id="IO_Scanbot_Sdk_Ui_v2_Common_ButtonConfiguration_Copy_System_Boolean_System_String_System_String_IO_Scanbot_Sdk_Ui_v2_Common_BackgroundStyle_IO_Scanbot_Sdk_Ui_v2_Common_ForegroundStyle_" data-uid="IO.Scanbot.Sdk.Ui_v2.Common.ButtonConfiguration.Copy(System.Boolean,System.String,System.String,IO.Scanbot.Sdk.Ui_v2.Common.BackgroundStyle,IO.Scanbot.Sdk.Ui_v2.Common.ForegroundStyle)">
+  Copy(bool, string, string, BackgroundStyle, ForegroundStyle)
   
   </h3>
 
@@ -625,8 +690,8 @@ public ForegroundStyle Component4()</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Register(&quot;copy&quot;, &quot;(ZLjava/lang/String;Lio/scanbot/sdk/ui_v2/common/BackgroundStyle;Lio/scanbot/sdk/ui_v2/common/ForegroundStyle;)Lio/scanbot/sdk/ui_v2/common/ButtonConfiguration;&quot;, &quot;&quot;)]
-public ButtonConfiguration Copy(bool visible, string text, BackgroundStyle background, ForegroundStyle foreground)</code></pre>
+    <pre><code class="lang-csharp hljs">[Register(&quot;copy&quot;, &quot;(ZLjava/lang/String;Ljava/lang/String;Lio/scanbot/sdk/ui_v2/common/BackgroundStyle;Lio/scanbot/sdk/ui_v2/common/ForegroundStyle;)Lio/scanbot/sdk/ui_v2/common/ButtonConfiguration;&quot;, &quot;&quot;)]
+public ButtonConfiguration Copy(bool visible, string text, string accessibilityDescription, BackgroundStyle background, ForegroundStyle foreground)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -634,6 +699,8 @@ public ButtonConfiguration Copy(bool visible, string text, BackgroundStyle backg
     <dt><code>visible</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
     <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>accessibilityDescription</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
     <dt><code>background</code> <a class="xref" href="IO.Scanbot.Sdk.Ui_v2.Common.BackgroundStyle.html">BackgroundStyle</a></dt>
     <dd></dd>
