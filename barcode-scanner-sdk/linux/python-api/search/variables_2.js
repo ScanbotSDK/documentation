@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['camera_0',['CAMERA',['../classscanbotsdk_1_1image_1_1image__ref__types_1_1ImageSourceType.html#ad351b513999b0b79d0632533215d8906',1,'scanbotsdk::image::image_ref_types::ImageSourceType']]],
+  ['card_5faccess_5fnumber_1',['CARD_ACCESS_NUMBER',['../classscanbotsdk_1_1generic__document_1_1common__field__type_1_1CommonFieldType.html#ac291c0f215a59664fb33648a7a3cf476',1,'scanbotsdk::generic_document::common_field_type::CommonFieldType']]],
+  ['clockwise_5f180_2',['CLOCKWISE_180',['../classscanbotsdk_1_1image_1_1image__types_1_1ImageRotation.html#a1be765c0b0eeecbc61a00b0bdba74c3c',1,'scanbotsdk::image::image_types::ImageRotation']]],
+  ['clockwise_5f90_3',['CLOCKWISE_90',['../classscanbotsdk_1_1image_1_1image__types_1_1ImageRotation.html#a7abca78d46b7aff2a0de2fa7843a8a11',1,'scanbotsdk::image::image_types::ImageRotation']]],
+  ['codabar_4',['CODABAR',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__types_1_1BarcodeFormat.html#a8972ba097e75aaab530eb74d7c36e75a',1,'scanbotsdk::barcode_scanner::barcode_types::BarcodeFormat']]],
+  ['code_5f11_5',['CODE_11',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__types_1_1BarcodeFormat.html#a9599ed00ea025b9e62f13037effc446c',1,'scanbotsdk::barcode_scanner::barcode_types::BarcodeFormat']]],
+  ['code_5f128_6',['CODE_128',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__types_1_1BarcodeFormat.html#a5c65d65c7e0d52891a767b8dc7591be2',1,'scanbotsdk::barcode_scanner::barcode_types::BarcodeFormat']]],
+  ['code_5f25_7',['CODE_25',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__types_1_1BarcodeFormat.html#a70cc4b5fabfc83e6a710b54324c8e53a',1,'scanbotsdk::barcode_scanner::barcode_types::BarcodeFormat']]],
+  ['code_5f32_8',['CODE_32',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__types_1_1BarcodeFormat.html#aeb334cac9b842f05bd62d7c2c965004a',1,'scanbotsdk::barcode_scanner::barcode_types::BarcodeFormat']]],
+  ['code_5f39_9',['CODE_39',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__types_1_1BarcodeFormat.html#ab3988d6b19a025b93fc1ae32a507b712',1,'scanbotsdk::barcode_scanner::barcode_types::BarcodeFormat']]],
+  ['code_5f93_10',['CODE_93',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__types_1_1BarcodeFormat.html#af1d4bc41cf3e430eefeb528b6ab82bb2',1,'scanbotsdk::barcode_scanner::barcode_types::BarcodeFormat']]],
+  ['color_11',['COLOR',['../classscanbotsdk_1_1image_1_1image__ref__types_1_1ColorConversion.html#a8d6f0a058a93b6ffdc3d1257b88857ee',1,'scanbotsdk::image::image_ref_types::ColorConversion']]],
+  ['common_12',['common',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__types_1_1BarcodeFormats.html#a4bdd661b87da9a6bab675c9f25d946f2',1,'scanbotsdk::barcode_scanner::barcode_types::BarcodeFormats']]],
+  ['confirmed_13',['CONFIRMED',['../classscanbotsdk_1_1generic__document_1_1generic__document_1_1FieldValidationStatus.html#af01f5247c5e46faa96f197dbfc1acadb',1,'scanbotsdk::generic_document::generic_document::FieldValidationStatus']]],
+  ['counterclockwise_5f90_14',['COUNTERCLOCKWISE_90',['../classscanbotsdk_1_1image_1_1image__types_1_1ImageRotation.html#ab72b5d8ea9fb466935f2ad389dfa81fb',1,'scanbotsdk::image::image_types::ImageRotation']]],
+  ['country_5fcode_15',['COUNTRY_CODE',['../classscanbotsdk_1_1generic__document_1_1common__field__type_1_1CommonFieldType.html#aa173419600dd3b91258cd4fb006ea7ab',1,'scanbotsdk::generic_document::common_field_type::CommonFieldType']]],
+  ['cp_5f1250_16',['CP_1250',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__types_1_1CharacterEncoding.html#a95363495bcd85a3cfd1561ac06e5e353',1,'scanbotsdk::barcode_scanner::barcode_types::CharacterEncoding']]],
+  ['cp_5f1251_17',['CP_1251',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__types_1_1CharacterEncoding.html#a1a9b37824a0796e76061a24ae3c9250e',1,'scanbotsdk::barcode_scanner::barcode_types::CharacterEncoding']]],
+  ['cp_5f1252_18',['CP_1252',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__types_1_1CharacterEncoding.html#a1d63a17d3375971acfc9784deaaa530c',1,'scanbotsdk::barcode_scanner::barcode_types::CharacterEncoding']]],
+  ['cp_5f1256_19',['CP_1256',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__types_1_1CharacterEncoding.html#a9b4dc464642d9428b95df89d15abffc1',1,'scanbotsdk::barcode_scanner::barcode_types::CharacterEncoding']]],
+  ['cp_5f437_20',['CP_437',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__types_1_1CharacterEncoding.html#a9dbfe16a24b1f14ec28aa26879a73e07',1,'scanbotsdk::barcode_scanner::barcode_types::CharacterEncoding']]]
+];
