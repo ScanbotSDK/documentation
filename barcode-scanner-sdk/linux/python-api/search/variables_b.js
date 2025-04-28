@@ -1,0 +1,16 @@
+var searchData=
+[
+  ['maiden_5fname_0',['MAIDEN_NAME',['../classscanbotsdk_1_1generic__document_1_1common__field__type_1_1CommonFieldType.html#aa405ab3d99c7e92b30a80e6bea4c5291',1,'scanbotsdk::generic_document::common_field_type::CommonFieldType']]],
+  ['maxi_5fcode_1',['MAXI_CODE',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__types_1_1BarcodeFormat.html#a7e7926ff7d7e8057304ef60316355b02',1,'scanbotsdk::barcode_scanner::barcode_types::BarcodeFormat']]],
+  ['medical_5fcertificate_2',['MEDICAL_CERTIFICATE',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__document__types_1_1BarcodeDocumentFormat.html#abea6f84bc543b469a5b0a173239b1365',1,'scanbotsdk::barcode_scanner::barcode_document_types::BarcodeDocumentFormat']]],
+  ['micro_5fpdf_5f417_3',['MICRO_PDF_417',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__types_1_1BarcodeFormat.html#af43bd4074933f4cc86ab3c914fbc937f',1,'scanbotsdk::barcode_scanner::barcode_types::BarcodeFormat']]],
+  ['micro_5fqr_5fcode_4',['MICRO_QR_CODE',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__types_1_1BarcodeFormat.html#a10309cdb02fe84462163a3cc99459e07',1,'scanbotsdk::barcode_scanner::barcode_types::BarcodeFormat']]],
+  ['mod_5f10_5',['MOD_10',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__configuration__types_1_1MsiPlesseyChecksumAlgorithm.html#ab9059bda3b11bf641dd54d5b45ceb7ec',1,'scanbotsdk::barcode_scanner::barcode_configuration_types::MsiPlesseyChecksumAlgorithm']]],
+  ['mod_5f10_5f10_6',['MOD_10_10',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__configuration__types_1_1MsiPlesseyChecksumAlgorithm.html#a6b1b1b4d4520a7c2ef82d23826485a28',1,'scanbotsdk::barcode_scanner::barcode_configuration_types::MsiPlesseyChecksumAlgorithm']]],
+  ['mod_5f11_5f10_5fibm_7',['MOD_11_10_IBM',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__configuration__types_1_1MsiPlesseyChecksumAlgorithm.html#a9902b499cf018c8c165c2510501fd354',1,'scanbotsdk::barcode_scanner::barcode_configuration_types::MsiPlesseyChecksumAlgorithm']]],
+  ['mod_5f11_5f10_5fncr_8',['MOD_11_10_NCR',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__configuration__types_1_1MsiPlesseyChecksumAlgorithm.html#a4e5806bcbfa886fbd5ee451d7f1005da',1,'scanbotsdk::barcode_scanner::barcode_configuration_types::MsiPlesseyChecksumAlgorithm']]],
+  ['mod_5f11_5fibm_9',['MOD_11_IBM',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__configuration__types_1_1MsiPlesseyChecksumAlgorithm.html#a1161882f9d38a3bc668f8062dff44133',1,'scanbotsdk::barcode_scanner::barcode_configuration_types::MsiPlesseyChecksumAlgorithm']]],
+  ['mod_5f11_5fncr_10',['MOD_11_NCR',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__configuration__types_1_1MsiPlesseyChecksumAlgorithm.html#ac7bdbb7b7a215bda1f377088f50bb29a',1,'scanbotsdk::barcode_scanner::barcode_configuration_types::MsiPlesseyChecksumAlgorithm']]],
+  ['mrz_11',['MRZ',['../classscanbotsdk_1_1generic__document_1_1common__field__type_1_1CommonFieldType.html#ae7914478af72d8a26e8aac3806c4a4d8',1,'scanbotsdk::generic_document::common_field_type::CommonFieldType']]],
+  ['msi_5fplessey_12',['MSI_PLESSEY',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__types_1_1BarcodeFormat.html#ac607c2ae7d06da140b53e87b0274e1bb',1,'scanbotsdk::barcode_scanner::barcode_types::BarcodeFormat']]]
+];

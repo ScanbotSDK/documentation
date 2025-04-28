@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['only_5faccept_5fdocuments_0',['only_accept_documents',['../classscanbotsdk_1_1barcode__scanner_1_1barcode__scanner__types_1_1BarcodeScannerConfiguration.html#af24cddd10d5a4859d8ed671b233acc46',1,'scanbotsdk.barcode_scanner.barcode_scanner_types.BarcodeScannerConfiguration.only_accept_documents(self)'],['../classscanbotsdk_1_1barcode__scanner_1_1barcode__scanner__types_1_1BarcodeScannerConfiguration.html#a019a61cbfcb2fb75af47624cc748e7b4',1,'scanbotsdk.barcode_scanner.barcode_scanner_types.BarcodeScannerConfiguration.only_accept_documents(self, bool only_accept_documents)']]],
+  ['orientation_1',['orientation',['../classscanbotsdk_1_1image_1_1image__ref__types_1_1RawImageLoadOptions.html#aedb168ff865e9678b6323acd8c6d2927',1,'scanbotsdk.image.image_ref_types.RawImageLoadOptions.orientation(self)'],['../classscanbotsdk_1_1image_1_1image__ref__types_1_1RawImageLoadOptions.html#a1f2cd3d5d60598d403d250f7bc19fb1c',1,'scanbotsdk.image.image_ref_types.RawImageLoadOptions.orientation(self, ImageRotation orientation)']]]
+];

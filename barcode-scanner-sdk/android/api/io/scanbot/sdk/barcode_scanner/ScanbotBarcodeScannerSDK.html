@@ -290,11 +290,11 @@ public final class <span class="typeNameLabel"><a href=ScanbotBarcodeScannerSDK.
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code><a href=../barcode/ScanbotBarcodeDetector.html>ScanbotBarcodeDetector</a></code>
+                                            <td class="colFirst"><code><a href=../barcode/BarcodeScanner.html>BarcodeScanner</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ScanbotBarcodeScannerSDK.html#createBarcodeDetector()>createBarcodeDetector</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotBarcodeScannerSDK.html#createBarcodeScanner()>createBarcodeScanner</a>() </code>
                                             </th>
-                                            <td class="colLast">Provides <a href=../barcode/ScanbotBarcodeDetector.html>ScanbotBarcodeDetector</a>.</td>
+                                            <td class="colLast">Provides <a href=../barcode/BarcodeScanner.html>BarcodeScanner</a>.</td>
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
@@ -327,6 +327,14 @@ public final class <span class="typeNameLabel"><a href=ScanbotBarcodeScannerSDK.
                                             <th class="colSecond" scope="row"><code><a href=ScanbotBarcodeScannerSDK.html#createPdfImagesExtractor()>createPdfImagesExtractor</a>() </code>
                                             </th>
                                             <td class="colLast">Provides <a href=../pdf/PdfImagesExtractor.html>PdfImagesExtractor</a>.</td>
+                                        </tr>
+                                        
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code>final &lt;T extends <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-any/index.html>Any</a>&gt; <a href=../ui/result/ResultRepository.html>ResultRepository</a>&lt;<a href=ScanbotBarcodeScannerSDK.html#resultRepositoryForClass(java.lang.Class)>T</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotBarcodeScannerSDK.html#resultRepositoryForClass(java.lang.Class)>resultRepositoryForClass</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Class.html>Class</a>&lt;<a href=ScanbotBarcodeScannerSDK.html#resultRepositoryForClass(java.lang.Class)>T</a>&gt; clazz) </code>
+                                            </th>
+                                            <td class="colLast">Provides result repository for the given classTo get access to the full result object it is needed to do the following:val resultWrapper: ResultWrapper&lt;BarcodeScannerUiResultInternal&gt; val result = ScanbotBarcodeScannerSDK(context).resultRepositoryForClass(resultWrapper.clazz).getResultAndErase(resultWrapper.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -443,16 +451,16 @@ public final class <span class="typeNameLabel"><a href=ScanbotBarcodeScannerSDK.
                                     </li>
                                 </ul>
                                 
-                                <a id="createBarcodeDetector()">
+                                <a id="createBarcodeScanner()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>createBarcodeDetector</h4>
-                                        <pre class="methodSignature"> <a href=../barcode/ScanbotBarcodeDetector.html>ScanbotBarcodeDetector</a> <a href=ScanbotBarcodeScannerSDK.html#createBarcodeDetector()>createBarcodeDetector</a>()</pre>
-                                        <div class="block"><p>Provides <a href=../barcode/ScanbotBarcodeDetector.html>ScanbotBarcodeDetector</a>.</p></div>
+                                        <h4>createBarcodeScanner</h4>
+                                        <pre class="methodSignature"> <a href=../barcode/BarcodeScanner.html>BarcodeScanner</a> <a href=ScanbotBarcodeScannerSDK.html#createBarcodeScanner()>createBarcodeScanner</a>()</pre>
+                                        <div class="block"><p>Provides <a href=../barcode/BarcodeScanner.html>BarcodeScanner</a>.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -507,12 +515,36 @@ public final class <span class="typeNameLabel"><a href=ScanbotBarcodeScannerSDK.
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>createPdfImagesExtractor</h4>
                                         <pre class="methodSignature"> final <a href=../pdf/PdfImagesExtractor.html>PdfImagesExtractor</a> <a href=ScanbotBarcodeScannerSDK.html#createPdfImagesExtractor()>createPdfImagesExtractor</a>()</pre>
                                         <div class="block"><p>Provides <a href=../pdf/PdfImagesExtractor.html>PdfImagesExtractor</a>.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="resultRepositoryForClass(java.lang.Class)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>resultRepositoryForClass</h4>
+                                        <pre class="methodSignature"> final &lt;T extends <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-any/index.html>Any</a>&gt; <a href=../ui/result/ResultRepository.html>ResultRepository</a>&lt;<a href=ScanbotBarcodeScannerSDK.html#resultRepositoryForClass(java.lang.Class)>T</a>&gt; <a href=ScanbotBarcodeScannerSDK.html#resultRepositoryForClass(java.lang.Class)>resultRepositoryForClass</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Class.html>Class</a>&lt;<a href=ScanbotBarcodeScannerSDK.html#resultRepositoryForClass(java.lang.Class)>T</a>&gt; clazz)</pre>
+                                        <div class="block"><p>Provides result repository for the given class</p><p>To get access to the full result object it is needed to do the following:</p><p>val resultWrapper: ResultWrapper&lt;BarcodeScannerUiResultInternal&gt; val result = ScanbotBarcodeScannerSDK(context).resultRepositoryForClass(resultWrapper.clazz).getResultAndErase(resultWrapper.resultId) The result object will contain the full BarcodeScannerResult object</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>clazz</code> - class of the result object, might be taken from <a href=../ui/result/ResultWrapper.html>io.scanbot.sdk.ui.result.ResultWrapper</a></dd>
+                                            
+                                            
+                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

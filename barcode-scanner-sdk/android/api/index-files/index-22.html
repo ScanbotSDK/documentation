@@ -143,26 +143,39 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/genericdocument/entity/ValidationStatus.html#Valid">Valid</a>
+                    <a href="../io/scanbot/sdk/genericdocument/entity/FieldValidationStatus.html#VALID">VALID</a>
                 
-                </span> - enum entry in io.scanbot.genericdocument.entity.<a href=../io/scanbot/genericdocument/entity/ValidationStatus.html>ValidationStatus</a>
+                </span> - enum entry in io.scanbot.sdk.genericdocument.entity.<a href=../io/scanbot/sdk/genericdocument/entity/FieldValidationStatus.html>FieldValidationStatus</a>
                 
 
             </dt>
-            <dd><p>Field value passed validation</p></dd>
+            <dd><p>Field value passed validation. This status is used for fields that have validation rules, like IBAN, date fields, etc. that have check digits or a known format that can be validated. The VALID status gives the strongest guarantee that the field value has been read out without errors.</p></dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/barcode/entity/Gs1Handling.html#VALIDATE_FULL">VALIDATE_FULL</a>
+                    <a href="../io/scanbot/sdk/genericdocument/entity/CommonFieldType.html#VALID_FROM_DATE">VALID_FROM_DATE</a>
                 
-                </span> - enum entry in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/Gs1Handling.html>Gs1Handling</a>
+                </span> - enum entry in io.scanbot.sdk.genericdocument.entity.<a href=../io/scanbot/sdk/genericdocument/entity/CommonFieldType.html>CommonFieldType</a>
                 
 
             </dt>
-            <dd><p>Full validation including linting and checksums. This is the most strict mode.</p></dd>
+            <dd><p>Date of start of validity field.</p></dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/Gs1Handling.html#VALIDATE_FULL">VALIDATE_FULL</a>
+                
+                </span> - enum entry in io.scanbot.sdk.barcode.<a href=../io/scanbot/sdk/barcode/Gs1Handling.html>Gs1Handling</a>
+                
+
+            </dt>
+            <dd><p>Includes all validations from VALIDATE_STRUCTURE. Additionally, GS1 messages which have missing or incompatible combinations of AI keys are rejected. Additionally, values are checked against a list of known linting rules, e.g. checksums are calculated and verified, dates are checked for validity, etc. Results that fail any of the linter rules are rejected. The complete set of linter rules from the GS1 Syntax Dictionary are implemented.</p></dd>
 
         
             <dt>
@@ -182,26 +195,13 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/Gs1Handling.html#VALIDATE_FULL">VALIDATE_FULL</a>
+                    <a href="../io/scanbot/sdk/barcode/Gs1Handling.html#VALIDATE_STRUCTURE">VALIDATE_STRUCTURE</a>
                 
-                </span> - enum entry in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/Gs1Handling.html>Gs1Handling</a>
-                
-
-            </dt>
-            <dd><p>Full validation including linting and checksums. This is the most strict mode.</p></dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/sdk/barcode/entity/Gs1Handling.html#VALIDATE_STRUCTURE">VALIDATE_STRUCTURE</a>
-                
-                </span> - enum entry in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/Gs1Handling.html>Gs1Handling</a>
+                </span> - enum entry in io.scanbot.sdk.barcode.<a href=../io/scanbot/sdk/barcode/Gs1Handling.html>Gs1Handling</a>
                 
 
             </dt>
-            <dd><p>Same as PARSE. Additionally, messages containing unknown AI keys, or containing values of incorrect format for known keys, are not returned.</p></dd>
+            <dd><p>Same as PARSE. Additionally, messages containing unknown AI keys, or containing values that don't fulfill the length, character set or regex requirements for known keys, are rejected.</p></dd>
 
         
             <dt>
@@ -221,58 +221,6 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/Gs1Handling.html#VALIDATE_STRUCTURE">VALIDATE_STRUCTURE</a>
-                
-                </span> - enum entry in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/Gs1Handling.html>Gs1Handling</a>
-                
-
-            </dt>
-            <dd><p>Same as PARSE. Additionally, messages containing unknown AI keys, or containing values of incorrect format for known keys, are not returned.</p></dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/genericdocument/entity/ValidatedTextFieldWrapper.html">ValidatedTextFieldWrapper</a>
-                
-                </span> - class in io.scanbot.genericdocument.entity
-                
-
-            </dt>
-            <dd>Wrapper for validated text fields</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/genericdocument/entity/ValidationStatus.html">ValidationStatus</a>
-                
-                </span> - class in io.scanbot.genericdocument.entity
-                
-
-            </dt>
-            <dd>Field validation status.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/genericdocument/entity/CommonFieldType.html#ValidFromDate">ValidFromDate</a>
-                
-                </span> - enum entry in io.scanbot.genericdocument.entity.<a href=../io/scanbot/genericdocument/entity/CommonFieldType.html>CommonFieldType</a>
-                
-
-            </dt>
-            <dd><p>Date of start of validity field</p></dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
                     <a href="../io/scanbot/sdk/pdf/PdfiumSdk.html#validPtr(java.lang.Long)">validPtr(java.lang.Long)</a>
                 
                 </span> - function in io.scanbot.sdk.pdf.<a href=../io/scanbot/sdk/pdf/PdfiumSdk.html>PdfiumSdk</a>
@@ -280,71 +228,6 @@ var pathtoroot = "../";
 
             </dt>
             <dd>&nbsp;</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/BarcodeScanner.CoreEngineMode.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
-                
-                </span> - function in io.scanbot.barcodescanner.<a href=../io/scanbot/barcodescanner/BarcodeScanner.CoreEngineMode.html>BarcodeScanner.CoreEngineMode</a>
-                
-
-            </dt>
-            <dd>Returns the enum constant of this type with the specified name.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/entity/RootDocumentType.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
-                
-                </span> - function in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/RootDocumentType.html>RootDocumentType</a>
-                
-
-            </dt>
-            <dd>Returns the enum constant of this type with the specified name.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/model/BarcodeMetadataKey.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
-                
-                </span> - function in io.scanbot.barcodescanner.model.<a href=../io/scanbot/barcodescanner/model/BarcodeMetadataKey.html>BarcodeMetadataKey</a>
-                
-
-            </dt>
-            <dd>Returns the enum constant of this type with the specified name.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/model/BarcodeType.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
-                
-                </span> - function in io.scanbot.barcodescanner.model.<a href=../io/scanbot/barcodescanner/model/BarcodeType.html>BarcodeType</a>
-                
-
-            </dt>
-            <dd>Returns the enum constant of this type with the specified name.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/genericdocument/entity/CommonFieldType.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
-                
-                </span> - function in io.scanbot.genericdocument.entity.<a href=../io/scanbot/genericdocument/entity/CommonFieldType.html>CommonFieldType</a>
-                
-
-            </dt>
-            <dd>Returns the enum constant of this type with the specified name.</dd>
 
         
             <dt>
@@ -364,22 +247,9 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/genericdocument/entity/ValidationStatus.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                    <a href="../io/scanbot/sdk/barcode/AustraliaPostCustomerFormat.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
                 
-                </span> - function in io.scanbot.genericdocument.entity.<a href=../io/scanbot/genericdocument/entity/ValidationStatus.html>ValidationStatus</a>
-                
-
-            </dt>
-            <dd>Returns the enum constant of this type with the specified name.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/sdk/barcode/entity/AustraliaPostCustomerFormat.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
-                
-                </span> - function in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/AustraliaPostCustomerFormat.html>AustraliaPostCustomerFormat</a>
+                </span> - function in io.scanbot.sdk.barcode.<a href=../io/scanbot/sdk/barcode/AustraliaPostCustomerFormat.html>AustraliaPostCustomerFormat</a>
                 
 
             </dt>
@@ -390,22 +260,9 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/barcode/entity/BarcodeDocumentFormat.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                    <a href="../io/scanbot/sdk/barcode/BarcodeDocumentFormat.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
                 
-                </span> - function in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/BarcodeDocumentFormat.html>BarcodeDocumentFormat</a>
-                
-
-            </dt>
-            <dd>Returns the enum constant of this type with the specified name.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/sdk/barcode/entity/BarcodeFormat.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
-                
-                </span> - function in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/BarcodeFormat.html>BarcodeFormat</a>
+                </span> - function in io.scanbot.sdk.barcode.<a href=../io/scanbot/sdk/barcode/BarcodeDocumentFormat.html>BarcodeDocumentFormat</a>
                 
 
             </dt>
@@ -416,22 +273,9 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/barcode/entity/BarcodeMetadataKey.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                    <a href="../io/scanbot/sdk/barcode/BarcodeFormat.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
                 
-                </span> - function in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/BarcodeMetadataKey.html>BarcodeMetadataKey</a>
-                
-
-            </dt>
-            <dd>Returns the enum constant of this type with the specified name.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/sdk/barcode/entity/EngineMode.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
-                
-                </span> - function in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/EngineMode.html>EngineMode</a>
+                </span> - function in io.scanbot.sdk.barcode.<a href=../io/scanbot/sdk/barcode/BarcodeFormat.html>BarcodeFormat</a>
                 
 
             </dt>
@@ -442,9 +286,9 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/barcode/entity/Gs1Handling.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                    <a href="../io/scanbot/sdk/barcode/BarcodeScannerEngineMode.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
                 
-                </span> - function in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/Gs1Handling.html>Gs1Handling</a>
+                </span> - function in io.scanbot.sdk.barcode.<a href=../io/scanbot/sdk/barcode/BarcodeScannerEngineMode.html>BarcodeScannerEngineMode</a>
                 
 
             </dt>
@@ -455,9 +299,48 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/barcode/entity/MSIPlesseyChecksumAlgorithm.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                    <a href="../io/scanbot/sdk/barcode/Gs1Handling.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
                 
-                </span> - function in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/MSIPlesseyChecksumAlgorithm.html>MSIPlesseyChecksumAlgorithm</a>
+                </span> - function in io.scanbot.sdk.barcode.<a href=../io/scanbot/sdk/barcode/Gs1Handling.html>Gs1Handling</a>
+                
+
+            </dt>
+            <dd>Returns the enum constant of this type with the specified name.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/MsiPlesseyChecksumAlgorithm.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                
+                </span> - function in io.scanbot.sdk.barcode.<a href=../io/scanbot/sdk/barcode/MsiPlesseyChecksumAlgorithm.html>MsiPlesseyChecksumAlgorithm</a>
+                
+
+            </dt>
+            <dd>Returns the enum constant of this type with the specified name.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/UpcEanExtensionBehavior.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                
+                </span> - function in io.scanbot.sdk.barcode.<a href=../io/scanbot/sdk/barcode/UpcEanExtensionBehavior.html>UpcEanExtensionBehavior</a>
+                
+
+            </dt>
+            <dd>Returns the enum constant of this type with the specified name.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/entity/RootDocumentType.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                
+                </span> - function in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/RootDocumentType.html>RootDocumentType</a>
                 
 
             </dt>
@@ -484,6 +367,19 @@ var pathtoroot = "../";
                     <a href="../io/scanbot/sdk/barcode/ui/CaptureMode.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
                 
                 </span> - function in io.scanbot.sdk.barcode.ui.<a href=../io/scanbot/sdk/barcode/ui/CaptureMode.html>CaptureMode</a>
+                
+
+            </dt>
+            <dd>Returns the enum constant of this type with the specified name.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode_scanner/di/BarcodeDependencyCheck.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                
+                </span> - function in io.scanbot.sdk.barcode_scanner.di.<a href=../io/scanbot/sdk/barcode_scanner/di/BarcodeDependencyCheck.html>BarcodeDependencyCheck</a>
                 
 
             </dt>
@@ -533,9 +429,87 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
+                    <a href="../io/scanbot/sdk/common/ImageSerializationMode.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                
+                </span> - function in io.scanbot.sdk.common.<a href=../io/scanbot/sdk/common/ImageSerializationMode.html>ImageSerializationMode</a>
+                
+
+            </dt>
+            <dd>Returns the enum constant of this type with the specified name.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/core/BufferLoadMode.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                
+                </span> - function in io.scanbot.sdk.core.<a href=../io/scanbot/sdk/core/BufferLoadMode.html>BufferLoadMode</a>
+                
+
+            </dt>
+            <dd>Returns the enum constant of this type with the specified name.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/core/EncodingFormat.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                
+                </span> - function in io.scanbot.sdk.core.<a href=../io/scanbot/sdk/core/EncodingFormat.html>EncodingFormat</a>
+                
+
+            </dt>
+            <dd>Returns the enum constant of this type with the specified name.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/core/EncryptionMode.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                
+                </span> - function in io.scanbot.sdk.core.<a href=../io/scanbot/sdk/core/EncryptionMode.html>EncryptionMode</a>
+                
+
+            </dt>
+            <dd>Returns the enum constant of this type with the specified name.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
                     <a href="../io/scanbot/sdk/core/ImageRotation.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
                 
                 </span> - function in io.scanbot.sdk.core.<a href=../io/scanbot/sdk/core/ImageRotation.html>ImageRotation</a>
+                
+
+            </dt>
+            <dd>Returns the enum constant of this type with the specified name.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/core/ImageSourceType.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                
+                </span> - function in io.scanbot.sdk.core.<a href=../io/scanbot/sdk/core/ImageSourceType.html>ImageSourceType</a>
+                
+
+            </dt>
+            <dd>Returns the enum constant of this type with the specified name.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/core/PathLoadMode.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                
+                </span> - function in io.scanbot.sdk.core.<a href=../io/scanbot/sdk/core/PathLoadMode.html>PathLoadMode</a>
                 
 
             </dt>
@@ -562,6 +536,58 @@ var pathtoroot = "../";
                     <a href="../io/scanbot/sdk/exceptions/camera/CodecFailedException.FailureType.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
                 
                 </span> - function in io.scanbot.sdk.exceptions.camera.<a href=../io/scanbot/sdk/exceptions/camera/CodecFailedException.FailureType.html>CodecFailedException.FailureType</a>
+                
+
+            </dt>
+            <dd>Returns the enum constant of this type with the specified name.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/frameaccumulation/ConfirmationMethod.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                
+                </span> - function in io.scanbot.sdk.frameaccumulation.<a href=../io/scanbot/sdk/frameaccumulation/ConfirmationMethod.html>ConfirmationMethod</a>
+                
+
+            </dt>
+            <dd>Returns the enum constant of this type with the specified name.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/genericdocument/entity/CommonFieldType.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                
+                </span> - function in io.scanbot.sdk.genericdocument.entity.<a href=../io/scanbot/sdk/genericdocument/entity/CommonFieldType.html>CommonFieldType</a>
+                
+
+            </dt>
+            <dd>Returns the enum constant of this type with the specified name.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/genericdocument/entity/FieldDataFormat.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                
+                </span> - function in io.scanbot.sdk.genericdocument.entity.<a href=../io/scanbot/sdk/genericdocument/entity/FieldDataFormat.html>FieldDataFormat</a>
+                
+
+            </dt>
+            <dd>Returns the enum constant of this type with the specified name.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/genericdocument/entity/FieldValidationStatus.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                
+                </span> - function in io.scanbot.sdk.genericdocument.entity.<a href=../io/scanbot/sdk/genericdocument/entity/FieldValidationStatus.html>FieldValidationStatus</a>
                 
 
             </dt>
@@ -767,9 +793,9 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/ui/configuration/json/JsonDocumentDetectorMode.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
+                    <a href="../io/scanbot/sdk/ui/configuration/json/JsonDocumentScannerEngineMode.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
                 
-                </span> - function in io.scanbot.sdk.ui.configuration.json.<a href=../io/scanbot/sdk/ui/configuration/json/JsonDocumentDetectorMode.html>JsonDocumentDetectorMode</a>
+                </span> - function in io.scanbot.sdk.ui.configuration.json.<a href=../io/scanbot/sdk/ui/configuration/json/JsonDocumentScannerEngineMode.html>JsonDocumentScannerEngineMode</a>
                 
 
             </dt>
@@ -910,19 +936,6 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/ui/view/barcode/configuration/BarcodeImageGenerationType.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
-                
-                </span> - function in io.scanbot.sdk.ui.view.barcode.configuration.<a href=../io/scanbot/sdk/ui/view/barcode/configuration/BarcodeImageGenerationType.html>BarcodeImageGenerationType</a>
-                
-
-            </dt>
-            <dd>Returns the enum constant of this type with the specified name.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
                     <a href="../io/scanbot/sdk/ui/view/barcode/configuration/json/BarcodeScannerParameter.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
                 
                 </span> - function in io.scanbot.sdk.ui.view.barcode.configuration.json.<a href=../io/scanbot/sdk/ui/view/barcode/configuration/json/BarcodeScannerParameter.html>BarcodeScannerParameter</a>
@@ -988,45 +1001,6 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/AustraliaPostCustomerFormat.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
-                
-                </span> - function in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/AustraliaPostCustomerFormat.html>AustraliaPostCustomerFormat</a>
-                
-
-            </dt>
-            <dd>Returns the enum constant of this type with the specified name.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodeDocumentFormat.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
-                
-                </span> - function in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodeDocumentFormat.html>BarcodeDocumentFormat</a>
-                
-
-            </dt>
-            <dd>Returns the enum constant of this type with the specified name.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodeFormat.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
-                
-                </span> - function in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodeFormat.html>BarcodeFormat</a>
-                
-
-            </dt>
-            <dd>Returns the enum constant of this type with the specified name.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
                     <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodeItemInfoPosition.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
                 
                 </span> - function in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodeItemInfoPosition.html>BarcodeItemInfoPosition</a>
@@ -1040,48 +1014,9 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodesExtensionFilter.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
-                
-                </span> - function in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodesExtensionFilter.html>BarcodesExtensionFilter</a>
-                
-
-            </dt>
-            <dd>Returns the enum constant of this type with the specified name.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
                     <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/CollapsedVisibleHeight.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
                 
                 </span> - function in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/CollapsedVisibleHeight.html>CollapsedVisibleHeight</a>
-                
-
-            </dt>
-            <dd>Returns the enum constant of this type with the specified name.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/Gs1Handling.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
-                
-                </span> - function in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/Gs1Handling.html>Gs1Handling</a>
-                
-
-            </dt>
-            <dd>Returns the enum constant of this type with the specified name.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/MSIPlesseyChecksumAlgorithm.html#valueOf(java.lang.String)">valueOf(java.lang.String)</a>
-                
-                </span> - function in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/MSIPlesseyChecksumAlgorithm.html>MSIPlesseyChecksumAlgorithm</a>
                 
 
             </dt>
@@ -1261,71 +1196,6 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/BarcodeScanner.CoreEngineMode.html#values()">values()</a>
-                
-                </span> - function in io.scanbot.barcodescanner.<a href=../io/scanbot/barcodescanner/BarcodeScanner.CoreEngineMode.html>BarcodeScanner.CoreEngineMode</a>
-                
-
-            </dt>
-            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/entity/RootDocumentType.html#values()">values()</a>
-                
-                </span> - function in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/RootDocumentType.html>RootDocumentType</a>
-                
-
-            </dt>
-            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/model/BarcodeMetadataKey.html#values()">values()</a>
-                
-                </span> - function in io.scanbot.barcodescanner.model.<a href=../io/scanbot/barcodescanner/model/BarcodeMetadataKey.html>BarcodeMetadataKey</a>
-                
-
-            </dt>
-            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/model/BarcodeType.html#values()">values()</a>
-                
-                </span> - function in io.scanbot.barcodescanner.model.<a href=../io/scanbot/barcodescanner/model/BarcodeType.html>BarcodeType</a>
-                
-
-            </dt>
-            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/genericdocument/entity/CommonFieldType.html#values()">values()</a>
-                
-                </span> - function in io.scanbot.genericdocument.entity.<a href=../io/scanbot/genericdocument/entity/CommonFieldType.html>CommonFieldType</a>
-                
-
-            </dt>
-            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
                     <a href="../io/scanbot/genericdocument/entity/FieldProperties.DisplayState.html#values()">values()</a>
                 
                 </span> - function in io.scanbot.genericdocument.entity.<a href=../io/scanbot/genericdocument/entity/FieldProperties.DisplayState.html>FieldProperties.DisplayState</a>
@@ -1339,22 +1209,9 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/genericdocument/entity/ValidationStatus.html#values()">values()</a>
+                    <a href="../io/scanbot/sdk/barcode/AustraliaPostCustomerFormat.html#values()">values()</a>
                 
-                </span> - function in io.scanbot.genericdocument.entity.<a href=../io/scanbot/genericdocument/entity/ValidationStatus.html>ValidationStatus</a>
-                
-
-            </dt>
-            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/sdk/barcode/entity/AustraliaPostCustomerFormat.html#values()">values()</a>
-                
-                </span> - function in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/AustraliaPostCustomerFormat.html>AustraliaPostCustomerFormat</a>
+                </span> - function in io.scanbot.sdk.barcode.<a href=../io/scanbot/sdk/barcode/AustraliaPostCustomerFormat.html>AustraliaPostCustomerFormat</a>
                 
 
             </dt>
@@ -1365,22 +1222,9 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/barcode/entity/BarcodeDocumentFormat.html#values()">values()</a>
+                    <a href="../io/scanbot/sdk/barcode/BarcodeDocumentFormat.html#values()">values()</a>
                 
-                </span> - function in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/BarcodeDocumentFormat.html>BarcodeDocumentFormat</a>
-                
-
-            </dt>
-            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/sdk/barcode/entity/BarcodeFormat.html#values()">values()</a>
-                
-                </span> - function in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/BarcodeFormat.html>BarcodeFormat</a>
+                </span> - function in io.scanbot.sdk.barcode.<a href=../io/scanbot/sdk/barcode/BarcodeDocumentFormat.html>BarcodeDocumentFormat</a>
                 
 
             </dt>
@@ -1391,22 +1235,9 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/barcode/entity/BarcodeMetadataKey.html#values()">values()</a>
+                    <a href="../io/scanbot/sdk/barcode/BarcodeFormat.html#values()">values()</a>
                 
-                </span> - function in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/BarcodeMetadataKey.html>BarcodeMetadataKey</a>
-                
-
-            </dt>
-            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/sdk/barcode/entity/EngineMode.html#values()">values()</a>
-                
-                </span> - function in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/EngineMode.html>EngineMode</a>
+                </span> - function in io.scanbot.sdk.barcode.<a href=../io/scanbot/sdk/barcode/BarcodeFormat.html>BarcodeFormat</a>
                 
 
             </dt>
@@ -1417,9 +1248,9 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/barcode/entity/Gs1Handling.html#values()">values()</a>
+                    <a href="../io/scanbot/sdk/barcode/BarcodeScannerEngineMode.html#values()">values()</a>
                 
-                </span> - function in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/Gs1Handling.html>Gs1Handling</a>
+                </span> - function in io.scanbot.sdk.barcode.<a href=../io/scanbot/sdk/barcode/BarcodeScannerEngineMode.html>BarcodeScannerEngineMode</a>
                 
 
             </dt>
@@ -1430,9 +1261,48 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/barcode/entity/MSIPlesseyChecksumAlgorithm.html#values()">values()</a>
+                    <a href="../io/scanbot/sdk/barcode/Gs1Handling.html#values()">values()</a>
                 
-                </span> - function in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/MSIPlesseyChecksumAlgorithm.html>MSIPlesseyChecksumAlgorithm</a>
+                </span> - function in io.scanbot.sdk.barcode.<a href=../io/scanbot/sdk/barcode/Gs1Handling.html>Gs1Handling</a>
+                
+
+            </dt>
+            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/MsiPlesseyChecksumAlgorithm.html#values()">values()</a>
+                
+                </span> - function in io.scanbot.sdk.barcode.<a href=../io/scanbot/sdk/barcode/MsiPlesseyChecksumAlgorithm.html>MsiPlesseyChecksumAlgorithm</a>
+                
+
+            </dt>
+            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/UpcEanExtensionBehavior.html#values()">values()</a>
+                
+                </span> - function in io.scanbot.sdk.barcode.<a href=../io/scanbot/sdk/barcode/UpcEanExtensionBehavior.html>UpcEanExtensionBehavior</a>
+                
+
+            </dt>
+            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/entity/RootDocumentType.html#values()">values()</a>
+                
+                </span> - function in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/RootDocumentType.html>RootDocumentType</a>
                 
 
             </dt>
@@ -1459,6 +1329,19 @@ var pathtoroot = "../";
                     <a href="../io/scanbot/sdk/barcode/ui/CaptureMode.html#values()">values()</a>
                 
                 </span> - function in io.scanbot.sdk.barcode.ui.<a href=../io/scanbot/sdk/barcode/ui/CaptureMode.html>CaptureMode</a>
+                
+
+            </dt>
+            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode_scanner/di/BarcodeDependencyCheck.html#values()">values()</a>
+                
+                </span> - function in io.scanbot.sdk.barcode_scanner.di.<a href=../io/scanbot/sdk/barcode_scanner/di/BarcodeDependencyCheck.html>BarcodeDependencyCheck</a>
                 
 
             </dt>
@@ -1508,9 +1391,87 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
+                    <a href="../io/scanbot/sdk/common/ImageSerializationMode.html#values()">values()</a>
+                
+                </span> - function in io.scanbot.sdk.common.<a href=../io/scanbot/sdk/common/ImageSerializationMode.html>ImageSerializationMode</a>
+                
+
+            </dt>
+            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/core/BufferLoadMode.html#values()">values()</a>
+                
+                </span> - function in io.scanbot.sdk.core.<a href=../io/scanbot/sdk/core/BufferLoadMode.html>BufferLoadMode</a>
+                
+
+            </dt>
+            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/core/EncodingFormat.html#values()">values()</a>
+                
+                </span> - function in io.scanbot.sdk.core.<a href=../io/scanbot/sdk/core/EncodingFormat.html>EncodingFormat</a>
+                
+
+            </dt>
+            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/core/EncryptionMode.html#values()">values()</a>
+                
+                </span> - function in io.scanbot.sdk.core.<a href=../io/scanbot/sdk/core/EncryptionMode.html>EncryptionMode</a>
+                
+
+            </dt>
+            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
                     <a href="../io/scanbot/sdk/core/ImageRotation.html#values()">values()</a>
                 
                 </span> - function in io.scanbot.sdk.core.<a href=../io/scanbot/sdk/core/ImageRotation.html>ImageRotation</a>
+                
+
+            </dt>
+            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/core/ImageSourceType.html#values()">values()</a>
+                
+                </span> - function in io.scanbot.sdk.core.<a href=../io/scanbot/sdk/core/ImageSourceType.html>ImageSourceType</a>
+                
+
+            </dt>
+            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/core/PathLoadMode.html#values()">values()</a>
+                
+                </span> - function in io.scanbot.sdk.core.<a href=../io/scanbot/sdk/core/PathLoadMode.html>PathLoadMode</a>
                 
 
             </dt>
@@ -1537,6 +1498,58 @@ var pathtoroot = "../";
                     <a href="../io/scanbot/sdk/exceptions/camera/CodecFailedException.FailureType.html#values()">values()</a>
                 
                 </span> - function in io.scanbot.sdk.exceptions.camera.<a href=../io/scanbot/sdk/exceptions/camera/CodecFailedException.FailureType.html>CodecFailedException.FailureType</a>
+                
+
+            </dt>
+            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/frameaccumulation/ConfirmationMethod.html#values()">values()</a>
+                
+                </span> - function in io.scanbot.sdk.frameaccumulation.<a href=../io/scanbot/sdk/frameaccumulation/ConfirmationMethod.html>ConfirmationMethod</a>
+                
+
+            </dt>
+            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/genericdocument/entity/CommonFieldType.html#values()">values()</a>
+                
+                </span> - function in io.scanbot.sdk.genericdocument.entity.<a href=../io/scanbot/sdk/genericdocument/entity/CommonFieldType.html>CommonFieldType</a>
+                
+
+            </dt>
+            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/genericdocument/entity/FieldDataFormat.html#values()">values()</a>
+                
+                </span> - function in io.scanbot.sdk.genericdocument.entity.<a href=../io/scanbot/sdk/genericdocument/entity/FieldDataFormat.html>FieldDataFormat</a>
+                
+
+            </dt>
+            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/genericdocument/entity/FieldValidationStatus.html#values()">values()</a>
+                
+                </span> - function in io.scanbot.sdk.genericdocument.entity.<a href=../io/scanbot/sdk/genericdocument/entity/FieldValidationStatus.html>FieldValidationStatus</a>
                 
 
             </dt>
@@ -1742,9 +1755,9 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/ui/configuration/json/JsonDocumentDetectorMode.html#values()">values()</a>
+                    <a href="../io/scanbot/sdk/ui/configuration/json/JsonDocumentScannerEngineMode.html#values()">values()</a>
                 
-                </span> - function in io.scanbot.sdk.ui.configuration.json.<a href=../io/scanbot/sdk/ui/configuration/json/JsonDocumentDetectorMode.html>JsonDocumentDetectorMode</a>
+                </span> - function in io.scanbot.sdk.ui.configuration.json.<a href=../io/scanbot/sdk/ui/configuration/json/JsonDocumentScannerEngineMode.html>JsonDocumentScannerEngineMode</a>
                 
 
             </dt>
@@ -1885,19 +1898,6 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/ui/view/barcode/configuration/BarcodeImageGenerationType.html#values()">values()</a>
-                
-                </span> - function in io.scanbot.sdk.ui.view.barcode.configuration.<a href=../io/scanbot/sdk/ui/view/barcode/configuration/BarcodeImageGenerationType.html>BarcodeImageGenerationType</a>
-                
-
-            </dt>
-            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
                     <a href="../io/scanbot/sdk/ui/view/barcode/configuration/json/BarcodeScannerParameter.html#values()">values()</a>
                 
                 </span> - function in io.scanbot.sdk.ui.view.barcode.configuration.json.<a href=../io/scanbot/sdk/ui/view/barcode/configuration/json/BarcodeScannerParameter.html>BarcodeScannerParameter</a>
@@ -1963,45 +1963,6 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/AustraliaPostCustomerFormat.html#values()">values()</a>
-                
-                </span> - function in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/AustraliaPostCustomerFormat.html>AustraliaPostCustomerFormat</a>
-                
-
-            </dt>
-            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodeDocumentFormat.html#values()">values()</a>
-                
-                </span> - function in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodeDocumentFormat.html>BarcodeDocumentFormat</a>
-                
-
-            </dt>
-            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodeFormat.html#values()">values()</a>
-                
-                </span> - function in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodeFormat.html>BarcodeFormat</a>
-                
-
-            </dt>
-            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
                     <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodeItemInfoPosition.html#values()">values()</a>
                 
                 </span> - function in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodeItemInfoPosition.html>BarcodeItemInfoPosition</a>
@@ -2015,48 +1976,9 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodesExtensionFilter.html#values()">values()</a>
-                
-                </span> - function in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodesExtensionFilter.html>BarcodesExtensionFilter</a>
-                
-
-            </dt>
-            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
                     <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/CollapsedVisibleHeight.html#values()">values()</a>
                 
                 </span> - function in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/CollapsedVisibleHeight.html>CollapsedVisibleHeight</a>
-                
-
-            </dt>
-            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/Gs1Handling.html#values()">values()</a>
-                
-                </span> - function in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/Gs1Handling.html>Gs1Handling</a>
-                
-
-            </dt>
-            <dd>Returns an array containing the constants of this enum type, in the order they're declared.</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/MSIPlesseyChecksumAlgorithm.html#values()">values()</a>
-                
-                </span> - function in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/MSIPlesseyChecksumAlgorithm.html>MSIPlesseyChecksumAlgorithm</a>
                 
 
             </dt>
@@ -2236,9 +2158,22 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/RootDocumentType.html#VCard">VCard</a>
+                    <a href="../io/scanbot/sdk/barcode/BarcodeDocumentFormat.html#VCARD">VCARD</a>
                 
-                </span> - enum entry in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/RootDocumentType.html>RootDocumentType</a>
+                </span> - enum entry in io.scanbot.sdk.barcode.<a href=../io/scanbot/sdk/barcode/BarcodeDocumentFormat.html>BarcodeDocumentFormat</a>
+                
+
+            </dt>
+            <dd><p>VCard barcode document.</p></dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/entity/RootDocumentType.html#VCard">VCard</a>
+                
+                </span> - enum entry in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/RootDocumentType.html>RootDocumentType</a>
                 
 
             </dt>
@@ -2249,22 +2184,9 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.html">VCard</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.html">VCard</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity
-                
-
-            </dt>
-            <dd>VCard</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/sdk/barcode/entity/BarcodeDocumentFormat.html#VCARD">VCARD</a>
-                
-                </span> - enum entry in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/BarcodeDocumentFormat.html>BarcodeDocumentFormat</a>
+                </span> - class in io.scanbot.sdk.barcode.entity
                 
 
             </dt>
@@ -2288,165 +2210,9 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodeDocumentFormat.html#VCARD">VCARD</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Anniversary.html">VCard.Anniversary</a>
                 
-                </span> - enum entry in io.scanbot.sdk.ui_v2.barcode.configuration.<a href=../io/scanbot/sdk/ui_v2/barcode/configuration/BarcodeDocumentFormat.html>BarcodeDocumentFormat</a>
-                
-
-            </dt>
-            <dd><p>VCard barcode document</p></dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Anniversary.html">VCard.Anniversary</a>
-                
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
-                
-
-            </dt>
-            <dd>Anniversary</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Birthday.html">VCard.Birthday</a>
-                
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
-                
-
-            </dt>
-            <dd>Birthday</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.BusyTimeURL.html">VCard.BusyTimeURL</a>
-                
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
-                
-
-            </dt>
-            <dd>Busy Time URL</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.CalendarURI.html">VCard.CalendarURI</a>
-                
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
-                
-
-            </dt>
-            <dd>Calendar URI</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.CalendarURIForRequests.html">VCard.CalendarURIForRequests</a>
-                
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
-                
-
-            </dt>
-            <dd>Calendar URI For Requests</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Categories.html">VCard.Categories</a>
-                
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
-                
-
-            </dt>
-            <dd>Categories</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.ClientPIDMap.html">VCard.ClientPIDMap</a>
-                
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
-                
-
-            </dt>
-            <dd>Client PID Map</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Custom.html">VCard.Custom</a>
-                
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
-                
-
-            </dt>
-            <dd>Custom</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.DeliveryAddress.html">VCard.DeliveryAddress</a>
-                
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
-                
-
-            </dt>
-            <dd>Delivery Address</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Email.html">VCard.Email</a>
-                
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
-                
-
-            </dt>
-            <dd>Email</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Entry.html">VCard.Entry</a>
-                
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
-                
-
-            </dt>
-            <dd>VCard Entry</dd>
-
-        
-            <dt>
-                
-                <span class="memberNameLink">
-                
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Entry.FieldNames.html">VCard.Entry.FieldNames</a>
-                
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.Entry.html>VCard.Entry</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
@@ -2457,9 +2223,9 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Entry.NormalizedFieldNames.html">VCard.Entry.NormalizedFieldNames</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Birthday.html">VCard.Birthday</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.Entry.html>VCard.Entry</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
@@ -2470,351 +2236,494 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.FirstName.html">VCard.FirstName</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.BusyTimeURL.html">VCard.BusyTimeURL</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>First Name</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Gender.html">VCard.Gender</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.CalendarURI.html">VCard.CalendarURI</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Gender</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.GeoLocation.html">VCard.GeoLocation</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.CalendarURIForRequests.html">VCard.CalendarURIForRequests</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Geo Location</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.IMPP.html">VCard.IMPP</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Categories.html">VCard.Categories</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>IMPP</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Kind.html">VCard.Kind</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.ClientPIDMap.html">VCard.ClientPIDMap</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Kind</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Languages.html">VCard.Languages</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Custom.html">VCard.Custom</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Languages</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Logo.html">VCard.Logo</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.DeliveryAddress.html">VCard.DeliveryAddress</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Logo</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Member.html">VCard.Member</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Email.html">VCard.Email</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Member</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Name.html">VCard.Name</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Entry.html">VCard.Entry</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Name</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Nickname.html">VCard.Nickname</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Entry.FieldNames.html">VCard.Entry.FieldNames</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.Entry.html>VCard.Entry</a>
                 
 
             </dt>
-            <dd>Nickname</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Note.html">VCard.Note</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Entry.NormalizedFieldNames.html">VCard.Entry.NormalizedFieldNames</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.Entry.html>VCard.Entry</a>
                 
 
             </dt>
-            <dd>Note</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Organisation.html">VCard.Organisation</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.FirstName.html">VCard.FirstName</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Organisation</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Photo.html">VCard.Photo</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Gender.html">VCard.Gender</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Photo</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.ProductId.html">VCard.ProductId</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.GeoLocation.html">VCard.GeoLocation</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>ProductId</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.PublicKey.html">VCard.PublicKey</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.IMPP.html">VCard.IMPP</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Public Key</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Related.html">VCard.Related</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Kind.html">VCard.Kind</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Related</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Revision.html">VCard.Revision</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Languages.html">VCard.Languages</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Revision</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Role.html">VCard.Role</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Logo.html">VCard.Logo</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Role</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Sound.html">VCard.Sound</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Member.html">VCard.Member</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Sound</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Source.html">VCard.Source</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Name.html">VCard.Name</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Source</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.TelephoneNumber.html">VCard.TelephoneNumber</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Nickname.html">VCard.Nickname</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Telephone Number</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.TimeZone.html">VCard.TimeZone</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Note.html">VCard.Note</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Time Zone</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Title.html">VCard.Title</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Organisation.html">VCard.Organisation</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Title</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.UID.html">VCard.UID</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Photo.html">VCard.Photo</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>UID</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.URL.html">VCard.URL</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.ProductId.html">VCard.ProductId</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>URL</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.Version.html">VCard.Version</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.PublicKey.html">VCard.PublicKey</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>Version</dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/barcodescanner/entity/VCard.XML.html">VCard.XML</a>
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Related.html">VCard.Related</a>
                 
-                </span> - class in io.scanbot.barcodescanner.entity.<a href=../io/scanbot/barcodescanner/entity/VCard.html>VCard</a>
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
                 
 
             </dt>
-            <dd>XML</dd>
+            <dd>&nbsp;</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Revision.html">VCard.Revision</a>
+                
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
+                
+
+            </dt>
+            <dd>&nbsp;</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Role.html">VCard.Role</a>
+                
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
+                
+
+            </dt>
+            <dd>&nbsp;</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Sound.html">VCard.Sound</a>
+                
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
+                
+
+            </dt>
+            <dd>&nbsp;</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Source.html">VCard.Source</a>
+                
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
+                
+
+            </dt>
+            <dd>&nbsp;</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.TelephoneNumber.html">VCard.TelephoneNumber</a>
+                
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
+                
+
+            </dt>
+            <dd>&nbsp;</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.TimeZone.html">VCard.TimeZone</a>
+                
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
+                
+
+            </dt>
+            <dd>&nbsp;</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Title.html">VCard.Title</a>
+                
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
+                
+
+            </dt>
+            <dd>&nbsp;</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.UID.html">VCard.UID</a>
+                
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
+                
+
+            </dt>
+            <dd>&nbsp;</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.URL.html">VCard.URL</a>
+                
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
+                
+
+            </dt>
+            <dd>&nbsp;</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.Version.html">VCard.Version</a>
+                
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
+                
+
+            </dt>
+            <dd>&nbsp;</dd>
+
+        
+            <dt>
+                
+                <span class="memberNameLink">
+                
+                    <a href="../io/scanbot/sdk/barcode/entity/VCard.XML.html">VCard.XML</a>
+                
+                </span> - class in io.scanbot.sdk.barcode.entity.<a href=../io/scanbot/sdk/barcode/entity/VCard.html>VCard</a>
+                
+
+            </dt>
+            <dd>&nbsp;</dd>
 
         
             <dt>
@@ -2886,22 +2795,22 @@ var pathtoroot = "../";
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/ui/view/barcode/configuration/BarcodeImageGenerationType.html#VIDEO_FRAME">VIDEO_FRAME</a>
+                    <a href="../io/scanbot/sdk/entity/Language.html#VIE">VIE</a>
                 
-                </span> - enum entry in io.scanbot.sdk.ui.view.barcode.configuration.<a href=../io/scanbot/sdk/ui/view/barcode/configuration/BarcodeImageGenerationType.html>BarcodeImageGenerationType</a>
+                </span> - enum entry in io.scanbot.sdk.entity.<a href=../io/scanbot/sdk/entity/Language.html>Language</a>
                 
 
             </dt>
-            <dd><p>Generating barcode image from the last video frame. Faster, but has lower resolution.</p></dd>
+            <dd>&nbsp;</dd>
 
         
             <dt>
                 
                 <span class="memberNameLink">
                 
-                    <a href="../io/scanbot/sdk/entity/Language.html#VIE">VIE</a>
+                    <a href="../io/scanbot/sdk/ui_v2/common/BaseViewFinderConfiguration.html#viewFinderConfiguration()">viewFinderConfiguration()</a>
                 
-                </span> - enum entry in io.scanbot.sdk.entity.<a href=../io/scanbot/sdk/entity/Language.html>Language</a>
+                </span> - function in io.scanbot.sdk.ui_v2.common.<a href=>BaseViewFinderConfiguration.Companion</a>
                 
 
             </dt>
@@ -2918,7 +2827,7 @@ var pathtoroot = "../";
                 
 
             </dt>
-            <dd>Configuration of the scanning interface's viewfinder, serving as guidance to the user.</dd>
+            <dd>Configuration of the scanning interface’s viewfinder, allowing it to be shown or hidden as guidance to the user.</dd>
 
         
             <dt>
