@@ -1,0 +1,1669 @@
+<!DOCTYPE HTML>
+<!-- NewPage -->
+<html lang="en"><head>
+    <title>ScanbotCameraView </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="dc.created" content="2020-03-25">
+    <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+    <link rel="stylesheet" type="text/css" href="../../../../dokka-javadoc-stylesheet.css" title="Style">
+    <link rel="stylesheet" type="text/css" href="../../../../jquery/jquery-ui.css" title="Style">
+    <script type="text/javascript" src="../../../../jquery/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../../../../jquery/jquery-migrate-3.4.0.min.js"></script>
+    <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
+
+    <script type="text/javascript" src="../../../../search.js"></script>
+    <script async type="text/javascript" src="../../../../module-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../package-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../type-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../member-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../tag-search-index.js"></script>
+</head><body>
+<script type="text/javascript">
+var pathtoroot = "../../../../";
+</script>
+<noscript>
+    <div>JavaScript is disabled on your browser.</div>
+</noscript><header role="banner">
+    <nav role="navigation">
+        <div class="fixedNav">
+            <!-- ========= START OF TOP NAVBAR ======= -->
+            <div class="topNav"><a id="navbar.top">
+                <!--   -->
+            </a>
+                <div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a>
+                </div>
+                <a id="navbar.top.firstrow">
+                    <!--   -->
+                </a>
+                <ul class="navList" title="Navigation">
+    <li><a href="../../../../index.html">Overview</a></li>
+    
+    <li><a href="package-summary.html">Package</a></li>
+    
+    <li class="navBarCell1Rev">Class</li>
+    
+    
+    <li><a href="../../../../deprecated.html">Deprecated</a></li>
+    <li><a href="../../../../index-files/index-1.html">Index</a></li>
+</ul></div>
+            <div class="subNav">
+<ul class="navList" id="allclasses_navbar_top" style="display: block;">
+    <li><a href="../../../../allclasses.html">All&nbsp;Classes</a></li>
+</ul>
+
+
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+</div>
+<a id="skip.navbar.top">
+<!--   -->
+</a></div><!-- ========= END OF TOP NAVBAR ========= -->
+        </div>
+        <div class="navPadding">&nbsp;</div>
+        <script type="text/javascript"><!--
+        $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
+        //-->
+        </script>
+    </nav>
+</header>
+
+<main role="main">
+    <div class="header">
+        <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">io.scanbot.sdk.camera</a></div>
+        <h2 title="Class ScanbotCameraView" class="title">Class ScanbotCameraView</h2>
+    </div>
+    <div class="contentContainer">
+        <!-- <ul class="inheritance">
+            <li>java.lang.Object</li>
+            <li>
+                <ul class="inheritance">
+                    <li>adaptation.Adaptation</li>
+                </ul>
+            </li>
+        </ul> TODO inheritance tree -->
+        <div class="description">
+            <ul class="blockList">
+                <li class="blockList">
+                    
+                    <dl>
+                        <dt>All Implemented Interfaces:</dt>
+                        <dd>
+                            
+                            <code>android.graphics.drawable.Drawable.Callback</code>
+                            
+                            ,
+                            
+                            
+                            <code>android.view.KeyEvent.Callback</code>
+                            
+                            ,
+                            
+                            
+                            <code>android.view.ViewManager</code>
+                            
+                            ,
+                            
+                            
+                            <code>android.view.ViewParent</code>
+                            
+                            ,
+                            
+                            
+                            <code>android.view.accessibility.AccessibilityEventSource</code>
+                            
+                            ,
+                            
+                            
+                            <code>io.scanbot.sdk.ui.camera.IScanbotCameraView</code>
+                            
+                            ,
+                            
+                            
+                            <code>io.scanbot.sdk.ui.camera.UiZoomDelegate</code>
+                            
+                            ,
+                            
+                            
+                            <code>io.scanbot.sdk.ui.camera.util.FinderViewAttributeHandler</code>
+                            
+                            
+                        </dd>
+                    </dl>
+                    
+                    <hr>
+                    <pre class="wrap-overflow">
+
+public final class <span class="typeNameLabel"><a href=ScanbotCameraView.html>ScanbotCameraView</a></span>
+extends <a href=https://developer.android.com/reference/kotlin/android/widget/FrameLayout.html>FrameLayout</a> implements <a href=../ui/camera/IScanbotCameraView.html>IScanbotCameraView</a>, <a href=../ui/camera/UiZoomDelegate.html>UiZoomDelegate</a>, <a href=../ui/camera/util/FinderViewAttributeHandler.html>FinderViewAttributeHandler</a>
+                    </pre>
+                    <div class="block"><p>Provides interface to native Camera and displays camera stream. Use this class if you want to fine-tune camera behavior.</p><p>It is required to pass <a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>android.app.Activity</a> (or <a href=https://developer.android.com/reference/kotlin/android/app/Fragment.html>android.app.Fragment</a>) lifecycle events to this view: .onResume, .onPause. They are used to automatically start and stop camera.</p><p>It is possible to include other views inside of <a href=ScanbotCameraView.html>ScanbotCameraView</a>. In such case they will be drawn on top of camera preview with size matching the camera frame. You can use this fact to draw overlays on top of camera.</p><p>Preview frames are provided via <a href=PreviewBuffer.html>PreviewBuffer</a>: .getPreviewBuffer.</p></div>
+                </li>
+            </ul>
+        </div>
+        <div class="summary">
+            <ul class="blockList">
+                <li class="blockList">
+                <!-- ======== NESTED CLASS SUMMARY ======== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="nested.class.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Nested Class Summary</h3>
+                                <div class="memberSummary">
+                                    <table>
+                                        <caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
+                                        <tr>
+                                            <th class="colFirst" scope="col">Modifier and Type</th>
+                                            <th class="colSecond" scope="col">Class</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- =========== FIELD SUMMARY =========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="field.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Field Summary</h3>
+                                <div class="memberSummary">
+                                    <table>
+                                        <caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+                                        <tr>
+                                            <th class="colFirst" scope="col">Modifier and Type</th>
+                                            <th class="colSecond" scope="col">Field</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private  <a href=https://developer.android.com/reference/kotlin/java/lang/Long.html>Long</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#delayAfterFocusCompleteMs>delayAfterFocusCompleteMs</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=PreviewBuffer.html>PreviewBuffer</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#previewBuffer>previewBuffer</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/android/hardware/Camera.Size.html>Camera.Size</a>&gt;</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#supportedPictureSizes>supportedPictureSizes</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/android/hardware/Camera.Size.html>Camera.Size</a>&gt;</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#supportedPreviewSizes>supportedPreviewSizes</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- ======== CONSTRUCTOR SUMMARY ======== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="constructor.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Constructor Summary</h3>
+                                <div class="memberSummary">
+                                    <table>
+                                        <caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+                                        <tbody>
+                                        <tr>
+                                            <th class="colFirst" scope="col">Constructor</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#ScanbotCameraView(android.content.Context)">ScanbotCameraView</a></span>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#ScanbotCameraView(android.content.Context,android.util.AttributeSet)">ScanbotCameraView</a></span>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://developer.android.com/reference/kotlin/android/util/AttributeSet.html>AttributeSet</a> attrs)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- =========== ENUM CONSTANT SUMMARY =========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="enum.constant.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Enum Constant Summary</h3>
+                                <table class="memberSummary">
+                                    <caption><span>Enum Constants</span><span class="tabEnd">&nbsp;</span></caption>
+                                    <tr>
+                                        <th class="colFirst" scope="col">Enum Constant</th>
+                                        <th class="colLast" scope="col">Description</th>
+                                    </tr>
+                                    
+                                </table>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- ========== METHOD SUMMARY =========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="method.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Method Summary</h3>
+                                <div class="memberSummary">
+                                    <div role="tablist" aria-orientation="horizontal">
+                                        <button role="tab" aria-selected="true" aria-controls="memberSummary_tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="activeTableTab">All Methods</button>
+                                        <!-- TODO: Instance and Concrete Methods #1118 -->
+                                    </div>
+                                    <div id="memberSummary_tabpanel" role="tabpanel">
+                                    <table aria-labelledby="t0">
+                                        <tr>
+                                            <th class="colFirst" scope="col">Modifier and Type</th>
+                                            <th class="colSecond" scope="col">Method</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                        <tr id="i0" class="altColor">
+                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/Long.html>Long</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#getDelayAfterFocusCompleteMs()>getDelayAfterFocusCompleteMs</a>() </code>
+                                            </th>
+                                            <td class="colLast">Delay that camera will took before snap on auto focus complete called from camera core in ms.</td>
+                                        </tr>
+                                        
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#setDelayAfterFocusCompleteMs(java.lang.Long)>setDelayAfterFocusCompleteMs</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Long.html>Long</a> delayAfterFocusCompleteMs) </code>
+                                            </th>
+                                            <td class="colLast">Delay that camera will took before snap on auto focus complete called from camera core in ms.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>final <a href=PreviewBuffer.html>PreviewBuffer</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#getPreviewBuffer()>getPreviewBuffer</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/android/hardware/Camera.Size.html>Camera.Size</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#getSupportedPictureSizes()>getSupportedPictureSizes</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/android/hardware/Camera.Size.html>Camera.Size</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#getSupportedPreviewSizes()>getSupportedPreviewSizes</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i5" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#onResume()>onResume</a>() </code>
+                                            </th>
+                                            <td class="colLast">Notifies view that enclosing <a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>android.app.Activity</a> or <a href=https://developer.android.com/reference/kotlin/android/app/Fragment.html>android.app.Fragment</a> was resumed and therefore camera can be started.</td>
+                                        </tr>
+                                        
+                                        <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#onPause()>onPause</a>() </code>
+                                            </th>
+                                            <td class="colLast">Notifies view that enclosing <a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>android.app.Activity</a> or <a href=https://developer.android.com/reference/kotlin/android/app/Fragment.html>android.app.Fragment</a> was paused and therefore camera must be closed.</td>
+                                        </tr>
+                                        
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#startPreview()>startPreview</a>() </code>
+                                            </th>
+                                            <td class="colLast">Starts/resumes camera preview stream.</td>
+                                        </tr>
+                                        
+                                        <tr id="i8" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#stopPreview()>stopPreview</a>() </code>
+                                            </th>
+                                            <td class="colLast">Stops camera preview stream.</td>
+                                        </tr>
+                                        
+                                        <tr id="i9" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#restartPreview()>restartPreview</a>() </code>
+                                            </th>
+                                            <td class="colLast">Restarts preview stream.</td>
+                                        </tr>
+                                        
+                                        <tr id="i10" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#lockMinFocusDistance(java.lang.Boolean)>lockMinFocusDistance</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> lock) </code>
+                                            </th>
+                                            <td class="colLast">Locks the min supported focus distance and disables continuous focus</td>
+                                        </tr>
+                                        
+                                        <tr id="i11" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#setForceMaxSnappingSize(java.lang.Boolean)>setForceMaxSnappingSize</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enabled) </code>
+                                            </th>
+                                            <td class="colLast">Set whether camera should force maximum possible size of snapped picture or use maximum size that available with the same aspect ratio as preview by default set to <code>false</code> This parameter works only with <code>ScanbotCameraXView</code> enabled</td>
+                                        </tr>
+                                        
+                                        <tr id="i12" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#setForceMaxSnappingQuality(java.lang.Boolean)>setForceMaxSnappingQuality</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enabled) </code>
+                                            </th>
+                                            <td class="colLast">Set whether camera should force maximum possible quality of snapped picture.</td>
+                                        </tr>
+                                        
+                                        <tr id="i13" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#setSnappingAutoAdjustment(java.lang.Boolean)>setSnappingAutoAdjustment</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enabled) </code>
+                                            </th>
+                                            <td class="colLast">Set whether camera should automatically adjusts the final image with the surrounding scenery.</td>
+                                        </tr>
+                                        
+                                        <tr id="i14" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#takePicture(java.lang.Boolean)>takePicture</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> acquireFocus) </code>
+                                            </th>
+                                            <td class="colLast">Takes picture.</td>
+                                        </tr>
+                                        
+                                        <tr id="i15" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#takePicture(java.lang.Boolean,java.lang.Boolean)>takePicture</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> acquireFocus, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> isCapturedAutomatically) </code>
+                                            </th>
+                                            <td class="colLast">Takes picture.</td>
+                                        </tr>
+                                        
+                                        <tr id="i16" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#useFlash(java.lang.Boolean)>useFlash</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> useFlash) </code>
+                                            </th>
+                                            <td class="colLast">Enables or disables camera flash.</td>
+                                        </tr>
+                                        
+                                        <tr id="i17" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#setAutoFocusOnTouch(java.lang.Boolean)>setAutoFocusOnTouch</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> autoFocusOnTouch) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i18" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#autoFocus()>autoFocus</a>() </code>
+                                            </th>
+                                            <td class="colLast">Performs auto-focus.</td>
+                                        </tr>
+                                        
+                                        <tr id="i19" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#continuousFocus()>continuousFocus</a>() </code>
+                                            </th>
+                                            <td class="colLast">Cancels auto-focus and performs continuous-focus.</td>
+                                        </tr>
+                                        
+                                        <tr id="i20" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#addPictureCallback(io.scanbot.sdk.camera.BasePictureCallback)>addPictureCallback</a>(<a href=BasePictureCallback.html>BasePictureCallback</a> pictureCallback) </code>
+                                            </th>
+                                            <td class="colLast">Adds callback which will be notified when picture will be taken.</td>
+                                        </tr>
+                                        
+                                        <tr id="i21" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#removePictureCallback(io.scanbot.sdk.camera.BasePictureCallback)>removePictureCallback</a>(<a href=BasePictureCallback.html>BasePictureCallback</a> pictureCallback) </code>
+                                            </th>
+                                            <td class="colLast">Removes callback, so it won't receive any further notifications.</td>
+                                        </tr>
+                                        
+                                        <tr id="i22" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#addCameraStateCallback(io.scanbot.sdk.camera.CameraStateCallback)>addCameraStateCallback</a>(<a href=CameraStateCallback.html>CameraStateCallback</a> cameraStateCallback) </code>
+                                            </th>
+                                            <td class="colLast">Adds callback which will be notified about camera state changes.</td>
+                                        </tr>
+                                        
+                                        <tr id="i23" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#setCaptureCallback(io.scanbot.sdk.camera.CaptureCallback)>setCaptureCallback</a>(<a href=CaptureCallback.html>CaptureCallback</a> captureCallback) </code>
+                                            </th>
+                                            <td class="colLast">Sets the callback which will be notified about the moment of actual image capture.</td>
+                                        </tr>
+                                        
+                                        <tr id="i24" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#removeCameraStateCallback(io.scanbot.sdk.camera.CameraStateCallback)>removeCameraStateCallback</a>(<a href=CameraStateCallback.html>CameraStateCallback</a> cameraStateCallback) </code>
+                                            </th>
+                                            <td class="colLast">Removes callback, so it won't receive any further notifications.</td>
+                                        </tr>
+                                        
+                                        <tr id="i25" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#addTakePictureCallback(io.scanbot.sdk.camera.CameraTakePictureCallback)>addTakePictureCallback</a>(<a href=CameraTakePictureCallback.html>CameraTakePictureCallback</a> cameraTakePictureCallback) </code>
+                                            </th>
+                                            <td class="colLast">Adds callback which will be notified about take picture operation process.</td>
+                                        </tr>
+                                        
+                                        <tr id="i26" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#removeTakePictureCallback(io.scanbot.sdk.camera.CameraTakePictureCallback)>removeTakePictureCallback</a>(<a href=CameraTakePictureCallback.html>CameraTakePictureCallback</a> cameraTakePictureCallback) </code>
+                                            </th>
+                                            <td class="colLast">Removes callback, so it won't receive any further notifications.</td>
+                                        </tr>
+                                        
+                                        <tr id="i27" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#setCameraOpenCallback(io.scanbot.sdk.camera.CameraOpenCallback)>setCameraOpenCallback</a>(<a href=CameraOpenCallback.html>CameraOpenCallback</a> cameraOpenCallback) </code>
+                                            </th>
+                                            <td class="colLast">Callback which will be invoked when camera will be opened</td>
+                                        </tr>
+                                        
+                                        <tr id="i28" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#setPictureSize(android.hardware.Camera.Size)>setPictureSize</a>(<a href=https://developer.android.com/reference/kotlin/android/hardware/Camera.Size.html>Camera.Size</a> pictureSize) </code>
+                                            </th>
+                                            <td class="colLast">Set camera picture size</td>
+                                        </tr>
+                                        
+                                        <tr id="i29" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#setPreviewSize(android.hardware.Camera.Size)>setPreviewSize</a>(<a href=https://developer.android.com/reference/kotlin/android/hardware/Camera.Size.html>Camera.Size</a> previewSize) </code>
+                                            </th>
+                                            <td class="colLast">Set camera preview size</td>
+                                        </tr>
+                                        
+                                        <tr id="i30" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#setAutoFocusSound(java.lang.Boolean)>setAutoFocusSound</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enabled) </code>
+                                            </th>
+                                            <td class="colLast">Set camera auto focus sound state.</td>
+                                        </tr>
+                                        
+                                        <tr id="i31" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#setShutterSound(java.lang.Boolean)>setShutterSound</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enabled) </code>
+                                            </th>
+                                            <td class="colLast">Set camera shutter sound state.</td>
+                                        </tr>
+                                        
+                                        <tr id="i32" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#setPreviewMode(io.scanbot.sdk.camera.CameraPreviewMode)>setPreviewMode</a>(<a href=CameraPreviewMode.html>CameraPreviewMode</a> mode) </code>
+                                            </th>
+                                            <td class="colLast">Set the camera preview mode.</td>
+                                        </tr>
+                                        
+                                        <tr id="i33" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#lockToPortrait(java.lang.Boolean)>lockToPortrait</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> lockPicture) </code>
+                                            </th>
+                                            <td class="colLast">Locks camera in portrait mode</td>
+                                        </tr>
+                                        
+                                        <tr id="i34" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#lockToLandscape(java.lang.Boolean)>lockToLandscape</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> lockPicture) </code>
+                                            </th>
+                                            <td class="colLast">Locks camera in landscape mode</td>
+                                        </tr>
+                                        
+                                        <tr id="i35" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#unlockOrientation()>unlockOrientation</a>() </code>
+                                            </th>
+                                            <td class="colLast">Unlocks camera orientation</td>
+                                        </tr>
+                                        
+                                        <tr id="i36" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#usePinchToZoom(java.lang.Boolean)>usePinchToZoom</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> usePinchToZoom) </code>
+                                            </th>
+                                            <td class="colLast">Enables/disables Pinch-to-Zoom camera functionality</td>
+                                        </tr>
+                                        
+                                        <tr id="i37" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#setPhysicalZoomRange(io.scanbot.sdk.camera.ZoomRange)>setPhysicalZoomRange</a>(<a href=ZoomRange.html>ZoomRange</a> zoomRange) </code>
+                                            </th>
+                                            <td class="colLast">Set custom zoom range.</td>
+                                        </tr>
+                                        
+                                        <tr id="i38" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#setUiZoomLevel(java.lang.Float)>setUiZoomLevel</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> zoomLevel) </code>
+                                            </th>
+                                            <td class="colLast">Passes the zoom value to the dependent view</td>
+                                        </tr>
+                                        
+                                        <tr id="i39" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#setPhysicalZoom(java.lang.Float)>setPhysicalZoom</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> zoomLevel) </code>
+                                            </th>
+                                            <td class="colLast">Allows to set camera physical zoom value, if the value out of range of real camera min and max values it chooses min or max value.</td>
+                                        </tr>
+                                        
+                                        <tr id="i40" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#setCameraModule(io.scanbot.sdk.camera.CameraModule)>setCameraModule</a>(<a href=CameraModule.html>CameraModule</a> cameraModule) </code>
+                                            </th>
+                                            <td class="colLast">Defines a camera module.</td>
+                                        </tr>
+                                        
+                                        <tr id="i41" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#isFlashEnabled()>isFlashEnabled</a>() </code>
+                                            </th>
+                                            <td class="colLast">Returns the current state of the flashlight Should be executed from the main thread and when camera is opened</td>
+                                        </tr>
+                                        
+                                        <tr id="i42" class="altColor">
+                                            <td class="colFirst"><code>&lt;T extends <a href=FrameHandler.html>FrameHandler</a>&gt; <a href=ScanbotCameraView.html#getAttachedFrameHandler(java.lang.Class)>T</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#getAttachedFrameHandler(java.lang.Class)>getAttachedFrameHandler</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Class.html>Class</a>&lt;<a href=ScanbotCameraView.html#getAttachedFrameHandler(java.lang.Class)>T</a>&gt; clazz) </code>
+                                            </th>
+                                            <td class="colLast">Check whether there is same class of <a href=FrameHandler.html>FrameHandler</a> attached to the view return object of the same class if exists otherwise null</td>
+                                        </tr>
+                                        
+                                        <tr id="i43" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#addFrameHandler(io.scanbot.sdk.camera.FrameHandler)>addFrameHandler</a>(<a href=FrameHandler.html>FrameHandler</a> frameHandler) </code>
+                                            </th>
+                                            <td class="colLast">Used to add frame handler that will be called on each next frame</td>
+                                        </tr>
+                                        
+                                        <tr id="i44" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ScanbotCameraView.html#removeFrameHandler(io.scanbot.sdk.camera.FrameHandler)>removeFrameHandler</a>(<a href=FrameHandler.html>FrameHandler</a> frameHandler) </code>
+                                            </th>
+                                            <td class="colLast">Unregisters <a href=FrameHandler.html>FrameHandler</a>.</td>
+                                        </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <ul class="blockList">
+                                
+                                    <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
+                                        <!--   -->
+                                    </a>
+                                        <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
+                                        <code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString,
+                                            wait, wait, wait</code></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                </li>
+            </ul>
+        </div>
+        <div class="details">
+            <ul class="blockList">
+                <li class="blockList">
+                    <!-- ========= CONSTRUCTOR DETAIL ======== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="constructor.detail">
+                                <!--   -->
+                            </a>
+                                <h3>Constructor Detail</h3>
+                                
+                                <a name="ScanbotCameraView(android.content.Context)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>ScanbotCameraView</h4>
+                                        <pre>ScanbotCameraView(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="ScanbotCameraView(android.content.Context,android.util.AttributeSet)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>ScanbotCameraView</h4>
+                                        <pre>ScanbotCameraView(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://developer.android.com/reference/kotlin/android/util/AttributeSet.html>AttributeSet</a> attrs)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- ============ METHOD DETAIL ========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="method.detail">
+                                <!--   -->
+                            </a>
+                                <h3>Method Detail</h3>
+                                
+                                <a id="getDelayAfterFocusCompleteMs()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getDelayAfterFocusCompleteMs</h4>
+                                        <pre class="methodSignature"> <a href=https://developer.android.com/reference/kotlin/java/lang/Long.html>Long</a> <a href=ScanbotCameraView.html#getDelayAfterFocusCompleteMs()>getDelayAfterFocusCompleteMs</a>()</pre>
+                                        <div class="block"><p>Delay that camera will took before snap on auto focus complete called from camera core in ms. For some devices this callback could call even before real auto focus completed, so we need to take some delay before snapping. Usually you can set 500ms. By default it is set to 20ms.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setDelayAfterFocusCompleteMs(java.lang.Long)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setDelayAfterFocusCompleteMs</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#setDelayAfterFocusCompleteMs(java.lang.Long)>setDelayAfterFocusCompleteMs</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Long.html>Long</a> delayAfterFocusCompleteMs)</pre>
+                                        <div class="block"><p>Delay that camera will took before snap on auto focus complete called from camera core in ms. For some devices this callback could call even before real auto focus completed, so we need to take some delay before snapping. Usually you can set 500ms. By default it is set to 20ms.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getPreviewBuffer()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getPreviewBuffer</h4>
+                                        <pre class="methodSignature"> final <a href=PreviewBuffer.html>PreviewBuffer</a> <a href=ScanbotCameraView.html#getPreviewBuffer()>getPreviewBuffer</a>()</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getSupportedPictureSizes()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getSupportedPictureSizes</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/android/hardware/Camera.Size.html>Camera.Size</a>&gt; <a href=ScanbotCameraView.html#getSupportedPictureSizes()>getSupportedPictureSizes</a>()</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getSupportedPreviewSizes()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getSupportedPreviewSizes</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/android/hardware/Camera.Size.html>Camera.Size</a>&gt; <a href=ScanbotCameraView.html#getSupportedPreviewSizes()>getSupportedPreviewSizes</a>()</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onResume()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onResume</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#onResume()>onResume</a>()</pre>
+                                        <div class="block"><p>Notifies view that enclosing <a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>android.app.Activity</a> or <a href=https://developer.android.com/reference/kotlin/android/app/Fragment.html>android.app.Fragment</a> was resumed and therefore camera can be started.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onPause()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onPause</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#onPause()>onPause</a>()</pre>
+                                        <div class="block"><p>Notifies view that enclosing <a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>android.app.Activity</a> or <a href=https://developer.android.com/reference/kotlin/android/app/Fragment.html>android.app.Fragment</a> was paused and therefore camera must be closed.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="startPreview()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>startPreview</h4>
+                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.jvm/-synchronized/index.html>Synchronized</a>() <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#startPreview()>startPreview</a>()</pre>
+                                        <div class="block"><p>Starts/resumes camera preview stream. Usually used after picture was taken. Note, the preview is started by default after .onResume, so there is no need to call it at the start of the app.</p><p>If view is paused, this call is ignored.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="stopPreview()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>stopPreview</h4>
+                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.jvm/-synchronized/index.html>Synchronized</a>() <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#stopPreview()>stopPreview</a>()</pre>
+                                        <div class="block"><p>Stops camera preview stream.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="restartPreview()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>restartPreview</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#restartPreview()>restartPreview</a>()</pre>
+                                        <div class="block"><p>Restarts preview stream.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="lockMinFocusDistance(java.lang.Boolean)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>lockMinFocusDistance</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#lockMinFocusDistance(java.lang.Boolean)>lockMinFocusDistance</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> lock)</pre>
+                                        <div class="block"><p>Locks the min supported focus distance and disables continuous focus</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>lock</code> - if <code>true</code> minimal available focus distance will be locked, <code>false</code> - otherwise Default is <code>false</code>.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setForceMaxSnappingSize(java.lang.Boolean)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setForceMaxSnappingSize</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#setForceMaxSnappingSize(java.lang.Boolean)>setForceMaxSnappingSize</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enabled)</pre>
+                                        <div class="block"><p>Set whether camera should force maximum possible size of snapped picture or use maximum size that available with the same aspect ratio as preview by default set to <code>false</code> This parameter works only with <code>ScanbotCameraXView</code> enabled</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setForceMaxSnappingQuality(java.lang.Boolean)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setForceMaxSnappingQuality</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#setForceMaxSnappingQuality(java.lang.Boolean)>setForceMaxSnappingQuality</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enabled)</pre>
+                                        <div class="block"><p>Set whether camera should force maximum possible quality of snapped picture. As a result snapping speed could be significantly slower and result image could be bigger. By default set to <code>false</code> This parameter works only with <code>ScanbotCameraXView</code> enabled</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setSnappingAutoAdjustment(java.lang.Boolean)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setSnappingAutoAdjustment</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#setSnappingAutoAdjustment(java.lang.Boolean)>setSnappingAutoAdjustment</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enabled)</pre>
+                                        <div class="block"><p>Set whether camera should automatically adjusts the final image with the surrounding scenery. For example, the vendor library implementation might do low-light detection and switch to low-light mode or HDR to take the picture. Alternatively, the face retouch mode could be automatically applied when taking a portrait image. This delegates modes to the vendor library implementation to decide.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="takePicture(java.lang.Boolean)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>takePicture</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#takePicture(java.lang.Boolean)>takePicture</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> acquireFocus)</pre>
+                                        <div class="block"><p>Takes picture.</p><p>This is asynchronous process, so results are reported via <a href=PictureCallback.html>PictureCallback</a> added in <a href=ScanbotCameraView.html#addPictureCallback(io.scanbot.sdk.camera.BasePictureCallback)>addPictureCallback</a>. If snapping process is still going all subsequent calls to <a href=ScanbotCameraView.html#takePicture(java.lang.Boolean)>takePicture</a> are ignored.</p><p>After picture is taken, camera preview is stopped. If you wish it continue, use <a href=ScanbotCameraView.html#startPreview()>startPreview</a> If view is paused, this call is ignored.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>acquireFocus</code> - true to perform auto-focus before shooting.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="takePicture(java.lang.Boolean,java.lang.Boolean)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>takePicture</h4>
+                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.jvm/-synchronized/index.html>Synchronized</a>() <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#takePicture(java.lang.Boolean,java.lang.Boolean)>takePicture</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> acquireFocus, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> isCapturedAutomatically)</pre>
+                                        <div class="block"><p>Takes picture.</p><p>This is asynchronous process, so results are reported via <a href=PictureCallback.html>PictureCallback</a> added in <a href=ScanbotCameraView.html#addPictureCallback(io.scanbot.sdk.camera.BasePictureCallback)>addPictureCallback</a>. If snapping process is still going all subsequent calls to <a href=ScanbotCameraView.html#takePicture(java.lang.Boolean)>takePicture</a> are ignored.</p><p>After picture is taken, camera preview is stopped. If you wish it continue, use <a href=ScanbotCameraView.html#startPreview()>startPreview</a> If view is paused, this call is ignored.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>acquireFocus</code> - <code>true</code> to perform auto-focus before shooting.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>isCapturedAutomatically</code> - allows to define if the picture was taken automatically by any of AutoSnappingController.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="useFlash(java.lang.Boolean)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>useFlash</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#useFlash(java.lang.Boolean)>useFlash</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> useFlash)</pre>
+                                        <div class="block"><p>Enables or disables camera flash.</p><p>If there is no flash on this device, does nothing.</p><p>If view is paused, this call is ignored.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>useFlash</code> - <code>true</code> to enable flash.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setAutoFocusOnTouch(java.lang.Boolean)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setAutoFocusOnTouch</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#setAutoFocusOnTouch(java.lang.Boolean)>setAutoFocusOnTouch</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> autoFocusOnTouch)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>autoFocusOnTouch</code> - if <code>true</code> - auto focus on touch will be enabled, <code>false</code> - otherwise.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="autoFocus()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>autoFocus</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#autoFocus()>autoFocus</a>()</pre>
+                                        <div class="block"><p>Performs auto-focus.</p><p>If there is no auto-focus capabilities on this device, does nothing.</p><p>If view is paused, this call is ignored.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="continuousFocus()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>continuousFocus</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#continuousFocus()>continuousFocus</a>()</pre>
+                                        <div class="block"><p>Cancels auto-focus and performs continuous-focus. Should be executed from the main thread and when camera is opened</p><p>If there is no continuous-focus capabilities on this device, does auto-focus.</p><p>If view is paused, this call is ignored.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="addPictureCallback(io.scanbot.sdk.camera.BasePictureCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>addPictureCallback</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#addPictureCallback(io.scanbot.sdk.camera.BasePictureCallback)>addPictureCallback</a>(<a href=BasePictureCallback.html>BasePictureCallback</a> pictureCallback)</pre>
+                                        <div class="block"><p>Adds callback which will be notified when picture will be taken. Callbacks are invoked on a worker thread, so you can safely perform &quot;heavy&quot; operations here.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>pictureCallback</code> - callback to register.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="removePictureCallback(io.scanbot.sdk.camera.BasePictureCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>removePictureCallback</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#removePictureCallback(io.scanbot.sdk.camera.BasePictureCallback)>removePictureCallback</a>(<a href=BasePictureCallback.html>BasePictureCallback</a> pictureCallback)</pre>
+                                        <div class="block"><p>Removes callback, so it won't receive any further notifications.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>pictureCallback</code> - callback to unregister.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="addCameraStateCallback(io.scanbot.sdk.camera.CameraStateCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>addCameraStateCallback</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#addCameraStateCallback(io.scanbot.sdk.camera.CameraStateCallback)>addCameraStateCallback</a>(<a href=CameraStateCallback.html>CameraStateCallback</a> cameraStateCallback)</pre>
+                                        <div class="block"><p>Adds callback which will be notified about camera state changes. Callbacks are invoked on a main thread.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>cameraStateCallback</code> - callback to register.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setCaptureCallback(io.scanbot.sdk.camera.CaptureCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setCaptureCallback</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#setCaptureCallback(io.scanbot.sdk.camera.CaptureCallback)>setCaptureCallback</a>(<a href=CaptureCallback.html>CaptureCallback</a> captureCallback)</pre>
+                                        <div class="block"><p>Sets the callback which will be notified about the moment of actual image capture.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>captureCallback</code> - callback to register</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="removeCameraStateCallback(io.scanbot.sdk.camera.CameraStateCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>removeCameraStateCallback</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#removeCameraStateCallback(io.scanbot.sdk.camera.CameraStateCallback)>removeCameraStateCallback</a>(<a href=CameraStateCallback.html>CameraStateCallback</a> cameraStateCallback)</pre>
+                                        <div class="block"><p>Removes callback, so it won't receive any further notifications.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>cameraStateCallback</code> - callback to unregister.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="addTakePictureCallback(io.scanbot.sdk.camera.CameraTakePictureCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>addTakePictureCallback</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#addTakePictureCallback(io.scanbot.sdk.camera.CameraTakePictureCallback)>addTakePictureCallback</a>(<a href=CameraTakePictureCallback.html>CameraTakePictureCallback</a> cameraTakePictureCallback)</pre>
+                                        <div class="block"><p>Adds callback which will be notified about take picture operation process. Callbacks are invoked on a main thread.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>cameraTakePictureCallback</code> - callback to register.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="removeTakePictureCallback(io.scanbot.sdk.camera.CameraTakePictureCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>removeTakePictureCallback</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#removeTakePictureCallback(io.scanbot.sdk.camera.CameraTakePictureCallback)>removeTakePictureCallback</a>(<a href=CameraTakePictureCallback.html>CameraTakePictureCallback</a> cameraTakePictureCallback)</pre>
+                                        <div class="block"><p>Removes callback, so it won't receive any further notifications.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>cameraTakePictureCallback</code> - callback to unregister.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setCameraOpenCallback(io.scanbot.sdk.camera.CameraOpenCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setCameraOpenCallback</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#setCameraOpenCallback(io.scanbot.sdk.camera.CameraOpenCallback)>setCameraOpenCallback</a>(<a href=CameraOpenCallback.html>CameraOpenCallback</a> cameraOpenCallback)</pre>
+                                        <div class="block"><p>Callback which will be invoked when camera will be opened</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>cameraOpenCallback</code> - callback</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setPictureSize(android.hardware.Camera.Size)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setPictureSize</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#setPictureSize(android.hardware.Camera.Size)>setPictureSize</a>(<a href=https://developer.android.com/reference/kotlin/android/hardware/Camera.Size.html>Camera.Size</a> pictureSize)</pre>
+                                        <div class="block"><p>Set camera picture size</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setPreviewSize(android.hardware.Camera.Size)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setPreviewSize</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#setPreviewSize(android.hardware.Camera.Size)>setPreviewSize</a>(<a href=https://developer.android.com/reference/kotlin/android/hardware/Camera.Size.html>Camera.Size</a> previewSize)</pre>
+                                        <div class="block"><p>Set camera preview size</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setAutoFocusSound(java.lang.Boolean)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setAutoFocusSound</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#setAutoFocusSound(java.lang.Boolean)>setAutoFocusSound</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enabled)</pre>
+                                        <div class="block"><p>Set camera auto focus sound state. <code>true</code> if system sound should be played on successful auto focus event, <code>false</code> - otherwise. By default, the camera plays the system-defined camera auto focus sound when autoFocus() is called.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setShutterSound(java.lang.Boolean)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setShutterSound</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#setShutterSound(java.lang.Boolean)>setShutterSound</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> enabled)</pre>
+                                        <div class="block"><p>Set camera shutter sound state. <code>true</code> if system sound should be played on the take picture event, <code>false</code> - otherwise. By default, the camera plays the system-defined camera shutter sound when takePicture() is called.</p><p>Note that devices may not always allow disabling the camera shutter sound. If the shutter sound state cannot be set to the desired value, this method will be ignored.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setPreviewMode(io.scanbot.sdk.camera.CameraPreviewMode)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setPreviewMode</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#setPreviewMode(io.scanbot.sdk.camera.CameraPreviewMode)>setPreviewMode</a>(<a href=CameraPreviewMode.html>CameraPreviewMode</a> mode)</pre>
+                                        <div class="block"><p>Set the camera preview mode. By default - <a href=CameraPreviewMode.html#FILL_IN>CameraPreviewMode.FILL_IN</a>.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>mode</code> - <ul><li><p>camera preview mode</p></li></ul></dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="lockToPortrait(java.lang.Boolean)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>lockToPortrait</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#lockToPortrait(java.lang.Boolean)>lockToPortrait</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> lockPicture)</pre>
+                                        <div class="block"><p>Locks camera in portrait mode</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>lockPicture</code> - if <code>true</code> - taken picture will ba locked to the portrait orientation, <code>false</code> - picture orientation depends on the device sensor.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="lockToLandscape(java.lang.Boolean)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>lockToLandscape</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#lockToLandscape(java.lang.Boolean)>lockToLandscape</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> lockPicture)</pre>
+                                        <div class="block"><p>Locks camera in landscape mode</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>lockPicture</code> - if <code>true</code> - taken picture will ba locked to the landscape orientation, <code>false</code> - picture orientation depends on the device sensor.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="unlockOrientation()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>unlockOrientation</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#unlockOrientation()>unlockOrientation</a>()</pre>
+                                        <div class="block"><p>Unlocks camera orientation</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="usePinchToZoom(java.lang.Boolean)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>usePinchToZoom</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#usePinchToZoom(java.lang.Boolean)>usePinchToZoom</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> usePinchToZoom)</pre>
+                                        <div class="block"><p>Enables/disables Pinch-to-Zoom camera functionality</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>usePinchToZoom</code> - <code>true</code> if Pinch-to-Zoom should be enabled, <code>false</code> - otherwise</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setPhysicalZoomRange(io.scanbot.sdk.camera.ZoomRange)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setPhysicalZoomRange</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#setPhysicalZoomRange(io.scanbot.sdk.camera.ZoomRange)>setPhysicalZoomRange</a>(<a href=ZoomRange.html>ZoomRange</a> zoomRange)</pre>
+                                        <div class="block"><p>Set custom zoom range. Default value is ZoomRange(0.5f, 100f).</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>zoomRange</code> - Target zoom range</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setUiZoomLevel(java.lang.Float)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setUiZoomLevel</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#setUiZoomLevel(java.lang.Float)>setUiZoomLevel</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> zoomLevel)</pre>
+                                        <div class="block"><p>Passes the zoom value to the dependent view</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>zoomLevel</code> - the new scale of the UI</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setPhysicalZoom(java.lang.Float)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setPhysicalZoom</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#setPhysicalZoom(java.lang.Float)>setPhysicalZoom</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Float.html>Float</a> zoomLevel)</pre>
+                                        <div class="block"><p>Allows to set camera physical zoom value, if the value out of range of real camera min and max values it chooses min or max value. Example: camera physical zoom range 1f..5f if we set 6f it will set 5f. Default value is 1f.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>zoomLevel</code> - Target zoom level</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setCameraModule(io.scanbot.sdk.camera.CameraModule)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setCameraModule</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#setCameraModule(io.scanbot.sdk.camera.CameraModule)>setCameraModule</a>(<a href=CameraModule.html>CameraModule</a> cameraModule)</pre>
+                                        <div class="block"><p>Defines a camera module. By default is <a href=CameraModule.html#BACK>CameraModule.BACK</a>.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>cameraModule</code> - <a href=CameraModule.html>CameraModule</a> to use.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="isFlashEnabled()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isFlashEnabled</h4>
+                                        <pre class="methodSignature"> <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=ScanbotCameraView.html#isFlashEnabled()>isFlashEnabled</a>()</pre>
+                                        <div class="block"><p>Returns the current state of the flashlight Should be executed from the main thread and when camera is opened</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getAttachedFrameHandler(java.lang.Class)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getAttachedFrameHandler</h4>
+                                        <pre class="methodSignature"> &lt;T extends <a href=FrameHandler.html>FrameHandler</a>&gt; <a href=ScanbotCameraView.html#getAttachedFrameHandler(java.lang.Class)>T</a> <a href=ScanbotCameraView.html#getAttachedFrameHandler(java.lang.Class)>getAttachedFrameHandler</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Class.html>Class</a>&lt;<a href=ScanbotCameraView.html#getAttachedFrameHandler(java.lang.Class)>T</a>&gt; clazz)</pre>
+                                        <div class="block"><p>Check whether there is same class of <a href=FrameHandler.html>FrameHandler</a> attached to the view return object of the same class if exists otherwise null</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="addFrameHandler(io.scanbot.sdk.camera.FrameHandler)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>addFrameHandler</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#addFrameHandler(io.scanbot.sdk.camera.FrameHandler)>addFrameHandler</a>(<a href=FrameHandler.html>FrameHandler</a> frameHandler)</pre>
+                                        <div class="block"><p>Used to add frame handler that will be called on each next frame</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="removeFrameHandler(io.scanbot.sdk.camera.FrameHandler)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>removeFrameHandler</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ScanbotCameraView.html#removeFrameHandler(io.scanbot.sdk.camera.FrameHandler)>removeFrameHandler</a>(<a href=FrameHandler.html>FrameHandler</a> frameHandler)</pre>
+                                        <div class="block"><p>Unregisters <a href=FrameHandler.html>FrameHandler</a>.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>frameHandler</code> - handler to unregister.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                            </li>
+                        </ul>
+                    </section>
+                    
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>
+<footer role="contentinfo">
+    <nav role="navigation">
+        <!-- ======= START OF BOTTOM NAVBAR ====== -->
+        <div class="bottomNav"><a id="navbar.bottom">
+            <!--   -->
+        </a>
+            <div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a>
+            </div>
+            <a id="navbar.bottom.firstrow">
+                <!--   -->
+            </a>
+            <ul class="navList" title="Navigation">
+    <li><a href="../../../../index.html">Overview</a></li>
+    
+    <li><a href="package-summary.html">Package</a></li>
+    
+    <li class="navBarCell1Rev">Class</li>
+    
+    
+    <li><a href="../../../../deprecated.html">Deprecated</a></li>
+    <li><a href="../../../../index-files/index-1.html">Index</a></li>
+</ul></div>
+        <a id="skip.navbar.bottom">
+            <!--   -->
+        </a>
+        <div class="subNav">
+<ul class="navList" id="allclasses_navbar_top" style="display: block;">
+    <li><a href="../../../../allclasses.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+</div>
+<a id="skip.navbar.top">
+<!--   -->
+</a></div><!-- ======== END OF BOTTOM NAVBAR ======= -->
+    </nav>
+</footer><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0"
+    style="display: none;"></ul>
+<span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span>
+</body>
+</html>
