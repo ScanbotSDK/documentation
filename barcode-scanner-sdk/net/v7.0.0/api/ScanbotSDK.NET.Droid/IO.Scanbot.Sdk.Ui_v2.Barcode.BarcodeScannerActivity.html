@@ -102,7 +102,7 @@ Class BarcodeScannerActivity
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Register(&quot;io/scanbot/sdk/ui_v2/barcode/BarcodeScannerActivity&quot;, DoNotGenerateAcw = true)]
-public sealed class BarcodeScannerActivity : BaseBarcodeScannerActivity, IComponentCallbacks2, IComponentCallbacks, KeyEvent.ICallback, LayoutInflater.IFactory2, LayoutInflater.IFactory, View.IOnCreateContextMenuListener, Window.ICallback, KeyEventDispatcher.IComponent, IFullyDrawnReporterOwner, IOnBackPressedDispatcherOwner, IContextAware, IActivityResultCaller, IActivityResultRegistryOwner, IOnMultiWindowModeChangedProvider, IOnNewIntentProvider, IOnPictureInPictureModeChangedProvider, IOnUserLeaveHintProvider, IOnConfigurationChangedProvider, IOnTrimMemoryProvider, IMenuHost, IHasDefaultViewModelProviderFactory, IViewModelStoreOwner, ISavedStateRegistryOwner, ILifecycleOwner, ActivityCompat.IOnRequestPermissionsResultCallback, ActivityCompat.IRequestPermissionsRequestCodeValidator, ActionBarDrawerToggle.IDelegateProvider, IAppCompatCallback, TaskStackBuilder.ISupportParentable, ICancelable, IInitializable, ILicensable, IJavaObject, IJavaPeerable, IDisposable</code></pre>
+public sealed class BarcodeScannerActivity : BaseBarcodeScannerActivity, IComponentCallbacks2, IComponentCallbacks, KeyEvent.ICallback, LayoutInflater.IFactory2, LayoutInflater.IFactory, View.IOnCreateContextMenuListener, Window.ICallback, KeyEventDispatcher.IComponent, IFullyDrawnReporterOwner, IOnBackPressedDispatcherOwner, IContextAware, IActivityResultCaller, IActivityResultRegistryOwner, IOnMultiWindowModeChangedProvider, IOnNewIntentProvider, IOnPictureInPictureModeChangedProvider, IOnUserLeaveHintProvider, IOnConfigurationChangedProvider, IOnTrimMemoryProvider, IMenuHost, IHasDefaultViewModelProviderFactory, IViewModelStoreOwner, ISavedStateRegistryOwner, ILifecycleOwner, ActivityCompat.IOnRequestPermissionsResultCallback, ActivityCompat.IRequestPermissionsRequestCodeValidator, ActionBarDrawerToggle.IDelegateProvider, IAppCompatCallback, TaskStackBuilder.ISupportParentable, ICancelable, IForceCloseCallback, IInitializable, ILicensable, IJavaObject, IJavaPeerable, IDisposable</code></pre>
   </div>
 
 
@@ -160,6 +160,7 @@ public sealed class BarcodeScannerActivity : BaseBarcodeScannerActivity, ICompon
       <div><a class="xref" href="https://github.com/dotnet/android-libraries/blob/f38f657f246b3c6eb9c2f9f1b6b906add8a0cb6e/generated/androidx.appcompat.appcompat/obj/Release/net8.0-android/generated/src/AndroidX.AppCompat.App.IAppCompatCallback.cs">IAppCompatCallback</a></div>
       <div><a class="xref" href="https://github.com/dotnet/android-libraries/blob/f38f657f246b3c6eb9c2f9f1b6b906add8a0cb6e/generated/androidx.core.core/obj/Release/net8.0-android/generated/src/AndroidX.Core.App.TaskStackBuilder.cs">TaskStackBuilder</a>.<a class="xref" href="https://github.com/dotnet/android-libraries/blob/f38f657f246b3c6eb9c2f9f1b6b906add8a0cb6e/generated/androidx.core.core/obj/Release/net8.0-android/generated/src/AndroidX.Core.App.TaskStackBuilder.cs">ISupportParentable</a></div>
       <div><a class="xref" href="IO.Scanbot.Sdk.Ui_v2.Common.Activity.ICancelable.html">ICancelable</a></div>
+      <div><a class="xref" href="IO.Scanbot.Sdk.Ui_v2.Common.Activity.IForceCloseCallback.html">IForceCloseCallback</a></div>
       <div><a class="xref" href="IO.Scanbot.Sdk.Ui_v2.Common.Activity.IInitializable.html">IInitializable</a></div>
       <div><a class="xref" href="IO.Scanbot.Sdk.Ui_v2.Common.Activity.ILicensable.html">ILicensable</a></div>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/android.runtime.ijavaobject">IJavaObject</a></div>
@@ -200,7 +201,7 @@ public sealed class BarcodeScannerActivity : BaseBarcodeScannerActivity, ICompon
       <a class="xref" href="IO.Scanbot.Sdk.Ui_v2.Common.Activity.BaseActivity.html#IO_Scanbot_Sdk_Ui_v2_Common_Activity_BaseActivity_CancelWithNotInitialized">BaseActivity.CancelWithNotInitialized()</a>
     </div>
     <div>
-      <a class="xref" href="IO.Scanbot.Sdk.Ui_v2.Common.Activity.BaseActivity.html#IO_Scanbot_Sdk_Ui_v2_Common_Activity_BaseActivity_FinishCurrentState">BaseActivity.FinishCurrentState()</a>
+      <a class="xref" href="IO.Scanbot.Sdk.Ui_v2.Common.Activity.BaseActivity.html#IO_Scanbot_Sdk_Ui_v2_Common_Activity_BaseActivity_SubmitCurrentResult">BaseActivity.SubmitCurrentResult()</a>
     </div>
     <div>
       <a class="xref" href="https://github.com/dotnet/android-libraries/blob/f38f657f246b3c6eb9c2f9f1b6b906add8a0cb6e/generated/androidx.appcompat.appcompat/obj/Release/net8.0-android/generated/src/AndroidX.AppCompat.App.AppCompatActivity.cs">AppCompatActivity.OnCreateSupportNavigateUpTaskStack(TaskStackBuilder)</a>
@@ -2029,6 +2030,37 @@ public BarcodeScannerActivity()</code></pre>
 </h2>
 
 
+  <a id="IO_Scanbot_Sdk_Ui_v2_Barcode_BarcodeScannerActivity_ForceCloseCallback_" data-uid="IO.Scanbot.Sdk.Ui_v2.Barcode.BarcodeScannerActivity.ForceCloseCallback*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Ui_v2_Barcode_BarcodeScannerActivity_ForceCloseCallback" data-uid="IO.Scanbot.Sdk.Ui_v2.Barcode.BarcodeScannerActivity.ForceCloseCallback">
+  ForceCloseCallback
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WeakReference ForceCloseCallback { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.ref.weakreference">WeakReference</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="IO_Scanbot_Sdk_Ui_v2_Barcode_BarcodeScannerActivity_ResultsRepository_" data-uid="IO.Scanbot.Sdk.Ui_v2.Barcode.BarcodeScannerActivity.ResultsRepository*"></a>
 
   <h3 id="IO_Scanbot_Sdk_Ui_v2_Barcode_BarcodeScannerActivity_ResultsRepository" data-uid="IO.Scanbot.Sdk.Ui_v2.Barcode.BarcodeScannerActivity.ResultsRepository">
@@ -2123,6 +2155,67 @@ public static BarcodeScannerActivity.BarcodeScannerActivityResult ExtractResult(
     <dt><a class="xref" href="IO.Scanbot.Sdk.Ui_v2.Barcode.BarcodeScannerActivity.html">BarcodeScannerActivity</a>.<a class="xref" href="IO.Scanbot.Sdk.Ui_v2.Barcode.BarcodeScannerActivity.BarcodeScannerActivityResult.html">BarcodeScannerActivityResult</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Ui_v2_Barcode_BarcodeScannerActivity_ForceClose_" data-uid="IO.Scanbot.Sdk.Ui_v2.Barcode.BarcodeScannerActivity.ForceClose*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Ui_v2_Barcode_BarcodeScannerActivity_ForceClose" data-uid="IO.Scanbot.Sdk.Ui_v2.Barcode.BarcodeScannerActivity.ForceClose">
+  ForceClose()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;forceClose&quot;, &quot;()V&quot;, &quot;&quot;)]
+public override void ForceClose()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Ui_v2_Barcode_BarcodeScannerActivity_ForceClose_" data-uid="IO.Scanbot.Sdk.Ui_v2.Barcode.BarcodeScannerActivity.ForceClose*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Ui_v2_Barcode_BarcodeScannerActivity_ForceClose_Android_Content_Context_System_Boolean_" data-uid="IO.Scanbot.Sdk.Ui_v2.Barcode.BarcodeScannerActivity.ForceClose(Android.Content.Context,System.Boolean)">
+  ForceClose(Context, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;forceClose&quot;, &quot;(Landroid/content/Context;Z)V&quot;, &quot;&quot;)]
+public static void ForceClose(Context context, bool keepResult)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.content.context">Context</a></dt>
+    <dd></dd>
+    <dt><code>keepResult</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
 
 
 
