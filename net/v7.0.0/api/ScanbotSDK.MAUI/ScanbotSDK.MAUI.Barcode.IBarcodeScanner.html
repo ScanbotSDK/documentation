@@ -121,19 +121,19 @@ Interface IBarcodeScanner
 </h2>
 
 
-  <a id="ScanbotSDK_MAUI_Barcode_IBarcodeScanner_CloseBarcodeScannerAsync_" data-uid="ScanbotSDK.MAUI.Barcode.IBarcodeScanner.CloseBarcodeScannerAsync*"></a>
+  <a id="ScanbotSDK_MAUI_Barcode_IBarcodeScanner_CloseAsync_" data-uid="ScanbotSDK.MAUI.Barcode.IBarcodeScanner.CloseAsync*"></a>
 
-  <h3 id="ScanbotSDK_MAUI_Barcode_IBarcodeScanner_CloseBarcodeScannerAsync" data-uid="ScanbotSDK.MAUI.Barcode.IBarcodeScanner.CloseBarcodeScannerAsync">
-  CloseBarcodeScannerAsync()
+  <h3 id="ScanbotSDK_MAUI_Barcode_IBarcodeScanner_CloseAsync" data-uid="ScanbotSDK.MAUI.Barcode.IBarcodeScanner.CloseAsync">
+  CloseAsync()
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Force Closes the Barcode scanning view.</p>
+  <div class="markdown level1 summary"><p>Force Closes the BarcodeScanner Rtu Ui screen.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task CloseBarcodeScannerAsync()</code></pre>
+    <pre><code class="lang-csharp hljs">Task CloseAsync()</code></pre>
   </div>
 
 
@@ -160,24 +160,26 @@ Interface IBarcodeScanner
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Scan Barcode from configuration.</p>
+  <div class="markdown level1 summary"><p>Launches the BarcodeScanner Rtu Ui screen from provided configurations.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;BarcodeScannerUiResult&gt; LaunchAsync(BarcodeScannerScreenConfiguration configuration)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;RtuResult&lt;BarcodeScannerUiResult&gt;&gt; LaunchAsync(BarcodeScannerScreenConfiguration configuration)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>configuration</code> <a class="xref" href="ScanbotSDK.MAUI.Barcode.BarcodeScannerScreenConfiguration.html">BarcodeScannerScreenConfiguration</a></dt>
-    <dd></dd>
+    <dd><p>BarcodeScannerScreenConfiguration object</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ScanbotSDK.MAUI.Barcode.BarcodeScannerUiResult.html">BarcodeScannerUiResult</a>&gt;</dt>
-    <dd></dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ScanbotSDK.MAUI.RtuResult-1.html">RtuResult</a>&lt;<a class="xref" href="ScanbotSDK.MAUI.Barcode.BarcodeScannerUiResult.html">BarcodeScannerUiResult</a>&gt;&gt;</dt>
+    <dd><p>BarcodeScannerUiResult object wrapped under the RtuResult.</p>
+</dd>
   </dl>
 
 
