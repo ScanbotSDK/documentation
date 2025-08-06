@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['generic_20document_0',['Scanbot C SDK Generic Document',['../group__c__generic__document.html',1,'']]],
-  ['geometry_1',['Scanbot C SDK Geometry',['../group__c__geometry.html',1,'']]]
+  ['extractor_0',['Scanbot C SDK Multi page image extractor',['../group__c__multi__page__image__extractor.html',1,'']]]
 ];
