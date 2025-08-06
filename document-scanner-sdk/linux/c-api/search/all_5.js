@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['height_0',['height',['../group__c__geometry.html#ad12fc34ce789bce6c8a05d8a17138534',1,'scanbotsdk_rect_t::height'],['../group__c__geometry.html#a48083b65ac9a863566dc3e3fff09a5b4',1,'scanbotsdk_rectf_t::height']]]
+  ['frame_20accumulation_0',['Scanbot C SDK Frame accumulation',['../group__c__frame__accumulation.html',1,'']]],
+  ['free_1',['free',['../group__c__source.html#a8c3810fbf14bf78c96694ec0b7cf2bd3',1,'scanbotsdk_external_random_access_source_t']]]
 ];

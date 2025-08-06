@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['width_0',['width',['../group__c__geometry.html#a2474a5474cbff19523a51eb1de01cda4',1,'scanbotsdk_rect_t::width'],['../group__c__geometry.html#ae426f00e82704fa09578f5446e22d915',1,'scanbotsdk_rectf_t::width']]]
+  ['height_0',['height',['../group__c__geometry.html#ad12fc34ce789bce6c8a05d8a17138534',1,'scanbotsdk_rect_t::height'],['../group__c__geometry.html#a48083b65ac9a863566dc3e3fff09a5b4',1,'scanbotsdk_rectf_t::height']]]
 ];
