@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>MultipleScanningUseCaseViewModel</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<link href="../../../images/logo-icon.svg">
+<link href="../../../styles/scanbot-dokka-styles.css" rel="Stylesheet">
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    Android Scanbot SDK API reference
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+7.1.1        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":dokka-aggregator/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":dokka-aggregator/release"
+                                       data-filter=":dokka-aggregator/release"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+                <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link"
+                   href="https://scanbot.io"></a>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Android Scanbot SDK API reference
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="Android Scanbot SDK API reference::io.scanbot.sdk.ui_v2.barcode.common/MultipleScanningUseCaseViewModel///PointingToDeclaration//-237363669">
+  <div class="breadcrumbs"><a href="../../../index.html">Android Scanbot SDK API reference</a><span class="delimiter">/</span><a href="../index.html">io.scanbot.sdk.ui_v2.barcode.common</a><span class="delimiter">/</span><span class="current">MultipleScanningUseCaseViewModel</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Multiple</span><wbr></wbr><span>Scanning</span><wbr></wbr><span>Use</span><wbr></wbr><span>Case</span><wbr></wbr><span>View</span><wbr></wbr><span><span>Model</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">MultipleScanningUseCaseViewModel</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>configuration<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.barcode.configuration/-barcode-scanner-screen-configuration/index.html">BarcodeScannerScreenConfiguration</a><span class="token punctuation">, </span></span><span class="parameter ">nativeConfiguration<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.barcode.configuration/-barcode-native-configuration/index.html">BarcodeNativeConfiguration</a><span class="token punctuation">, </span></span><span class="parameter ">scanner<span class="token operator">: </span><a href="../../io.scanbot.sdk.barcode/-barcode-scanner/index.html">BarcodeScanner</a><span class="token punctuation">, </span></span><span class="parameter ">dispatcher<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.coroutines/-coroutine-context/index.html">CoroutineContext</a><span class="token punctuation">, </span></span><span class="parameter ">flashAvailable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">beeper<span class="token operator">: </span><a href="../../io.scanbot.sdk.util.snap/-sound-controller/index.html">SoundController</a></span></span><span class="token punctuation">)</span> : <a href="../-base-barcode-view-model/index.html">BaseBarcodeViewModel</a></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-540955010%2FConstructors%2F-237363669" anchor-label="MultipleScanningUseCaseViewModel" id="-540955010%2FConstructors%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-multiple-scanning-use-case-view-model.html"><span>Multiple</span><wbr></wbr><span>Scanning</span><wbr></wbr><span>Use</span><wbr></wbr><span>Case</span><wbr></wbr><span>View</span><wbr></wbr><span><span>Model</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-540955010%2FConstructors%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">configuration<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.barcode.configuration/-barcode-scanner-screen-configuration/index.html">BarcodeScannerScreenConfiguration</a><span class="token punctuation">, </span></span><span class="parameter ">nativeConfiguration<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.barcode.configuration/-barcode-native-configuration/index.html">BarcodeNativeConfiguration</a><span class="token punctuation">, </span></span><span class="parameter ">scanner<span class="token operator">: </span><a href="../../io.scanbot.sdk.barcode/-barcode-scanner/index.html">BarcodeScanner</a><span class="token punctuation">, </span></span><span class="parameter ">dispatcher<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.coroutines/-coroutine-context/index.html">CoroutineContext</a><span class="token punctuation">, </span></span><span class="parameter ">flashAvailable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">beeper<span class="token operator">: </span><a href="../../io.scanbot.sdk.util.snap/-sound-controller/index.html">SoundController</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-1800337610%2FClasslikes%2F-237363669" anchor-label="Companion" id="-1800337610%2FClasslikes%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1800337610%2FClasslikes%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1872470712%2FProperties%2F-237363669" anchor-label="barcodes" id="1872470712%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="barcodes.html"><span><span>barcodes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1872470712%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="barcodes.html">barcodes</a><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../io.scanbot.sdk.ui_v2.barcode.common.model/-barcode-formatted-data/index.html">BarcodeFormattedData</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1191753913%2FProperties%2F-237363669" anchor-label="configuration" id="1191753913%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="configuration.html"><span><span>configuration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1191753913%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="configuration.html">configuration</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.barcode.configuration/-barcode-scanner-screen-configuration/index.html">BarcodeScannerScreenConfiguration</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-940913472%2FProperties%2F-237363669" anchor-label="count" id="-940913472%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="count.html"><span><span>count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-940913472%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="count.html">count</a><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2074478290%2FProperties%2F-237363669" anchor-label="countEditDialog" id="-2074478290%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="count-edit-dialog.html"><span>count</span><wbr></wbr><span>Edit</span><wbr></wbr><span><span>Dialog</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2074478290%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="count-edit-dialog.html">countEditDialog</a><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="../../io.scanbot.sdk.ui_v2.barcode.common.model/-manual-edit-dialog-data/index.html">ManualEditDialogData</a><span class="token operator">?</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2035865038%2FProperties%2F-237363669" anchor-label="frameHandler" id="2035865038%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="frame-handler.html"><span>frame</span><wbr></wbr><span><span>Handler</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2035865038%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="frame-handler.html">frameHandler</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.barcode/-barcode-scanner-frame-handler/index.html">BarcodeScannerFrameHandler</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1358243459%2FProperties%2F-237363669" anchor-label="isLoading" id="-1358243459%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-loading.html"><span>is</span><wbr></wbr><span><span>Loading</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1358243459%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-loading.html">isLoading</a><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1198223797%2FProperties%2F-237363669" anchor-label="showCountEditDialog" id="-1198223797%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="show-count-edit-dialog.html"><span>show</span><wbr></wbr><span>Count</span><wbr></wbr><span>Edit</span><wbr></wbr><span><span>Dialog</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1198223797%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="show-count-edit-dialog.html">showCountEditDialog</a><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-686684772%2FProperties%2F-237363669" anchor-label="showErrorDialog" id="-686684772%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="show-error-dialog.html"><span>show</span><wbr></wbr><span>Error</span><wbr></wbr><span><span>Dialog</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-686684772%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="show-error-dialog.html">showErrorDialog</a><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1368039686%2FProperties%2F-237363669" anchor-label="submitEnabled" id="1368039686%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="submit-enabled.html"><span>submit</span><wbr></wbr><span><span>Enabled</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1368039686%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="submit-enabled.html">submitEnabled</a><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1816627268%2FFunctions%2F-237363669" anchor-label="goBack" id="-1816627268%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="go-back.html"><span>go</span><wbr></wbr><span><span>Back</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1816627268%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="go-back.html"><span class="token function">goBack</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1257170945%2FFunctions%2F-237363669" anchor-label="onArBarcodeItemClick" id="1257170945%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-ar-barcode-item-click.html"><span>on</span><wbr></wbr><span>Ar</span><wbr></wbr><span>Barcode</span><wbr></wbr><span>Item</span><wbr></wbr><span><span>Click</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1257170945%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="on-ar-barcode-item-click.html"><span class="token function">onArBarcodeItemClick</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">barcodeItem<span class="token operator">: </span><a href="../../io.scanbot.sdk.barcode/-barcode-item/index.html">BarcodeItem</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1876873590%2FFunctions%2F-237363669" anchor-label="onCancelBarcodeCounter" id="1876873590%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-cancel-barcode-counter.html"><span>on</span><wbr></wbr><span>Cancel</span><wbr></wbr><span>Barcode</span><wbr></wbr><span><span>Counter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1876873590%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="on-cancel-barcode-counter.html"><span class="token function">onCancelBarcodeCounter</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1113213158%2FFunctions%2F-237363669" anchor-label="onCancelErrorDialogClick" id="-1113213158%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-cancel-error-dialog-click.html"><span>on</span><wbr></wbr><span>Cancel</span><wbr></wbr><span>Error</span><wbr></wbr><span>Dialog</span><wbr></wbr><span><span>Click</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1113213158%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="on-cancel-error-dialog-click.html"><span class="token function">onCancelErrorDialogClick</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1705016559%2FFunctions%2F-237363669" anchor-label="onClearClick" id="-1705016559%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-clear-click.html"><span>on</span><wbr></wbr><span>Clear</span><wbr></wbr><span><span>Click</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1705016559%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="on-clear-click.html"><span class="token function">onClearClick</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-727069704%2FFunctions%2F-237363669" anchor-label="onCounterManual" id="-727069704%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-counter-manual.html"><span>on</span><wbr></wbr><span>Counter</span><wbr></wbr><span><span>Manual</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-727069704%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="on-counter-manual.html"><span class="token function">onCounterManual</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">uuid<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-83736788%2FFunctions%2F-237363669" anchor-label="onCounterMinus" id="-83736788%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-counter-minus.html"><span>on</span><wbr></wbr><span>Counter</span><wbr></wbr><span><span>Minus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-83736788%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="on-counter-minus.html"><span class="token function">onCounterMinus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">uuid<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-734656116%2FFunctions%2F-237363669" anchor-label="onCounterPlus" id="-734656116%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-counter-plus.html"><span>on</span><wbr></wbr><span>Counter</span><wbr></wbr><span><span>Plus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-734656116%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="on-counter-plus.html"><span class="token function">onCounterPlus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">uuid<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="533346998%2FFunctions%2F-237363669" anchor-label="onItemDelete" id="533346998%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-item-delete.html"><span>on</span><wbr></wbr><span>Item</span><wbr></wbr><span><span>Delete</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="533346998%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="on-item-delete.html"><span class="token function">onItemDelete</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">uuid<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="490858863%2FFunctions%2F-237363669" anchor-label="onRetryErrorDialogClicked" id="490858863%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-retry-error-dialog-clicked.html"><span>on</span><wbr></wbr><span>Retry</span><wbr></wbr><span>Error</span><wbr></wbr><span>Dialog</span><wbr></wbr><span><span>Clicked</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="490858863%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="on-retry-error-dialog-clicked.html"><span class="token function">onRetryErrorDialogClicked</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1894469655%2FFunctions%2F-237363669" anchor-label="onSetBarcodeCounter" id="-1894469655%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-set-barcode-counter.html"><span>on</span><wbr></wbr><span>Set</span><wbr></wbr><span>Barcode</span><wbr></wbr><span><span>Counter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1894469655%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="on-set-barcode-counter.html"><span class="token function">onSetBarcodeCounter</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">uuid<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">count<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2114772706%2FFunctions%2F-237363669" anchor-label="onSubmitClick" id="-2114772706%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-submit-click.html"><span>on</span><wbr></wbr><span>Submit</span><wbr></wbr><span><span>Click</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2114772706%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="on-submit-click.html"><span class="token function">onSubmitClick</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="927435657%2FFunctions%2F-237363669" anchor-label="shouldHighlight" id="927435657%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="should-highlight.html"><span>should</span><wbr></wbr><span><span>Highlight</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="927435657%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="should-highlight.html"><span class="token function">shouldHighlight</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">barcodeItem<span class="token operator">: </span><a href="../../io.scanbot.sdk.barcode/-barcode-item/index.html">BarcodeItem</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1401690255%2FFunctions%2F-237363669" anchor-label="submitCurrentResult" id="-1401690255%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="submit-current-result.html"><span>submit</span><wbr></wbr><span>Current</span><wbr></wbr><span><span>Result</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1401690255%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="submit-current-result.html"><span class="token function">submitCurrentResult</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method is called when the activity is closed by timeout with returning the result</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© Scanbot SDK GmbH 2011-2025, located in Germany and the US</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

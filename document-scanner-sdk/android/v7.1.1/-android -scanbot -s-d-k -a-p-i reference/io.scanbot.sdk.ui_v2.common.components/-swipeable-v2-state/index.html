@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>SwipeableV2State</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<link href="../../../images/logo-icon.svg">
+<link href="../../../styles/scanbot-dokka-styles.css" rel="Stylesheet">
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    Android Scanbot SDK API reference
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+7.1.1        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":dokka-aggregator/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":dokka-aggregator/release"
+                                       data-filter=":dokka-aggregator/release"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+                <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link"
+                   href="https://scanbot.io"></a>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Android Scanbot SDK API reference
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="Android Scanbot SDK API reference::io.scanbot.sdk.ui_v2.common.components/SwipeableV2State///PointingToDeclaration//-237363669">
+  <div class="breadcrumbs"><a href="../../../index.html">Android Scanbot SDK API reference</a><span class="delimiter">/</span><a href="../index.html">io.scanbot.sdk.ui_v2.common.components</a><span class="delimiter">/</span><span class="current">SwipeableV2State</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Swipeable</span><wbr></wbr><span><span>V2State</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">SwipeableV2State</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">initialValue<span class="token operator">: </span><a href="index.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">animationSpec<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator">&gt;</span><span class="token operator"> = </span>SwipeableV2Defaults.AnimationSpec<span class="token punctuation">, </span></span><span class="parameter ">confirmValueChange<span class="token operator">: </span><span class="token punctuation">(</span>newValue<span class="token operator">: </span><a href="index.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span>{ true }<span class="token punctuation">, </span></span><span class="parameter ">positionalThreshold<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span>totalDistance<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>SwipeableV2Defaults.PositionalThreshold<span class="token punctuation">, </span></span><span class="parameter ">velocityThreshold<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator"> = </span>SwipeableV2Defaults.VelocityThreshold</span></span><span class="token punctuation">)</span></div><p class="paragraph">State of the <span data-unresolved-link="io.scanbot.sdk.ui_v2.common.components//swipeableV2/[Error type: Unresolved type for Modifier]#io.scanbot.sdk.ui_v2.common.components.SwipeableV2State[TypeParam(bounds=[kotlin.Any?])]#[Error type: Unresolved type for Orientation]#kotlin.Boolean#kotlin.Boolean#[Error type: Unresolved type for MutableInteractionSource]?/PointingToDeclaration/">swipeableV2</span> modifier.</p><p class="paragraph">This contains necessary information about any ongoing swipe or animation and provides methods to change the state either immediately or by starting an animation. To create and remember a <a href="index.html">SwipeableV2State</a> use <span data-unresolved-link="io.scanbot.sdk.ui_v2.common.components//rememberSwipeableV2State/#TypeParam(bounds=[kotlin.Any])#[Error type: Unresolved type for AnimationSpec&amp;lt;Float&amp;gt;][kotlin.Float]#kotlin.Function1[TypeParam(bounds=[kotlin.Any]),kotlin.Boolean]/PointingToDeclaration/">rememberSwipeableV2State</span>.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>initial</span><wbr></wbr><span><span>Value</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The initial value of the state.</p></div></div></div></div><div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>animation</span><wbr></wbr><span><span>Spec</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The default animation that will be used to animate to a new state.</p></div></div></div></div><div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>confirm</span><wbr></wbr><span>Value</span><wbr></wbr><span><span>Change</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Optional callback invoked to confirm or veto a pending state change.</p></div></div></div></div><div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>positional</span><wbr></wbr><span><span>Threshold</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The positional threshold to be used when calculating the target state while a swipe is in progress and when settling after the swipe ends. This is the distance from the start of a transition. It will be, depending on the direction of the interaction, added or subtracted from/to the origin offset. It should always be a positive value. See the <span data-unresolved-link="io.scanbot.sdk.ui_v2.common.components//fractionalPositionalThreshold/#kotlin.Float/PointingToDeclaration/">fractionalPositionalThreshold</span> and <span data-unresolved-link="io.scanbot.sdk.ui_v2.common.components//fixedPositionalThreshold/#[Error type: Unresolved type for Dp]/PointingToDeclaration/">fixedPositionalThreshold</span> methods.</p></div></div></div></div><div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>velocity</span><wbr></wbr><span><span>Threshold</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The velocity threshold (in dp per second) that the end velocity has to exceed in order to animate to the next state, even if the <span data-unresolved-link="io.scanbot.sdk.ui_v2.common.components/SwipeableV2State/positionalThreshold/#/PointingToDeclaration/">positionalThreshold</span> has not been reached.</p></div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1873008969%2FConstructors%2F-237363669" anchor-label="SwipeableV2State" id="1873008969%2FConstructors%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-swipeable-v2-state.html"><span>Swipeable</span><wbr></wbr><span><span>V2State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1873008969%2FConstructors%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">initialValue<span class="token operator">: </span><a href="index.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">animationSpec<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator">&gt;</span><span class="token operator"> = </span>SwipeableV2Defaults.AnimationSpec<span class="token punctuation">, </span></span><span class="parameter ">confirmValueChange<span class="token operator">: </span><span class="token punctuation">(</span>newValue<span class="token operator">: </span><a href="index.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span>{ true }<span class="token punctuation">, </span></span><span class="parameter ">positionalThreshold<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span>totalDistance<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>SwipeableV2Defaults.PositionalThreshold<span class="token punctuation">, </span></span><span class="parameter ">velocityThreshold<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator"> = </span>SwipeableV2Defaults.VelocityThreshold</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="2025301877%2FClasslikes%2F-237363669" anchor-label="Companion" id="2025301877%2FClasslikes%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2025301877%2FClasslikes%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-175309004%2FProperties%2F-237363669" anchor-label="currentValue" id="-175309004%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="current-value.html"><span>current</span><wbr></wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-175309004%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="current-value.html">currentValue</a><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief "><p class="paragraph">The current value of the <a href="index.html">SwipeableV2State</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="498805031%2FProperties%2F-237363669" anchor-label="isAnimationRunning" id="498805031%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-animation-running.html"><span>is</span><wbr></wbr><span>Animation</span><wbr></wbr><span><span>Running</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="498805031%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-animation-running.html">isAnimationRunning</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether an animation is currently in progress.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="514960761%2FProperties%2F-237363669" anchor-label="lastVelocity" id="514960761%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="last-velocity.html"><span>last</span><wbr></wbr><span><span>Velocity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="514960761%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="last-velocity.html">lastVelocity</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">The velocity of the last known animation. Gets reset to 0f when an animation completes successfully, but does not get reset when an animation gets interrupted. You can use this value to provide smooth reconciliation behavior when re-targeting an animation.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1274041079%2FProperties%2F-237363669" anchor-label="maxOffset" id="1274041079%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="max-offset.html"><span>max</span><wbr></wbr><span><span>Offset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1274041079%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="max-offset.html">maxOffset</a><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="brief "><p class="paragraph">The maximum offset this state can reach. This will be the biggest anchor, or <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/-companion/-p-o-s-i-t-i-v-e_-i-n-f-i-n-i-t-y.html">Float.POSITIVE_INFINITY</a> if the anchors are not initialized yet.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-389303223%2FProperties%2F-237363669" anchor-label="minOffset" id="-389303223%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="min-offset.html"><span>min</span><wbr></wbr><span><span>Offset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-389303223%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="min-offset.html">minOffset</a><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="brief "><p class="paragraph">The minimum offset this state can reach. This will be the smallest anchor, or <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/-companion/-n-e-g-a-t-i-v-e_-i-n-f-i-n-i-t-y.html">Float.NEGATIVE_INFINITY</a> if the anchors are not initialized yet.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1102199367%2FProperties%2F-237363669" anchor-label="offset" id="-1102199367%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="offset.html"><span><span>offset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1102199367%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="offset.html">offset</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The current offset, or null if it has not been initialized yet.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1638336097%2FProperties%2F-237363669" anchor-label="progress" id="-1638336097%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="progress.html"><span><span>progress</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1638336097%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="progress.html">progress</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">The fraction of the progress going from <a href="current-value.html">currentValue</a> to <a href="target-value.html">targetValue</a>, within 0f..1f bounds.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-38475890%2FProperties%2F-237363669" anchor-label="targetValue" id="-38475890%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="target-value.html"><span>target</span><wbr></wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-38475890%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="target-value.html">targetValue</a><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief "><p class="paragraph">The target value. This is the closest value to the current offset (taking into account positional thresholds). If no interactions like animations or drags are in progress, this will be the current value.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1613717052%2FFunctions%2F-237363669" anchor-label="animateTo" id="-1613717052%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="animate-to.html"><span>animate</span><wbr></wbr><span><span>To</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1613717052%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="animate-to.html"><span class="token function">animateTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">targetValue<span class="token operator">: </span><a href="index.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">velocity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>lastVelocity</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Animate to a <a href="animate-to.html">targetValue</a>. If the <a href="animate-to.html">targetValue</a> is not in the set of anchors, the <a href="current-value.html">currentValue</a> will be updated to the <a href="animate-to.html">targetValue</a> without updating the offset.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-376865037%2FFunctions%2F-237363669" anchor-label="dispatchRawDelta" id="-376865037%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dispatch-raw-delta.html"><span>dispatch</span><wbr></wbr><span>Raw</span><wbr></wbr><span><span>Delta</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-376865037%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="dispatch-raw-delta.html"><span class="token function">dispatchRawDelta</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">delta<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Swipe by the <a href="dispatch-raw-delta.html">delta</a>, coerce it in the bounds and dispatch it to the <span data-unresolved-link="io.scanbot.sdk.ui_v2.common.components/SwipeableV2State/draggableState/#/PointingToDeclaration/">draggableState</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-831969465%2FFunctions%2F-237363669" anchor-label="hasAnchorForValue" id="-831969465%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-anchor-for-value.html"><span>has</span><wbr></wbr><span>Anchor</span><wbr></wbr><span>For</span><wbr></wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-831969465%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="has-anchor-for-value.html"><span class="token function">hasAnchorForValue</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">value<span class="token operator">: </span><a href="index.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether the <a href="has-anchor-for-value.html">value</a> has an anchor associated with it.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-579398058%2FFunctions%2F-237363669" anchor-label="requireOffset" id="-579398058%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="require-offset.html"><span>require</span><wbr></wbr><span><span>Offset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-579398058%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="require-offset.html"><span class="token function">requireOffset</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">Require the current offset.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-280478702%2FFunctions%2F-237363669" anchor-label="settle" id="-280478702%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="settle.html"><span><span>settle</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-280478702%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="settle.html"><span class="token function">settle</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">velocity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Find the closest anchor taking into account the velocity and settle at it with an animation.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="142118519%2FFunctions%2F-237363669" anchor-label="snapTo" id="142118519%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="snap-to.html"><span>snap</span><wbr></wbr><span><span>To</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="142118519%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="snap-to.html"><span class="token function">snapTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">targetValue<span class="token operator">: </span><a href="index.html">T</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Snap to a <a href="snap-to.html">targetValue</a> without any animation. If the <a href="snap-to.html">targetValue</a> is not in the set of anchors, the <a href="current-value.html">currentValue</a> will be updated to the <a href="snap-to.html">targetValue</a> without updating the offset.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© Scanbot SDK GmbH 2011-2025, located in Germany and the US</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
