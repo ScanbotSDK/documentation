@@ -1,0 +1,2256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ScanbotCameraView | Scanbot SDK .NET MAUI </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ScanbotCameraView | Scanbot SDK .NET MAUI ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="Scanbot SDK .NET MAUI">
+            Scanbot SDK .NET MAUI
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView">
+
+
+
+  <h1 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView" class="text-break">
+Class ScanbotCameraView  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="IO.html">IO</a>.<a class="xref" href="IO.Scanbot.html">Scanbot</a>.<a class="xref" href="IO.Scanbot.Sdk.html">Sdk</a>.<a class="xref" href="IO.Scanbot.Sdk.Camera.html">Camera</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>DocumentSDK.NET.Droid.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class ScanbotCameraView : FrameLayout, IScanbotCameraView, IUiZoomDelegate, IFinderViewAttributeHandler, IJavaObject, IDisposable, IJavaPeerable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ScanbotCameraView</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="IO.Scanbot.Sdk.UI.Camera.IScanbotCameraView.html">IScanbotCameraView</a></div>
+      <div><a class="xref" href="IO.Scanbot.Sdk.UI.Camera.IUiZoomDelegate.html">IUiZoomDelegate</a></div>
+      <div><a class="xref" href="IO.Scanbot.Sdk.UI.Camera.Util.IFinderViewAttributeHandler.html">IFinderViewAttributeHandler</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/android.runtime.ijavaobject">IJavaObject</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/java.interop.ijavapeerable">IJavaPeerable</a></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView__ctor_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.#ctor*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView__ctor_Android_Content_Context_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.#ctor(Android.Content.Context)">
+  ScanbotCameraView(Context)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ScanbotCameraView(Context context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.content.context">Context</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView__ctor_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.#ctor*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView__ctor_Android_Content_Context_Android_Util_IAttributeSet_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.#ctor(Android.Content.Context,Android.Util.IAttributeSet)">
+  ScanbotCameraView(Context, IAttributeSet)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ScanbotCameraView(Context context, IAttributeSet attrs)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.content.context">Context</a></dt>
+    <dd></dd>
+    <dt><code>attrs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.util.iattributeset">IAttributeSet</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_O" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.O">
+  O
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string O = &quot;ScanbotCameraView&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_A_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.A*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_A" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.A">
+  A
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FinderViewAttributeHandlerImpl A { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IO.Scanbot.Sdk.UI.Camera.Util.FinderViewAttributeHandlerImpl.html">FinderViewAttributeHandlerImpl</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_D_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.D*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_D" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.D">
+  D
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SnapFlashView D { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IO.Scanbot.Sdk.Camera.SnapFlashView.html">SnapFlashView</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_DelayAfterFocusCompleteMs_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.DelayAfterFocusCompleteMs*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_DelayAfterFocusCompleteMs" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.DelayAfterFocusCompleteMs">
+  DelayAfterFocusCompleteMs
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long DelayAfterFocusCompleteMs { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_E_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.E*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_E" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.E">
+  E
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool E { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_F_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.F*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_F" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.F">
+  F
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ScanbotCameraView.State F { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IO.Scanbot.Sdk.Camera.ScanbotCameraView.html">ScanbotCameraView</a>.<a class="xref" href="IO.Scanbot.Sdk.Camera.ScanbotCameraView.State.html">State</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_FinderViewId_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.FinderViewId*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_FinderViewId" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.FinderViewId">
+  FinderViewId
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FinderViewId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_G_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.G*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_G" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.G">
+  G
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection G { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.icollection">ICollection</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_H_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.H*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_H" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.H">
+  H
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection H { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.icollection">ICollection</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_I_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.I*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_I" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.I">
+  I
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ILogger I { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IO.Scanbot.Sdk.Util.Log.ILogger.html">ILogger</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_IsFlashEnabled_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.IsFlashEnabled*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_IsFlashEnabled" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.IsFlashEnabled">
+  IsFlashEnabled
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsFlashEnabled { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_J_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.J*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_J" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.J">
+  J
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long J { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_K_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.K*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_K" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.K">
+  K
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICaptureCallback K { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IO.Scanbot.Sdk.Camera.ICaptureCallback.html">ICaptureCallback</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_L_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.L*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_L" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.L">
+  L
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ILifecycleOwner L { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/dotnet/android-libraries/blob/f38f657f246b3c6eb9c2f9f1b6b906add8a0cb6e/generated/androidx.lifecycle.lifecycle-common-jvm/obj/Release/net8.0-android/generated/src/AndroidX.Lifecycle.ILifecycleOwner.cs">ILifecycleOwner</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_LifecycleOwner_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.LifecycleOwner*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_LifecycleOwner" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.LifecycleOwner">
+  LifecycleOwner
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ILifecycleOwner LifecycleOwner { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/dotnet/android-libraries/blob/f38f657f246b3c6eb9c2f9f1b6b906add8a0cb6e/generated/androidx.lifecycle.lifecycle-common-jvm/obj/Release/net8.0-android/generated/src/AndroidX.Lifecycle.ILifecycleOwner.cs">ILifecycleOwner</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_M_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.M*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_M" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.M">
+  M
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ZoomRange M { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IO.Scanbot.Sdk.Camera.ZoomRange.html">ZoomRange</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_N_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.N*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_N" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.N">
+  N
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ScanbotCameraXView.IPinchToZoomCallback N { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IO.Scanbot.Sdk.UI.Camera.ScanbotCameraXView.html">ScanbotCameraXView</a>.<a class="xref" href="IO.Scanbot.Sdk.UI.Camera.ScanbotCameraXView.IPinchToZoomCallback.html">IPinchToZoomCallback</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_PinchToZoomListener_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.PinchToZoomListener*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_PinchToZoomListener" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.PinchToZoomListener">
+  PinchToZoomListener
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ScanbotCameraXView.IPinchToZoomCallback PinchToZoomListener { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IO.Scanbot.Sdk.UI.Camera.ScanbotCameraXView.html">ScanbotCameraXView</a>.<a class="xref" href="IO.Scanbot.Sdk.UI.Camera.ScanbotCameraXView.IPinchToZoomCallback.html">IPinchToZoomCallback</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_PreviewBuffer_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.PreviewBuffer*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_PreviewBuffer" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.PreviewBuffer">
+  PreviewBuffer
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IPreviewBuffer PreviewBuffer { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IO.Scanbot.Sdk.Camera.IPreviewBuffer.html">IPreviewBuffer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SupportedPictureSizes_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SupportedPictureSizes*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SupportedPictureSizes" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SupportedPictureSizes">
+  SupportedPictureSizes
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;Camera.Size&gt; SupportedPictureSizes { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<span class="xref">Camera</span>.<a class="xref" href="https://learn.microsoft.com/dotnet/api/android.hardware.camera">Size</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SupportedPreviewSizes_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SupportedPreviewSizes*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SupportedPreviewSizes" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SupportedPreviewSizes">
+  SupportedPreviewSizes
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;Camera.Size&gt; SupportedPreviewSizes { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<span class="xref">Camera</span>.<a class="xref" href="https://learn.microsoft.com/dotnet/api/android.hardware.camera">Size</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SupportedZoomRange_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SupportedZoomRange*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SupportedZoomRange" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SupportedZoomRange">
+  SupportedZoomRange
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ZoomRange SupportedZoomRange { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IO.Scanbot.Sdk.Camera.ZoomRange.html">ZoomRange</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_AddCameraStateCallback_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.AddCameraStateCallback*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_AddCameraStateCallback_IO_Scanbot_Sdk_Camera_ICameraStateCallback_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.AddCameraStateCallback(IO.Scanbot.Sdk.Camera.ICameraStateCallback)">
+  AddCameraStateCallback(ICameraStateCallback)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddCameraStateCallback(ICameraStateCallback cameraStateCallback)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cameraStateCallback</code> <a class="xref" href="IO.Scanbot.Sdk.Camera.ICameraStateCallback.html">ICameraStateCallback</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_AddFrameHandler_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.AddFrameHandler*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_AddFrameHandler_IO_Scanbot_Sdk_Camera_FrameHandler_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.AddFrameHandler(IO.Scanbot.Sdk.Camera.FrameHandler)">
+  AddFrameHandler(FrameHandler)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddFrameHandler(FrameHandler frameHandler)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>frameHandler</code> <a class="xref" href="IO.Scanbot.Sdk.Camera.FrameHandler.html">FrameHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_AddPictureCallback_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.AddPictureCallback*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_AddPictureCallback_IO_Scanbot_Sdk_Camera_IBasePictureCallback_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.AddPictureCallback(IO.Scanbot.Sdk.Camera.IBasePictureCallback)">
+  AddPictureCallback(IBasePictureCallback)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddPictureCallback(IBasePictureCallback pictureCallback)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pictureCallback</code> <a class="xref" href="IO.Scanbot.Sdk.Camera.IBasePictureCallback.html">IBasePictureCallback</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_AddTakePictureCallback_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.AddTakePictureCallback*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_AddTakePictureCallback_IO_Scanbot_Sdk_Camera_ICameraTakePictureCallback_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.AddTakePictureCallback(IO.Scanbot.Sdk.Camera.ICameraTakePictureCallback)">
+  AddTakePictureCallback(ICameraTakePictureCallback)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddTakePictureCallback(ICameraTakePictureCallback cameraTakePictureCallback)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cameraTakePictureCallback</code> <a class="xref" href="IO.Scanbot.Sdk.Camera.ICameraTakePictureCallback.html">ICameraTakePictureCallback</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_AutoFocus_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.AutoFocus*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_AutoFocus" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.AutoFocus">
+  AutoFocus()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AutoFocus()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_ContinuousFocus_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.ContinuousFocus*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_ContinuousFocus" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.ContinuousFocus">
+  ContinuousFocus()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ContinuousFocus()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_GetAttachedFrameHandler_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.GetAttachedFrameHandler*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_GetAttachedFrameHandler_Java_Lang_Class_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.GetAttachedFrameHandler(Java.Lang.Class)">
+  GetAttachedFrameHandler(Class)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Object GetAttachedFrameHandler(Class clazz)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>clazz</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.class">Class</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object">Object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_IsSnapAnimationEnabled_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.IsSnapAnimationEnabled*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_IsSnapAnimationEnabled_System_Boolean_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.IsSnapAnimationEnabled(System.Boolean)">
+  IsSnapAnimationEnabled(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void IsSnapAnimationEnabled(bool enabled)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>enabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_LockMinFocusDistance_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.LockMinFocusDistance*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_LockMinFocusDistance_System_Boolean_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.LockMinFocusDistance(System.Boolean)">
+  LockMinFocusDistance(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LockMinFocusDistance(bool @lock)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lock</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_LockToLandscape_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.LockToLandscape*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_LockToLandscape_System_Boolean_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.LockToLandscape(System.Boolean)">
+  LockToLandscape(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LockToLandscape(bool lockPicture)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lockPicture</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_LockToPortrait_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.LockToPortrait*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_LockToPortrait_System_Boolean_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.LockToPortrait(System.Boolean)">
+  LockToPortrait(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LockToPortrait(bool lockPicture)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lockPicture</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_OnDetachedFromWindow_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.OnDetachedFromWindow*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_OnDetachedFromWindow" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.OnDetachedFromWindow">
+  OnDetachedFromWindow()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnDetachedFromWindow()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_OnLayout_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.OnLayout*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_OnLayout_System_Boolean_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.OnLayout(System.Boolean,System.Int32,System.Int32,System.Int32,System.Int32)">
+  OnLayout(bool, int, int, int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnLayout(bool changed, int left, int top, int right, int bottom)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>changed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>left</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>top</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>bottom</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_OnPause_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.OnPause*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_OnPause" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.OnPause">
+  OnPause()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnPause()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_OnResume_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.OnResume*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_OnResume" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.OnResume">
+  OnResume()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnResume()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_RemoveCameraStateCallback_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.RemoveCameraStateCallback*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_RemoveCameraStateCallback_IO_Scanbot_Sdk_Camera_ICameraStateCallback_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.RemoveCameraStateCallback(IO.Scanbot.Sdk.Camera.ICameraStateCallback)">
+  RemoveCameraStateCallback(ICameraStateCallback)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveCameraStateCallback(ICameraStateCallback cameraStateCallback)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cameraStateCallback</code> <a class="xref" href="IO.Scanbot.Sdk.Camera.ICameraStateCallback.html">ICameraStateCallback</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_RemoveFrameHandler_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.RemoveFrameHandler*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_RemoveFrameHandler_IO_Scanbot_Sdk_Camera_FrameHandler_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.RemoveFrameHandler(IO.Scanbot.Sdk.Camera.FrameHandler)">
+  RemoveFrameHandler(FrameHandler)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveFrameHandler(FrameHandler frameHandler)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>frameHandler</code> <a class="xref" href="IO.Scanbot.Sdk.Camera.FrameHandler.html">FrameHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_RemovePictureCallback_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.RemovePictureCallback*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_RemovePictureCallback_IO_Scanbot_Sdk_Camera_IBasePictureCallback_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.RemovePictureCallback(IO.Scanbot.Sdk.Camera.IBasePictureCallback)">
+  RemovePictureCallback(IBasePictureCallback)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemovePictureCallback(IBasePictureCallback pictureCallback)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pictureCallback</code> <a class="xref" href="IO.Scanbot.Sdk.Camera.IBasePictureCallback.html">IBasePictureCallback</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_RemoveTakePictureCallback_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.RemoveTakePictureCallback*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_RemoveTakePictureCallback_IO_Scanbot_Sdk_Camera_ICameraTakePictureCallback_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.RemoveTakePictureCallback(IO.Scanbot.Sdk.Camera.ICameraTakePictureCallback)">
+  RemoveTakePictureCallback(ICameraTakePictureCallback)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveTakePictureCallback(ICameraTakePictureCallback cameraTakePictureCallback)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cameraTakePictureCallback</code> <a class="xref" href="IO.Scanbot.Sdk.Camera.ICameraTakePictureCallback.html">ICameraTakePictureCallback</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_RestartPreview_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.RestartPreview*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_RestartPreview" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.RestartPreview">
+  RestartPreview()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RestartPreview()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetAnalyzerFpsLimit_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetAnalyzerFpsLimit*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetAnalyzerFpsLimit_System_Single_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetAnalyzerFpsLimit(System.Single)">
+  SetAnalyzerFpsLimit(float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAnalyzerFpsLimit(float fps)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fps</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetAutoFocusOnTouch_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetAutoFocusOnTouch*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetAutoFocusOnTouch_System_Boolean_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetAutoFocusOnTouch(System.Boolean)">
+  SetAutoFocusOnTouch(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAutoFocusOnTouch(bool autoFocusOnTouch)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>autoFocusOnTouch</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetAutoFocusSound_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetAutoFocusSound*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetAutoFocusSound_System_Boolean_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetAutoFocusSound(System.Boolean)">
+  SetAutoFocusSound(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAutoFocusSound(bool enabled)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>enabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetCameraModule_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetCameraModule*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetCameraModule_IO_Scanbot_Sdk_Camera_CameraModule_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetCameraModule(IO.Scanbot.Sdk.Camera.CameraModule)">
+  SetCameraModule(CameraModule)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetCameraModule(CameraModule cameraModule)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cameraModule</code> <a class="xref" href="IO.Scanbot.Sdk.Camera.CameraModule.html">CameraModule</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetCameraOpenCallback_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetCameraOpenCallback*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetCameraOpenCallback_IO_Scanbot_Sdk_Camera_ICameraOpenCallback_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetCameraOpenCallback(IO.Scanbot.Sdk.Camera.ICameraOpenCallback)">
+  SetCameraOpenCallback(ICameraOpenCallback)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetCameraOpenCallback(ICameraOpenCallback cameraOpenCallback)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cameraOpenCallback</code> <a class="xref" href="IO.Scanbot.Sdk.Camera.ICameraOpenCallback.html">ICameraOpenCallback</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetCaptureCallback_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetCaptureCallback*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetCaptureCallback_IO_Scanbot_Sdk_Camera_ICaptureCallback_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetCaptureCallback(IO.Scanbot.Sdk.Camera.ICaptureCallback)">
+  SetCaptureCallback(ICaptureCallback)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetCaptureCallback(ICaptureCallback captureCallback)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>captureCallback</code> <a class="xref" href="IO.Scanbot.Sdk.Camera.ICaptureCallback.html">ICaptureCallback</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetForceMaxSnappingQuality_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetForceMaxSnappingQuality*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetForceMaxSnappingQuality_System_Boolean_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetForceMaxSnappingQuality(System.Boolean)">
+  SetForceMaxSnappingQuality(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetForceMaxSnappingQuality(bool enabled)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>enabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetForceMaxSnappingSize_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetForceMaxSnappingSize*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetForceMaxSnappingSize_System_Boolean_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetForceMaxSnappingSize(System.Boolean)">
+  SetForceMaxSnappingSize(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetForceMaxSnappingSize(bool enabled)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>enabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetPhysicalZoom_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetPhysicalZoom*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetPhysicalZoom_System_Single_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetPhysicalZoom(System.Single)">
+  SetPhysicalZoom(float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPhysicalZoom(float zoomLevel)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>zoomLevel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetPhysicalZoomRange_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetPhysicalZoomRange*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetPhysicalZoomRange_IO_Scanbot_Sdk_Camera_ZoomRange_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetPhysicalZoomRange(IO.Scanbot.Sdk.Camera.ZoomRange)">
+  SetPhysicalZoomRange(ZoomRange)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPhysicalZoomRange(ZoomRange zoomRange)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>zoomRange</code> <a class="xref" href="IO.Scanbot.Sdk.Camera.ZoomRange.html">ZoomRange</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetPictureSize_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetPictureSize*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetPictureSize_Android_Hardware_Camera_Size_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetPictureSize(Android.Hardware.Camera.Size)">
+  SetPictureSize(Size)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPictureSize(Camera.Size pictureSize)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pictureSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.hardware.camera">Size</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetPreviewMode_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetPreviewMode*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetPreviewMode_IO_Scanbot_Sdk_Camera_CameraPreviewMode_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetPreviewMode(IO.Scanbot.Sdk.Camera.CameraPreviewMode)">
+  SetPreviewMode(CameraPreviewMode)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPreviewMode(CameraPreviewMode mode)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mode</code> <a class="xref" href="IO.Scanbot.Sdk.Camera.CameraPreviewMode.html">CameraPreviewMode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetPreviewSize_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetPreviewSize*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetPreviewSize_Android_Hardware_Camera_Size_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetPreviewSize(Android.Hardware.Camera.Size)">
+  SetPreviewSize(Size)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPreviewSize(Camera.Size previewSize)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>previewSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.hardware.camera">Size</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetShutterSound_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetShutterSound*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetShutterSound_System_Boolean_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetShutterSound(System.Boolean)">
+  SetShutterSound(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetShutterSound(bool enabled)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>enabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetSnappingAutoAdjustment_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetSnappingAutoAdjustment*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetSnappingAutoAdjustment_System_Boolean_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetSnappingAutoAdjustment(System.Boolean)">
+  SetSnappingAutoAdjustment(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSnappingAutoAdjustment(bool enabled)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>enabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetSquareFrameSizeEnabled_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetSquareFrameSizeEnabled*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetSquareFrameSizeEnabled_System_Boolean_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetSquareFrameSizeEnabled(System.Boolean)">
+  SetSquareFrameSizeEnabled(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSquareFrameSizeEnabled(bool enabled)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>enabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetUiZoomLevel_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetUiZoomLevel*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_SetUiZoomLevel_System_Single_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.SetUiZoomLevel(System.Single)">
+  SetUiZoomLevel(float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetUiZoomLevel(float zoomLevel)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>zoomLevel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_StartPreview_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.StartPreview*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_StartPreview" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.StartPreview">
+  StartPreview()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StartPreview()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_StopPreview_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.StopPreview*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_StopPreview" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.StopPreview">
+  StopPreview()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StopPreview()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_TakePicture_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.TakePicture*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_TakePicture_System_Boolean_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.TakePicture(System.Boolean)">
+  TakePicture(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void TakePicture(bool acquireFocus)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>acquireFocus</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_TakePicture_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.TakePicture*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_TakePicture_System_Boolean_System_Boolean_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.TakePicture(System.Boolean,System.Boolean)">
+  TakePicture(bool, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void TakePicture(bool acquireFocus, bool isCapturedAutomatically)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>acquireFocus</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>isCapturedAutomatically</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_UnlockOrientation_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.UnlockOrientation*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_UnlockOrientation" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.UnlockOrientation">
+  UnlockOrientation()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnlockOrientation()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_UseFlash_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.UseFlash*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_UseFlash_System_Boolean_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.UseFlash(System.Boolean)">
+  UseFlash(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UseFlash(bool useFlash)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>useFlash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_UsePinchToZoom_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.UsePinchToZoom*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_Camera_ScanbotCameraView_UsePinchToZoom_System_Boolean_" data-uid="IO.Scanbot.Sdk.Camera.ScanbotCameraView.UsePinchToZoom(System.Boolean)">
+  UsePinchToZoom(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UsePinchToZoom(bool usePinchToZoom)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>usePinchToZoom</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
