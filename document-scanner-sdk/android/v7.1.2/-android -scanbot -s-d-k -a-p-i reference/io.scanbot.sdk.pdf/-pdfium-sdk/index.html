@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>PdfiumSdk</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<link href="../../../images/logo-icon.svg">
+<link href="../../../styles/scanbot-dokka-styles.css" rel="Stylesheet">
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    Android Scanbot SDK API reference
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+7.1.2-LOCAL        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":dokka-aggregator/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":dokka-aggregator/release"
+                                       data-filter=":dokka-aggregator/release"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+                <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link"
+                   href="https://scanbot.io"></a>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Android Scanbot SDK API reference
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="Android Scanbot SDK API reference::io.scanbot.sdk.pdf/PdfiumSdk///PointingToDeclaration//-237363669">
+  <div class="breadcrumbs"><a href="../../../index.html">Android Scanbot SDK API reference</a><span class="delimiter">/</span><a href="../index.html">io.scanbot.sdk.pdf</a><span class="delimiter">/</span><span class="current">PdfiumSdk</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Pdfium</span><wbr></wbr><span><span>Sdk</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">PdfiumSdk</a></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="650016467%2FConstructors%2F-237363669" anchor-label="PdfiumSdk" id="650016467%2FConstructors%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-pdfium-sdk.html"><span>Pdfium</span><wbr></wbr><span><span>Sdk</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="650016467%2FConstructors%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="1931514053%2FClasslikes%2F-237363669" anchor-label="Companion" id="1931514053%2FClasslikes%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1931514053%2FClasslikes%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1724948344%2FProperties%2F-237363669" anchor-label="currentDpi" id="1724948344%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="current-dpi.html"><span>current</span><wbr></wbr><span><span>Dpi</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1724948344%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="current-dpi.html">currentDpi</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">72</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="573834908%2FProperties%2F-237363669" anchor-label="documentMeta" id="573834908%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="document-meta.html"><span>document</span><wbr></wbr><span><span>Meta</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="573834908%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="document-meta.html">documentMeta</a><span class="token operator">: </span><a href="../-meta/index.html">Meta</a></div><div class="brief "><p class="paragraph">Get metadata for given document</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2099533338%2FProperties%2F-237363669" anchor-label="mFileDescriptor" id="-2099533338%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="m-file-descriptor.html"><span>m</span><wbr></wbr><span>File</span><wbr></wbr><span><span>Descriptor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2099533338%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="m-file-descriptor.html">mFileDescriptor</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/os/ParcelFileDescriptor.html">ParcelFileDescriptor</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-316176988%2FProperties%2F-237363669" anchor-label="mNativeDocPtr" id="-316176988%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="m-native-doc-ptr.html"><span>m</span><wbr></wbr><span>Native</span><wbr></wbr><span>Doc</span><wbr></wbr><span><span>Ptr</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-316176988%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="m-native-doc-ptr.html">mNativeDocPtr</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-731059472%2FProperties%2F-237363669" anchor-label="mNativePagesPtr" id="-731059472%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="m-native-pages-ptr.html"><span>m</span><wbr></wbr><span>Native</span><wbr></wbr><span>Pages</span><wbr></wbr><span><span>Ptr</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-731059472%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="m-native-pages-ptr.html">mNativePagesPtr</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-map/index.html">MutableMap</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="3454910%2FProperties%2F-237363669" anchor-label="pageCount" id="3454910%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="page-count.html"><span>page</span><wbr></wbr><span><span>Count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="3454910%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="page-count.html">pageCount</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Get total number of pages in document</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1235661599%2FProperties%2F-237363669" anchor-label="tableOfContents" id="1235661599%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="table-of-contents.html"><span>table</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Contents</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1235661599%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="table-of-contents.html">tableOfContents</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-bookmark/index.html">Bookmark</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Get table of contents (bookmarks) for given document</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1044231381%2FFunctions%2F-237363669" anchor-label="closeDocument" id="-1044231381%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="close-document.html"><span>close</span><wbr></wbr><span><span>Document</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1044231381%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="close-document.html"><span class="token function">closeDocument</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Release native resources and opened file</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-912625904%2FFunctions%2F-237363669" anchor-label="getPageHeight" id="-912625904%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-page-height.html"><span>get</span><wbr></wbr><span>Page</span><wbr></wbr><span><span>Height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-912625904%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-page-height.html"><span class="token function">getPageHeight</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Get page height in pixels. <br></br> This method requires page to be opened.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2124894422%2FFunctions%2F-237363669" anchor-label="getPageHeightPoint" id="2124894422%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-page-height-point.html"><span>get</span><wbr></wbr><span>Page</span><wbr></wbr><span>Height</span><wbr></wbr><span><span>Point</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2124894422%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-page-height-point.html"><span class="token function">getPageHeightPoint</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Get page height in PostScript points (1/72th of an inch).<br></br> This method requires page to be opened.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1490800954%2FFunctions%2F-237363669" anchor-label="getPageLinks" id="-1490800954%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-page-links.html"><span>get</span><wbr></wbr><span>Page</span><wbr></wbr><span><span>Links</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1490800954%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-page-links.html"><span class="token function">getPageLinks</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pageIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-link/index.html">Link</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Get all links from given page</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-470144423%2FFunctions%2F-237363669" anchor-label="getPageRotation" id="-470144423%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-page-rotation.html"><span>get</span><wbr></wbr><span>Page</span><wbr></wbr><span><span>Rotation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-470144423%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-page-rotation.html"><span class="token function">getPageRotation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Get the rotation of page<br></br></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1912909578%2FFunctions%2F-237363669" anchor-label="getPageSize" id="-1912909578%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-page-size.html"><span>get</span><wbr></wbr><span>Page</span><wbr></wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1912909578%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-page-size.html"><span class="token function">getPageSize</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/util/Size.html">Size</a></div><div class="brief "><p class="paragraph">Get size of page in pixels.<br></br> This method does not require given page to be opened.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1247964569%2FFunctions%2F-237363669" anchor-label="getPageWidth" id="1247964569%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-page-width.html"><span>get</span><wbr></wbr><span>Page</span><wbr></wbr><span><span>Width</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1247964569%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-page-width.html"><span class="token function">getPageWidth</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Get page width in pixels. <br></br> This method requires page to be opened.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1158283283%2FFunctions%2F-237363669" anchor-label="getPageWidthPoint" id="-1158283283%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-page-width-point.html"><span>get</span><wbr></wbr><span>Page</span><wbr></wbr><span>Width</span><wbr></wbr><span><span>Point</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1158283283%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-page-width-point.html"><span class="token function">getPageWidthPoint</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Get page width in PostScript points (1/72th of an inch).<br></br> This method requires page to be opened.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2014818412%2FFunctions%2F-237363669" anchor-label="mapPageCoordinateToDevice" id="2014818412%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="map-page-coordinate-to-device.html"><span>map</span><wbr></wbr><span>Page</span><wbr></wbr><span>Coordinate</span><wbr></wbr><span>To</span><wbr></wbr><span><span>Device</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2014818412%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="map-page-coordinate-to-device.html"><span class="token function">mapPageCoordinateToDevice</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pageIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">startX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">startY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">sizeX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">sizeY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">rotate<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">coords<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/RectF.html">RectF</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/RectF.html">RectF</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-878140315%2FFunctions%2F-237363669" anchor-label="mapPageCoordsToDevice" id="-878140315%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="map-page-coords-to-device.html"><span>map</span><wbr></wbr><span>Page</span><wbr></wbr><span>Coords</span><wbr></wbr><span>To</span><wbr></wbr><span><span>Device</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-878140315%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="map-page-coords-to-device.html"><span class="token function">mapPageCoordsToDevice</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pageIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">startX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">startY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">sizeX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">sizeY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">rotate<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">pageX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">pageY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Point.html">Point</a></div><div class="brief "><p class="paragraph">Map page coordinates to device screen coordinates</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1738080105%2FFunctions%2F-237363669" anchor-label="nativeCloseDocument" id="-1738080105%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-close-document.html"><span>native</span><wbr></wbr><span>Close</span><wbr></wbr><span><span>Document</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1738080105%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-close-document.html"><span class="token function">nativeCloseDocument</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">docPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-556812277%2FFunctions%2F-237363669" anchor-label="nativeClosePage" id="-556812277%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-close-page.html"><span>native</span><wbr></wbr><span>Close</span><wbr></wbr><span><span>Page</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-556812277%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-close-page.html"><span class="token function">nativeClosePage</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pagePtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-473560151%2FFunctions%2F-237363669" anchor-label="nativeClosePages" id="-473560151%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-close-pages.html"><span>native</span><wbr></wbr><span>Close</span><wbr></wbr><span><span>Pages</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-473560151%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-close-pages.html"><span class="token function">nativeClosePages</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pagesPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long-array/index.html">LongArray</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1061034546%2FFunctions%2F-237363669" anchor-label="nativeGetBookmarkDestIndex" id="1061034546%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-get-bookmark-dest-index.html"><span>native</span><wbr></wbr><span>Get</span><wbr></wbr><span>Bookmark</span><wbr></wbr><span>Dest</span><wbr></wbr><span><span>Index</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1061034546%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-get-bookmark-dest-index.html"><span class="token function">nativeGetBookmarkDestIndex</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">docPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">bookmarkPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1652321312%2FFunctions%2F-237363669" anchor-label="nativeGetBookmarkTitle" id="-1652321312%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-get-bookmark-title.html"><span>native</span><wbr></wbr><span>Get</span><wbr></wbr><span>Bookmark</span><wbr></wbr><span><span>Title</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1652321312%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-get-bookmark-title.html"><span class="token function">nativeGetBookmarkTitle</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bookmarkPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1942817145%2FFunctions%2F-237363669" anchor-label="nativeGetDestPageIndex" id="1942817145%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-get-dest-page-index.html"><span>native</span><wbr></wbr><span>Get</span><wbr></wbr><span>Dest</span><wbr></wbr><span>Page</span><wbr></wbr><span><span>Index</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1942817145%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-get-dest-page-index.html"><span class="token function">nativeGetDestPageIndex</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">docPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">linkPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-854241652%2FFunctions%2F-237363669" anchor-label="nativeGetDocumentMetaText" id="-854241652%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-get-document-meta-text.html"><span>native</span><wbr></wbr><span>Get</span><wbr></wbr><span>Document</span><wbr></wbr><span>Meta</span><wbr></wbr><span><span>Text</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-854241652%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-get-document-meta-text.html"><span class="token function">nativeGetDocumentMetaText</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">docPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">tag<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-739725875%2FFunctions%2F-237363669" anchor-label="nativeGetFirstChildBookmark" id="-739725875%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-get-first-child-bookmark.html"><span>native</span><wbr></wbr><span>Get</span><wbr></wbr><span>First</span><wbr></wbr><span>Child</span><wbr></wbr><span><span>Bookmark</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-739725875%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-get-first-child-bookmark.html"><span class="token function">nativeGetFirstChildBookmark</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">docPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">bookmarkPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-852424360%2FFunctions%2F-237363669" anchor-label="nativeGetLinkRect" id="-852424360%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-get-link-rect.html"><span>native</span><wbr></wbr><span>Get</span><wbr></wbr><span>Link</span><wbr></wbr><span><span>Rect</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-852424360%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-get-link-rect.html"><span class="token function">nativeGetLinkRect</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">linkPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/RectF.html">RectF</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="728894730%2FFunctions%2F-237363669" anchor-label="nativeGetLinkURI" id="728894730%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-get-link-u-r-i.html"><span>native</span><wbr></wbr><span>Get</span><wbr></wbr><span>Link</span><wbr></wbr><span><span>URI</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="728894730%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-get-link-u-r-i.html"><span class="token function">nativeGetLinkURI</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">docPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">linkPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="646774494%2FFunctions%2F-237363669" anchor-label="nativeGetPageCount" id="646774494%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-get-page-count.html"><span>native</span><wbr></wbr><span>Get</span><wbr></wbr><span>Page</span><wbr></wbr><span><span>Count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="646774494%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-get-page-count.html"><span class="token function">nativeGetPageCount</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">docPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1719213935%2FFunctions%2F-237363669" anchor-label="nativeGetPageHeightPixel" id="1719213935%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-get-page-height-pixel.html"><span>native</span><wbr></wbr><span>Get</span><wbr></wbr><span>Page</span><wbr></wbr><span>Height</span><wbr></wbr><span><span>Pixel</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1719213935%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-get-page-height-pixel.html"><span class="token function">nativeGetPageHeightPixel</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pagePtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">dpi<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="720067384%2FFunctions%2F-237363669" anchor-label="nativeGetPageHeightPoint" id="720067384%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-get-page-height-point.html"><span>native</span><wbr></wbr><span>Get</span><wbr></wbr><span>Page</span><wbr></wbr><span>Height</span><wbr></wbr><span><span>Point</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="720067384%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-get-page-height-point.html"><span class="token function">nativeGetPageHeightPoint</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pagePtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1456763016%2FFunctions%2F-237363669" anchor-label="nativeGetPageLinks" id="1456763016%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-get-page-links.html"><span>native</span><wbr></wbr><span>Get</span><wbr></wbr><span>Page</span><wbr></wbr><span><span>Links</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1456763016%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-get-page-links.html"><span class="token function">nativeGetPageLinks</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pagePtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long-array/index.html">LongArray</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-772500217%2FFunctions%2F-237363669" anchor-label="nativeGetPageRotation" id="-772500217%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-get-page-rotation.html"><span>native</span><wbr></wbr><span>Get</span><wbr></wbr><span>Page</span><wbr></wbr><span><span>Rotation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-772500217%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-get-page-rotation.html"><span class="token function">nativeGetPageRotation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pagePtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="903739561%2FFunctions%2F-237363669" anchor-label="nativeGetPageSizeByIndex" id="903739561%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-get-page-size-by-index.html"><span>native</span><wbr></wbr><span>Get</span><wbr></wbr><span>Page</span><wbr></wbr><span>Size</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Index</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="903739561%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-get-page-size-by-index.html"><span class="token function">nativeGetPageSizeByIndex</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">docPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">pageIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">dpi<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/util/Size.html">Size</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="528327700%2FFunctions%2F-237363669" anchor-label="nativeGetPageWidthPixel" id="528327700%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-get-page-width-pixel.html"><span>native</span><wbr></wbr><span>Get</span><wbr></wbr><span>Page</span><wbr></wbr><span>Width</span><wbr></wbr><span><span>Pixel</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="528327700%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-get-page-width-pixel.html"><span class="token function">nativeGetPageWidthPixel</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pagePtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">dpi<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1444197453%2FFunctions%2F-237363669" anchor-label="nativeGetPageWidthPoint" id="-1444197453%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-get-page-width-point.html"><span>native</span><wbr></wbr><span>Get</span><wbr></wbr><span>Page</span><wbr></wbr><span>Width</span><wbr></wbr><span><span>Point</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1444197453%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-get-page-width-point.html"><span class="token function">nativeGetPageWidthPoint</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pagePtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1321421296%2FFunctions%2F-237363669" anchor-label="nativeGetSiblingBookmark" id="-1321421296%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-get-sibling-bookmark.html"><span>native</span><wbr></wbr><span>Get</span><wbr></wbr><span>Sibling</span><wbr></wbr><span><span>Bookmark</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1321421296%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-get-sibling-bookmark.html"><span class="token function">nativeGetSiblingBookmark</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">docPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">bookmarkPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2054731564%2FFunctions%2F-237363669" anchor-label="nativeLoadPage" id="-2054731564%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-load-page.html"><span>native</span><wbr></wbr><span>Load</span><wbr></wbr><span><span>Page</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2054731564%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-load-page.html"><span class="token function">nativeLoadPage</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">docPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">pageIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-561293118%2FFunctions%2F-237363669" anchor-label="nativeLoadPages" id="-561293118%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-load-pages.html"><span>native</span><wbr></wbr><span>Load</span><wbr></wbr><span><span>Pages</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-561293118%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-load-pages.html"><span class="token function">nativeLoadPages</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">docPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">fromIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">toIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long-array/index.html">LongArray</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1212716000%2FFunctions%2F-237363669" anchor-label="nativeOpenDocument" id="1212716000%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-open-document.html"><span>native</span><wbr></wbr><span>Open</span><wbr></wbr><span><span>Document</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1212716000%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-open-document.html"><span class="token function">nativeOpenDocument</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fd<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">password<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2071005104%2FFunctions%2F-237363669" anchor-label="nativeOpenMemDocument" id="-2071005104%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-open-mem-document.html"><span>native</span><wbr></wbr><span>Open</span><wbr></wbr><span>Mem</span><wbr></wbr><span><span>Document</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2071005104%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-open-mem-document.html"><span class="token function">nativeOpenMemDocument</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">data<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token punctuation">, </span></span><span class="parameter ">password<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="15156763%2FFunctions%2F-237363669" anchor-label="nativePageCoordinateToDevice" id="15156763%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-page-coordinate-to-device.html"><span>native</span><wbr></wbr><span>Page</span><wbr></wbr><span>Coordinate</span><wbr></wbr><span>To</span><wbr></wbr><span><span>Device</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="15156763%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-page-coordinate-to-device.html"><span class="token function">nativePageCoordinateToDevice</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pagePtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">startX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">startY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">sizeX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">sizeY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">rotate<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">pageX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">pageY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Point.html">Point</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1853482186%2FFunctions%2F-237363669" anchor-label="nativeRenderPage" id="1853482186%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-render-page.html"><span>native</span><wbr></wbr><span>Render</span><wbr></wbr><span><span>Page</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1853482186%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-render-page.html"><span class="token function">nativeRenderPage</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pagePtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">surface<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/view/Surface.html">Surface</a><span class="token punctuation">, </span></span><span class="parameter ">dpi<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">startX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">startY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">drawSizeHor<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">drawSizeVer<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">renderAnnot<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1347785401%2FFunctions%2F-237363669" anchor-label="nativeRenderPageBitmap" id="1347785401%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="native-render-page-bitmap.html"><span>native</span><wbr></wbr><span>Render</span><wbr></wbr><span>Page</span><wbr></wbr><span><span>Bitmap</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1347785401%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">fun </span><a href="native-render-page-bitmap.html"><span class="token function">nativeRenderPageBitmap</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pagePtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">bitmap<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html">Bitmap</a><span class="token punctuation">, </span></span><span class="parameter ">dpi<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">startX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">startY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">drawSizeHor<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">drawSizeVer<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">renderAnnot<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">docPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1129964398%2FFunctions%2F-237363669" anchor-label="newDocument" id="-1129964398%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="new-document.html"><span>new</span><wbr></wbr><span><span>Document</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1129964398%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="new-document.html"><span class="token function">newDocument</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fd<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/os/ParcelFileDescriptor.html">ParcelFileDescriptor</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Create new document from file</p></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-synchronized/index.html"><span class="token annotation builtin">Synchronized</span></a></div></div><span class="token keyword">fun </span><a href="new-document.html"><span class="token function">newDocument</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fileDescriptor<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/os/ParcelFileDescriptor.html">ParcelFileDescriptor</a><span class="token punctuation">, </span></span><span class="parameter ">password<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Create new document from file with password</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-532380367%2FFunctions%2F-237363669" anchor-label="openPage" id="-532380367%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="open-page.html"><span>open</span><wbr></wbr><span><span>Page</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-532380367%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="open-page.html"><span class="token function">openPage</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pageIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Open page and store native pointer</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="open-page.html"><span class="token function">openPage</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fromIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">toIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long-array/index.html">LongArray</a></div><div class="brief "><p class="paragraph">Open range of pages and store native pointers</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="494299021%2FFunctions%2F-237363669" anchor-label="recursiveGetBookmark" id="494299021%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="recursive-get-bookmark.html"><span>recursive</span><wbr></wbr><span>Get</span><wbr></wbr><span><span>Bookmark</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="494299021%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="recursive-get-bookmark.html"><span class="token function">recursiveGetBookmark</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tree<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-array-list/index.html">ArrayList</a><span class="token operator">&lt;</span><a href="../-bookmark/index.html">Bookmark</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">bookmarkPtr<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-310482437%2FFunctions%2F-237363669" anchor-label="renderPage" id="-310482437%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="render-page.html"><span>render</span><wbr></wbr><span><span>Page</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-310482437%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="render-page.html"><span class="token function">renderPage</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">surface<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/view/Surface.html">Surface</a><span class="token punctuation">, </span></span><span class="parameter ">pageIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">startX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">startY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">drawSizeX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">drawSizeY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">renderAnnot<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Render page fragment on <a href="https://developer.android.com/reference/kotlin/android/view/Surface.html">Surface</a>.<br></br> Page must be opened before rendering.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1827631410%2FFunctions%2F-237363669" anchor-label="renderPageBitmap" id="-1827631410%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="render-page-bitmap.html"><span>render</span><wbr></wbr><span>Page</span><wbr></wbr><span><span>Bitmap</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1827631410%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="render-page-bitmap.html"><span class="token function">renderPageBitmap</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bitmap<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html">Bitmap</a><span class="token punctuation">, </span></span><span class="parameter ">pageIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">startX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">startY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">drawSizeX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">drawSizeY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">renderAnnot<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Render page fragment on <a href="https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html">Bitmap</a>. This method allows to render annotations.<br></br> Page must be opened before rendering.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© Scanbot SDK GmbH 2011-2025, located in Germany and the US</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

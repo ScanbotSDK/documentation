@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>MRZ</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<link href="../../../images/logo-icon.svg">
+<link href="../../../styles/scanbot-dokka-styles.css" rel="Stylesheet">
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    Android Scanbot SDK API reference
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+7.1.2-LOCAL        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":dokka-aggregator/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":dokka-aggregator/release"
+                                       data-filter=":dokka-aggregator/release"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+                <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link"
+                   href="https://scanbot.io"></a>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Android Scanbot SDK API reference
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="Android Scanbot SDK API reference::io.scanbot.sdk.documentdata.entity/MRZ///PointingToDeclaration//-237363669">
+  <div class="breadcrumbs"><a href="../../../index.html">Android Scanbot SDK API reference</a><span class="delimiter">/</span><a href="../index.html">io.scanbot.sdk.documentdata.entity</a><span class="delimiter">/</span><span class="current">MRZ</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>MRZ</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">MRZ</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">document<span class="token operator">: </span><a href="../../io.scanbot.sdk.genericdocument.entity/-generic-document/index.html">GenericDocument</a></span></span><span class="token punctuation">)</span> : <a href="../../io.scanbot.genericdocument.entity/-generic-document-wrapper/index.html">GenericDocumentWrapper</a></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1769952730%2FConstructors%2F-237363669" anchor-label="MRZ" id="1769952730%2FConstructors%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-m-r-z.html"><span><span>MRZ</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1769952730%2FConstructors%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">document<span class="token operator">: </span><a href="../../io.scanbot.sdk.genericdocument.entity/-generic-document/index.html">GenericDocument</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-1445745919%2FClasslikes%2F-237363669" anchor-label="Companion" id="-1445745919%2FClasslikes%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1445745919%2FClasslikes%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="994235559%2FClasslikes%2F-237363669" anchor-label="FieldNames" id="994235559%2FClasslikes%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-field-names/index.html"><span>Field</span><wbr></wbr><span><span>Names</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="994235559%2FClasslikes%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-field-names/index.html">FieldNames</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-146317008%2FClasslikes%2F-237363669" anchor-label="NormalizedFieldNames" id="-146317008%2FClasslikes%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-normalized-field-names/index.html"><span>Normalized</span><wbr></wbr><span>Field</span><wbr></wbr><span><span>Names</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-146317008%2FClasslikes%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-normalized-field-names/index.html">NormalizedFieldNames</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1979633997%2FProperties%2F-237363669" anchor-label="birthDate" id="1979633997%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="birth-date.html"><span>birth</span><wbr></wbr><span><span>Date</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1979633997%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="birth-date.html">birthDate</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a></div><div class="brief "><p class="paragraph">Birth date</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-125846286%2FProperties%2F-237363669" anchor-label="checkDigitBirthDate" id="-125846286%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="check-digit-birth-date.html"><span>check</span><wbr></wbr><span>Digit</span><wbr></wbr><span>Birth</span><wbr></wbr><span><span>Date</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-125846286%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="check-digit-birth-date.html">checkDigitBirthDate</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Check digit birth date</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-885509225%2FProperties%2F-237363669" anchor-label="checkDigitDocumentNumber" id="-885509225%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="check-digit-document-number.html"><span>check</span><wbr></wbr><span>Digit</span><wbr></wbr><span>Document</span><wbr></wbr><span><span>Number</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-885509225%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="check-digit-document-number.html">checkDigitDocumentNumber</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Check digit document number</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="295430650%2FProperties%2F-237363669" anchor-label="checkDigitExpiryDate" id="295430650%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="check-digit-expiry-date.html"><span>check</span><wbr></wbr><span>Digit</span><wbr></wbr><span>Expiry</span><wbr></wbr><span><span>Date</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="295430650%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="check-digit-expiry-date.html">checkDigitExpiryDate</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Check digit expiry date</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1640698359%2FProperties%2F-237363669" anchor-label="checkDigitGeneral" id="1640698359%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="check-digit-general.html"><span>check</span><wbr></wbr><span>Digit</span><wbr></wbr><span><span>General</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1640698359%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="check-digit-general.html">checkDigitGeneral</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Check  digit general</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-155616814%2FProperties%2F-237363669" anchor-label="checkDigitPersonalNumber" id="-155616814%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="check-digit-personal-number.html"><span>check</span><wbr></wbr><span>Digit</span><wbr></wbr><span>Personal</span><wbr></wbr><span><span>Number</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-155616814%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="check-digit-personal-number.html">checkDigitPersonalNumber</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Check digit personal number</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1520587200%2FProperties%2F-237363669" anchor-label="dateOfIssuance" id="-1520587200%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="date-of-issuance.html"><span>date</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Issuance</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1520587200%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="date-of-issuance.html">dateOfIssuance</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Date of issuance</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1588682724%2FProperties%2F-237363669" anchor-label="documentNumber" id="-1588682724%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="document-number.html"><span>document</span><wbr></wbr><span><span>Number</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1588682724%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="document-number.html">documentNumber</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Document number</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1439510709%2FProperties%2F-237363669" anchor-label="documentType" id="-1439510709%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="document-type.html"><span>document</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1439510709%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="document-type.html">documentType</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a></div><div class="brief "><p class="paragraph">Document type from the DocumentType enum</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1016484130%2FProperties%2F-237363669" anchor-label="documentTypeCode" id="-1016484130%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="document-type-code.html"><span>document</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Code</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1016484130%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="document-type-code.html">documentTypeCode</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Document type code</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1140809983%2FProperties%2F-237363669" anchor-label="expiryDate" id="1140809983%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="expiry-date.html"><span>expiry</span><wbr></wbr><span><span>Date</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1140809983%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="expiry-date.html">expiryDate</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Expiry date</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1476825281%2FProperties%2F-237363669" anchor-label="gender" id="-1476825281%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="gender.html"><span><span>gender</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1476825281%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="gender.html">gender</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Gender</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1803968011%2FProperties%2F-237363669" anchor-label="givenNames" id="-1803968011%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="given-names.html"><span>given</span><wbr></wbr><span><span>Names</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1803968011%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="given-names.html">givenNames</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a></div><div class="brief "><p class="paragraph">Given names</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-745481421%2FProperties%2F-237363669" anchor-label="issuingAuthority" id="-745481421%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="issuing-authority.html"><span>issuing</span><wbr></wbr><span><span>Authority</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-745481421%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="issuing-authority.html">issuingAuthority</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Issuing authority</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1523315419%2FProperties%2F-237363669" anchor-label="languageCode" id="1523315419%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="language-code.html"><span>language</span><wbr></wbr><span><span>Code</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1523315419%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="language-code.html">languageCode</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Language code</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-808436674%2FProperties%2F-237363669" anchor-label="nationality" id="-808436674%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="nationality.html"><span><span>nationality</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-808436674%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="nationality.html">nationality</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a></div><div class="brief "><p class="paragraph">Nationality</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1446025138%2FProperties%2F-237363669" anchor-label="officeOfIssuance" id="1446025138%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="office-of-issuance.html"><span>office</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Issuance</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1446025138%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="office-of-issuance.html">officeOfIssuance</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Office of issuance</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-855075319%2FProperties%2F-237363669" anchor-label="optional1" id="-855075319%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="optional1.html"><span><span>optional1</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-855075319%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="optional1.html">optional1</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">TD1 Optional field (line 2)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-824055512%2FProperties%2F-237363669" anchor-label="optional2" id="-824055512%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="optional2.html"><span><span>optional2</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-824055512%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="optional2.html">optional2</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">TD1 Optional field (line 3)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-858790313%2FProperties%2F-237363669" anchor-label="personalNumber" id="-858790313%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="personal-number.html"><span>personal</span><wbr></wbr><span><span>Number</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-858790313%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="personal-number.html">personalNumber</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Personal number</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1435410920%2FProperties%2F-237363669" anchor-label="pinCode" id="-1435410920%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="pin-code.html"><span>pin</span><wbr></wbr><span><span>Code</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1435410920%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="pin-code.html">pinCode</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">PIN code</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="158646399%2FProperties%2F-237363669" anchor-label="surname" id="158646399%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="surname.html"><span><span>surname</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="158646399%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="surname.html">surname</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a></div><div class="brief "><p class="paragraph">Surname</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1962142242%2FProperties%2F-237363669" anchor-label="travelDocType" id="1962142242%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="travel-doc-type.html"><span>travel</span><wbr></wbr><span>Doc</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1962142242%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="travel-doc-type.html">travelDocType</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Travel document type</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="116159731%2FProperties%2F-237363669" anchor-label="travelDocTypeVariant" id="116159731%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="travel-doc-type-variant.html"><span>travel</span><wbr></wbr><span>Doc</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Variant</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="116159731%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="travel-doc-type-variant.html">travelDocTypeVariant</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Travel document type variant</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-67366928%2FProperties%2F-237363669" anchor-label="unknown" id="-67366928%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="unknown.html"><span><span>unknown</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-67366928%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="unknown.html">unknown</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Unknown</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-480113639%2FProperties%2F-237363669" anchor-label="versionNumber" id="-480113639%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="version-number.html"><span>version</span><wbr></wbr><span><span>Number</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-480113639%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="version-number.html">versionNumber</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Version number</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1040982271%2FProperties%2F-237363669" anchor-label="visaOptional" id="1040982271%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visa-optional.html"><span>visa</span><wbr></wbr><span><span>Optional</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1040982271%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="visa-optional.html">visaOptional</a><span class="token operator">: </span><a href="../../io.scanbot.genericdocument.entity/-text-field-wrapper/index.html">TextFieldWrapper</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">MRV-A/MRV-B (Travel Visa) Optional field</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© Scanbot SDK GmbH 2011-2025, located in Germany and the US</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
