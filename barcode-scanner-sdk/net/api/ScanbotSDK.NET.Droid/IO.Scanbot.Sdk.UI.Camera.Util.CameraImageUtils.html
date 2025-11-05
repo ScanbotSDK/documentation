@@ -1,0 +1,682 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class CameraImageUtils | Scanbot Barcode SDK .NET MAUI </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class CameraImageUtils | Scanbot Barcode SDK .NET MAUI ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="Scanbot Barcode SDK .NET MAUI">
+            Scanbot Barcode SDK .NET MAUI
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils">
+
+
+
+  <h1 id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils" class="text-break">
+Class CameraImageUtils  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="IO.html">IO</a>.<a class="xref" href="IO.Scanbot.html">Scanbot</a>.<a class="xref" href="IO.Scanbot.Sdk.html">Sdk</a>.<a class="xref" href="IO.Scanbot.Sdk.UI.html">UI</a>.<a class="xref" href="IO.Scanbot.Sdk.UI.Camera.html">Camera</a>.<a class="xref" href="IO.Scanbot.Sdk.UI.Camera.Util.html">Util</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>BarcodeSDK.NET.Droid.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;io/scanbot/sdk/ui/camera/util/CameraImageUtils&quot;, DoNotGenerateAcw = true)]
+public sealed class CameraImageUtils : Object, IJavaObject, IJavaPeerable, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object">Object</a></div>
+      <div><span class="xref">CameraImageUtils</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/android.runtime.ijavaobject">IJavaObject</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/java.interop.ijavapeerable">IJavaPeerable</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.equals">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.notify">Object.Notify()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.notifyall">Object.NotifyAll()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.tostring">Object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait">Object.Wait()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait(system-int64-system-int32)">Object.Wait(long, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.wait#java-lang-object-wait(system-int64)">Object.Wait(long)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.dispose#java-lang-object-dispose">Object.Dispose()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.getobject#java-lang-object-getobject-1(system-intptr-system-intptr-android-runtime-jnihandleownership)">Object.GetObject&lt;T&gt;(nint, nint, JniHandleOwnership)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.getobject#java-lang-object-getobject-1(system-intptr-android-runtime-jnihandleownership)">Object.GetObject&lt;T&gt;(nint, JniHandleOwnership)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.fromarray">Object.FromArray&lt;T&gt;(T[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/java.lang.object.class">Object.Class</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_A" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.A">
+  A
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;a&quot;)]
+public const string A = &quot;ImageUtil&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_Instance_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.Instance*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_Instance" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.Instance">
+  Instance
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;INSTANCE&quot;)]
+public static CameraImageUtils Instance { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.html">CameraImageUtils</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_BitmapToNv21_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.BitmapToNv21*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_BitmapToNv21_Android_Graphics_Bitmap_System_Int32_System_Int32_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.BitmapToNv21(Android.Graphics.Bitmap,System.Int32,System.Int32)">
+  BitmapToNv21(Bitmap, int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;bitmapToNv21&quot;, &quot;(Landroid/graphics/Bitmap;II)[B&quot;, &quot;&quot;)]
+public static byte[] BitmapToNv21(Bitmap src, int width, int height)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>src</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.bitmap">Bitmap</a></dt>
+    <dd></dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_ComputeCropRectFromAspectRatio_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.ComputeCropRectFromAspectRatio*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_ComputeCropRectFromAspectRatio_Android_Util_Size_Android_Util_Rational_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.ComputeCropRectFromAspectRatio(Android.Util.Size,Android.Util.Rational)">
+  ComputeCropRectFromAspectRatio(Size, Rational)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;computeCropRectFromAspectRatio&quot;, &quot;(Landroid/util/Size;Landroid/util/Rational;)Landroid/graphics/Rect;&quot;, &quot;&quot;)]
+public static Rect ComputeCropRectFromAspectRatio(Size sourceSize, Rational aspectRatio)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sourceSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.util.size">Size</a></dt>
+    <dd></dd>
+    <dt><code>aspectRatio</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.util.rational">Rational</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.rect">Rect</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_CropByteArray_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.CropByteArray*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_CropByteArray_System_Byte___Android_Graphics_Rect_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.CropByteArray(System.Byte[],Android.Graphics.Rect)">
+  CropByteArray(byte[], Rect)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;cropByteArray&quot;, &quot;([BLandroid/graphics/Rect;)[B&quot;, &quot;&quot;)]
+public static byte[] CropByteArray(byte[] data, Rect cropRect)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+    <dt><code>cropRect</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.rect">Rect</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_ImageToJpegByteArray_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.ImageToJpegByteArray*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_ImageToJpegByteArray_AndroidX_Camera_Core_IImageProxy_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.ImageToJpegByteArray(AndroidX.Camera.Core.IImageProxy)">
+  ImageToJpegByteArray(IImageProxy)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;imageToJpegByteArray&quot;, &quot;(Landroidx/camera/core/ImageProxy;)[B&quot;, &quot;&quot;)]
+public static byte[] ImageToJpegByteArray(IImageProxy image)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>image</code> <span class="xref">IImageProxy</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_IsAspectRatioValid_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.IsAspectRatioValid*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_IsAspectRatioValid_Android_Util_Rational_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.IsAspectRatioValid(Android.Util.Rational)">
+  IsAspectRatioValid(Rational)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;isAspectRatioValid&quot;, &quot;(Landroid/util/Rational;)Z&quot;, &quot;&quot;)]
+public bool IsAspectRatioValid(Rational aspectRatio)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>aspectRatio</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.util.rational">Rational</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_IsAspectRatioValid_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.IsAspectRatioValid*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_IsAspectRatioValid_Android_Util_Size_Android_Util_Rational_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.IsAspectRatioValid(Android.Util.Size,Android.Util.Rational)">
+  IsAspectRatioValid(Size, Rational)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;isAspectRatioValid&quot;, &quot;(Landroid/util/Size;Landroid/util/Rational;)Z&quot;, &quot;&quot;)]
+public bool IsAspectRatioValid(Size sourceSize, Rational aspectRatio)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sourceSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.util.size">Size</a></dt>
+    <dd></dd>
+    <dt><code>aspectRatio</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.util.rational">Rational</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_Nv21ToJpeg_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.Nv21ToJpeg*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_Nv21ToJpeg_System_Byte___System_Int32_System_Int32_Android_Graphics_Rect_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.Nv21ToJpeg(System.Byte[],System.Int32,System.Int32,Android.Graphics.Rect)">
+  Nv21ToJpeg(byte[], int, int, Rect)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;nv21ToJpeg&quot;, &quot;([BIILandroid/graphics/Rect;)[B&quot;, &quot;&quot;)]
+public static byte[] Nv21ToJpeg(byte[] nv21, int width, int height, Rect cropRect)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>nv21</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>cropRect</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.graphics.rect">Rect</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_Nv21ToYuv420888_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.Nv21ToYuv420888*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_Nv21ToYuv420888_System_Byte___System_Int32_System_Int32_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.Nv21ToYuv420888(System.Byte[],System.Int32,System.Int32)">
+  Nv21ToYuv420888(byte[], int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;nv21ToYuv420888&quot;, &quot;([BII)[B&quot;, &quot;&quot;)]
+public static byte[] Nv21ToYuv420888(byte[] nv21, int width, int height)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>nv21</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_Rotate_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.Rotate*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_Rotate_Android_Util_Rational_System_Int32_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.Rotate(Android.Util.Rational,System.Int32)">
+  Rotate(Rational, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;rotate&quot;, &quot;(Landroid/util/Rational;I)Landroid/util/Rational;&quot;, &quot;&quot;)]
+public static Rational Rotate(Rational rational, int rotation)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rational</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/android.util.rational">Rational</a></dt>
+    <dd></dd>
+    <dt><code>rotation</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/android.util.rational">Rational</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_Yuv420888toNv21_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.Yuv420888toNv21*"></a>
+
+  <h3 id="IO_Scanbot_Sdk_UI_Camera_Util_CameraImageUtils_Yuv420888toNv21_AndroidX_Camera_Core_IImageProxy_" data-uid="IO.Scanbot.Sdk.UI.Camera.Util.CameraImageUtils.Yuv420888toNv21(AndroidX.Camera.Core.IImageProxy)">
+  Yuv420888toNv21(IImageProxy)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Register(&quot;yuv420888toNv21&quot;, &quot;(Landroidx/camera/core/ImageProxy;)[B&quot;, &quot;&quot;)]
+public static byte[] Yuv420888toNv21(IImageProxy image)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>image</code> <span class="xref">IImageProxy</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

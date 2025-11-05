@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>CameraScreenConfiguration</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<link href="../../../images/logo-icon.svg">
+<link href="../../../styles/scanbot-dokka-styles.css" rel="Stylesheet">
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    Android Scanbot SDK API reference
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+7.1.2        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":dokka-aggregator/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":dokka-aggregator/release"
+                                       data-filter=":dokka-aggregator/release"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+                <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link"
+                   href="https://scanbot.io"></a>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Android Scanbot SDK API reference
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="Android Scanbot SDK API reference::io.scanbot.sdk.ui_v2.document.configuration/CameraScreenConfiguration///PointingToDeclaration//-237363669">
+  <div class="breadcrumbs"><a href="../../../index.html">Android Scanbot SDK API reference</a><span class="delimiter">/</span><a href="../index.html">io.scanbot.sdk.ui_v2.document.configuration</a><span class="delimiter">/</span><span class="current">CameraScreenConfiguration</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Camera</span><wbr></wbr><span>Screen</span><wbr></wbr><span><span>Configuration</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">CameraScreenConfiguration</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>acknowledgement<span class="token operator">: </span><a href="../-acknowledgement-screen-configuration/index.html">AcknowledgementScreenConfiguration</a><span class="token operator"> = </span>AcknowledgementScreenConfiguration(  )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>introduction<span class="token operator">: </span><a href="../-introduction-screen-configuration/index.html">IntroductionScreenConfiguration</a><span class="token operator"> = </span>IntroductionScreenConfiguration(  )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>scanAssistanceOverlay<span class="token operator">: </span><a href="../-scan-assistance-overlay/index.html">ScanAssistanceOverlay</a><span class="token operator"> = </span>ScanAssistanceOverlay(  )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>cameraPermission<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-camera-permission-screen/index.html">CameraPermissionScreen</a><span class="token operator"> = </span>CameraPermissionScreen( statusBarMode = StatusBarMode.DARK, background = ScanbotColor(&quot;?sbColorSurface&quot;, isArgb = false), iconBackground = ScanbotColor(&quot;?sbColorOutline&quot;, isArgb = false), icon = IconStyle( visible = true, color = ScanbotColor(&quot;?sbColorOnSurface&quot;, isArgb = false) ), enableCameraButton = ButtonConfiguration( visible = true, text = &quot;?cameraPermissionEnableCameraButton&quot;, accessibilityDescription = &quot;?accessibilityDescriptionCameraPermissionEnableCameraButton&quot;, background = BackgroundStyle( strokeColor = ScanbotColor(&quot;?sbColorPrimary&quot;, isArgb = false), fillColor = ScanbotColor(&quot;?sbColorPrimary&quot;, isArgb = false), strokeWidth = 0.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor(&quot;?sbColorOnPrimary&quot;, isArgb = false), useShadow = false ) ), closeButton = ButtonConfiguration( visible = true, text = &quot;?cameraPermissionCloseButton&quot;, accessibilityDescription = &quot;?accessibilityDescriptionCameraPermissionCloseButton&quot;, background = BackgroundStyle( strokeColor = ScanbotColor(&quot;#00000000&quot;, isArgb = false), fillColor = ScanbotColor(&quot;#00000000&quot;, isArgb = false), strokeWidth = 0.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor(&quot;?sbColorPrimary&quot;, isArgb = false), useShadow = false ) ), enableCameraTitle = StyledText( text = &quot;?cameraPermissionEnableCameraTitle&quot;, color = ScanbotColor(&quot;?sbColorOnSurface&quot;, isArgb = false) ), enableCameraExplanation = StyledText( text = &quot;?cameraPermissionEnableCameraExplanation&quot;, color = ScanbotColor(&quot;?sbColorOnSurfaceVariant&quot;, isArgb = false) ) )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>topBarTitle<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-styled-text/index.html">StyledText</a><span class="token operator"> = </span>StyledText( text = &quot;?cameraTopBarTitle&quot;, color = ScanbotColor(&quot;?sbColorOnPrimary&quot;, isArgb = false) )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>topBarIntroButton<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-icon-button/index.html">IconButton</a><span class="token operator"> = </span>IconButton( color = ScanbotColor(&quot;?sbColorOnPrimary&quot;, isArgb = false), accessibilityDescription = &quot;?accessibilityDescriptionCameraTopBarIntroButton&quot; )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>topBarBackButton<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-button-configuration/index.html">ButtonConfiguration</a><span class="token operator"> = </span>ButtonConfiguration( visible = true, text = &quot;?cameraTopBarCancelButtonTitle&quot;, accessibilityDescription = &quot;?accessibilityDescriptionCameraTopBarCancelButton&quot;, background = BackgroundStyle( strokeColor = ScanbotColor(&quot;#00000000&quot;, isArgb = false), fillColor = ScanbotColor(&quot;#00000000&quot;, isArgb = false), strokeWidth = 0.0 ), foreground = ForegroundStyle( iconVisible = true, color = ScanbotColor(&quot;?sbColorOnPrimary&quot;, isArgb = false), useShadow = false ) )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>topUserGuidance<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-user-guidance-configuration/index.html">UserGuidanceConfiguration</a><span class="token operator"> = </span>UserGuidanceConfiguration( title = StyledText( text = &quot;?cameraTopGuidance&quot;, color = ScanbotColor(&quot;?sbColorOnPrimary&quot;, isArgb = false) ) )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>userGuidance<span class="token operator">: </span><a href="../-document-scanner-user-guidance/index.html">DocumentScannerUserGuidance</a><span class="token operator"> = </span>DocumentScannerUserGuidance(  )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>backgroundColor<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-scanbot-color/index.html">ScanbotColor</a><span class="token operator"> = </span>ScanbotColor(&quot;#000000FF&quot;, isArgb = false)<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>autoRotateImages<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>openReviewAfterEachScan<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>cameraConfiguration<span class="token operator">: </span><a href="../-document-scanner-camera-configuration/index.html">DocumentScannerCameraConfiguration</a><span class="token operator"> = </span>DocumentScannerCameraConfiguration(  )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>scannerParameters<span class="token operator">: </span><a href="../../io.scanbot.sdk.document/-document-scanner-parameters/index.html">DocumentScannerParameters</a><span class="token operator"> = </span>DocumentScannerParameters(  )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>polygon<span class="token operator">: </span><a href="../-document-polygon-configuration/index.html">DocumentPolygonConfiguration</a><span class="token operator"> = </span>DocumentPolygonConfiguration(  )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>bottomBar<span class="token operator">: </span><a href="../-camera-bottom-bar/index.html">CameraBottomBar</a><span class="token operator"> = </span>CameraBottomBar(  )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>viewFinder<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-view-finder-configuration/index.html">ViewFinderConfiguration</a><span class="token operator"> = </span>ViewFinderConfiguration( aspectRatio = AspectRatio( width = 21.0, height = 29.0 ), visible = false )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>captureFeedback<span class="token operator">: </span><a href="../-capture-feedback/index.html">CaptureFeedback</a><span class="token operator"> = </span>CaptureFeedback(  )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>vibration<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-vibration/index.html">Vibration</a><span class="token operator"> = </span>Vibration( enabled = true )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>timeouts<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-timeouts/index.html">Timeouts</a><span class="token operator"> = </span>Timeouts( autoCancelTimeout = 0, initialScanDelay = 0 )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>limitReachedAlertDialog<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-scanbot-alert-dialog/index.html">ScanbotAlertDialog</a><span class="token operator"> = </span>ScanbotAlertDialog( title = StyledText( text = &quot;?cameraLimitReachedAlertTitle&quot;, color = ScanbotColor(&quot;?sbColorOnSurface&quot;, isArgb = false) ), subtitle = StyledText( text = &quot;?cameraLimitReachedAlertSubtitle&quot;, color = ScanbotColor(&quot;?sbColorOnSurfaceVariant&quot;, isArgb = false) ), okButton = ButtonConfiguration( text = &quot;?cameraLimitReachedOkButtonTitle&quot;, accessibilityDescription = &quot;?accessibilityDescriptionCameraLimitReachedOkButton&quot;, background = BackgroundStyle( fillColor = ScanbotColor(&quot;?sbColorPrimary&quot;, isArgb = false), strokeWidth = 0.0 ), foreground = ForegroundStyle( color = ScanbotColor(&quot;?sbColorOnPrimary&quot;, isArgb = false) ) ), cancelButton = ButtonConfiguration( visible = false ) )<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>cancelAlertDialog<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-scanbot-alert-dialog/index.html">ScanbotAlertDialog</a><span class="token operator"> = </span>ScanbotAlertDialog( title = StyledText( text = &quot;?cameraCancelAlertTitle&quot;, color = ScanbotColor(&quot;?sbColorOnSurface&quot;, isArgb = false) ), subtitle = StyledText( text = &quot;?cameraCancelAlertSubtitle&quot;, color = ScanbotColor(&quot;?sbColorOnSurfaceVariant&quot;, isArgb = false) ), okButton = ButtonConfiguration( text = &quot;?cameraCancelYesButtonTitle&quot;, accessibilityDescription = &quot;?accessibilityDescriptionCameraCancelYesButton&quot;, background = BackgroundStyle( fillColor = ScanbotColor(&quot;?sbColorPrimary&quot;, isArgb = false), strokeWidth = 0.0 ), foreground = ForegroundStyle( color = ScanbotColor(&quot;?sbColorOnPrimary&quot;, isArgb = false) ) ), cancelButton = ButtonConfiguration( text = &quot;?cameraCancelNoButtonTitle&quot;, accessibilityDescription = &quot;?accessibilityDescriptionCameraCancelNoButton&quot;, background = BackgroundStyle( fillColor = ScanbotColor(&quot;#00000000&quot;, isArgb = false), strokeWidth = 0.0 ), foreground = ForegroundStyle( color = ScanbotColor(&quot;?sbColorPrimary&quot;, isArgb = false) ) ) )</span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/android/os/Parcelable.html">Parcelable</a></div><p class="paragraph">Configuration of the screen for scanning the pages with the camera.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-1826589585%2FConstructors%2F-237363669" anchor-label="CameraScreenConfiguration" id="-1826589585%2FConstructors%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-camera-screen-configuration.html"><span>Camera</span><wbr></wbr><span>Screen</span><wbr></wbr><span><span>Configuration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1826589585%2FConstructors%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">source<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">json<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/org/json/JSONObject.html">JSONObject</a></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">acknowledgement<span class="token operator">: </span><a href="../-acknowledgement-screen-configuration/index.html">AcknowledgementScreenConfiguration</a><span class="token operator"> = </span>AcknowledgementScreenConfiguration(  )<span class="token punctuation">, </span></span><span class="parameter ">introduction<span class="token operator">: </span><a href="../-introduction-screen-configuration/index.html">IntroductionScreenConfiguration</a><span class="token operator"> = </span>IntroductionScreenConfiguration(  )<span class="token punctuation">, </span></span><span class="parameter ">scanAssistanceOverlay<span class="token operator">: </span><a href="../-scan-assistance-overlay/index.html">ScanAssistanceOverlay</a><span class="token operator"> = </span>ScanAssistanceOverlay(  )<span class="token punctuation">, </span></span><span class="parameter ">cameraPermission<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-camera-permission-screen/index.html">CameraPermissionScreen</a><span class="token operator"> = </span>CameraPermissionScreen( statusBarMode = StatusBarMode.DARK, background = ScanbotColor(&quot;?sbColorSurface&quot;, isArgb = false), iconBackground = ScanbotColor(&quot;?sbColorOutline&quot;, isArgb = false), icon = IconStyle( visible = true, color = ScanbotColor(&quot;?sbColorOnSurface&quot;, isArgb = false) ), enableCameraButton = ButtonConfiguration( visible = true, text = &quot;?cameraPermissionEnableCameraButton&quot;, accessibilityDescription = &quot;?accessibilityDescriptionCameraPermissionEnableCameraButton&quot;, background = BackgroundStyle( strokeColor = ScanbotColor(&quot;?sbColorPrimary&quot;, isArgb = false), fillColor = ScanbotColor(&quot;?sbColorPrimary&quot;, isArgb = false), strokeWidth = 0.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor(&quot;?sbColorOnPrimary&quot;, isArgb = false), useShadow = false ) ), closeButton = ButtonConfiguration( visible = true, text = &quot;?cameraPermissionCloseButton&quot;, accessibilityDescription = &quot;?accessibilityDescriptionCameraPermissionCloseButton&quot;, background = BackgroundStyle( strokeColor = ScanbotColor(&quot;#00000000&quot;, isArgb = false), fillColor = ScanbotColor(&quot;#00000000&quot;, isArgb = false), strokeWidth = 0.0 ), foreground = ForegroundStyle( iconVisible = false, color = ScanbotColor(&quot;?sbColorPrimary&quot;, isArgb = false), useShadow = false ) ), enableCameraTitle = StyledText( text = &quot;?cameraPermissionEnableCameraTitle&quot;, color = ScanbotColor(&quot;?sbColorOnSurface&quot;, isArgb = false) ), enableCameraExplanation = StyledText( text = &quot;?cameraPermissionEnableCameraExplanation&quot;, color = ScanbotColor(&quot;?sbColorOnSurfaceVariant&quot;, isArgb = false) ) )<span class="token punctuation">, </span></span><span class="parameter ">topBarTitle<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-styled-text/index.html">StyledText</a><span class="token operator"> = </span>StyledText( text = &quot;?cameraTopBarTitle&quot;, color = ScanbotColor(&quot;?sbColorOnPrimary&quot;, isArgb = false) )<span class="token punctuation">, </span></span><span class="parameter ">topBarIntroButton<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-icon-button/index.html">IconButton</a><span class="token operator"> = </span>IconButton( color = ScanbotColor(&quot;?sbColorOnPrimary&quot;, isArgb = false), accessibilityDescription = &quot;?accessibilityDescriptionCameraTopBarIntroButton&quot; )<span class="token punctuation">, </span></span><span class="parameter ">topBarBackButton<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-button-configuration/index.html">ButtonConfiguration</a><span class="token operator"> = </span>ButtonConfiguration( visible = true, text = &quot;?cameraTopBarCancelButtonTitle&quot;, accessibilityDescription = &quot;?accessibilityDescriptionCameraTopBarCancelButton&quot;, background = BackgroundStyle( strokeColor = ScanbotColor(&quot;#00000000&quot;, isArgb = false), fillColor = ScanbotColor(&quot;#00000000&quot;, isArgb = false), strokeWidth = 0.0 ), foreground = ForegroundStyle( iconVisible = true, color = ScanbotColor(&quot;?sbColorOnPrimary&quot;, isArgb = false), useShadow = false ) )<span class="token punctuation">, </span></span><span class="parameter ">topUserGuidance<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-user-guidance-configuration/index.html">UserGuidanceConfiguration</a><span class="token operator"> = </span>UserGuidanceConfiguration( title = StyledText( text = &quot;?cameraTopGuidance&quot;, color = ScanbotColor(&quot;?sbColorOnPrimary&quot;, isArgb = false) ) )<span class="token punctuation">, </span></span><span class="parameter ">userGuidance<span class="token operator">: </span><a href="../-document-scanner-user-guidance/index.html">DocumentScannerUserGuidance</a><span class="token operator"> = </span>DocumentScannerUserGuidance(  )<span class="token punctuation">, </span></span><span class="parameter ">backgroundColor<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-scanbot-color/index.html">ScanbotColor</a><span class="token operator"> = </span>ScanbotColor(&quot;#000000FF&quot;, isArgb = false)<span class="token punctuation">, </span></span><span class="parameter ">autoRotateImages<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">openReviewAfterEachScan<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">cameraConfiguration<span class="token operator">: </span><a href="../-document-scanner-camera-configuration/index.html">DocumentScannerCameraConfiguration</a><span class="token operator"> = </span>DocumentScannerCameraConfiguration(  )<span class="token punctuation">, </span></span><span class="parameter ">scannerParameters<span class="token operator">: </span><a href="../../io.scanbot.sdk.document/-document-scanner-parameters/index.html">DocumentScannerParameters</a><span class="token operator"> = </span>DocumentScannerParameters(  )<span class="token punctuation">, </span></span><span class="parameter ">polygon<span class="token operator">: </span><a href="../-document-polygon-configuration/index.html">DocumentPolygonConfiguration</a><span class="token operator"> = </span>DocumentPolygonConfiguration(  )<span class="token punctuation">, </span></span><span class="parameter ">bottomBar<span class="token operator">: </span><a href="../-camera-bottom-bar/index.html">CameraBottomBar</a><span class="token operator"> = </span>CameraBottomBar(  )<span class="token punctuation">, </span></span><span class="parameter ">viewFinder<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-view-finder-configuration/index.html">ViewFinderConfiguration</a><span class="token operator"> = </span>ViewFinderConfiguration( aspectRatio = AspectRatio( width = 21.0, height = 29.0 ), visible = false )<span class="token punctuation">, </span></span><span class="parameter ">captureFeedback<span class="token operator">: </span><a href="../-capture-feedback/index.html">CaptureFeedback</a><span class="token operator"> = </span>CaptureFeedback(  )<span class="token punctuation">, </span></span><span class="parameter ">vibration<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-vibration/index.html">Vibration</a><span class="token operator"> = </span>Vibration( enabled = true )<span class="token punctuation">, </span></span><span class="parameter ">timeouts<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-timeouts/index.html">Timeouts</a><span class="token operator"> = </span>Timeouts( autoCancelTimeout = 0, initialScanDelay = 0 )<span class="token punctuation">, </span></span><span class="parameter ">limitReachedAlertDialog<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-scanbot-alert-dialog/index.html">ScanbotAlertDialog</a><span class="token operator"> = </span>ScanbotAlertDialog( title = StyledText( text = &quot;?cameraLimitReachedAlertTitle&quot;, color = ScanbotColor(&quot;?sbColorOnSurface&quot;, isArgb = false) ), subtitle = StyledText( text = &quot;?cameraLimitReachedAlertSubtitle&quot;, color = ScanbotColor(&quot;?sbColorOnSurfaceVariant&quot;, isArgb = false) ), okButton = ButtonConfiguration( text = &quot;?cameraLimitReachedOkButtonTitle&quot;, accessibilityDescription = &quot;?accessibilityDescriptionCameraLimitReachedOkButton&quot;, background = BackgroundStyle( fillColor = ScanbotColor(&quot;?sbColorPrimary&quot;, isArgb = false), strokeWidth = 0.0 ), foreground = ForegroundStyle( color = ScanbotColor(&quot;?sbColorOnPrimary&quot;, isArgb = false) ) ), cancelButton = ButtonConfiguration( visible = false ) )<span class="token punctuation">, </span></span><span class="parameter ">cancelAlertDialog<span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-scanbot-alert-dialog/index.html">ScanbotAlertDialog</a><span class="token operator"> = </span>ScanbotAlertDialog( title = StyledText( text = &quot;?cameraCancelAlertTitle&quot;, color = ScanbotColor(&quot;?sbColorOnSurface&quot;, isArgb = false) ), subtitle = StyledText( text = &quot;?cameraCancelAlertSubtitle&quot;, color = ScanbotColor(&quot;?sbColorOnSurfaceVariant&quot;, isArgb = false) ), okButton = ButtonConfiguration( text = &quot;?cameraCancelYesButtonTitle&quot;, accessibilityDescription = &quot;?accessibilityDescriptionCameraCancelYesButton&quot;, background = BackgroundStyle( fillColor = ScanbotColor(&quot;?sbColorPrimary&quot;, isArgb = false), strokeWidth = 0.0 ), foreground = ForegroundStyle( color = ScanbotColor(&quot;?sbColorOnPrimary&quot;, isArgb = false) ) ), cancelButton = ButtonConfiguration( text = &quot;?cameraCancelNoButtonTitle&quot;, accessibilityDescription = &quot;?accessibilityDescriptionCameraCancelNoButton&quot;, background = BackgroundStyle( fillColor = ScanbotColor(&quot;#00000000&quot;, isArgb = false), strokeWidth = 0.0 ), foreground = ForegroundStyle( color = ScanbotColor(&quot;?sbColorPrimary&quot;, isArgb = false) ) ) )</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-1549715597%2FClasslikes%2F-237363669" anchor-label="Companion" id="-1549715597%2FClasslikes%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1549715597%2FClasslikes%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-816473550%2FProperties%2F-237363669" anchor-label="acknowledgement" id="-816473550%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="acknowledgement.html"><span><span>acknowledgement</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-816473550%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="acknowledgement.html">acknowledgement</a><span class="token operator">: </span><a href="../-acknowledgement-screen-configuration/index.html">AcknowledgementScreenConfiguration</a></div><div class="brief "><p class="paragraph">Configuration of the acknowledgement screen.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1583865260%2FProperties%2F-237363669" anchor-label="autoRotateImages" id="1583865260%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="auto-rotate-images.html"><span>auto</span><wbr></wbr><span>Rotate</span><wbr></wbr><span><span>Images</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1583865260%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="auto-rotate-images.html">autoRotateImages</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If set to true, images imported from the gallery/photo library will be analyzed and eventually rotated to correct their orientation.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1505331639%2FProperties%2F-237363669" anchor-label="backgroundColor" id="1505331639%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="background-color.html"><span>background</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1505331639%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="background-color.html">backgroundColor</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-scanbot-color/index.html">ScanbotColor</a></div><div class="brief "><p class="paragraph">The background color of the camera screen.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1015765692%2FProperties%2F-237363669" anchor-label="bottomBar" id="-1015765692%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bottom-bar.html"><span>bottom</span><wbr></wbr><span><span>Bar</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1015765692%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="bottom-bar.html">bottomBar</a><span class="token operator">: </span><a href="../-camera-bottom-bar/index.html">CameraBottomBar</a></div><div class="brief "><p class="paragraph">Configuration of the bottom bar for the camera screen.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="844103355%2FProperties%2F-237363669" anchor-label="cameraConfiguration" id="844103355%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="camera-configuration.html"><span>camera</span><wbr></wbr><span><span>Configuration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="844103355%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="camera-configuration.html">cameraConfiguration</a><span class="token operator">: </span><a href="../-document-scanner-camera-configuration/index.html">DocumentScannerCameraConfiguration</a></div><div class="brief "><p class="paragraph">Configuration of the camera behavior.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-658656742%2FProperties%2F-237363669" anchor-label="cameraPermission" id="-658656742%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="camera-permission.html"><span>camera</span><wbr></wbr><span><span>Permission</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-658656742%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="camera-permission.html">cameraPermission</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-camera-permission-screen/index.html">CameraPermissionScreen</a></div><div class="brief "><p class="paragraph">Configuration of the camera permission screen.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1509115006%2FProperties%2F-237363669" anchor-label="cancelAlertDialog" id="-1509115006%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="cancel-alert-dialog.html"><span>cancel</span><wbr></wbr><span>Alert</span><wbr></wbr><span><span>Dialog</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1509115006%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="cancel-alert-dialog.html">cancelAlertDialog</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-scanbot-alert-dialog/index.html">ScanbotAlertDialog</a></div><div class="brief "><p class="paragraph">Configuration of the alert dialog displayed when the 'cancel' button is pressed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1664906337%2FProperties%2F-237363669" anchor-label="captureFeedback" id="1664906337%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="capture-feedback.html"><span>capture</span><wbr></wbr><span><span>Feedback</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1664906337%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="capture-feedback.html">captureFeedback</a><span class="token operator">: </span><a href="../-capture-feedback/index.html">CaptureFeedback</a></div><div class="brief "><p class="paragraph">Configuration of the feedback shown after snapping a page.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2060398612%2FProperties%2F-237363669" anchor-label="introduction" id="2060398612%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="introduction.html"><span><span>introduction</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2060398612%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="introduction.html">introduction</a><span class="token operator">: </span><a href="../-introduction-screen-configuration/index.html">IntroductionScreenConfiguration</a></div><div class="brief "><p class="paragraph">Configuration of the document scanner introduction screen.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-357319585%2FProperties%2F-237363669" anchor-label="limitReachedAlertDialog" id="-357319585%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="limit-reached-alert-dialog.html"><span>limit</span><wbr></wbr><span>Reached</span><wbr></wbr><span>Alert</span><wbr></wbr><span><span>Dialog</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-357319585%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="limit-reached-alert-dialog.html">limitReachedAlertDialog</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-scanbot-alert-dialog/index.html">ScanbotAlertDialog</a></div><div class="brief "><p class="paragraph">Configuration of the alert dialog displayed when the scan limit is reached.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-384664588%2FProperties%2F-237363669" anchor-label="openReviewAfterEachScan" id="-384664588%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="open-review-after-each-scan.html"><span>open</span><wbr></wbr><span>Review</span><wbr></wbr><span>After</span><wbr></wbr><span>Each</span><wbr></wbr><span><span>Scan</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-384664588%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="open-review-after-each-scan.html">openReviewAfterEachScan</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If set to true, the review screen will be shown after each added page.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1035446798%2FProperties%2F-237363669" anchor-label="polygon" id="-1035446798%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="polygon.html"><span><span>polygon</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1035446798%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="polygon.html">polygon</a><span class="token operator">: </span><a href="../-document-polygon-configuration/index.html">DocumentPolygonConfiguration</a></div><div class="brief "><p class="paragraph">Configuration of the document contour detection polygon.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="68693777%2FProperties%2F-237363669" anchor-label="scanAssistanceOverlay" id="68693777%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="scan-assistance-overlay.html"><span>scan</span><wbr></wbr><span>Assistance</span><wbr></wbr><span><span>Overlay</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="68693777%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="scan-assistance-overlay.html">scanAssistanceOverlay</a><span class="token operator">: </span><a href="../-scan-assistance-overlay/index.html">ScanAssistanceOverlay</a></div><div class="brief "><p class="paragraph">Configuration of the scan assistance overlay.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-759774812%2FProperties%2F-237363669" anchor-label="scannerParameters" id="-759774812%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="scanner-parameters.html"><span>scanner</span><wbr></wbr><span><span>Parameters</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-759774812%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="scanner-parameters.html">scannerParameters</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.document/-document-scanner-parameters/index.html">DocumentScannerParameters</a></div><div class="brief "><p class="paragraph">The parameters of the document scanner.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-116255620%2FProperties%2F-237363669" anchor-label="timeouts" id="-116255620%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="timeouts.html"><span><span>timeouts</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-116255620%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="timeouts.html">timeouts</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-timeouts/index.html">Timeouts</a></div><div class="brief "><p class="paragraph">Configuration of timeouts.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1181162953%2FProperties%2F-237363669" anchor-label="topBarBackButton" id="-1181162953%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="top-bar-back-button.html"><span>top</span><wbr></wbr><span>Bar</span><wbr></wbr><span>Back</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1181162953%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="top-bar-back-button.html">topBarBackButton</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-button-configuration/index.html">ButtonConfiguration</a></div><div class="brief "><p class="paragraph">Configuration of the 'cancel' button, located in the top bar.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1754043340%2FProperties%2F-237363669" anchor-label="topBarIntroButton" id="1754043340%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="top-bar-intro-button.html"><span>top</span><wbr></wbr><span>Bar</span><wbr></wbr><span>Intro</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1754043340%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="top-bar-intro-button.html">topBarIntroButton</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-icon-button/index.html">IconButton</a></div><div class="brief "><p class="paragraph">Configuration of the 'introduction' button, located in the top bar.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1960240846%2FProperties%2F-237363669" anchor-label="topBarTitle" id="-1960240846%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="top-bar-title.html"><span>top</span><wbr></wbr><span>Bar</span><wbr></wbr><span><span>Title</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1960240846%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="top-bar-title.html">topBarTitle</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-styled-text/index.html">StyledText</a></div><div class="brief "><p class="paragraph">Configuration of the title, located in the top bar.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="482707380%2FProperties%2F-237363669" anchor-label="topUserGuidance" id="482707380%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="top-user-guidance.html"><span>top</span><wbr></wbr><span>User</span><wbr></wbr><span><span>Guidance</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="482707380%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="top-user-guidance.html">topUserGuidance</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-user-guidance-configuration/index.html">UserGuidanceConfiguration</a></div><div class="brief "><p class="paragraph">Configuration of the static user guidance, located just below the top bar.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-282159093%2FProperties%2F-237363669" anchor-label="userGuidance" id="-282159093%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="user-guidance.html"><span>user</span><wbr></wbr><span><span>Guidance</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-282159093%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="user-guidance.html">userGuidance</a><span class="token operator">: </span><a href="../-document-scanner-user-guidance/index.html">DocumentScannerUserGuidance</a></div><div class="brief "><p class="paragraph">Configuration of the hints guiding users through the scanning process.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1135928358%2FProperties%2F-237363669" anchor-label="vibration" id="-1135928358%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="vibration.html"><span><span>vibration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1135928358%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="vibration.html">vibration</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-vibration/index.html">Vibration</a></div><div class="brief "><p class="paragraph">Configuration of the scan confirmation vibration.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2133543325%2FProperties%2F-237363669" anchor-label="viewFinder" id="-2133543325%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="view-finder.html"><span>view</span><wbr></wbr><span><span>Finder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2133543325%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="view-finder.html">viewFinder</a><span class="token operator">: </span><a href="../../io.scanbot.sdk.ui_v2.common/-view-finder-configuration/index.html">ViewFinderConfiguration</a></div><div class="brief "><p class="paragraph">Configuration of the viewfinder.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1313019153%2FFunctions%2F-237363669" anchor-label="clone" id="-1313019153%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clone.html"><span><span>clone</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1313019153%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="clone.html"><span class="token function">clone</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">CameraScreenConfiguration</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1856146695%2FFunctions%2F-237363669" anchor-label="toJson" id="1856146695%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-json.html"><span>to</span><wbr></wbr><span><span>Json</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1856146695%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="to-json.html"><span class="token function">toJson</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../io.scanbot.sdk.common/-to-json-configuration/index.html">ToJsonConfiguration</a><span class="token operator"> = </span>ToJsonConfiguration.default()</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/org/json/JSONObject.html">JSONObject</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© Scanbot SDK GmbH 2011-2025, located in Germany and the US</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

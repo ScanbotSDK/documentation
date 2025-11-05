@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['height_0',['height',['../classscanbotsdk_1_1geometry_1_1geometry_1_1AspectRatio.html#a235b359d2a2301f3d690a509d45527da',1,'scanbotsdk.geometry.geometry.AspectRatio.height()'],['../classscanbotsdk_1_1image_1_1image__ref__types_1_1ImageInfo.html#aa1bb9aae34f2ee6da6181ae1d9901974',1,'scanbotsdk.image.image_ref_types.ImageInfo.height(self)'],['../classscanbotsdk_1_1image_1_1image__ref__types_1_1ImageInfo.html#a92f220db90e5bcfea1d4032dfee3a9ae',1,'scanbotsdk.image.image_ref_types.ImageInfo.height(self, int height)']]],
+  ['hibernation_5fmemory_5fconsumption_1',['hibernation_memory_consumption',['../classscanbotsdk_1_1image_1_1image__ref__types_1_1ImageProfile.html#a40ab65bfa73754e252b39b59e090a11f',1,'scanbotsdk.image.image_ref_types.ImageProfile.hibernation_memory_consumption(self)'],['../classscanbotsdk_1_1image_1_1image__ref__types_1_1ImageProfile.html#a65c3ce4b8ac6678c704313ba9f569281',1,'scanbotsdk.image.image_ref_types.ImageProfile.hibernation_memory_consumption(self, int hibernation_memory_consumption)']]]
+];

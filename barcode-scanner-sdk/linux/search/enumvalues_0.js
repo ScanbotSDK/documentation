@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['scanbotsdk_5fbarcode_5fengine_5fmode_5fbalanced_0',['SCANBOTSDK_BARCODE_ENGINE_MODE_BALANCED',['../group__C-BarcodeRecognizer.html#gga13ad9759a70358bef6ce1c1efee27fb9ab8814d7286f64efe2cef841f7a3de118',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fbarcode_5fengine_5fmode_5fbest_1',['SCANBOTSDK_BARCODE_ENGINE_MODE_BEST',['../group__C-BarcodeRecognizer.html#gga13ad9759a70358bef6ce1c1efee27fb9a0281b61efae8ff60c93cd9a78ffbe655',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fbarcode_5fengine_5fmode_5ffast_2',['SCANBOTSDK_BARCODE_ENGINE_MODE_FAST',['../group__C-BarcodeRecognizer.html#gga13ad9759a70358bef6ce1c1efee27fb9a9fa30c696599ee66b46d6bffbce2fae9',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fbarcode_5fengine_5fmode_5ffastest_3',['SCANBOTSDK_BARCODE_ENGINE_MODE_FASTEST',['../group__C-BarcodeRecognizer.html#gga13ad9759a70358bef6ce1c1efee27fb9a69d0d51f87d4d5e8a8e249c679717189',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fbarcode_5fengine_5fmode_5flegacy_5ffast_4',['SCANBOTSDK_BARCODE_ENGINE_MODE_LEGACY_FAST',['../group__C-BarcodeRecognizer.html#gga13ad9759a70358bef6ce1c1efee27fb9a0733f9fccd89b162dd5bb0ccdf7bde4e',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fbarcode_5fformat_5fone_5fd_5',['SCANBOTSDK_BARCODE_FORMAT_ONE_D',['../group__C-BarcodeRecognizer.html#gga5045e0691aa787dbfd0a0f8a920985b8a555d2b372d0d5102303dafa28318bf61',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5ferror_6',['SCANBOTSDK_ERROR',['../ScanbotSDK_8h.html#aa16a0591bff3560770cddd9a29a8aaeca78ff773cfc3b98380ffc2c5143e7a65b',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5ferror_5finvalid_5fargument_7',['SCANBOTSDK_ERROR_INVALID_ARGUMENT',['../ScanbotSDK_8h.html#aa16a0591bff3560770cddd9a29a8aaeca29f23c40bb1e808e3563be0962ad8159',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5ferror_5finvalid_5fimage_8',['SCANBOTSDK_ERROR_INVALID_IMAGE',['../ScanbotSDK_8h.html#aa16a0591bff3560770cddd9a29a8aaeca502ba76321a91e6de4cfc0295541609d',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5ferror_5finvalid_5flicense_5fstatus_9',['SCANBOTSDK_ERROR_INVALID_LICENSE_STATUS',['../ScanbotSDK_8h.html#aa16a0591bff3560770cddd9a29a8aaeca502d105b7fe063b069c6157a48a87d2c',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5ferror_5fnull_5fpointer_10',['SCANBOTSDK_ERROR_NULL_POINTER',['../ScanbotSDK_8h.html#aa16a0591bff3560770cddd9a29a8aaeca044906339f799fb8cf702812c9aff138',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5flicense_5fstatus_5ffailure_5fapp_5fid_5fmismatch_11',['SCANBOTSDK_LICENSE_STATUS_FAILURE_APP_ID_MISMATCH',['../group__C-Initialization.html#gga14109379427e77ee11d6368822e0a115a83967a2b4960f1a1427e3519609d5bef',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5flicense_5fstatus_5ffailure_5fcorrupted_12',['SCANBOTSDK_LICENSE_STATUS_FAILURE_CORRUPTED',['../group__C-Initialization.html#gga14109379427e77ee11d6368822e0a115ad61127a9c51a1adcb9f1afe46e298f82',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5flicense_5fstatus_5ffailure_5fexpired_13',['SCANBOTSDK_LICENSE_STATUS_FAILURE_EXPIRED',['../group__C-Initialization.html#gga14109379427e77ee11d6368822e0a115a320d92c6c1a35c780100432d49702a74',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5flicense_5fstatus_5ffailure_5funknown_14',['SCANBOTSDK_LICENSE_STATUS_FAILURE_UNKNOWN',['../group__C-Initialization.html#gga14109379427e77ee11d6368822e0a115acc05d91970831e3a92a66f9b590523c3',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5flicense_5fstatus_5ffailure_5fwrong_5fos_15',['SCANBOTSDK_LICENSE_STATUS_FAILURE_WRONG_OS',['../group__C-Initialization.html#gga14109379427e77ee11d6368822e0a115a3c3a955d7394a56773f9f496fad90ccf',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5flicense_5fstatus_5fok_16',['SCANBOTSDK_LICENSE_STATUS_OK',['../group__C-Initialization.html#gga14109379427e77ee11d6368822e0a115ab17acb0bed8255c10ac96cf454554807',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fok_17',['SCANBOTSDK_OK',['../ScanbotSDK_8h.html#aa16a0591bff3560770cddd9a29a8aaeca192284bc6774962ee3fbb26ad6f41332',1,'ScanbotSDK.h']]]
+];

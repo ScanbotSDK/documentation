@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['scanbotsdk_5fbarcode_5frecognizer_5fcreate_0',['scanbotsdk_barcode_recognizer_create',['../group__C-BarcodeRecognizer.html#ga8940f15d04ceb4fec7e213283fd80f8f',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fbarcode_5frecognizer_5ffree_1',['scanbotsdk_barcode_recognizer_free',['../group__C-BarcodeRecognizer.html#ga378c1ad642c6fedd8318bb84512f1014',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fbarcode_5frecognizer_5frecognize_2',['scanbotsdk_barcode_recognizer_recognize',['../group__C-BarcodeRecognizer.html#gaee31ddfc95ec45b0e1f177b37a00df53',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fbarcode_5fresult_5ffree_3',['scanbotsdk_barcode_result_free',['../group__C-BarcodeRecognizer.html#ga5bff0965a66897bee28efa83824c82fe',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fbarcode_5fresult_5fget_5fcount_4',['scanbotsdk_barcode_result_get_count',['../group__C-BarcodeRecognizer.html#ga59fa4f38ec71e34ccca169b82c75e84a',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fbarcode_5fresult_5fget_5fformat_5',['scanbotsdk_barcode_result_get_format',['../group__C-BarcodeRecognizer.html#ga0b88d373d22781d6481941c89872ce6f',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fbarcode_5fresult_5fget_5fquad_6',['scanbotsdk_barcode_result_get_quad',['../group__C-BarcodeRecognizer.html#gae12b40bc062f5d2825fb7c89894d23c5',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fbarcode_5fresult_5fget_5fraw_5fbytes_7',['scanbotsdk_barcode_result_get_raw_bytes',['../group__C-BarcodeRecognizer.html#ga9d76c02d15cf773c1520471451084210',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fbarcode_5fresult_5fget_5ftext_8',['scanbotsdk_barcode_result_get_text',['../group__C-BarcodeRecognizer.html#ga0a673fcb61e03a67a3638c8be827cf90',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fget_5fgit_5fversion_9',['scanbotsdk_get_git_version',['../group__C-Initialization.html#ga8494f6feaa7d93ca4d558cbe37407c89',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fget_5flicense_5fstatus_10',['scanbotsdk_get_license_status',['../group__C-Initialization.html#gabe837aa18e97e562f9771b24b710af6d',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5finitialize_11',['scanbotsdk_initialize',['../group__C-Initialization.html#gac6923b69e5ade15eae0fcfc14308b9d6',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5flog_5ferror_12',['scanbotsdk_log_error',['../group__C-Logging.html#gac01138661aee5ae8fbf66e2b8d08ecbd',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5freset_5flog_5fhandler_13',['scanbotsdk_reset_log_handler',['../group__C-Logging.html#ga958f11b63fee02080ceea785ab38340b',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fset_5flog_5fhandler_14',['scanbotsdk_set_log_handler',['../group__C-Logging.html#gafa2ce62f52de79e4add08a69cb750ade',1,'ScanbotSDK.h']]],
+  ['scanbotsdk_5fset_5flogging_15',['scanbotsdk_set_logging',['../group__C-Logging.html#gaf390d3eff57fccaba65b121c6bf09ac5',1,'ScanbotSDK.h']]]
+];
