@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['medicalcertificatecheckbox_0',['MedicalCertificateCheckBox',['../classscanbotsdk_1_1api_1_1medical__certificate_1_1medical__certificate__types_1_1MedicalCertificateCheckBox.html',1,'scanbotsdk::api::medical_certificate::medical_certificate_types']]],
+  ['medicalcertificatecheckboxtype_1',['MedicalCertificateCheckBoxType',['../classscanbotsdk_1_1api_1_1medical__certificate_1_1medical__certificate__types_1_1MedicalCertificateCheckBoxType.html',1,'scanbotsdk::api::medical_certificate::medical_certificate_types']]],
+  ['medicalcertificatedaterecord_2',['MedicalCertificateDateRecord',['../classscanbotsdk_1_1api_1_1medical__certificate_1_1medical__certificate__types_1_1MedicalCertificateDateRecord.html',1,'scanbotsdk::api::medical_certificate::medical_certificate_types']]],
+  ['medicalcertificatedaterecordtype_3',['MedicalCertificateDateRecordType',['../classscanbotsdk_1_1api_1_1medical__certificate_1_1medical__certificate__types_1_1MedicalCertificateDateRecordType.html',1,'scanbotsdk::api::medical_certificate::medical_certificate_types']]],
+  ['medicalcertificateformtype_4',['MedicalCertificateFormType',['../classscanbotsdk_1_1api_1_1medical__certificate_1_1medical__certificate__types_1_1MedicalCertificateFormType.html',1,'scanbotsdk::api::medical_certificate::medical_certificate_types']]],
+  ['medicalcertificatepatientinfobox_5',['MedicalCertificatePatientInfoBox',['../classscanbotsdk_1_1api_1_1medical__certificate_1_1medical__certificate__types_1_1MedicalCertificatePatientInfoBox.html',1,'scanbotsdk::api::medical_certificate::medical_certificate_types']]],
+  ['medicalcertificatepatientinfofield_6',['MedicalCertificatePatientInfoField',['../classscanbotsdk_1_1api_1_1medical__certificate_1_1medical__certificate__types_1_1MedicalCertificatePatientInfoField.html',1,'scanbotsdk::api::medical_certificate::medical_certificate_types']]],
+  ['medicalcertificatepatientinfofieldtype_7',['MedicalCertificatePatientInfoFieldType',['../classscanbotsdk_1_1api_1_1medical__certificate_1_1medical__certificate__types_1_1MedicalCertificatePatientInfoFieldType.html',1,'scanbotsdk::api::medical_certificate::medical_certificate_types']]],
+  ['medicalcertificatescanner_8',['MedicalCertificateScanner',['../classscanbotsdk_1_1api_1_1medical__certificate_1_1medical__certificate__scanner_1_1MedicalCertificateScanner.html',1,'scanbotsdk::api::medical_certificate::medical_certificate_scanner']]],
+  ['medicalcertificatescanningparameters_9',['MedicalCertificateScanningParameters',['../classscanbotsdk_1_1api_1_1medical__certificate_1_1medical__certificate__types_1_1MedicalCertificateScanningParameters.html',1,'scanbotsdk::api::medical_certificate::medical_certificate_types']]],
+  ['medicalcertificatescanningresult_10',['MedicalCertificateScanningResult',['../classscanbotsdk_1_1api_1_1medical__certificate_1_1medical__certificate__types_1_1MedicalCertificateScanningResult.html',1,'scanbotsdk::api::medical_certificate::medical_certificate_types']]],
+  ['mrzdocumenttype_11',['MrzDocumentType',['../classscanbotsdk_1_1api_1_1mrz_1_1mrz__types_1_1MrzDocumentType.html',1,'scanbotsdk::api::mrz::mrz_types']]],
+  ['mrzfallbackconfiguration_12',['MrzFallbackConfiguration',['../classscanbotsdk_1_1api_1_1document__data_1_1document__data__extractor__configuration__types_1_1MrzFallbackConfiguration.html',1,'scanbotsdk::api::document_data::document_data_extractor_configuration_types']]],
+  ['mrzincompleteresulthandling_13',['MrzIncompleteResultHandling',['../classscanbotsdk_1_1api_1_1mrz_1_1mrz__types_1_1MrzIncompleteResultHandling.html',1,'scanbotsdk::api::mrz::mrz_types']]],
+  ['mrzparser_14',['MrzParser',['../classscanbotsdk_1_1api_1_1mrz_1_1mrz__scanner_1_1MrzParser.html',1,'scanbotsdk::api::mrz::mrz_scanner']]],
+  ['mrzparserconfiguration_15',['MrzParserConfiguration',['../classscanbotsdk_1_1api_1_1mrz_1_1mrz__types_1_1MrzParserConfiguration.html',1,'scanbotsdk::api::mrz::mrz_types']]],
+  ['mrzscanner_16',['MrzScanner',['../classscanbotsdk_1_1api_1_1mrz_1_1mrz__scanner_1_1MrzScanner.html',1,'scanbotsdk::api::mrz::mrz_scanner']]],
+  ['mrzscannerconfiguration_17',['MrzScannerConfiguration',['../classscanbotsdk_1_1api_1_1mrz_1_1mrz__types_1_1MrzScannerConfiguration.html',1,'scanbotsdk::api::mrz::mrz_types']]],
+  ['mrzscannerresult_18',['MrzScannerResult',['../classscanbotsdk_1_1api_1_1mrz_1_1mrz__types_1_1MrzScannerResult.html',1,'scanbotsdk::api::mrz::mrz_types']]],
+  ['msiplesseychecksumalgorithm_19',['MsiPlesseyChecksumAlgorithm',['../classscanbotsdk_1_1api_1_1barcode_1_1barcode__configuration__types_1_1MsiPlesseyChecksumAlgorithm.html',1,'scanbotsdk::api::barcode::barcode_configuration_types']]],
+  ['multipageimageextractor_20',['MultiPageImageExtractor',['../classscanbotsdk_1_1api_1_1multi__page__image__extractor_1_1multi__page__image__extractor_1_1MultiPageImageExtractor.html',1,'scanbotsdk::api::multi_page_image_extractor::multi_page_image_extractor']]]
+];

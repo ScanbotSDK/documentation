@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['page_0',['Page',['../classscanbotsdk_1_1api_1_1ocr_1_1ocr__types_1_1Page.html',1,'scanbotsdk::api::ocr::ocr_types']]],
+  ['pagebinarization_1',['PageBinarization',['../classscanbotsdk_1_1api_1_1image__processing_1_1parametric__filters_1_1PageBinarization.html',1,'scanbotsdk::api::image_processing::parametric_filters']]],
+  ['pagedirection_2',['PageDirection',['../classscanbotsdk_1_1api_1_1pdf__generation_1_1pdf__configuration__types_1_1PageDirection.html',1,'scanbotsdk::api::pdf_generation::pdf_configuration_types']]],
+  ['pageextractionresult_3',['PageExtractionResult',['../classscanbotsdk_1_1api_1_1multi__page__image__extractor_1_1multi__page__image__extractor__types_1_1PageExtractionResult.html',1,'scanbotsdk::api::multi_page_image_extractor::multi_page_image_extractor_types']]],
+  ['pagefit_4',['PageFit',['../classscanbotsdk_1_1api_1_1pdf__generation_1_1pdf__configuration__types_1_1PageFit.html',1,'scanbotsdk::api::pdf_generation::pdf_configuration_types']]],
+  ['pagesize_5',['PageSize',['../classscanbotsdk_1_1api_1_1pdf__generation_1_1pdf__configuration__types_1_1PageSize.html',1,'scanbotsdk::api::pdf_generation::pdf_configuration_types']]],
+  ['parametricfilter_6',['ParametricFilter',['../classscanbotsdk_1_1api_1_1image__processing_1_1parametric__filters_1_1ParametricFilter.html',1,'scanbotsdk::api::image_processing::parametric_filters']]],
+  ['partiallyvisibledocumentconfiguration_7',['PartiallyVisibleDocumentConfiguration',['../classscanbotsdk_1_1api_1_1document__scanner_1_1document__scanner__types_1_1PartiallyVisibleDocumentConfiguration.html',1,'scanbotsdk::api::document_scanner::document_scanner_types']]],
+  ['pathimageloadoptions_8',['PathImageLoadOptions',['../classscanbotsdk_1_1api_1_1image_1_1image__ref__types_1_1PathImageLoadOptions.html',1,'scanbotsdk::api::image::image_ref_types']]],
+  ['pathloadmode_9',['PathLoadMode',['../classscanbotsdk_1_1api_1_1image_1_1image__ref__types_1_1PathLoadMode.html',1,'scanbotsdk::api::image::image_ref_types']]],
+  ['patterncontentvalidator_10',['PatternContentValidator',['../classscanbotsdk_1_1api_1_1text__pattern_1_1text__pattern__scanner__types_1_1PatternContentValidator.html',1,'scanbotsdk::api::text_pattern::text_pattern_scanner_types']]],
+  ['patterngrammar_11',['PatternGrammar',['../classscanbotsdk_1_1api_1_1text__pattern_1_1text__pattern__scanner__types_1_1PatternGrammar.html',1,'scanbotsdk::api::text_pattern::text_pattern_scanner_types']]],
+  ['pdfattributes_12',['PdfAttributes',['../classscanbotsdk_1_1api_1_1pdf__generation_1_1pdf__configuration__types_1_1PdfAttributes.html',1,'scanbotsdk::api::pdf_generation::pdf_configuration_types']]],
+  ['pdfconfiguration_13',['PdfConfiguration',['../classscanbotsdk_1_1api_1_1pdf__generation_1_1pdf__configuration__types_1_1PdfConfiguration.html',1,'scanbotsdk::api::pdf_generation::pdf_configuration_types']]],
+  ['point_14',['Point',['../classscanbotsdk_1_1basic__geometry_1_1Point.html',1,'scanbotsdk::basic_geometry']]],
+  ['pointf_15',['PointF',['../classscanbotsdk_1_1basic__geometry_1_1PointF.html',1,'scanbotsdk::basic_geometry']]],
+  ['processingmode_16',['ProcessingMode',['../classscanbotsdk_1_1api_1_1common_1_1common__types_1_1ProcessingMode.html',1,'scanbotsdk::api::common::common_types']]]
+];

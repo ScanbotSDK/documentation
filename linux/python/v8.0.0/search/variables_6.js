@@ -1,0 +1,13 @@
+var searchData=
+[
+  ['gb_5f18030_0',['GB_18030',['../classscanbotsdk_1_1api_1_1barcode_1_1barcode__types_1_1CharacterEncoding.html#aded632f4f40a488d3c83e32393c241b3',1,'scanbotsdk::api::barcode::barcode_types::CharacterEncoding']]],
+  ['gb_5f2312_1',['GB_2312',['../classscanbotsdk_1_1api_1_1barcode_1_1barcode__types_1_1CharacterEncoding.html#a4afebee6969fed46fe6171f274448165',1,'scanbotsdk::api::barcode::barcode_types::CharacterEncoding']]],
+  ['gender_2',['GENDER',['../classscanbotsdk_1_1api_1_1generic__document_1_1common__field__type_1_1CommonFieldType.html#a5f8d2517a6cd0d3765860c86ddd67732',1,'scanbotsdk.api.generic_document.common_field_type.CommonFieldType.GENDER'],['../classscanbotsdk_1_1api_1_1generic__document_1_1generic__document_1_1FieldDataFormat.html#a5f8d2517a6cd0d3765860c86ddd67732',1,'scanbotsdk.api.generic_document.generic_document.FieldDataFormat.GENDER']]],
+  ['germany_3',['GERMANY',['../classscanbotsdk_1_1api_1_1document__data_1_1document__data__extractor__configuration__types_1_1Eb02ee5ce4efc115c93adeeec173f642c.html#a6d6e1a475b9846c12aae99b5c855d3c7',1,'scanbotsdk::api::document_data::document_data_extractor_configuration_types::EuropeanHealthInsuranceCardIssuingCountry']]],
+  ['given_5fnames_4',['GIVEN_NAMES',['../classscanbotsdk_1_1api_1_1generic__document_1_1common__field__type_1_1CommonFieldType.html#a84ccc0c5174e4e769f70f6c65ab4641e',1,'scanbotsdk::api::generic_document::common_field_type::CommonFieldType']]],
+  ['good_5',['GOOD',['../classscanbotsdk_1_1api_1_1document__quality__analyzer_1_1document__quality__analyzer__types_1_1DocumentQuality.html#aa9bd863071b372b96eb556ec5556577c',1,'scanbotsdk::api::document_quality_analyzer::document_quality_analyzer_types::DocumentQuality']]],
+  ['gray_6',['GRAY',['../classscanbotsdk_1_1api_1_1image_1_1image__ref__types_1_1ColorConversion.html#a92020e1f270242d2d1b55f037471da3d',1,'scanbotsdk::api::image::image_ref_types::ColorConversion']]],
+  ['greece_7',['GREECE',['../classscanbotsdk_1_1api_1_1document__data_1_1document__data__extractor__configuration__types_1_1Eb02ee5ce4efc115c93adeeec173f642c.html#a89682430e72aaf9b036b693ba90a69b3',1,'scanbotsdk::api::document_data::document_data_extractor_configuration_types::EuropeanHealthInsuranceCardIssuingCountry']]],
+  ['gs1_8',['GS1',['../classscanbotsdk_1_1api_1_1barcode_1_1barcode__document__types_1_1BarcodeDocumentFormat.html#a351fd83815e2db999638af4415f945c9',1,'scanbotsdk::api::barcode::barcode_document_types::BarcodeDocumentFormat']]],
+  ['gs1_5fcomposite_9',['GS1_COMPOSITE',['../classscanbotsdk_1_1api_1_1barcode_1_1barcode__types_1_1BarcodeFormat.html#aebab13a21a00ade6f3b18b56f59af1de',1,'scanbotsdk::api::barcode::barcode_types::BarcodeFormat']]]
+];

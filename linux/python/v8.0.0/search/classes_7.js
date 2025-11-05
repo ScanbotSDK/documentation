@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['imageinfo_0',['ImageInfo',['../classscanbotsdk_1_1api_1_1image_1_1image__ref__types_1_1ImageInfo.html',1,'scanbotsdk::api::image::image_ref_types']]],
+  ['imagemanipulator_1',['ImageManipulator',['../classscanbotsdk_1_1api_1_1image__manipulation_1_1image__manipulator_1_1ImageManipulator.html',1,'scanbotsdk::api::image_manipulation::image_manipulator']]],
+  ['imageorigin_2',['ImageOrigin',['../classscanbotsdk_1_1api_1_1image_1_1image__types_1_1ImageOrigin.html',1,'scanbotsdk::api::image::image_types']]],
+  ['imageprocessor_3',['ImageProcessor',['../classscanbotsdk_1_1api_1_1image__processing_1_1image__processor_1_1ImageProcessor.html',1,'scanbotsdk::api::image_processing::image_processor']]],
+  ['imageprofile_4',['ImageProfile',['../classscanbotsdk_1_1api_1_1image_1_1image__ref__types_1_1ImageProfile.html',1,'scanbotsdk::api::image::image_ref_types']]],
+  ['imageref_5',['ImageRef',['../classscanbotsdk_1_1image__ref_1_1ImageRef.html',1,'scanbotsdk::image_ref']]],
+  ['imagerefpoolsnapshot_6',['ImageRefPoolSnapshot',['../classscanbotsdk_1_1api_1_1image_1_1image__ref__types_1_1ImageRefPoolSnapshot.html',1,'scanbotsdk::api::image::image_ref_types']]],
+  ['imagerefpoolsnapshotsdiff_7',['ImageRefPoolSnapshotsDiff',['../classscanbotsdk_1_1api_1_1image_1_1image__ref__types_1_1ImageRefPoolSnapshotsDiff.html',1,'scanbotsdk::api::image::image_ref_types']]],
+  ['imagerefprofile_8',['ImageRefProfile',['../classscanbotsdk_1_1api_1_1image_1_1image__ref__types_1_1ImageRefProfile.html',1,'scanbotsdk::api::image::image_ref_types']]],
+  ['imagerefprofiler_9',['ImageRefProfiler',['../classscanbotsdk_1_1api_1_1image_1_1image__ref__profiler_1_1ImageRefProfiler.html',1,'scanbotsdk::api::image::image_ref_profiler']]],
+  ['imagerotation_10',['ImageRotation',['../classscanbotsdk_1_1api_1_1image_1_1image__types_1_1ImageRotation.html',1,'scanbotsdk::api::image::image_types']]],
+  ['imagesource_11',['ImageSource',['../classscanbotsdk_1_1api_1_1image_1_1image__ref__types_1_1ImageSource.html',1,'scanbotsdk::api::image::image_ref_types']]],
+  ['imagesourcetype_12',['ImageSourceType',['../classscanbotsdk_1_1api_1_1image_1_1image__ref__types_1_1ImageSourceType.html',1,'scanbotsdk::api::image::image_ref_types']]],
+  ['invaliddataerror_13',['InvalidDataError',['../classscanbotsdk_1_1error_1_1InvalidDataError.html',1,'scanbotsdk::error']]],
+  ['invaliddataverificationreport_14',['InvalidDataVerificationReport',['../classscanbotsdk_1_1api_1_1document__data_1_1document__data__extractor__types_1_1InvalidDataVerificationReport.html',1,'scanbotsdk::api::document_data::document_data_extractor_types']]],
+  ['invalidimagereferror_15',['InvalidImageRefError',['../classscanbotsdk_1_1error_1_1InvalidImageRefError.html',1,'scanbotsdk::error']]],
+  ['invalidoperationerror_16',['InvalidOperationError',['../classscanbotsdk_1_1error_1_1InvalidOperationError.html',1,'scanbotsdk::error']]]
+];

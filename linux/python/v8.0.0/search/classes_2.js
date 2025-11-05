@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['characterencoding_0',['CharacterEncoding',['../classscanbotsdk_1_1api_1_1barcode_1_1barcode__types_1_1CharacterEncoding.html',1,'scanbotsdk::api::barcode::barcode_types']]],
+  ['checkdocumentdetectionmode_1',['CheckDocumentDetectionMode',['../classscanbotsdk_1_1api_1_1check_1_1check__scanner__types_1_1CheckDocumentDetectionMode.html',1,'scanbotsdk::api::check::check_scanner_types']]],
+  ['checkmagneticinkstripscanningstatus_2',['CheckMagneticInkStripScanningStatus',['../classscanbotsdk_1_1api_1_1check_1_1check__scanner__types_1_1CheckMagneticInkStripScanningStatus.html',1,'scanbotsdk::api::check::check_scanner_types']]],
+  ['checkscanner_3',['CheckScanner',['../classscanbotsdk_1_1api_1_1check_1_1check__scanner_1_1CheckScanner.html',1,'scanbotsdk::api::check::check_scanner']]],
+  ['checkscannerconfiguration_4',['CheckScannerConfiguration',['../classscanbotsdk_1_1api_1_1check_1_1check__scanner__types_1_1CheckScannerConfiguration.html',1,'scanbotsdk::api::check::check_scanner_types']]],
+  ['checkscanningresult_5',['CheckScanningResult',['../classscanbotsdk_1_1api_1_1check_1_1check__scanner__types_1_1CheckScanningResult.html',1,'scanbotsdk::api::check::check_scanner_types']]],
+  ['checkstandard_6',['CheckStandard',['../classscanbotsdk_1_1api_1_1check_1_1check__scanner__types_1_1CheckStandard.html',1,'scanbotsdk::api::check::check_scanner_types']]],
+  ['colorconversion_7',['ColorConversion',['../classscanbotsdk_1_1api_1_1image_1_1image__ref__types_1_1ColorConversion.html',1,'scanbotsdk::api::image::image_ref_types']]],
+  ['colordocumentfilter_8',['ColorDocumentFilter',['../classscanbotsdk_1_1api_1_1image__processing_1_1parametric__filters_1_1ColorDocumentFilter.html',1,'scanbotsdk::api::image_processing::parametric_filters']]],
+  ['commonfieldtype_9',['CommonFieldType',['../classscanbotsdk_1_1api_1_1generic__document_1_1common__field__type_1_1CommonFieldType.html',1,'scanbotsdk::api::generic_document::common_field_type']]],
+  ['componentunavailableerror_10',['ComponentUnavailableError',['../classscanbotsdk_1_1error_1_1ComponentUnavailableError.html',1,'scanbotsdk::error']]],
+  ['compositefieldvaluesemantics_11',['CompositeFieldValueSemantics',['../classscanbotsdk_1_1api_1_1document__data_1_1document__data__extractor__types_1_1CompositeFieldValueSemantics.html',1,'scanbotsdk::api::document_data::document_data_extractor_types']]],
+  ['compressionmode_12',['CompressionMode',['../classscanbotsdk_1_1api_1_1tiff__generation_1_1tiff__types_1_1CompressionMode.html',1,'scanbotsdk::api::tiff_generation::tiff_types']]],
+  ['confirmationmethod_13',['ConfirmationMethod',['../classscanbotsdk_1_1api_1_1frame__accumulation_1_1frame__accumulation__types_1_1ConfirmationMethod.html',1,'scanbotsdk::api::frame_accumulation::frame_accumulation_types']]],
+  ['consistencyverificationreport_14',['ConsistencyVerificationReport',['../classscanbotsdk_1_1api_1_1document__data_1_1document__data__extractor__types_1_1ConsistencyVerificationReport.html',1,'scanbotsdk::api::document_data::document_data_extractor_types']]],
+  ['contentvalidator_15',['ContentValidator',['../classscanbotsdk_1_1api_1_1text__pattern_1_1text__pattern__scanner__types_1_1ContentValidator.html',1,'scanbotsdk::api::text_pattern::text_pattern_scanner_types']]],
+  ['contrastfilter_16',['ContrastFilter',['../classscanbotsdk_1_1api_1_1image__processing_1_1parametric__filters_1_1ContrastFilter.html',1,'scanbotsdk::api::image_processing::parametric_filters']]],
+  ['creditcardscanner_17',['CreditCardScanner',['../classscanbotsdk_1_1api_1_1credit__card_1_1credit__card__scanner_1_1CreditCardScanner.html',1,'scanbotsdk::api::credit_card::credit_card_scanner']]],
+  ['creditcardscannerconfiguration_18',['CreditCardScannerConfiguration',['../classscanbotsdk_1_1api_1_1credit__card_1_1credit__card__types_1_1CreditCardScannerConfiguration.html',1,'scanbotsdk::api::credit_card::credit_card_types']]],
+  ['creditcardscanningresult_19',['CreditCardScanningResult',['../classscanbotsdk_1_1api_1_1credit__card_1_1credit__card__types_1_1CreditCardScanningResult.html',1,'scanbotsdk::api::credit_card::credit_card_types']]],
+  ['creditcardscanningstatus_20',['CreditCardScanningStatus',['../classscanbotsdk_1_1api_1_1credit__card_1_1credit__card__types_1_1CreditCardScanningStatus.html',1,'scanbotsdk::api::credit_card::credit_card_types']]],
+  ['custombinarizationfilter_21',['CustomBinarizationFilter',['../classscanbotsdk_1_1api_1_1image__processing_1_1parametric__filters_1_1CustomBinarizationFilter.html',1,'scanbotsdk::api::image_processing::parametric_filters']]]
+];
