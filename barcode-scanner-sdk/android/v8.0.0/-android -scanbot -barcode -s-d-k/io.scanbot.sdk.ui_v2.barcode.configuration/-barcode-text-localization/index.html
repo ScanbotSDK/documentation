@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>BarcodeTextLocalization</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<link href="../../../images/logo-icon.svg">
+<link href="../../../styles/scanbot-dokka-styles.css" rel="Stylesheet">
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    Android Scanbot Barcode SDK
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+8.0.0        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":dokka-aggregator/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":dokka-aggregator/release"
+                                       data-filter=":dokka-aggregator/release"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+                <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link"
+                   href="https://scanbot.io"></a>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Android Scanbot Barcode SDK
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="Android Scanbot Barcode SDK::io.scanbot.sdk.ui_v2.barcode.configuration/BarcodeTextLocalization///PointingToDeclaration//-237363669">
+  <div class="breadcrumbs"><a href="../../../index.html">Android Scanbot Barcode SDK</a><span class="delimiter">/</span><a href="../index.html">io.scanbot.sdk.ui_v2.barcode.configuration</a><span class="delimiter">/</span><span class="current">BarcodeTextLocalization</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Barcode</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Localization</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">BarcodeTextLocalization</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>topBarCancelButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Cancel&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>topBarTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Scan Item&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>userGuidance<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Move the finder over a barcode&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>barcodeInfoMappingLoadingMessage<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Loading details...&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>barcodeInfoMappingErrorStateTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Connection Error!&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>barcodeInfoMappingErrorStateSubtitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;There was an issue and the data requested was not fetched. You could try again or discard this result to start a new scan.&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>barcodeInfoMappingErrorStateRetryButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Retry&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>barcodeInfoMappingErrorStateCancelButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Cancel&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>manualCountEditDialogTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Update count&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>manualCountEditDialogInfo<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Adjust the number of items you scanned.&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>manualCountEditDialogUpdateButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Update&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>manualCountEditDialogCancelButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Cancel&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>sheetResetButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Reset&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>sheetClearAllButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Clear all&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>sheetSubmitButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Submit&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>sheetStartScanningButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Start scanning&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>sheetPlaceholderTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;No barcodes here!&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>sheetPlaceholderSubtitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;The barcode list is currently empty. Close this sheet and scan your items to add them.&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>singleModeConfirmationCancelButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Close&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>multipleModeSheetTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;%d items&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>findAndPickSheetTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;%d/%d scanned&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>findAndPickSheetBarcodeItemSubtitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;%d/%d added&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>findAndPickPartialAlertTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Incomplete scan!&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>findAndPickPartialAlertSubtitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Some codes are yet to be scanned. Proceed with submission anyway?&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>findAndPickPartialAlertCancelButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Cancel&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>findAndPickPartialAlertSubmitButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Yes, Submit&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>findAndPickCompleteAlertTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;All codes found!&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>findAndPickCompleteAlertSubtitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;You have successfully scanned all codes. Proceed with submission?&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>findAndPickCompleteAlertCancelButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Dismiss&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>findAndPickCompleteAlertSubmitButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Submit&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>accessibilityDescriptionCancelButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Cancel&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>accessibilityDescriptionFlashButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Toggle flash&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>accessibilityDescriptionZoomButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Toggle camera zoom&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>accessibilityDescriptionFlipCameraButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Flip camera&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>cameraPermissionEnableCameraTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Camera permission denied!&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>cameraPermissionEnableCameraExplanation<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Please allow the usage of the camera to start the scanning process.&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>cameraPermissionEnableCameraButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Grant permission&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>cameraPermissionCloseButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Close&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>accessibilityDescriptionCameraPermissionEnableCameraButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Tap to grant camera permission&quot;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>accessibilityDescriptionCameraPermissionCloseButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Close screen without granting permission&quot;</span></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/android/os/Parcelable.html">Parcelable</a></div><p class="paragraph">Configuration of the all strings for barcode scanner.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-750805674%2FConstructors%2F-237363669" anchor-label="BarcodeTextLocalization" id="-750805674%2FConstructors%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-barcode-text-localization.html"><span>Barcode</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Localization</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-750805674%2FConstructors%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">source<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">json<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/org/json/JSONObject.html">JSONObject</a></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">topBarCancelButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Cancel&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">topBarTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Scan Item&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">userGuidance<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Move the finder over a barcode&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">barcodeInfoMappingLoadingMessage<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Loading details...&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">barcodeInfoMappingErrorStateTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Connection Error!&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">barcodeInfoMappingErrorStateSubtitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;There was an issue and the data requested was not fetched. You could try again or discard this result to start a new scan.&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">barcodeInfoMappingErrorStateRetryButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Retry&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">barcodeInfoMappingErrorStateCancelButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Cancel&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">manualCountEditDialogTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Update count&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">manualCountEditDialogInfo<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Adjust the number of items you scanned.&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">manualCountEditDialogUpdateButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Update&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">manualCountEditDialogCancelButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Cancel&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">sheetResetButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Reset&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">sheetClearAllButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Clear all&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">sheetSubmitButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Submit&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">sheetStartScanningButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Start scanning&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">sheetPlaceholderTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;No barcodes here!&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">sheetPlaceholderSubtitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;The barcode list is currently empty. Close this sheet and scan your items to add them.&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">singleModeConfirmationCancelButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Close&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">multipleModeSheetTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;%d items&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">findAndPickSheetTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;%d/%d scanned&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">findAndPickSheetBarcodeItemSubtitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;%d/%d added&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">findAndPickPartialAlertTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Incomplete scan!&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">findAndPickPartialAlertSubtitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Some codes are yet to be scanned. Proceed with submission anyway?&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">findAndPickPartialAlertCancelButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Cancel&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">findAndPickPartialAlertSubmitButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Yes, Submit&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">findAndPickCompleteAlertTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;All codes found!&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">findAndPickCompleteAlertSubtitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;You have successfully scanned all codes. Proceed with submission?&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">findAndPickCompleteAlertCancelButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Dismiss&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">findAndPickCompleteAlertSubmitButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Submit&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">accessibilityDescriptionCancelButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Cancel&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">accessibilityDescriptionFlashButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Toggle flash&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">accessibilityDescriptionZoomButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Toggle camera zoom&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">accessibilityDescriptionFlipCameraButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Flip camera&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">cameraPermissionEnableCameraTitle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Camera permission denied!&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">cameraPermissionEnableCameraExplanation<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Please allow the usage of the camera to start the scanning process.&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">cameraPermissionEnableCameraButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Grant permission&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">cameraPermissionCloseButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Close&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">accessibilityDescriptionCameraPermissionEnableCameraButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Tap to grant camera permission&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">accessibilityDescriptionCameraPermissionCloseButton<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Close screen without granting permission&quot;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-2040598405%2FClasslikes%2F-237363669" anchor-label="Companion" id="-2040598405%2FClasslikes%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2040598405%2FClasslikes%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1541600844%2FProperties%2F-237363669" anchor-label="accessibilityDescriptionCameraPermissionCloseButton" id="1541600844%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="accessibility-description-camera-permission-close-button.html"><span>accessibility</span><wbr></wbr><span>Description</span><wbr></wbr><span>Camera</span><wbr></wbr><span>Permission</span><wbr></wbr><span>Close</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1541600844%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="accessibility-description-camera-permission-close-button.html">accessibilityDescriptionCameraPermissionCloseButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The accessibility hint for the 'close' button of the camera permission dialog.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2144921706%2FProperties%2F-237363669" anchor-label="accessibilityDescriptionCameraPermissionEnableCameraButton" id="2144921706%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="accessibility-description-camera-permission-enable-camera-button.html"><span>accessibility</span><wbr></wbr><span>Description</span><wbr></wbr><span>Camera</span><wbr></wbr><span>Permission</span><wbr></wbr><span>Enable</span><wbr></wbr><span>Camera</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2144921706%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="accessibility-description-camera-permission-enable-camera-button.html">accessibilityDescriptionCameraPermissionEnableCameraButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The accessibility hint for the 'enable' button of the camera permission dialog.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="919121900%2FProperties%2F-237363669" anchor-label="accessibilityDescriptionCancelButton" id="919121900%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="accessibility-description-cancel-button.html"><span>accessibility</span><wbr></wbr><span>Description</span><wbr></wbr><span>Cancel</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="919121900%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="accessibility-description-cancel-button.html">accessibilityDescriptionCancelButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Accessibility description for the 'cancel' button in the top bar.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2067793312%2FProperties%2F-237363669" anchor-label="accessibilityDescriptionFlashButton" id="-2067793312%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="accessibility-description-flash-button.html"><span>accessibility</span><wbr></wbr><span>Description</span><wbr></wbr><span>Flash</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2067793312%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="accessibility-description-flash-button.html">accessibilityDescriptionFlashButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Accessibility description for the flash button.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="11964404%2FProperties%2F-237363669" anchor-label="accessibilityDescriptionFlipCameraButton" id="11964404%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="accessibility-description-flip-camera-button.html"><span>accessibility</span><wbr></wbr><span>Description</span><wbr></wbr><span>Flip</span><wbr></wbr><span>Camera</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="11964404%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="accessibility-description-flip-camera-button.html">accessibilityDescriptionFlipCameraButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Accessibility description for the flip camera button.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="123359795%2FProperties%2F-237363669" anchor-label="accessibilityDescriptionZoomButton" id="123359795%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="accessibility-description-zoom-button.html"><span>accessibility</span><wbr></wbr><span>Description</span><wbr></wbr><span>Zoom</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="123359795%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="accessibility-description-zoom-button.html">accessibilityDescriptionZoomButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Accessibility description for the zoom button.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1595121%2FProperties%2F-237363669" anchor-label="barcodeInfoMappingErrorStateCancelButton" id="1595121%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="barcode-info-mapping-error-state-cancel-button.html"><span>barcode</span><wbr></wbr><span>Info</span><wbr></wbr><span>Mapping</span><wbr></wbr><span>Error</span><wbr></wbr><span>State</span><wbr></wbr><span>Cancel</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1595121%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="barcode-info-mapping-error-state-cancel-button.html">barcodeInfoMappingErrorStateCancelButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Cancel button text for the barcode info mapping error state.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2127451395%2FProperties%2F-237363669" anchor-label="barcodeInfoMappingErrorStateRetryButton" id="2127451395%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="barcode-info-mapping-error-state-retry-button.html"><span>barcode</span><wbr></wbr><span>Info</span><wbr></wbr><span>Mapping</span><wbr></wbr><span>Error</span><wbr></wbr><span>State</span><wbr></wbr><span>Retry</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2127451395%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="barcode-info-mapping-error-state-retry-button.html">barcodeInfoMappingErrorStateRetryButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Retry button text for the barcode info mapping error state.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-168237403%2FProperties%2F-237363669" anchor-label="barcodeInfoMappingErrorStateSubtitle" id="-168237403%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="barcode-info-mapping-error-state-subtitle.html"><span>barcode</span><wbr></wbr><span>Info</span><wbr></wbr><span>Mapping</span><wbr></wbr><span>Error</span><wbr></wbr><span>State</span><wbr></wbr><span><span>Subtitle</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-168237403%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="barcode-info-mapping-error-state-subtitle.html">barcodeInfoMappingErrorStateSubtitle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Subtitle for the barcode info mapping error state.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1132097435%2FProperties%2F-237363669" anchor-label="barcodeInfoMappingErrorStateTitle" id="-1132097435%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="barcode-info-mapping-error-state-title.html"><span>barcode</span><wbr></wbr><span>Info</span><wbr></wbr><span>Mapping</span><wbr></wbr><span>Error</span><wbr></wbr><span>State</span><wbr></wbr><span><span>Title</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1132097435%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="barcode-info-mapping-error-state-title.html">barcodeInfoMappingErrorStateTitle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Title for the barcode info mapping error state.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-252840485%2FProperties%2F-237363669" anchor-label="barcodeInfoMappingLoadingMessage" id="-252840485%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="barcode-info-mapping-loading-message.html"><span>barcode</span><wbr></wbr><span>Info</span><wbr></wbr><span>Mapping</span><wbr></wbr><span>Loading</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-252840485%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="barcode-info-mapping-loading-message.html">barcodeInfoMappingLoadingMessage</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Loading message for barcode info mapping.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="542159966%2FProperties%2F-237363669" anchor-label="cameraPermissionCloseButton" id="542159966%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="camera-permission-close-button.html"><span>camera</span><wbr></wbr><span>Permission</span><wbr></wbr><span>Close</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="542159966%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="camera-permission-close-button.html">cameraPermissionCloseButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The 'close' button title of the camera permission dialog.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1007775208%2FProperties%2F-237363669" anchor-label="cameraPermissionEnableCameraButton" id="-1007775208%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="camera-permission-enable-camera-button.html"><span>camera</span><wbr></wbr><span>Permission</span><wbr></wbr><span>Enable</span><wbr></wbr><span>Camera</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1007775208%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="camera-permission-enable-camera-button.html">cameraPermissionEnableCameraButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The 'enable' button title of the camera permission dialog.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="981107351%2FProperties%2F-237363669" anchor-label="cameraPermissionEnableCameraExplanation" id="981107351%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="camera-permission-enable-camera-explanation.html"><span>camera</span><wbr></wbr><span>Permission</span><wbr></wbr><span>Enable</span><wbr></wbr><span>Camera</span><wbr></wbr><span><span>Explanation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="981107351%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="camera-permission-enable-camera-explanation.html">cameraPermissionEnableCameraExplanation</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The explanation text of the camera permission dialog.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="15367544%2FProperties%2F-237363669" anchor-label="cameraPermissionEnableCameraTitle" id="15367544%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="camera-permission-enable-camera-title.html"><span>camera</span><wbr></wbr><span>Permission</span><wbr></wbr><span>Enable</span><wbr></wbr><span>Camera</span><wbr></wbr><span><span>Title</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="15367544%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="camera-permission-enable-camera-title.html">cameraPermissionEnableCameraTitle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The title of the camera permission dialog.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1115136970%2FProperties%2F-237363669" anchor-label="findAndPickCompleteAlertCancelButton" id="-1115136970%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="find-and-pick-complete-alert-cancel-button.html"><span>find</span><wbr></wbr><span>And</span><wbr></wbr><span>Pick</span><wbr></wbr><span>Complete</span><wbr></wbr><span>Alert</span><wbr></wbr><span>Cancel</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1115136970%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="find-and-pick-complete-alert-cancel-button.html">findAndPickCompleteAlertCancelButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Cancel button text for the find and pick complete alert.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-689203496%2FProperties%2F-237363669" anchor-label="findAndPickCompleteAlertSubmitButton" id="-689203496%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="find-and-pick-complete-alert-submit-button.html"><span>find</span><wbr></wbr><span>And</span><wbr></wbr><span>Pick</span><wbr></wbr><span>Complete</span><wbr></wbr><span>Alert</span><wbr></wbr><span>Submit</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-689203496%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="find-and-pick-complete-alert-submit-button.html">findAndPickCompleteAlertSubmitButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Submit button text for the find and pick complete alert.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-673163670%2FProperties%2F-237363669" anchor-label="findAndPickCompleteAlertSubtitle" id="-673163670%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="find-and-pick-complete-alert-subtitle.html"><span>find</span><wbr></wbr><span>And</span><wbr></wbr><span>Pick</span><wbr></wbr><span>Complete</span><wbr></wbr><span>Alert</span><wbr></wbr><span><span>Subtitle</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-673163670%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="find-and-pick-complete-alert-subtitle.html">findAndPickCompleteAlertSubtitle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Subtitle for the find and pick complete alert.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="667991744%2FProperties%2F-237363669" anchor-label="findAndPickCompleteAlertTitle" id="667991744%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="find-and-pick-complete-alert-title.html"><span>find</span><wbr></wbr><span>And</span><wbr></wbr><span>Pick</span><wbr></wbr><span>Complete</span><wbr></wbr><span>Alert</span><wbr></wbr><span><span>Title</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="667991744%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="find-and-pick-complete-alert-title.html">findAndPickCompleteAlertTitle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Title for the find and pick complete alert.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1508159698%2FProperties%2F-237363669" anchor-label="findAndPickPartialAlertCancelButton" id="-1508159698%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="find-and-pick-partial-alert-cancel-button.html"><span>find</span><wbr></wbr><span>And</span><wbr></wbr><span>Pick</span><wbr></wbr><span>Partial</span><wbr></wbr><span>Alert</span><wbr></wbr><span>Cancel</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1508159698%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="find-and-pick-partial-alert-cancel-button.html">findAndPickPartialAlertCancelButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Cancel button text for the find and pick partial alert.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1082226224%2FProperties%2F-237363669" anchor-label="findAndPickPartialAlertSubmitButton" id="-1082226224%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="find-and-pick-partial-alert-submit-button.html"><span>find</span><wbr></wbr><span>And</span><wbr></wbr><span>Pick</span><wbr></wbr><span>Partial</span><wbr></wbr><span>Alert</span><wbr></wbr><span>Submit</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1082226224%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="find-and-pick-partial-alert-submit-button.html">findAndPickPartialAlertSubmitButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Submit button text for the find and pick partial alert.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2081654114%2FProperties%2F-237363669" anchor-label="findAndPickPartialAlertSubtitle" id="2081654114%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="find-and-pick-partial-alert-subtitle.html"><span>find</span><wbr></wbr><span>And</span><wbr></wbr><span>Pick</span><wbr></wbr><span>Partial</span><wbr></wbr><span>Alert</span><wbr></wbr><span><span>Subtitle</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2081654114%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="find-and-pick-partial-alert-subtitle.html">findAndPickPartialAlertSubtitle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Subtitle for the find and pick partial alert.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2136165688%2FProperties%2F-237363669" anchor-label="findAndPickPartialAlertTitle" id="-2136165688%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="find-and-pick-partial-alert-title.html"><span>find</span><wbr></wbr><span>And</span><wbr></wbr><span>Pick</span><wbr></wbr><span>Partial</span><wbr></wbr><span>Alert</span><wbr></wbr><span><span>Title</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2136165688%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="find-and-pick-partial-alert-title.html">findAndPickPartialAlertTitle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Title for the find and pick partial alert.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1464466423%2FProperties%2F-237363669" anchor-label="findAndPickSheetBarcodeItemSubtitle" id="-1464466423%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="find-and-pick-sheet-barcode-item-subtitle.html"><span>find</span><wbr></wbr><span>And</span><wbr></wbr><span>Pick</span><wbr></wbr><span>Sheet</span><wbr></wbr><span>Barcode</span><wbr></wbr><span>Item</span><wbr></wbr><span><span>Subtitle</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1464466423%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="find-and-pick-sheet-barcode-item-subtitle.html">findAndPickSheetBarcodeItemSubtitle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Subtitle for the find and pick barcode sheet.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="759070588%2FProperties%2F-237363669" anchor-label="findAndPickSheetTitle" id="759070588%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="find-and-pick-sheet-title.html"><span>find</span><wbr></wbr><span>And</span><wbr></wbr><span>Pick</span><wbr></wbr><span>Sheet</span><wbr></wbr><span><span>Title</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="759070588%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="find-and-pick-sheet-title.html">findAndPickSheetTitle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Title for the find and pick barcode sheet.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-241248147%2FProperties%2F-237363669" anchor-label="manualCountEditDialogCancelButton" id="-241248147%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="manual-count-edit-dialog-cancel-button.html"><span>manual</span><wbr></wbr><span>Count</span><wbr></wbr><span>Edit</span><wbr></wbr><span>Dialog</span><wbr></wbr><span>Cancel</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-241248147%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="manual-count-edit-dialog-cancel-button.html">manualCountEditDialogCancelButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Cancel button text for the manual count edit dialog.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-368558005%2FProperties%2F-237363669" anchor-label="manualCountEditDialogInfo" id="-368558005%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="manual-count-edit-dialog-info.html"><span>manual</span><wbr></wbr><span>Count</span><wbr></wbr><span>Edit</span><wbr></wbr><span>Dialog</span><wbr></wbr><span><span>Info</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-368558005%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="manual-count-edit-dialog-info.html">manualCountEditDialogInfo</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Info for the manual count edit dialog.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1389331049%2FProperties%2F-237363669" anchor-label="manualCountEditDialogTitle" id="1389331049%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="manual-count-edit-dialog-title.html"><span>manual</span><wbr></wbr><span>Count</span><wbr></wbr><span>Edit</span><wbr></wbr><span>Dialog</span><wbr></wbr><span><span>Title</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1389331049%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="manual-count-edit-dialog-title.html">manualCountEditDialogTitle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Title for the manual count edit dialog.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1253786686%2FProperties%2F-237363669" anchor-label="manualCountEditDialogUpdateButton" id="1253786686%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="manual-count-edit-dialog-update-button.html"><span>manual</span><wbr></wbr><span>Count</span><wbr></wbr><span>Edit</span><wbr></wbr><span>Dialog</span><wbr></wbr><span>Update</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1253786686%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="manual-count-edit-dialog-update-button.html">manualCountEditDialogUpdateButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Update button text for the manual count edit dialog.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1855831738%2FProperties%2F-237363669" anchor-label="multipleModeSheetTitle" id="1855831738%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="multiple-mode-sheet-title.html"><span>multiple</span><wbr></wbr><span>Mode</span><wbr></wbr><span>Sheet</span><wbr></wbr><span><span>Title</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1855831738%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="multiple-mode-sheet-title.html">multipleModeSheetTitle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Title for the multiple mode barcode sheet.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="665244271%2FProperties%2F-237363669" anchor-label="sheetClearAllButton" id="665244271%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sheet-clear-all-button.html"><span>sheet</span><wbr></wbr><span>Clear</span><wbr></wbr><span>All</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="665244271%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="sheet-clear-all-button.html">sheetClearAllButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Clear all button text for the barcode sheet.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1710850534%2FProperties%2F-237363669" anchor-label="sheetPlaceholderSubtitle" id="-1710850534%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sheet-placeholder-subtitle.html"><span>sheet</span><wbr></wbr><span>Placeholder</span><wbr></wbr><span><span>Subtitle</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1710850534%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="sheet-placeholder-subtitle.html">sheetPlaceholderSubtitle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Subtitle for the barcode sheet placeholder.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="674444560%2FProperties%2F-237363669" anchor-label="sheetPlaceholderTitle" id="674444560%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sheet-placeholder-title.html"><span>sheet</span><wbr></wbr><span>Placeholder</span><wbr></wbr><span><span>Title</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="674444560%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="sheet-placeholder-title.html">sheetPlaceholderTitle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Title for the barcode sheet placeholder.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2085541924%2FProperties%2F-237363669" anchor-label="sheetResetButton" id="2085541924%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sheet-reset-button.html"><span>sheet</span><wbr></wbr><span>Reset</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2085541924%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="sheet-reset-button.html">sheetResetButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Reset button text for the barcode sheet.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="998314432%2FProperties%2F-237363669" anchor-label="sheetStartScanningButton" id="998314432%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sheet-start-scanning-button.html"><span>sheet</span><wbr></wbr><span>Start</span><wbr></wbr><span>Scanning</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="998314432%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="sheet-start-scanning-button.html">sheetStartScanningButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Start scanning button text for the barcode sheet.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1028140053%2FProperties%2F-237363669" anchor-label="sheetSubmitButton" id="-1028140053%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sheet-submit-button.html"><span>sheet</span><wbr></wbr><span>Submit</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1028140053%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="sheet-submit-button.html">sheetSubmitButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Submit button text for the barcode sheet.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1056858458%2FProperties%2F-237363669" anchor-label="singleModeConfirmationCancelButton" id="1056858458%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="single-mode-confirmation-cancel-button.html"><span>single</span><wbr></wbr><span>Mode</span><wbr></wbr><span>Confirmation</span><wbr></wbr><span>Cancel</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1056858458%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="single-mode-confirmation-cancel-button.html">singleModeConfirmationCancelButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Cancel button text for the single mode confirmation dialog.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1781181820%2FProperties%2F-237363669" anchor-label="topBarCancelButton" id="1781181820%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="top-bar-cancel-button.html"><span>top</span><wbr></wbr><span>Bar</span><wbr></wbr><span>Cancel</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1781181820%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="top-bar-cancel-button.html">topBarCancelButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Cancel button text for the top bar.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1252216774%2FProperties%2F-237363669" anchor-label="topBarTitle" id="-1252216774%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="top-bar-title.html"><span>top</span><wbr></wbr><span>Bar</span><wbr></wbr><span><span>Title</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1252216774%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="top-bar-title.html">topBarTitle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Title for the top bar.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="191750659%2FProperties%2F-237363669" anchor-label="userGuidance" id="191750659%2FProperties%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="user-guidance.html"><span>user</span><wbr></wbr><span><span>Guidance</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="191750659%2FProperties%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="user-guidance.html">userGuidance</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">User guidance text.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="336619511%2FFunctions%2F-237363669" anchor-label="clone" id="336619511%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clone.html"><span><span>clone</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="336619511%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="clone.html"><span class="token function">clone</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">BarcodeTextLocalization</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1448427535%2FFunctions%2F-237363669" anchor-label="toJson" id="1448427535%2FFunctions%2F-237363669" data-filterable-set=":dokka-aggregator/release"></a>
+          <div class="table-row" data-filterable-current=":dokka-aggregator/release" data-filterable-set=":dokka-aggregator/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-json.html"><span>to</span><wbr></wbr><span><span>Json</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1448427535%2FFunctions%2F-237363669"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka-aggregator/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="to-json.html"><span class="token function">toJson</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../io.scanbot.sdk.common/-to-json-configuration/index.html">ToJsonConfiguration</a><span class="token operator"> = </span>ToJsonConfiguration.default()</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/org/json/JSONObject.html">JSONObject</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© Scanbot SDK GmbH 2011-2026, located in Germany and the US</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
